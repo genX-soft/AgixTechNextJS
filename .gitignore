@@ -1,0 +1,32 @@
+# Dependencies
+node_modules/
+dist/
+.DS_Store
+
+# Build output
+.next/
+out/
+build/
+
+# Environment
+.env
+.env*.local
+
+# Database
+*.sql
+*.db
+
+# Server
+server/public
+
+# Config
+vite.config.ts.*
+
+# Archives
+*.tar.gz
+
+# Assets (if they're very large)
+attached_assets/
+
+# Logs
+*.log
