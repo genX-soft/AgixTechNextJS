@@ -1536,7 +1536,7 @@ const allServices = [
     title: "AI Automation Services",
     tagline: "From Manual to Intelligent",
     description: "End-to-end workflow automation that transforms manual processes into intelligent, self-improving systems that scale with your business.",
-    link: "/",
+    link: "/services/ai-automation",
     heroStat: { value: "80%", label: "Less Manual Work" },
     before: "Staff spending 6+ hours daily on data entry, copy-paste tasks, and spreadsheet updates",
     after: ["Automated end-to-end workflows", "Staff focus on strategic work", "Zero data entry errors"],

@@ -69,7 +69,37 @@ export const AI_TOOLS: AITool[] = [
   {
     name: "AI Automation Services",
     description: "End-to-end workflow, process, and document automation",
-    href: "/services/ai-automation",
+    href: "/services/ai-automation#interactive-tools",
+    category: "services",
+  },
+  {
+    name: "Automation Opportunity Scanner",
+    description: "Identify what to automate first with ROI-first logic",
+    href: "/services/ai-automation#opportunity-scanner",
+    category: "services",
+  },
+  {
+    name: "AI Automation Cost Estimator",
+    description: "Get pricing clarity and timeline estimates",
+    href: "/services/ai-automation#cost-estimator",
+    category: "services",
+  },
+  {
+    name: "Before vs After Simulator",
+    description: "Visualize your process transformation",
+    href: "/services/ai-automation#before-after",
+    category: "services",
+  },
+  {
+    name: "Automation ROI Calculator",
+    description: "Calculate payback period and annual ROI",
+    href: "/services/ai-automation#roi-calculator",
+    category: "services",
+  },
+  {
+    name: "Automation Readiness Assessment",
+    description: "Assess your organization's automation maturity",
+    href: "/services/ai-automation#readiness-assessment",
     category: "services",
   },
   {

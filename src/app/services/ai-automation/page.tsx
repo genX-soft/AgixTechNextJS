@@ -1,5 +1,5 @@
 'use client'
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { motion } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -20,6 +20,10 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Slider } from "@/components/ui/slider";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Progress } from "@/components/ui/progress";
 import { MainHeader } from "@/components/main-header";
 import { MainFooter } from "@/components/main-footer";
 import { useToast } from "@/hooks/use-toast";
@@ -65,7 +69,11 @@ import {
   ShoppingCart,
   GraduationCap,
   Briefcase,
-  Heart
+  Heart,
+  HelpCircle,
+  Play,
+  Pause,
+  RotateCcw
 } from "lucide-react";
 import { trackEvent } from "@/lib/analytics";
 import { submitLead } from "@/lib/lead-submission";
@@ -407,43 +415,63 @@ const industries = [
 const faqs = [
   {
     question: "What are AI automation services?",
-    answer: "AI automation services use artificial intelligence to automate business workflows, processes, documents, and communications that normally require human decision-making. Unlike basic automation, AI automation understands context, handles exceptions, learns from outcomes, and scales across departments. This is why businesses search for enterprise AI automation services instead of simple workflow tools."
+    answer: "AI automation services use artificial intelligence to automate business workflows, processes, documents, and communications that normally require human decision-making. Unlike basic automation, AI automation understands context, handles exceptions, makes decisions, and works across multiple systems. This is why businesses search for enterprise AI automation services rather than simple workflow tools."
   },
   {
-    question: "What is the difference between AI automation and RPA?",
-    answer: "RPA uses rule-based scripts that break on change and work only on structured data at the task level. AI automation is intelligence-driven, adapts to new inputs, handles unstructured data, and operates at the process level. AI automation services replace or enhance RPA by adding intelligence, making them suitable for real business environments."
+    question: "What is the difference between AI automation and traditional automation?",
+    answer: "Traditional automation relies on fixed rules and scripts, while AI automation uses intelligence to interpret inputs and make decisions. Traditional automation is rule-based, breaks on change, handles only structured data at task-level. AI automation is context-aware, adapts to new inputs, handles unstructured data, and operates at the process level. AI automation is designed for real-world operational complexity."
   },
   {
-    question: "How much does AI automation cost?",
-    answer: "AI automation pricing depends on number of systems involved, process complexity, decision logic required, and volume of data or documents. Typical ranges: Simple workflow automation ($6K–$10K), Department-level automation ($10K–$25K), End-to-end BPA ($25K–$60K), Enterprise AI-led programs ($60K–$150K+). AGIX focuses on ROI-based pricing, not per-task pricing."
+    question: "How is AI automation different from RPA?",
+    answer: "RPA (Robotic Process Automation) mimics human clicks, works only on predictable inputs, and breaks when interfaces or formats change. AI automation understands emails, documents, and intent, handles variability and exceptions, and owns end-to-end processes. Many companies now use AI automation to replace or enhance RPA systems."
   },
   {
-    question: "Is AI automation expensive for small or mid-sized businesses?",
-    answer: "No — this is a common misconception. Many mid-sized businesses adopt AI automation because hiring additional staff costs more long-term, manual errors create hidden losses, and scaling operations without automation becomes impossible. AGIX often delivers cost recovery within 3–6 months through automation."
+    question: "What business processes are best suited for AI automation?",
+    answer: "Processes ideal for AI automation usually involve repetitive steps, high volume, decision-making, documents or emails, and multiple systems. Common examples include invoicing and billing, claims processing, customer onboarding, internal approvals, and support request handling."
   },
   {
-    question: "How long does AI automation take to implement?",
-    answer: "Implementation timelines depend on scope: Email or document automation (3–6 weeks), Workflow automation across tools (4–8 weeks), Business process automation (8–12 weeks), Enterprise AI transformation (3–6 months phased). AGIX follows phased delivery, so value is realized early."
+    question: "How much do AI automation services cost?",
+    answer: "AI automation pricing depends on process complexity, number of systems involved, decision logic required, and volume of transactions. Typical ranges: Simple workflow automation ($6,000–$10,000), Department-level automation ($10,000–$25,000), End-to-end process automation ($25,000–$60,000), Enterprise AI transformation ($60,000–$150,000+). Most businesses recover costs within 3–9 months through efficiency gains."
+  },
+  {
+    question: "Is AI automation suitable for small or mid-sized businesses?",
+    answer: "Yes. Many small and mid-sized businesses adopt AI automation to reduce hiring needs, eliminate manual errors, and scale operations efficiently. AI automation is often more affordable than adding headcount, especially as volumes grow."
+  },
+  {
+    question: "How long does it take to implement AI automation?",
+    answer: "Implementation timelines vary by scope: Email or document automation (3–6 weeks), Workflow automation across tools (4–8 weeks), Business process automation (8–12 weeks), Enterprise transformation programs (3–6 months phased). AGIX delivers automation in phases, so value is realized early."
   },
   {
     question: "Can AI automation integrate with existing software?",
-    answer: "Yes. AGIX integrates AI automation with CRMs (Salesforce, HubSpot, custom), ERPs, email platforms, databases, cloud applications, and internal tools. You don't need to replace your systems — AI automation connects and enhances them."
+    answer: "Yes. This is one of the most common buyer concerns. AI automation integrates with CRMs (Salesforce, HubSpot, custom systems), ERPs, email platforms, databases, cloud applications, and internal tools. You do not need to replace your existing systems — AI automation connects and enhances them."
   },
   {
-    question: "Is AI automation secure?",
-    answer: "Security is a primary evaluation factor. AGIX designs AI automation systems with role-based access control, audit logs, secure data pipelines, and compliance-ready architecture. This makes AI automation suitable for healthcare, finance, insurance, and regulated industries."
+    question: "Is AI automation secure for enterprise use?",
+    answer: "Yes, when designed correctly. AGIX builds AI automation systems with role-based access control, audit logs, secure data pipelines, and compliance-ready architecture. This makes AI automation suitable for regulated industries such as healthcare, finance, and insurance."
   },
   {
-    question: "What types of processes are best suited for AI automation?",
-    answer: "Processes ideal for AI automation involve repetitive steps, high volume, decision-making, documents or emails, and multiple systems. Examples include invoicing, claims processing, onboarding, reporting, and customer communication."
+    question: "Does AI automation require clean or perfect data?",
+    answer: "No. AI automation is designed for real operational data, which is often incomplete or inconsistent. Systems are built to handle missing fields, interpret unstructured inputs, and flag exceptions for review. Data quality improves after automation, not before it."
   },
   {
     question: "Will AI automation replace human jobs?",
-    answer: "AI automation replaces manual effort, not human judgment. AGIX designs systems that remove repetitive work, support decision-making, and free teams for higher-value tasks. This is why businesses search for AI automation solutions rather than 'job replacement AI.'"
+    answer: "AI automation replaces manual effort, not human judgment. AGIX designs systems that remove repetitive work, support better decision-making, and free teams for higher-value tasks. This is why businesses search for AI automation solutions, not job-replacement AI."
+  },
+  {
+    question: "What is AI business process automation (BPA)?",
+    answer: "AI Business Process Automation (BPA) automates entire business processes, not just individual tasks. It manages decisions, exceptions, workflow progression, and outcomes. Examples include order-to-cash, procure-to-pay, claims processing, and onboarding workflows."
   },
   {
     question: "How do we know what to automate first?",
-    answer: "AGIX starts with an Automation Opportunity Assessment, which identifies high-ROI processes, low-risk automation candidates, and quick wins vs long-term transformation. This prevents wasted investment."
+    answer: "AGIX starts with an Automation Opportunity Assessment, which identifies high-ROI processes, low-risk automation candidates, and quick wins vs long-term opportunities. This prevents wasted investment — a key concern for buyers searching for AI automation services."
+  },
+  {
+    question: "What industries use AI automation the most?",
+    answer: "AI automation is actively used in healthcare operations, finance and FinTech, insurance, e-commerce, logistics and supply chain, manufacturing, and SaaS companies. Each industry has different automation triggers, which AGIX addresses through modular AI systems."
+  },
+  {
+    question: "What results can businesses expect from AI automation?",
+    answer: "Businesses typically see faster process execution, lower operational costs, reduced error rates, improved scalability, and higher team productivity. AI automation is no longer about incremental efficiency — it enables reliable operations at scale."
   }
 ];
 
@@ -467,6 +495,705 @@ const pricingTiers = [
     bestFor: ["AI-led digital transformation", "Legacy modernization", "Enterprise-wide systems"]
   }
 ];
+
+const scannerIndustries = [
+  { value: "healthcare", label: "Healthcare" },
+  { value: "finance", label: "Finance / FinTech" },
+  { value: "insurance", label: "Insurance" },
+  { value: "saas", label: "SaaS" },
+  { value: "ecommerce", label: "E-commerce" },
+  { value: "logistics", label: "Logistics / Supply Chain" },
+  { value: "manufacturing", label: "Manufacturing" },
+  { value: "real-estate", label: "Real Estate" },
+  { value: "other", label: "Other" }
+];
+
+const scannerDepartments = [
+  { value: "operations", label: "Operations" },
+  { value: "finance", label: "Finance" },
+  { value: "sales", label: "Sales" },
+  { value: "support", label: "Customer Support" },
+  { value: "hr", label: "HR" },
+  { value: "compliance", label: "Compliance" }
+];
+
+const scannerBottlenecks = [
+  { value: "approvals", label: "Manual approvals" },
+  { value: "documents", label: "Document processing" },
+  { value: "email", label: "Email overload" },
+  { value: "data-movement", label: "Data movement between systems" },
+  { value: "delays", label: "Process delays" },
+  { value: "errors", label: "Error & rework issues" }
+];
+
+const readinessQuestions = [
+  { id: "process-clarity", question: "How well documented are your current processes?", weight: 15 },
+  { id: "data-availability", question: "Is the data needed for automation accessible and organized?", weight: 20 },
+  { id: "tool-standardization", question: "Are your tools standardized across teams?", weight: 15 },
+  { id: "change-readiness", question: "Is your team open to adopting new automation tools?", weight: 20 },
+  { id: "compliance", question: "Do you have compliance requirements that automation must satisfy?", weight: 15 },
+  { id: "executive-support", question: "Do you have executive sponsorship for automation initiatives?", weight: 15 }
+];
+
+function AutomationOpportunityScanner() {
+  const [industry, setIndustry] = useState("");
+  const [department, setDepartment] = useState("");
+  const [bottleneck, setBottleneck] = useState("");
+  const [volume, setVolume] = useState("");
+  const [showResults, setShowResults] = useState(false);
+
+  const results = useMemo(() => {
+    if (!industry || !department || !bottleneck || !volume) return null;
+
+    const candidates = [];
+    if (bottleneck === "documents") {
+      candidates.push({ name: "Invoice Processing", type: "Document Intelligence", roi: "High", complexity: "Low" });
+      candidates.push({ name: "Contract Review", type: "Document Intelligence", roi: "Medium", complexity: "Medium" });
+    }
+    if (bottleneck === "approvals") {
+      candidates.push({ name: "Approval Workflows", type: "AI BPA", roi: "High", complexity: "Low" });
+      candidates.push({ name: "Exception Handling", type: "AI Workflow Automation", roi: "Medium", complexity: "Medium" });
+    }
+    if (bottleneck === "email") {
+      candidates.push({ name: "Email Triage & Routing", type: "Email Automation", roi: "High", complexity: "Low" });
+      candidates.push({ name: "Auto-Response Generation", type: "AI Email Automation", roi: "Medium", complexity: "Medium" });
+    }
+    if (bottleneck === "data-movement") {
+      candidates.push({ name: "System Integration", type: "AI Workflow Automation", roi: "High", complexity: "Medium" });
+      candidates.push({ name: "Data Sync & Validation", type: "AI Workflow Automation", roi: "Medium", complexity: "Low" });
+    }
+    if (bottleneck === "delays" || bottleneck === "errors") {
+      candidates.push({ name: "Process Orchestration", type: "AI BPA", roi: "High", complexity: "Medium" });
+      candidates.push({ name: "Quality Checks", type: "AI Workflow Automation", roi: "Medium", complexity: "Low" });
+    }
+
+    if (candidates.length < 3) {
+      candidates.push({ name: "Reporting Automation", type: "AI Workflow Automation", roi: "Medium", complexity: "Low" });
+    }
+
+    const hoursSaved = volume === "high" ? "80-120" : volume === "medium" ? "40-80" : "15-40";
+    const phase1Timeline = "3-6 weeks";
+    const phase1Cost = "$6K-$15K";
+    const phase2Timeline = "4-6 weeks";
+    const phase2Cost = "$15K-$30K";
+
+    return { candidates: candidates.slice(0, 3), hoursSaved, phase1Timeline, phase1Cost, phase2Timeline, phase2Cost };
+  }, [industry, department, bottleneck, volume]);
+
+  const allSelected = industry && department && bottleneck && volume;
+
+  return (
+    <Card id="opportunity-scanner" className="bg-background border-border">
+      <CardHeader>
+        <CardTitle className="flex items-center gap-2">
+          <Search className="w-5 h-5 text-primary" />
+          Automation Opportunity Scanner
+        </CardTitle>
+        <p className="text-sm text-muted-foreground">Identify what to automate first with ROI-first logic</p>
+      </CardHeader>
+      <CardContent className="space-y-6">
+        <div className="grid md:grid-cols-2 gap-4">
+          <div className="space-y-2">
+            <Label>Industry</Label>
+            <Select value={industry} onValueChange={setIndustry}>
+              <SelectTrigger data-testid="select-scanner-industry">
+                <SelectValue placeholder="Select your industry" />
+              </SelectTrigger>
+              <SelectContent>
+                {scannerIndustries.map((ind) => (
+                  <SelectItem key={ind.value} value={ind.value}>{ind.label}</SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+          <div className="space-y-2">
+            <Label>Department</Label>
+            <Select value={department} onValueChange={setDepartment}>
+              <SelectTrigger data-testid="select-scanner-department">
+                <SelectValue placeholder="Select department" />
+              </SelectTrigger>
+              <SelectContent>
+                {scannerDepartments.map((dept) => (
+                  <SelectItem key={dept.value} value={dept.value}>{dept.label}</SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+          <div className="space-y-2">
+            <Label>Biggest Bottleneck</Label>
+            <Select value={bottleneck} onValueChange={setBottleneck}>
+              <SelectTrigger data-testid="select-scanner-bottleneck">
+                <SelectValue placeholder="Select bottleneck" />
+              </SelectTrigger>
+              <SelectContent>
+                {scannerBottlenecks.map((b) => (
+                  <SelectItem key={b.value} value={b.value}>{b.label}</SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+          <div className="space-y-2">
+            <Label>Monthly Volume</Label>
+            <Select value={volume} onValueChange={setVolume}>
+              <SelectTrigger data-testid="select-scanner-volume">
+                <SelectValue placeholder="Select volume" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="low">Low (&lt;1,000 items)</SelectItem>
+                <SelectItem value="medium">Medium (1,000-10,000)</SelectItem>
+                <SelectItem value="high">High (&gt;10,000)</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+        </div>
+
+        {allSelected && !showResults && (
+          <Button onClick={() => setShowResults(true)} className="w-full" data-testid="button-scanner-analyze">
+            <Search className="w-4 h-4 mr-2" />
+            Analyze Automation Opportunities
+          </Button>
+        )}
+
+        {showResults && results && (
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="space-y-6 pt-4 border-t border-border"
+          >
+            <div>
+              <h4 className="font-semibold mb-3">Top 3 Automation Candidates (Ranked by ROI)</h4>
+              <div className="space-y-3">
+                {results.candidates.map((candidate, i) => (
+                  <div key={i} className="flex items-center justify-between p-3 bg-muted/50 rounded-lg">
+                    <div className="flex items-center gap-3">
+                      <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold text-sm">
+                        {i + 1}
+                      </div>
+                      <div>
+                        <p className="font-medium">{candidate.name}</p>
+                        <p className="text-xs text-muted-foreground">{candidate.type}</p>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Badge variant={candidate.roi === "High" ? "default" : "secondary"}>
+                        {candidate.roi} ROI
+                      </Badge>
+                      <Badge variant="outline">{candidate.complexity}</Badge>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-4">
+              <div className="p-4 bg-primary/10 rounded-lg border border-primary/20">
+                <p className="text-sm text-muted-foreground mb-1">Estimated Hours Saved / Month</p>
+                <p className="text-2xl font-bold text-primary">{results.hoursSaved}</p>
+              </div>
+              <div className="p-4 bg-muted/50 rounded-lg">
+                <p className="text-sm text-muted-foreground mb-1">Phase 1 (Quick Win)</p>
+                <p className="font-semibold">{results.phase1Timeline}</p>
+                <p className="text-sm text-muted-foreground">{results.phase1Cost}</p>
+              </div>
+            </div>
+
+            <Button variant="outline" onClick={() => setShowResults(false)} className="w-full">
+              <RotateCcw className="w-4 h-4 mr-2" />
+              Reset & Try Again
+            </Button>
+          </motion.div>
+        )}
+      </CardContent>
+    </Card>
+  );
+}
+
+function AutomationCostEstimator() {
+  const [automationType, setAutomationType] = useState("workflow");
+  const [systemCount, setSystemCount] = useState("1-2");
+  const [complexity, setComplexity] = useState("simple");
+  const [volumeLevel, setVolumeLevel] = useState("medium");
+
+  const estimate = useMemo(() => {
+    let baseCost = 8000;
+    let weeks = 4;
+
+    if (automationType === "bpa") { baseCost = 25000; weeks = 8; }
+    else if (automationType === "document") { baseCost = 12000; weeks = 5; }
+    else if (automationType === "email") { baseCost = 8000; weeks = 4; }
+    else if (automationType === "transformation") { baseCost = 60000; weeks = 16; }
+
+    if (systemCount === "3-5") { baseCost *= 1.4; weeks += 2; }
+    else if (systemCount === "6+") { baseCost *= 1.8; weeks += 4; }
+
+    if (complexity === "moderate") { baseCost *= 1.3; weeks += 2; }
+    else if (complexity === "advanced") { baseCost *= 1.6; weeks += 3; }
+
+    if (volumeLevel === "high") { baseCost *= 1.2; }
+
+    const lowCost = Math.round(baseCost * 0.85);
+    const highCost = Math.round(baseCost * 1.15);
+
+    return {
+      lowCost,
+      highCost,
+      weeks,
+      deliveryStyle: automationType === "transformation" ? "Transformation" : automationType === "bpa" ? "Program" : "Project"
+    };
+  }, [automationType, systemCount, complexity, volumeLevel]);
+
+  return (
+    <Card id="cost-estimator" className="bg-background border-border">
+      <CardHeader>
+        <CardTitle className="flex items-center gap-2">
+          <Calculator className="w-5 h-5 text-primary" />
+          AI Automation Cost & Timeline Estimator
+        </CardTitle>
+        <p className="text-sm text-muted-foreground">Get pricing clarity and lead qualification</p>
+      </CardHeader>
+      <CardContent className="space-y-6">
+        <div className="grid md:grid-cols-2 gap-4">
+          <div className="space-y-2">
+            <Label>Automation Type</Label>
+            <Select value={automationType} onValueChange={setAutomationType}>
+              <SelectTrigger data-testid="select-cost-type">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="workflow">Workflow Automation</SelectItem>
+                <SelectItem value="bpa">Business Process Automation (BPA)</SelectItem>
+                <SelectItem value="document">Document Automation</SelectItem>
+                <SelectItem value="email">Email Automation</SelectItem>
+                <SelectItem value="transformation">End-to-End Transformation</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+          <div className="space-y-2">
+            <Label>Number of Systems</Label>
+            <Select value={systemCount} onValueChange={setSystemCount}>
+              <SelectTrigger data-testid="select-cost-systems">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="1-2">1-2 systems</SelectItem>
+                <SelectItem value="3-5">3-5 systems</SelectItem>
+                <SelectItem value="6+">6+ systems</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+          <div className="space-y-2">
+            <Label>Decision Complexity</Label>
+            <Select value={complexity} onValueChange={setComplexity}>
+              <SelectTrigger data-testid="select-cost-complexity">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="simple">Simple (rules + AI assist)</SelectItem>
+                <SelectItem value="moderate">Moderate (AI decisions + exceptions)</SelectItem>
+                <SelectItem value="advanced">Advanced (multi-decision, adaptive)</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+          <div className="space-y-2">
+            <Label>Volume Level</Label>
+            <Select value={volumeLevel} onValueChange={setVolumeLevel}>
+              <SelectTrigger data-testid="select-cost-volume">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="low">Low</SelectItem>
+                <SelectItem value="medium">Medium</SelectItem>
+                <SelectItem value="high">High</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-4 pt-4 border-t border-border">
+          <div className="p-4 bg-primary/10 rounded-lg border border-primary/20 text-center">
+            <p className="text-sm text-muted-foreground mb-1">Estimated Cost</p>
+            <p className="text-xl font-bold text-primary">
+              ${(estimate.lowCost / 1000).toFixed(0)}K - ${(estimate.highCost / 1000).toFixed(0)}K
+            </p>
+          </div>
+          <div className="p-4 bg-muted/50 rounded-lg text-center">
+            <p className="text-sm text-muted-foreground mb-1">Timeline</p>
+            <p className="text-xl font-bold">{estimate.weeks} weeks</p>
+          </div>
+          <div className="p-4 bg-muted/50 rounded-lg text-center">
+            <p className="text-sm text-muted-foreground mb-1">Delivery Style</p>
+            <p className="text-xl font-bold">{estimate.deliveryStyle}</p>
+          </div>
+        </div>
+
+        <p className="text-xs text-muted-foreground text-center">
+          Indicative range, refined post discovery call
+        </p>
+      </CardContent>
+    </Card>
+  );
+}
+
+function BeforeAfterSimulator() {
+  const [processType, setProcessType] = useState("invoicing");
+  const [currentState, setCurrentState] = useState("manual");
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [step, setStep] = useState(0);
+
+  const processSteps = useMemo(() => {
+    const beforeSteps = [
+      { label: "Human receives input", icon: Users },
+      { label: "Manual data entry", icon: FileText },
+      { label: "Email handoffs", icon: Mail },
+      { label: "Manual checks", icon: Eye },
+      { label: "Delays & waiting", icon: Clock }
+    ];
+    const afterSteps = [
+      { label: "AI reads inputs", icon: Brain },
+      { label: "AI makes decisions", icon: Zap },
+      { label: "Systems execute actions", icon: Cog },
+      { label: "Human only for exceptions", icon: Users }
+    ];
+    return { before: beforeSteps, after: afterSteps };
+  }, []);
+
+  const metrics = useMemo(() => {
+    const stateMultiplier = currentState === "manual" ? 1 : currentState === "semi" ? 0.7 : 0.5;
+    return {
+      stepsReduced: Math.round(60 * stateMultiplier),
+      cycleTimeReduced: Math.round(75 * stateMultiplier),
+      errorReduction: Math.round(85 * stateMultiplier)
+    };
+  }, [currentState]);
+
+  useEffect(() => {
+    if (isPlaying) {
+      const timer = setInterval(() => {
+        setStep((prev) => (prev + 1) % (processSteps.before.length + processSteps.after.length + 2));
+      }, 1000);
+      return () => clearInterval(timer);
+    }
+  }, [isPlaying, processSteps]);
+
+  return (
+    <Card id="before-after" className="bg-background border-border">
+      <CardHeader>
+        <CardTitle className="flex items-center gap-2">
+          <RefreshCw className="w-5 h-5 text-primary" />
+          Before vs After Automation Simulator
+        </CardTitle>
+        <p className="text-sm text-muted-foreground">Visual understanding of your process transformation</p>
+      </CardHeader>
+      <CardContent className="space-y-6">
+        <div className="grid md:grid-cols-2 gap-4">
+          <div className="space-y-2">
+            <Label>Process Type</Label>
+            <Select value={processType} onValueChange={setProcessType}>
+              <SelectTrigger data-testid="select-simulator-process">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="invoicing">Invoicing</SelectItem>
+                <SelectItem value="support">Customer Support</SelectItem>
+                <SelectItem value="onboarding">Onboarding</SelectItem>
+                <SelectItem value="claims">Claims</SelectItem>
+                <SelectItem value="reporting">Reporting</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+          <div className="space-y-2">
+            <Label>Current State</Label>
+            <Select value={currentState} onValueChange={setCurrentState}>
+              <SelectTrigger data-testid="select-simulator-state">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="manual">Fully Manual</SelectItem>
+                <SelectItem value="semi">Semi-Automated</SelectItem>
+                <SelectItem value="disconnected">Tool-Heavy but Disconnected</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-6">
+          <div className="space-y-3">
+            <div className="flex items-center justify-between">
+              <h4 className="font-semibold text-red-400">Before</h4>
+              <Badge variant="outline" className="border-red-400/50 text-red-400">Manual</Badge>
+            </div>
+            <div className="space-y-2">
+              {processSteps.before.map((s, i) => (
+                <div
+                  key={i}
+                  className={`flex items-center gap-3 p-2 rounded-lg transition-all ${
+                    isPlaying && step === i ? "bg-red-500/20 border border-red-500/50" : "bg-muted/30"
+                  }`}
+                >
+                  <s.icon className="w-4 h-4 text-red-400" />
+                  <span className="text-sm">{s.label}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="space-y-3">
+            <div className="flex items-center justify-between">
+              <h4 className="font-semibold text-green-400">After</h4>
+              <Badge variant="outline" className="border-green-400/50 text-green-400">AI-Powered</Badge>
+            </div>
+            <div className="space-y-2">
+              {processSteps.after.map((s, i) => (
+                <div
+                  key={i}
+                  className={`flex items-center gap-3 p-2 rounded-lg transition-all ${
+                    isPlaying && step === processSteps.before.length + 1 + i ? "bg-green-500/20 border border-green-500/50" : "bg-muted/30"
+                  }`}
+                >
+                  <s.icon className="w-4 h-4 text-green-400" />
+                  <span className="text-sm">{s.label}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div className="flex justify-center">
+          <Button
+            variant="outline"
+            onClick={() => { setIsPlaying(!isPlaying); if (!isPlaying) setStep(0); }}
+            data-testid="button-simulator-play"
+          >
+            {isPlaying ? <Pause className="w-4 h-4 mr-2" /> : <Play className="w-4 h-4 mr-2" />}
+            {isPlaying ? "Pause" : "Play Animation"}
+          </Button>
+        </div>
+
+        <div className="grid grid-cols-3 gap-4 pt-4 border-t border-border">
+          <div className="text-center">
+            <p className="text-2xl font-bold text-primary">{metrics.stepsReduced}%</p>
+            <p className="text-xs text-muted-foreground">Steps Reduced</p>
+          </div>
+          <div className="text-center">
+            <p className="text-2xl font-bold text-primary">{metrics.cycleTimeReduced}%</p>
+            <p className="text-xs text-muted-foreground">Cycle Time Reduced</p>
+          </div>
+          <div className="text-center">
+            <p className="text-2xl font-bold text-primary">{metrics.errorReduction}%</p>
+            <p className="text-xs text-muted-foreground">Error Reduction</p>
+          </div>
+        </div>
+      </CardContent>
+    </Card>
+  );
+}
+
+function AutomationROICalculator() {
+  const [teamSize, setTeamSize] = useState([5]);
+  const [hourlyRate, setHourlyRate] = useState([50]);
+  const [timePerTask, setTimePerTask] = useState([15]);
+  const [monthlyVolume, setMonthlyVolume] = useState([1000]);
+  const [errorRate, setErrorRate] = useState([5]);
+
+  const calculations = useMemo(() => {
+    const hoursPerMonth = (monthlyVolume[0] * timePerTask[0]) / 60;
+    const currentMonthlyCost = hoursPerMonth * hourlyRate[0];
+    const currentAnnualCost = currentMonthlyCost * 12;
+    const automatedSavings = currentAnnualCost * 0.7;
+    const errorSavings = currentAnnualCost * (errorRate[0] / 100) * 0.8;
+    const totalAnnualSavings = automatedSavings + errorSavings;
+    const avgImplementationCost = 25000;
+    const paybackMonths = Math.ceil((avgImplementationCost / (totalAnnualSavings / 12)));
+    const roi = Math.round((totalAnnualSavings / avgImplementationCost) * 100);
+
+    return {
+      currentMonthlyCost: Math.round(currentMonthlyCost),
+      currentAnnualCost: Math.round(currentAnnualCost),
+      totalAnnualSavings: Math.round(totalAnnualSavings),
+      paybackMonths: Math.min(Math.max(paybackMonths, 1), 24),
+      roi
+    };
+  }, [teamSize, hourlyRate, timePerTask, monthlyVolume, errorRate]);
+
+  return (
+    <Card id="roi-calculator" className="bg-background border-border">
+      <CardHeader>
+        <CardTitle className="flex items-center gap-2">
+          <DollarSign className="w-5 h-5 text-primary" />
+          Automation ROI & Payback Calculator
+        </CardTitle>
+        <p className="text-sm text-muted-foreground">CFO / CEO buy-in tool</p>
+      </CardHeader>
+      <CardContent className="space-y-6">
+        <div className="space-y-4">
+          <div>
+            <Label className="flex justify-between mb-2">
+              <span>Team Size</span>
+              <span className="text-primary font-semibold">{teamSize[0]} people</span>
+            </Label>
+            <Slider value={teamSize} onValueChange={setTeamSize} min={1} max={50} step={1} data-testid="slider-roi-team" />
+          </div>
+          <div>
+            <Label className="flex justify-between mb-2">
+              <span>Average Cost per Hour</span>
+              <span className="text-primary font-semibold">${hourlyRate[0]}</span>
+            </Label>
+            <Slider value={hourlyRate} onValueChange={setHourlyRate} min={20} max={150} step={5} data-testid="slider-roi-rate" />
+          </div>
+          <div>
+            <Label className="flex justify-between mb-2">
+              <span>Time Spent per Task</span>
+              <span className="text-primary font-semibold">{timePerTask[0]} minutes</span>
+            </Label>
+            <Slider value={timePerTask} onValueChange={setTimePerTask} min={5} max={60} step={5} data-testid="slider-roi-time" />
+          </div>
+          <div>
+            <Label className="flex justify-between mb-2">
+              <span>Monthly Volume</span>
+              <span className="text-primary font-semibold">{monthlyVolume[0].toLocaleString()} items</span>
+            </Label>
+            <Slider value={monthlyVolume} onValueChange={setMonthlyVolume} min={100} max={10000} step={100} data-testid="slider-roi-volume" />
+          </div>
+          <div>
+            <Label className="flex justify-between mb-2">
+              <span>Error / Rework Rate</span>
+              <span className="text-primary font-semibold">{errorRate[0]}%</span>
+            </Label>
+            <Slider value={errorRate} onValueChange={setErrorRate} min={0} max={20} step={1} data-testid="slider-roi-error" />
+          </div>
+        </div>
+
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-4 border-t border-border">
+          <div className="p-4 bg-muted/50 rounded-lg text-center">
+            <p className="text-sm text-muted-foreground mb-1">Current Annual Cost</p>
+            <p className="text-xl font-bold">${(calculations.currentAnnualCost / 1000).toFixed(0)}K</p>
+          </div>
+          <div className="p-4 bg-primary/10 rounded-lg border border-primary/20 text-center">
+            <p className="text-sm text-muted-foreground mb-1">Annual Savings</p>
+            <p className="text-xl font-bold text-primary">${(calculations.totalAnnualSavings / 1000).toFixed(0)}K</p>
+          </div>
+          <div className="p-4 bg-green-500/10 rounded-lg border border-green-500/20 text-center">
+            <p className="text-sm text-muted-foreground mb-1">Payback Period</p>
+            <p className="text-xl font-bold text-green-400">{calculations.paybackMonths} months</p>
+          </div>
+          <div className="p-4 bg-cyan-500/10 rounded-lg border border-cyan-500/20 text-center">
+            <p className="text-sm text-muted-foreground mb-1">First Year ROI</p>
+            <p className="text-xl font-bold text-cyan-400">{calculations.roi}%</p>
+          </div>
+        </div>
+      </CardContent>
+    </Card>
+  );
+}
+
+function AutomationReadinessAssessment() {
+  const [answers, setAnswers] = useState<Record<string, "strongly-agree" | "agree" | "neutral" | "disagree" | "strongly-disagree">>({});
+
+  const score = useMemo(() => {
+    let total = 0;
+    let maxScore = 0;
+    readinessQuestions.forEach((q) => {
+      maxScore += q.weight * 2;
+      const answer = answers[q.id];
+      if (answer === "strongly-agree") total += q.weight * 2;
+      else if (answer === "agree") total += q.weight * 1.5;
+      else if (answer === "neutral") total += q.weight;
+      else if (answer === "disagree") total += q.weight * 0.5;
+    });
+    return maxScore > 0 ? Math.round((total / maxScore) * 100) : 0;
+  }, [answers]);
+
+  const allAnswered = Object.keys(answers).length === readinessQuestions.length;
+
+  const getMaturityLevel = () => {
+    if (score >= 75) return { level: "Intelligent", color: "text-green-400", recommendation: "Ready for enterprise automation program" };
+    if (score >= 55) return { level: "Automated", color: "text-cyan-400", recommendation: "BPA or document automation recommended" };
+    if (score >= 35) return { level: "Assisted", color: "text-amber-400", recommendation: "Start with one workflow pilot" };
+    return { level: "Manual", color: "text-red-400", recommendation: "Focus on process documentation first" };
+  };
+
+  const result = getMaturityLevel();
+
+  return (
+    <Card id="readiness-assessment" className="bg-background border-border">
+      <CardHeader>
+        <CardTitle className="flex items-center gap-2">
+          <HelpCircle className="w-5 h-5 text-primary" />
+          Automation Readiness & Maturity Assessment
+        </CardTitle>
+        <p className="text-sm text-muted-foreground">Lead qualification + expectation setting</p>
+      </CardHeader>
+      <CardContent className="space-y-6">
+        {readinessQuestions.map((q) => (
+          <div key={q.id} className="space-y-3">
+            <p className="font-medium">{q.question}</p>
+            <RadioGroup
+              value={answers[q.id] || ""}
+              onValueChange={(v) => setAnswers({ ...answers, [q.id]: v as typeof answers[string] })}
+              className="flex flex-wrap gap-2"
+            >
+              {[
+                { value: "strongly-agree", label: "Strongly Agree" },
+                { value: "agree", label: "Agree" },
+                { value: "neutral", label: "Neutral" },
+                { value: "disagree", label: "Disagree" },
+                { value: "strongly-disagree", label: "Strongly Disagree" }
+              ].map((option) => (
+                <div key={option.value} className="flex items-center space-x-2">
+                  <RadioGroupItem value={option.value} id={`${q.id}-${option.value}`} data-testid={`radio-readiness-${q.id}-${option.value}`} />
+                  <Label htmlFor={`${q.id}-${option.value}`} className="text-sm cursor-pointer">{option.label}</Label>
+                </div>
+              ))}
+            </RadioGroup>
+          </div>
+        ))}
+
+        {allAnswered && (
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="space-y-4 pt-6 border-t border-border"
+          >
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm text-muted-foreground">Readiness Score</p>
+                <p className={`text-3xl font-bold ${result.color}`}>{score}/100</p>
+              </div>
+              <div className="text-right">
+                <p className="text-sm text-muted-foreground">Maturity Level</p>
+                <p className={`text-xl font-bold ${result.color}`}>{result.level}</p>
+              </div>
+            </div>
+
+            <Progress value={score} className="h-2" />
+
+            <div className="p-4 bg-muted/50 rounded-lg">
+              <p className="font-semibold mb-2">Recommended Next Step</p>
+              <p className="text-muted-foreground">{result.recommendation}</p>
+            </div>
+
+            <div className="grid grid-cols-3 gap-4 text-center text-sm">
+              <div className="p-3 bg-muted/30 rounded-lg">
+                <p className="text-muted-foreground">Pilot</p>
+                <p className="font-semibold">$6K-$15K</p>
+                <p className="text-xs text-muted-foreground">3-6 weeks</p>
+              </div>
+              <div className="p-3 bg-muted/30 rounded-lg">
+                <p className="text-muted-foreground">Program</p>
+                <p className="font-semibold">$25K-$60K</p>
+                <p className="text-xs text-muted-foreground">2-3 months</p>
+              </div>
+              <div className="p-3 bg-muted/30 rounded-lg">
+                <p className="text-muted-foreground">Transformation</p>
+                <p className="font-semibold">$60K+</p>
+                <p className="text-xs text-muted-foreground">3-6 months</p>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </CardContent>
+    </Card>
+  );
+}
 
 export default function AIAutomationPage() {
   const [mounted, setMounted] = useState(false);
@@ -884,16 +1611,16 @@ export default function AIAutomationPage() {
               AI Automation Services
             </div>
             {traditionalVsAI.map((row, i) => (
-              <>
-                <div key={`trad-${i}`} className={`bg-muted/30 p-4 flex items-center gap-2 ${i === traditionalVsAI.length - 1 ? 'rounded-bl-lg' : ''}`}>
+              <div key={`row-${i}`} className="contents">
+                <div className={`bg-muted/30 p-4 flex items-center gap-2 ${i === traditionalVsAI.length - 1 ? 'rounded-bl-lg' : ''}`}>
                   <XCircle className="w-4 h-4 text-muted-foreground flex-shrink-0" />
                   <span className="text-muted-foreground">{row.traditional}</span>
                 </div>
-                <div key={`ai-${i}`} className={`bg-primary/5 p-4 flex items-center gap-2 ${i === traditionalVsAI.length - 1 ? 'rounded-br-lg' : ''}`}>
+                <div className={`bg-primary/5 p-4 flex items-center gap-2 ${i === traditionalVsAI.length - 1 ? 'rounded-br-lg' : ''}`}>
                   <CheckCircle2 className="w-4 h-4 text-primary flex-shrink-0" />
                   <span>{row.ai}</span>
                 </div>
-              </>
+              </div>
             ))}
           </div>
         </div>
@@ -1145,8 +1872,59 @@ export default function AIAutomationPage() {
         </div>
       </section>
 
+      {/* Interactive Tools Section */}
+      <section id="interactive-tools" className="py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <Badge className="mb-4">
+              <Calculator className="w-3 h-3 mr-1" />
+              Interactive Tools
+            </Badge>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              AI Automation Planning Tools
+            </h2>
+            <p className="text-muted-foreground max-w-3xl mx-auto">
+              Use these tools to identify automation opportunities, estimate costs, calculate ROI, and assess your organization's readiness.
+            </p>
+          </motion.div>
+
+          <div className="grid lg:grid-cols-2 gap-8">
+            <AutomationOpportunityScanner />
+            <AutomationCostEstimator />
+            <BeforeAfterSimulator />
+            <AutomationROICalculator />
+          </div>
+
+          <div className="mt-8">
+            <AutomationReadinessAssessment />
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mt-12 p-8 bg-gradient-to-r from-primary/10 via-transparent to-cyan-500/10 rounded-xl border border-primary/20"
+          >
+            <p className="text-lg text-muted-foreground mb-4">
+              Want a personalized automation roadmap based on your specific needs?
+            </p>
+            <Button size="lg" asChild>
+              <a href="/schedule-consultation" data-testid="button-automation-tools-cta">
+                Get Your Custom Automation Assessment
+                <ArrowRight className="w-4 h-4 ml-2" />
+              </a>
+            </Button>
+          </motion.div>
+        </div>
+      </section>
+
       {/* FAQs */}
-      <section className="py-20">
+      <section className="py-20 bg-muted/30">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
