@@ -1,5 +1,5 @@
 'use client'
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MainHeader } from "@/components/main-header";
 import { MainFooter } from "@/components/main-footer";
@@ -7,10 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
-function CompanyLogo({ company, logo }: { company: string; logo: string }) {
-  const [imgError, setImgError] = useState(false);
-  const [imgLoaded, setImgLoaded] = useState(false);
-
+function CompanyLogo({ company }: { company: string }) {
   const getGradient = (name: string) => {
     const colors = [
       'from-emerald-500 to-teal-600',
@@ -31,28 +28,9 @@ function CompanyLogo({ company, logo }: { company: string; logo: string }) {
     return words.slice(0, 2).map(w => w.charAt(0).toUpperCase()).join('');
   };
 
-  if (imgError || !logo) {
-    return (
-      <div className={`w-12 h-12 rounded-lg bg-gradient-to-br ${getGradient(company)} flex items-center justify-center shrink-0`}>
-        <span className="text-sm font-bold text-white">{getInitials(company)}</span>
-      </div>
-    );
-  }
-
   return (
-    <div className="w-12 h-12 rounded-lg bg-white flex items-center justify-center overflow-hidden shrink-0 relative">
-      {!imgLoaded && (
-        <div className={`absolute inset-0 bg-gradient-to-br ${getGradient(company)} flex items-center justify-center`}>
-          <span className="text-sm font-bold text-white">{getInitials(company)}</span>
-        </div>
-      )}
-      <img
-        src={logo}
-        alt={`${company} logo`}
-        className={`w-10 h-10 object-contain transition-opacity ${imgLoaded ? 'opacity-100' : 'opacity-0'}`}
-        onError={() => setImgError(true)}
-        onLoad={() => setImgLoaded(true)}
-      />
+    <div className={`w-12 h-12 rounded-lg bg-gradient-to-br ${getGradient(company)} flex items-center justify-center shrink-0`}>
+      <span className="text-sm font-bold text-white">{getInitials(company)}</span>
     </div>
   );
 }
@@ -687,10 +665,7 @@ export default function CaseStudiesPage() {
                     <CardContent className="p-6 space-y-4">
                       {/* Header: Logo + Company + Industry */}
                       <div className="flex items-start gap-4">
-                        <CompanyLogo 
-                          company={cs.company} 
-                          logo={cs.logo} 
-                        />
+                        <CompanyLogo company={cs.company} />
                         <div className="flex-1 min-w-0">
                           <h3 className="font-bold text-lg truncate">{cs.company}</h3>
                           <div className={`flex items-center gap-1 text-sm ${getIndustryColor(cs.industry)}`}>
