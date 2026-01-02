@@ -1,0 +1,80 @@
+Healthcare AI – Frequently Asked Questions (FAQs)
+1. Is AI safe to use in healthcare environments?
+
+Yes — when designed correctly. AGIX builds assistive AI systems with human-in-the-loop controls, explainability, and audit trails, ensuring AI supports care delivery without introducing clinical risk.
+
+2. Will AI replace doctors, nurses, or clinicians?
+
+No. AGIX does not build autonomous clinical decision systems. Our AI supports clinicians by reducing administrative burden and improving workflow efficiency, while final medical decisions always remain with humans.
+
+3. How does AGIX ensure patient data privacy?
+
+Patient data is handled with strict access controls, purpose limitation, and traceability. Data is never used to train public AI models and remains governed under healthcare data protection standards.
+
+4. Can AI integrate with our existing HIS or EMR systems?
+
+Yes. AGIX designs AI systems to integrate with existing HIS, EMR, LIS, and billing systems, avoiding costly replacements or workflow disruption.
+
+5. What healthcare processes benefit most from AI?
+
+Common high-impact areas include:
+
+Patient intake and triage
+
+Clinical documentation support
+
+Follow-ups and care continuity
+
+Claims and revenue cycle workflows
+
+Compliance and audit readiness
+
+6. How long does it take to implement healthcare AI?
+
+Most healthcare AI systems take 4–8 weeks to deploy, depending on integration depth, data readiness, and governance requirements.
+
+7. Is healthcare AI compliant with regulations?
+
+AGIX systems are designed with compliance, explainability, and traceability as first-class requirements, making them suitable for regulated healthcare environments.
+
+8. What happens if AI provides an incorrect recommendation?
+
+AI outputs are non-binding and reviewable. Clinicians and administrators always validate decisions before action is taken.
+
+9. Can small clinics and diagnostic centers use AI, or is it only for large hospitals?
+
+AGIX healthcare AI solutions are scalable — suitable for small clinics, diagnostic centers, specialty practices, and large hospital networks alike.
+
+10. How does AI help reduce clinician burnout?
+
+By assisting with documentation, triage support, and non-clinical tasks, AI reduces cognitive overload and allows clinicians to focus more on patient care.
+
+11. What kind of ROI should healthcare organizations expect?
+
+ROI is typically seen through:
+
+Reduced waiting times
+
+Lower administrative load
+
+Fewer claim rejections
+
+Improved patient follow-up rates
+
+Better staff satisfaction
+
+12. Can we start with a pilot or small deployment?
+
+Yes. Most organizations begin with one focused AI system and expand gradually once trust and value are established.
+
+13. Does AI make clinical workflows more complex?
+
+No. AGIX AI is designed to simplify workflows, not add extra steps. The goal is fewer screens, fewer manual tasks, and clearer information flow.
+
+14. How does AGIX handle AI governance and audits?
+
+Every AI action is logged, traceable, and reviewable. Governance layers ensure leadership can confidently answer “who decided what, and why” during audits.
+
+15. Is healthcare AI suitable for telemedicine and digital health platforms?
+
+Yes. AGIX healthcare AI works well across in-person, telehealth, and hybrid care models, supporting scalable and compliant digital health operations.

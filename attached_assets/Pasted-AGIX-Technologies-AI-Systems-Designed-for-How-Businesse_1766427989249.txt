@@ -1,0 +1,278 @@
+AGIX Technologies
+AI Systems Designed for How Businesses Actually Work
+
+Most people don’t come to an AI company knowing exactly what they need.
+They come with questions, confusion, pressure, or half-working systems.
+
+If that sounds familiar — you’re in the right place.
+
+AGIX helps organizations understand where AI fits, what to build first, and how to do it safely and effectively.
+
+Hero Section — Orientation First
+Not Sure Where to Start With AI?
+
+That’s normal.
+
+Some teams are just beginning.
+Some already tried AI and hit limits.
+Some are scaling and worried about risk, cost, or control.
+
+This page is designed to help you figure out your next step — clearly.
+
+Primary CTA
+
+Help Me Find My Starting Point
+
+Secondary CTA
+
+Explore AGIX Intelligence Systems
+
+Guided Entry Section — “Choose Your Situation”
+Tell Us Where You Are — We’ll Guide You
+
+You don’t need to know AI terms or tools.
+Just start with what feels closest.
+
+🔹 I’m New to AI
+
+Founder, business owner, or team exploring AI for the first time
+
+You might be asking:
+
+Can AI actually help my business?
+
+What problems should I even look at?
+
+Is this too expensive or risky?
+
+👉 Start With: AI Readiness Check (Beginner-Friendly)
+
+🔹 I’m a Startup / Growing Team
+
+You have ideas, data, or early systems — but no clear roadmap
+
+You might be asking:
+
+What should we automate first?
+
+Should we build or integrate?
+
+How do we avoid overengineering?
+
+👉 Start With: AI Solution Pathfinder
+
+🔹 I Run an SMB
+
+Operations are running, but inefficiencies are costing time and money
+
+You might be asking:
+
+Where are we leaking time or cost?
+
+What workflows are worth automating?
+
+How do we see ROI quickly?
+
+👉 Start With: Operational Leakage Calculator
+
+🔹 I’m From an Enterprise Team
+
+Scale, compliance, and integration matter more than experimentation
+
+You might be asking:
+
+Is our data and workflow AI-ready?
+
+What risks does AI introduce?
+
+How do we deploy responsibly?
+
+👉 Start With: Enterprise AI Readiness & Risk Assessment
+
+Interactive Intelligence Tools (Deep & Purposeful)
+Explore Before You Decide
+
+Each tool below is designed to give you clarity, not marketing answers.
+
+🧠 AI Readiness Assessment
+
+For teams unsure if AI will work in their environment
+
+What this tool evaluates
+
+Data availability & quality
+
+Workflow maturity
+
+Compliance & sensitivity
+
+Team readiness for change
+
+What you get
+
+A clear readiness score
+
+Key blockers to address
+
+Recommended AI starting layer
+
+Suggested next step (build, prepare, or pause)
+
+👉 Take the Readiness Assessment
+
+💸 Operational Leakage Calculator
+
+For businesses losing time, money, or momentum silently
+
+What this tool analyzes
+
+Manual process overhead
+
+Delayed decisions
+
+Missed automation opportunities
+
+Tool fragmentation
+
+What you get
+
+Estimated annual operational leakage
+
+Top 3 AI use cases with ROI potential
+
+Priority order for action
+
+👉 Calculate Your Operational Leakage
+
+🧭 AI Solution Pathfinder
+
+For teams unsure which AI system they actually need
+
+Inputs
+
+Industry
+
+Business size
+
+Core operational bottleneck
+
+Growth intent
+
+What you get
+
+Recommended AI system type
+
+Why it fits your business model
+
+High-level timeline
+
+Practical budget range
+
+👉 Find the Right AI Solution
+
+🧩 AI Journey Builder
+
+For teams thinking long-term, not just pilots
+
+What this helps you map
+
+Phase 1: Foundation & data readiness
+
+Phase 2: Automation & intelligence
+
+Phase 3: Scale, governance & optimization
+
+What you walk away with
+
+A visual AI roadmap
+
+Clear phase separation
+
+Reduced risk of wrong sequencing
+
+👉 Build Your AI Journey
+
+AGIX Intelligence Framework
+AI Works Best When Systems Work Together
+
+AGIX designs AI across five connected intelligence domains — not isolated features.
+
+Operational Intelligence
+
+AI that executes workflows, reduces friction, and improves efficiency.
+
+Conversational Intelligence
+
+Chat and voice systems that interact naturally and reliably.
+
+Decision Intelligence
+
+Models that assist leaders with better, faster decisions.
+
+Autonomous Agentic Systems
+
+Goal-driven agents that reason, act, and adapt.
+
+Enterprise Knowledge Intelligence
+
+AI that understands and retrieves your internal knowledge safely.
+
+👉 Explore the Intelligence Framework
+
+How AGIX Is Different (Relatable, Not Loud)
+
+We don’t rush to build.
+We don’t oversell AI.
+We don’t treat AI as a plugin.
+
+Instead, we:
+
+Diagnose before designing
+
+Build systems, not demos
+
+Prioritize clarity, control, and ROI
+
+Respect risk, compliance, and scale
+
+That’s why teams come to AGIX after hype fails — or before mistakes happen.
+
+Proof of Real Work
+AI Systems Already in Production
+
+AGIX solutions power:
+
+Credit decisioning engines
+
+Multilingual voice assistants
+
+Enterprise knowledge systems
+
+Predictive CRM intelligence
+
+👉 Explore Case Studies
+
+Soft Engagement Section
+Not Ready to Talk Yet? That’s Fine.
+
+Most users explore first.
+That’s exactly how this page is designed.
+
+Use the tools.
+Understand your gaps.
+Come back when things are clearer.
+
+Final CTA — Calm but Confident
+AI Works Best When You Start Right
+
+No pressure.
+No confusion.
+Just clarity.
+
+CTA Buttons
+
+Find My AI Starting Point
+
+Run Readiness Assessment
+
+Talk to an AI Architect

@@ -1,0 +1,110 @@
+
+Agentic AI Systems
+AI Agents That Think, Decide, and Act Autonomously
+Build enterprise agentic AI systems that go beyond chatbots and RPA — autonomous agents that reason, use tools, coordinate with each other, and execute complex workflows with minimal human intervention.
+
+Get Free Assessment
+Explore Tools Below
+Interactive Explorer
+Agentic AI Readiness Explorer
+Discover which type of autonomous agent fits your workflows and risk tolerance.
+
+1
+2
+3
+Step 1: Select Your Function Area
+
+Operations
+
+Process & workflow management
+
+
+Finance
+
+Transactions & approvals
+
+
+Customer Support
+
+Service & resolution
+
+
+Supply Chain
+
+Logistics & procurement
+
+
+Healthcare
+
+Clinical & administrative
+
+
+Internal IT
+
+Infrastructure & support
+
+Back
+Next
+Autonomy Spectrum
+What Level of Autonomy Do You Need?
+Drag the slider to explore different levels of AI autonomy and understand the trade-offs.
+
+Advisory
+Semi-Autonomous
+Supervised Autonomous
+Fully Autonomous
+Semi-Autonomous
+AI prepares and proposes, humans approve before execution
+
+Example Workflows
+Draft responses for review
+Prepared approvals
+Staged transactions
+Pre-filled forms
+Risk Profile
+Low to Medium
+Governance
+Human-in-the-loop for all critical actions
+
+Workflow Simulator
+Agent Workflow Visual Simulator
+Click each step to see how an autonomous agent thinks, accesses data, and maintains control.
+
+Invoice Processing
+Customer Support
+Purchase Request
+Trigger
+Reasoning
+Tool Use
+Decision
+Action
+Audit Log
+Play
+Reset
+What the Agent "Thinks"
+"Detected: New invoice received via email attachment"
+
+Data Accessed
+Email metadata
+Attachment type
+Sender domain
+Invoice format
+Controls Applied
+Sender whitelist check
+File type validation
+Duplicate detection
+Suitability Quiz
+Can Agents Replace This Workflow?
+Answer a few quick questions to see if your workflow is suitable for Agentic AI automation.
+
+Question 1 of 5
+0% Complete
+Does this workflow require human judgment every single time?
+
+Yes, always
+
+
+Sometimes, for complex cases
+
+
+Rarely, mostly rule-based

@@ -1,0 +1,58 @@
+Page URL,Meta Title,Meta Description,Primary Keywords,Long Tail Keywords
+/,AGIX Technologies - AI & Intelligent Automation Solutions,Transform your business with enterprise AI automation. AGIX delivers intelligent automation, agentic AI systems, voice agents, and custom AI solutions.,AI automation, enterprise AI, intelligent automation,"AI automation services for business, enterprise AI systems, AI workflow automation company"
+
+"/services/agentic-ai-systems","Agentic AI Systems Development | Autonomous AI Agents | AGIX Technologies","Design and deploy autonomous agentic AI systems that reason, plan, and act across workflows. Secure and scalable AI agents built for business.","agentic AI systems, autonomous AI agents","agentic ai systems for enterprises, multi-agent ai orchestration, autonomous ai agents for business workflows"
+
+"/services/chatbots","AI Chatbot Development Services | Conversational AI | AGIX Technologies","Build intelligent AI chatbots with memory, context, and business logic for support, sales, and internal operations.","AI chatbots, conversational AI","enterprise ai chatbot development, conversational ai with memory, llm powered chatbots for business"
+
+"/services/voice-agents","AI Voice Agents & Voice Automation Solutions | AGIX Technologies","Deploy real-time AI voice agents for calls, support, and operations with low latency and high accuracy.","AI voice agents, voice AI","real-time ai voice agents, voice ai for call centers, conversational voice automation"
+
+"/services/rag-knowledge","RAG & Knowledge AI Systems | Enterprise Knowledge Retrieval | AGIX Technologies","Build RAG systems that make enterprise knowledge searchable, reliable, and secure using AI.","RAG systems, knowledge AI","enterprise rag implementation, ai knowledge retrieval systems, vector database ai solutions"
+
+"/services/predictive-analytics","Predictive Analytics & Decision Intelligence AI | AGIX Technologies","Use AI-driven predictive analytics to improve forecasting, planning, and business decisions.","predictive analytics AI, decision intelligence","ai decision intelligence systems, ai-powered business forecasting, operational decision ai"
+
+"/services/computer-vision","Computer Vision AI Solutions | Image & Video Intelligence | AGIX Technologies","Deploy computer vision AI for image analysis, video intelligence, and automated visual inspection.","computer vision AI, image recognition AI","enterprise computer vision solutions, ai image and video analysis, visual inspection ai systems"
+
+"/services/custom-ai-product","Custom AI Product Development | AI Software Engineering | AGIX Technologies","Design and build custom AI products from concept to scale with production-ready engineering.","custom AI development, AI product development","custom ai software development, ai product engineering services, build ai-powered applications"
+
+"/industries/healthcare","Healthcare AI Solutions | Intelligent Automation for Healthcare | AGIX Technologies","Transform healthcare operations with AI automation, decision intelligence, and secure AI systems.","healthcare AI solutions, AI in healthcare","ai automation for healthcare operations, healthcare decision intelligence ai, compliant ai for healthcare"
+
+"/industries/fintech","Fintech AI Solutions | Intelligent Automation for Finance | AGIX Technologies","AI-powered automation and decision intelligence for fintech and financial services.","fintech AI solutions, AI in finance","ai automation for fintech, credit decisioning ai systems, financial risk ai"
+
+"/industries/retail","Retail AI Solutions | AI Automation for Retail | AGIX Technologies","Improve retail operations, personalization, and decision-making using AI systems.","retail AI solutions, AI in retail","ai automation for retail operations, retail demand forecasting ai, customer analytics ai"
+
+"/industries/logistics","Logistics AI Solutions | Supply Chain Automation | AGIX Technologies","Optimize logistics and supply chain operations using AI-driven automation and intelligence.","logistics AI solutions, AI in supply chain","ai automation for logistics, supply chain intelligence ai, route optimization ai"
+
+"/industries/real-estate","Real Estate AI Solutions | AI for Property & Valuation | AGIX Technologies","AI systems for property discovery, valuation, and real estate operations.","real estate AI solutions, AI in real estate","property valuation ai systems, real estate automation ai, housing market intelligence ai"
+
+"/industries/insurance","Insurance AI Solutions | Intelligent Claims & Risk AI | AGIX Technologies","Automate claims, underwriting, and risk assessment with AI-powered systems.","insurance AI solutions, AI in insurance","ai automation for insurance, claims processing ai, underwriting decision ai"
+
+"/industries/hospitality","Hospitality AI Solutions | Guest Experience Automation | AGIX Technologies","Enhance guest experience and operations with AI-powered hospitality automation.","hospitality AI solutions, AI in hospitality","guest experience ai systems, hotel automation ai, hospitality operations intelligence"
+
+"/industries/edtech","EdTech AI Solutions | AI for Education Platforms | AGIX Technologies","AI-powered automation and intelligence for education and edtech platforms.","edtech AI solutions, AI in education","learning analytics ai, education automation ai, ai for digital learning"
+
+"/intelligence/operational","Operational Intelligence AI | Intelligent Workflow Automation | AGIX Technologies","AI systems that automate workflows, reduce friction, and improve execution at scale.","operational intelligence AI, workflow automation AI","ai for business operations, intelligent workflow execution, enterprise operational ai"
+
+"/intelligence/conversational","Conversational Intelligence AI | Chat & Voice AI Systems | AGIX Technologies","Conversational intelligence systems that interact naturally via chat and voice.","conversational intelligence AI, chat and voice AI","enterprise conversational ai systems, conversational automation ai"
+
+"/intelligence/decision","Decision Intelligence AI | AI-Powered Business Decisions | AGIX Technologies","Decision intelligence systems that help leaders make faster, data-driven decisions.","decision intelligence AI, AI decision systems","ai-driven decision making, business decision intelligence ai"
+
+"/intelligence/agentic","Agentic Intelligence | Autonomous AI Decision Systems | AGIX Technologies","Agentic intelligence systems where AI agents reason, plan, and act autonomously.","agentic intelligence, autonomous AI","agent-based ai decision systems, agentic ai orchestration"
+
+"/intelligence/enterprise-knowledge","Enterprise Knowledge Intelligence | AI Knowledge Systems | AGIX Technologies","AI systems that unlock enterprise knowledge securely using RAG and semantic search.","enterprise knowledge AI, knowledge intelligence","enterprise knowledge retrieval ai, internal knowledge ai systems"
+
+"/tools/ai-starting-point","AI Starting Point Finder | Discover Your AI Readiness | AGIX Technologies","Find where to start with AI using AGIX’s guided AI readiness tool.","AI readiness tool, AI starting point","ai readiness assessment tool, how to start ai adoption"
+
+"/tools/startup-accelerator","Startup AI Accelerator Tool | Build AI the Right Way | AGIX Technologies","A guided AI tool helping startups choose the right AI path without overengineering.","startup AI tool, AI for startups","ai roadmap for startups, startup ai adoption strategy"
+
+"/tools/operational-efficiency","Operational Efficiency AI Tool | Identify Automation Opportunities | AGIX Technologies","Identify operational inefficiencies and AI automation opportunities.","operational efficiency AI tool, automation assessment","ai operational efficiency analysis, workflow automation assessment"
+
+"/tools/enterprise-strategy","Enterprise AI Strategy Tool | AI Readiness & Governance | AGIX Technologies","Assess enterprise AI readiness, risk, and governance with a structured AI strategy tool.","enterprise AI strategy, AI governance tool","enterprise ai readiness assessment, ai governance and risk framework"
+
+"/corporate/about","About AGIX Technologies | AI Systems Engineering Company","Learn about AGIX Technologies, an AI-first systems engineering company building production-grade AI.","about agix technologies, ai systems company","ai systems engineering company, enterprise ai services provider"
+
+"/corporate/careers","Careers at AGIX Technologies | Build Intelligent AI Systems","Join AGIX Technologies to build intelligent, production-grade AI systems.","AI careers, AI jobs","ai engineering jobs, careers in ai systems"
+
+"/corporate/contact","Contact AGIX Technologies | Talk to AI Experts","Contact AGIX Technologies to discuss AI automation, agents, and intelligent systems.","contact agix technologies, ai consulting","talk to ai experts, enterprise ai consultation"
+
+"/case-studies","AI Case Studies | Real-World AI Systems by AGIX","Explore real-world AI case studies showcasing production-grade AI systems built by AGIX.","AI case studies, AI success stories","enterprise ai case studies, real world ai implementations"

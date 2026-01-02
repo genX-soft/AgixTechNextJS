@@ -1,0 +1,375 @@
+✅ AGIX POPUP CTA SYSTEM
+Complete Replit Implementation Guidelines
+1️⃣ OBJECTIVE (WHY THIS SYSTEM EXISTS)
+
+The popup CTA system is designed to:
+
+Capture high-intent engagement without blocking content
+
+Adapt CTA based on page category
+
+Avoid repetition and annoyance
+
+Guide users from exploration → clarity → action
+
+Integrate cleanly with DB-first lead capture
+
+Respect session-based limits
+
+This is not a sales popup system.
+It is a decision-assist system.
+
+2️⃣ GLOBAL RULES (NON-NEGOTIABLE)
+
+These rules apply to all CTAs:
+
+Show CTA only once per page type per session
+
+Do NOT show same CTA twice to same user
+
+CTA may show again on a different page type
+
+CTA must never block content
+
+Popup must be dismissible
+
+Exit-intent CTA fires only once per session
+
+No auto-focus on inputs
+
+Mobile-first visuals
+
+No CRM push unless explicitly completed
+
+Session reset = browser/tab close
+
+3️⃣ PAGE CATEGORIES & CTA MAPPING
+Page Category	URL Pattern	CTA Type
+Home	/	Discovery CTA
+Intelligence	/intelligence/*	Intelligence Application CTA
+Service	/services/*	Service Fit CTA
+Industry	/industries/*	Industry Use-Case CTA
+4️⃣ SESSION & DEDUPLICATION LOGIC (CORE SYSTEM)
+Use sessionStorage ONLY
+sessionStorage keys:
+
+agix_cta_shown_home
+agix_cta_shown_intelligence
+agix_cta_shown_service
+agix_cta_shown_industry
+agix_exit_cta_shown
+
+Logic Rule
+If CTA for current page type is already marked → DO NOTHING
+Else → Evaluate trigger → Show CTA → Mark as shown
+
+5️⃣ CTA TRIGGERS (WHEN TO SHOW)
+
+Each CTA can be triggered by any ONE of the following:
+
+A. Scroll Trigger (Primary)
+
+Fire at 40–60% scroll depth
+
+Only once per page type
+
+B. Time Trigger (Secondary)
+
+Fire after 25–30 seconds
+
+Only if scroll trigger not fired
+
+C. Exit-Intent Trigger (Additional)
+
+Mouse moves toward top of viewport
+
+Desktop only
+
+Only if CTA not already shown
+
+Fires once per session total
+
+6️⃣ CTA DETAILS — INPUT / OUTPUT / ACTION
+🟢 CTA-1: HOME PAGE (Discovery)
+TITLE
+
+Not sure where to start with AI?
+
+CONTENT
+
+Every business hears about AI — but starting in the wrong place wastes time and money.
+Answer 3 quick questions and we’ll guide you to the right AI system.
+
+BUTTON
+
+Find My AI Starting Point
+
+INPUT (FORM)
+
+Industry (dropdown)
+
+Company size (range)
+
+Primary challenge (checkbox)
+
+OUTPUT
+
+AI starting point recommendation
+
+Suggested intelligence layer
+
+REDIRECTION / ACTION
+
+Opens popup mini multi-step form
+
+No page redirect
+
+TECHNICAL FLOW
+/api/lead/init
+→ Save partial lead
+→ lead_id stored in session
+→ status = in_progress
+
+CRM
+
+❌ No CRM push
+
+🔵 CTA-2: INTELLIGENCE PAGE (Contextual Application)
+TITLE
+
+Want to apply this intelligence to your business?
+
+CONTENT
+
+This page explains what’s possible.
+Applying it correctly depends on your workflows, data, and scale.
+
+BUTTON
+
+Apply This Intelligence
+
+INPUT
+
+Business type
+
+Current workflow bottleneck
+
+AI maturity level
+
+AUTO-CAPTURED
+
+intelligence_type
+
+page_slug
+
+OUTPUT
+
+Contextual application guidance
+
+Recommended system path
+
+ACTION
+
+Popup form
+
+Continue browsing allowed
+
+TECHNICAL FLOW
+/api/lead/update
+→ Add intelligence_interest
+→ status remains in_progress
+
+CRM
+
+❌ No CRM push
+
+🟣 CTA-3: SERVICE PAGE (Fit Validation)
+TITLE
+
+Is this the right AI service for your business?
+
+CONTENT
+
+Not every AI service fits every business.
+Let’s validate this before you commit.
+
+BUTTON
+
+Check Service Fit
+
+INPUT
+
+Expected outcome
+
+Existing systems
+
+Timeline
+
+OUTPUT
+
+Fit score
+
+Recommendation: Proceed / Explore / Not suitable
+
+ACTION
+
+Popup or inline form
+
+TECHNICAL FLOW
+/api/lead/update
+→ Add service_interest
+→ Generate fit_score
+
+CRM
+
+⚠️ Conditional (only if final submission)
+
+🟠 CTA-4: INDUSTRY PAGE (Use-Case Relevance)
+TITLE
+
+How is AI actually used in your industry?
+
+CONTENT
+
+AI adoption looks very different across industries.
+See what works in your context.
+
+BUTTON
+
+See Industry AI Use Cases
+
+INPUT
+
+Role (optional)
+
+Industry challenge (optional)
+
+OUTPUT
+
+Filtered use-case view
+
+REDIRECTION
+/ai-use-cases?industry={industry}&source=industry_cta
+
+TECHNICAL FLOW
+/api/lead/update (silent)
+→ industry_interest logged
+
+CRM
+
+❌ No CRM push
+
+7️⃣ EXIT-INTENT CTA (SPECIAL RULE)
+WHEN
+
+User moves mouse to close tab
+
+CTA for current page NOT already shown
+
+Exit CTA NOT already shown in session
+
+WHAT TO SHOW
+
+Same CTA as page category
+
+Softer copy variation
+
+SESSION RULE
+sessionStorage.setItem("agix_exit_cta_shown", "true")
+
+8️⃣ VISUAL & UX GUIDELINES (VERY IMPORTANT)
+Design Principles
+
+Lightweight
+
+Minimal
+
+Advisory tone
+
+No dark overlays
+
+No full-screen modals
+
+Visual Specs
+
+Width: 420–480px (desktop)
+
+Mobile: bottom sheet style
+
+Rounded corners (16px)
+
+Soft shadow
+
+Neutral background
+
+Accent color for CTA button only
+
+Animation
+
+Fade + slight slide-up
+
+Duration: 200–250ms
+
+No bounce / no shake
+
+Close Options
+
+Visible close icon
+
+“Maybe later” text
+
+9️⃣ WHERE TO IMPLEMENT IN REPLIT
+Recommended Structure
+/components/cta/
+  ├─ CTAController.tsx
+  ├─ PopupShell.tsx
+  ├─ HomeCTA.tsx
+  ├─ IntelligenceCTA.tsx
+  ├─ ServiceCTA.tsx
+  ├─ IndustryCTA.tsx
+
+Mount CTAController in:
+app/layout.tsx
+
+1️⃣0️⃣ ANALYTICS (OPTIONAL BUT SMART)
+
+Track:
+
+CTA shown
+
+CTA clicked
+
+CTA completed
+
+Drop-off step
+
+Use:
+
+Custom DB table
+
+Or GA events later
+
+1️⃣1️⃣ FINAL VALIDATION CHECKLIST
+
+✔ No CTA repeats in same session
+✔ CTA changes based on page category
+✔ Exit-intent fires once
+✔ Popup does not block reading
+✔ CRM only receives qualified leads
+✔ Works on SPA navigation
+✔ Mobile friendly
+
+✅ FINAL NOTE
+
+This system positions AGIX as a guide, not a seller.
+It improves engagement without harming trust or SEO.
+
+If you want next, I can:
+
+Create exact React/Next.js code
+
+Build Popup UI component
+
+Design form schema JSON
+
+Prepare Supabase tables + policies

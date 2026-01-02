@@ -1,0 +1,149 @@
+🔹 CONVERSATIONAL / VOICE AI
+{
+  "company": "PolyAI",
+  "logo": "https://logo.clearbit.com/poly.ai",
+  "category": ["Conversational Intelligence", "Agentic AI Systems"],
+  "oneLiner": "Multilingual voice AI assistant delivering human-like customer service at enterprise scale.",
+  "challenge": "High call volumes and inconsistent customer experience across regions.",
+  "result": "24/7 automated voice support with improved resolution rates and lower support costs."
+}
+
+{
+  "company": "Brainfish",
+  "logo": "https://logo.clearbit.com/brainfi.sh",
+  "category": ["Conversational Intelligence", "Enterprise Knowledge Intelligence"],
+  "oneLiner": "Domain-specific AI chatbot enabling instant, high-accuracy customer support.",
+  "challenge": "Slow ticket resolution and overdependence on human agents.",
+  "result": "Faster self-service resolution and reduced support workload."
+}
+
+{
+  "company": "Properti AI",
+  "logo": "https://logo.clearbit.com/properti.ai",
+  "category": ["Conversational Intelligence", "Decision Intelligence"],
+  "oneLiner": "AI chatbot for personalized property discovery and buyer engagement.",
+  "challenge": "Manual lead handling and poor personalization in property search.",
+  "result": "Higher-quality leads and faster buyer decision cycles."
+}
+
+{
+  "company": "Dartmouth College",
+  "logo": "https://logo.clearbit.com/dartmouth.edu",
+  "category": ["Conversational Intelligence", "Operational Intelligence"],
+  "oneLiner": "24/7 AI helpdesk assistant for campus-wide IT support.",
+  "challenge": "High IT support demand outside office hours.",
+  "result": "Always-on IT assistance and reduced helpdesk backlog."
+}
+
+🔹 GENERATIVE / CREATIVE AI
+{
+  "company": "Suno",
+  "logo": "https://logo.clearbit.com/suno.ai",
+  "category": ["Agentic AI Systems", "Decision Intelligence"],
+  "oneLiner": "Text-to-music AI engine enabling instant audio composition.",
+  "challenge": "Complex music creation workflows limiting creative experimentation.",
+  "result": "Rapid content creation and democratized music production."
+}
+
+🔹 FOOD, GROCERY & LIFESTYLE
+{
+  "company": "Innit",
+  "logo": "https://logo.clearbit.com/innit.com",
+  "category": ["Decision Intelligence", "Operational Intelligence"],
+  "oneLiner": "AI sous-chef delivering personalized cooking guidance and pantry intelligence.",
+  "challenge": "Disconnected food planning, shopping, and cooking experiences.",
+  "result": "Personalized meal guidance and reduced food waste."
+}
+
+{
+  "company": "Hungryroot",
+  "logo": "https://logo.clearbit.com/hungryroot.com",
+  "category": ["Decision Intelligence", "Operational Intelligence"],
+  "oneLiner": "AI-driven meal planning and grocery customization platform.",
+  "challenge": "Generic meal plans failing to match dietary preferences.",
+  "result": "Higher customer retention and personalized nutrition journeys."
+}
+
+🔹 TRAVEL, EXPENSE & EXPERIENCE
+{
+  "company": "Navan",
+  "logo": "https://logo.clearbit.com/navan.com",
+  "category": ["Conversational Intelligence", "Decision Intelligence"],
+  "oneLiner": "AI assistant for business travel planning and smart expense management.",
+  "challenge": "Manual expense reporting and fragmented travel workflows.",
+  "result": "Streamlined travel booking and faster expense reconciliation."
+}
+
+{
+  "company": "GeoVea",
+  "logo": "https://logo.clearbit.com/geovea.com",
+  "category": ["Conversational Intelligence"],
+  "oneLiner": "Dynamic AI assistant for tailored travel itineraries.",
+  "challenge": "Time-consuming itinerary planning with low personalization.",
+  "result": "Highly personalized travel plans generated instantly."
+}
+
+{
+  "company": "Luxury Escapes",
+  "logo": "https://logo.clearbit.com/luxuryescapes.com",
+  "category": ["Conversational Intelligence", "Agentic AI Systems"],
+  "oneLiner": "Concierge-grade AI chatbot for premium travel experiences.",
+  "challenge": "Scaling high-touch concierge service globally.",
+  "result": "Luxury-grade personalization delivered at scale."
+}
+
+🔹 RETAIL, FASHION & COMMERCE AI
+{
+  "company": "Naratix",
+  "logo": "https://logo.clearbit.com/naratix.ai",
+  "category": ["Agentic AI Systems", "Enterprise Knowledge Intelligence"],
+  "oneLiner": "Intelligent AI agents for multilingual e-commerce content creation.",
+  "challenge": "Manual product content creation across global markets.",
+  "result": "Faster content localization and improved conversion."
+}
+
+{
+  "company": "Zalando",
+  "logo": "https://logo.clearbit.com/zalando.com",
+  "category": ["Conversational Intelligence", "Decision Intelligence"],
+  "oneLiner": "Generative AI fashion assistant for better clothing selection and styling.",
+  "challenge": "High return rates due to poor product-fit decisions.",
+  "result": "Improved purchase confidence and reduced returns."
+}
+
+{
+  "company": "Hugo Boss",
+  "logo": "https://logo.clearbit.com/hugoboss.com",
+  "category": ["Conversational Intelligence"],
+  "oneLiner": "AI chatbot delivering luxury fashion concierge experiences.",
+  "challenge": "Maintaining premium brand experience across digital channels.",
+  "result": "Consistent luxury engagement and higher digital conversions."
+}
+
+{
+  "company": "Lowes",
+  "logo": "https://logo.clearbit.com/lowes.com",
+  "category": ["Conversational Intelligence", "Operational Intelligence"],
+  "oneLiner": "AI-powered in-store navigation and shopping assistant.",
+  "challenge": "Customer difficulty locating products in large stores.",
+  "result": "Faster in-store journeys and improved customer satisfaction."
+}
+
+{
+  "company": "Tesco",
+  "logo": "https://logo.clearbit.com/tesco.com",
+  "category": ["Operational Intelligence", "Decision Intelligence"],
+  "oneLiner": "AI-powered supply chain optimization and demand forecasting.",
+  "challenge": "Inefficient supply chain planning across large inventories.",
+  "result": "Optimized stock levels and reduced supply chain waste."
+}
+
+🔹 MARKET & RESEARCH INTELLIGENCE
+{
+  "company": "AlphaSense",
+  "logo": "https://logo.clearbit.com/alphasense.com",
+  "category": ["Enterprise Knowledge Intelligence", "Decision Intelligence"],
+  "oneLiner": "Real-time AI engine for market intelligence and research automation.",
+  "challenge": "Slow manual research across fragmented data sources.",
+  "result": "Faster insights and improved strategic decision-making."
+}

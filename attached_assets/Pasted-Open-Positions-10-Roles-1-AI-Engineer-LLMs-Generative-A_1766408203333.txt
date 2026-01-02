@@ -1,0 +1,308 @@
+Open Positions (10 Roles)
+1. AI Engineer – LLMs & Generative AI
+
+Role Overview
+As an AI Engineer at AGIX, you will design and build LLM-powered systems such as RAG pipelines, AI assistants, and reasoning workflows that operate reliably in production environments.
+
+Key Responsibilities
+
+Build and deploy LLM-based applications using structured and unstructured data
+
+Design and optimize RAG pipelines for accuracy and relevance
+
+Implement prompt strategies, memory handling, and context control
+
+Integrate LLMs with backend services, APIs, and databases
+
+Monitor and improve AI performance, latency, and reliability
+
+Required Skills & Experience
+
+Strong experience with Python or Node.js
+
+Hands-on experience with LLMs (OpenAI, Claude, Gemini, etc.)
+
+Understanding of embeddings, vector databases, and retrieval logic
+
+Experience building APIs and backend services
+
+Nice to Have
+
+Experience with LangChain or LlamaIndex
+
+Exposure to production AI monitoring and evaluation
+
+📩 Send Resume: hello@agixtech.com
+
+Subject: Application – AI Engineer (LLMs)
+
+2. Agentic AI Systems Engineer
+
+Role Overview
+You will work on goal-driven AI systems where agents plan, reason, act, and collaborate across tools and services.
+
+Key Responsibilities
+
+Design and build autonomous or semi-autonomous AI agents
+
+Implement planning, tool usage, memory, and decision logic
+
+Orchestrate multi-agent workflows across systems
+
+Ensure reliability, traceability, and safe execution
+
+Required Skills & Experience
+
+Strong backend engineering skills
+
+Experience working with LLM-based agents or AI workflows
+
+Understanding of system orchestration and state management
+
+Nice to Have
+
+Experience with multi-agent frameworks
+
+Knowledge of AI governance or safety practices
+
+📩 Send Resume: hello@agixtech.com
+
+Subject: Application – Agentic AI Systems Engineer
+
+3. Workflow Automation Engineer (AI + n8n / Make / Zapier)
+
+Role Overview
+This role focuses on automating real business workflows using AI and modern automation platforms.
+
+Key Responsibilities
+
+Design and implement automation workflows using n8n, Make, or Zapier
+
+Integrate AI services with CRMs, ERPs, and SaaS tools
+
+Optimize workflows for reliability and scalability
+
+Troubleshoot automation failures and edge cases
+
+Required Skills & Experience
+
+Experience with workflow automation platforms
+
+Strong understanding of APIs, webhooks, and integrations
+
+Basic understanding of AI/LLM usage
+
+Nice to Have
+
+Experience automating enterprise systems
+
+Familiarity with data transformation and logic handling
+
+📩 Send Resume: hello@agixtech.com
+
+Subject: Application – Workflow Automation Engineer
+
+4. Conversational AI Engineer (Chat & Assistants)
+
+Role Overview
+You will design conversational systems that understand context, maintain memory, and interact naturally with users.
+
+Key Responsibilities
+
+Build chat-based AI assistants for support, sales, and internal tools
+
+Design conversation flows and intent handling
+
+Integrate conversational AI with backend systems
+
+Improve response quality and reduce hallucinations
+
+Required Skills & Experience
+
+Experience with NLP or LLM-based chat systems
+
+Backend integration skills
+
+Understanding of conversational UX
+
+Nice to Have
+
+Experience with multi-turn conversation design
+
+Exposure to analytics or conversation evaluation
+
+📩 Send Resume: hello@agixtech.com
+
+Subject: Application – Conversational AI Engineer
+
+5. Voice AI Engineer
+
+Role Overview
+This role focuses on real-time voice agents used in customer support, operations, and sales environments.
+
+Key Responsibilities
+
+Build real-time voice AI systems
+
+Integrate speech-to-text and text-to-speech pipelines
+
+Handle latency, call flow logic, and interruptions
+
+Ensure voice systems work reliably at scale
+
+Required Skills & Experience
+
+Experience with voice or speech systems
+
+Backend development experience
+
+Understanding of real-time systems
+
+Nice to Have
+
+Experience with telephony or call-based systems
+
+Audio processing knowledge
+
+📩 Send Resume: hello@agixtech.com
+
+Subject: Application – Voice AI Engineer
+
+6. Backend Engineer (AI Systems)
+
+Role Overview
+You will build the backbone that powers AGIX’s AI systems — APIs, services, and integrations.
+
+Key Responsibilities
+
+Design and develop scalable backend services
+
+Integrate AI models and workflows into applications
+
+Ensure system performance, security, and reliability
+
+Collaborate closely with AI and product teams
+
+Required Skills & Experience
+
+Strong experience with Python or Node.js
+
+API and database design experience
+
+Understanding of scalable system design
+
+Nice to Have
+
+Experience supporting AI-heavy applications
+
+📩 Send Resume: hello@agixtech.com
+
+Subject: Application – Backend Engineer
+
+7. Data Engineer
+
+Role Overview
+You will build the data foundations that power AI and decision systems.
+
+Key Responsibilities
+
+Design and maintain data pipelines (ETL/ELT)
+
+Ensure data quality, consistency, and availability
+
+Support analytics and AI model needs
+
+Required Skills & Experience
+
+Strong SQL and data modeling skills
+
+Experience with data pipelines and storage systems
+
+Nice to Have
+
+Experience supporting AI or ML workflows
+
+📩 Send Resume: hello@agixtech.com
+
+Subject: Application – Data Engineer
+
+8. RAG & Knowledge Systems Engineer
+
+Role Overview
+This role focuses on building enterprise knowledge systems using retrieval and semantic search.
+
+Key Responsibilities
+
+Implement RAG pipelines and vector search systems
+
+Optimize retrieval accuracy and relevance
+
+Work with structured and unstructured knowledge sources
+
+Required Skills & Experience
+
+Experience with vector databases (Pinecone, Weaviate, Qdrant, etc.)
+
+Strong understanding of embeddings and retrieval logic
+
+Nice to Have
+
+Knowledge graph or semantic search experience
+
+📩 Send Resume: hello@agixtech.com
+
+Subject: Application – RAG Engineer
+
+9. Technical Product Manager (AI Systems)
+
+Role Overview
+You will bridge business needs with AI system design and delivery.
+
+Key Responsibilities
+
+Translate client problems into clear system requirements
+
+Define AI product roadmaps and priorities
+
+Coordinate between engineering, AI, and stakeholders
+
+Required Skills & Experience
+
+Experience managing technical or AI products
+
+Strong communication and documentation skills
+
+Nice to Have
+
+Background in engineering or data
+
+📩 Send Resume: hello@agixtech.com
+
+Subject: Application – Technical Product Manager
+
+10. AI Intern / Trainee Engineer
+
+Role Overview
+An entry-level role for candidates looking to build a strong foundation in AI systems.
+
+Key Responsibilities
+
+Assist senior engineers in AI development
+
+Learn AI workflows, tools, and system design
+
+Participate in real projects
+
+Required Skills & Experience
+
+Basic programming knowledge
+
+Strong learning mindset and curiosity
+
+Nice to Have
+
+Exposure to AI or ML concepts
+
+📩 Send Resume: hello@agixtech.com
+
+Subject: Application – AI Intern

@@ -1,0 +1,206 @@
+1️⃣ HERO SECTION (Listing Page)
+Headline
+
+Real-World AI Systems. Proven at Enterprise Scale.
+
+Sub-headline
+
+Explore how AGIX engineers Operational, Conversational, Decision, and Agentic Intelligence across healthcare, finance, retail, education, travel, and global enterprises — not as features, but as production-ready systems.
+
+Trust Signals (inline)
+
+30+ enterprise & scale-up deployments
+
+Healthcare, Fintech, Retail, Education, Travel
+
+Voice AI, Agentic Systems, Predictive Intelligence, RAG
+
+Primary CTA
+
+Explore Case Studies by Intelligence Layer
+
+Secondary CTA
+
+Talk to an AI Systems Architect
+
+2️⃣ SERVICE / INTELLIGENCE CATEGORIES (Filters)
+
+Use these as filter tabs on the listing page:
+
+Operational Intelligence
+
+Conversational Intelligence (Chat + Voice)
+
+Decision Intelligence
+
+Autonomous / Agentic AI Systems
+
+Enterprise Knowledge Intelligence (RAG, Search, Docs)
+
+3️⃣ CASE STUDY LISTING DATA (REPLIT-READY)
+
+Logo source pattern used:
+https://logo.clearbit.com/{companydomain}.com
+(Works well for listing pages; can be replaced later with hosted assets.)
+
+🔹 FINTECH / FINANCE
+{
+  "company": "Enova",
+  "logo": "https://logo.clearbit.com/enova.com",
+  "category": ["Decision Intelligence", "Operational Intelligence"],
+  "oneLiner": "AI-powered credit decisioning system enabling faster, fairer lending at scale.",
+  "challenge": "Manual underwriting and rigid scoring models limiting approval speed and inclusivity.",
+  "result": "Faster loan approvals, improved risk accuracy, expanded credit access."
+}
+
+{
+  "company": "Dave",
+  "logo": "https://logo.clearbit.com/dave.com",
+  "category": ["Conversational Intelligence", "Decision Intelligence"],
+  "oneLiner": "Generative AI assistant delivering human-like financial guidance to users.",
+  "challenge": "High support load and lack of personalized financial advice at scale.",
+  "result": "Reduced support dependency and improved user engagement with AI-driven assistance."
+}
+
+{
+  "company": "Ocrolus",
+  "logo": "https://logo.clearbit.com/ocrolus.com",
+  "category": ["Enterprise Knowledge Intelligence", "Operational Intelligence"],
+  "oneLiner": "AI document intelligence engine for automated financial workflows.",
+  "challenge": "Manual document review slowing down fintech operations.",
+  "result": "Significant reduction in processing time and operational cost."
+}
+
+🔹 HEALTHCARE & WELLBEING
+{
+  "company": "Babylon Health",
+  "logo": "https://logo.clearbit.com/babylonhealth.com",
+  "category": ["Conversational Intelligence", "Decision Intelligence"],
+  "oneLiner": "AI-driven patient intake, symptom triage, and care routing at scale.",
+  "challenge": "Overloaded healthcare systems with inefficient triage and routing.",
+  "result": "Improved patient flow, faster triage, and optimized clinician workload."
+}
+
+{
+  "company": "Kite Therapy",
+  "logo": "https://logo.clearbit.com/kitetherapy.com",
+  "category": ["Decision Intelligence", "Agentic AI Systems"],
+  "oneLiner": "AI matchmaking engine connecting children to the right therapy providers.",
+  "challenge": "Manual therapist matching causing delays in care delivery.",
+  "result": "Faster placement and better therapy outcomes for families."
+}
+
+{
+  "company": "Hello Driven",
+  "logo": "https://logo.clearbit.com/hellodriven.com",
+  "category": ["Conversational Intelligence", "Agentic AI Systems"],
+  "oneLiner": "AI-powered mental resilience coach for scalable emotional wellbeing.",
+  "challenge": "Limited access to personalized mental health support.",
+  "result": "Always-on AI coaching with improved engagement and reach."
+}
+
+🔹 RETAIL, E-COMMERCE & CONSUMER
+{
+  "company": "Albertsons",
+  "logo": "https://logo.clearbit.com/albertsons.com",
+  "category": ["Operational Intelligence", "Decision Intelligence"],
+  "oneLiner": "AI-driven consumer behavior analytics for predictive restocking.",
+  "challenge": "Stockouts and overstocking due to static demand planning.",
+  "result": "Improved inventory accuracy and reduced waste."
+}
+
+{
+  "company": "Kroger",
+  "logo": "https://logo.clearbit.com/kroger.com",
+  "category": ["Operational Intelligence", "Decision Intelligence"],
+  "oneLiner": "Predictive AI engine enabling smart reordering and cart automation.",
+  "challenge": "Inefficient replenishment impacting customer experience.",
+  "result": "Optimized ordering cycles and higher cart completion rates."
+}
+
+{
+  "company": "Stitch Fix",
+  "logo": "https://logo.clearbit.com/stitchfix.com",
+  "category": ["Decision Intelligence", "Agentic AI Systems"],
+  "oneLiner": "AI stylist engine delivering hyper-personalized fashion recommendations.",
+  "challenge": "Scaling personal styling without increasing human cost.",
+  "result": "Higher customer satisfaction and repeat purchases."
+}
+
+{
+  "company": "Ulta Beauty",
+  "logo": "https://logo.clearbit.com/ulta.com",
+  "category": ["Decision Intelligence", "Conversational Intelligence"],
+  "oneLiner": "Predictive AI engine for personalized marketing and loyalty engagement.",
+  "challenge": "Generic campaigns failing to convert diverse customer segments.",
+  "result": "Increased engagement and loyalty program effectiveness."
+}
+
+🔹 EDUCATION & LEARNING
+{
+  "company": "Quizlet",
+  "logo": "https://logo.clearbit.com/quizlet.com",
+  "category": ["Decision Intelligence", "Agentic AI Systems"],
+  "oneLiner": "AI-powered study engine for predictive and personalized learning.",
+  "challenge": "One-size-fits-all learning paths reducing retention.",
+  "result": "Adaptive learning experiences with improved outcomes."
+}
+
+{
+  "company": "Knewton",
+  "logo": "https://logo.clearbit.com/knewton.com",
+  "category": ["Decision Intelligence"],
+  "oneLiner": "Real-time adaptive learning powered by continuous AI feedback loops.",
+  "challenge": "Static curricula unable to adapt to individual learner needs.",
+  "result": "Highly personalized education journeys."
+}
+
+{
+  "company": "Riiid Labs",
+  "logo": "https://logo.clearbit.com/riiid.com",
+  "category": ["Decision Intelligence"],
+  "oneLiner": "Adaptive AI engine for test mastery and learning optimization.",
+  "challenge": "Poor exam readiness due to lack of adaptive feedback.",
+  "result": "Improved learner performance and accuracy."
+}
+
+🔹 TRAVEL, HOSPITALITY & REAL ESTATE
+{
+  "company": "Hilton Hotels",
+  "logo": "https://logo.clearbit.com/hilton.com",
+  "category": ["Conversational Intelligence", "Decision Intelligence"],
+  "oneLiner": "Enterprise AI for end-to-end guest personalization.",
+  "challenge": "Fragmented guest data across systems.",
+  "result": "Personalized experiences and improved guest satisfaction."
+}
+
+{
+  "company": "HouseCanary",
+  "logo": "https://logo.clearbit.com/housecanary.com",
+  "category": ["Decision Intelligence"],
+  "oneLiner": "AI platform for real-time real estate valuation and market insights.",
+  "challenge": "Inaccurate and delayed property valuations.",
+  "result": "More accurate pricing and faster decision-making."
+}
+
+{
+  "company": "Mindtrip",
+  "logo": "https://logo.clearbit.com/mindtrip.ai",
+  "category": ["Conversational Intelligence"],
+  "oneLiner": "Conversational AI for effortless travel ideation and planning.",
+  "challenge": "Complex travel planning overwhelming users.",
+  "result": "Faster itinerary creation and higher engagement."
+}
+
+4️⃣ FINAL CTA SECTION (Bottom of Page)
+Headline
+
+These Aren’t Demos. These Are Deployed AI Systems.
+
+Copy
+
+Every case study represents a production AI system engineered for scale, compliance, and real business impact — across voice, agents, prediction, automation, and intelligence layers.
+
+CTA
+
+Build Your AI System with AGIX
