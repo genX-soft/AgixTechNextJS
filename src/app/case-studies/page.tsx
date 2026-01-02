@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
-function CompanyLogo({ company, logo, industryIcon: Icon }: { company: string; logo: string; industryIcon: React.ComponentType<{ className?: string }> }) {
+function CompanyLogo({ company, logo }: { company: string; logo: string }) {
   const [imgError, setImgError] = useState(false);
   const [imgLoaded, setImgLoaded] = useState(false);
 
@@ -23,10 +23,18 @@ function CompanyLogo({ company, logo, industryIcon: Icon }: { company: string; l
     return colors[index];
   };
 
+  const getInitials = (name: string) => {
+    const words = name.trim().split(/\s+/);
+    if (words.length === 1) {
+      return words[0].substring(0, 2).toUpperCase();
+    }
+    return words.slice(0, 2).map(w => w.charAt(0).toUpperCase()).join('');
+  };
+
   if (imgError || !logo) {
     return (
       <div className={`w-12 h-12 rounded-lg bg-gradient-to-br ${getGradient(company)} flex items-center justify-center shrink-0`}>
-        <Icon className="w-6 h-6 text-white" />
+        <span className="text-sm font-bold text-white">{getInitials(company)}</span>
       </div>
     );
   }
@@ -35,7 +43,7 @@ function CompanyLogo({ company, logo, industryIcon: Icon }: { company: string; l
     <div className="w-12 h-12 rounded-lg bg-white flex items-center justify-center overflow-hidden shrink-0 relative">
       {!imgLoaded && (
         <div className={`absolute inset-0 bg-gradient-to-br ${getGradient(company)} flex items-center justify-center`}>
-          <Icon className="w-6 h-6 text-white" />
+          <span className="text-sm font-bold text-white">{getInitials(company)}</span>
         </div>
       )}
       <img
@@ -682,7 +690,6 @@ export default function CaseStudiesPage() {
                         <CompanyLogo 
                           company={cs.company} 
                           logo={cs.logo} 
-                          industryIcon={cs.industryIcon} 
                         />
                         <div className="flex-1 min-w-0">
                           <h3 className="font-bold text-lg truncate">{cs.company}</h3>
