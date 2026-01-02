@@ -71,8 +71,6 @@ import {
   Briefcase,
   Heart,
   HelpCircle,
-  Play,
-  Pause,
   RotateCcw
 } from "lucide-react";
 import { trackEvent } from "@/lib/analytics";
@@ -159,10 +157,7 @@ const coreCapabilities = [
       "Real-time system synchronization"
     ],
     timeline: "4–8 weeks",
-    pricing: {
-      mid: "$8K – $15K",
-      enterprise: "$15K – $30K+"
-    }
+    investment: "$15K – $30K+"
   },
   {
     id: "bpa",
@@ -190,10 +185,7 @@ const coreCapabilities = [
       "Continuous process optimization"
     ],
     timeline: "8–12 weeks",
-    pricing: {
-      mid: "$15K – $30K",
-      enterprise: "$30K – $60K+"
-    }
+    investment: "$30K – $60K+"
   },
   {
     id: "document",
@@ -221,10 +213,7 @@ const coreCapabilities = [
       "Workflow triggers based on content"
     ],
     timeline: "4–8 weeks",
-    pricing: {
-      mid: "$8K – $15K",
-      enterprise: "$15K – $35K+"
-    }
+    investment: "$15K – $35K+"
   },
   {
     id: "email",
@@ -252,10 +241,7 @@ const coreCapabilities = [
       "CRM & system updates"
     ],
     timeline: "3–6 weeks",
-    pricing: {
-      mid: "$6K – $12K",
-      enterprise: "$12K – $25K+"
-    }
+    investment: "$12K – $25K+"
   },
   {
     id: "transformation",
@@ -282,10 +268,7 @@ const coreCapabilities = [
       "Scalable execution roadmap"
     ],
     timeline: "3–6 months",
-    pricing: {
-      mid: "$25K – $50K",
-      enterprise: "$50K – $150K+"
-    }
+    investment: "$50K – $150K+"
   }
 ];
 
@@ -549,11 +532,6 @@ function AutomationCalculator() {
   const [complexity, setComplexity] = useState("simple");
   const [volumeLevel, setVolumeLevel] = useState("medium");
 
-  const [processType, setProcessType] = useState("invoicing");
-  const [currentState, setCurrentState] = useState("manual");
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [step, setStep] = useState(0);
-
   const [teamSize, setTeamSize] = useState([5]);
   const [hourlyRate, setHourlyRate] = useState([50]);
   const [timePerTask, setTimePerTask] = useState([15]);
@@ -621,41 +599,6 @@ function AutomationCalculator() {
     };
   }, [automationType, systemCount, complexity, volumeLevel]);
 
-  const processSteps = useMemo(() => {
-    const beforeSteps = [
-      { label: "Human receives input", icon: Users },
-      { label: "Manual data entry", icon: FileText },
-      { label: "Email handoffs", icon: Mail },
-      { label: "Manual checks", icon: Eye },
-      { label: "Delays & waiting", icon: Clock }
-    ];
-    const afterSteps = [
-      { label: "AI reads inputs", icon: Brain },
-      { label: "AI makes decisions", icon: Zap },
-      { label: "Systems execute actions", icon: Cog },
-      { label: "Human only for exceptions", icon: Users }
-    ];
-    return { before: beforeSteps, after: afterSteps };
-  }, []);
-
-  const simulatorMetrics = useMemo(() => {
-    const stateMultiplier = currentState === "manual" ? 1 : currentState === "semi" ? 0.7 : 0.5;
-    return {
-      stepsReduced: Math.round(60 * stateMultiplier),
-      cycleTimeReduced: Math.round(75 * stateMultiplier),
-      errorReduction: Math.round(85 * stateMultiplier)
-    };
-  }, [currentState]);
-
-  useEffect(() => {
-    if (isPlaying) {
-      const timer = setInterval(() => {
-        setStep((prev) => (prev + 1) % (processSteps.before.length + processSteps.after.length + 2));
-      }, 1000);
-      return () => clearInterval(timer);
-    }
-  }, [isPlaying, processSteps]);
-
   const roiCalculations = useMemo(() => {
     const hoursPerMonth = (monthlyVolume[0] * timePerTask[0]) / 60;
     const currentMonthlyCost = hoursPerMonth * hourlyRate[0];
@@ -710,7 +653,7 @@ function AutomationCalculator() {
           AI Automation Cost & ROI Calculator
         </CardTitle>
         <p className="text-sm text-muted-foreground">
-          Identify opportunities, estimate costs, visualize transformation, and calculate ROI
+          Identify opportunities, estimate costs, calculate ROI, and assess readiness
         </p>
       </CardHeader>
       <CardContent>
@@ -723,10 +666,6 @@ function AutomationCalculator() {
             <TabsTrigger value="cost" className="flex-1 min-w-[80px]" data-testid="tab-automation-cost">
               <DollarSign className="w-4 h-4 mr-1 hidden md:inline" />
               Cost
-            </TabsTrigger>
-            <TabsTrigger value="simulator" className="flex-1 min-w-[80px]" data-testid="tab-automation-simulator">
-              <RefreshCw className="w-4 h-4 mr-1 hidden md:inline" />
-              Before/After
             </TabsTrigger>
             <TabsTrigger value="roi" className="flex-1 min-w-[80px]" data-testid="tab-automation-roi">
               <TrendingUp className="w-4 h-4 mr-1 hidden md:inline" />
@@ -919,120 +858,6 @@ function AutomationCalculator() {
               </div>
             </div>
             <p className="text-xs text-muted-foreground text-center">Indicative range, refined post discovery call</p>
-          </TabsContent>
-
-          <TabsContent value="simulator" className="space-y-6">
-            <div className="p-4 bg-primary/5 rounded-lg border border-primary/20 mb-4">
-              <p className="text-sm text-muted-foreground">
-                <span className="font-semibold text-foreground">What is this?</span> This simulator shows how your current manual workflow transforms with AI automation. 
-                Select your process type below to see a side-by-side comparison of the steps involved today versus after automation.
-              </p>
-            </div>
-
-            <div className="space-y-4">
-              <h4 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide">Step 1: Define Your Scenario</h4>
-              <div className="grid md:grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <Label>What process do you want to automate?</Label>
-                  <Select value={processType} onValueChange={setProcessType}>
-                    <SelectTrigger data-testid="select-simulator-process">
-                      <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="invoicing">Invoicing & Billing</SelectItem>
-                      <SelectItem value="support">Customer Support Tickets</SelectItem>
-                      <SelectItem value="onboarding">Employee/Client Onboarding</SelectItem>
-                      <SelectItem value="claims">Claims Processing</SelectItem>
-                      <SelectItem value="reporting">Data Reporting & Analysis</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-                <div className="space-y-2">
-                  <Label>How automated is it currently?</Label>
-                  <Select value={currentState} onValueChange={setCurrentState}>
-                    <SelectTrigger data-testid="select-simulator-state">
-                      <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="manual">Fully Manual (spreadsheets, paper)</SelectItem>
-                      <SelectItem value="semi">Semi-Automated (some tools, manual steps)</SelectItem>
-                      <SelectItem value="disconnected">Tool-Heavy but Disconnected (multiple systems)</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-              </div>
-            </div>
-
-            <div className="space-y-4 pt-4 border-t border-border">
-              <div className="flex items-center justify-between">
-                <h4 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide">Step 2: Compare Workflows</h4>
-                <Button variant="outline" size="sm" onClick={() => { setIsPlaying(!isPlaying); if (!isPlaying) setStep(0); }} data-testid="button-simulator-play">
-                  {isPlaying ? <Pause className="w-4 h-4 mr-2" /> : <Play className="w-4 h-4 mr-2" />}
-                  {isPlaying ? "Pause" : "Watch Transformation"}
-                </Button>
-              </div>
-              
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="space-y-3">
-                  <div className="flex items-center justify-between gap-2">
-                    <div>
-                      <h5 className="font-semibold text-red-400">Today: Manual Process</h5>
-                      <p className="text-xs text-muted-foreground">Time-consuming, error-prone steps</p>
-                    </div>
-                    <Badge variant="outline" className="border-red-400/50 text-red-400 shrink-0">Current</Badge>
-                  </div>
-                  <div className="space-y-2">
-                    {processSteps.before.map((s, i) => (
-                      <div key={i} className={`flex items-center gap-3 p-3 rounded-lg transition-all ${isPlaying && step === i ? "bg-red-500/20 border border-red-500/50 scale-[1.02]" : "bg-muted/30"}`}>
-                        <div className="flex items-center justify-center w-6 h-6 rounded-full bg-red-500/20 text-red-400 text-xs font-bold shrink-0">{i + 1}</div>
-                        <s.icon className="w-4 h-4 text-red-400 shrink-0" />
-                        <span className="text-sm">{s.label}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-                <div className="space-y-3">
-                  <div className="flex items-center justify-between gap-2">
-                    <div>
-                      <h5 className="font-semibold text-green-400">After: AI-Powered</h5>
-                      <p className="text-xs text-muted-foreground">Faster, smarter, fewer errors</p>
-                    </div>
-                    <Badge variant="outline" className="border-green-400/50 text-green-400 shrink-0">Automated</Badge>
-                  </div>
-                  <div className="space-y-2">
-                    {processSteps.after.map((s, i) => (
-                      <div key={i} className={`flex items-center gap-3 p-3 rounded-lg transition-all ${isPlaying && step === processSteps.before.length + 1 + i ? "bg-green-500/20 border border-green-500/50 scale-[1.02]" : "bg-muted/30"}`}>
-                        <div className="flex items-center justify-center w-6 h-6 rounded-full bg-green-500/20 text-green-400 text-xs font-bold shrink-0">{i + 1}</div>
-                        <s.icon className="w-4 h-4 text-green-400 shrink-0" />
-                        <span className="text-sm">{s.label}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="space-y-3 pt-4 border-t border-border">
-              <h4 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide">Step 3: Expected Impact</h4>
-              <p className="text-xs text-muted-foreground mb-2">Based on typical {processType} automation projects with {currentState === "manual" ? "fully manual" : currentState === "semi" ? "semi-automated" : "disconnected tool"} starting point:</p>
-              <div className="grid grid-cols-3 gap-4">
-                <div className="p-4 bg-primary/10 rounded-lg border border-primary/20 text-center">
-                  <p className="text-2xl font-bold text-primary">{simulatorMetrics.stepsReduced}%</p>
-                  <p className="text-xs text-muted-foreground">Fewer Manual Steps</p>
-                  <p className="text-xs text-muted-foreground/70 mt-1">Less human involvement needed</p>
-                </div>
-                <div className="p-4 bg-cyan-500/10 rounded-lg border border-cyan-500/20 text-center">
-                  <p className="text-2xl font-bold text-cyan-400">{simulatorMetrics.cycleTimeReduced}%</p>
-                  <p className="text-xs text-muted-foreground">Faster Completion</p>
-                  <p className="text-xs text-muted-foreground/70 mt-1">Hours become minutes</p>
-                </div>
-                <div className="p-4 bg-green-500/10 rounded-lg border border-green-500/20 text-center">
-                  <p className="text-2xl font-bold text-green-400">{simulatorMetrics.errorReduction}%</p>
-                  <p className="text-xs text-muted-foreground">Fewer Errors</p>
-                  <p className="text-xs text-muted-foreground/70 mt-1">AI reduces mistakes</p>
-                </div>
-              </div>
-            </div>
           </TabsContent>
 
           <TabsContent value="roi" className="space-y-6">
@@ -1723,7 +1548,7 @@ export default function AIAutomationPage() {
                             <DollarSign className="w-5 h-5 text-muted-foreground" />
                             <div>
                               <p className="text-xs text-muted-foreground">Investment Range</p>
-                              <p className="font-semibold">{capability.pricing.enterprise}</p>
+                              <p className="font-semibold">{capability.investment}</p>
                             </div>
                           </div>
                         </div>
