@@ -1,11 +1,53 @@
 'use client'
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MainHeader } from "@/components/main-header";
 import { MainFooter } from "@/components/main-footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+
+function CompanyLogo({ company, logo, industryIcon: Icon }: { company: string; logo: string; industryIcon: React.ComponentType<{ className?: string }> }) {
+  const [imgError, setImgError] = useState(false);
+  const [imgLoaded, setImgLoaded] = useState(false);
+
+  const getGradient = (name: string) => {
+    const colors = [
+      'from-emerald-500 to-teal-600',
+      'from-blue-500 to-indigo-600',
+      'from-purple-500 to-pink-600',
+      'from-orange-500 to-red-600',
+      'from-cyan-500 to-blue-600',
+    ];
+    const index = name.charCodeAt(0) % colors.length;
+    return colors[index];
+  };
+
+  if (imgError || !logo) {
+    return (
+      <div className={`w-12 h-12 rounded-lg bg-gradient-to-br ${getGradient(company)} flex items-center justify-center shrink-0`}>
+        <Icon className="w-6 h-6 text-white" />
+      </div>
+    );
+  }
+
+  return (
+    <div className="w-12 h-12 rounded-lg bg-white flex items-center justify-center overflow-hidden shrink-0 relative">
+      {!imgLoaded && (
+        <div className={`absolute inset-0 bg-gradient-to-br ${getGradient(company)} flex items-center justify-center`}>
+          <Icon className="w-6 h-6 text-white" />
+        </div>
+      )}
+      <img
+        src={logo}
+        alt={`${company} logo`}
+        className={`w-10 h-10 object-contain transition-opacity ${imgLoaded ? 'opacity-100' : 'opacity-0'}`}
+        onError={() => setImgError(true)}
+        onLoad={() => setImgLoaded(true)}
+      />
+    </div>
+  );
+}
 import {
   ArrowRight,
   Building2,
@@ -637,17 +679,11 @@ export default function CaseStudiesPage() {
                     <CardContent className="p-6 space-y-4">
                       {/* Header: Logo + Company + Industry */}
                       <div className="flex items-start gap-4">
-                        <div className="w-12 h-12 rounded-lg bg-white flex items-center justify-center overflow-hidden shrink-0">
-                          <img
-                            src={cs.logo}
-                            alt={`${cs.company} logo`}
-                            className="w-10 h-10 object-contain"
-                            onError={(e) => {
-                              (e.target as HTMLImageElement).style.display = 'none';
-                              (e.target as HTMLImageElement).parentElement!.innerHTML = `<span class="text-lg font-bold text-gray-600">${cs.company.charAt(0)}</span>`;
-                            }}
-                          />
-                        </div>
+                        <CompanyLogo 
+                          company={cs.company} 
+                          logo={cs.logo} 
+                          industryIcon={cs.industryIcon} 
+                        />
                         <div className="flex-1 min-w-0">
                           <h3 className="font-bold text-lg truncate">{cs.company}</h3>
                           <div className={`flex items-center gap-1 text-sm ${getIndustryColor(cs.industry)}`}>
