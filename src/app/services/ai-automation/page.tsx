@@ -1723,7 +1723,7 @@ export default function AIAutomationPage() {
                             <DollarSign className="w-5 h-5 text-muted-foreground" />
                             <div>
                               <p className="text-xs text-muted-foreground">Investment Range</p>
-                              <p className="font-semibold">{capability.pricing.mid} – {capability.pricing.enterprise}</p>
+                              <p className="font-semibold">{capability.pricing.enterprise}</p>
                             </div>
                           </div>
                         </div>
