@@ -67,6 +67,12 @@ export const AI_TOOLS: AITool[] = [
 
   // Services - link to calculator sections
   {
+    name: "AI Automation Services",
+    description: "End-to-end workflow, process, and document automation",
+    href: "/services/ai-automation",
+    category: "services",
+  },
+  {
     name: "Agentic AI Systems",
     description: "Build autonomous AI agents for your business workflows",
     href: "/services/agentic-ai-systems#calculator",

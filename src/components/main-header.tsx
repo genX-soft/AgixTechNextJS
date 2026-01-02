@@ -30,7 +30,7 @@ const intelligenceItems = [
 ];
 
 const servicesItems = [
-  { title: "AI Automation Services", href: "/", icon: Workflow, description: "End-to-end workflow automation" },
+  { title: "AI Automation Services", href: "/services/ai-automation", icon: Workflow, description: "End-to-end workflow automation" },
   { title: "AI Voice Agents", href: "/services/voice-agents", icon: Phone, description: "Intelligent voice-based interactions" },
   { title: "Conversational AI (Chatbots)", href: "/services/chatbots", icon: MessageSquare, description: "Smart conversational interfaces" },
   { title: "Agentic AI Systems", href: "/services/agentic-ai-systems", icon: Bot, description: "Autonomous AI solutions" },

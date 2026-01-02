@@ -40,7 +40,7 @@ const awards = [
 ];
 
 const services = [
-  { title: "AI Automation Services", href: "/" },
+  { title: "AI Automation Services", href: "/services/ai-automation" },
   { title: "AI Voice Agents", href: "/services/voice-agents" },
   { title: "Conversational AI Chatbots", href: "/services/chatbots" },
   { title: "Agentic AI Systems", href: "/services/agentic-ai-systems" },
