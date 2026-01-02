@@ -715,25 +715,25 @@ function AutomationCalculator() {
       </CardHeader>
       <CardContent>
         <Tabs value={activeTab} onValueChange={setActiveTab}>
-          <TabsList className="grid grid-cols-5 mb-6">
-            <TabsTrigger value="scanner" data-testid="tab-automation-scanner">
-              <Search className="w-4 h-4 mr-2 hidden sm:inline" />
+          <TabsList className="flex flex-wrap gap-1 h-auto mb-6">
+            <TabsTrigger value="scanner" className="flex-1 min-w-[80px]" data-testid="tab-automation-scanner">
+              <Search className="w-4 h-4 mr-1 hidden md:inline" />
               Scanner
             </TabsTrigger>
-            <TabsTrigger value="cost" data-testid="tab-automation-cost">
-              <DollarSign className="w-4 h-4 mr-2 hidden sm:inline" />
+            <TabsTrigger value="cost" className="flex-1 min-w-[80px]" data-testid="tab-automation-cost">
+              <DollarSign className="w-4 h-4 mr-1 hidden md:inline" />
               Cost
             </TabsTrigger>
-            <TabsTrigger value="simulator" data-testid="tab-automation-simulator">
-              <RefreshCw className="w-4 h-4 mr-2 hidden sm:inline" />
+            <TabsTrigger value="simulator" className="flex-1 min-w-[80px]" data-testid="tab-automation-simulator">
+              <RefreshCw className="w-4 h-4 mr-1 hidden md:inline" />
               Before/After
             </TabsTrigger>
-            <TabsTrigger value="roi" data-testid="tab-automation-roi">
-              <TrendingUp className="w-4 h-4 mr-2 hidden sm:inline" />
+            <TabsTrigger value="roi" className="flex-1 min-w-[80px]" data-testid="tab-automation-roi">
+              <TrendingUp className="w-4 h-4 mr-1 hidden md:inline" />
               ROI
             </TabsTrigger>
-            <TabsTrigger value="readiness" data-testid="tab-automation-readiness">
-              <HelpCircle className="w-4 h-4 mr-2 hidden sm:inline" />
+            <TabsTrigger value="readiness" className="flex-1 min-w-[80px]" data-testid="tab-automation-readiness">
+              <HelpCircle className="w-4 h-4 mr-1 hidden md:inline" />
               Readiness
             </TabsTrigger>
           </TabsList>
