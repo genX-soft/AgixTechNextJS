@@ -535,14 +535,34 @@ const readinessQuestions = [
   { id: "executive-support", question: "Do you have executive sponsorship for automation initiatives?", weight: 15 }
 ];
 
-function AutomationOpportunityScanner() {
+function AutomationCalculator() {
+  const [activeTab, setActiveTab] = useState("scanner");
+  
   const [industry, setIndustry] = useState("");
   const [department, setDepartment] = useState("");
   const [bottleneck, setBottleneck] = useState("");
   const [volume, setVolume] = useState("");
   const [showResults, setShowResults] = useState(false);
 
-  const results = useMemo(() => {
+  const [automationType, setAutomationType] = useState("workflow");
+  const [systemCount, setSystemCount] = useState("1-2");
+  const [complexity, setComplexity] = useState("simple");
+  const [volumeLevel, setVolumeLevel] = useState("medium");
+
+  const [processType, setProcessType] = useState("invoicing");
+  const [currentState, setCurrentState] = useState("manual");
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [step, setStep] = useState(0);
+
+  const [teamSize, setTeamSize] = useState([5]);
+  const [hourlyRate, setHourlyRate] = useState([50]);
+  const [timePerTask, setTimePerTask] = useState([15]);
+  const [monthlyVolume, setMonthlyVolume] = useState([1000]);
+  const [errorRate, setErrorRate] = useState([5]);
+
+  const [answers, setAnswers] = useState<Record<string, "strongly-agree" | "agree" | "neutral" | "disagree" | "strongly-disagree">>({});
+
+  const scannerResults = useMemo(() => {
     if (!industry || !department || !bottleneck || !volume) return null;
 
     const candidates = [];
@@ -572,147 +592,9 @@ function AutomationOpportunityScanner() {
     }
 
     const hoursSaved = volume === "high" ? "80-120" : volume === "medium" ? "40-80" : "15-40";
-    const phase1Timeline = "3-6 weeks";
-    const phase1Cost = "$6K-$15K";
-    const phase2Timeline = "4-6 weeks";
-    const phase2Cost = "$15K-$30K";
 
-    return { candidates: candidates.slice(0, 3), hoursSaved, phase1Timeline, phase1Cost, phase2Timeline, phase2Cost };
+    return { candidates: candidates.slice(0, 3), hoursSaved, phase1Timeline: "3-6 weeks", phase1Cost: "$6K-$15K" };
   }, [industry, department, bottleneck, volume]);
-
-  const allSelected = industry && department && bottleneck && volume;
-
-  return (
-    <Card id="opportunity-scanner" className="bg-background border-border">
-      <CardHeader>
-        <CardTitle className="flex items-center gap-2">
-          <Search className="w-5 h-5 text-primary" />
-          Automation Opportunity Scanner
-        </CardTitle>
-        <p className="text-sm text-muted-foreground">Identify what to automate first with ROI-first logic</p>
-      </CardHeader>
-      <CardContent className="space-y-6">
-        <div className="grid md:grid-cols-2 gap-4">
-          <div className="space-y-2">
-            <Label>Industry</Label>
-            <Select value={industry} onValueChange={setIndustry}>
-              <SelectTrigger data-testid="select-scanner-industry">
-                <SelectValue placeholder="Select your industry" />
-              </SelectTrigger>
-              <SelectContent>
-                {scannerIndustries.map((ind) => (
-                  <SelectItem key={ind.value} value={ind.value}>{ind.label}</SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
-          <div className="space-y-2">
-            <Label>Department</Label>
-            <Select value={department} onValueChange={setDepartment}>
-              <SelectTrigger data-testid="select-scanner-department">
-                <SelectValue placeholder="Select department" />
-              </SelectTrigger>
-              <SelectContent>
-                {scannerDepartments.map((dept) => (
-                  <SelectItem key={dept.value} value={dept.value}>{dept.label}</SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
-          <div className="space-y-2">
-            <Label>Biggest Bottleneck</Label>
-            <Select value={bottleneck} onValueChange={setBottleneck}>
-              <SelectTrigger data-testid="select-scanner-bottleneck">
-                <SelectValue placeholder="Select bottleneck" />
-              </SelectTrigger>
-              <SelectContent>
-                {scannerBottlenecks.map((b) => (
-                  <SelectItem key={b.value} value={b.value}>{b.label}</SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
-          <div className="space-y-2">
-            <Label>Monthly Volume</Label>
-            <Select value={volume} onValueChange={setVolume}>
-              <SelectTrigger data-testid="select-scanner-volume">
-                <SelectValue placeholder="Select volume" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="low">Low (&lt;1,000 items)</SelectItem>
-                <SelectItem value="medium">Medium (1,000-10,000)</SelectItem>
-                <SelectItem value="high">High (&gt;10,000)</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-        </div>
-
-        {allSelected && !showResults && (
-          <Button onClick={() => setShowResults(true)} className="w-full" data-testid="button-scanner-analyze">
-            <Search className="w-4 h-4 mr-2" />
-            Analyze Automation Opportunities
-          </Button>
-        )}
-
-        {showResults && results && (
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="space-y-6 pt-4 border-t border-border"
-          >
-            <div>
-              <h4 className="font-semibold mb-3">Top 3 Automation Candidates (Ranked by ROI)</h4>
-              <div className="space-y-3">
-                {results.candidates.map((candidate, i) => (
-                  <div key={i} className="flex items-center justify-between p-3 bg-muted/50 rounded-lg">
-                    <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold text-sm">
-                        {i + 1}
-                      </div>
-                      <div>
-                        <p className="font-medium">{candidate.name}</p>
-                        <p className="text-xs text-muted-foreground">{candidate.type}</p>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <Badge variant={candidate.roi === "High" ? "default" : "secondary"}>
-                        {candidate.roi} ROI
-                      </Badge>
-                      <Badge variant="outline">{candidate.complexity}</Badge>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-4">
-              <div className="p-4 bg-primary/10 rounded-lg border border-primary/20">
-                <p className="text-sm text-muted-foreground mb-1">Estimated Hours Saved / Month</p>
-                <p className="text-2xl font-bold text-primary">{results.hoursSaved}</p>
-              </div>
-              <div className="p-4 bg-muted/50 rounded-lg">
-                <p className="text-sm text-muted-foreground mb-1">Phase 1 (Quick Win)</p>
-                <p className="font-semibold">{results.phase1Timeline}</p>
-                <p className="text-sm text-muted-foreground">{results.phase1Cost}</p>
-              </div>
-            </div>
-
-            <Button variant="outline" onClick={() => setShowResults(false)} className="w-full">
-              <RotateCcw className="w-4 h-4 mr-2" />
-              Reset & Try Again
-            </Button>
-          </motion.div>
-        )}
-      </CardContent>
-    </Card>
-  );
-}
-
-function AutomationCostEstimator() {
-  const [automationType, setAutomationType] = useState("workflow");
-  const [systemCount, setSystemCount] = useState("1-2");
-  const [complexity, setComplexity] = useState("simple");
-  const [volumeLevel, setVolumeLevel] = useState("medium");
 
   const estimate = useMemo(() => {
     let baseCost = 8000;
@@ -731,114 +613,13 @@ function AutomationCostEstimator() {
 
     if (volumeLevel === "high") { baseCost *= 1.2; }
 
-    const lowCost = Math.round(baseCost * 0.85);
-    const highCost = Math.round(baseCost * 1.15);
-
     return {
-      lowCost,
-      highCost,
+      lowCost: Math.round(baseCost * 0.85),
+      highCost: Math.round(baseCost * 1.15),
       weeks,
       deliveryStyle: automationType === "transformation" ? "Transformation" : automationType === "bpa" ? "Program" : "Project"
     };
   }, [automationType, systemCount, complexity, volumeLevel]);
-
-  return (
-    <Card id="cost-estimator" className="bg-background border-border">
-      <CardHeader>
-        <CardTitle className="flex items-center gap-2">
-          <Calculator className="w-5 h-5 text-primary" />
-          AI Automation Cost & Timeline Estimator
-        </CardTitle>
-        <p className="text-sm text-muted-foreground">Get pricing clarity and lead qualification</p>
-      </CardHeader>
-      <CardContent className="space-y-6">
-        <div className="grid md:grid-cols-2 gap-4">
-          <div className="space-y-2">
-            <Label>Automation Type</Label>
-            <Select value={automationType} onValueChange={setAutomationType}>
-              <SelectTrigger data-testid="select-cost-type">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="workflow">Workflow Automation</SelectItem>
-                <SelectItem value="bpa">Business Process Automation (BPA)</SelectItem>
-                <SelectItem value="document">Document Automation</SelectItem>
-                <SelectItem value="email">Email Automation</SelectItem>
-                <SelectItem value="transformation">End-to-End Transformation</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-          <div className="space-y-2">
-            <Label>Number of Systems</Label>
-            <Select value={systemCount} onValueChange={setSystemCount}>
-              <SelectTrigger data-testid="select-cost-systems">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="1-2">1-2 systems</SelectItem>
-                <SelectItem value="3-5">3-5 systems</SelectItem>
-                <SelectItem value="6+">6+ systems</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-          <div className="space-y-2">
-            <Label>Decision Complexity</Label>
-            <Select value={complexity} onValueChange={setComplexity}>
-              <SelectTrigger data-testid="select-cost-complexity">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="simple">Simple (rules + AI assist)</SelectItem>
-                <SelectItem value="moderate">Moderate (AI decisions + exceptions)</SelectItem>
-                <SelectItem value="advanced">Advanced (multi-decision, adaptive)</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-          <div className="space-y-2">
-            <Label>Volume Level</Label>
-            <Select value={volumeLevel} onValueChange={setVolumeLevel}>
-              <SelectTrigger data-testid="select-cost-volume">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="low">Low</SelectItem>
-                <SelectItem value="medium">Medium</SelectItem>
-                <SelectItem value="high">High</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-        </div>
-
-        <div className="grid md:grid-cols-3 gap-4 pt-4 border-t border-border">
-          <div className="p-4 bg-primary/10 rounded-lg border border-primary/20 text-center">
-            <p className="text-sm text-muted-foreground mb-1">Estimated Cost</p>
-            <p className="text-xl font-bold text-primary">
-              ${(estimate.lowCost / 1000).toFixed(0)}K - ${(estimate.highCost / 1000).toFixed(0)}K
-            </p>
-          </div>
-          <div className="p-4 bg-muted/50 rounded-lg text-center">
-            <p className="text-sm text-muted-foreground mb-1">Timeline</p>
-            <p className="text-xl font-bold">{estimate.weeks} weeks</p>
-          </div>
-          <div className="p-4 bg-muted/50 rounded-lg text-center">
-            <p className="text-sm text-muted-foreground mb-1">Delivery Style</p>
-            <p className="text-xl font-bold">{estimate.deliveryStyle}</p>
-          </div>
-        </div>
-
-        <p className="text-xs text-muted-foreground text-center">
-          Indicative range, refined post discovery call
-        </p>
-      </CardContent>
-    </Card>
-  );
-}
-
-function BeforeAfterSimulator() {
-  const [processType, setProcessType] = useState("invoicing");
-  const [currentState, setCurrentState] = useState("manual");
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [step, setStep] = useState(0);
 
   const processSteps = useMemo(() => {
     const beforeSteps = [
@@ -857,7 +638,7 @@ function BeforeAfterSimulator() {
     return { before: beforeSteps, after: afterSteps };
   }, []);
 
-  const metrics = useMemo(() => {
+  const simulatorMetrics = useMemo(() => {
     const stateMultiplier = currentState === "manual" ? 1 : currentState === "semi" ? 0.7 : 0.5;
     return {
       stepsReduced: Math.round(60 * stateMultiplier),
@@ -875,126 +656,7 @@ function BeforeAfterSimulator() {
     }
   }, [isPlaying, processSteps]);
 
-  return (
-    <Card id="before-after" className="bg-background border-border">
-      <CardHeader>
-        <CardTitle className="flex items-center gap-2">
-          <RefreshCw className="w-5 h-5 text-primary" />
-          Before vs After Automation Simulator
-        </CardTitle>
-        <p className="text-sm text-muted-foreground">Visual understanding of your process transformation</p>
-      </CardHeader>
-      <CardContent className="space-y-6">
-        <div className="grid md:grid-cols-2 gap-4">
-          <div className="space-y-2">
-            <Label>Process Type</Label>
-            <Select value={processType} onValueChange={setProcessType}>
-              <SelectTrigger data-testid="select-simulator-process">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="invoicing">Invoicing</SelectItem>
-                <SelectItem value="support">Customer Support</SelectItem>
-                <SelectItem value="onboarding">Onboarding</SelectItem>
-                <SelectItem value="claims">Claims</SelectItem>
-                <SelectItem value="reporting">Reporting</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-          <div className="space-y-2">
-            <Label>Current State</Label>
-            <Select value={currentState} onValueChange={setCurrentState}>
-              <SelectTrigger data-testid="select-simulator-state">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="manual">Fully Manual</SelectItem>
-                <SelectItem value="semi">Semi-Automated</SelectItem>
-                <SelectItem value="disconnected">Tool-Heavy but Disconnected</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-        </div>
-
-        <div className="grid md:grid-cols-2 gap-6">
-          <div className="space-y-3">
-            <div className="flex items-center justify-between">
-              <h4 className="font-semibold text-red-400">Before</h4>
-              <Badge variant="outline" className="border-red-400/50 text-red-400">Manual</Badge>
-            </div>
-            <div className="space-y-2">
-              {processSteps.before.map((s, i) => (
-                <div
-                  key={i}
-                  className={`flex items-center gap-3 p-2 rounded-lg transition-all ${
-                    isPlaying && step === i ? "bg-red-500/20 border border-red-500/50" : "bg-muted/30"
-                  }`}
-                >
-                  <s.icon className="w-4 h-4 text-red-400" />
-                  <span className="text-sm">{s.label}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-          <div className="space-y-3">
-            <div className="flex items-center justify-between">
-              <h4 className="font-semibold text-green-400">After</h4>
-              <Badge variant="outline" className="border-green-400/50 text-green-400">AI-Powered</Badge>
-            </div>
-            <div className="space-y-2">
-              {processSteps.after.map((s, i) => (
-                <div
-                  key={i}
-                  className={`flex items-center gap-3 p-2 rounded-lg transition-all ${
-                    isPlaying && step === processSteps.before.length + 1 + i ? "bg-green-500/20 border border-green-500/50" : "bg-muted/30"
-                  }`}
-                >
-                  <s.icon className="w-4 h-4 text-green-400" />
-                  <span className="text-sm">{s.label}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        <div className="flex justify-center">
-          <Button
-            variant="outline"
-            onClick={() => { setIsPlaying(!isPlaying); if (!isPlaying) setStep(0); }}
-            data-testid="button-simulator-play"
-          >
-            {isPlaying ? <Pause className="w-4 h-4 mr-2" /> : <Play className="w-4 h-4 mr-2" />}
-            {isPlaying ? "Pause" : "Play Animation"}
-          </Button>
-        </div>
-
-        <div className="grid grid-cols-3 gap-4 pt-4 border-t border-border">
-          <div className="text-center">
-            <p className="text-2xl font-bold text-primary">{metrics.stepsReduced}%</p>
-            <p className="text-xs text-muted-foreground">Steps Reduced</p>
-          </div>
-          <div className="text-center">
-            <p className="text-2xl font-bold text-primary">{metrics.cycleTimeReduced}%</p>
-            <p className="text-xs text-muted-foreground">Cycle Time Reduced</p>
-          </div>
-          <div className="text-center">
-            <p className="text-2xl font-bold text-primary">{metrics.errorReduction}%</p>
-            <p className="text-xs text-muted-foreground">Error Reduction</p>
-          </div>
-        </div>
-      </CardContent>
-    </Card>
-  );
-}
-
-function AutomationROICalculator() {
-  const [teamSize, setTeamSize] = useState([5]);
-  const [hourlyRate, setHourlyRate] = useState([50]);
-  const [timePerTask, setTimePerTask] = useState([15]);
-  const [monthlyVolume, setMonthlyVolume] = useState([1000]);
-  const [errorRate, setErrorRate] = useState([5]);
-
-  const calculations = useMemo(() => {
+  const roiCalculations = useMemo(() => {
     const hoursPerMonth = (monthlyVolume[0] * timePerTask[0]) / 60;
     const currentMonthlyCost = hoursPerMonth * hourlyRate[0];
     const currentAnnualCost = currentMonthlyCost * 12;
@@ -1012,83 +674,9 @@ function AutomationROICalculator() {
       paybackMonths: Math.min(Math.max(paybackMonths, 1), 24),
       roi
     };
-  }, [teamSize, hourlyRate, timePerTask, monthlyVolume, errorRate]);
+  }, [hourlyRate, timePerTask, monthlyVolume, errorRate]);
 
-  return (
-    <Card id="roi-calculator" className="bg-background border-border">
-      <CardHeader>
-        <CardTitle className="flex items-center gap-2">
-          <DollarSign className="w-5 h-5 text-primary" />
-          Automation ROI & Payback Calculator
-        </CardTitle>
-        <p className="text-sm text-muted-foreground">CFO / CEO buy-in tool</p>
-      </CardHeader>
-      <CardContent className="space-y-6">
-        <div className="space-y-4">
-          <div>
-            <Label className="flex justify-between mb-2">
-              <span>Team Size</span>
-              <span className="text-primary font-semibold">{teamSize[0]} people</span>
-            </Label>
-            <Slider value={teamSize} onValueChange={setTeamSize} min={1} max={50} step={1} data-testid="slider-roi-team" />
-          </div>
-          <div>
-            <Label className="flex justify-between mb-2">
-              <span>Average Cost per Hour</span>
-              <span className="text-primary font-semibold">${hourlyRate[0]}</span>
-            </Label>
-            <Slider value={hourlyRate} onValueChange={setHourlyRate} min={20} max={150} step={5} data-testid="slider-roi-rate" />
-          </div>
-          <div>
-            <Label className="flex justify-between mb-2">
-              <span>Time Spent per Task</span>
-              <span className="text-primary font-semibold">{timePerTask[0]} minutes</span>
-            </Label>
-            <Slider value={timePerTask} onValueChange={setTimePerTask} min={5} max={60} step={5} data-testid="slider-roi-time" />
-          </div>
-          <div>
-            <Label className="flex justify-between mb-2">
-              <span>Monthly Volume</span>
-              <span className="text-primary font-semibold">{monthlyVolume[0].toLocaleString()} items</span>
-            </Label>
-            <Slider value={monthlyVolume} onValueChange={setMonthlyVolume} min={100} max={10000} step={100} data-testid="slider-roi-volume" />
-          </div>
-          <div>
-            <Label className="flex justify-between mb-2">
-              <span>Error / Rework Rate</span>
-              <span className="text-primary font-semibold">{errorRate[0]}%</span>
-            </Label>
-            <Slider value={errorRate} onValueChange={setErrorRate} min={0} max={20} step={1} data-testid="slider-roi-error" />
-          </div>
-        </div>
-
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-4 border-t border-border">
-          <div className="p-4 bg-muted/50 rounded-lg text-center">
-            <p className="text-sm text-muted-foreground mb-1">Current Annual Cost</p>
-            <p className="text-xl font-bold">${(calculations.currentAnnualCost / 1000).toFixed(0)}K</p>
-          </div>
-          <div className="p-4 bg-primary/10 rounded-lg border border-primary/20 text-center">
-            <p className="text-sm text-muted-foreground mb-1">Annual Savings</p>
-            <p className="text-xl font-bold text-primary">${(calculations.totalAnnualSavings / 1000).toFixed(0)}K</p>
-          </div>
-          <div className="p-4 bg-green-500/10 rounded-lg border border-green-500/20 text-center">
-            <p className="text-sm text-muted-foreground mb-1">Payback Period</p>
-            <p className="text-xl font-bold text-green-400">{calculations.paybackMonths} months</p>
-          </div>
-          <div className="p-4 bg-cyan-500/10 rounded-lg border border-cyan-500/20 text-center">
-            <p className="text-sm text-muted-foreground mb-1">First Year ROI</p>
-            <p className="text-xl font-bold text-cyan-400">{calculations.roi}%</p>
-          </div>
-        </div>
-      </CardContent>
-    </Card>
-  );
-}
-
-function AutomationReadinessAssessment() {
-  const [answers, setAnswers] = useState<Record<string, "strongly-agree" | "agree" | "neutral" | "disagree" | "strongly-disagree">>({});
-
-  const score = useMemo(() => {
+  const readinessScore = useMemo(() => {
     let total = 0;
     let maxScore = 0;
     readinessQuestions.forEach((q) => {
@@ -1105,91 +693,445 @@ function AutomationReadinessAssessment() {
   const allAnswered = Object.keys(answers).length === readinessQuestions.length;
 
   const getMaturityLevel = () => {
-    if (score >= 75) return { level: "Intelligent", color: "text-green-400", recommendation: "Ready for enterprise automation program" };
-    if (score >= 55) return { level: "Automated", color: "text-cyan-400", recommendation: "BPA or document automation recommended" };
-    if (score >= 35) return { level: "Assisted", color: "text-amber-400", recommendation: "Start with one workflow pilot" };
+    if (readinessScore >= 75) return { level: "Intelligent", color: "text-green-400", recommendation: "Ready for enterprise automation program" };
+    if (readinessScore >= 55) return { level: "Automated", color: "text-cyan-400", recommendation: "BPA or document automation recommended" };
+    if (readinessScore >= 35) return { level: "Assisted", color: "text-amber-400", recommendation: "Start with one workflow pilot" };
     return { level: "Manual", color: "text-red-400", recommendation: "Focus on process documentation first" };
   };
 
-  const result = getMaturityLevel();
+  const maturityResult = getMaturityLevel();
+  const allSelected = industry && department && bottleneck && volume;
 
   return (
-    <Card id="readiness-assessment" className="bg-background border-border">
+    <Card id="interactive-tools" className="bg-muted/30 border-border">
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
-          <HelpCircle className="w-5 h-5 text-primary" />
-          Automation Readiness & Maturity Assessment
+          <Calculator className="w-5 h-5 text-primary" />
+          AI Automation Cost & ROI Calculator
         </CardTitle>
-        <p className="text-sm text-muted-foreground">Lead qualification + expectation setting</p>
+        <p className="text-sm text-muted-foreground">
+          Identify opportunities, estimate costs, visualize transformation, and calculate ROI
+        </p>
       </CardHeader>
-      <CardContent className="space-y-6">
-        {readinessQuestions.map((q) => (
-          <div key={q.id} className="space-y-3">
-            <p className="font-medium">{q.question}</p>
-            <RadioGroup
-              value={answers[q.id] || ""}
-              onValueChange={(v) => setAnswers({ ...answers, [q.id]: v as typeof answers[string] })}
-              className="flex flex-wrap gap-2"
-            >
-              {[
-                { value: "strongly-agree", label: "Strongly Agree" },
-                { value: "agree", label: "Agree" },
-                { value: "neutral", label: "Neutral" },
-                { value: "disagree", label: "Disagree" },
-                { value: "strongly-disagree", label: "Strongly Disagree" }
-              ].map((option) => (
-                <div key={option.value} className="flex items-center space-x-2">
-                  <RadioGroupItem value={option.value} id={`${q.id}-${option.value}`} data-testid={`radio-readiness-${q.id}-${option.value}`} />
-                  <Label htmlFor={`${q.id}-${option.value}`} className="text-sm cursor-pointer">{option.label}</Label>
+      <CardContent>
+        <Tabs value={activeTab} onValueChange={setActiveTab}>
+          <TabsList className="grid grid-cols-5 mb-6">
+            <TabsTrigger value="scanner" data-testid="tab-automation-scanner">
+              <Search className="w-4 h-4 mr-2 hidden sm:inline" />
+              Scanner
+            </TabsTrigger>
+            <TabsTrigger value="cost" data-testid="tab-automation-cost">
+              <DollarSign className="w-4 h-4 mr-2 hidden sm:inline" />
+              Cost
+            </TabsTrigger>
+            <TabsTrigger value="simulator" data-testid="tab-automation-simulator">
+              <RefreshCw className="w-4 h-4 mr-2 hidden sm:inline" />
+              Before/After
+            </TabsTrigger>
+            <TabsTrigger value="roi" data-testid="tab-automation-roi">
+              <TrendingUp className="w-4 h-4 mr-2 hidden sm:inline" />
+              ROI
+            </TabsTrigger>
+            <TabsTrigger value="readiness" data-testid="tab-automation-readiness">
+              <HelpCircle className="w-4 h-4 mr-2 hidden sm:inline" />
+              Readiness
+            </TabsTrigger>
+          </TabsList>
+
+          <TabsContent value="scanner" className="space-y-6">
+            <div className="grid md:grid-cols-2 gap-4">
+              <div className="space-y-2">
+                <Label>Industry</Label>
+                <Select value={industry} onValueChange={setIndustry}>
+                  <SelectTrigger data-testid="select-scanner-industry">
+                    <SelectValue placeholder="Select your industry" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {scannerIndustries.map((ind) => (
+                      <SelectItem key={ind.value} value={ind.value}>{ind.label}</SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+              <div className="space-y-2">
+                <Label>Department</Label>
+                <Select value={department} onValueChange={setDepartment}>
+                  <SelectTrigger data-testid="select-scanner-department">
+                    <SelectValue placeholder="Select department" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {scannerDepartments.map((dept) => (
+                      <SelectItem key={dept.value} value={dept.value}>{dept.label}</SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+              <div className="space-y-2">
+                <Label>Biggest Bottleneck</Label>
+                <Select value={bottleneck} onValueChange={setBottleneck}>
+                  <SelectTrigger data-testid="select-scanner-bottleneck">
+                    <SelectValue placeholder="Select bottleneck" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {scannerBottlenecks.map((b) => (
+                      <SelectItem key={b.value} value={b.value}>{b.label}</SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+              <div className="space-y-2">
+                <Label>Monthly Volume</Label>
+                <Select value={volume} onValueChange={setVolume}>
+                  <SelectTrigger data-testid="select-scanner-volume">
+                    <SelectValue placeholder="Select volume" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="low">Low (&lt;1,000 items)</SelectItem>
+                    <SelectItem value="medium">Medium (1,000-10,000)</SelectItem>
+                    <SelectItem value="high">High (&gt;10,000)</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+            </div>
+
+            {allSelected && !showResults && (
+              <Button onClick={() => setShowResults(true)} className="w-full" data-testid="button-scanner-analyze">
+                <Search className="w-4 h-4 mr-2" />
+                Analyze Automation Opportunities
+              </Button>
+            )}
+
+            {showResults && scannerResults && (
+              <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="space-y-6 pt-4 border-t border-border">
+                <div>
+                  <h4 className="font-semibold mb-3">Top 3 Automation Candidates (Ranked by ROI)</h4>
+                  <div className="space-y-3">
+                    {scannerResults.candidates.map((candidate, i) => (
+                      <div key={i} className="flex items-center justify-between p-3 bg-muted/50 rounded-lg">
+                        <div className="flex items-center gap-3">
+                          <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold text-sm">{i + 1}</div>
+                          <div>
+                            <p className="font-medium">{candidate.name}</p>
+                            <p className="text-xs text-muted-foreground">{candidate.type}</p>
+                          </div>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <Badge variant={candidate.roi === "High" ? "default" : "secondary"}>{candidate.roi} ROI</Badge>
+                          <Badge variant="outline">{candidate.complexity}</Badge>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              ))}
-            </RadioGroup>
-          </div>
-        ))}
 
-        {allAnswered && (
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="space-y-4 pt-6 border-t border-border"
-          >
-            <div className="flex items-center justify-between">
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div className="p-4 bg-primary/10 rounded-lg border border-primary/20">
+                    <p className="text-sm text-muted-foreground mb-1">Estimated Hours Saved / Month</p>
+                    <p className="text-2xl font-bold text-primary">{scannerResults.hoursSaved}</p>
+                  </div>
+                  <div className="p-4 bg-muted/50 rounded-lg">
+                    <p className="text-sm text-muted-foreground mb-1">Phase 1 (Quick Win)</p>
+                    <p className="font-semibold">{scannerResults.phase1Timeline}</p>
+                    <p className="text-sm text-muted-foreground">{scannerResults.phase1Cost}</p>
+                  </div>
+                </div>
+
+                <Button variant="outline" onClick={() => setShowResults(false)} className="w-full">
+                  <RotateCcw className="w-4 h-4 mr-2" />
+                  Reset & Try Again
+                </Button>
+              </motion.div>
+            )}
+          </TabsContent>
+
+          <TabsContent value="cost" className="space-y-6">
+            <div className="grid md:grid-cols-2 gap-4">
+              <div className="space-y-2">
+                <Label>Automation Type</Label>
+                <Select value={automationType} onValueChange={setAutomationType}>
+                  <SelectTrigger data-testid="select-cost-type">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="workflow">Workflow Automation</SelectItem>
+                    <SelectItem value="bpa">Business Process Automation (BPA)</SelectItem>
+                    <SelectItem value="document">Document Automation</SelectItem>
+                    <SelectItem value="email">Email Automation</SelectItem>
+                    <SelectItem value="transformation">End-to-End Transformation</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+              <div className="space-y-2">
+                <Label>Number of Systems</Label>
+                <Select value={systemCount} onValueChange={setSystemCount}>
+                  <SelectTrigger data-testid="select-cost-systems">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="1-2">1-2 systems</SelectItem>
+                    <SelectItem value="3-5">3-5 systems</SelectItem>
+                    <SelectItem value="6+">6+ systems</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+              <div className="space-y-2">
+                <Label>Decision Complexity</Label>
+                <Select value={complexity} onValueChange={setComplexity}>
+                  <SelectTrigger data-testid="select-cost-complexity">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="simple">Simple (rules + AI assist)</SelectItem>
+                    <SelectItem value="moderate">Moderate (AI decisions + exceptions)</SelectItem>
+                    <SelectItem value="advanced">Advanced (multi-decision, adaptive)</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+              <div className="space-y-2">
+                <Label>Volume Level</Label>
+                <Select value={volumeLevel} onValueChange={setVolumeLevel}>
+                  <SelectTrigger data-testid="select-cost-volume">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="low">Low</SelectItem>
+                    <SelectItem value="medium">Medium</SelectItem>
+                    <SelectItem value="high">High</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-4 pt-4 border-t border-border">
+              <div className="p-4 bg-primary/10 rounded-lg border border-primary/20 text-center">
+                <p className="text-sm text-muted-foreground mb-1">Estimated Cost</p>
+                <p className="text-xl font-bold text-primary">
+                  ${(estimate.lowCost / 1000).toFixed(0)}K - ${(estimate.highCost / 1000).toFixed(0)}K
+                </p>
+              </div>
+              <div className="p-4 bg-muted/50 rounded-lg text-center">
+                <p className="text-sm text-muted-foreground mb-1">Timeline</p>
+                <p className="text-xl font-bold">{estimate.weeks} weeks</p>
+              </div>
+              <div className="p-4 bg-muted/50 rounded-lg text-center">
+                <p className="text-sm text-muted-foreground mb-1">Delivery Style</p>
+                <p className="text-xl font-bold">{estimate.deliveryStyle}</p>
+              </div>
+            </div>
+            <p className="text-xs text-muted-foreground text-center">Indicative range, refined post discovery call</p>
+          </TabsContent>
+
+          <TabsContent value="simulator" className="space-y-6">
+            <div className="grid md:grid-cols-2 gap-4">
+              <div className="space-y-2">
+                <Label>Process Type</Label>
+                <Select value={processType} onValueChange={setProcessType}>
+                  <SelectTrigger data-testid="select-simulator-process">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="invoicing">Invoicing</SelectItem>
+                    <SelectItem value="support">Customer Support</SelectItem>
+                    <SelectItem value="onboarding">Onboarding</SelectItem>
+                    <SelectItem value="claims">Claims</SelectItem>
+                    <SelectItem value="reporting">Reporting</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+              <div className="space-y-2">
+                <Label>Current State</Label>
+                <Select value={currentState} onValueChange={setCurrentState}>
+                  <SelectTrigger data-testid="select-simulator-state">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="manual">Fully Manual</SelectItem>
+                    <SelectItem value="semi">Semi-Automated</SelectItem>
+                    <SelectItem value="disconnected">Tool-Heavy but Disconnected</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="space-y-3">
+                <div className="flex items-center justify-between">
+                  <h4 className="font-semibold text-red-400">Before</h4>
+                  <Badge variant="outline" className="border-red-400/50 text-red-400">Manual</Badge>
+                </div>
+                <div className="space-y-2">
+                  {processSteps.before.map((s, i) => (
+                    <div key={i} className={`flex items-center gap-3 p-2 rounded-lg transition-all ${isPlaying && step === i ? "bg-red-500/20 border border-red-500/50" : "bg-muted/30"}`}>
+                      <s.icon className="w-4 h-4 text-red-400" />
+                      <span className="text-sm">{s.label}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="space-y-3">
+                <div className="flex items-center justify-between">
+                  <h4 className="font-semibold text-green-400">After</h4>
+                  <Badge variant="outline" className="border-green-400/50 text-green-400">AI-Powered</Badge>
+                </div>
+                <div className="space-y-2">
+                  {processSteps.after.map((s, i) => (
+                    <div key={i} className={`flex items-center gap-3 p-2 rounded-lg transition-all ${isPlaying && step === processSteps.before.length + 1 + i ? "bg-green-500/20 border border-green-500/50" : "bg-muted/30"}`}>
+                      <s.icon className="w-4 h-4 text-green-400" />
+                      <span className="text-sm">{s.label}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <div className="flex justify-center">
+              <Button variant="outline" onClick={() => { setIsPlaying(!isPlaying); if (!isPlaying) setStep(0); }} data-testid="button-simulator-play">
+                {isPlaying ? <Pause className="w-4 h-4 mr-2" /> : <Play className="w-4 h-4 mr-2" />}
+                {isPlaying ? "Pause" : "Play Animation"}
+              </Button>
+            </div>
+
+            <div className="grid grid-cols-3 gap-4 pt-4 border-t border-border">
+              <div className="text-center">
+                <p className="text-2xl font-bold text-primary">{simulatorMetrics.stepsReduced}%</p>
+                <p className="text-xs text-muted-foreground">Steps Reduced</p>
+              </div>
+              <div className="text-center">
+                <p className="text-2xl font-bold text-primary">{simulatorMetrics.cycleTimeReduced}%</p>
+                <p className="text-xs text-muted-foreground">Cycle Time Reduced</p>
+              </div>
+              <div className="text-center">
+                <p className="text-2xl font-bold text-primary">{simulatorMetrics.errorReduction}%</p>
+                <p className="text-xs text-muted-foreground">Error Reduction</p>
+              </div>
+            </div>
+          </TabsContent>
+
+          <TabsContent value="roi" className="space-y-6">
+            <div className="space-y-4">
               <div>
-                <p className="text-sm text-muted-foreground">Readiness Score</p>
-                <p className={`text-3xl font-bold ${result.color}`}>{score}/100</p>
+                <Label className="flex justify-between mb-2">
+                  <span>Team Size</span>
+                  <span className="text-primary font-semibold">{teamSize[0]} people</span>
+                </Label>
+                <Slider value={teamSize} onValueChange={setTeamSize} min={1} max={50} step={1} data-testid="slider-roi-team" />
               </div>
-              <div className="text-right">
-                <p className="text-sm text-muted-foreground">Maturity Level</p>
-                <p className={`text-xl font-bold ${result.color}`}>{result.level}</p>
+              <div>
+                <Label className="flex justify-between mb-2">
+                  <span>Average Cost per Hour</span>
+                  <span className="text-primary font-semibold">${hourlyRate[0]}</span>
+                </Label>
+                <Slider value={hourlyRate} onValueChange={setHourlyRate} min={20} max={200} step={5} data-testid="slider-roi-rate" />
+              </div>
+              <div>
+                <Label className="flex justify-between mb-2">
+                  <span>Minutes per Task</span>
+                  <span className="text-primary font-semibold">{timePerTask[0]} min</span>
+                </Label>
+                <Slider value={timePerTask} onValueChange={setTimePerTask} min={1} max={60} step={1} data-testid="slider-roi-time" />
+              </div>
+              <div>
+                <Label className="flex justify-between mb-2">
+                  <span>Monthly Task Volume</span>
+                  <span className="text-primary font-semibold">{monthlyVolume[0].toLocaleString()}</span>
+                </Label>
+                <Slider value={monthlyVolume} onValueChange={setMonthlyVolume} min={100} max={50000} step={100} data-testid="slider-roi-volume" />
+              </div>
+              <div>
+                <Label className="flex justify-between mb-2">
+                  <span>Current Error Rate</span>
+                  <span className="text-primary font-semibold">{errorRate[0]}%</span>
+                </Label>
+                <Slider value={errorRate} onValueChange={setErrorRate} min={0} max={20} step={1} data-testid="slider-roi-error" />
               </div>
             </div>
 
-            <Progress value={score} className="h-2" />
-
-            <div className="p-4 bg-muted/50 rounded-lg">
-              <p className="font-semibold mb-2">Recommended Next Step</p>
-              <p className="text-muted-foreground">{result.recommendation}</p>
-            </div>
-
-            <div className="grid grid-cols-3 gap-4 text-center text-sm">
-              <div className="p-3 bg-muted/30 rounded-lg">
-                <p className="text-muted-foreground">Pilot</p>
-                <p className="font-semibold">$6K-$15K</p>
-                <p className="text-xs text-muted-foreground">3-6 weeks</p>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-4 border-t border-border">
+              <div className="p-4 bg-muted/50 rounded-lg text-center">
+                <p className="text-sm text-muted-foreground mb-1">Current Annual Cost</p>
+                <p className="text-xl font-bold">${(roiCalculations.currentAnnualCost / 1000).toFixed(0)}K</p>
               </div>
-              <div className="p-3 bg-muted/30 rounded-lg">
-                <p className="text-muted-foreground">Program</p>
-                <p className="font-semibold">$25K-$60K</p>
-                <p className="text-xs text-muted-foreground">2-3 months</p>
+              <div className="p-4 bg-primary/10 rounded-lg border border-primary/20 text-center">
+                <p className="text-sm text-muted-foreground mb-1">Annual Savings</p>
+                <p className="text-xl font-bold text-primary">${(roiCalculations.totalAnnualSavings / 1000).toFixed(0)}K</p>
               </div>
-              <div className="p-3 bg-muted/30 rounded-lg">
-                <p className="text-muted-foreground">Transformation</p>
-                <p className="font-semibold">$60K+</p>
-                <p className="text-xs text-muted-foreground">3-6 months</p>
+              <div className="p-4 bg-green-500/10 rounded-lg border border-green-500/20 text-center">
+                <p className="text-sm text-muted-foreground mb-1">Payback Period</p>
+                <p className="text-xl font-bold text-green-400">{roiCalculations.paybackMonths} months</p>
+              </div>
+              <div className="p-4 bg-cyan-500/10 rounded-lg border border-cyan-500/20 text-center">
+                <p className="text-sm text-muted-foreground mb-1">First Year ROI</p>
+                <p className="text-xl font-bold text-cyan-400">{roiCalculations.roi}%</p>
               </div>
             </div>
-          </motion.div>
-        )}
+          </TabsContent>
+
+          <TabsContent value="readiness" className="space-y-6">
+            {readinessQuestions.map((q) => (
+              <div key={q.id} className="space-y-3">
+                <p className="font-medium">{q.question}</p>
+                <RadioGroup
+                  value={answers[q.id] || ""}
+                  onValueChange={(v) => setAnswers({ ...answers, [q.id]: v as typeof answers[string] })}
+                  className="flex flex-wrap gap-2"
+                >
+                  {[
+                    { value: "strongly-agree", label: "Strongly Agree" },
+                    { value: "agree", label: "Agree" },
+                    { value: "neutral", label: "Neutral" },
+                    { value: "disagree", label: "Disagree" },
+                    { value: "strongly-disagree", label: "Strongly Disagree" }
+                  ].map((option) => (
+                    <div key={option.value} className="flex items-center space-x-2">
+                      <RadioGroupItem value={option.value} id={`${q.id}-${option.value}`} data-testid={`radio-readiness-${q.id}-${option.value}`} />
+                      <Label htmlFor={`${q.id}-${option.value}`} className="text-sm cursor-pointer">{option.label}</Label>
+                    </div>
+                  ))}
+                </RadioGroup>
+              </div>
+            ))}
+
+            {allAnswered && (
+              <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="space-y-4 pt-6 border-t border-border">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-sm text-muted-foreground">Readiness Score</p>
+                    <p className={`text-3xl font-bold ${maturityResult.color}`}>{readinessScore}/100</p>
+                  </div>
+                  <div className="text-right">
+                    <p className="text-sm text-muted-foreground">Maturity Level</p>
+                    <p className={`text-xl font-bold ${maturityResult.color}`}>{maturityResult.level}</p>
+                  </div>
+                </div>
+
+                <Progress value={readinessScore} className="h-2" />
+
+                <div className="p-4 bg-muted/50 rounded-lg">
+                  <p className="font-semibold mb-2">Recommended Next Step</p>
+                  <p className="text-muted-foreground">{maturityResult.recommendation}</p>
+                </div>
+
+                <div className="grid grid-cols-3 gap-4 text-center text-sm">
+                  <div className="p-3 bg-muted/30 rounded-lg">
+                    <p className="text-muted-foreground">Pilot</p>
+                    <p className="font-semibold">$6K-$15K</p>
+                    <p className="text-xs text-muted-foreground">3-6 weeks</p>
+                  </div>
+                  <div className="p-3 bg-muted/30 rounded-lg">
+                    <p className="text-muted-foreground">Program</p>
+                    <p className="font-semibold">$25K-$60K</p>
+                    <p className="text-xs text-muted-foreground">2-3 months</p>
+                  </div>
+                  <div className="p-3 bg-muted/30 rounded-lg">
+                    <p className="text-muted-foreground">Transformation</p>
+                    <p className="font-semibold">$60K+</p>
+                    <p className="text-xs text-muted-foreground">3-6 months</p>
+                  </div>
+                </div>
+              </motion.div>
+            )}
+          </TabsContent>
+        </Tabs>
       </CardContent>
     </Card>
   );
@@ -1873,8 +1815,8 @@ export default function AIAutomationPage() {
       </section>
 
       {/* Interactive Tools Section */}
-      <section id="interactive-tools" className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+      <section className="py-20">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -1893,16 +1835,7 @@ export default function AIAutomationPage() {
             </p>
           </motion.div>
 
-          <div className="grid lg:grid-cols-2 gap-8">
-            <AutomationOpportunityScanner />
-            <AutomationCostEstimator />
-            <BeforeAfterSimulator />
-            <AutomationROICalculator />
-          </div>
-
-          <div className="mt-8">
-            <AutomationReadinessAssessment />
-          </div>
+          <AutomationCalculator />
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
