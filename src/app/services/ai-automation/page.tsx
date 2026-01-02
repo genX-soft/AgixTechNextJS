@@ -83,6 +83,7 @@ const fadeInUp = {
   transition: { duration: 0.5 }
 };
 
+
 const companySizes = [
   { value: "1-10", label: "1-10 employees" },
   { value: "11-50", label: "11-50 employees" },
@@ -1004,6 +1005,7 @@ export default function AIAutomationPage() {
 
   useEffect(() => {
     setMounted(true);
+    window.scrollTo(0, 0);
   }, []);
 
   const handleFormSubmit = async () => {
