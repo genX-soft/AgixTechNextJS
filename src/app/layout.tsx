@@ -28,6 +28,13 @@ export const metadata: Metadata = {
   authors: [{ name: 'AGIX Technologies' }],
   creator: 'AGIX Technologies',
   publisher: 'AGIX Technologies',
+  icons: {
+    icon: [
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+    ],
+    shortcut: '/favicon.svg',
+    apple: '/apple-touch-icon.png',
+  },
   openGraph: {
     type: 'website',
     locale: 'en_US',
