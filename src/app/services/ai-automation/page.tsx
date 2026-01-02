@@ -922,87 +922,115 @@ function AutomationCalculator() {
           </TabsContent>
 
           <TabsContent value="simulator" className="space-y-6">
-            <div className="grid md:grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <Label>Process Type</Label>
-                <Select value={processType} onValueChange={setProcessType}>
-                  <SelectTrigger data-testid="select-simulator-process">
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="invoicing">Invoicing</SelectItem>
-                    <SelectItem value="support">Customer Support</SelectItem>
-                    <SelectItem value="onboarding">Onboarding</SelectItem>
-                    <SelectItem value="claims">Claims</SelectItem>
-                    <SelectItem value="reporting">Reporting</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-              <div className="space-y-2">
-                <Label>Current State</Label>
-                <Select value={currentState} onValueChange={setCurrentState}>
-                  <SelectTrigger data-testid="select-simulator-state">
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="manual">Fully Manual</SelectItem>
-                    <SelectItem value="semi">Semi-Automated</SelectItem>
-                    <SelectItem value="disconnected">Tool-Heavy but Disconnected</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
+            <div className="p-4 bg-primary/5 rounded-lg border border-primary/20 mb-4">
+              <p className="text-sm text-muted-foreground">
+                <span className="font-semibold text-foreground">What is this?</span> This simulator shows how your current manual workflow transforms with AI automation. 
+                Select your process type below to see a side-by-side comparison of the steps involved today versus after automation.
+              </p>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-6">
-              <div className="space-y-3">
-                <div className="flex items-center justify-between">
-                  <h4 className="font-semibold text-red-400">Before</h4>
-                  <Badge variant="outline" className="border-red-400/50 text-red-400">Manual</Badge>
+            <div className="space-y-4">
+              <h4 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide">Step 1: Define Your Scenario</h4>
+              <div className="grid md:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <Label>What process do you want to automate?</Label>
+                  <Select value={processType} onValueChange={setProcessType}>
+                    <SelectTrigger data-testid="select-simulator-process">
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="invoicing">Invoicing & Billing</SelectItem>
+                      <SelectItem value="support">Customer Support Tickets</SelectItem>
+                      <SelectItem value="onboarding">Employee/Client Onboarding</SelectItem>
+                      <SelectItem value="claims">Claims Processing</SelectItem>
+                      <SelectItem value="reporting">Data Reporting & Analysis</SelectItem>
+                    </SelectContent>
+                  </Select>
                 </div>
                 <div className="space-y-2">
-                  {processSteps.before.map((s, i) => (
-                    <div key={i} className={`flex items-center gap-3 p-2 rounded-lg transition-all ${isPlaying && step === i ? "bg-red-500/20 border border-red-500/50" : "bg-muted/30"}`}>
-                      <s.icon className="w-4 h-4 text-red-400" />
-                      <span className="text-sm">{s.label}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <div className="space-y-3">
-                <div className="flex items-center justify-between">
-                  <h4 className="font-semibold text-green-400">After</h4>
-                  <Badge variant="outline" className="border-green-400/50 text-green-400">AI-Powered</Badge>
-                </div>
-                <div className="space-y-2">
-                  {processSteps.after.map((s, i) => (
-                    <div key={i} className={`flex items-center gap-3 p-2 rounded-lg transition-all ${isPlaying && step === processSteps.before.length + 1 + i ? "bg-green-500/20 border border-green-500/50" : "bg-muted/30"}`}>
-                      <s.icon className="w-4 h-4 text-green-400" />
-                      <span className="text-sm">{s.label}</span>
-                    </div>
-                  ))}
+                  <Label>How automated is it currently?</Label>
+                  <Select value={currentState} onValueChange={setCurrentState}>
+                    <SelectTrigger data-testid="select-simulator-state">
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="manual">Fully Manual (spreadsheets, paper)</SelectItem>
+                      <SelectItem value="semi">Semi-Automated (some tools, manual steps)</SelectItem>
+                      <SelectItem value="disconnected">Tool-Heavy but Disconnected (multiple systems)</SelectItem>
+                    </SelectContent>
+                  </Select>
                 </div>
               </div>
             </div>
 
-            <div className="flex justify-center">
-              <Button variant="outline" onClick={() => { setIsPlaying(!isPlaying); if (!isPlaying) setStep(0); }} data-testid="button-simulator-play">
-                {isPlaying ? <Pause className="w-4 h-4 mr-2" /> : <Play className="w-4 h-4 mr-2" />}
-                {isPlaying ? "Pause" : "Play Animation"}
-              </Button>
+            <div className="space-y-4 pt-4 border-t border-border">
+              <div className="flex items-center justify-between">
+                <h4 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide">Step 2: Compare Workflows</h4>
+                <Button variant="outline" size="sm" onClick={() => { setIsPlaying(!isPlaying); if (!isPlaying) setStep(0); }} data-testid="button-simulator-play">
+                  {isPlaying ? <Pause className="w-4 h-4 mr-2" /> : <Play className="w-4 h-4 mr-2" />}
+                  {isPlaying ? "Pause" : "Watch Transformation"}
+                </Button>
+              </div>
+              
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between gap-2">
+                    <div>
+                      <h5 className="font-semibold text-red-400">Today: Manual Process</h5>
+                      <p className="text-xs text-muted-foreground">Time-consuming, error-prone steps</p>
+                    </div>
+                    <Badge variant="outline" className="border-red-400/50 text-red-400 shrink-0">Current</Badge>
+                  </div>
+                  <div className="space-y-2">
+                    {processSteps.before.map((s, i) => (
+                      <div key={i} className={`flex items-center gap-3 p-3 rounded-lg transition-all ${isPlaying && step === i ? "bg-red-500/20 border border-red-500/50 scale-[1.02]" : "bg-muted/30"}`}>
+                        <div className="flex items-center justify-center w-6 h-6 rounded-full bg-red-500/20 text-red-400 text-xs font-bold shrink-0">{i + 1}</div>
+                        <s.icon className="w-4 h-4 text-red-400 shrink-0" />
+                        <span className="text-sm">{s.label}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between gap-2">
+                    <div>
+                      <h5 className="font-semibold text-green-400">After: AI-Powered</h5>
+                      <p className="text-xs text-muted-foreground">Faster, smarter, fewer errors</p>
+                    </div>
+                    <Badge variant="outline" className="border-green-400/50 text-green-400 shrink-0">Automated</Badge>
+                  </div>
+                  <div className="space-y-2">
+                    {processSteps.after.map((s, i) => (
+                      <div key={i} className={`flex items-center gap-3 p-3 rounded-lg transition-all ${isPlaying && step === processSteps.before.length + 1 + i ? "bg-green-500/20 border border-green-500/50 scale-[1.02]" : "bg-muted/30"}`}>
+                        <div className="flex items-center justify-center w-6 h-6 rounded-full bg-green-500/20 text-green-400 text-xs font-bold shrink-0">{i + 1}</div>
+                        <s.icon className="w-4 h-4 text-green-400 shrink-0" />
+                        <span className="text-sm">{s.label}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <div className="grid grid-cols-3 gap-4 pt-4 border-t border-border">
-              <div className="text-center">
-                <p className="text-2xl font-bold text-primary">{simulatorMetrics.stepsReduced}%</p>
-                <p className="text-xs text-muted-foreground">Steps Reduced</p>
-              </div>
-              <div className="text-center">
-                <p className="text-2xl font-bold text-primary">{simulatorMetrics.cycleTimeReduced}%</p>
-                <p className="text-xs text-muted-foreground">Cycle Time Reduced</p>
-              </div>
-              <div className="text-center">
-                <p className="text-2xl font-bold text-primary">{simulatorMetrics.errorReduction}%</p>
-                <p className="text-xs text-muted-foreground">Error Reduction</p>
+            <div className="space-y-3 pt-4 border-t border-border">
+              <h4 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide">Step 3: Expected Impact</h4>
+              <p className="text-xs text-muted-foreground mb-2">Based on typical {processType} automation projects with {currentState === "manual" ? "fully manual" : currentState === "semi" ? "semi-automated" : "disconnected tool"} starting point:</p>
+              <div className="grid grid-cols-3 gap-4">
+                <div className="p-4 bg-primary/10 rounded-lg border border-primary/20 text-center">
+                  <p className="text-2xl font-bold text-primary">{simulatorMetrics.stepsReduced}%</p>
+                  <p className="text-xs text-muted-foreground">Fewer Manual Steps</p>
+                  <p className="text-xs text-muted-foreground/70 mt-1">Less human involvement needed</p>
+                </div>
+                <div className="p-4 bg-cyan-500/10 rounded-lg border border-cyan-500/20 text-center">
+                  <p className="text-2xl font-bold text-cyan-400">{simulatorMetrics.cycleTimeReduced}%</p>
+                  <p className="text-xs text-muted-foreground">Faster Completion</p>
+                  <p className="text-xs text-muted-foreground/70 mt-1">Hours become minutes</p>
+                </div>
+                <div className="p-4 bg-green-500/10 rounded-lg border border-green-500/20 text-center">
+                  <p className="text-2xl font-bold text-green-400">{simulatorMetrics.errorReduction}%</p>
+                  <p className="text-xs text-muted-foreground">Fewer Errors</p>
+                  <p className="text-xs text-muted-foreground/70 mt-1">AI reduces mistakes</p>
+                </div>
               </div>
             </div>
           </TabsContent>
