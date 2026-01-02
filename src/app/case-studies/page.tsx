@@ -1,39 +1,11 @@
 'use client'
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MainHeader } from "@/components/main-header";
 import { MainFooter } from "@/components/main-footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-
-function CompanyLogo({ company }: { company: string }) {
-  const getGradient = (name: string) => {
-    const colors = [
-      'from-emerald-500 to-teal-600',
-      'from-blue-500 to-indigo-600',
-      'from-purple-500 to-pink-600',
-      'from-orange-500 to-red-600',
-      'from-cyan-500 to-blue-600',
-    ];
-    const index = name.charCodeAt(0) % colors.length;
-    return colors[index];
-  };
-
-  const getInitials = (name: string) => {
-    const words = name.trim().split(/\s+/);
-    if (words.length === 1) {
-      return words[0].substring(0, 2).toUpperCase();
-    }
-    return words.slice(0, 2).map(w => w.charAt(0).toUpperCase()).join('');
-  };
-
-  return (
-    <div className={`w-12 h-12 rounded-lg bg-gradient-to-br ${getGradient(company)} flex items-center justify-center shrink-0`}>
-      <span className="text-sm font-bold text-white">{getInitials(company)}</span>
-    </div>
-  );
-}
 import {
   ArrowRight,
   Building2,
@@ -55,6 +27,26 @@ import {
   Home,
   TrendingUp,
 } from "lucide-react";
+
+function getGradient(name: string) {
+  const colors = [
+    'from-emerald-500 to-teal-600',
+    'from-blue-500 to-indigo-600',
+    'from-purple-500 to-pink-600',
+    'from-orange-500 to-red-600',
+    'from-cyan-500 to-blue-600',
+  ];
+  const index = name.charCodeAt(0) % colors.length;
+  return colors[index];
+}
+
+function getInitials(name: string) {
+  const words = name.trim().split(/\s+/);
+  if (words.length === 1) {
+    return words[0].substring(0, 2).toUpperCase();
+  }
+  return words.slice(0, 2).map(w => w.charAt(0).toUpperCase()).join('');
+}
 
 const categories = [
   { id: "all", label: "All Case Studies", icon: Sparkles },
@@ -554,6 +546,11 @@ const categoryMapping: Record<string, string> = {
 
 export default function CaseStudiesPage() {
   const [activeFilter, setActiveFilter] = useState("all");
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const filteredCaseStudies = activeFilter === "all"
     ? caseStudies
@@ -652,20 +649,20 @@ export default function CaseStudiesPage() {
 
           {/* Case Study Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <AnimatePresence mode="popLayout">
-              {filteredCaseStudies.map((cs, index) => (
-                <motion.div
-                  key={cs.company}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ delay: index * 0.05 }}
-                >
+            {mounted && filteredCaseStudies.map((cs, index) => (
+              <motion.div
+                key={cs.company}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.05 }}
+              >
                   <Card className="h-full hover-elevate border-border/50 group" data-testid={`card-case-study-${cs.company.toLowerCase().replace(/\s+/g, '-')}`}>
                     <CardContent className="p-6 space-y-4">
                       {/* Header: Logo + Company + Industry */}
                       <div className="flex items-start gap-4">
-                        <CompanyLogo company={cs.company} />
+                        <div className={`w-12 h-12 rounded-lg bg-gradient-to-br ${getGradient(cs.company)} flex items-center justify-center shrink-0`}>
+                          <span className="text-sm font-bold text-white">{getInitials(cs.company)}</span>
+                        </div>
                         <div className="flex-1 min-w-0">
                           <h3 className="font-bold text-lg truncate">{cs.company}</h3>
                           <div className={`flex items-center gap-1 text-sm ${getIndustryColor(cs.industry)}`}>
@@ -740,9 +737,8 @@ export default function CaseStudiesPage() {
                       </div>
                     </CardContent>
                   </Card>
-                </motion.div>
-              ))}
-            </AnimatePresence>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
