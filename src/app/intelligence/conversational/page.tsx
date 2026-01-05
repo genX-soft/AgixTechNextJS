@@ -1542,6 +1542,7 @@ export default function ConversationalIntelligencePage() {
           />
         </div>
       </section>
+      <MainFooter />
       <StickyCTA />
     </div>
   );

@@ -1544,6 +1544,7 @@ export default function EnterpriseKnowledgePage() {
       <FAQSection />
       <ClosingValueSection />
       <FinalCTASection />
+      <MainFooter />
     </div>
   );
 }

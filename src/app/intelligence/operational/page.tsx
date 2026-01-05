@@ -1233,6 +1233,7 @@ export default function OperationalIntelligencePage() {
           />
         </div>
       </section>
+      <MainFooter />
       <StickyCTA />
     </div>
   );

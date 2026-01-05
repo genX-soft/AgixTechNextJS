@@ -1964,6 +1964,7 @@ export default function DecisionIntelligencePage() {
       <FAQSection />
       <MakeBetterDecisionsSection />
       <FinalCTASection />
+      <MainFooter />
     </div>
   );
 }
