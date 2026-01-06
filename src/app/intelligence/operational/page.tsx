@@ -1007,7 +1007,7 @@ function InteractiveToolsSection() {
                             </Card>
                             <div className="flex gap-3">
                               <Button variant="outline" onClick={resetMaturity} data-testid="button-maturity-reset">Retake</Button>
-                              <Button className="flex-1 bg-orange-500 hover:bg-orange-600" data-testid="button-maturity-guidance">Get Personalized Guidance <ArrowRight className="w-4 h-4 ml-2" /></Button>
+                              <Button className="flex-1 bg-orange-500 hover:bg-orange-600" onClick={() => scrollToSection("cta-form")} data-testid="button-maturity-guidance">Get Personalized Guidance <ArrowRight className="w-4 h-4 ml-2" /></Button>
                             </div>
                           </>
                         );
