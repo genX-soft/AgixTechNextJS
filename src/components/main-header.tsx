@@ -319,17 +319,12 @@ export function MainHeader() {
               </div>
 
               <NavigationMenuItem>
-                <NavigationMenuLink asChild>
-                  <a
-                    href="https://agixtech.com/blog/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-sm font-medium transition-colors hover-elevate focus:ring-2 focus:ring-primary focus:ring-offset-2"
-                    data-testid="link-nav-insights"
-                  >
-                    Insights
-                  </a>
-                </NavigationMenuLink>
+                <span
+                  className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-sm font-medium text-muted-foreground cursor-not-allowed opacity-50"
+                  data-testid="link-nav-insights"
+                >
+                  Insights
+                </span>
               </NavigationMenuItem>
 
             </NavigationMenuList>
@@ -401,11 +396,12 @@ export function MainHeader() {
                 items={corporateItems.map((i) => ({ title: i.title, href: i.href }))}
                 onItemClick={closeMobileMenu}
               />
-              <MobileMenuItem 
-                title="Insights" 
-                href="https://agixtech.com/blog/" 
-                onItemClick={closeMobileMenu} 
-              />
+              <span
+                className="block px-4 py-3 text-sm font-medium text-muted-foreground cursor-not-allowed opacity-50"
+                data-testid="link-mobile-insights"
+              >
+                Insights (Coming Soon)
+              </span>
 
               <div className="pt-4 border-t border-border mt-4 space-y-3">
                 <a
