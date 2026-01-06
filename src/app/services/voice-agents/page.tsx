@@ -73,6 +73,8 @@ import {
   HelpCircle
 } from "lucide-react";
 import { trackEvent } from "@/lib/analytics";
+import { useToast } from "@/hooks/use-toast";
+import { submitLead } from "@/lib/lead-submission";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -1039,11 +1041,9 @@ function ROICalculator() {
           <p className="text-sm text-muted-foreground mb-4">
             Want a precise cost & ROI breakdown for your business?
           </p>
-          <Button size="lg" asChild>
-            <a href="/schedule-consultation" data-testid="button-calculator-consultation">
+          <Button size="lg" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} data-testid="button-calculator-consultation">
               Get a Custom Voice Agent Cost Breakdown
               <ArrowRight className="w-4 h-4 ml-2" />
-            </a>
           </Button>
         </div>
       </CardContent>
@@ -1054,16 +1054,63 @@ function ROICalculator() {
 export default function AIVoiceAgents() {
   const [selectedCapability, setSelectedCapability] = useState(voiceCapabilities[0]);
   const [activeLayer, setActiveLayer] = useState(0);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [demoFormData, setDemoFormData] = useState({
     name: "",
     email: "",
     company: "",
     useCase: ""
   });
+  const { toast } = useToast();
 
-  const handleDemoSubmit = (e: React.FormEvent) => {
+  const handleDemoSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    trackEvent("cta_click", { event_category: "voice_demo_request", event_label: demoFormData.useCase });
+    if (!demoFormData.name || !demoFormData.email) {
+      toast({
+        title: "Required fields missing",
+        description: "Please provide your name and email.",
+        variant: "destructive"
+      });
+      return;
+    }
+    setIsSubmitting(true);
+    try {
+      const result = await submitLead(
+        {
+          name: demoFormData.name,
+          email: demoFormData.email,
+          company: demoFormData.company,
+          challenges: ["Voice AI"],
+          industry: "voice-agents",
+        },
+        {
+          formType: "voice-demo-request",
+          source: "/services/voice-agents",
+          ctaId: "button-schedule-demo",
+          ctaText: "Schedule Voice Demo",
+          ctaLocation: "/services/voice-agents",
+          additionalMetadata: {
+            useCase: demoFormData.useCase
+          }
+        }
+      );
+      if (result.success) {
+        trackEvent("cta_click", { event_category: "voice_demo_request", event_label: demoFormData.useCase });
+        toast({
+          title: "Demo request received!",
+          description: "We'll contact you within 24 hours to schedule your demo.",
+        });
+        setDemoFormData({ name: "", email: "", company: "", useCase: "" });
+      }
+    } catch {
+      toast({
+        title: "Something went wrong",
+        description: "Please try again or contact us directly.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -1211,9 +1258,9 @@ export default function AIVoiceAgents() {
                         </SelectContent>
                       </Select>
                     </div>
-                    <Button type="submit" className="w-full bg-cyan-600 hover:bg-cyan-700 text-white border-cyan-600" size="lg" data-testid="button-schedule-demo">
-                      Schedule Voice Demo
-                      <ArrowRight className="w-4 h-4 ml-2" />
+                    <Button type="submit" className="w-full bg-cyan-600 hover:bg-cyan-700 text-white border-cyan-600" size="lg" disabled={isSubmitting} data-testid="button-schedule-demo">
+                      {isSubmitting ? "Submitting..." : "Schedule Voice Demo"}
+                      {!isSubmitting && <ArrowRight className="w-4 h-4 ml-2" />}
                     </Button>
                   </form>
                 </CardContent>
@@ -1995,11 +2042,9 @@ export default function AIVoiceAgents() {
               ))}
             </div>
 
-            <Button size="lg" className="text-lg px-8 py-6" asChild>
-              <a href="/schedule-consultation" data-testid="button-final-cta">
+            <Button size="lg" className="text-lg px-8 py-6" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} data-testid="button-final-cta">
                 Schedule Your AI Voice Agent Demo
                 <ArrowRight className="w-5 h-5 ml-2" />
-              </a>
             </Button>
           </motion.div>
         </div>
