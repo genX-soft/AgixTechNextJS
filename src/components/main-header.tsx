@@ -1,7 +1,8 @@
 'use client'
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Phone, ChevronDown, Sparkles, Brain, Bot, MessageSquare, Workflow, Database, LineChart, Eye, Code, Building2, Briefcase, BookOpen, Users, Lightbulb, HeartPulse, Home, Landmark, ShoppingCart, Layers, Truck, GraduationCap, Info, Newspaper, Mail, Rocket } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -169,6 +170,8 @@ export function MainHeader() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [corporateOpen, setCorporateOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const pathname = usePathname();
+  const router = useRouter();
 
   useEffect(() => {
     setMounted(true);
@@ -178,6 +181,17 @@ export function MainHeader() {
   }, []);
 
   const closeMobileMenu = () => setMobileMenuOpen(false);
+
+  const handleConsultationClick = useCallback((e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (pathname === '/') {
+      const contactSection = document.querySelector('#contact');
+      if (contactSection) {
+        e.preventDefault();
+        contactSection.scrollIntoView({ behavior: 'smooth' });
+        closeMobileMenu();
+      }
+    }
+  }, [pathname]);
 
   return (
     <header
@@ -339,7 +353,11 @@ export function MainHeader() {
               <span>+1 857-365-6167</span>
             </a>
             <Button asChild className="hidden md:inline-flex">
-              <a href="/corporate/contact" data-testid="button-schedule-consultation">
+              <a 
+                href={pathname === '/' ? '#contact' : '/corporate/contact'} 
+                onClick={handleConsultationClick}
+                data-testid="button-schedule-consultation"
+              >
                 Schedule Free Consultation
               </a>
             </Button>
@@ -405,7 +423,11 @@ export function MainHeader() {
                 </a>
                 <div className="px-4">
                   <Button asChild className="w-full h-14 text-base font-semibold">
-                    <a href="/corporate/contact" data-testid="button-mobile-schedule-consultation">
+                    <a 
+                      href={pathname === '/' ? '#contact' : '/corporate/contact'} 
+                      onClick={handleConsultationClick}
+                      data-testid="button-mobile-schedule-consultation"
+                    >
                       Schedule Free Consultation
                     </a>
                   </Button>
