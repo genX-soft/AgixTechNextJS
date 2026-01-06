@@ -927,7 +927,7 @@ function InteractiveToolsSection() {
                             </div>
                             <div className="flex gap-3">
                               <Button variant="outline" onClick={resetFinder} data-testid="button-finder-reset">Start Over</Button>
-                              <Button className="flex-1 bg-orange-500 hover:bg-orange-600" data-testid="button-finder-discuss">Discuss With Us <ArrowRight className="w-4 h-4 ml-2" /></Button>
+                              <Button className="flex-1 bg-orange-500 hover:bg-orange-600" onClick={() => scrollToSection("cta-form")} data-testid="button-finder-discuss">Discuss With Us <ArrowRight className="w-4 h-4 ml-2" /></Button>
                             </div>
                           </>
                         );
