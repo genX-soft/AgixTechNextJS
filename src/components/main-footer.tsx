@@ -69,7 +69,7 @@ const intelligence = [
   { title: "Enterprise Knowledge", href: "/intelligence/enterprise-knowledge" },
 ];
 
-const corporate = [
+const corporate: { title: string; href: string; external?: boolean }[] = [
   { title: "About Us", href: "/corporate/about" },
   { title: "Case Studies", href: "/case-studies" },
   { title: "Contact Us", href: "/corporate/contact" },
