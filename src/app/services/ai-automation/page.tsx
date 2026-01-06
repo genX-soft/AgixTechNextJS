@@ -1005,7 +1005,11 @@ export default function AIAutomationPage() {
 
   useEffect(() => {
     setMounted(true);
-    window.scrollTo(0, 0);
+    // Ensure scroll to top happens after render
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    // Fallback for some browsers
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
   }, []);
 
   const handleFormSubmit = async () => {
