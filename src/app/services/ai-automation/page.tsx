@@ -1005,11 +1005,16 @@ export default function AIAutomationPage() {
 
   useEffect(() => {
     setMounted(true);
-    // Ensure scroll to top happens after render
-    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-    // Fallback for some browsers
-    document.documentElement.scrollTop = 0;
-    document.body.scrollTop = 0;
+    // Disable browser scroll restoration
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    // Use requestAnimationFrame to ensure scroll happens after render and Next.js routing
+    requestAnimationFrame(() => {
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+    });
   }, []);
 
   const handleFormSubmit = async () => {
