@@ -339,7 +339,7 @@ export function MainHeader() {
               <span>+1 857-365-6167</span>
             </a>
             <Button asChild className="hidden md:inline-flex">
-              <a href="#contact" data-testid="button-schedule-consultation">
+              <a href="/corporate/contact" data-testid="button-schedule-consultation">
                 Schedule Free Consultation
               </a>
             </Button>
@@ -405,7 +405,7 @@ export function MainHeader() {
                 </a>
                 <div className="px-4">
                   <Button asChild className="w-full h-14 text-base font-semibold">
-                    <a href="#contact" data-testid="button-mobile-schedule-consultation">
+                    <a href="/corporate/contact" data-testid="button-mobile-schedule-consultation">
                       Schedule Free Consultation
                     </a>
                   </Button>

@@ -72,9 +72,9 @@ const intelligence = [
 const corporate = [
   { title: "About Us", href: "/corporate/about" },
   { title: "Case Studies", href: "/case-studies" },
-  { title: "Contact Us", href: "/contact" },
-  { title: "Career", href: "/careers" },
-  { title: "News & Media", href: "/news" },
+  { title: "Contact Us", href: "/corporate/contact" },
+  { title: "Careers", href: "/corporate/careers" },
+  { title: "News & Media", href: "https://agixtech.com/newsroom/", external: true },
   { title: "Content Engine", href: "/tools/content-engine" },
 ];
 
@@ -346,9 +346,9 @@ export function MainFooter() {
                 <Phone className="w-4 h-4 text-primary" />
                 +1 857-365-6167
               </a>
-              <a href="mailto:hello@agixtech.com" className="flex items-center gap-2 text-sm text-slate-400 hover:text-white transition-colors">
+              <a href="mailto:santosh@agixtech.com" className="flex items-center gap-2 text-sm text-slate-400 hover:text-white transition-colors">
                 <Mail className="w-4 h-4 text-primary" />
-                hello@agixtech.com
+                santosh@agixtech.com
               </a>
             </div>
             <div className="flex items-center gap-2 mt-6">
@@ -411,9 +411,15 @@ export function MainFooter() {
             <ul className="space-y-2.5">
               {corporate.map((link) => (
                 <li key={link.href + link.title}>
-                  <Link href={link.href} className="text-sm text-slate-400 hover:text-white transition-colors">
-                    {link.title}
-                  </Link>
+                  {link.external ? (
+                    <a href={link.href} target="_blank" rel="noopener noreferrer" className="text-sm text-slate-400 hover:text-white transition-colors">
+                      {link.title}
+                    </a>
+                  ) : (
+                    <Link href={link.href} className="text-sm text-slate-400 hover:text-white transition-colors">
+                      {link.title}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>
@@ -442,8 +448,8 @@ export function MainFooter() {
             <div className="flex flex-wrap items-center gap-4 text-xs text-slate-500">
               <p>&copy; 2025 AGIX Technologies. All rights reserved.</p>
               <span className="hidden md:inline">|</span>
-              <Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
-              <Link href="/terms" className="hover:text-white transition-colors">Terms of Service</Link>
+              <a href="https://agixtech.com/privacy-policy/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Privacy Policy</a>
+              <a href="https://agixtech.com/terms-of-service/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Terms of Service</a>
               <Link href="/tools/content-engine" className="hover:text-white transition-colors" data-testid="link-footer-content-engine">Content Engine</Link>
               <Link href="/admin/leads" className="hover:text-white transition-colors" data-testid="link-footer-admin">Admin</Link>
             </div>
