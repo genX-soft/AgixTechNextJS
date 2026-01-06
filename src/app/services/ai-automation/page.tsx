@@ -1710,11 +1710,9 @@ export default function AIAutomationPage() {
             <p className="text-lg text-muted-foreground mb-4">
               Want a personalized automation roadmap based on your specific needs?
             </p>
-            <Button size="lg" asChild>
-              <a href="/schedule-consultation" data-testid="button-automation-tools-cta">
-                Get Your Custom Automation Assessment
-                <ArrowRight className="w-4 h-4 ml-2" />
-              </a>
+            <Button size="lg" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} data-testid="button-automation-tools-cta">
+              Get Your Custom Automation Assessment
+              <ArrowRight className="w-4 h-4 ml-2" />
             </Button>
           </motion.div>
         </div>

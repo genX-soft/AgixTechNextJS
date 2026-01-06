@@ -19,24 +19,8 @@ export default function NotFound() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
         >
-          <h1 className="text-8xl md:text-9xl font-bold text-white mb-4 flex items-center justify-center gap-2">
-            <span>4</span>
-            <span className="relative">
-              <span className="absolute inset-0 flex items-center justify-center">
-                <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" className="md:w-24 md:h-24">
-                  <circle cx="40" cy="40" r="35" stroke="white" strokeWidth="6" fill="none" />
-                  <path d="M25 55 L55 25" stroke="url(#gradient)" strokeWidth="6" strokeLinecap="round" />
-                  <path d="M25 25 L55 55" stroke="url(#gradient)" strokeWidth="6" strokeLinecap="round" />
-                  <defs>
-                    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stopColor="#EC4899" />
-                      <stop offset="100%" stopColor="#8B5CF6" />
-                    </linearGradient>
-                  </defs>
-                </svg>
-              </span>
-            </span>
-            <span>4</span>
+          <h1 className="text-8xl md:text-9xl font-bold text-white mb-4">
+            404
           </h1>
         </motion.div>
 
