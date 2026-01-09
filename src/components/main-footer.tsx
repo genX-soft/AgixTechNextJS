@@ -1,5 +1,6 @@
 'use client'
 
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { 
@@ -12,9 +13,11 @@ import {
   Lock,
   Award,
   Sparkles,
-  Star
+  Star,
+  ExternalLink
 } from "lucide-react";
 import { SiFacebook, SiX, SiLinkedin, SiYoutube, SiG2, SiTrustpilot } from "react-icons/si";
+import { getNewsroomPosts, WPNewsroomItem, stripHtmlTags, formatDate } from "@/lib/insights/wordpress";
 
 const awards = [
   { title: "Top AI Development Agency", source: "Clutch", year: "2025", logo: "clutch" },
@@ -74,7 +77,6 @@ const corporate: { title: string; href: string; external?: boolean }[] = [
   { title: "Case Studies", href: "/case-studies" },
   { title: "Contact Us", href: "/corporate/contact" },
   { title: "Careers", href: "/corporate/careers" },
-  { title: "News & Media", href: "https://agixtech.com/newsroom/", external: true },
   { title: "Content Engine", href: "/tools/content-engine" },
 ];
 
@@ -106,6 +108,96 @@ const socialLinks = [
   { title: "LinkedIn", href: "https://linkedin.com/company/agixtech", icon: SiLinkedin },
   { title: "YouTube", href: "https://youtube.com/@agixtech", icon: SiYoutube },
 ];
+
+function NewsroomSection() {
+  const [newsItems, setNewsItems] = useState<WPNewsroomItem[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchNewsroom() {
+      try {
+        const items = await getNewsroomPosts({ perPage: 4 });
+        setNewsItems(items);
+      } catch (error) {
+        console.error("Failed to load newsroom:", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchNewsroom();
+  }, []);
+
+  if (loading) {
+    return (
+      <div>
+        <h4 className="text-sm font-semibold uppercase tracking-wider text-white mb-4">News & Media</h4>
+        <div className="space-y-2.5">
+          {[1, 2, 3].map((i) => (
+            <div key={i} className="animate-pulse">
+              <div className="h-3 bg-slate-700 rounded w-full mb-1" />
+              <div className="h-2 bg-slate-800 rounded w-16" />
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  if (newsItems.length === 0) {
+    return (
+      <div>
+        <h4 className="text-sm font-semibold uppercase tracking-wider text-white mb-4">News & Media</h4>
+        <a 
+          href="https://agixtech.com/newsroom/" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          className="text-sm text-slate-400 hover:text-white transition-colors flex items-center gap-1"
+          data-testid="link-newsroom-external"
+        >
+          Visit Newsroom
+          <ExternalLink className="w-3 h-3" />
+        </a>
+      </div>
+    );
+  }
+
+  return (
+    <div>
+      <h4 className="text-sm font-semibold uppercase tracking-wider text-white mb-4">News & Media</h4>
+      <ul className="space-y-3">
+        {newsItems.map((item) => (
+          <li key={item.id}>
+            <a 
+              href={item.link} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="group block"
+              data-testid={`link-newsroom-${item.id}`}
+            >
+              <span 
+                className="text-sm text-slate-400 hover:text-white transition-colors line-clamp-2 group-hover:text-white"
+                dangerouslySetInnerHTML={{ __html: item.title.rendered }}
+              />
+              <span className="text-xs text-slate-600 mt-0.5 block">
+                {formatDate(item.date)}
+              </span>
+            </a>
+          </li>
+        ))}
+      </ul>
+      <a 
+        href="https://agixtech.com/newsroom/" 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        className="text-xs text-primary hover:text-primary/80 transition-colors mt-3 inline-flex items-center gap-1"
+        data-testid="link-newsroom-all"
+      >
+        View All News
+        <ExternalLink className="w-3 h-3" />
+      </a>
+    </div>
+  );
+}
 
 function AwardBadge({ award }: { award: typeof awards[0] }) {
   const getBadgeConfig = () => {
@@ -330,7 +422,7 @@ export function MainFooter() {
       </div>
 
       <div className="max-w-7xl mx-auto px-6 py-12">
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7 gap-8">
           <div className="col-span-2 md:col-span-3 lg:col-span-1">
             <Link href="/" className="flex items-center gap-2 mb-4">
               <div className="w-9 h-9 bg-gradient-to-br from-primary to-primary/70 rounded-md flex items-center justify-center">
@@ -424,6 +516,8 @@ export function MainFooter() {
               ))}
             </ul>
           </div>
+
+          <NewsroomSection />
 
           <div>
             <h4 className="text-sm font-semibold uppercase tracking-wider text-white mb-4">Offices</h4>

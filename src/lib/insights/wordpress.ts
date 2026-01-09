@@ -161,3 +161,46 @@ export function estimateReadTime(content: string): number {
   const words = text.split(/\s+/).length;
   return Math.max(1, Math.ceil(words / 200));
 }
+
+// Newsroom API types and functions
+export interface WPNewsroomItem {
+  id: number;
+  date: string;
+  slug: string;
+  link: string;
+  title: {
+    rendered: string;
+  };
+  excerpt?: {
+    rendered: string;
+  };
+  content?: {
+    rendered: string;
+  };
+}
+
+export async function getNewsroomPosts(params?: {
+  perPage?: number;
+}): Promise<WPNewsroomItem[]> {
+  try {
+    const searchParams = new URLSearchParams();
+    searchParams.set("per_page", String(params?.perPage || 5));
+    
+    const response = await fetch(`${WP_API_BASE}/newsroom?${searchParams.toString()}`, {
+      headers: {
+        "Accept": "application/json",
+      },
+      next: { revalidate: 3600 }, // Cache for 1 hour
+    });
+
+    if (!response.ok) {
+      console.error(`Failed to fetch newsroom: ${response.status}`);
+      return [];
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error("Error fetching newsroom:", error);
+    return [];
+  }
+}
