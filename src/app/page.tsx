@@ -2734,8 +2734,220 @@ function ContactSection() {
 // MAIN PAGE
 // ============================================
 export default function Home() {
+  const jsonLdOrg = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://agixtech.com/#organization",
+        "name": "AGIX Technologies",
+        "url": "https://agixtech.com/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://agixtech.com/wp-content/uploads/agix-logo.png"
+        },
+        "description": "Agix Technologies is an AI Systems Engineering and Agentic Intelligence company helping enterprises architect, deploy, and scale autonomous AI systems for measurable business outcomes.",
+        "foundingDate": "2024",
+        "founders": [
+          {
+            "@type": "Person",
+            "name": "Santosh Singh"
+          }
+        ],
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+1 857-365-6167",
+          "contactType": "customer support",
+          "areaServed": "Worldwide",
+          "availableLanguage": ["English"]
+        },
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "99 Derby Street",
+          "addressLocality": "Hingham",
+          "addressRegion": "MA",
+          "postalCode": "02043",
+          "addressCountry": "US"
+        },
+        "sameAs": [
+          "https://www.linkedin.com/company/agixtech",
+          "https://twitter.com/agixtech",
+          "https://www.facebook.com/agixtech"
+        ],
+        "areaServed": "Worldwide",
+        "foundingLocation": "Hingham, Massachusetts, United States",
+        "knowsAbout": [
+          "AI Systems Engineering",
+          "Agentic Intelligence",
+          "Autonomous AI Systems",
+          "Enterprise AI Architecture",
+          "AI Agents",
+          "Multi-Agent Systems",
+          "LLM Engineering",
+          "AI Orchestration",
+          "Responsible AI",
+          "Scalable AI Infrastructure"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://agixtech.com/#website",
+        "url": "https://agixtech.com/",
+        "name": "AGIX Technologies",
+        "alternateName": "AgixTech",
+        "description": "Agix Technologies is an AI Systems Engineering and Agentic Intelligence company that designs, builds, and deploys enterprise-grade autonomous AI systems.",
+        "publisher": {
+          "@id": "https://agixtech.com/#organization"
+        },
+        "inLanguage": "en",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://agixtech.com/?s={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://agixtech.com/#webpage",
+        "url": "https://agixtech.com/",
+        "name": "AGIX Technologies – Enterprise AI & Knowledge Intelligence Solutions",
+        "description": "AGIX Technologies helps enterprises design, build, and scale trusted AI systems, knowledge intelligence platforms, and intelligent automation solutions.",
+        "isPartOf": {
+          "@id": "https://agixtech.com/#website"
+        },
+        "about": {
+          "@id": "https://agixtech.com/#organization"
+        },
+        "primaryImageOfPage": {
+          "@type": "ImageObject",
+          "url": "https://agixtech.com/wp-content/uploads/agix-home-banner.png"
+        },
+        "inLanguage": "en",
+        "datePublished": "2024-01-01",
+        "dateModified": "2026-01-08",
+        "publisher": {
+          "@id": "https://agixtech.com/#organization"
+        }
+      }
+    ]
+  };
+
+  const jsonLdBreadcrumb = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "@id": "https://agixtech.com/#breadcrumb",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Homepage",
+        "item": "https://agixtech.com/"
+      }
+    ]
+  };
+
+  const jsonLdServices = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "@id": "https://agixtech.com/#services",
+    "name": "AGIX Technologies AI Services",
+    "itemListElement": [
+      {
+        "@type": "Service",
+        "name": "AI Automation Services",
+        "description": "AI automation services that streamline enterprise workflows, reduce operational costs, and improve efficiency using intelligent decision-making systems.",
+        "provider": {
+          "@type": "Organization",
+          "@id": "https://agixtech.com/#organization"
+        },
+        "serviceType": "AI Automation Services"
+      },
+      {
+        "@type": "Service",
+        "name": "AI Voice Agents",
+        "description": "AI-powered voice agents that enable natural, real-time voice interactions for customer support, sales, and enterprise operations.",
+        "provider": {
+          "@type": "Organization",
+          "@id": "https://agixtech.com/#organization"
+        },
+        "serviceType": "Voice AI Agents"
+      },
+      {
+        "@type": "Service",
+        "name": "Conversational AI Chatbots",
+        "description": "Conversational AI chatbots designed to deliver accurate, context-aware, and scalable customer and enterprise interactions across channels.",
+        "provider": {
+          "@type": "Organization",
+          "@id": "https://agixtech.com/#organization"
+        },
+        "serviceType": "Conversational AI Chatbots"
+      },
+      {
+        "@type": "Service",
+        "name": "Agentic AI Systems",
+        "description": "Agentic AI systems that autonomously reason, plan, and execute tasks across complex enterprise environments with governance and control.",
+        "provider": {
+          "@type": "Organization",
+          "@id": "https://agixtech.com/#organization"
+        },
+        "serviceType": "Agentic AI System"
+      },
+      {
+        "@type": "Service",
+        "name": "RAG Services",
+        "description": "Retrieval-Augmented Generation services that connect large language models with enterprise data to deliver accurate, grounded, and explainable AI outputs.",
+        "provider": {
+          "@type": "Organization",
+          "@id": "https://agixtech.com/#organization"
+        },
+        "serviceType": "Retrieval-Augmented Generation"
+      },
+      {
+        "@type": "Service",
+        "name": "Predictive Analytics AI",
+        "description": "Predictive analytics AI solutions that forecast trends, detect risks, and enable data-driven decision-making using advanced machine learning models.",
+        "provider": {
+          "@type": "Organization",
+          "@id": "https://agixtech.com/#organization"
+        },
+        "serviceType": "Predictive Analytics Services"
+      },
+      {
+        "@type": "Service",
+        "name": "Computer Vision Solutions",
+        "description": "Computer vision solutions that analyze images and video to automate inspection, recognition, monitoring, and visual intelligence tasks.",
+        "provider": {
+          "@type": "Organization",
+          "@id": "https://agixtech.com/#organization"
+        },
+        "serviceType": "Computer Vision Solutions"
+      },
+      {
+        "@type": "Service",
+        "name": "Custom AI Product Development Services",
+        "description": "Custom AI Product Development Services for enterprises building production-ready AI products, including model development, agentic workflows, system integration, deployment, and ongoing governance at scale.",
+        "provider": {
+          "@type": "Organization",
+          "@id": "https://agixtech.com/#organization"
+        },
+        "serviceType": "Custom AI Product Development Services"
+      }
+    ]
+  };
   return (
     <div className="min-h-screen bg-background">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdOrg) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdBreadcrumb) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdServices) }}
+      />
       <MainHeader />
       <main>
         <HeroSection />

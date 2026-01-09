@@ -18,12 +18,12 @@ const spaceGrotesk = Space_Grotesk({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://agix.ai'),
+  metadataBase: new URL('https://agixtech.com/'),
   title: {
-    default: 'AGIX Technologies - AI & Intelligent Automation Solutions',
+    default: 'AI Systems Engineering & Agentic Intelligence Company | Agix Technologies',
     template: '%s | AGIX Technologies',
   },
-  description: 'Transform your business with enterprise AI automation. AGIX delivers intelligent automation, agentic AI systems, voice agents, and custom AI solutions.',
+  description: 'AI Systems Engineering & Agentic Intelligence company helping enterprises design, deploy, and scale autonomous AI systems that deliver measurable ROI.',
   keywords: ['AI automation', 'enterprise AI', 'intelligent automation', 'AI automation services for business', 'enterprise AI systems', 'AI workflow automation company'],
   authors: [{ name: 'AGIX Technologies' }],
   creator: 'AGIX Technologies',
@@ -39,10 +39,10 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://agix.ai',
+    url: 'https://agixtech.com/',
     siteName: 'AGIX Technologies',
-    title: 'AGIX Technologies - AI & Intelligent Automation Solutions',
-    description: 'Transform your business with enterprise AI automation. AGIX delivers intelligent automation, agentic AI systems, voice agents, and custom AI solutions.',
+    title: 'Enterprise AI Systems Engineering & Agentic Intelligence | Agix Technologies',
+    description: 'Enterprise-grade AI Systems Engineering and Agentic Intelligence solutions spanning strategy, architecture, and deployment that drive real business outcomes.',
     images: [
       {
         url: '/og-image.png',
@@ -54,8 +54,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'AGIX Technologies - AI & Intelligent Automation Solutions',
-    description: 'Transform your business with enterprise AI automation. AGIX delivers intelligent automation, agentic AI systems, voice agents, and custom AI solutions.',
+    title: 'AI Systems Engineering & Agentic Intelligence Company | Agix Technologies',
+    description: 'We build enterprise AI systems and agentic intelligence solutions that move from strategy and system design to scalable, production-grade, ROI-driven deployment.',
     images: ['/og-image.png'],
   },
   robots: {
@@ -88,6 +88,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+        
       </head>
       <body className={`${inter.variable} ${spaceGrotesk.variable} font-sans`} suppressHydrationWarning>
         <Providers>
