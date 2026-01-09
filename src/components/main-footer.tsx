@@ -448,8 +448,8 @@ export function MainFooter() {
             <div className="flex flex-wrap items-center gap-4 text-xs text-slate-500">
               <p>&copy; {new Date().getFullYear()} AGIX Technologies. All rights reserved.</p>
               <span className="hidden md:inline">|</span>
-              <a href="https://agixtech.com/privacy-policy/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Privacy Policy</a>
-              <a href="https://agixtech.com/terms-of-service/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Terms of Service</a>
+              <Link href="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link>
+              <Link href="/terms-of-service" className="hover:text-white transition-colors">Terms of Service</Link>
               <Link href="/tools/content-engine" className="hover:text-white transition-colors" data-testid="link-footer-content-engine">Content Engine</Link>
               <Link href="/admin/leads" className="hover:text-white transition-colors" data-testid="link-footer-admin">Admin</Link>
             </div>
