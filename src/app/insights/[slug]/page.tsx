@@ -10,6 +10,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
+import "../wordpress-content.css";
 import { 
   Clock, 
   Calendar, 
@@ -233,7 +234,7 @@ export default function InsightArticlePage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="prose prose-lg dark:prose-invert max-w-none mb-12"
+            className="wp-content max-w-none mb-12"
             dangerouslySetInnerHTML={{ __html: post.content.rendered }}
           />
 
