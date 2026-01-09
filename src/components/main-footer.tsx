@@ -440,7 +440,7 @@ export function MainFooter() {
         <div className="max-w-7xl mx-auto px-6 py-5">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="flex flex-wrap items-center gap-4 text-xs text-slate-500">
-              <p>&copy; 2025 AGIX Technologies. All rights reserved.</p>
+              <p>&copy; 2026 AGIX Technologies. All rights reserved.</p>
               <span className="hidden md:inline">|</span>
               <Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
               <Link href="/terms" className="hover:text-white transition-colors">Terms of Service</Link>
