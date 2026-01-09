@@ -319,12 +319,13 @@ export function MainHeader() {
               </div>
 
               <NavigationMenuItem>
-                <span
-                  className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-sm font-medium text-muted-foreground cursor-not-allowed opacity-50"
+                <a
+                  href="/insights"
+                  className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-sm font-medium transition-colors hover:text-foreground"
                   data-testid="link-nav-insights"
                 >
                   Insights
-                </span>
+                </a>
               </NavigationMenuItem>
 
             </NavigationMenuList>
@@ -396,12 +397,14 @@ export function MainHeader() {
                 items={corporateItems.map((i) => ({ title: i.title, href: i.href }))}
                 onItemClick={closeMobileMenu}
               />
-              <span
-                className="block px-4 py-3 text-sm font-medium text-muted-foreground cursor-not-allowed opacity-50"
+              <a
+                href="/insights"
+                className="block px-4 py-3 text-sm font-medium transition-colors hover:text-foreground"
+                onClick={closeMobileMenu}
                 data-testid="link-mobile-insights"
               >
-                Insights (Coming Soon)
-              </span>
+                Insights
+              </a>
 
               <div className="pt-4 border-t border-border mt-4 space-y-3">
                 <a
