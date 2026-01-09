@@ -75,7 +75,6 @@ export async function getPosts(params?: {
   }
 
   const response = await fetch(`${WP_API_BASE}/posts?${searchParams.toString()}`, {
-    next: { revalidate: 300 },
     headers: {
       "Accept": "application/json",
     },
@@ -98,7 +97,6 @@ export async function getPostBySlug(slug: string): Promise<WPPost | null> {
   searchParams.set("slug", slug);
 
   const response = await fetch(`${WP_API_BASE}/posts?${searchParams.toString()}`, {
-    next: { revalidate: 300 },
     headers: {
       "Accept": "application/json",
     },
@@ -114,7 +112,6 @@ export async function getPostBySlug(slug: string): Promise<WPPost | null> {
 
 export async function getCategories(): Promise<WPCategory[]> {
   const response = await fetch(`${WP_API_BASE}/categories?per_page=100`, {
-    next: { revalidate: 3600 },
     headers: {
       "Accept": "application/json",
     },
