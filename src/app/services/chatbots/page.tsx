@@ -1011,7 +1011,7 @@ function ROICalculator() {
                 <div className="mt-6 pt-4 border-t border-border">
                   <p className="text-sm text-muted-foreground">
                     This is a preliminary recommendation based on your selections. 
-                    <a href="/schedule-consultation" className="text-primary hover:underline ml-1">Schedule a consultation</a> for a detailed analysis.
+                    <a href="/corporate/contact" className="text-primary hover:underline ml-1">Schedule a consultation</a> for a detailed analysis.
                   </p>
                 </div>
               </motion.div>
@@ -1031,7 +1031,7 @@ function ROICalculator() {
             Want an exact cost & ROI for your use case?
           </p>
           <Button size="lg" asChild>
-            <a href="/schedule-consultation" data-testid="button-chatbot-calculator-cta">
+            <a href="/corporate/contact" data-testid="button-chatbot-calculator-cta">
               Get a Custom Conversational AI Cost Breakdown
               <ArrowRight className="w-4 h-4 ml-2" />
             </a>
@@ -1055,6 +1055,7 @@ export default function ConversationalAIChatbots() {
   const handleDemoSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     trackEvent("cta_click", { event_category: "chatbot_demo_request", event_label: demoFormData.useCase });
+    window.location.href = "/corporate/contact";
   };
 
   return (
@@ -1858,7 +1859,7 @@ export default function ConversationalAIChatbots() {
             </div>
 
             <Button size="lg" className="text-lg px-8 py-6" asChild>
-              <a href="/schedule-consultation" data-testid="button-chatbot-final-cta">
+              <a href="/corporate/contact" data-testid="button-chatbot-final-cta">
                 Request a Conversational AI Demo
                 <ArrowRight className="w-5 h-5 ml-2" />
               </a>
