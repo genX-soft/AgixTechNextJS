@@ -74,6 +74,8 @@ import {
   RefreshCw
 } from "lucide-react";
 import { trackEvent } from "@/lib/analytics";
+import { submitLead } from "@/lib/lead-submission";
+import { useToast } from "@/hooks/use-toast";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -1051,11 +1053,55 @@ export default function ConversationalAIChatbots() {
     company: "",
     useCase: ""
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
 
-  const handleDemoSubmit = (e: React.FormEvent) => {
+  const handleDemoSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (!demoFormData.name || !demoFormData.email) {
+      toast({
+        title: "Please fill in required fields",
+        description: "Name and email are required.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setIsSubmitting(true);
     trackEvent("cta_click", { event_category: "chatbot_demo_request", event_label: demoFormData.useCase });
-    window.location.href = "/corporate/contact";
+
+    const result = await submitLead(
+      {
+        name: demoFormData.name,
+        email: demoFormData.email,
+        company: demoFormData.company,
+        message: `Demo request for Conversational AI - Use Case: ${demoFormData.useCase}`,
+      },
+      {
+        formType: "chatbot_demo_request",
+        source: "chatbots_page",
+        ctaId: "chatbot-schedule-demo",
+        ctaText: "Schedule Demo",
+        ctaLocation: "/services/chatbots",
+      }
+    );
+
+    setIsSubmitting(false);
+
+    if (result.success) {
+      toast({
+        title: "Demo request submitted!",
+        description: "Our team will contact you shortly to schedule your demo.",
+      });
+      setDemoFormData({ name: "", email: "", company: "", useCase: "" });
+    } else {
+      toast({
+        title: "Submission failed",
+        description: result.error || "Please try again.",
+        variant: "destructive",
+      });
+    }
   };
 
   return (
@@ -1202,9 +1248,9 @@ export default function ConversationalAIChatbots() {
                         </SelectContent>
                       </Select>
                     </div>
-                    <Button type="submit" className="w-full bg-cyan-600 hover:bg-cyan-700 text-white border-cyan-600" size="lg" data-testid="button-chatbot-schedule-demo">
-                      Schedule Demo
-                      <ArrowRight className="w-4 h-4 ml-2" />
+                    <Button type="submit" className="w-full bg-cyan-600 hover:bg-cyan-700 text-white border-cyan-600" size="lg" data-testid="button-chatbot-schedule-demo" disabled={isSubmitting}>
+                      {isSubmitting ? "Submitting..." : "Schedule Demo"}
+                      {!isSubmitting && <ArrowRight className="w-4 h-4 ml-2" />}
                     </Button>
                   </form>
                   <p className="text-gray-400 text-xs mt-4 text-center">
