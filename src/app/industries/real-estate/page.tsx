@@ -886,7 +886,7 @@ function AISolutionFinder() {
   };
 
   return (
-    <Card>
+    <Card id="solution-finder" className="scroll-mt-20">
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
           <Search className="w-5 h-5 text-primary" />
@@ -1050,6 +1050,196 @@ function AISolutionFinder() {
         </AnimatePresence>
       </CardContent>
     </Card>
+  );
+}
+
+function RealEstateLeadForm() {
+  const { toast } = useToast();
+  const { triggerCelebration } = useCelebration();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState({
+    role: "",
+    challenge: "",
+    teamSize: "",
+    market: "",
+    email: "",
+    country: ""
+  });
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!formData.email || !formData.role || !formData.challenge) {
+      toast({
+        title: "Please fill in required fields",
+        description: "Email, role, and challenge are required.",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    const result = await submitLead(
+      {
+        name: "",
+        email: formData.email,
+        role: formData.role,
+        industry: "real-estate",
+        companySize: formData.teamSize,
+        challenges: [formData.challenge],
+        message: `Market: ${formData.market}, Country: ${formData.country}`,
+      },
+      {
+        formType: "real-estate-roadmap",
+        source: "/industries/real-estate",
+        ctaId: "real-estate-form-submit",
+        ctaText: "Get My AI Recommendation",
+        ctaLocation: "/industries/real-estate",
+        additionalMetadata: {
+          role: formData.role,
+          market: formData.market,
+          country: formData.country,
+        },
+      }
+    );
+
+    setIsSubmitting(false);
+
+    if (result.success) {
+      triggerCelebration();
+      toast({
+        title: "Request received",
+        description: "We'll review your needs and get back to you shortly."
+      });
+      trackEvent("lead_form_submit", {
+        event_category: "real_estate_industry",
+        event_label: "lead_form"
+      });
+      setFormData({ role: "", challenge: "", teamSize: "", market: "", email: "", country: "" });
+    } else {
+      toast({
+        title: "Something went wrong",
+        description: "Please try again or contact us directly.",
+        variant: "destructive"
+      });
+    }
+  };
+
+  return (
+    <section id="lead-form" className="py-20 scroll-mt-20">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
+          <Card className="border-2 border-primary/20">
+            <CardHeader className="text-center bg-gradient-to-r from-primary/5 to-cyan-500/5">
+              <CardTitle className="text-2xl">Get Your Personalized AI Recommendation</CardTitle>
+              <p className="text-muted-foreground">
+                We review your inputs and suggest what actually fits your real estate business.
+              </p>
+            </CardHeader>
+            <CardContent className="max-w-xl mx-auto space-y-4 pt-6">
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <Label>Your Role *</Label>
+                    <select
+                      className="w-full mt-1.5 h-10 rounded-md border border-input bg-background px-3 text-sm"
+                      value={formData.role}
+                      onChange={(e) => setFormData({ ...formData, role: e.target.value })}
+                      data-testid="select-role"
+                    >
+                      <option value="">Select role</option>
+                      <option value="agent">Real Estate Agent</option>
+                      <option value="broker">Broker / Brokerage Owner</option>
+                      <option value="developer">Developer</option>
+                      <option value="manager">Property Manager</option>
+                      <option value="startup">PropTech Startup</option>
+                    </select>
+                  </div>
+                  <div>
+                    <Label>Primary Challenge *</Label>
+                    <select
+                      className="w-full mt-1.5 h-10 rounded-md border border-input bg-background px-3 text-sm"
+                      value={formData.challenge}
+                      onChange={(e) => setFormData({ ...formData, challenge: e.target.value })}
+                      data-testid="select-challenge"
+                    >
+                      <option value="">Select challenge</option>
+                      <option value="leads">Lead Response</option>
+                      <option value="qualification">Lead Qualification</option>
+                      <option value="followups">Follow-ups</option>
+                      <option value="scheduling">Scheduling</option>
+                      <option value="pricing">Pricing Intel</option>
+                      <option value="operations">Operations</option>
+                    </select>
+                  </div>
+                </div>
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <Label>Team Size</Label>
+                    <select
+                      className="w-full mt-1.5 h-10 rounded-md border border-input bg-background px-3 text-sm"
+                      value={formData.teamSize}
+                      onChange={(e) => setFormData({ ...formData, teamSize: e.target.value })}
+                      data-testid="select-team-size"
+                    >
+                      <option value="">Select size</option>
+                      <option value="solo">Solo / Individual</option>
+                      <option value="small">2-5 people</option>
+                      <option value="medium">6-20 people</option>
+                      <option value="large">20+ people</option>
+                    </select>
+                  </div>
+                  <div>
+                    <Label>Primary Market</Label>
+                    <Input
+                      type="text"
+                      placeholder="e.g., NYC, Mumbai"
+                      className="mt-1.5"
+                      value={formData.market}
+                      onChange={(e) => setFormData({ ...formData, market: e.target.value })}
+                      data-testid="input-market"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <Label>Work Email *</Label>
+                  <Input
+                    type="email"
+                    placeholder="you@company.com"
+                    className="mt-1.5"
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    data-testid="input-email"
+                  />
+                </div>
+                <div>
+                  <Label>Country</Label>
+                  <Input
+                    type="text"
+                    placeholder="Your country"
+                    className="mt-1.5"
+                    value={formData.country}
+                    onChange={(e) => setFormData({ ...formData, country: e.target.value })}
+                    data-testid="input-country"
+                  />
+                </div>
+                <Button type="submit" size="lg" className="w-full mt-4" disabled={isSubmitting} data-testid="button-submit-lead">
+                  {isSubmitting ? "Submitting..." : "Get My AI Recommendation"}
+                  {!isSubmitting && <ArrowRight className="w-4 h-4 ml-2" />}
+                </Button>
+              </form>
+              <p className="text-xs text-center text-muted-foreground">
+                No spam. No sales pressure. We suggest what fits your role — not generic tools.
+              </p>
+            </CardContent>
+          </Card>
+        </motion.div>
+      </div>
+    </section>
   );
 }
 
@@ -1833,106 +2023,7 @@ export default function RealEstateIndustryPage() {
       </section>
 
       {/* Lead Form - Now at Bottom */}
-      <section id="lead-form" className="py-20">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <Card className="border-2 border-primary/20">
-              <CardHeader className="text-center bg-gradient-to-r from-primary/5 to-cyan-500/5">
-                <CardTitle className="text-2xl">Get Your Personalized AI Recommendation</CardTitle>
-                <p className="text-muted-foreground">
-                  We review your inputs and suggest what actually fits your real estate business.
-                </p>
-              </CardHeader>
-              <CardContent className="max-w-xl mx-auto space-y-4 pt-6">
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <Label>Your Role</Label>
-                    <select
-                      className="w-full mt-1.5 h-10 rounded-md border border-input bg-background px-3 text-sm"
-                      data-testid="select-role"
-                    >
-                      <option value="">Select role</option>
-                      <option value="agent">Real Estate Agent</option>
-                      <option value="broker">Broker / Brokerage Owner</option>
-                      <option value="developer">Developer</option>
-                      <option value="manager">Property Manager</option>
-                      <option value="startup">PropTech Startup</option>
-                    </select>
-                  </div>
-                  <div>
-                    <Label>Primary Challenge</Label>
-                    <select
-                      className="w-full mt-1.5 h-10 rounded-md border border-input bg-background px-3 text-sm"
-                      data-testid="select-challenge"
-                    >
-                      <option value="">Select challenge</option>
-                      <option value="leads">Lead Response</option>
-                      <option value="qualification">Lead Qualification</option>
-                      <option value="followups">Follow-ups</option>
-                      <option value="scheduling">Scheduling</option>
-                      <option value="pricing">Pricing Intel</option>
-                      <option value="operations">Operations</option>
-                    </select>
-                  </div>
-                </div>
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <Label>Team Size</Label>
-                    <select
-                      className="w-full mt-1.5 h-10 rounded-md border border-input bg-background px-3 text-sm"
-                      data-testid="select-team-size"
-                    >
-                      <option value="">Select size</option>
-                      <option value="solo">Solo / Individual</option>
-                      <option value="small">2-5 people</option>
-                      <option value="medium">6-20 people</option>
-                      <option value="large">20+ people</option>
-                    </select>
-                  </div>
-                  <div>
-                    <Label>Primary Market</Label>
-                    <Input
-                      type="text"
-                      placeholder="e.g., NYC, Mumbai"
-                      className="mt-1.5"
-                      data-testid="input-market"
-                    />
-                  </div>
-                </div>
-                <div>
-                  <Label>Work Email</Label>
-                  <Input
-                    type="email"
-                    placeholder="you@company.com"
-                    className="mt-1.5"
-                    data-testid="input-email"
-                  />
-                </div>
-                <div>
-                  <Label>Country</Label>
-                  <Input
-                    type="text"
-                    placeholder="Your country"
-                    className="mt-1.5"
-                    data-testid="input-country"
-                  />
-                </div>
-                <Button size="lg" className="w-full mt-4" data-testid="button-submit-lead">
-                  Get My AI Recommendation
-                  <ArrowRight className="w-4 h-4 ml-2" />
-                </Button>
-                <p className="text-xs text-center text-muted-foreground">
-                  No spam. No sales pressure. We suggest what fits your role — not generic tools.
-                </p>
-              </CardContent>
-            </Card>
-          </motion.div>
-        </div>
-      </section>
+      <RealEstateLeadForm />
 
       {/* Final CTA */}
       <section className="py-20 bg-gradient-to-b from-background to-blue-500/5">

@@ -46,6 +46,10 @@ import {
   HelpCircle,
   Lightbulb
 } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
+import { submitLead } from "@/lib/lead-submission";
+import { useCelebration } from "@/components/success-celebration";
+import { trackEvent } from "@/lib/analytics";
 
 const institutionTypes = [
   { id: "d2c", label: "D2C Brand", icon: ShoppingBag },
@@ -603,6 +607,199 @@ function ECommerceSolutionFinder() {
         </AnimatePresence>
       </CardContent>
     </Card>
+  );
+}
+
+function RetailLeadForm() {
+  const { toast } = useToast();
+  const { triggerCelebration } = useCelebration();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState({
+    businessType: "",
+    challenge: "",
+    monthlyOrders: "",
+    platform: "",
+    email: "",
+    country: ""
+  });
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!formData.email || !formData.businessType || !formData.challenge) {
+      toast({
+        title: "Please fill in required fields",
+        description: "Email, business type, and challenge are required.",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    const result = await submitLead(
+      {
+        name: "",
+        email: formData.email,
+        industry: "retail",
+        companySize: formData.monthlyOrders,
+        challenges: [formData.challenge],
+        message: `Business Type: ${formData.businessType}, Platform: ${formData.platform}, Country: ${formData.country}`,
+      },
+      {
+        formType: "retail-roadmap",
+        source: "/industries/retail",
+        ctaId: "retail-form-submit",
+        ctaText: "Get My AI Recommendation",
+        ctaLocation: "/industries/retail",
+        additionalMetadata: {
+          businessType: formData.businessType,
+          platform: formData.platform,
+          country: formData.country,
+        },
+      }
+    );
+
+    setIsSubmitting(false);
+
+    if (result.success) {
+      triggerCelebration();
+      toast({
+        title: "Request received",
+        description: "We'll review your needs and get back to you shortly."
+      });
+      trackEvent("lead_form_submit", {
+        event_category: "retail_industry",
+        event_label: "lead_form"
+      });
+      setFormData({ businessType: "", challenge: "", monthlyOrders: "", platform: "", email: "", country: "" });
+    } else {
+      toast({
+        title: "Something went wrong",
+        description: "Please try again or contact us directly.",
+        variant: "destructive"
+      });
+    }
+  };
+
+  return (
+    <section id="lead-form" className="py-20 scroll-mt-20">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
+          <Card className="border-2 border-primary/20">
+            <CardHeader className="text-center bg-gradient-to-r from-primary/5 to-cyan-500/5">
+              <CardTitle className="text-2xl">Get Your Personalized AI Recommendation</CardTitle>
+              <p className="text-muted-foreground">
+                We review your inputs and suggest what actually fits your e-commerce business.
+              </p>
+            </CardHeader>
+            <CardContent className="max-w-xl mx-auto space-y-4 pt-6">
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <Label>Business Type *</Label>
+                    <select
+                      className="w-full mt-1.5 h-10 rounded-md border border-input bg-background px-3 text-sm"
+                      value={formData.businessType}
+                      onChange={(e) => setFormData({ ...formData, businessType: e.target.value })}
+                      data-testid="select-business-type"
+                    >
+                      <option value="">Select type</option>
+                      <option value="d2c">D2C Brand</option>
+                      <option value="shopify">Shopify/WooCommerce</option>
+                      <option value="marketplace">Marketplace</option>
+                      <option value="retail">Retail Chain</option>
+                      <option value="enterprise">Enterprise</option>
+                    </select>
+                  </div>
+                  <div>
+                    <Label>Primary Challenge *</Label>
+                    <select
+                      className="w-full mt-1.5 h-10 rounded-md border border-input bg-background px-3 text-sm"
+                      value={formData.challenge}
+                      onChange={(e) => setFormData({ ...formData, challenge: e.target.value })}
+                      data-testid="select-challenge"
+                    >
+                      <option value="">Select challenge</option>
+                      <option value="support">Customer Support</option>
+                      <option value="cart">Cart Abandonment</option>
+                      <option value="discovery">Product Discovery</option>
+                      <option value="returns">Returns & Refunds</option>
+                      <option value="inventory">Inventory</option>
+                      <option value="retention">Retention</option>
+                    </select>
+                  </div>
+                </div>
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <Label>Monthly Orders</Label>
+                    <select
+                      className="w-full mt-1.5 h-10 rounded-md border border-input bg-background px-3 text-sm"
+                      value={formData.monthlyOrders}
+                      onChange={(e) => setFormData({ ...formData, monthlyOrders: e.target.value })}
+                      data-testid="select-orders"
+                    >
+                      <option value="">Select range</option>
+                      <option value="small">Less than 500</option>
+                      <option value="medium">500 - 5,000</option>
+                      <option value="large">5,000 - 50,000</option>
+                      <option value="enterprise">50,000+</option>
+                    </select>
+                  </div>
+                  <div>
+                    <Label>Platform</Label>
+                    <select
+                      className="w-full mt-1.5 h-10 rounded-md border border-input bg-background px-3 text-sm"
+                      value={formData.platform}
+                      onChange={(e) => setFormData({ ...formData, platform: e.target.value })}
+                      data-testid="select-platform"
+                    >
+                      <option value="">Select platform</option>
+                      <option value="shopify">Shopify</option>
+                      <option value="woocommerce">WooCommerce</option>
+                      <option value="magento">Magento</option>
+                      <option value="custom">Custom</option>
+                    </select>
+                  </div>
+                </div>
+                <div>
+                  <Label>Work Email *</Label>
+                  <Input
+                    type="email"
+                    placeholder="you@company.com"
+                    className="mt-1.5"
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    data-testid="input-email"
+                  />
+                </div>
+                <div>
+                  <Label>Country</Label>
+                  <Input
+                    type="text"
+                    placeholder="Your country"
+                    className="mt-1.5"
+                    value={formData.country}
+                    onChange={(e) => setFormData({ ...formData, country: e.target.value })}
+                    data-testid="input-country"
+                  />
+                </div>
+                <Button type="submit" size="lg" className="w-full mt-4" disabled={isSubmitting} data-testid="button-submit-lead">
+                  {isSubmitting ? "Submitting..." : "Get My AI Recommendation"}
+                  {!isSubmitting && <ArrowRight className="w-4 h-4 ml-2" />}
+                </Button>
+              </form>
+              <p className="text-xs text-center text-muted-foreground">
+                No pressure. We suggest what fits your business — not generic tools.
+              </p>
+            </CardContent>
+          </Card>
+        </motion.div>
+      </div>
+    </section>
   );
 }
 
@@ -1503,110 +1700,7 @@ export default function EcommerceIndustryPage() {
       </section>
 
       {/* Lead Form - Now at Bottom */}
-      <section id="lead-form" className="py-20">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <Card className="border-2 border-primary/20">
-              <CardHeader className="text-center bg-gradient-to-r from-primary/5 to-cyan-500/5">
-                <CardTitle className="text-2xl">Get Your Personalized AI Recommendation</CardTitle>
-                <p className="text-muted-foreground">
-                  We review your inputs and suggest what actually fits your e-commerce business.
-                </p>
-              </CardHeader>
-              <CardContent className="max-w-xl mx-auto space-y-4 pt-6">
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <Label>Business Type</Label>
-                    <select
-                      className="w-full mt-1.5 h-10 rounded-md border border-input bg-background px-3 text-sm"
-                      data-testid="select-business-type"
-                    >
-                      <option value="">Select type</option>
-                      <option value="d2c">D2C Brand</option>
-                      <option value="shopify">Shopify/WooCommerce</option>
-                      <option value="marketplace">Marketplace</option>
-                      <option value="retail">Retail Chain</option>
-                      <option value="enterprise">Enterprise</option>
-                    </select>
-                  </div>
-                  <div>
-                    <Label>Primary Challenge</Label>
-                    <select
-                      className="w-full mt-1.5 h-10 rounded-md border border-input bg-background px-3 text-sm"
-                      data-testid="select-challenge"
-                    >
-                      <option value="">Select challenge</option>
-                      <option value="support">Customer Support</option>
-                      <option value="cart">Cart Abandonment</option>
-                      <option value="discovery">Product Discovery</option>
-                      <option value="returns">Returns & Refunds</option>
-                      <option value="inventory">Inventory</option>
-                      <option value="retention">Retention</option>
-                    </select>
-                  </div>
-                </div>
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <Label>Monthly Orders</Label>
-                    <select
-                      className="w-full mt-1.5 h-10 rounded-md border border-input bg-background px-3 text-sm"
-                      data-testid="select-orders"
-                    >
-                      <option value="">Select range</option>
-                      <option value="small">Less than 500</option>
-                      <option value="medium">500 - 5,000</option>
-                      <option value="large">5,000 - 50,000</option>
-                      <option value="enterprise">50,000+</option>
-                    </select>
-                  </div>
-                  <div>
-                    <Label>Platform</Label>
-                    <select
-                      className="w-full mt-1.5 h-10 rounded-md border border-input bg-background px-3 text-sm"
-                      data-testid="select-platform"
-                    >
-                      <option value="">Select platform</option>
-                      <option value="shopify">Shopify</option>
-                      <option value="woocommerce">WooCommerce</option>
-                      <option value="magento">Magento</option>
-                      <option value="custom">Custom</option>
-                    </select>
-                  </div>
-                </div>
-                <div>
-                  <Label>Work Email</Label>
-                  <Input
-                    type="email"
-                    placeholder="you@company.com"
-                    className="mt-1.5"
-                    data-testid="input-email"
-                  />
-                </div>
-                <div>
-                  <Label>Country</Label>
-                  <Input
-                    type="text"
-                    placeholder="Your country"
-                    className="mt-1.5"
-                    data-testid="input-country"
-                  />
-                </div>
-                <Button size="lg" className="w-full mt-4" data-testid="button-submit-lead">
-                  Get My AI Recommendation
-                  <ArrowRight className="w-4 h-4 ml-2" />
-                </Button>
-                <p className="text-xs text-center text-muted-foreground">
-                  No pressure. We suggest what fits your business — not generic tools.
-                </p>
-              </CardContent>
-            </Card>
-          </motion.div>
-        </div>
-      </section>
+      <RetailLeadForm />
 
       {/* Final CTA */}
       <section className="py-16 bg-gradient-to-br from-orange-500/10 via-background to-cyan-500/10">

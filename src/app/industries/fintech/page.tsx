@@ -568,7 +568,7 @@ function FintechSolutionFinder() {
   };
 
   return (
-    <Card>
+    <Card id="solution-finder" className="scroll-mt-20">
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
           <Search className="w-5 h-5 text-primary" />

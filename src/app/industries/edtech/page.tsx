@@ -49,6 +49,10 @@ import {
   Globe,
   ChevronDown,
 } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
+import { submitLead } from "@/lib/lead-submission";
+import { useCelebration } from "@/components/success-celebration";
+import { trackEvent } from "@/lib/analytics";
 
 const institutionTypes = [
   { id: "edtech", label: "EdTech Startup", icon: Lightbulb },
@@ -718,6 +722,204 @@ function EdTechSolutionFinder() {
         </AnimatePresence>
       </CardContent>
     </Card>
+  );
+}
+
+function EdTechLeadForm() {
+  const { toast } = useToast();
+  const { triggerCelebration } = useCelebration();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState({
+    institutionType: "",
+    challenge: "",
+    learners: "",
+    deliveryMode: "",
+    email: "",
+    country: ""
+  });
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!formData.email || !formData.institutionType || !formData.challenge) {
+      toast({
+        title: "Please fill in required fields",
+        description: "Email, institution type, and challenge are required.",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    const result = await submitLead(
+      {
+        name: "",
+        email: formData.email,
+        industry: "edtech",
+        companySize: formData.learners,
+        challenges: [formData.challenge],
+        message: `Institution Type: ${formData.institutionType}, Delivery Mode: ${formData.deliveryMode}, Country: ${formData.country}`,
+      },
+      {
+        formType: "edtech-roadmap",
+        source: "/industries/edtech",
+        ctaId: "edtech-form-submit",
+        ctaText: "Get My AI Recommendation",
+        ctaLocation: "/industries/edtech",
+        additionalMetadata: {
+          institutionType: formData.institutionType,
+          deliveryMode: formData.deliveryMode,
+          country: formData.country,
+        },
+      }
+    );
+
+    setIsSubmitting(false);
+
+    if (result.success) {
+      triggerCelebration();
+      toast({
+        title: "Request received",
+        description: "We'll review your needs and get back to you shortly."
+      });
+      trackEvent("lead_form_submit", {
+        event_category: "edtech_industry",
+        event_label: "lead_form"
+      });
+      setFormData({ institutionType: "", challenge: "", learners: "", deliveryMode: "", email: "", country: "" });
+    } else {
+      toast({
+        title: "Something went wrong",
+        description: "Please try again or contact us directly.",
+        variant: "destructive"
+      });
+    }
+  };
+
+  return (
+    <section id="lead-form" className="py-20 scroll-mt-20">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
+          <Card className="bg-gradient-to-br from-primary/5 to-cyan-500/5 border-primary/20">
+            <CardHeader className="text-center">
+              <Badge className="w-fit mx-auto mb-4 bg-primary/10 text-primary border-primary/20">
+                <Award className="w-3 h-3 mr-1" />
+                Get Your Personalized Roadmap
+              </Badge>
+              <CardTitle className="text-2xl md:text-3xl">
+                Get Your EdTech AI Roadmap
+              </CardTitle>
+              <p className="text-muted-foreground">
+                Designed for Your Learners, Faculty & Outcomes
+              </p>
+            </CardHeader>
+            <CardContent className="max-w-xl mx-auto space-y-4">
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <Label>Institution Type *</Label>
+                    <select
+                      className="w-full mt-1.5 h-10 rounded-md border border-input bg-background px-3 text-sm"
+                      value={formData.institutionType}
+                      onChange={(e) => setFormData({ ...formData, institutionType: e.target.value })}
+                      data-testid="select-institution-type"
+                    >
+                      <option value="">Select type</option>
+                      <option value="edtech">EdTech Startup</option>
+                      <option value="coaching">Coaching Institute</option>
+                      <option value="university">University / College</option>
+                      <option value="corporate">Corporate L&D</option>
+                      <option value="course-creator">Course Creator</option>
+                    </select>
+                  </div>
+                  <div>
+                    <Label>Primary Challenge *</Label>
+                    <select
+                      className="w-full mt-1.5 h-10 rounded-md border border-input bg-background px-3 text-sm"
+                      value={formData.challenge}
+                      onChange={(e) => setFormData({ ...formData, challenge: e.target.value })}
+                      data-testid="select-challenge"
+                    >
+                      <option value="">Select challenge</option>
+                      <option value="doubts">Student Doubts</option>
+                      <option value="engagement">Low Engagement</option>
+                      <option value="dropouts">Dropouts & Churn</option>
+                      <option value="personalization">Personalization</option>
+                      <option value="assessment">Assessment Load</option>
+                      <option value="ops">Operations</option>
+                    </select>
+                  </div>
+                </div>
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <Label>Number of Learners</Label>
+                    <select
+                      className="w-full mt-1.5 h-10 rounded-md border border-input bg-background px-3 text-sm"
+                      value={formData.learners}
+                      onChange={(e) => setFormData({ ...formData, learners: e.target.value })}
+                      data-testid="select-learners"
+                    >
+                      <option value="">Select range</option>
+                      <option value="small">Less than 1,000</option>
+                      <option value="medium">1,000 - 5,000</option>
+                      <option value="large">5,000 - 20,000</option>
+                      <option value="enterprise">20,000+</option>
+                    </select>
+                  </div>
+                  <div>
+                    <Label>Delivery Mode</Label>
+                    <select
+                      className="w-full mt-1.5 h-10 rounded-md border border-input bg-background px-3 text-sm"
+                      value={formData.deliveryMode}
+                      onChange={(e) => setFormData({ ...formData, deliveryMode: e.target.value })}
+                      data-testid="select-delivery"
+                    >
+                      <option value="">Select mode</option>
+                      <option value="live">Live Classes</option>
+                      <option value="recorded">Recorded Courses</option>
+                      <option value="hybrid">Hybrid</option>
+                    </select>
+                  </div>
+                </div>
+                <div>
+                  <Label>Work Email *</Label>
+                  <Input
+                    type="email"
+                    placeholder="you@institution.com"
+                    className="mt-1.5"
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    data-testid="input-email"
+                  />
+                </div>
+                <div>
+                  <Label>Country</Label>
+                  <Input
+                    type="text"
+                    placeholder="Your country"
+                    className="mt-1.5"
+                    value={formData.country}
+                    onChange={(e) => setFormData({ ...formData, country: e.target.value })}
+                    data-testid="input-country"
+                  />
+                </div>
+                <Button type="submit" size="lg" className="w-full mt-4" disabled={isSubmitting} data-testid="button-submit-lead">
+                  {isSubmitting ? "Submitting..." : "Get My AI Recommendation"}
+                  {!isSubmitting && <ArrowRight className="w-4 h-4 ml-2" />}
+                </Button>
+              </form>
+              <p className="text-xs text-center text-muted-foreground">
+                No pressure. We suggest what fits your learning model — not generic tools.
+              </p>
+            </CardContent>
+          </Card>
+        </motion.div>
+      </div>
+    </section>
   );
 }
 
@@ -1576,115 +1778,7 @@ export default function EdTechIndustryPage() {
       </section>
 
       {/* Lead Form */}
-      <section id="lead-form" className="py-20">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <Card className="bg-gradient-to-br from-primary/5 to-cyan-500/5 border-primary/20">
-              <CardHeader className="text-center">
-                <Badge className="w-fit mx-auto mb-4 bg-primary/10 text-primary border-primary/20">
-                  <Award className="w-3 h-3 mr-1" />
-                  Get Your Personalized Roadmap
-                </Badge>
-                <CardTitle className="text-2xl md:text-3xl">
-                  Get Your EdTech AI Roadmap
-                </CardTitle>
-                <p className="text-muted-foreground">
-                  Designed for Your Learners, Faculty & Outcomes
-                </p>
-              </CardHeader>
-              <CardContent className="max-w-xl mx-auto space-y-4">
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <Label>Institution Type</Label>
-                    <select
-                      className="w-full mt-1.5 h-10 rounded-md border border-input bg-background px-3 text-sm"
-                      data-testid="select-institution-type"
-                    >
-                      <option value="">Select type</option>
-                      <option value="edtech">EdTech Startup</option>
-                      <option value="coaching">Coaching Institute</option>
-                      <option value="university">University / College</option>
-                      <option value="corporate">Corporate L&D</option>
-                      <option value="course-creator">Course Creator</option>
-                    </select>
-                  </div>
-                  <div>
-                    <Label>Primary Challenge</Label>
-                    <select
-                      className="w-full mt-1.5 h-10 rounded-md border border-input bg-background px-3 text-sm"
-                      data-testid="select-challenge"
-                    >
-                      <option value="">Select challenge</option>
-                      <option value="doubts">Student Doubts</option>
-                      <option value="engagement">Low Engagement</option>
-                      <option value="dropouts">Dropouts & Churn</option>
-                      <option value="personalization">Personalization</option>
-                      <option value="assessment">Assessment Load</option>
-                      <option value="ops">Operations</option>
-                    </select>
-                  </div>
-                </div>
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <Label>Number of Learners</Label>
-                    <select
-                      className="w-full mt-1.5 h-10 rounded-md border border-input bg-background px-3 text-sm"
-                      data-testid="select-learners"
-                    >
-                      <option value="">Select range</option>
-                      <option value="small">Less than 1,000</option>
-                      <option value="medium">1,000 - 5,000</option>
-                      <option value="large">5,000 - 20,000</option>
-                      <option value="enterprise">20,000+</option>
-                    </select>
-                  </div>
-                  <div>
-                    <Label>Delivery Mode</Label>
-                    <select
-                      className="w-full mt-1.5 h-10 rounded-md border border-input bg-background px-3 text-sm"
-                      data-testid="select-delivery"
-                    >
-                      <option value="">Select mode</option>
-                      <option value="live">Live Classes</option>
-                      <option value="recorded">Recorded Courses</option>
-                      <option value="hybrid">Hybrid</option>
-                    </select>
-                  </div>
-                </div>
-                <div>
-                  <Label>Work Email</Label>
-                  <Input
-                    type="email"
-                    placeholder="you@institution.com"
-                    className="mt-1.5"
-                    data-testid="input-email"
-                  />
-                </div>
-                <div>
-                  <Label>Country</Label>
-                  <Input
-                    type="text"
-                    placeholder="Your country"
-                    className="mt-1.5"
-                    data-testid="input-country"
-                  />
-                </div>
-                <Button size="lg" className="w-full mt-4" data-testid="button-submit-lead">
-                  Get My AI Recommendation
-                  <ArrowRight className="w-4 h-4 ml-2" />
-                </Button>
-                <p className="text-xs text-center text-muted-foreground">
-                  No pressure. We suggest what fits your learning model — not generic tools.
-                </p>
-              </CardContent>
-            </Card>
-          </motion.div>
-        </div>
-      </section>
+      <EdTechLeadForm />
 
       {/* Final CTA */}
       <section className="py-16 bg-gradient-to-br from-primary/10 via-background to-cyan-500/10">
