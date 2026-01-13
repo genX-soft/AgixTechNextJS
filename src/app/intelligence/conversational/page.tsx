@@ -925,12 +925,13 @@ function InteractiveToolsSection() {
   const [solutionFinder, setSolutionFinder] = useState({ step: 1, industry: "", useCase: "", channel: "", volume: "", complexity: "", systemActions: "", escalation: "", compliance: "", tolerance: "", humanFallback: "", brandSensitivity: "" });
   const [riskAssessment, setRiskAssessment] = useState({ step: 1, wrongAnswerImpact: "", multiTurn: "", dataSensitivity: "", humanJudgment: "" });
   const [costEstimator, setCostEstimator] = useState({ monthlyVolume: "", avgHandlingTime: "", repetitivePercent: "", humanRate: "", costPerInteraction: "" });
+  const [showCostResults, setShowCostResults] = useState(false);
   const [maturityStage, setMaturityStage] = useState<number | null>(null);
   const [selectedIndustry, setSelectedIndustry] = useState<string | null>(null);
 
   const resetSolutionFinder = () => setSolutionFinder({ step: 1, industry: "", useCase: "", channel: "", volume: "", complexity: "", systemActions: "", escalation: "", compliance: "", tolerance: "", humanFallback: "", brandSensitivity: "" });
   const resetRiskAssessment = () => setRiskAssessment({ step: 1, wrongAnswerImpact: "", multiTurn: "", dataSensitivity: "", humanJudgment: "" });
-  const resetCostEstimator = () => setCostEstimator({ monthlyVolume: "", avgHandlingTime: "", repetitivePercent: "", humanRate: "", costPerInteraction: "" });
+  const resetCostEstimator = () => { setCostEstimator({ monthlyVolume: "", avgHandlingTime: "", repetitivePercent: "", humanRate: "", costPerInteraction: "" }); setShowCostResults(false); };
 
   const tools = [
     { id: 0, title: "Solution Finder", icon: Target },
@@ -1237,7 +1238,7 @@ function InteractiveToolsSection() {
               {activeTab === 2 && (
                 <motion.div key="cost" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
                   <h3 className="text-xl font-bold mb-6">Conversation Volume & Cost Impact Estimator</h3>
-                  {!canShowCostResults ? (
+                  {!showCostResults ? (
                     <div className="space-y-6">
                       <div className="grid md:grid-cols-2 gap-4">
                         <div>
@@ -1261,6 +1262,14 @@ function InteractiveToolsSection() {
                           <input type="number" placeholder="e.g., 12" className="w-full p-3 rounded-lg bg-slate-800 border border-slate-700" value={costEstimator.costPerInteraction} onChange={(e) => setCostEstimator({ ...costEstimator, costPerInteraction: e.target.value })} data-testid="input-cost-per" />
                         </div>
                       </div>
+                      <Button 
+                        onClick={() => setShowCostResults(true)} 
+                        disabled={!costEstimator.monthlyVolume || !costEstimator.avgHandlingTime || !costEstimator.repetitivePercent || !costEstimator.humanRate || !costEstimator.costPerInteraction}
+                        data-testid="button-calculate-cost"
+                      >
+                        Calculate Savings
+                        <ArrowRight className="w-4 h-4 ml-2" />
+                      </Button>
                     </div>
                   ) : (
                     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-6">
