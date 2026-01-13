@@ -137,9 +137,10 @@ export function getExcerpt(post: WPPost, maxLength = 160): string {
 export function getFeaturedImageUrl(post: WPPost): string | null {
   const media = post._embedded?.["wp:featuredmedia"]?.[0];
   if (!media) return null;
-  return media.media_details?.sizes?.large?.source_url || 
-         media.media_details?.sizes?.medium?.source_url || 
+  // Prefer full size for better quality, fallback to large then source_url
+  return media.media_details?.sizes?.full?.source_url || 
          media.source_url || 
+         media.media_details?.sizes?.large?.source_url || 
          null;
 }
 
