@@ -314,6 +314,7 @@ export function MainFooter() {
           <div className="text-center mb-12">
             <h3 className="text-xl md:text-2xl font-semibold text-white mb-3">Enterprise-Grade Security & Compliance</h3>
             <p className="text-sm text-slate-400">Trusted by Fortune 500 companies worldwide</p>
+            <span className="text-sm text-slate-400">Security and compliance are embedded at the system architecture level not added post-deployment.</span>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
             {certifications.map((cert) => (
@@ -339,7 +340,7 @@ export function MainFooter() {
               <span className="text-xl font-bold">AGIX<span className="text-primary">.</span></span>
             </Link>
             <p className="text-sm text-slate-400 leading-relaxed mb-6">
-              Enterprise AI Systems Engineering. Building intelligent automation that transforms businesses.
+             Enterprise AI Systems Engineering. Designing, deploying, and stewarding agentic AI systems that transform business operations.
             </p>
             <div className="space-y-4">
               <a href="tel:+18573656167" className="flex items-center gap-2 text-sm text-slate-400 hover:text-white transition-colors">
@@ -446,7 +447,9 @@ export function MainFooter() {
         <div className="max-w-7xl mx-auto px-6 py-5">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="flex flex-wrap items-center gap-4 text-xs text-slate-500">
-              <p>&copy; {new Date().getFullYear()} AGIX Technologies. All rights reserved.</p>
+             <div className="text-sm text-gray-500" suppressHydrationWarning>
+                {`© ${new Date().getFullYear()} AGIX Technologies. All rights reserved.`}
+             </div>
               <span className="hidden md:inline">|</span>
               <Link href="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link>
               <Link href="/terms-of-service" className="hover:text-white transition-colors">Terms of Service</Link>

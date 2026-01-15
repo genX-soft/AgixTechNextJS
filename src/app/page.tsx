@@ -191,7 +191,7 @@ function HeroSection() {
                 transition={{ delay: 0.2 }}
               >
                 <Badge variant="outline" className="border-primary/30 text-primary mb-4">
-                  AI Automation Partner
+                 AI Systems Engineering & Agentic Intelligence Company
                 </Badge>
               </motion.div>
               
@@ -212,7 +212,7 @@ function HeroSection() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4 }}
               >
-                You're not alone. Most businesses know AI matters—but struggle with where to begin. 
+                You're not alone. Most businesses know AI matters but struggle with where to begin. 
                 We help you find the right starting point for your situation.
               </motion.p>
             </div>
@@ -1676,7 +1676,7 @@ function ServicesSection() {
             AI Solutions Built for Results
           </h2>
           <p className="text-slate-400 max-w-2xl mx-auto">
-            From repetitive tasks to complex workflows, see how each solution transforms your operations.
+        Each service is a modular capability within a governed AI system — deployable independently or as part of an enterprise-wide intelligence architecture.
           </p>
         </motion.div>
 
@@ -2188,7 +2188,7 @@ const testimonials = [
     company: "TechFlow Inc.",
   },
   {
-    quote: "They didn't just build us an AI solution—they helped us understand exactly what we needed. The discovery process alone was invaluable.",
+    quote: "They didn't just build us an AI solution they helped us understand exactly what we needed. The discovery process alone was invaluable.",
     author: "Michael Roberts",
     role: "CTO",
     company: "Meridian Health",
@@ -2608,7 +2608,7 @@ function ContactSection() {
                   <Phone className="h-5 w-5 text-primary" />
                   <a 
                     href="tel:+18573656167" 
-                    className="text-muted-foreground hover:text-foreground transition-colors"
+                    className="text-muted-foreground hover:text-foreground text-xms transition-colors"
                     data-testid="link-phone"
                   >
                     +1 857-365-6167
