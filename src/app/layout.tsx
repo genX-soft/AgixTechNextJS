@@ -18,11 +18,165 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://agixtech.com/'),
+  title: {
+    default: 'AI Systems Engineering & Agentic Intelligence Company | Agix Technologies',
+    template: '%s | AGIX Technologies',
+  },
+  description: 'AI Systems Engineering & Agentic Intelligence company helping enterprises design, deploy, and scale autonomous AI systems that deliver measurable ROI.',
+  keywords: ['AI automation', 'enterprise AI', 'intelligent automation', 'AI automation services for business', 'enterprise AI systems', 'AI workflow automation company', 'agentic AI', 'AI agents', 'conversational AI', 'predictive analytics'],
+  authors: [{ name: 'AGIX Technologies' }],
+  creator: 'AGIX Technologies',
+  publisher: 'AGIX Technologies',
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },
       { url: "/favicon.png", type: "image/png" },
     ],
+    apple: [{ url: "/apple-touch-icon.png" }],
+  },
+  manifest: "/manifest.json",
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://agixtech.com/',
+    siteName: 'AGIX Technologies',
+    title: 'Enterprise AI Systems Engineering & Agentic Intelligence | Agix Technologies',
+    description: 'Enterprise-grade AI Systems Engineering and Agentic Intelligence solutions spanning strategy, architecture, and deployment that drive real business outcomes.',
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'AGIX Technologies - Leading Agentic AI Experts in USA',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'AI Systems Engineering & Agentic Intelligence Company | Agix Technologies',
+    description: 'We build enterprise AI systems and agentic intelligence solutions that move from strategy and system design to scalable, production-grade, ROI-driven deployment.',
+    images: ['/og-image.png'],
+    creator: '@agixtech',
+    site: '@agixtech',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  verification: {
+    google: process.env.GOOGLE_SITE_VERIFICATION || '',
+    yandex: process.env.YANDEX_SITE_VERIFICATION || '',
+    other: {
+      'msvalidate.01': process.env.BING_SITE_VERIFICATION || '',
+    },
+  },
+  alternates: {
+    canonical: 'https://agixtech.com/',
+  },
+  category: 'Technology',
+  classification: 'AI Systems Engineering',
+  other: {
+    'script:ld+json': JSON.stringify({
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://agixtech.com/#organization",
+          "name": "AGIX Technologies",
+          "url": "https://agixtech.com/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://agixtech.com/wp-content/uploads/agix-logo.png"
+          },
+          "description": "Agix Technologies is an AI Systems Engineering and Agentic Intelligence company helping enterprises architect, deploy, and scale autonomous AI systems for measurable business outcomes.",
+          "foundingDate": "2020",
+          "founders": [
+            {
+              "@type": "Person",
+              "name": "AGIX Team"
+            }
+          ],
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+1-XXX-XXX-XXXX",
+            "contactType": "customer service",
+            "availableLanguage": "English"
+          },
+          "sameAs": [
+            "https://twitter.com/agixtech",
+            "https://linkedin.com/company/agixtech"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://agixtech.com/#website",
+          "url": "https://agixtech.com/",
+          "name": "AGIX Technologies",
+          "description": "Leading AI Systems Engineering and Agentic Intelligence company",
+          "publisher": {
+            "@id": "https://agixtech.com/#organization"
+          },
+          "potentialAction": [
+            {
+              "@type": "SearchAction",
+              "target": {
+                "@type": "EntryPoint",
+                "urlTemplate": "https://agixtech.com/search?q={search_term_string}"
+              },
+              "query-input": "required name=search_term_string"
+            }
+          ]
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://agixtech.com/#webpage",
+          "url": "https://agixtech.com/",
+          "name": "AI Systems Engineering & Agentic Intelligence Company | Agix Technologies",
+          "isPartOf": {
+            "@id": "https://agixtech.com/#website"
+          },
+          "about": {
+            "@id": "https://agixtech.com/#organization"
+          },
+          "description": "Enterprise AI Systems Engineering and Agentic Intelligence solutions for measurable business outcomes.",
+          "breadcrumb": {
+            "@id": "https://agixtech.com/#breadcrumb"
+          },
+          "inLanguage": "en-US",
+          "potentialAction": [
+            {
+              "@type": "ReadAction",
+              "target": ["https://agixtech.com/"]
+            }
+          ]
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://agixtech.com/#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://agixtech.com/"
+            }
+          ]
+        }
+      ]
+    }),
   },
 };
 
@@ -33,18 +187,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
-      <head>
-        <link rel="icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        <link rel="manifest" href="/manifest.json" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
-        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
-      </head>
       <body
         className={`${inter.variable} ${spaceGrotesk.variable} font-sans`}
         suppressHydrationWarning
