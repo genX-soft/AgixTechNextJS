@@ -1,5 +1,38 @@
 const WP_API_BASE = "https://r7t.66a.myftpupload.com/wp-json/wp/v2";
 
+export interface WPYoastSEO {
+  title?: string;
+  description?: string;
+  canonical?: string;
+  og_title?: string;
+  og_description?: string;
+  og_url?: string;
+  og_type?: string;
+  og_locale?: string;
+  og_site_name?: string;
+  og_image?: Array<{
+    url: string;
+    width?: number;
+    height?: number;
+    type?: string;
+  }>;
+  twitter_card?: string;
+  twitter_title?: string;
+  twitter_description?: string;
+  twitter_image?: string;
+  robots?: {
+    index?: string;
+    follow?: string;
+    "max-snippet"?: string;
+    "max-image-preview"?: string;
+    "max-video-preview"?: string;
+  };
+  schema?: Record<string, unknown>;
+  article_published_time?: string;
+  article_modified_time?: string;
+  author?: string;
+}
+
 export interface WPPost {
   id: number;
   date: string;
@@ -23,6 +56,8 @@ export interface WPPost {
   featured_media: number;
   categories: number[];
   tags: number[];
+  yoast_head?: string;
+  yoast_head_json?: WPYoastSEO;
   _embedded?: {
     author?: Array<{
       id: number;
