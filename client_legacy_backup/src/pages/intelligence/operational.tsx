@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Metadata } from "next";
 import { motion, AnimatePresence } from "framer-motion";
 import { MainHeader } from "@/components/main-header";
 import { MainFooter } from "@/components/main-footer";
@@ -45,6 +46,30 @@ import {
   X,
   MessageCircle,
 } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Operational AI Solutions | AGIX Technologies",
+  description: "Operational AI solutions that transform real-time operational data into intelligent, autonomous decisions for modern business operations.",
+  alternates: {
+    canonical: "https://agixtech.com/intelligence/operational-ai",
+  },
+  openGraph: {
+    title: "Operational AI Solutions",
+    description: "Transform real-time operational data into intelligent, autonomous decisions.",
+    url: "https://agixtech.com/intelligence/operational-ai",
+    siteName: "AGIX Technologies",
+    images: [
+      {
+        url: "https://agixtech.com/wp-content/uploads/agix-logo.png", // Using the logo from your JSON, or replace with a specific OG image
+        width: 1200,
+        height: 630,
+        alt: "AGIX Operational Intelligence",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+};
 const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
@@ -1499,3 +1524,4 @@ export default function OperationalIntelligencePage() {
     </div>
   );
 }
+
