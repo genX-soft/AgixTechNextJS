@@ -31,16 +31,13 @@ import {
   getExcerpt,
   stripHtmlTags
 } from "@/lib/insights/wordpress";
-<<<<<<< HEAD
 import { 
   generateOrganizationSchema, 
   generateBlogPostingSchema,
   generateBreadcrumbSchema,
   generateFullSchema 
 } from "@/lib/seo/structured-data";
-=======
 import Image from "next/image";
->>>>>>> 72540a6bfbdd7748fd43fd46d2b61118fc434094
 
 function ArticleSkeleton() {
   return (
