@@ -6,7 +6,8 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'picsum.photos',
+        // hostname: 'picsum.photos',
+        hostname: "r7t.66a.myftpupload.com",
       },
     ],
     formats: ['image/avif', 'image/webp'],

@@ -31,12 +31,16 @@ import {
   getExcerpt,
   stripHtmlTags
 } from "@/lib/insights/wordpress";
+<<<<<<< HEAD
 import { 
   generateOrganizationSchema, 
   generateBlogPostingSchema,
   generateBreadcrumbSchema,
   generateFullSchema 
 } from "@/lib/seo/structured-data";
+=======
+import Image from "next/image";
+>>>>>>> 72540a6bfbdd7748fd43fd46d2b61118fc434094
 
 function ArticleSkeleton() {
   return (
@@ -68,10 +72,14 @@ function RelatedPostCard({ post }: { post: WPPost }) {
       <Card className="overflow-hidden group hover-elevate cursor-pointer h-full">
         <div className="relative h-32 overflow-hidden bg-muted">
           {featuredImage ? (
-            <img
-              src={featuredImage}
-              alt={post.title.rendered}
-              className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+            <Image
+            src={featuredImage}
+            alt={post.title.rendered}
+            fill
+            sizes="(max-width: 768px) 100vw, 400px"
+            quality={75}
+            priority={false}
+            className="object-cover transition-transform duration-300 group-hover:scale-105"
             />
           ) : (
             <div className="w-full h-full bg-gradient-to-br from-primary/20 to-primary/5" />
@@ -318,11 +326,14 @@ export default function BlogArticlePage() {
             </div>
 
             {featuredImage && (
-              <div className="relative rounded-lg overflow-hidden mb-10">
-                <img
+              <div className="relative rounded-lg overflow-hidden mb-10 min-h-[320px] lg:min-h-[350px] w-full">
+                <Image
                   src={featuredImage}
                   alt={post.title.rendered}
-                  className="w-full h-auto max-h-[500px] object-cover"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 300px"
+                  quality={75}
+                  className="object-cover transition-transform duration-300 group-hover:scale-105"
                 />
               </div>
             )}
