@@ -19,6 +19,7 @@ import {
   formatDate,
   estimateReadTime 
 } from "@/lib/insights/wordpress";
+import Image from "next/image";
 
 function PostCardSkeleton() {
   return (
@@ -56,10 +57,14 @@ function PostCard({ post }: { post: WPPost }) {
         <Card className="overflow-hidden group hover-elevate cursor-pointer h-full flex flex-col">
           <div className="relative h-48 overflow-hidden bg-muted">
             {featuredImage ? (
-              <img
+              <Image
                 src={featuredImage}
                 alt={post.title.rendered}
-                className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                fill
+                sizes="(max-width: 768px) 100vw, 400px"
+                quality={75}
+                priority={false}
+                className="object-cover transition-transform duration-300 group-hover:scale-105"
               />
             ) : (
               <div className="w-full h-full bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center">
@@ -70,14 +75,14 @@ function PostCard({ post }: { post: WPPost }) {
           <CardContent className="p-6 flex-1 flex flex-col">
             {categories.length > 0 && (
               <div className="flex flex-wrap gap-2 mb-3">
-                {categories.slice(0, 2).map((cat) => (
+                {categories.slice(0, 2).map((cat: any) => (
                   <Badge key={cat.id} variant="secondary" className="text-xs">
                     {cat.name}
                   </Badge>
                 ))}
               </div>
             )}
-            <h3 
+            <h3
               className="text-lg font-semibold mb-2 line-clamp-2 group-hover:text-primary transition-colors"
               dangerouslySetInnerHTML={{ __html: post.title.rendered }}
             />
