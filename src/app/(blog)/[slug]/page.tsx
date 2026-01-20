@@ -31,6 +31,12 @@ import {
   getExcerpt,
   stripHtmlTags
 } from "@/lib/insights/wordpress";
+import { 
+  generateOrganizationSchema, 
+  generateBlogPostingSchema,
+  generateBreadcrumbSchema,
+  generateFullSchema 
+} from "@/lib/seo/structured-data";
 
 function ArticleSkeleton() {
   return (
@@ -83,7 +89,7 @@ function RelatedPostCard({ post }: { post: WPPost }) {
   );
 }
 
-function useSEO(post: WPPost | null) {
+function useSEO(post: WPPost | null, slug: string) {
   useEffect(() => {
     if (!post) return;
     
@@ -109,9 +115,6 @@ function useSEO(post: WPPost | null) {
     updateMeta('og:title', title, true);
     updateMeta('og:description', description, true);
     updateMeta('og:type', 'article', true);
-    if (typeof window !== 'undefined') {
-      updateMeta('og:url', window.location.href, true);
-    }
     if (featuredImage) {
       updateMeta('og:image', featuredImage, true);
     }
@@ -122,15 +125,18 @@ function useSEO(post: WPPost | null) {
       updateMeta('twitter:image', featuredImage);
     }
 
-    if (yoast?.canonical) {
-      let canonical = document.querySelector('link[rel="canonical"]');
-      if (!canonical) {
-        canonical = document.createElement('link');
-        canonical.setAttribute('rel', 'canonical');
-        document.head.appendChild(canonical);
-      }
-      canonical.setAttribute('href', yoast.canonical);
+    // Always use agixtech.com canonical, never WordPress
+    const canonicalUrl = `https://agixtech.com/${slug}/`;
+    let canonical = document.querySelector('link[rel="canonical"]');
+    if (!canonical) {
+      canonical = document.createElement('link');
+      canonical.setAttribute('rel', 'canonical');
+      document.head.appendChild(canonical);
     }
+    canonical.setAttribute('href', canonicalUrl);
+    
+    // Also update og:url to agixtech.com
+    updateMeta('og:url', canonicalUrl, true);
 
     if (yoast?.robots) {
       const robotsContent = Object.entries(yoast.robots)
@@ -142,17 +148,33 @@ function useSEO(post: WPPost | null) {
       }
     }
 
-    if (yoast?.schema) {
-      let script = document.querySelector('script[type="application/ld+json"][data-yoast]');
-      if (!script) {
-        script = document.createElement('script');
-        script.setAttribute('type', 'application/ld+json');
-        script.setAttribute('data-yoast', 'true');
-        document.head.appendChild(script);
-      }
-      script.textContent = JSON.stringify(yoast.schema);
+    // Generate structured data for blog post
+    const blogSchema = generateFullSchema([
+      generateOrganizationSchema(),
+      generateBlogPostingSchema({
+        title: stripHtmlTags(post.title.rendered),
+        description: description,
+        url: canonicalUrl,
+        datePublished: post.date,
+        author: getAuthorName(post),
+        image: featuredImage || undefined,
+      }),
+      generateBreadcrumbSchema([
+        { name: 'Home', url: 'https://agixtech.com/' },
+        { name: 'Insights', url: 'https://agixtech.com/insights/' },
+        { name: stripHtmlTags(post.title.rendered), url: canonicalUrl },
+      ])
+    ]);
+    
+    let script = document.querySelector('script[type="application/ld+json"][data-blog]');
+    if (!script) {
+      script = document.createElement('script');
+      script.setAttribute('type', 'application/ld+json');
+      script.setAttribute('data-blog', 'true');
+      document.head.appendChild(script);
     }
-  }, [post]);
+    script.textContent = JSON.stringify(blogSchema);
+  }, [post, slug]);
 }
 
 export default function BlogArticlePage() {
@@ -165,7 +187,7 @@ export default function BlogArticlePage() {
   const [error, setError] = useState<string | null>(null);
 
   // Must call hook before any conditional returns
-  useSEO(post);
+  useSEO(post, slug);
 
   useEffect(() => {
     async function fetchPost() {
