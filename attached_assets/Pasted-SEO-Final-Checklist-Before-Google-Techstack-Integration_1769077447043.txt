@@ -1,0 +1,263 @@
+SEO Final Checklist Before Google Techstack Integration
+
+Canonical Tag Error on Inner Pages
+Implement self-referencing canonical for:
+Services
+Industries
+Intelligence
+Blogs
+Case studies
+HTTP Header Issues (Inner pages)
+Correct status codes - 200
+Attachment & Media Control
+Media urls are showing with “https://r7t.66a.myftpupload.com/“ (Disable or redirect WordPress media attachment url pages)
+
+URL Structure & Redirect Issues
+
+Required Redirects:
+
+Implement 301 redirects
+
+Available Urls
+Old Urls
+https://agixtech.com/case-studies/enova/
+https://agixtech.com/case-study/enova-ai-powered-credit-decisioning-for-smarter-more-inclusive-lending/
+https://agixtech.com/case-studies/dave/
+https://agixtech.com/case-study/dave-generative-ai-assistant-for-smart-human-like-financial-support/
+https://agixtech.com/case-studies/ocrolus/
+https://agixtech.com/case-study/ocrolus-ai-document-intelligence-engine-for-automated-fintech-workflows/
+https://agixtech.com/case-studies/babylon-health/
+https://agixtech.com/case-study/babylon-health-ai-powered-patient-intake-routing-for-smarter-hospital/
+https://agixtech.com/case-studies/kite-therapy/
+https://agixtech.com/case-study/kite-therapy-ai-matchmaking-engine-for-pediatric-allied-health-services/
+https://agixtech.com/case-studies/hello-driven/
+https://agixtech.com/case-study/hello-driven-ai-powered-mental-resilience-coach-for-scalable-emotional-wellbeing/
+https://agixtech.com/case-studies/albertsons/
+https://agixtech.com/case-study/albertsons-ai-driven-consumer-behavior-analytics-predictive-restocking/
+https://agixtech.com/case-studies/kroger/
+https://agixtech.com/case-study/kroger-predictive-ai-engine-for-smart-reordering-cart-automation/
+https://agixtech.com/case-studies/stitch-fix/
+https://agixtech.com/case-study/stitch-fix-ai-stylist-engine-for-hyper-personalized-shopping/
+https://agixtech.com/case-studies/ulta-beauty/
+https://agixtech.com/case-study/ulta-beauty-predictive-ai-engine-for-personalized-marketing-loyalty-engagement/
+https://agixtech.com/case-studies/quizlet/
+https://agixtech.com/case-study/quizlet-ai-powered-study-engine-for-personalized-predictive-learning/
+https://agixtech.com/case-studies/knewton/
+https://agixtech.com/case-study/knewton-real-time-adaptive-learning-powered-by-ai-feedback-loops/
+https://agixtech.com/case-studies/riiid-labs/
+https://agixtech.com/case-study/riiid-labs-adaptive-ai-engine-for-personalized-learning-and-test-mastery/
+https://agixtech.com/case-studies/hilton-hotels/
+https://agixtech.com/case-study/hilton-hotels-enterprise-ai-for-end-to-end-guest-personalization/
+https://agixtech.com/case-studies/housecanary/
+https://agixtech.com/case-study/housecanary-ai-platform-for-real-time-real-estate-valuation-market/
+https://agixtech.com/case-studies/mindtrip/
+https://agixtech.com/case-study/mindtrip-ai-conversational-ai-for-effortless-travel-ideation-and-planning/
+https://agixtech.com/case-studies/polyai/
+https://agixtech.com/case-study/polyai-multilingual-voice-ai-assistant-for-scalable-human-like-customer-service/
+https://agixtech.com/case-studies/brainfish/
+https://agixtech.com/case-study/brainfish-scalable-ai-chatbot-for-domain-specific-high-speed-customer-support/
+https://agixtech.com/case-studies/properti-ai/
+https://agixtech.com/case-study/properti-ai-chatbot-for-personalized-always-on-property-discovery/
+https://agixtech.com/case-studies/dartmouth-college/
+https://agixtech.com/case-study/dartmouth-college-24-7-ai-helpdesk-assistant-for-campus-wide-it-support/
+https://agixtech.com/case-studies/suno/
+https://agixtech.com/case-study/suno-text-to-music-ai-engine-for-instant-audio-composition/
+https://agixtech.com/case-studies/innit/
+https://agixtech.com/case-study/innit-ai-sous-chef-for-personalized-cooking-guidance-pantry-intelligence/
+https://agixtech.com/case-studies/hungryroot/
+https://agixtech.com/case-study/hungryroot-ai-driven-meal-planning-grocery-customization-platform/
+https://agixtech.com/case-studies/navan/
+https://agixtech.com/case-study/navan-ai-assistant-for-seamless-business-travel-smart-expense-management/
+https://agixtech.com/case-studies/geovea/
+https://agixtech.com/case-study/geovea-dynamic-ai-assistant-for-tailored-travel-itineraries/
+https://agixtech.com/case-studies/luxury-escapes/
+https://agixtech.com/case-study/luxury-escapes-concierge-grade-ai-chatbot-for-premium-travel-experiences/
+https://agixtech.com/case-studies/naratix/
+https://agixtech.com/case-study/naratix-intelligent-ai-agents-for-global-multilingual-e-commerce-content/
+https://agixtech.com/case-studies/alphasense/
+https://agixtech.com/case-study/alphasense-real-time-ai-engine-for-market-intelligence-research-automation/
+
+
+
+Structured Data (Schema)
+
+Ensure schema is dynamically injected per page type
+Homepage Schema (MISSING)
+Required Schemas:
+Organization
+WebPage
+WebSite
+Services & Industry Pages Schema (INCOMPLETE)
+Required Schemas:
+Organization
+WebPage
+Service
+BreadcrumbList
+FAQPage
+Case Study Pages Schema (MISSING)
+Required Schemas:
+CaseStudy
+Organization
+WebPage
+BreadcrumbList
+Open Graph & Social Meta Issues
+Missing Across Pages
+og:type should be website
+og:image (featured image)
+og:url (self URL)
+Meta Data Featured Image Missing
+
+Use the feature image, meta title and description, social titles and descriptions and image: https://docs.google.com/spreadsheets/d/1OUN2AYt9TmN-KPHVbRdfNjs1lcZ6FKVuV-Rlmz1dOB8/edit?gid=927658359#gid=927658359
+URL Replacement:
+
+Old URL (To Be Redirected)
+New Canonical URL (Target)
+Redirect Type
+https://agixtech.com/intelligence/operational/
+https://agixtech.com/intelligence/operational-ai/
+301
+https://agixtech.com/intelligence/conversational/
+https://agixtech.com/intelligence/conversational-ai/
+301
+https://agixtech.com/intelligence/decision/
+https://agixtech.com/intelligence/decision-ai/
+301
+https://agixtech.com/intelligence/agentic/
+https://agixtech.com/intelligence/autonomous-agentic-ai/
+301
+https://agixtech.com/intelligence/enterprise-knowledge/
+https://agixtech.com/intelligence/enterprise-knowledge-ai/
+301
+https://agixtech.com/services/ai-automation/
+https://agixtech.com/services/ai-automation/
+301
+https://agixtech.com/services/voice-agents/
+https://agixtech.com/services/ai-voice-agents/
+301
+https://agixtech.com/services/chatbots/
+https://agixtech.com/services/conversational-ai-chatbots/
+301
+https://agixtech.com/services/agentic-ai-systems/
+https://agixtech.com/services/agentic-ai-systems/
+301
+https://agixtech.com/services/rag-knowledge/
+https://agixtech.com/services/rag-knowledge-ai/
+301
+https://agixtech.com/services/predictive-analytics/
+https://agixtech.com/services/ai-predictive-analytics/
+301
+https://agixtech.com/services/computer-vision/
+https://agixtech.com/services/ai-computer-vision/
+301
+https://agixtech.com/services/custom-ai-product/
+https://agixtech.com/services/custom-ai-product-development/
+301
+https://agixtech.com/industries/healthcare/
+https://agixtech.com/industries/healthcare-ai-solutions/
+301
+https://agixtech.com/industries/real-estate/
+https://agixtech.com/industries/real-estate-ai-solutions/
+301
+https://agixtech.com/industries/fintech/
+https://agixtech.com/industries/fintech-ai-solutions/
+301
+https://agixtech.com/industries/insurance/
+https://agixtech.com/industries/insurance-ai-solutions/
+301
+https://agixtech.com/industries/retail/
+https://agixtech.com/industries/retail-ai-solutions/
+301
+https://agixtech.com/industries/logistics/
+https://agixtech.com/industries/logistics-ai-solutions/
+301
+https://agixtech.com/industries/hospitality/
+https://agixtech.com/industries/hospitality-ai-solutions/
+301
+https://agixtech.com/industries/edtech/
+https://agixtech.com/industries/edtech-ai-solutions/
+301
+ 
+
+
+Redirect URL:
+
+Old URL (To Be Redirected)
+New Canonical URL (Target)
+Redirect Type
+https://agixtech.com/industry/ai-in-healthcare/
+https://agixtech.com/industry/ai-in-hospitals/
+https://agixtech.com/industry/ai-in-pharmaceuticals/
+https://agixtech.com/industries/healthcare-ai-solutions/
+301
+https://agixtech.com/industry/ai-in-fintech/
+https://agixtech.com/industries/fintech-ai-solutions/
+301
+https://agixtech.com/industry/ai-in-insurance-tech/
+https://agixtech.com/industries/insurance-ai-solutions/
+301
+https://agixtech.com/industry/ai-in-retail-e-commerce/
+https://agixtech.com/industries/retail-ai-solutions/
+301
+https://agixtech.com/industry/ai-in-supply-chain/
+https://agixtech.com/industries/logistics-ai-solutions/
+301
+https://agixtech.com/industry/ai-in-hospitality-travel/
+https://agixtech.com/industries/hospitality-ai-solutions/
+301
+https://agixtech.com/industry/ai-in-edtech/
+https://agixtech.com/industry/ai-in-education-institutions/
+https://agixtech.com/industries/edtech-ai-solutions/
+301
+https://agixtech.com/service/workflow-optimization-services/
+
+    https://agixtech.com/service/ai-automation-services/
+https://agixtech.com/services/ai-automation/
+301
+https://agixtech.com/service/custom-ai-agent-development/
+https://agixtech.com/services/agentic-ai-systems/
+301
+https://agixtech.com/service/retrieval-augmented-generation/
+https://agixtech.com/services/rag-knowledge-ai/
+301
+https://agixtech.com/service/predictive-analytics-development/
+https://agixtech.com/services/ai-predictive-analytics/
+301
+https://agixtech.com/service/computer-vision-solutions/
+https://agixtech.com/services/ai-computer-vision/
+301
+https://agixtech.com/service/saas-product-development/
+
+    https://agixtech.com/service/mvp-prototyping/
+
+    https://agixtech.com/service/api-development-integration-services/
+ 
+https://agixtech.com/services/custom-ai-product-development/
+301
+https://agixtech.com/service/ai-consulting-services/
+https://agixtech.com/intelligence/operational-ai/
+301
+https://agixtech.com/portfolio/
+https://agixtech.com/case-studies/
+301
+https://agixtech.com/terms-and-condition/
+https://agixtech.com/terms-of-service/
+301
+https://agixtech.com/career/
+https://agixtech.com/corporate/careers/
+301
+https://agixtech.com/about-us/
+https://agixtech.com/corporate/about/
+301
+https://agixtech.com/contact-us/
+https://agixtech.com/corporate/contact/
+301
+
+
+Footer Headings Rendering Issue
+Footer navigation headings are appearing in the content body on every page:
+Services
+Industries
+Intelligence
+Company
+Offices
+

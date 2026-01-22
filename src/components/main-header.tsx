@@ -22,33 +22,33 @@ import {
 import { cn } from "@/lib/utils";
 
 const intelligenceItems = [
-  { title: "Operational Intelligence", href: "/intelligence/operational", icon: Workflow, description: "Streamline operations with AI-driven insights" },
-  { title: "Conversational Intelligence", href: "/intelligence/conversational", icon: MessageSquare, description: "Natural language understanding and processing" },
-  { title: "Decision Intelligence", href: "/intelligence/decision", icon: Brain, description: "Data-driven decision support systems" },
-  { title: "Autonomous Agentic Systems", href: "/intelligence/agentic", icon: Bot, description: "Self-learning autonomous AI agents" },
-  { title: "Enterprise Knowledge Intelligence", href: "/intelligence/enterprise-knowledge", icon: Database, description: "Unified enterprise knowledge management" },
+  { title: "Operational Intelligence", href: "/intelligence/operational-ai", icon: Workflow, description: "Streamline operations with AI-driven insights" },
+  { title: "Conversational Intelligence", href: "/intelligence/conversational-ai", icon: MessageSquare, description: "Natural language understanding and processing" },
+  { title: "Decision Intelligence", href: "/intelligence/decision-ai", icon: Brain, description: "Data-driven decision support systems" },
+  { title: "Autonomous Agentic Systems", href: "/intelligence/autonomous-agentic-ai", icon: Bot, description: "Self-learning autonomous AI agents" },
+  { title: "Enterprise Knowledge Intelligence", href: "/intelligence/enterprise-knowledge-ai", icon: Database, description: "Unified enterprise knowledge management" },
 ];
 
 const servicesItems = [
   { title: "AI Automation Services", href: "/services/ai-automation", icon: Workflow, description: "End-to-end workflow automation" },
-  { title: "AI Voice Agents", href: "/services/voice-agents", icon: Phone, description: "Intelligent voice-based interactions" },
-  { title: "Conversational AI (Chatbots)", href: "/services/chatbots", icon: MessageSquare, description: "Smart conversational interfaces" },
+  { title: "AI Voice Agents", href: "/services/ai-voice-agents", icon: Phone, description: "Intelligent voice-based interactions" },
+  { title: "Conversational AI (Chatbots)", href: "/services/conversational-ai-chatbots", icon: MessageSquare, description: "Smart conversational interfaces" },
   { title: "Agentic AI Systems", href: "/services/agentic-ai-systems", icon: Bot, description: "Autonomous AI solutions" },
-  { title: "RAG & Knowledge AI", href: "/services/rag-knowledge", icon: Database, description: "Retrieval-augmented generation" },
-  { title: "Predictive & Analytics AI", href: "/services/predictive-analytics", icon: LineChart, description: "Advanced predictive modeling" },
-  { title: "Computer Vision Solutions", href: "/services/computer-vision", icon: Eye, description: "Visual AI and image processing" },
-  { title: "Custom AI Product Development", href: "/services/custom-ai-product", icon: Rocket, description: "Build, launch & scale AI products" },
+  { title: "RAG & Knowledge AI", href: "/services/rag-knowledge-ai", icon: Database, description: "Retrieval-augmented generation" },
+  { title: "Predictive & Analytics AI", href: "/services/ai-predictive-analytics", icon: LineChart, description: "Advanced predictive modeling" },
+  { title: "Computer Vision Solutions", href: "/services/ai-computer-vision", icon: Eye, description: "Visual AI and image processing" },
+  { title: "Custom AI Product Development", href: "/services/custom-ai-product-development", icon: Rocket, description: "Build, launch & scale AI products" },
 ];
 
 const industriesItems = [
-  { title: "Healthcare", href: "/industries/healthcare", icon: HeartPulse, description: "AI solutions for medical and health sectors" },
-  { title: "Real Estate", href: "/industries/real-estate", icon: Home, description: "Smart property and real estate automation" },
-  { title: "Fintech & Lending", href: "/industries/fintech", icon: Landmark, description: "AI solutions for fintech and lending companies" },
-  { title: "Insurance", href: "/industries/insurance", icon: Building2, description: "AI for claims, fraud detection & underwriting" },
-  { title: "Retail & eCommerce", href: "/industries/retail", icon: ShoppingCart, description: "Retail and online commerce optimization" },
-  { title: "Logistics & Supply Chain", href: "/industries/logistics", icon: Truck, description: "Supply chain and logistics intelligence" },
-  { title: "Hospitality & Wellness", href: "/industries/hospitality", icon: Sparkles, description: "AI for hotels, spas, restaurants & wellness" },
-  { title: "EdTech & E-Learning", href: "/industries/edtech", icon: GraduationCap, description: "AI solutions for education and online learning" },
+  { title: "Healthcare", href: "/industries/healthcare-ai-solutions", icon: HeartPulse, description: "AI solutions for medical and health sectors" },
+  { title: "Real Estate", href: "/industries/real-estate-ai-solutions", icon: Home, description: "Smart property and real estate automation" },
+  { title: "Fintech & Lending", href: "/industries/fintech-ai-solutions", icon: Landmark, description: "AI solutions for fintech and lending companies" },
+  { title: "Insurance", href: "/industries/insurance-ai-solutions", icon: Building2, description: "AI for claims, fraud detection & underwriting" },
+  { title: "Retail & eCommerce", href: "/industries/retail-ai-solutions", icon: ShoppingCart, description: "Retail and online commerce optimization" },
+  { title: "Logistics & Supply Chain", href: "/industries/logistics-ai-solutions", icon: Truck, description: "Supply chain and logistics intelligence" },
+  { title: "Hospitality & Wellness", href: "/industries/hospitality-ai-solutions", icon: Sparkles, description: "AI for hotels, spas, restaurants & wellness" },
+  { title: "EdTech & E-Learning", href: "/industries/edtech-ai-solutions", icon: GraduationCap, description: "AI solutions for education and online learning" },
 ];
 
 const corporateItems = [

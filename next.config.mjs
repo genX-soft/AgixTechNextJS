@@ -9,6 +9,10 @@ const nextConfig = {
         // hostname: 'picsum.photos',
         hostname: "r7t.66a.myftpupload.com",
       },
+      {
+        protocol: 'https',
+        hostname: 'agixtech.com',
+      },
     ],
     formats: ['image/avif', 'image/webp'],
   },
@@ -23,7 +27,63 @@ const nextConfig = {
   },
   async redirects() {
     return [
-      // Case study redirects - long-form URLs to canonical short URLs
+      // ===== INTELLIGENCE PAGE REDIRECTS =====
+      { source: '/intelligence/operational', destination: '/intelligence/operational-ai/', permanent: true },
+      { source: '/intelligence/conversational', destination: '/intelligence/conversational-ai/', permanent: true },
+      { source: '/intelligence/decision', destination: '/intelligence/decision-ai/', permanent: true },
+      { source: '/intelligence/agentic', destination: '/intelligence/autonomous-agentic-ai/', permanent: true },
+      { source: '/intelligence/enterprise-knowledge', destination: '/intelligence/enterprise-knowledge-ai/', permanent: true },
+      
+      // ===== SERVICE PAGE REDIRECTS =====
+      { source: '/services/voice-agents', destination: '/services/ai-voice-agents/', permanent: true },
+      { source: '/services/chatbots', destination: '/services/conversational-ai-chatbots/', permanent: true },
+      { source: '/services/rag-knowledge', destination: '/services/rag-knowledge-ai/', permanent: true },
+      { source: '/services/predictive-analytics', destination: '/services/ai-predictive-analytics/', permanent: true },
+      { source: '/services/computer-vision', destination: '/services/ai-computer-vision/', permanent: true },
+      { source: '/services/custom-ai-product', destination: '/services/custom-ai-product-development/', permanent: true },
+      
+      // ===== INDUSTRY PAGE REDIRECTS =====
+      { source: '/industries/healthcare', destination: '/industries/healthcare-ai-solutions/', permanent: true },
+      { source: '/industries/real-estate', destination: '/industries/real-estate-ai-solutions/', permanent: true },
+      { source: '/industries/fintech', destination: '/industries/fintech-ai-solutions/', permanent: true },
+      { source: '/industries/insurance', destination: '/industries/insurance-ai-solutions/', permanent: true },
+      { source: '/industries/retail', destination: '/industries/retail-ai-solutions/', permanent: true },
+      { source: '/industries/logistics', destination: '/industries/logistics-ai-solutions/', permanent: true },
+      { source: '/industries/hospitality', destination: '/industries/hospitality-ai-solutions/', permanent: true },
+      { source: '/industries/edtech', destination: '/industries/edtech-ai-solutions/', permanent: true },
+      
+      // ===== OLD /industry/ PATH REDIRECTS =====
+      { source: '/industry/ai-in-healthcare', destination: '/industries/healthcare-ai-solutions/', permanent: true },
+      { source: '/industry/ai-in-hospitals', destination: '/industries/healthcare-ai-solutions/', permanent: true },
+      { source: '/industry/ai-in-pharmaceuticals', destination: '/industries/healthcare-ai-solutions/', permanent: true },
+      { source: '/industry/ai-in-fintech', destination: '/industries/fintech-ai-solutions/', permanent: true },
+      { source: '/industry/ai-in-insurance-tech', destination: '/industries/insurance-ai-solutions/', permanent: true },
+      { source: '/industry/ai-in-retail-e-commerce', destination: '/industries/retail-ai-solutions/', permanent: true },
+      { source: '/industry/ai-in-supply-chain', destination: '/industries/logistics-ai-solutions/', permanent: true },
+      { source: '/industry/ai-in-hospitality-travel', destination: '/industries/hospitality-ai-solutions/', permanent: true },
+      { source: '/industry/ai-in-edtech', destination: '/industries/edtech-ai-solutions/', permanent: true },
+      { source: '/industry/ai-in-education-institutions', destination: '/industries/edtech-ai-solutions/', permanent: true },
+      
+      // ===== OLD /service/ PATH REDIRECTS =====
+      { source: '/service/workflow-optimization-services', destination: '/services/ai-automation/', permanent: true },
+      { source: '/service/ai-automation-services', destination: '/services/ai-automation/', permanent: true },
+      { source: '/service/custom-ai-agent-development', destination: '/services/agentic-ai-systems/', permanent: true },
+      { source: '/service/retrieval-augmented-generation', destination: '/services/rag-knowledge-ai/', permanent: true },
+      { source: '/service/predictive-analytics-development', destination: '/services/ai-predictive-analytics/', permanent: true },
+      { source: '/service/computer-vision-solutions', destination: '/services/ai-computer-vision/', permanent: true },
+      { source: '/service/saas-product-development', destination: '/services/custom-ai-product-development/', permanent: true },
+      { source: '/service/mvp-prototyping', destination: '/services/custom-ai-product-development/', permanent: true },
+      { source: '/service/api-development-integration-services', destination: '/services/custom-ai-product-development/', permanent: true },
+      { source: '/service/ai-consulting-services', destination: '/intelligence/operational-ai/', permanent: true },
+      
+      // ===== CORPORATE PAGE REDIRECTS =====
+      { source: '/portfolio', destination: '/case-studies/', permanent: true },
+      { source: '/terms-and-condition', destination: '/terms-of-service/', permanent: true },
+      { source: '/career', destination: '/corporate/careers/', permanent: true },
+      { source: '/about-us', destination: '/corporate/about/', permanent: true },
+      { source: '/contact-us', destination: '/corporate/contact/', permanent: true },
+      
+      // ===== CASE STUDY REDIRECTS (long-form to short URLs) =====
       { source: '/case-study/enova-ai-powered-credit-decisioning-for-smarter-more-inclusive-lending', destination: '/case-studies/enova/', permanent: true },
       { source: '/case-study/dave-generative-ai-assistant-for-smart-human-like-financial-support', destination: '/case-studies/dave/', permanent: true },
       { source: '/case-study/ocrolus-ai-document-intelligence-engine-for-automated-fintech-workflows', destination: '/case-studies/ocrolus/', permanent: true },
@@ -52,7 +112,8 @@ const nextConfig = {
       { source: '/case-study/luxury-escapes-concierge-grade-ai-chatbot-for-premium-travel-experiences', destination: '/case-studies/luxury-escapes/', permanent: true },
       { source: '/case-study/naratix-intelligent-ai-agents-for-global-multilingual-e-commerce-content', destination: '/case-studies/naratix/', permanent: true },
       { source: '/case-study/alphasense-real-time-ai-engine-for-market-intelligence-research-automation', destination: '/case-studies/alphasense/', permanent: true },
-      // Redirect /insights/{slug} to /{slug} for blog posts
+      
+      // ===== BLOG/INSIGHTS REDIRECTS =====
       { source: '/insights/:slug', destination: '/:slug/', permanent: true },
     ];
   },
