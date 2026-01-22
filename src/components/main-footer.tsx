@@ -291,9 +291,9 @@ function AwardBadge({ award }: { award: typeof awards[0] }) {
       <div className={`relative px-4 py-2 bg-gradient-to-r ${config.ribbonColor} rounded-sm shadow-md mb-3 max-w-[200px]`}>
         <div className="absolute -left-2 top-0 w-0 h-0 border-t-[16px] border-t-transparent border-r-[8px] border-r-slate-900/30"></div>
         <div className="absolute -right-2 top-0 w-0 h-0 border-t-[16px] border-t-transparent border-l-[8px] border-l-slate-900/30"></div>
-        <h4 className="text-xs font-bold uppercase tracking-wide text-white leading-snug text-center">
+        <span className="text-xs font-bold uppercase tracking-wide text-white leading-snug text-center">
           {award.title}
-        </h4>
+        </span>
       </div>
       
       {/* Year */}
@@ -312,7 +312,7 @@ export function MainFooter() {
       <div className="py-16 md:py-20 border-b border-slate-800 bg-slate-900/30">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
-            <h3 className="text-xl md:text-2xl font-semibold text-white mb-3">Enterprise-Grade Security & Compliance</h3>
+            <p className="text-xl md:text-2xl font-semibold text-white mb-3" role="heading" aria-level={2}>Enterprise-Grade Security & Compliance</p>
             <p className="text-sm text-slate-400">Trusted by Fortune 500 companies worldwide</p>
             <span className="text-sm text-slate-400">Security and compliance are embedded at the system architecture level not added post-deployment.</span>
           </div>
@@ -369,7 +369,7 @@ export function MainFooter() {
           </div>
 
           <div>
-            <h4 className="text-sm font-semibold uppercase tracking-wider text-white mb-4">Services</h4>
+            <p className="text-sm font-semibold uppercase tracking-wider text-white mb-4" role="heading" aria-level={3}>Services</p>
             <ul className="space-y-2.5">
               {services.map((link) => (
                 <li key={link.href + link.title}>
@@ -382,7 +382,7 @@ export function MainFooter() {
           </div>
 
           <div>
-            <h4 className="text-sm font-semibold uppercase tracking-wider text-white mb-4">Industries</h4>
+            <p className="text-sm font-semibold uppercase tracking-wider text-white mb-4" role="heading" aria-level={3}>Industries</p>
             <ul className="space-y-2.5">
               {industries.map((link) => (
                 <li key={link.href}>
@@ -395,7 +395,7 @@ export function MainFooter() {
           </div>
 
           <div>
-            <h4 className="text-sm font-semibold uppercase tracking-wider text-white mb-4">Intelligence</h4>
+            <p className="text-sm font-semibold uppercase tracking-wider text-white mb-4" role="heading" aria-level={3}>Intelligence</p>
             <ul className="space-y-2.5">
               {intelligence.map((link) => (
                 <li key={link.href}>
@@ -408,7 +408,7 @@ export function MainFooter() {
           </div>
 
           <div>
-            <h4 className="text-sm font-semibold uppercase tracking-wider text-white mb-4">Company</h4>
+            <p className="text-sm font-semibold uppercase tracking-wider text-white mb-4" role="heading" aria-level={3}>Company</p>
             <ul className="space-y-2.5">
               {corporate.map((link) => (
                 <li key={link.href + link.title}>
@@ -427,7 +427,7 @@ export function MainFooter() {
           </div>
 
           <div>
-            <h4 className="text-sm font-semibold uppercase tracking-wider text-white mb-4">Offices</h4>
+            <p className="text-sm font-semibold uppercase tracking-wider text-white mb-4" role="heading" aria-level={3}>Offices</p>
             <div className="space-y-4">
               {offices.map((office) => (
                 <div key={office.city} className="text-sm">

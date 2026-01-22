@@ -2737,6 +2737,72 @@ function ContactSection() {
 
 export default function Home() {
   
+  const jsonLdOrganization = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": "https://agixtech.com/#organization",
+    "name": "AGIX Technologies",
+    "url": "https://agixtech.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://agixtech.com/og-image.png",
+      "@id": "https://agixtech.com/#logo"
+    },
+    "description": "AGIX Technologies is a leading AI Systems Engineering company helping enterprises design, deploy, and scale autonomous AI systems including agentic AI, voice AI, RAG systems, and predictive analytics.",
+    "foundingDate": "2020",
+    "sameAs": [
+      "https://twitter.com/agixtech",
+      "https://linkedin.com/company/agixtech",
+      "https://facebook.com/agixtech"
+    ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+1-857-365-6167",
+      "contactType": "sales",
+      "email": "santosh@agixtech.com",
+      "areaServed": "US",
+      "availableLanguage": "English"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "99 Derby Street",
+      "addressLocality": "Hingham",
+      "addressRegion": "MA",
+      "postalCode": "02043",
+      "addressCountry": "US"
+    }
+  };
+
+  const jsonLdWebSite = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": "https://agixtech.com/#website",
+    "url": "https://agixtech.com",
+    "name": "AGIX Technologies",
+    "description": "Leading AI Systems Engineering and Agentic Intelligence company specializing in enterprise AI automation, voice agents, chatbots, RAG systems, and predictive analytics.",
+    "publisher": { "@id": "https://agixtech.com/#organization" },
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "https://agixtech.com/insights/?s={search_term_string}"
+      },
+      "query-input": "required name=search_term_string"
+    }
+  };
+
+  const jsonLdWebPage = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": "https://agixtech.com/#webpage",
+    "url": "https://agixtech.com/",
+    "name": "AGIX Technologies | Enterprise AI Systems Engineering & Agentic Intelligence",
+    "description": "Transform your business with enterprise AI solutions. AGIX Technologies specializes in agentic AI systems, voice agents, chatbots, RAG systems, and predictive analytics for Fortune 500 companies.",
+    "isPartOf": { "@id": "https://agixtech.com/#website" },
+    "about": { "@id": "https://agixtech.com/#organization" },
+    "inLanguage": "en-US"
+  };
+
   const jsonLdBreadcrumb = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -2745,7 +2811,7 @@ export default function Home() {
       {
         "@type": "ListItem",
         "position": 1,
-        "name": "Homepage",
+        "name": "Home",
         "item": "https://agixtech.com/"
       }
     ]
@@ -2841,6 +2907,18 @@ export default function Home() {
   };
   return (
     <div className="min-h-screen bg-background">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdOrganization) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdWebSite) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdWebPage) }}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdBreadcrumb) }}

@@ -131,6 +131,31 @@ export function generateFAQSchema(faqs: { question: string; answer: string }[]) 
   };
 }
 
+export function generateCaseStudySchema(caseStudy: {
+  name: string;
+  description: string;
+  url: string;
+  client?: string;
+  industry?: string;
+  image?: string;
+}) {
+  return {
+    "@type": "Article",
+    "@id": `${caseStudy.url}#casestudy`,
+    "headline": caseStudy.name,
+    "description": caseStudy.description,
+    "url": caseStudy.url,
+    "author": { "@id": `${SITE_URL}/#organization` },
+    "publisher": { "@id": `${SITE_URL}/#organization` },
+    "mainEntityOfPage": { "@id": `${caseStudy.url}#webpage` },
+    "image": caseStudy.image || LOGO_URL,
+    "articleSection": "Case Study",
+    "about": caseStudy.industry ? { "@type": "Thing", "name": caseStudy.industry } : undefined,
+    "mentions": caseStudy.client ? { "@type": "Organization", "name": caseStudy.client } : undefined,
+    "inLanguage": "en-US"
+  };
+}
+
 export function generateFullSchema(components: object[]) {
   return {
     "@context": "https://schema.org",
