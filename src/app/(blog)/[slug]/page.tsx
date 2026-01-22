@@ -29,7 +29,8 @@ import {
   formatDate,
   estimateReadTime,
   getExcerpt,
-  stripHtmlTags
+  stripHtmlTags,
+  sanitizeContent
 } from "@/lib/insights/wordpress";
 import { 
   generateOrganizationSchema, 
@@ -341,7 +342,7 @@ export default function BlogArticlePage() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
             className="wp-content max-w-none mb-12"
-            dangerouslySetInnerHTML={{ __html: post.content.rendered }}
+            dangerouslySetInnerHTML={{ __html: sanitizeContent(post.content.rendered) }}
           />
 
           <div className="border-t border-border pt-8 mb-12">
