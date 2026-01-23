@@ -1,0 +1,1007 @@
+Urls	Focus Keyword	Keywords	Main Heading	Meta Title	Meta Description	OG Title	OG Description	Twitter Cards Title	Twitter Cards Description	Featured & Social Image	Schema																		
+https:/www.agixtech.com/	AI Systems Engineering & Agentic Intelligence Company	AI systems engineering, agentic intelligence company, autonomous AI systems, enterprise AI solutions, AI voice agents, AI architecture, Conversational AI	Not Sure Where to Start With AI?	AI Systems Engineering & Agentic Intelligence Company | Agix Technologies	We are an AI Systems Engineering & Agentic Intelligence company helping enterprises design, deploy, and scale autonomous AI systems that deliver measurable ROI.	AI Systems Engineering & Agentic Intelligence Company	Enterprise-grade AI Systems Engineering and Agentic Intelligence solutions strategy, architecture, and deployment that drive real business outcomes.	AI Systems Engineering & Agentic Intelligence Company	We build enterprise AI systems and agentic intelligence solutions that move from strategy to scalable, ROI-driven deployment.	https://drive.google.com/file/d/1bItj1Bjrmuv9xAVJqDLVBSMvrAFLcbF_/view?usp=drive_link	Organization Schema, WebSite Schema, WebPage Schema, BreadcrumbList Schema, Service Schema																		
+																													
+Intelligence																													
+https://agixtech.com/intelligence/operational-ai/	Operational AI	operational ai, operational ai intelligence, ai for operations, operational ai systems, operational intelligence ai, ai-powered operational intelligence, real-time operational ai, operational decision intelligence, operational ai services	Operational Intelligence That Keeps Your Business Running Smoothly	Operational AI Solutions | Real-Time AI for Business Operations	Operational AI solutions that transform real-time operational data into intelligent, autonomous decisions. Build scalable AI systems for modern business operations.	Operational AI Solutions for Real-Time Business Operations	AI-powered operational intelligence systems delivering real-time insights and autonomous decision-making for complex business operations.	Operational AI | Real-Time AI for Business Operations	Operational AI systems that turn real-time operational data into intelligent, autonomous decisions for modern enterprises.	https://drive.google.com/file/d/1ekPQyG9jn11Mz87XHrRMsAekQC9HzFBR/view?usp=drive_link	Organization, WebPage, BreadcrumbList, Service, SoftwareApplication, FAQs																		
+https://agixtech.com/intelligence/conversational-ai/	Conversational AI	conversational ai, conversational intelligence, enterprise conversational ai, conversational ai solutions, conversational ai systems, conversational ai platforms	Conversational Intelligence That Understands, Not Just Responds	Conversational AI Solutions | Enterprise Conversational Intelligence	Enterprise Conversational AI solutions that combine conversational intelligence, AI systems, and platforms to build assistants that truly understand business context.	Enterprise Conversational AI & Conversational Intelligence Solutions	Build enterprise Conversational AI systems and platforms powered by conversational intelligence that go beyond chatbots to deliver real business outcomes.	Conversational AI | Enterprise Conversational Intelligence	Enterprise Conversational AI solutions built with conversational intelligence, scalable AI systems, and modern conversational platforms.	https://drive.google.com/file/d/1iW6q1VEb3j2obPVE3MiV2JHpGMLe7Z2o/view?usp=drive_link	Organization, WebPage, BreadcrumbList, Service, SoftwareApplication, FAQs																		
+https://agixtech.com/intelligence/decision-ai/	Decision AI	decision intelligence, decision ai, decision intelligence solutions, enterprise decision intelligence, decision intelligence systems, ai decision intelligence, decision intelligence platform, intelligent decision systems, agentic ai decision intelligence, intelligent decision support systems	Decision Intelligence That Helps You Choose Right — Every Time	Decision AI & Decision Intelligence Solutions for Enterprises | Agix Technologies	Decision AI and Decision Intelligence solutions that help enterprises make faster, smarter decisions using intelligent systems, agentic AI, and real-time insights.	Decision AI & Enterprise Decision Intelligence Solutions | Agix Technologies	Build enterprise Decision Intelligence systems powered by Decision AI, agentic intelligence, and intelligent decision support for complex business decisions.	Decision AI & Decision Intelligence for Enterprises | AgixTech	Enterprise Decision AI and Decision Intelligence solutions using intelligent decision systems and agentic AI to drive better business outcomes.	https://drive.google.com/file/d/1eisdXZg03Lt6IJ77c2oL1cs4obgOFsRr/view?usp=drive_link	Organization, WebPage, BreadcrumbList, Service, SoftwareApplication, FAQs																		
+https://agixtech.com/intelligence/autonomous-agentic-ai/	Agentic AI	autonomous agentic systems, autonomous agentic ai, autonomous ai agents, agentic ai autonomous systems, agentic ai autonomous intelligence, autonomous agentic systems intelligence, autonomous agentic intelligence, enterprise autonomous agents	Autonomous Agentic Systems That Act With Purpose — Not Chaos	Autonomous Agentic Systems | Enterprise Autonomous AI Agents	Autonomous Agentic Systems powered by agentic AI and autonomous AI agents. Design governed, multi-agent systems that act intelligently at enterprise scale.	Autonomous Agentic Systems & Enterprise Autonomous AI Agents	Build Autonomous Agentic Systems using agentic AI and autonomous agents that plan, decide, and act with governance and control.	Autonomous Agentic Systems | Autonomous AI Agents	Enterprise Autonomous Agentic Systems built with agentic AI and autonomous agents designed for control, coordination, and scale.	https://drive.google.com/file/d/1gXEgwYTnuw3o4X6bxxEhF6MW6LJsq2ET/view?usp=drive_link	Organization, WebPage, BreadcrumbList, Service, SoftwareApplication, FAQs																		
+https://agixtech.com/intelligence/enterprise-knowledge-ai/	Enterprise Knowledge AI	Enterprise Knowledge AI, Knowledge Intelligence, Enterprise Knowledge Intelligence, Knowledge Intelligence Systems, AI-powered Knowledge Intelligence, Knowledge Intelligence for AI Systems	Enterprise Knowledge Intelligence You Can Trust — Not Just Retrieve	Enterprise Knowledge AI & Knowledge Intelligence Systems	Enterprise Knowledge AI and Knowledge Intelligence systems that deliver trusted, governed, AI-powered knowledge for intelligent decision-making and autonomous AI systems.	Enterprise Knowledge & Knowledge Management Systems | Agix Technologies	Build trusted Enterprise Knowledge AI using Knowledge Intelligence systems designed for governed, reliable AI decision-making and autonomous systems.	Enterprise Knowledge AI & Knowledge Intelligence	Enterprise Knowledge AI powered by Knowledge Intelligence systems that deliver trusted, governed knowledge for AI-driven decisions.	https://drive.google.com/file/d/1bm1TCWMNj_BnVRaK0nLZqR6xC4HeJ4sU/view?usp=drive_link	Organization, WebPage, BreadcrumbList, Service, SoftwareApplication, FAQs																		
+																													
+Services																													
+https://agixtech.com/services/ai-automation/	AI Automation Services	AI Automation Services, Enterprise AI Automation, AI Business Automation Services, Intelligent Automation Services, AI Workflow Automation Services, AI Automation Agency, AI Automation Company, AI Business Process Automation	Engineering AI Automation That Eliminates Manual Operations	AI Automation Services for Enterprises | Intelligent Workflow Automation	Accelerate operations with AI-powered workflow automation. We help enterprises automate processes, reduce costs, and scale with intelligent automation solutions.	AI Automation Services to Reduce Costs & Scale Operations | AGIX Technologies	Automate manual workflows and reduce operational costs with AI-driven business process automation. Deploy intelligent automation across your enterprise systems.	AI Automation Company for Intelligent Business Workflows & Process Automation	Build intelligent workflows with AI automation services that integrate with CRMs, ERPs & enterprise tools. Automate decisions, routing, and operations at scale.	https://drive.google.com/file/d/1ZqtxgIx3dDtt8BViilsLF5b1ZUn5PHpY/view?usp=drive_link																			
+https://agixtech.com/services/ai-voice-agents/	AI Voice Agents	AI Voice Agents, AI voice agent services, AI voice agent solutions, AI-powered voice agent, AI Phone Agents, AI voice agent for businesses, Best ai voice agent services, AI voice automation services, Voice AI solutions, Enterprise AI voice agents	AI Voice Agents That Talk, Think & Take Action	AI Voice Agents for Businesses | AI Phone Agents & Voice AI Solutions	Deploy AI voice agents that handle calls, automate conversations, and scale customer support. AI-powered phone agents built for modern businesses.	AI Voice Agents That Talk, Think & Take Action | Agix Technologies	Automate calls and conversations with AI-powered voice agents built for businesses. Scalable, intelligent, and enterprise-ready voice AI solutions.	AI Voice Agent Services & AI Phone Agents for Businesses	AI voice agent services for businesses looking to automate calls, improve customer experience, and reduce costs with intelligent voice AI solutions.	https://drive.google.com/file/d/11Ya49g30LuJIyfNDRflhYk_6gMtvBwZ7/view?usp=drive_link																			
+https://agixtech.com/services/conversational-ai-chatbots/	Conversational AI Chatbots	Conversational AI chatbots, AI chatbot services, AI chatbot solutions, AI-powered chatbots, AI chatbot for businesses, Conversational AI platform, Enterprise AI chatbots, Intelligent AI chatbots, AI chatbot platform, enterprise ai chatbot solution	Conversational AI That Works Across Support, Sales & Operations	Conversational AI Chatbots for Businesses | AI Chatbot Services	Deploy conversational AI chatbots that automate support, sales, and operations. Enterprise-grade AI chatbot services built to scale securely.	Conversational AI Chatbots That Work Across Support, Sales & Ops	AI-powered conversational chatbots that work across customer support, sales, and operations. Scalable AI chatbot solutions for modern businesses.	Conversational AI Chatbots for Support, Sales & Operations	Enterprise-grade conversational AI chatbots that automate conversations, improve customer experience, and scale business operations.	https://drive.google.com/file/d/1iW6q1VEb3j2obPVE3MiV2JHpGMLe7Z2o/view?usp=drive_link																			
+https://agixtech.com/services/agentic-ai-systems/	Agentic AI Systems	Agentic AI Systems, Agentic AI solutions, Agentic AI services, Autonomous AI agents, Agentic AI systems for enterprises, Enterprise agentic AI solutions, Intelligent autonomous agents, Agentic AI service provider	Agentic AI Systems That Don't Just Respond — They Operate	Agentic AI Systems for Enterprises | Autonomous AI Agents & Solutions	Build agentic AI systems that plan, decide, and operate autonomously. Enterprise-ready autonomous AI agents designed to scale complex business workflows.	Agentic AI Systems That Plan, Decide & Operate Autonomously	Agentic AI systems for enterprises that replace static automation with intelligent autonomous agents that execute, adapt, and optimize workflows.	Agentic AI Systems That Plan, Decide & Operate Autonomously	Deploy enterprise-grade agentic AI systems with intelligent autonomous agents built to handle complex workflows, decisions, and execution at scale.	https://drive.google.com/file/d/1-ghrJbGQ_ksg_yEZPPrsAVBJ1f1Fabz7/view?usp=drive_link																			
+https://agixtech.com/services/rag-knowledge-ai/	RAG Services	RAG Knowledge AI, Retrieval Augmented Generation services, RAG AI services, RAG AI solutions, Knowledge AI systems, Enterprise RAG solutions, RAG development services, Custom RAG solutions, RAG AI service provider	Make AI Answer From Your Knowledge — Not the Internet	RAG Knowledge AI Services | Enterprise Retrieval Augmented Generation	Build RAG Knowledge AI systems that deliver accurate, trusted answers from your data. Enterprise Retrieval Augmented Generation services with secure, scalable architecture.	Enterprise RAG Knowledge AI | Retrieval Augmented Generation Services	Turn your enterprise knowledge into reliable AI. Our RAG Knowledge AI services deliver grounded, secure, and scalable Retrieval Augmented Generation systems.	RAG Knowledge AI Solutions for Accurate, Trusted Enterprise AI	Deploy RAG Knowledge AI systems that answer from your data—not the internet. Enterprise Retrieval Augmented Generation services built for trust and scale.	https://drive.google.com/file/d/1ekl-1kFDfdjlaMdbj9fl3ZUQF-AHNGZ-/view?usp=drive_link																			
+https://agixtech.com/services/ai-predictive-analytics/	Predictive Analytics AI	predictive analytics ai, ai predictive analytics, ai predictive analytics company, ai predictive analytics services, predictive analytics services, predictive data analytics services, predictive analytics development services, predictive analytics services company, predictive analytics consulting	Predict What Happens Next — Not What Already Happened	AI Predictive Analytics Services for Enterprises | AGIX Technologies	Deploy AI predictive analytics to forecast business outcomes, reduce risk, and enable proactive decisions at scale. Enterprise-grade forecasting & decision intelligence.	Enterprise AI Predictive Analytics & Forecasting Solutions | AGIX Technologies	AGIXTech helps enterprises move from reactive to proactive decision-making with AI predictive analytics, forecasting models, risk scoring, and decision intelligence systems.	AI Predictive Analytics for Enterprise Decision Intelligence | AGIX Technogies	Forecast outcomes, reduce risk, and optimize decisions with AI predictive analytics and enterprise-grade forecasting systems.	https://drive.google.com/file/d/1Ooi0gxGiN_mtgeJLOuvPG5RfcbY0Xryh/view?usp=drive_link																			
+https://agixtech.com/services/ai-computer-vision/	Computer Vision Services	Computer Vision Services, Computer Vision Solutions, Enterprise Computer Vision, AI Computer Vision, Computer Vision Company, Computer Vision Consulting Services, Computer Vision Integration Services, Custom Computer Vision Solutions, Computer Vision Development Company, Computer Vision Consultant, Custom Computer Vision Development Services	From Pixels to Decisions	Computer Vision Services & AI Visual Automation for Enterprise	Enterprise-grade computer vision services for image recognition, video analytics, defect detection, OCR, and automation. Build scalable AI visual solutions.	Computer Vision Services for Enterprise | AI Visual Automation	We build customized computer vision solutions for image recognition, visual inspection, defect detection, OCR, and real-time video analytics. Transform operations with AI.	Computer Vision Services & AI Visual Automation	Custom computer vision solutions for image and video analytics, OCR, defect detection, and automation. Scalable AI built for enterprise operations.	https://drive.google.com/file/d/1WEfEtSzmO2HiDWTaan_Zu4EndH00SxLV/view?usp=drive_link																			
+https://agixtech.com/services/custom-ai-product-development/	Custom AI Develoment Services	Custom AI Product Development, AI Product Development Services, AI Product Development Company, Custom AI Software Development, AI Product Engineering Services, End-to-End AI Product Development, AI MVP Development Services, Custom AI Product Development Consultant, ai poc and mvp development services	From Idea to Market-Ready AI Product	Custom AI Product Development Services for Startups & Enterprises	Turn your idea into a market-ready AI product. We help founders and enterprises with AI MVP development, LLM engineering, deployment, scaling, and ROI-focused productization.	Custom AI Product Development Services for Startups & Enterprises	Turn your idea into a market-ready AI product. We provide end-to-end AI MVP development, LLM engineering, deployment, and scaling with measurable ROI.	Custom AI Product Development & MVP Services for AI Startups	From idea to market-ready AI product. We help startups build AI MVPs, validate ideas, deploy models, and scale with production-grade engineering and ROI.	https://drive.google.com/file/d/1fpaN2kcg-KDCPQf6so1WpLS1xhF-PqjG/view?usp=drive_link																			
+																													
+Industries																													
+https://agixtech.com/industries/healthcare-ai-solutions/	Healthcare AI Solutions		AI Solutions for Healthcare	AI-Powered Healthcare Solutions | Agix Technologies	Explore AI-powered healthcare solutions that streamline workflows, empower clinicians, and boost patient outcomes at scale.	AI-Powered Solutions in Healthcare | AGIX	Deliver better patient outcomes with AI in healthcare, advanced solutions for clinical efficiency, diagnosis support, and operational improvement.	AI Solutions for Smarter Healthcare | Agix Tech	Enhance healthcare efficiency and clinician support with reliable, explainable AI designed for real-world clinical environments.	https://drive.google.com/file/d/1NMDB-DaAJrV4E_JxUaeNxAy-5x63TMMK/view?usp=drive_link																			
+https://agixtech.com/industries/real-estate-ai-solutions/	Real Estate AI Solutions		AI Solutions for Real Estate That Don't Just Explain — They Show You What to Build	AI-Powered Real Estate Solutions | Agix Tech	AI solutions for real estate teams to manage leads, automate follow-ups, and reduce deal leakage across high-volume sales pipelines.	Scale Your Business with AI Real Estate Solutions | AGIX	Deploy AI solutions that respond to inquiries faster, prioritize leads, and keep real estate deals moving without manual dependency.	Get Custom AI Solutions for Real Estate | Agix Technologies	Purpose-built AI solutions for real estate teams struggling with slow responses, missed follow-ups, and stalled deals.	https://drive.google.com/file/d/1Yru-6IryJYsIsOrNf6n-4JsOKNNuVmRJ/view?usp=drive_link																			
+https://agixtech.com/industries/fintech-ai-solutions/	Fintech AI Solutions		AI Solutions for FinTech & Lending That Show You Where Risk Leaks — and How to Fix It	AI Solutions for FinTech Risk & Lending | AGIX	Scale your lending platform with AI-powered fintech solutions. Reduce fraud, automate underwriting, and ensure compliant, explainable decisions.	Advanced AI-Driven FinTech Solutions | Agix Technologies	Eliminate silent revenue leakage with AI-driven fintech solutions. Deploy intelligent risk models that accelerate approvals and strengthen trust.	Secure AI FinTech Solutions for Smart Lending | Agix Tech	Modernize your financial services with reliable AI fintech solutions. Get custom roadmaps for fraud detection, credit scoring, and scale.	https://drive.google.com/file/d/1yEw9XEgO5ijWV6Rr798SVcYLOVnHB5dA/view?usp=drive_link																			
+https://agixtech.com/industries/insurance-ai-solutions/	Insurance AI Solutions		AI Solutions for Insurance That Accelerate Claims, Reduce Fraud & Improve Risk Decisions	AI-Powered Insurance Solutions | Agix Tech	Accelerate claims and reduce fraud with AI-powered insurance solutions. Streamline underwriting and improve risk decisions with explainable AI.	AI-Driven Insurance Solutions | Agix Technologies	Experience seamless operations with AI-driven insurance solutions. Automate claims processing and detect fraud early to protect your loss ratio.	AI Insurance Solutions for Core Insurance Operations	Secure your competitive edge with reliable AI insurance solutions. Get custom roadmaps for claims automation and underwriting accuracy today.	https://drive.google.com/file/d/1Q5NxwfVH22G_RPzuTpFngJKtnODpubP4/view?usp=drive_link																			
+https://agixtech.com/industries/retail-ai-solutions/	Retail AI Solutions		AI Solutions for E-Commerce That Show You Where Revenue Is Leaking — and How to Fix It	AI E-Commerce Solutions for Retail | Agix Tech	Stop revenue leakage with AI-powered e-commerce solutions. Recover abandoned carts, automate support, and scale your retail operations with ease.	Advanced AI-Driven E-Commerce Solutions | AGIX	Boost your margins with AI-driven e-commerce solutions. Automate returns, optimize inventory, and deliver personalized shopping experiences at scale.	AI E-Commerce Solutions for D2C & Retail | Agix Technologies	Scale your D2C and retail operations with AI e-commerce solutions. Reduce support load, recover abandoned revenue, and streamline workflows.	https://drive.google.com/file/d/1lzNgW9RRUlZcXPYJcnJ4DuKKf5UQs1Mh/view?usp=drive_link																			
+https://agixtech.com/industries/logistics-ai-solutions/	Logistics AI Solutions		AI Solutions for Logistics & Supply Chain That Reveal Where Delays, Costs & Inefficiencies Hide	AI-Powered Logistics Solutions | AGIX	Optimize your network with AI-powered logistics solutions. Predict demand, balance inventory, and eliminate delays with real-time supply chain visibility.	AI-Driven Logistics Solutions | Agix Technologies	Reduce costs and improve OTIF rates with AI-driven logistics solutions. Deploy intelligent routing and forecasting systems designed for global scale.	AI Logistics Solutions for Supply Chain Optimization | Agix Tech	Streamline operations with AI logistics solutions that fix bottlenecks, optimize routes, balance inventory, and deliver real results.	https://drive.google.com/file/d/10I-MCAO_XQQh9jpE4GlSoQIXaCVoHUmc/view?usp=drive_link																			
+https://agixtech.com/industries/hospitality-ai-solutions/	Hospitality AI Solutions		Intelligent AI Solutions That Strengthen Human Connection and Elevate Guest Experiences	AI-Powered Hospitality Solutions | Agix Tech	Enhance guest experiences with AI in hospitality. Reduce missed bookings, automate scheduling, and optimize staff operations at scale.	AI Solutions for Hospitality & Wellness Operations | Agix Technologies	Deploy AI in hospitality to improve bookings, reduce no-shows, optimize staff workflows, and elevate guest satisfaction across properties.	AI Hospitality Solutions for Premium Guest Experiences | AGIX	Modernize your guest journey with AI in hospitality. Reduce friction, automate workflows, and deliver real results.	https://drive.google.com/file/d/1JWpAHhqtSuuhW6i6J_1JoS3DDqn4Cu6n/view?usp=drive_link																			
+https://agixtech.com/industries/edtech-ai-solutions/	Edtech AI Solutions		AI Solutions for EdTech That Show You Where Learners Disengage — and How to Fix It	AI-Powered EdTech Solutions for Learning & Growth | Agix Tech	Enhance learning outcomes with AI in EdTech. Personalize paths, predict dropouts, and scale 24/7 support for students efficiently.	AI Solutions for EdTech & E-Learning | Agix Technologies	Deploy AI in EdTech to boost course completion, reduce faculty workload, provide intelligent tutoring, and improve student engagement.	AI EdTech Solutions for Smarter Learning | AGIX	Modernize your institution with AI in EdTech. Enhance engagement, personalize learning, and deliver real results.	https://drive.google.com/file/d/1JBJA6OSZpvaiAPtjplI-pc6ps1Jld_-B/view?usp=drive_link																			
+																													
+Case Studies																													
+https:/www.agixtech.com/case-studies	Real-World AI Case Studies		Real-World AI Systems. Proven at Enterprise Scale.	AI Case Studies | AgixTech	Discover our AI case studies, which showcase real-world results across various industries, including healthcare, finance, retail, and education.	Artificial Intelligence Case Studies | Agix Technologies	Explore AI case studies by AgixTech delivering real-world impact across healthcare, finance, retail, education, and more.	AI Case Studies & Success Stories | AGIX	Explore AI case studies by AgixTech highlighting real results in healthcare, finance, retail, education, and enterprise.																				
+https://agixtech.com/case-studies/enova/	Enova AI Credit Decisioning Case Study		Enova International	Enova International Case Study | Agix Technologies	Explore how we built an explainable AI system for Enova to hit 94.7% accuracy and 100% audit compliance. Read the full success story now.	Slashed Audit Times by 67% | Enova Success Story | Agix Tech	Scale your fintech with confidence! Explore how AGIX ensured bias-free credit decisions and 100% audit coverage for Enova. Read more.	Scale Fintech with Trustworthy AI | Enova Case Study | AGIX	Boost accuracy and trust! See how AGIX slashed Enova's audit time by 67% with transparent, regulator-ready AI models. Learn more.	https://drive.google.com/file/d/17vpAzOPoED9u5R63LB6T7_0eFx4FuVIN/view?usp=drive_link																			
+https://agixtech.com/case-studies/dave/	Dave Fintech AI Assistant Case Study		Dave	Dave Fintech AI Success Story | Agix Technologies	Find how we built an empathetic AI assistant for Dave to slash support volume by 57% and hit a 93 CSAT score. Read the success story.  	Cut Support Response Times by 99% | Dave Success Story	Scale your fintech with empathy! Explore how AGIX engineered a conversational AI that handles 94% of inquiries for 10M members.	Scale Neobanking with Human-Like AI | Dave Case Study	Boost satisfaction and speed! See how AGIX helped Dave achieve a 93 CSAT score while reducing resolution time by 79%.	https://drive.google.com/file/d/1ADV7oJBqRkasLyJEJafQh9L47VltDj3U/view?usp=drive_link																			
+https://agixtech.com/case-studies/ocrolus/	Ocrolus Document AI Case Study		Ocrolus	Automate Document AI with 99% Accuracy | Ocrolus Case Study	Analyze how we built a document AI for Ocrolus to process 6M+ docs monthly with 99.2% accuracy. Read the full success story now.	Slashed Manual Review by 78% | Ocrolus Success Story	Scale your document processing! Explore how AGIX helped Ocrolus automate 6 million financial documents with 99% accuracy. Read more.	Process 6M+ Documents in Seconds | Ocrolus Case Study	Accelerate speed and precision! See how AGIX supported Ocrolus reach 99.2% accuracy and save $1.8M in annual labor costs. Learn more.	https://drive.google.com/file/d/1F5iFWPnFkb2mSUOlblWHkum3hQBLkaIc/view?usp=drive_link																			
+https://agixtech.com/case-studies/babylon-health/	Babylon Healthcare AI Case Study		Babylon Health	Clinical AI Triage at Scale | Babylon Case Study | AGIX	Explore our safety-first clinical AI that identifies urgent cases with 99.2% precision for global patients.	Accelerate Patient Care by 34% | Babylon Case Study	Bridge the gap in digital health! See how AgixTech structured a regulator-approved triage system in 15+ languages. Read more.	"99.2% Urgent Case Detection | Babylon Case Study | Agix Technologies
+"	Global healthcare meets AI safety. Discover how we helped Babylon Health reach millions with faster, smarter triage. Learn more.	https://drive.google.com/file/d/1wRkkdHPxosaGL6TuD0-HKXW-O1ScibWG/view?usp=drive_link																			
+https://agixtech.com/case-studies/kite-therapy/	Kite Therapy Case Study		Kite Therapy	"Build Safe Mental Health AI | Kite Case Study | Agix Technologies
+"	Discover how we developed an empathetic AI for Kite Therapy to boost retention by 89% with zero-miss crisis detection.	Achieve 100% Crisis Detection | Kite Success Story | AGIX	Supercharge user trust! Explore how AGIX powered Kite Therapy with emotional intelligence and seamless human escalation. Read more.	AI for Mental Health | Kite Case Study | AgixTech	Transform the patient journey! See how AGIX streamlined Kite Therapy reach a 4.8/5 user rating through calibrated AI support. 	https://drive.google.com/file/d/1FORAPxhm8u7b38qxftEYWoYLGLwJ7A0b/view?usp=drive_link																			
+https://agixtech.com/case-studies/hello-driven/	Hello Driven AI Coach Case Study		Hello Driven	Automate Patient Scheduling | Hello Driven Case Study	Examine how we built a healthcare voice AI for Hello Driven to reach a 78% answer rate and eliminate 61% of no-shows. Read the success story.	Crush No-Show Rates by 61% | Hello Driven Success Story	Explore how AGIX engineered life-like voice agents that handle scheduling with HIPAA-grade security. Read more.	Healthcare Voice AI That Works | Hello Driven Case Study	Revolutionize patient outreach! See how AGIX helped Hello Driven achieve sub-300ms response times and 50+ EHR integrations.	https://drive.google.com/file/d/1_8eKEy1wuuk1XL-ebk7rJ_9Lp74Q19HU/view?usp=drive_link																			
+https://agixtech.com/case-studies/albertsons/	Albertson AI Analytics Case Study		Albertsons	Optimize Retail Demand Forecasting | Albertsons Case Study	Discover how we built an AI forecasting system for Albertsons to cut food waste by 45% and save $83M annually.	Save $83M in Annual Food Waste | Albertsons Success Story	Supercharge retail efficiency! Explore how AGIX structured multi-signal demand intelligence to keep shelves stocked and fresh.	AI-Powered Grocery Supply Chain | Albertsons Case Study	Crush inventory spoilage! See how AGIX collaborated with Albertsons to achieve a 97.2% in-stock rate with advanced demand analytics.	https://drive.google.com/file/d/1n6Gwq7CHVGbd6FXnFC6RZ0hOnINt4AhV/view?usp=drive_link																			
+https://agixtech.com/case-studies/kroger/	Kroger Case Study		Kroger	Revolutionize E-commerce Fulfillment | Kroger Case Study	Examine how we engineered a fulfillment AI for Kroger to slice pick times by 47% and drop delivery costs by 42%. Read the full success story now.	Cut Fulfillment Costs by 42% | Kroger Success Story | AGIX Tech	Transform your retail space! Explore how AGIX engineered pick-path intelligence and smart substitutions for 2,700+ stores. Read more.	Smart Retail Fulfillment AI | Kroger Case Study | Agix Technologies	Master in-store efficiency! See how Agix Technologies enabled Kroger to reach 94% on-time delivery by optimizing walking paths and inventory logic. Learn more.	https://drive.google.com/file/d/1aG9mpLGVi2YkKE_4fcfpcY1XaooiRZa1/view?usp=drive_link																			
+https://agixtech.com/case-studies/stitch-fix/	Stitch Fix Case Study		Stitch Fix	Elevate Style Personalization | Stitch Fix Case Study	Review how we developed a stylist copilot for Stitch Fix to boost keep rates to 61% and cut 58% off styling time.	Boost Client Value by 42% | Stitch Fix Success Story	Upgrade your customer experience! Explore how AGIX powered Stitch Fix with AI fit prediction and human-in-the-loop styling.	AI-Powered Fashion Personalization | Stitch Fix Case Study	Modernize retail recommendations! See how AgixTech empowered Stitch Fix lower fit-related returns by 32% using advanced style embeddings.	https://drive.google.com/file/d/1GNeduxN5xPeWmlaltt4-Ry_Yir1PK_Mx/view?usp=drive_link																			
+https://agixtech.com/case-studies/ulta-beauty/	Ulta Beauty Personalization AI Case Study		Ulta Beauty	Modernize Retail Loyalty Systems | Ulta Beauty Case Study	Find out how we built a personalization engine for Ulta Beauty to skyrocket conversions by 172% and drop churn by 57%.	Ignite Member Engagement | Ulta Beauty Success Story	Explore how Agix Technologies engineered predictive marketing and dynamic rewards for 37M Ulta Beauty members.	Individualized Beauty Retail AI | Ulta Beauty Case Study	Minimize customer churn! See how AGIX helped Ulta Beauty transform generic offers into tailored experiences using affinity modeling.	https://drive.google.com/file/d/1JE5kSQ4KYKefl5sTr10YbHCQSUAqhKj8/view?usp=drive_link																			
+https://agixtech.com/case-studies/quizlet/	Quizlet AI Learning Case Study		Quizlet	Transform Adaptive Learning | Quizlet Case Study | AGIX	Discover how we built Q-Chat for Quizlet to resolve 89% of misconceptions and boost learning gains by 67%. Read the full success story now.	Refine Student Outcomes | Quizlet Success Story | AGIX Tech	Advance your EdTech platform! Explore how AGIX structured a Socratic AI tutor for 60M students to drive lasting mastery. Read more.	Quizlet Case Study | Agix Technologies	Strengthen student thinking! See how Agix Technologies streamlined Quizlet transform homework help into a guided discovery experience for millions.	https://drive.google.com/file/d/1lfUir-b9nRo_M0T20rlCeuvn_cSFTnxA/view?usp=drive_link																			
+https://agixtech.com/case-studies/knewton/	Knewton Case Study		Knewton	Evolve Adaptive Learning Systems | Knewton Case Study	Examine how we engineered real-time AI feedback loops for Knewton to boost course completion by 109%. Read the full success story now.	Accelerate Student Mastery | Knewton Success Story	Reconstruct your educational platform! Explore how AGIX developed knowledge graph mapping to deliver 683% better personalization for Knewton. Read more.	Dynamic Knowledge Graph AI | Knewton Case Study | Agix Technologies	Secure higher completion rates! See how Agix Technologies empowered Knewton identify learning gaps and optimize study paths with 96% accuracy. Learn more.	https://drive.google.com/file/d/1aSQRj4ZjHorJUGHt6LbBV_m2qr-AZa65/view?usp=drive_link																			
+https://agixtech.com/case-studies/riiid-labs/	Riid Labs Case Study		Riiid Labs	Refine Adaptive Test Prep | Riiid Case Study | AGIX	We built the Santa AI engine for Riiid Labs to increase exam scores by 176% while cutting study time by 58%. Read more.	Outperform Standard Exam Results | Riiid Labs Success Story	Advance your learning platform! Review how AgixTech constructed diagnostic AI to map 400+ concept nodes and maximize study efficiency.	Precision Test Intelligence AI | Riiid Case Study | AgixTech	Achieve higher pass rates! See how AgixTech helped Riiid Labs deliver personalized remediation paths that address root learning causes.	https://drive.google.com/file/d/1KF7Mz4SvCcSD8bPrqjqlJiGDqmAhij-R/view?usp=drive_link																			
+https://agixtech.com/case-studies/hilton-hotels/	Hilton Hotels Case Study		Hilton Hotels	Advance Hospitality Revenue Systems | Hilton Case Study	AgixTech engineered a guest intelligence engine for Hilton to increase RevPAR by 4.7% across 7,000 properties. Read the success story now.	Elevate Global Guest Satisfaction | Hilton Success Story	Reimagine hospitality engagement! See how AGIX architected predictive upsell engines and real-time pricing for 173M annual guests.	Predictive Guest Intelligence AI | Hilton Case Study | AGIX	Secure higher repeat bookings! See how AGIX enabled Hilton to transform stay patterns into personalized experiences for Diamond members. Learn more.	https://drive.google.com/file/d/1Lv6oOO-j9IOPcomc0Whk0Fxti2_1Tlrw/view?usp=drive_link																			
+https://agixtech.com/case-studies/housecanary/	HouseCanary		HouseCanary	Real-Time Property Valuation AI | HouseCanary Case Study	We structured an AVM engine for HouseCanary to achieve 97.2% accuracy across 400+ property signals. Read the full success story now.	Digital-Speed Property Valuations | HouseCanary Story	Upgrade your PropTech infrastructure! Discover how AGIX orchestrated an AVM engine that analyzes 400+ signals with institutional-grade precision.	Instant Real Estate Intelligence | HouseCanary Case Study	Evolve property assessment! See how we assisted HouseCanary deliver digital-speed valuations with 9.2% higher accuracy than industry standards.	https://drive.google.com/file/d/1fbW7oYjVhD_T4HqbcwgTVJrA_s6zgqWi/view?usp=drive_link																			
+https://agixtech.com/case-studies/mindtrip/	MindTrip		Mindtrip	Conversational Travel Planning AI | Mindtrip Case Study	AGIX architected a travel AI framework for Mindtrip that compressed planning cycles by 99% and drove a 272% uplift in repeat usage. Read the success story.	Automate Personal Travel Itineraries | Mindtrip Story	Evolve your travel platform! Explore how AGIX developed a conversational engine that understands traveler personas and slashes research time. Read more.	AI-Driven Trip Discovery Engine | Mindtrip Case Study	Enhance the traveler journey! See how AGIX supported Mindtrip deliver 91% personalization accuracy through interactive, AI-led planning. Learn more.	https://drive.google.com/file/d/1kqlkEgeuRm0EVxZ2ViinLcYuNesjlLj1/view?usp=drive_link																			
+https://agixtech.com/case-studies/polyai/	PolyAI Voice AI		PolyAI	Enterprise Voice AI Automation | PolyAI Case Study | AgixTech	How we engineered a voice AI for PolyAI to resolve 89% of calls and reduce costs by 74%. Read the full success story.	Human-Level Voice Resolution | PolyAI Success Story	Analyze how AGIX optimized a multilingual voice AI that handles millions of calls with natural understanding.	Next-Gen Call Center Intelligence | PolyAI Case Study	Lower cost per call! See how AGIX helped PolyAI achieve 81% first-call resolution across 8+ languages with low-latency voice AI. Learn more.	https://drive.google.com/file/d/1_SxmRPqafcF1IWJTMW_O8P8loUSu3JXF/view?usp=drive_link																			
+https://agixtech.com/case-studies/brainfish/	Brainfish Case Study		Brainfish	Automate Support Ticket Deflection | Brainfish Case Study | AGIX	Examine how AGIX built a logic-led system for Brainfish to handle 83% of ticket volume via real-time intent alignment.	Achieve Instant Support Resolution | Brainfish Case Study	Reimagine your customer care! Explore how AGIX developed a knowledge distillation engine that handles 100k+ monthly queries with elite precision.	AI-Powered Support Intelligence | Brainfish Success Story	Lower operational overhead! See how AGIX propelled Brainfish to a monthly deflection of 83,000 tickets while securing a 4.8/5 CSAT score.	https://drive.google.com/file/d/1L2RJwqkS-BMU69eXclzVMavanTjJ0uy_/view?usp=drive_link																			
+https://agixtech.com/case-studies/properti-ai/	Properti AI Case Study		Properti AI	Transform Real Estate Discovery | Properti AI Case Study | AGIX	Discover how we engineered a property matching engine for Properti AI to boost lead conversion by 156% and achieve 89% match accuracy. Read more.	Elevate Buyer Match Accuracy | Properti AI Success Story	Analyze how AGIX optimized lifestyle-aware search capabilities to refine property discovery and slash agent qualification time.	Advanced Property Discovery Engine | Properti AI Case Study	Drive higher lead conversion! See how we helped Properti AI deliver 89% match accuracy by understanding buyer lifestyle needs and neighborhood context.	https://drive.google.com/file/d/1rX93Z8MjjwV16VtyxPfTGgXESzyY9Pms/view?usp=drive_link																			
+https://agixtech.com/case-studies/dartmouth-college/	Dartmouth College Case Study		Dartmouth College	Streamline Campus IT Support | Dartmouth College Case Study | Agix Technologies	Agix built a 24/7 helpdesk for Dartmouth College to deflect 74% of tickets and achieve 2-minute resolution times. Read more.	Expand University Helpdesk Capacity | Dartmouth Success Story	Enable round-the-clock student assistance! Explore how AGIX developed a support engine to handle routine IT queries with elite efficiency. Read more.	Dartmouth Case Study | AgixTech	Reduce support backlogs! See how AGIX enabled Dartmouth College to maintain 96% satisfaction through effective ticket clearing. Learn more.	https://drive.google.com/file/d/1OT9pZcnaUPSKTVYX495i3BiHlLZxREZd/view?usp=drive_link																			
+https://agixtech.com/case-studies/suno/	Sonu Case Study		Suno	Accelerate Generative Music Pipelines | Suno Case Study | Agix Technologies	See how we re-engineered Suno’s audio synthesis to drop generation time from 90s to 20s and increase user retention by 34%. Read the success story.	High-Speed Audio Generation | Suno Success Story	Understand how AGIX integrated a parallel processing pipeline for Suno to enable real-time music iteration and multi-GPU sharding.	Generative AI Infrastructure Performance | Suno Case Study	Boost session engagement! See how AGIX helped Suno achieve 3x more songs per session by removing cold start penalties and latency bottlenecks.	https://drive.google.com/file/d/1PGTiLgmVfViaLZWDjOXWI5wR8dejwj1-/view?usp=drive_link																			
+https://agixtech.com/case-studies/innit/	Innit Case Study		Innit	Connected Kitchen Systems Engineering | Innit Case Study | AGIX	Analyze the real-time cooking guidance engine that synchronized smart kitchen ecosystems and uplifted recipe success rates by 89%.	Synchronized Smart Kitchen Performance | Innit Success Story	How AgixTech architected appliance coordination to mitigate culinary failure and compress preparation cycles by 45%.	Innit Case Study | Agix Technologies	Achieve 98% device sync accuracy using the monitoring logic AGIX deployed for Innit’s connected ecosystem. Examine the technicals.	https://drive.google.com/file/d/1yvuLnpxGv37QDvAcX0JvAVguEl3vPSLW/view?usp=drive_link																			
+https://agixtech.com/case-studies/hungryroot/	Hungryroot Case Study		Hungryroot	Customized Meal Planning Systems | Hungryroot Case Study | AgixTech	Reduce food waste by 73% using the grocery optimization engine AgixTech, engineered for Hungryroot to deliver 94% meal alignment.	Predictive Grocery Selection Engine | Hungryroot Story	To solve retail friction, AGIX deployed a selection lattice that maps dietary requirements against weekly food logistics.	Personalized Nutrition Infrastructure | Hungryroot Case Study	AgixTech synchronized taste profiling with waste-reduction logic to deliver elite precision in every box and drive long-term user loyalty.	https://drive.google.com/file/d/1KCNtEx3Hb6mVbzZDwVC2wl8CzGEq-28j/view?usp=drive_link																			
+https://agixtech.com/case-studies/navan/	Navan AI Travel Assistant Case Study		Navan	Corporate Spend Governance Systems | Navan Case Study | Agix Technologies	Lower corporate travel overhead by 23% with the AGIX expense governance framework, designed to enforce 94% policy compliance across global teams.	Operational Spend Intelligence | Navan Success Story	To scale finance oversight, AGIX architected a risk-mapping engine that processes high-volume travel logistics and automates expense reporting in real-time.	Enterprise Expense Management Infrastructure | Navan Case Study	We eliminated manual reporting bottlenecks by deploying category detection logic that truncated booking cycles by 67%. Review the implementation.	https://drive.google.com/file/d/1JZvsdPBjcoXZM3jCFC1Wa4RSmlckaBBX/view?usp=drive_link																			
+https://agixtech.com/case-studies/geovea/	Geivea Case Study		"Geovea
+"	Dynamic Trip Itinerary Systems | Geovea Case Study | AGIX	Drive travel engagement by 214% with the route intelligence lattice AGIX engineered for Geovea to provide 92% plan accuracy. Read the success story.	Adaptive Travel Route Performance | Geovea Success Story	To modernize trip discovery, AGIX deployed a synchronization framework that monitors real-time environmental signals to coordinate personalized travel schedules.	Real-Time Journey Planning Infrastructure | Geovea Case Study	AgixTech bypassed static route limitations by deploying crowd-avoidance profiling that optimized journey flows and raised user ratings to 4.9/5. Learn more.	https://drive.google.com/file/d/166IdjLRQAV-ojlp-BsJIIdmNn7NPKALz/view?usp=drive_link																			
+https://agixtech.com/case-studies/luxury-escapes/	Luxury Escapes Case Study		Luxury Escapes	Premium Concierge Scaling Systems | Luxury Escapes Case Study | AgixTech	Expand concierge service capacity by 36x using the high-touch curation framework AgixTech built for Luxury Escapes to achieve 96/100 guest satisfaction.	White-Glove Service Scaling Performance | Luxury Escapes Story	Coordinate premium travel logistics with a curation engine AGIX developed to process 47 preference signals and deliver bespoke VIP experiences at scale. Read more.	Luxury Travel Personalization Infrastructure | Luxury Escapes Case Study	AGIX boosted booking value by 71% by deploying scenario planning logic that handles personalized requests for 4,500 guests daily. See the breakdown.	https://drive.google.com/file/d/1wUUrIba_Z-wAXrGwCPymhV1UuuWcnAbG/view?usp=drive_link																			
+https://agixtech.com/case-studies/naratix/	Nartix Case Study		Naratix	Multi-Market Content Localization Systems | Naratix Case Study | AGIX	Drive a 129% conversion uplift with the cultural adaptation framework AGIX engineered for Naratix to localize product content for 28 markets in minutes. Read the success story.	Global E-commerce Content Performance | Naratix Success Story	To accelerate international growth, AGIX deployed a content automation studio that manages semantic accuracy and SEO optimization across 28 regions simultaneously.	Cross-Border Content Infrastructure | Naratix Case Study	"We eliminate localization bottlenecks using the brand voice consistency and legal compliance logic Agix Technologies
+deployed to accelerate content creation by 96%. Learn more."	https://drive.google.com/file/d/1sZgl9tQ_zGsq67ZT6oUNQugWUjbbPECB/view?usp=drive_link																			
+https://agixtech.com/case-studies/alphasense/	Alphasense Case Study		AlphaSense	NLP Market Analytics Systems | AlphaSense Case Study | Agix Technologies	Achieve 97% faster investment research using the NLP analytics framework AGIX, engineered for AlphaSense to process millions of documents.	Institutional Research Signal Performance | AlphaSense Story	We stabilized institutional research through a signal-led cockpit that monitors over 10,000 sources to generate immediate sentiment insights.	Semantic Search Research Infrastructure | AlphaSense Case Study	By implementing a signal-led discovery engine, AGIX shifted the focus from data gathering to high-level analysis for institutional investors. Examine the tech.	https://drive.google.com/file/d/1-HLYtgZqdK5iuzTh616Dk_CwAgiW3kMS/view?usp=drive_link																			
+																													
+																													
+Other Pages																													
+https:/www.agixtech.com/corporate/about			Engineering Intelligence Systems Businesses Can Actually Trust	About Us | Agix Technologies	 Agix Technologies is an agentic intelligence company engineering the high-precision systems global enterprises rely on. Move beyond experimental models to a governed AI infrastructure.	About Agix Technologies | An Agentic Intelligence Company for the Enterprise	Shift focus from what AI can do to how it must behave. As an agentic intelligence company, AGIX develops interconnected layers designed for operational grounding and accountability.	About Agix Technologies	We reject the idea of AI as a plug-and-play tool. AGIX architects the robust agentic frameworks that respect compliance, explain reasoning, and scale responsibly.																				
+https:/www.agixtech.com/corporate/contact			Have an AI Challenge or Idea?	Contact AGIX | Schedule a Consultation with an AI Architect	Reach out to AGIX to discuss engineering agentic intelligence for your organization. Schedule a call or request a personalized roadmap for your systems.	Connect with  Agix Technologies | Agentic Intelligence Company	Ready to move beyond AI experiments? Schedule a consultation with AGIX to develop a Reliable, governed, and accountable agentic systems strategy.	Contact AGIX: Enterprise AI Systems Engineering	Schedule a call with our architects to discuss your specific challenges. Get a custom ROI projection and implementation timeline for your agentic project.																				
+https:/www.agixtech.com/corporate/careers			"Careers at AGIX Technologies
+"	AgixTech Careers | Engineering the Future of Intelligence	Advance within an ecosystem focused on agentic intelligence. Join systems thinkers architecting production-grade AI across healthcare, fintech, and enterprise SaaS.	Build Production AI with AGIX | Careers	Move beyond experiments and focus on architecture, reasoning, and system design. Explore open roles in AI, Data, and Automation.	Agix Technologies: Advancing Agentic Intelligence Careers	Deploy real-world AI and grow within a high-precision technical ecosystem. Master the transition to autonomous enterprise systems. Explore open roles.																				
+https:/agixtech.com/newsroom/				AGIX News & Press Releases | Media Center	Explore the advancements of AGIX through our latest press releases. Discover our newest technical milestones and high-impact breakthroughs in AI.	Technical Updates & Media Coverage |  Agix Technologies	Follow the evolution of agentic intelligence. Access the latest reports on AGIX system deployments, industry awards, and corporate news.	AgixTech Newsroom: Intelligence in Motion	Stay current with AgixTech technical breakthroughs and media highlights. Analyze our latest milestones in the autonomous enterprise sector. View the updates.																				
+https:/agixtech.com/blog/				 Insights & Innovation Blog | Agix Technologies	Explore expert blogs featuring insights, experiences, and predictions on emerging systems and innovation trends.	Tech Blogs | AGIX	 Access clear guides and perspectives on scaling intelligence and optimizing business workflows through smart system design.	Tech & Intelligence Blog | AgixTech	Read the latest blogs and simple guides on how new technologies are changing business operations.																				
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													
+																													

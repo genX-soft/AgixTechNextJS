@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { getURLMetadata, getKeywordsArray } from './url-metadata';
 
 const SITE_URL = 'https://agixtech.com';
 const SITE_NAME = 'AGIX Technologies';
@@ -10,6 +11,10 @@ export interface PageMetadataOptions {
   image?: string;
   noIndex?: boolean;
   keywords?: string[];
+  ogTitle?: string;
+  ogDescription?: string;
+  twitterTitle?: string;
+  twitterDescription?: string;
 }
 
 export function generatePageMetadata({
@@ -19,6 +24,10 @@ export function generatePageMetadata({
   image = '/og-image.png',
   noIndex = false,
   keywords = [],
+  ogTitle,
+  ogDescription,
+  twitterTitle,
+  twitterDescription,
 }: PageMetadataOptions): Metadata {
   const url = `${SITE_URL}${path.startsWith('/') ? path : `/${path}`}`;
   const canonicalUrl = url.endsWith('/') ? url : `${url}/`;
@@ -34,8 +43,8 @@ export function generatePageMetadata({
       canonical: canonicalUrl,
     },
     openGraph: {
-      title,
-      description,
+      title: ogTitle || title,
+      description: ogDescription || description,
       url: canonicalUrl,
       siteName: SITE_NAME,
       type: 'website',
@@ -43,12 +52,46 @@ export function generatePageMetadata({
     },
     twitter: {
       card: 'summary_large_image',
-      title,
-      description,
+      title: twitterTitle || title,
+      description: twitterDescription || description,
       images: [image.startsWith('http') ? image : `${SITE_URL}${image}`],
     },
     robots: noIndex ? { index: false, follow: false } : { index: true, follow: true },
   };
+}
+
+export function generateMetadataFromURL(path: string, fallback?: Partial<PageMetadataOptions>): Metadata {
+  const urlMeta = getURLMetadata(path);
+  
+  if (urlMeta) {
+    return generatePageMetadata({
+      title: urlMeta.metaTitle,
+      description: urlMeta.metaDescription,
+      path,
+      keywords: getKeywordsArray(urlMeta.keywords),
+      ogTitle: urlMeta.ogTitle,
+      ogDescription: urlMeta.ogDescription,
+      twitterTitle: urlMeta.twitterTitle,
+      twitterDescription: urlMeta.twitterDescription,
+      image: urlMeta.featuredImage || fallback?.image,
+      noIndex: fallback?.noIndex,
+    });
+  }
+  
+  if (fallback) {
+    return generatePageMetadata({
+      title: fallback.title || 'AGIX Technologies',
+      description: fallback.description || 'Enterprise AI solutions',
+      path,
+      ...fallback,
+    });
+  }
+  
+  return generatePageMetadata({
+    title: 'AGIX Technologies',
+    description: 'Enterprise AI systems engineering and agentic intelligence solutions.',
+    path,
+  });
 }
 
 export function generateServiceMetadata(serviceName: string, description: string, path: string): Metadata {

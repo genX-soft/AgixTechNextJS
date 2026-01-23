@@ -122,3 +122,39 @@ AGIX is positioned as the leading AI solution/development/service company in the
 - AI Value Realization Framework with ROI modeling
 - Voice AI Platform with NLU and CRM integration
 - Data Readiness Assessment and AI-Ready Data Platform
+
+## SEO Optimization
+
+### URL-Specific Metadata System
+Comprehensive SEO metadata system with per-URL configuration for all pages.
+
+**Configuration Location**: `src/lib/seo/url-metadata.ts`
+
+**Metadata Fields Per URL**:
+- Focus Keyword & Keywords (comma-separated)
+- Main Heading
+- Meta Title & Meta Description
+- OG Title & OG Description (Open Graph for social sharing)
+- Twitter Title & Twitter Description (Twitter Cards)
+- Featured Image (optional)
+- Schema types (Organization, WebPage, BreadcrumbList, Service, FAQPage, Article, etc.)
+
+**Usage in Layouts**:
+```typescript
+import { generateMetadataFromURL } from '@/lib/seo/metadata'
+export const metadata: Metadata = generateMetadataFromURL('/path/to/page')
+```
+
+**Pages with URL-Specific Metadata**:
+- Homepage (/)
+- Intelligence pages (5): operational-ai, conversational-ai, decision-ai, autonomous-agentic-ai, enterprise-knowledge-ai
+- Services pages (8): ai-automation, ai-voice-agents, conversational-ai-chatbots, agentic-ai-systems, rag-knowledge-ai, ai-predictive-analytics, ai-computer-vision, custom-ai-product-development
+- Industries pages (8): healthcare, real-estate, fintech, insurance, retail, logistics, hospitality, edtech
+- Case studies index and 27 individual case study pages
+
+### Other SEO Features
+- 301 redirects for URL normalization (next.config.mjs)
+- Structured data/JSON-LD schemas (src/lib/seo/structured-data.ts)
+- Dynamic sitemap generation (src/app/sitemap.ts)
+- Canonical URLs with trailing slash normalization
+- WordPress blog integration with Yoast SEO metadata

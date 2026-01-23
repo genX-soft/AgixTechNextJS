@@ -1,14 +1,7 @@
 import type { Metadata } from 'next'
+import { generateMetadataFromURL } from '@/lib/seo/metadata'
 
-export const metadata: Metadata = {
-  title: 'Operational Intelligence AI | Intelligent Workflow Automation',
-  description: 'AI systems that automate workflows, reduce friction, and improve execution at scale.',
-  keywords: ['operational intelligence AI', 'workflow automation AI', 'ai for business operations', 'intelligent workflow execution', 'enterprise operational ai'],
-  openGraph: {
-    title: 'Operational Intelligence AI | Intelligent Workflow Automation | AGIX Technologies',
-    description: 'AI systems that automate workflows, reduce friction, and improve execution at scale.',
-  },
-}
+export const metadata: Metadata = generateMetadataFromURL('/intelligence/operational-ai')
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return children
