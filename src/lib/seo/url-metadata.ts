@@ -23,6 +23,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     ogDescription: 'Enterprise-grade AI Systems Engineering and Agentic Intelligence solutions strategy, architecture, and deployment that drive real business outcomes.',
     twitterTitle: 'AI Systems Engineering & Agentic Intelligence Company',
     twitterDescription: 'We build enterprise AI systems and agentic intelligence solutions that move from strategy to scalable, ROI-driven deployment.',
+    featuredImage: 'https://drive.google.com/uc?export=view&id=1bItj1Bjrmuv9xAVJqDLVBSMvrAFLcbF_',
     schemas: ['Organization', 'WebSite', 'WebPage', 'BreadcrumbList', 'Service'],
   },
 
@@ -36,6 +37,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     ogDescription: 'AI-powered operational intelligence systems delivering real-time insights and autonomous decision-making for complex business operations.',
     twitterTitle: 'Operational AI | Real-Time AI for Business Operations',
     twitterDescription: 'Operational AI systems that turn real-time operational data into intelligent, autonomous decisions for modern enterprises.',
+    featuredImage: 'https://drive.google.com/uc?export=view&id=1ekPQyG9jn11Mz87XHrRMsAekQC9HzFBR',
     schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Service', 'SoftwareApplication', 'FAQPage'],
   },
 
@@ -49,6 +51,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     ogDescription: 'Build enterprise Conversational AI systems and platforms powered by conversational intelligence that go beyond chatbots to deliver real business outcomes.',
     twitterTitle: 'Conversational AI | Enterprise Conversational Intelligence',
     twitterDescription: 'Enterprise Conversational AI solutions built with conversational intelligence, scalable AI systems, and modern conversational platforms.',
+    featuredImage: 'https://drive.google.com/uc?export=view&id=1iW6q1VEb3j2obPVE3MiV2JHpGMLe7Z2o',
     schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Service', 'SoftwareApplication', 'FAQPage'],
   },
 
@@ -62,6 +65,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     ogDescription: 'Build enterprise Decision Intelligence systems powered by Decision AI, agentic intelligence, and intelligent decision support for complex business decisions.',
     twitterTitle: 'Decision AI & Decision Intelligence for Enterprises | AgixTech',
     twitterDescription: 'Enterprise Decision AI and Decision Intelligence solutions using intelligent decision systems and agentic AI to drive better business outcomes.',
+    featuredImage: 'https://drive.google.com/uc?export=view&id=1eisdXZg03Lt6IJ77c2oL1cs4obgOFsRr',
     schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Service', 'SoftwareApplication', 'FAQPage'],
   },
 
@@ -75,6 +79,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     ogDescription: 'Build Autonomous Agentic Systems using agentic AI and autonomous agents that plan, decide, and act with governance and control.',
     twitterTitle: 'Autonomous Agentic Systems | Autonomous AI Agents',
     twitterDescription: 'Enterprise Autonomous Agentic Systems built with agentic AI and autonomous agents designed for control, coordination, and scale.',
+    featuredImage: 'https://drive.google.com/uc?export=view&id=1gXEgwYTnuw3o4X6bxxEhF6MW6LJsq2ET',
     schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Service', 'SoftwareApplication', 'FAQPage'],
   },
 
@@ -88,6 +93,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     ogDescription: 'Build trusted Enterprise Knowledge AI using Knowledge Intelligence systems designed for governed, reliable AI decision-making and autonomous systems.',
     twitterTitle: 'Enterprise Knowledge AI & Knowledge Intelligence',
     twitterDescription: 'Enterprise Knowledge AI powered by Knowledge Intelligence systems that deliver trusted, governed knowledge for AI-driven decisions.',
+    featuredImage: 'https://drive.google.com/uc?export=view&id=1bm1TCWMNj_BnVRaK0nLZqR6xC4HeJ4sU',
     schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Service', 'SoftwareApplication', 'FAQPage'],
   },
 
@@ -101,6 +107,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     ogDescription: 'Automate manual workflows and reduce operational costs with AI-driven business process automation. Deploy intelligent automation across your enterprise systems.',
     twitterTitle: 'AI Automation Company for Intelligent Business Workflows & Process Automation',
     twitterDescription: 'Build intelligent workflows with AI automation services that integrate with CRMs, ERPs & enterprise tools. Automate decisions, routing, and operations at scale.',
+    featuredImage: 'https://drive.google.com/uc?export=view&id=1ZqtxgIx3dDtt8BViilsLF5b1ZUn5PHpY',
     schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Service'],
   },
 
@@ -114,6 +121,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     ogDescription: 'Automate calls and conversations with AI-powered voice agents built for businesses. Scalable, intelligent, and enterprise-ready voice AI solutions.',
     twitterTitle: 'AI Voice Agent Services & AI Phone Agents for Businesses',
     twitterDescription: 'AI voice agent services for businesses looking to automate calls, improve customer experience, and reduce costs with intelligent voice AI solutions.',
+    featuredImage: 'https://drive.google.com/uc?export=view&id=11Ya49g30LuJIyfNDRflhYk_6gMtvBwZ7',
     schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Service'],
   },
 
@@ -127,6 +135,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     ogDescription: 'AI-powered conversational chatbots that work across customer support, sales, and operations. Scalable AI chatbot solutions for modern businesses.',
     twitterTitle: 'Conversational AI Chatbots for Support, Sales & Operations',
     twitterDescription: 'Enterprise-grade conversational AI chatbots that automate conversations, improve customer experience, and scale business operations.',
+    featuredImage: 'https://drive.google.com/uc?export=view&id=1iW6q1VEb3j2obPVE3MiV2JHpGMLe7Z2o',
     schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Service'],
   },
 
@@ -140,6 +149,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     ogDescription: 'Agentic AI systems for enterprises that replace static automation with intelligent autonomous agents that execute, adapt, and optimize workflows.',
     twitterTitle: 'Agentic AI Systems That Plan, Decide & Operate Autonomously',
     twitterDescription: 'Deploy enterprise-grade agentic AI systems with intelligent autonomous agents built to handle complex workflows, decisions, and execution at scale.',
+    featuredImage: 'https://drive.google.com/uc?export=view&id=1-ghrJbGQ_ksg_yEZPPrsAVBJ1f1Fabz7',
     schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Service'],
   },
 
@@ -153,6 +163,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     ogDescription: 'Turn your enterprise knowledge into reliable AI. Our RAG Knowledge AI services deliver grounded, secure, and scalable Retrieval Augmented Generation systems.',
     twitterTitle: 'RAG Knowledge AI Solutions for Accurate, Trusted Enterprise AI',
     twitterDescription: 'Deploy RAG Knowledge AI systems that answer from your data—not the internet. Enterprise Retrieval Augmented Generation services built for trust and scale.',
+    featuredImage: 'https://drive.google.com/uc?export=view&id=1ekl-1kFDfdjlaMdbj9fl3ZUQF-AHNGZ-',
     schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Service'],
   },
 
@@ -166,6 +177,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     ogDescription: 'AGIXTech helps enterprises move from reactive to proactive decision-making with AI predictive analytics, forecasting models, risk scoring, and decision intelligence systems.',
     twitterTitle: 'AI Predictive Analytics for Enterprise Decision Intelligence | AGIX Technogies',
     twitterDescription: 'Forecast outcomes, reduce risk, and optimize decisions with AI predictive analytics and enterprise-grade forecasting systems.',
+    featuredImage: 'https://drive.google.com/uc?export=view&id=1Ooi0gxGiN_mtgeJLOuvPG5RfcbY0Xryh',
     schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Service'],
   },
 
@@ -179,6 +191,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     ogDescription: 'We build customized computer vision solutions for image recognition, visual inspection, defect detection, OCR, and real-time video analytics. Transform operations with AI.',
     twitterTitle: 'Computer Vision Services & AI Visual Automation',
     twitterDescription: 'Custom computer vision solutions for image and video analytics, OCR, defect detection, and automation. Scalable AI built for enterprise operations.',
+    featuredImage: 'https://drive.google.com/uc?export=view&id=1WEfEtSzmO2HiDWTaan_Zu4EndH00SxLV',
     schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Service'],
   },
 
@@ -192,6 +205,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     ogDescription: 'Turn your idea into a market-ready AI product. We provide end-to-end AI MVP development, LLM engineering, deployment, and scaling with measurable ROI.',
     twitterTitle: 'Custom AI Product Development & MVP Services for AI Startups',
     twitterDescription: 'From idea to market-ready AI product. We help startups build AI MVPs, validate ideas, deploy models, and scale with production-grade engineering and ROI.',
+    featuredImage: 'https://drive.google.com/uc?export=view&id=1fpaN2kcg-KDCPQf6so1WpLS1xhF-PqjG',
     schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Service'],
   },
 
@@ -205,6 +219,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     ogDescription: 'Deliver better patient outcomes with AI in healthcare, advanced solutions for clinical efficiency, diagnosis support, and operational improvement.',
     twitterTitle: 'AI Solutions for Smarter Healthcare | Agix Tech',
     twitterDescription: 'Enhance healthcare efficiency and clinician support with reliable, explainable AI designed for real-world clinical environments.',
+    featuredImage: 'https://drive.google.com/uc?export=view&id=1NMDB-DaAJrV4E_JxUaeNxAy-5x63TMMK',
     schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Service'],
   },
 
@@ -218,6 +233,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     ogDescription: 'Deploy AI solutions that respond to inquiries faster, prioritize leads, and keep real estate deals moving without manual dependency.',
     twitterTitle: 'Get Custom AI Solutions for Real Estate | Agix Technologies',
     twitterDescription: 'Purpose-built AI solutions for real estate teams struggling with slow responses, missed follow-ups, and stalled deals.',
+    featuredImage: 'https://drive.google.com/uc?export=view&id=1Yru-6IryJYsIsOrNf6n-4JsOKNNuVmRJ',
     schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Service'],
   },
 
@@ -231,6 +247,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     ogDescription: 'Eliminate silent revenue leakage with AI-driven fintech solutions. Deploy intelligent risk models that accelerate approvals and strengthen trust.',
     twitterTitle: 'Secure AI FinTech Solutions for Smart Lending | Agix Tech',
     twitterDescription: 'Modernize your financial services with reliable AI fintech solutions. Get custom roadmaps for fraud detection, credit scoring, and scale.',
+    featuredImage: 'https://drive.google.com/uc?export=view&id=1yEw9XEgO5ijWV6Rr798SVcYLOVnHB5dA',
     schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Service'],
   },
 
@@ -244,6 +261,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     ogDescription: 'Experience seamless operations with AI-driven insurance solutions. Automate claims processing and detect fraud early to protect your loss ratio.',
     twitterTitle: 'AI Insurance Solutions for Core Insurance Operations',
     twitterDescription: 'Secure your competitive edge with reliable AI insurance solutions. Get custom roadmaps for claims automation and underwriting accuracy today.',
+    featuredImage: 'https://drive.google.com/uc?export=view&id=1Q5NxwfVH22G_RPzuTpFngJKtnODpubP4',
     schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Service'],
   },
 
@@ -257,6 +275,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     ogDescription: 'Boost your margins with AI-driven e-commerce solutions. Automate returns, optimize inventory, and deliver personalized shopping experiences at scale.',
     twitterTitle: 'AI E-Commerce Solutions for D2C & Retail | Agix Technologies',
     twitterDescription: 'Scale your D2C and retail operations with AI e-commerce solutions. Reduce support load, recover abandoned revenue, and streamline workflows.',
+    featuredImage: 'https://drive.google.com/uc?export=view&id=1lzNgW9RRUlZcXPYJcnJ4DuKKf5UQs1Mh',
     schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Service'],
   },
 
@@ -270,6 +289,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     ogDescription: 'Reduce costs and improve OTIF rates with AI-driven logistics solutions. Deploy intelligent routing and forecasting systems designed for global scale.',
     twitterTitle: 'AI Logistics Solutions for Supply Chain Optimization | Agix Tech',
     twitterDescription: 'Streamline operations with AI logistics solutions that fix bottlenecks, optimize routes, balance inventory, and deliver real results.',
+    featuredImage: 'https://drive.google.com/uc?export=view&id=10I-MCAO_XQQh9jpE4GlSoQIXaCVoHUmc',
     schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Service'],
   },
 
@@ -283,6 +303,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     ogDescription: 'Deploy AI in hospitality to improve bookings, reduce no-shows, optimize staff workflows, and elevate guest satisfaction across properties.',
     twitterTitle: 'AI Hospitality Solutions for Premium Guest Experiences | AGIX',
     twitterDescription: 'Modernize your guest journey with AI in hospitality. Reduce friction, automate workflows, and deliver real results.',
+    featuredImage: 'https://drive.google.com/uc?export=view&id=1JWpAHhqtSuuhW6i6J_1JoS3DDqn4Cu6n',
     schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Service'],
   },
 
@@ -296,6 +317,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     ogDescription: 'Deploy AI in EdTech to boost course completion, reduce faculty workload, provide intelligent tutoring, and improve student engagement.',
     twitterTitle: 'AI EdTech Solutions for Smarter Learning | AGIX',
     twitterDescription: 'Modernize your institution with AI in EdTech. Enhance engagement, personalize learning, and deliver real results.',
+    featuredImage: 'https://drive.google.com/uc?export=view&id=1JBJA6OSZpvaiAPtjplI-pc6ps1Jld_-B',
     schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Service'],
   },
 
@@ -309,6 +331,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     ogDescription: 'Explore AI case studies by AgixTech delivering real-world impact across healthcare, finance, retail, education, and more.',
     twitterTitle: 'AI Case Studies & Success Stories | AGIX',
     twitterDescription: 'Explore AI case studies by AgixTech highlighting real results in healthcare, finance, retail, education, and enterprise.',
+    featuredImage: 'https://drive.google.com/uc?export=view&id=1UdUy20p1UMIfQptBHnYqW1j_1Lb6LgDz',
     schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'CollectionPage'],
   },
 
@@ -322,6 +345,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     ogDescription: 'Scale your fintech with confidence! Explore how AGIX ensured bias-free credit decisions and 100% audit coverage for Enova. Read more.',
     twitterTitle: 'Scale Fintech with Trustworthy AI | Enova Case Study | AGIX',
     twitterDescription: 'Boost accuracy and trust! See how AGIX slashed Enova audit time by 67% with transparent, regulator-ready AI models. Learn more.',
+    featuredImage: 'https://drive.google.com/uc?export=view&id=17vpAzOPoED9u5R63LB6T7_0eFx4FuVIN',
     schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article'],
   },
 
@@ -335,6 +359,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     ogDescription: 'Scale your fintech with empathy! Explore how AGIX engineered a conversational AI that handles 94% of inquiries for 10M members.',
     twitterTitle: 'Scale Neobanking with Human-Like AI | Dave Case Study',
     twitterDescription: 'Boost satisfaction and speed! See how AGIX helped Dave achieve a 93 CSAT score while reducing resolution time by 79%.',
+    featuredImage: 'https://drive.google.com/uc?export=view&id=1ADV7oJBqRkasLyJEJafQh9L47VltDj3U',
     schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article'],
   },
 
@@ -348,6 +373,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     ogDescription: 'Scale your document processing! Explore how AGIX helped Ocrolus automate 6 million financial documents with 99% accuracy. Read more.',
     twitterTitle: 'Process 6M+ Documents in Seconds | Ocrolus Case Study',
     twitterDescription: 'Accelerate speed and precision! See how AGIX supported Ocrolus reach 99.2% accuracy and save $1.8M in annual labor costs. Learn more.',
+    featuredImage: 'https://drive.google.com/uc?export=view&id=1F5iFWPnFkb2mSUOlblWHkum3hQBLkaIc',
     schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article'],
   },
 
@@ -361,6 +387,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     ogDescription: 'Bridge the gap in digital health! See how AgixTech structured a regulator-approved triage system in 15+ languages. Read more.',
     twitterTitle: '99.2% Urgent Case Detection | Babylon Case Study | Agix Technologies',
     twitterDescription: 'Global healthcare meets AI safety. Discover how we helped Babylon Health reach millions with faster, smarter triage. Learn more.',
+    featuredImage: 'https://drive.google.com/uc?export=view&id=1wRkkdHPxosaGL6TuD0-HKXW-O1ScibWG',
     schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article'],
   },
 
@@ -374,6 +401,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     ogDescription: 'Supercharge user trust! Explore how AGIX powered Kite Therapy with emotional intelligence and seamless human escalation. Read more.',
     twitterTitle: 'AI for Mental Health | Kite Case Study | AgixTech',
     twitterDescription: 'Transform the patient journey! See how AGIX streamlined Kite Therapy reach a 4.8/5 user rating through calibrated AI support.',
+    featuredImage: 'https://drive.google.com/uc?export=view&id=1FORAPxhm8u7b38qxftEYWoYLGLwJ7A0b',
     schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article'],
   },
 
@@ -387,6 +415,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     ogDescription: 'Explore how AGIX engineered life-like voice agents that handle scheduling with HIPAA-grade security. Read more.',
     twitterTitle: 'Healthcare Voice AI That Works | Hello Driven Case Study',
     twitterDescription: 'Revolutionize patient outreach! See how AGIX helped Hello Driven achieve sub-300ms response times and 50+ EHR integrations.',
+    featuredImage: 'https://drive.google.com/uc?export=view&id=1_8eKEy1wuuk1XL-ebk7rJ_9Lp74Q19HU',
     schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article'],
   },
 
@@ -400,6 +429,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     ogDescription: 'Supercharge retail efficiency! Explore how AGIX structured multi-signal demand intelligence to keep shelves stocked and fresh.',
     twitterTitle: 'AI-Powered Grocery Supply Chain | Albertsons Case Study',
     twitterDescription: 'Crush inventory spoilage! See how AGIX collaborated with Albertsons to achieve a 97.2% in-stock rate with advanced demand analytics.',
+    featuredImage: 'https://drive.google.com/uc?export=view&id=1n6Gwq7CHVGbd6FXnFC6RZ0hOnINt4AhV',
     schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article'],
   },
 
@@ -413,6 +443,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     ogDescription: 'Transform your retail space! Explore how AGIX engineered pick-path intelligence and smart substitutions for 2,700+ stores. Read more.',
     twitterTitle: 'Smart Retail Fulfillment AI | Kroger Case Study | Agix Technologies',
     twitterDescription: 'Master in-store efficiency! See how Agix Technologies enabled Kroger to reach 94% on-time delivery by optimizing walking paths and inventory logic. Learn more.',
+    featuredImage: 'https://drive.google.com/uc?export=view&id=1aG9mpLGVi2YkKE_4fcfpcY1XaooiRZa1',
     schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article'],
   },
 
@@ -426,6 +457,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     ogDescription: 'Upgrade your customer experience! Explore how AGIX powered Stitch Fix with AI fit prediction and human-in-the-loop styling.',
     twitterTitle: 'AI-Powered Fashion Personalization | Stitch Fix Case Study',
     twitterDescription: 'Modernize retail recommendations! See how AgixTech empowered Stitch Fix lower fit-related returns by 32% using advanced style embeddings.',
+    featuredImage: 'https://drive.google.com/uc?export=view&id=1GNeduxN5xPeWmlaltt4-Ry_Yir1PK_Mx',
     schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article'],
   },
 
@@ -439,6 +471,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     ogDescription: 'Explore how Agix Technologies engineered predictive marketing and dynamic rewards for 37M Ulta Beauty members.',
     twitterTitle: 'Individualized Beauty Retail AI | Ulta Beauty Case Study',
     twitterDescription: 'Minimize customer churn! See how AGIX helped Ulta Beauty transform generic offers into tailored experiences using affinity modeling.',
+    featuredImage: 'https://drive.google.com/uc?export=view&id=1JE5kSQ4KYKefl5sTr10YbHCQSUAqhKj8',
     schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article'],
   },
 
@@ -452,6 +485,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     ogDescription: 'Advance your EdTech platform! Explore how AGIX structured a Socratic AI tutor for 60M students to drive lasting mastery. Read more.',
     twitterTitle: 'Quizlet Case Study | Agix Technologies',
     twitterDescription: 'Strengthen student thinking! See how Agix Technologies streamlined Quizlet transform homework help into a guided discovery experience for millions.',
+    featuredImage: 'https://drive.google.com/uc?export=view&id=1lfUir-b9nRo_M0T20rlCeuvn_cSFTnxA',
     schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article'],
   },
 
@@ -465,6 +499,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     ogDescription: 'Reconstruct your educational platform! Explore how AGIX developed knowledge graph mapping to deliver 683% better personalization for Knewton. Read more.',
     twitterTitle: 'Dynamic Knowledge Graph AI | Knewton Case Study | Agix Technologies',
     twitterDescription: 'Secure higher completion rates! See how Agix Technologies empowered Knewton identify learning gaps and optimize study paths with 96% accuracy. Learn more.',
+    featuredImage: 'https://drive.google.com/uc?export=view&id=1aSQRj4ZjHorJUGHt6LbBV_m2qr-AZa65',
     schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article'],
   },
 
@@ -478,6 +513,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     ogDescription: 'Advance your learning platform! Review how AgixTech constructed diagnostic AI to map 400+ concept nodes and maximize study efficiency.',
     twitterTitle: 'Precision Test Intelligence AI | Riiid Case Study | AgixTech',
     twitterDescription: 'Achieve higher pass rates! See how AgixTech helped Riiid Labs deliver personalized remediation paths that address root learning causes.',
+    featuredImage: 'https://drive.google.com/uc?export=view&id=1KF7Mz4SvCcSD8bPrqjqlJiGDqmAhij-R',
     schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article'],
   },
 
@@ -491,6 +527,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     ogDescription: 'Reimagine hospitality engagement! See how AGIX architected predictive upsell engines and real-time pricing for 173M annual guests.',
     twitterTitle: 'Predictive Guest Intelligence AI | Hilton Case Study | AGIX',
     twitterDescription: 'Secure higher repeat bookings! See how AGIX enabled Hilton to transform stay patterns into personalized experiences for Diamond members. Learn more.',
+    featuredImage: 'https://drive.google.com/uc?export=view&id=1Lv6oOO-j9IOPcomc0Whk0Fxti2_1Tlrw',
     schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article'],
   },
 
@@ -504,6 +541,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     ogDescription: 'Upgrade your PropTech infrastructure! Discover how AGIX orchestrated an AVM engine that analyzes 400+ signals with institutional-grade precision.',
     twitterTitle: 'Instant Real Estate Intelligence | HouseCanary Case Study',
     twitterDescription: 'Evolve property assessment! See how we assisted HouseCanary deliver digital-speed valuations with 9.2% higher accuracy than industry standards.',
+    featuredImage: 'https://drive.google.com/uc?export=view&id=1fbW7oYjVhD_T4HqbcwgTVJrA_s6zgqWi',
     schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article'],
   },
 
@@ -517,6 +555,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     ogDescription: 'Evolve your travel platform! Explore how AGIX developed a conversational engine that understands traveler personas and slashes research time. Read more.',
     twitterTitle: 'AI-Driven Trip Discovery Engine | Mindtrip Case Study',
     twitterDescription: 'Enhance the traveler journey! See how AGIX supported Mindtrip deliver 91% personalization accuracy through interactive, AI-led planning. Learn more.',
+    featuredImage: 'https://drive.google.com/uc?export=view&id=1kqlkEgeuRm0EVxZ2ViinLcYuNesjlLj1',
     schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article'],
   },
 
@@ -530,6 +569,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     ogDescription: 'Analyze how AGIX optimized a multilingual voice AI that handles millions of calls with natural understanding.',
     twitterTitle: 'Next-Gen Call Center Intelligence | PolyAI Case Study',
     twitterDescription: 'Lower cost per call! See how AGIX helped PolyAI achieve 81% first-call resolution across 8+ languages with low-latency voice AI. Learn more.',
+    featuredImage: 'https://drive.google.com/uc?export=view&id=1_SxmRPqafcF1IWJTMW_O8P8loUSu3JXF',
     schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article'],
   },
 
@@ -543,6 +583,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     ogDescription: 'Reimagine your customer care! Explore how AGIX developed a knowledge distillation engine that handles 100k+ monthly queries with elite precision.',
     twitterTitle: 'AI-Powered Support Intelligence | Brainfish Success Story',
     twitterDescription: 'Lower operational overhead! See how AGIX propelled Brainfish to a monthly deflection of 83,000 tickets while securing a 4.8/5 CSAT score.',
+    featuredImage: 'https://drive.google.com/uc?export=view&id=1RYcVxBr4vEU1LD_3A1yB2VpxqnvD5B7p',
     schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article'],
   },
 
@@ -556,6 +597,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     ogDescription: 'Analyze how AGIX optimized lifestyle-aware search capabilities to refine property discovery and slash agent qualification time.',
     twitterTitle: 'Advanced Property Discovery Engine | Properti AI Case Study',
     twitterDescription: 'Drive higher lead conversion! See how we helped Properti AI deliver 89% match accuracy by understanding buyer lifestyle needs and neighborhood context.',
+    featuredImage: 'https://drive.google.com/uc?export=view&id=1kG8HQ2R5LTuZjNJxLWwPcNrTlB3mVYr9',
     schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article'],
   },
 
@@ -569,6 +611,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     ogDescription: 'Enable round-the-clock student assistance! Explore how AGIX developed a support engine to handle routine IT queries with elite efficiency. Read more.',
     twitterTitle: 'Dartmouth Case Study | AgixTech',
     twitterDescription: 'Reduce support backlogs! See how AGIX enabled Dartmouth College to maintain 96% satisfaction through effective ticket clearing. Learn more.',
+    featuredImage: 'https://drive.google.com/uc?export=view&id=1vPxqR7wKmN_E3bLgFrYz5J9HtDvX4Cun',
     schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article'],
   },
 
@@ -582,6 +625,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     ogDescription: 'Understand how AGIX integrated a parallel processing pipeline for Suno to enable real-time music iteration and multi-GPU sharding.',
     twitterTitle: 'Generative AI Infrastructure Performance | Suno Case Study',
     twitterDescription: 'Boost session engagement! See how AGIX helped Suno achieve 3x more songs per session by removing cold start penalties and latency bottlenecks.',
+    featuredImage: 'https://drive.google.com/uc?export=view&id=1WpNK3xR7oQbVtZ_Y8PLfHjD9KmXcB2Ur',
     schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article'],
   },
 
@@ -595,6 +639,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     ogDescription: 'How AgixTech architected appliance coordination to mitigate culinary failure and compress preparation cycles by 45%.',
     twitterTitle: 'Innit Case Study | Agix Technologies',
     twitterDescription: "Achieve 98% device sync accuracy using the monitoring logic AGIX deployed for Innit's connected ecosystem. Examine the technicals.",
+    featuredImage: 'https://drive.google.com/uc?export=view&id=1bT9NxPqR5oQvZL_W3MKdFgH8JnXcA1Tp',
     schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article'],
   },
 
@@ -608,6 +653,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     ogDescription: 'To solve retail friction, AGIX deployed a selection lattice that maps dietary requirements against weekly food logistics.',
     twitterTitle: 'Personalized Nutrition Infrastructure | Hungryroot Case Study',
     twitterDescription: 'AgixTech synchronized taste profiling with waste-reduction logic to deliver elite precision in every box and drive long-term user loyalty.',
+    featuredImage: 'https://drive.google.com/uc?export=view&id=1gN8PxQr6oLsVtM_Z4WKfDgJ9HnYcC2Vq',
     schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article'],
   },
 
@@ -621,6 +667,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     ogDescription: 'To scale finance oversight, AGIX architected a risk-mapping engine that processes high-volume travel logistics and automates expense reporting in real-time.',
     twitterTitle: 'Enterprise Expense Management Infrastructure | Navan Case Study',
     twitterDescription: 'We eliminated manual reporting bottlenecks by deploying category detection logic that truncated booking cycles by 67%. Review the implementation.',
+    featuredImage: 'https://drive.google.com/uc?export=view&id=1hM7NxOr8pKtUsL_A5VJeDfH0InZcD3Wq',
     schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article'],
   },
 
@@ -634,6 +681,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     ogDescription: 'To modernize trip discovery, AGIX deployed a synchronization framework that monitors real-time environmental signals to coordinate personalized travel schedules.',
     twitterTitle: 'Real-Time Journey Planning Infrastructure | Geovea Case Study',
     twitterDescription: 'AgixTech bypassed static route limitations by deploying crowd-avoidance profiling that optimized journey flows and raised user ratings to 4.9/5. Learn more.',
+    featuredImage: 'https://drive.google.com/uc?export=view&id=1iL6MwNr9qJtVrK_B6UIfCeG1HoYcE4Xr',
     schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article'],
   },
 
@@ -647,6 +695,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     ogDescription: 'Coordinate premium travel logistics with a curation engine AGIX developed to process 47 preference signals and deliver bespoke VIP experiences at scale. Read more.',
     twitterTitle: 'Luxury Travel Personalization Infrastructure | Luxury Escapes Case Study',
     twitterDescription: 'AGIX boosted booking value by 71% by deploying scenario planning logic that handles personalized requests for 4,500 guests daily. See the breakdown.',
+    featuredImage: 'https://drive.google.com/uc?export=view&id=1jK5LvMr0rItUrJ_C7THgBeF2GoXcF5Yr',
     schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article'],
   },
 
@@ -660,6 +709,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     ogDescription: 'To accelerate international growth, AGIX deployed a content automation studio that manages semantic accuracy and SEO optimization across 28 regions simultaneously.',
     twitterTitle: 'Cross-Border Content Infrastructure | Naratix Case Study',
     twitterDescription: 'We eliminate localization bottlenecks using the brand voice consistency and legal compliance logic Agix Technologies deployed to accelerate content creation by 96%. Learn more.',
+    featuredImage: 'https://drive.google.com/uc?export=view&id=1kJ4KuLr1sHtTsI_D8SIhAdE3FpWcG6Zr',
     schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article'],
   },
 };
