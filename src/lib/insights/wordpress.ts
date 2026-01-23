@@ -1,19 +1,4 @@
 const WP_API_BASE = "https://r7t.66a.myftpupload.com/wp-json/wp/v2";
-const WP_STAGING_DOMAIN = "r7t.66a.myftpupload.com";
-const WP_PRODUCTION_DOMAIN = "agixtech.com";
-
-export function sanitizeMediaUrl(url: string | null | undefined): string | null {
-  if (!url) return null;
-  if (url.includes(WP_STAGING_DOMAIN)) {
-    return url.replace(WP_STAGING_DOMAIN, WP_PRODUCTION_DOMAIN);
-  }
-  return url;
-}
-
-export function sanitizeContent(content: string): string {
-  if (!content) return content;
-  return content.replace(new RegExp(WP_STAGING_DOMAIN, 'g'), WP_PRODUCTION_DOMAIN);
-}
 
 export interface WPYoastSEO {
   title?: string;
@@ -187,11 +172,10 @@ export function getExcerpt(post: WPPost, maxLength = 160): string {
 export function getFeaturedImageUrl(post: WPPost): string | null {
   const media = post._embedded?.["wp:featuredmedia"]?.[0];
   if (!media) return null;
-  const rawUrl = media.media_details?.sizes?.full?.source_url || 
+  return media.media_details?.sizes?.full?.source_url || 
          media.source_url || 
          media.media_details?.sizes?.large?.source_url || 
          null;
-  return sanitizeMediaUrl(rawUrl);
 }
 
 export function getAuthorName(post: WPPost): string {
