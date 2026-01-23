@@ -26,7 +26,7 @@ const nextConfig = {
     removeConsole: process.env.NODE_ENV === 'production',
   },
   async redirects() {
-    return [
+    const redirectList = [
       // ===== INTELLIGENCE PAGE REDIRECTS =====
       { source: '/intelligence/operational', destination: '/intelligence/operational-ai/', permanent: true },
       { source: '/intelligence/conversational', destination: '/intelligence/conversational-ai/', permanent: true },
@@ -112,10 +112,26 @@ const nextConfig = {
       { source: '/case-study/luxury-escapes-concierge-grade-ai-chatbot-for-premium-travel-experiences', destination: '/case-studies/luxury-escapes/', permanent: true },
       { source: '/case-study/naratix-intelligent-ai-agents-for-global-multilingual-e-commerce-content', destination: '/case-studies/naratix/', permanent: true },
       { source: '/case-study/alphasense-real-time-ai-engine-for-market-intelligence-research-automation', destination: '/case-studies/alphasense/', permanent: true },
-      
-      // ===== BLOG/INSIGHTS REDIRECTS =====
-      { source: '/insights/:slug', destination: '/:slug/', permanent: true },
     ];
+    
+    // Generate both trailing slash and non-trailing slash versions for each redirect
+    // to handle trailingSlash: true configuration properly
+    const expandedRedirects = [];
+    for (const redirect of redirectList) {
+      // Add original redirect (without trailing slash on source)
+      expandedRedirects.push(redirect);
+      
+      // Add trailing slash version of source (if not already present)
+      if (!redirect.source.endsWith('/')) {
+        expandedRedirects.push({
+          source: redirect.source + '/',
+          destination: redirect.destination,
+          permanent: redirect.permanent,
+        });
+      }
+    }
+    
+    return expandedRedirects;
   },
   async headers() {
     return [
