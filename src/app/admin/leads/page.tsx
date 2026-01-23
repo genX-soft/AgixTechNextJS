@@ -15,7 +15,7 @@ import {
   TableRow,
 } from '@/components/ui/table'
 import { ScrollArea } from '@/components/ui/scroll-area'
-import { Lock, Loader2, Eye, ArrowLeft, RefreshCw, Users, ExternalLink } from 'lucide-react'
+import { Lock, Loader2, Eye, ArrowLeft, RefreshCw, Users, ExternalLink, Trash2 } from 'lucide-react'
 import Link from 'next/link'
 import type { Lead } from '@shared/schema'
 
@@ -26,6 +26,7 @@ export default function AdminLeadsPage() {
   const [error, setError] = useState('')
   const [leads, setLeads] = useState<Lead[]>([])
   const [isLoading, setIsLoading] = useState(false)
+  const [deletingId, setDeletingId] = useState<string | null>(null)
 
   const handlePasscodeSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -76,6 +77,33 @@ export default function AdminLeadsPage() {
       console.error('Failed to fetch leads:', err)
     } finally {
       setIsLoading(false)
+    }
+  }
+
+  const handleDeleteLead = async (leadId: string, leadName: string) => {
+    if (!confirm(`Are you sure you want to delete the lead "${leadName}"? This action cannot be undone.`)) {
+      return
+    }
+    
+    setDeletingId(leadId)
+    try {
+      const response = await fetch(`/api/leads/${leadId}`, {
+        method: 'DELETE',
+        headers: {
+          'x-passcode': storedPasscode,
+        },
+      })
+      
+      if (response.ok) {
+        setLeads(leads.filter(lead => lead.id !== leadId))
+      } else {
+        alert('Failed to delete lead')
+      }
+    } catch (err) {
+      console.error('Failed to delete lead:', err)
+      alert('Failed to delete lead')
+    } finally {
+      setDeletingId(null)
     }
   }
 
@@ -300,15 +328,35 @@ export default function AdminLeadsPage() {
                             {formatDate(lead.createdAt)}
                           </TableCell>
                           <TableCell className="text-right">
-                            <Link 
-                              href={`/admin/leads/${lead.id}`} 
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              <Button variant="ghost" size="sm" data-testid={`button-view-lead-${lead.id}`}>
-                                <ExternalLink className="w-4 h-4" />
+                            <div className="flex items-center justify-end gap-1">
+                              <Link 
+                                href={`/admin/leads/${lead.id}`} 
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                onClick={(e) => e.stopPropagation()}
+                              >
+                                <Button variant="ghost" size="sm" data-testid={`button-view-lead-${lead.id}`}>
+                                  <ExternalLink className="w-4 h-4" />
+                                </Button>
+                              </Link>
+                              <Button 
+                                variant="ghost" 
+                                size="sm" 
+                                className="text-destructive hover:text-destructive hover:bg-destructive/10"
+                                onClick={(e) => {
+                                  e.stopPropagation()
+                                  handleDeleteLead(lead.id, lead.name)
+                                }}
+                                disabled={deletingId === lead.id}
+                                data-testid={`button-delete-lead-${lead.id}`}
+                              >
+                                {deletingId === lead.id ? (
+                                  <Loader2 className="w-4 h-4 animate-spin" />
+                                ) : (
+                                  <Trash2 className="w-4 h-4" />
+                                )}
                               </Button>
-                            </Link>
+                            </div>
                           </TableCell>
                         </TableRow>
                       )
