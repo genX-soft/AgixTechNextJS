@@ -247,7 +247,12 @@ export default function AdminLeadsPage() {
                     {leads.map((lead) => {
                       const scoreBadge = getScoreBadge(lead.leadScore)
                       return (
-                        <TableRow key={lead.id} data-testid={`row-lead-${lead.id}`}>
+                        <TableRow 
+                          key={lead.id} 
+                          data-testid={`row-lead-${lead.id}`}
+                          className="cursor-pointer hover:bg-muted/50"
+                          onClick={() => window.open(`/admin/leads/${lead.id}`, '_blank')}
+                        >
                           <TableCell>
                             <div className="flex items-center gap-2">
                               <span className={`inline-flex items-center justify-center w-8 h-8 rounded-full text-xs font-bold ${
@@ -261,9 +266,13 @@ export default function AdminLeadsPage() {
                             </div>
                           </TableCell>
                           <TableCell>
-                            <div>
-                              <p className="font-medium">{lead.name}</p>
-                              <a href={`mailto:${lead.email}`} className="text-xs text-muted-foreground hover:text-primary">
+                            <div className="max-w-[200px]">
+                              <p className="font-medium truncate">{lead.name}</p>
+                              <a 
+                                href={`mailto:${lead.email}`} 
+                                className="text-xs text-muted-foreground hover:text-primary truncate block"
+                                onClick={(e) => e.stopPropagation()}
+                              >
                                 {lead.email}
                               </a>
                             </div>
