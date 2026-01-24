@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
 import { motion } from "framer-motion";
 import Link from "next/link";
@@ -234,6 +234,7 @@ export default function InsightArticlePage() {
   const [relatedPosts, setRelatedPosts] = useState<WPPost[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [faqData, setFaqData] = useState<{ faqs: Array<{question: string; answer: string}>; cleanedContent: string }>({ faqs: [], cleanedContent: "" });
 
   useEffect(() => {
     async function fetchPost() {
@@ -253,6 +254,10 @@ export default function InsightArticlePage() {
         
         setPost(fetchedPost);
         setRelatedPosts(recentPosts.posts.filter(p => p.slug !== slug).slice(0, 3));
+        // Extract FAQs from post content
+        if (fetchedPost.content?.rendered) {
+          setFaqData(extractFAQsFromContent(fetchedPost.content.rendered));
+        }
       } catch (err) {
         setError("Unable to load article. Please try again later.");
         console.error("Error fetching post:", err);
@@ -275,14 +280,6 @@ export default function InsightArticlePage() {
     const url = encodeURIComponent(window.location.href);
     window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}`, "_blank");
   };
-
-  // Extract FAQs from content - must be called before conditional returns
-  const { faqs, cleanedContent } = useMemo(() => {
-    if (!post?.content?.rendered) {
-      return { faqs: [], cleanedContent: "" };
-    }
-    return extractFAQsFromContent(post.content.rendered);
-  }, [post?.content?.rendered]);
 
   if (loading) {
     return (
@@ -386,16 +383,16 @@ export default function InsightArticlePage() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
             className="wp-content max-w-none mb-12"
-            dangerouslySetInnerHTML={{ __html: cleanedContent }}
+            dangerouslySetInnerHTML={{ __html: faqData.cleanedContent || post.content?.rendered || "" }}
           />
 
-          {faqs.length > 0 && (
+          {faqData.faqs.length > 0 && (
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
             >
-              <FAQAccordion faqs={faqs} />
+              <FAQAccordion faqs={faqData.faqs} />
             </motion.div>
           )}
 
