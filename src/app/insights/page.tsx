@@ -53,7 +53,7 @@ function PostCard({ post }: { post: WPPost }) {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4 }}
     >
-      <Link href={`/${post.slug}/`} data-testid={`card-post-${post.id}`}>
+      <Link href={`/insights/${post.slug}/`} data-testid={`card-post-${post.id}`}>
         <Card className="overflow-hidden group hover-elevate cursor-pointer h-full flex flex-col">
           <div className="relative h-48 overflow-hidden bg-muted">
             {featuredImage ? (
