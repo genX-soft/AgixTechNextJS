@@ -276,6 +276,14 @@ export default function InsightArticlePage() {
     window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}`, "_blank");
   };
 
+  // Extract FAQs from content - must be called before conditional returns
+  const { faqs, cleanedContent } = useMemo(() => {
+    if (!post?.content?.rendered) {
+      return { faqs: [], cleanedContent: "" };
+    }
+    return extractFAQsFromContent(post.content.rendered);
+  }, [post?.content?.rendered]);
+
   if (loading) {
     return (
       <div className="min-h-screen bg-background">
@@ -311,11 +319,6 @@ export default function InsightArticlePage() {
   const author = getAuthorName(post);
   const readTime = estimateReadTime(post.content?.rendered || "");
   const categories = post._embedded?.["wp:term"]?.[0] || [];
-
-  // Extract FAQs from content and get cleaned content
-  const { faqs, cleanedContent } = useMemo(() => {
-    return extractFAQsFromContent(post.content?.rendered || "");
-  }, [post.content?.rendered]);
 
   return (
     <div className="min-h-screen bg-background">
