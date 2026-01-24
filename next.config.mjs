@@ -2,6 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   trailingSlash: true,
+  allowedDevOrigins: ['*.replit.dev', '*.sisko.replit.dev', '127.0.0.1'],
   images: {
     remotePatterns: [
       {
@@ -18,6 +19,7 @@ const nextConfig = {
       },
     ],
     formats: ['image/avif', 'image/webp'],
+    unoptimized: process.env.NODE_ENV === 'development',
   },
   experimental: {
     serverActions: {

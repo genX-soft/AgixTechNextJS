@@ -19,7 +19,6 @@ import {
   formatDate,
   estimateReadTime 
 } from "@/lib/insights/wordpress";
-import Image from "next/image";
 
 function PostCardSkeleton() {
   return (
@@ -57,14 +56,10 @@ function PostCard({ post }: { post: WPPost }) {
         <Card className="overflow-hidden group hover-elevate cursor-pointer h-full flex flex-col">
           <div className="relative h-48 overflow-hidden bg-muted">
             {featuredImage ? (
-              <Image
+              <img
                 src={featuredImage}
                 alt={post.title.rendered}
-                fill
-                sizes="(max-width: 768px) 100vw, 400px"
-                quality={75}
-                priority={false}
-                className="object-cover transition-transform duration-300 group-hover:scale-105"
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
               />
             ) : (
               <div className="w-full h-full bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center">
