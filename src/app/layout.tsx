@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { Providers } from "./providers";
 import { homepageOrganizationSchema } from "@/lib/seo/page-schemas";
@@ -78,10 +79,9 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: process.env.GOOGLE_SITE_VERIFICATION || '',
-    yandex: process.env.YANDEX_SITE_VERIFICATION || '',
+    google: '6JKwFo4Fkf6uI3wlgoKS8HXg9hvO6-d-cjcjS2wnx8Q',
     other: {
-      'msvalidate.01': process.env.BING_SITE_VERIFICATION || '',
+      'msvalidate.01': 'CB6B4849AC8E76E680D465AC712CEB6C',
     },
   },
   alternates: {
@@ -161,10 +161,41 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
+      <head>
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-EX4YPE6XR5"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-EX4YPE6XR5');
+          `}
+        </Script>
+        <Script id="google-tag-manager" strategy="afterInteractive">
+          {`
+            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-5V96B388');
+          `}
+        </Script>
+      </head>
       <body
         className={`${inter.variable} ${spaceGrotesk.variable} font-sans`}
         suppressHydrationWarning
       >
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-5V96B388"
+            height="0"
+            width="0"
+            style={{ display: 'none', visibility: 'hidden' }}
+          />
+        </noscript>
         <Providers>{children}</Providers>
       </body>
     </html>
