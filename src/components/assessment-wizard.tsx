@@ -375,7 +375,7 @@ export function AssessmentWizard({ config }: AssessmentWizardProps) {
                       Ready to discuss your AI strategy with an expert?
                     </p>
                     <Button asChild>
-                      <Link href="/corporate/contact" data-testid="link-talk-to-expert">
+                      <Link href="/corporate/contact/" data-testid="link-talk-to-expert">
                         Talk to an AI Expert
                         <ArrowRight className="ml-2 h-4 w-4" />
                       </Link>

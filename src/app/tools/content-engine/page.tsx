@@ -85,7 +85,7 @@ function ArticleCard({
           </div>
 
           <Link 
-            href={`/tools/content-engine/blog/${article.slug}`}
+            href={`/tools/content-engine/blog/${article.slug}/`}
             className="block"
             data-testid={`link-article-${article.slug}`}
           >
@@ -170,7 +170,7 @@ function ArticleCard({
           </div>
 
           <div className="mt-5 pt-4 border-t border-slate-700/50">
-            <Link href={`/tools/content-engine/blog/${article.slug}`}>
+            <Link href={`/tools/content-engine/blog/${article.slug}/`}>
               <Button className="w-full bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-600 hover:to-cyan-600 text-white" data-testid={`button-view-article-${article.slug}`}>
                 <FileText className="h-4 w-4 mr-2" />
                 View Full Article ({article.wordCount.toLocaleString()} words)

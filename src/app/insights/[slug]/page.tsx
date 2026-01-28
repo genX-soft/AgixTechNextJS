@@ -201,7 +201,7 @@ function RelatedPostCard({ post }: { post: WPPost }) {
   const excerpt = getExcerpt(post, 80);
 
   return (
-    <Link href={`/insights/${post.slug}`} data-testid={`card-related-${post.id}`}>
+    <Link href={`/insights/${post.slug}/`} data-testid={`card-related-${post.id}`}>
       <Card className="overflow-hidden group hover-elevate cursor-pointer h-full">
         <div className="relative h-32 overflow-hidden bg-muted">
           {featuredImage ? (
@@ -301,7 +301,7 @@ export default function InsightArticlePage() {
             The article you're looking for doesn't exist or has been moved.
           </p>
           <Button asChild>
-            <Link href="/insights" data-testid="button-back-to-insights">
+            <Link href="/insights/" data-testid="button-back-to-insights">
               <ArrowLeft className="w-4 h-4 mr-2" />
               Back to Insights
             </Link>
@@ -329,7 +329,7 @@ export default function InsightArticlePage() {
             transition={{ duration: 0.5 }}
           >
             <Link 
-              href="/insights" 
+              href="/insights/" 
               className="inline-flex items-center text-sm text-muted-foreground hover:text-foreground mb-6 transition-colors"
               data-testid="link-back-to-insights"
             >
@@ -368,11 +368,11 @@ export default function InsightArticlePage() {
             </div>
 
             {featuredImage && (
-              <div className="relative rounded-lg overflow-hidden mb-10">
+              <div className="relative rounded-lg overflow-hidden mb-10 aspect-[16/9] sm:aspect-[2/1] md:aspect-[21/9] w-full">
                 <img
                   src={featuredImage}
                   alt={post.title.rendered}
-                  className="w-full h-auto max-h-[300px] sm:max-h-[400px] md:max-h-[500px] object-cover"
+                  className="absolute inset-0 w-full h-full object-cover"
                 />
               </div>
             )}
@@ -435,7 +435,7 @@ export default function InsightArticlePage() {
                   Our team of AI experts can help you put these insights into action and transform your business operations.
                 </p>
                 <Button size="lg" asChild>
-                  <Link href="/corporate/contact" data-testid="button-article-cta">
+                  <Link href="/corporate/contact/" data-testid="button-article-cta">
                     Schedule a Consultation
                     <ArrowRight className="w-4 h-4 ml-2" />
                   </Link>

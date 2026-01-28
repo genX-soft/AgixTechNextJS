@@ -54,7 +54,7 @@ export default function KrogerCaseStudyPage() {
       <section className="pt-24 lg:pt-28 pb-16 bg-gradient-to-br from-background via-blue-500/5 to-green-500/10 min-h-[80vh] flex items-center">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="space-y-6">
-            <Link href="/case-studies">
+            <Link href="/case-studies/">
               <Button variant="ghost" size="sm" className="gap-2" data-testid="button-back-to-cases">
                 <ArrowLeft className="w-4 h-4" />
                 Back to Case Studies
@@ -437,13 +437,13 @@ export default function KrogerCaseStudyPage() {
       <section className="py-12 border-t border-border/50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
-            <Link href="/case-studies/albertsons">
+            <Link href="/case-studies/albertsons/">
               <Button variant="ghost" className="gap-2" data-testid="button-prev-case">
                 <ArrowLeft className="w-4 h-4" />
                 Previous: Albertsons
               </Button>
             </Link>
-            <Link href="/case-studies/stitch-fix">
+            <Link href="/case-studies/stitch-fix/">
               <Button variant="outline" className="gap-2 border-primary/50 text-primary" data-testid="button-next-case">
                 Next: Stitch Fix
                 <ArrowRight className="w-4 h-4" />

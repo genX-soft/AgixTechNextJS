@@ -145,7 +145,7 @@ export default function LeadDetailPage() {
                 </Button>
               </form>
               <div className="mt-4 text-center">
-                <Link href="/admin/leads" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                <Link href="/admin/leads/" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
                   <ArrowLeft className="w-4 h-4 inline mr-1" />
                   Back to All Leads
                 </Link>
@@ -171,7 +171,7 @@ export default function LeadDetailPage() {
         <Card className="w-full max-w-md text-center">
           <CardContent className="py-12">
             <p className="text-muted-foreground">Lead not found</p>
-            <Link href="/admin/leads">
+            <Link href="/admin/leads/">
               <Button variant="outline" className="mt-4">
                 <ArrowLeft className="w-4 h-4 mr-2" />
                 Back to All Leads
@@ -188,7 +188,7 @@ export default function LeadDetailPage() {
       <header className="sticky top-0 z-50 bg-background/80 backdrop-blur-sm border-b">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center gap-4">
-            <Link href="/admin/leads">
+            <Link href="/admin/leads/">
               <Button variant="ghost" size="sm">
                 <ArrowLeft className="w-4 h-4 mr-2" />
                 All Leads

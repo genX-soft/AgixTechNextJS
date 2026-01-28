@@ -35,7 +35,7 @@ export default function RiiidLabsCaseStudyPage() {
       <section className="pt-24 lg:pt-28 pb-16 bg-gradient-to-br from-violet-500/10 via-background to-purple-500/10 min-h-[80vh] flex items-center">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="space-y-6">
-            <Link href="/case-studies">
+            <Link href="/case-studies/">
               <Button variant="ghost" size="sm" className="gap-2" data-testid="button-back-to-cases">
                 <ArrowLeft className="w-4 h-4" />
                 Back to Case Studies
@@ -333,13 +333,13 @@ export default function RiiidLabsCaseStudyPage() {
 
       <section className="py-8 border-t border-border/50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 flex justify-between">
-          <Link href="/case-studies/knewton">
+          <Link href="/case-studies/knewton/">
             <Button variant="ghost" size="sm" className="gap-2" data-testid="button-prev-case">
               <ArrowLeft className="w-4 h-4" />
               Knewton
             </Button>
           </Link>
-          <Link href="/case-studies/housecanary">
+          <Link href="/case-studies/housecanary/">
             <Button variant="ghost" size="sm" className="gap-2" data-testid="button-next-case">
               HouseCanary
               <ArrowRight className="w-4 h-4" />

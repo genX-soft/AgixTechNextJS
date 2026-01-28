@@ -484,7 +484,7 @@ export default function ExplorationResults({ onReset, onClose }: ExplorationResu
 
           {service && (
             <Link
-              href={`/services/${service}`}
+              href={`/services/${service}/`}
               onClick={() => {
                 updateState({ returnTo: pathname });
                 onClose();
@@ -507,7 +507,7 @@ export default function ExplorationResults({ onReset, onClose }: ExplorationResu
 
           {caseStudy && (
             <Link
-              href={`/case-studies/${caseStudy}`}
+              href={`/case-studies/${caseStudy}/`}
               onClick={() => {
                 updateState({ returnTo: pathname });
                 onClose();
@@ -531,7 +531,7 @@ export default function ExplorationResults({ onReset, onClose }: ExplorationResu
 
         {/* Talk to Expert CTA */}
         <Link
-          href={`/corporate/contact?service=${service}&intel=${intelligence}`}
+          href={`/corporate/contact/?service=${service}&intel=${intelligence}`}
           onClick={onClose}
           className="block mb-4"
           data-testid="link-contact-expert"

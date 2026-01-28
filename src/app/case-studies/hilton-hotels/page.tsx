@@ -94,7 +94,7 @@ export default function HiltonHotelsCaseStudyPage() {
       <section className="pt-24 lg:pt-28 pb-16 bg-gradient-to-br from-background via-blue-500/5 to-amber-500/10 min-h-[80vh] flex items-center">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="space-y-6">
-            <Link href="/case-studies">
+            <Link href="/case-studies/">
               <Button variant="ghost" size="sm" className="gap-2" data-testid="button-back-to-cases">
                 <ArrowLeft className="w-4 h-4" />
                 Back to Case Studies
@@ -487,13 +487,13 @@ export default function HiltonHotelsCaseStudyPage() {
       {/* Navigation */}
       <section className="py-8 border-t border-border/50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 flex justify-between">
-          <Link href="/case-studies/suno">
+          <Link href="/case-studies/suno/">
             <Button variant="ghost" size="sm" className="gap-2" data-testid="button-prev-case">
               <ArrowLeft className="w-4 h-4" />
               Suno
             </Button>
           </Link>
-          <Link href="/case-studies/ulta-beauty">
+          <Link href="/case-studies/ulta-beauty/">
             <Button variant="ghost" size="sm" className="gap-2" data-testid="button-next-case">
               Ulta Beauty
               <ArrowRight className="w-4 h-4" />

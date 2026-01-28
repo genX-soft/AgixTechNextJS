@@ -330,7 +330,7 @@ export default function AdminLeadsPage() {
                           <TableCell className="text-right">
                             <div className="flex items-center justify-end gap-1">
                               <Link 
-                                href={`/admin/leads/${lead.id}`} 
+                                href={`/admin/leads/${lead.id}/`} 
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 onClick={(e) => e.stopPropagation()}

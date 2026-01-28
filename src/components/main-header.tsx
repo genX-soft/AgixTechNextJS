@@ -269,7 +269,7 @@ export function MainHeader() {
               <NavigationMenuItem>
                 <NavigationMenuLink asChild>
                   <a
-                    href="/case-studies"
+                    href="/case-studies/"
                     className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-sm font-medium transition-colors hover-elevate focus:ring-2 focus:ring-primary focus:ring-offset-2"
                     data-testid="link-nav-case-studies"
                   >
@@ -320,7 +320,7 @@ export function MainHeader() {
 
               <NavigationMenuItem>
                 <a
-                  href="/insights"
+                  href="/insights/"
                   className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-sm font-medium transition-colors hover:text-foreground"
                   data-testid="link-nav-insights"
                 >
@@ -345,7 +345,7 @@ export function MainHeader() {
             </a>
             <Button asChild className="hidden md:inline-flex">
               <a 
-                href="/corporate/contact" 
+                href="/corporate/contact/" 
                 onClick={handleConsultationClick}
                 data-testid="button-schedule-consultation"
               >
@@ -391,14 +391,14 @@ export function MainHeader() {
                 items={industriesItems.map((i) => ({ title: i.title, href: i.href }))}
                 onItemClick={closeMobileMenu}
               />
-              <MobileMenuItem title="Case Studies" href="/case-studies" onItemClick={closeMobileMenu} />
+              <MobileMenuItem title="Case Studies" href="/case-studies/" onItemClick={closeMobileMenu} />
               <MobileMenuItem
                 title="Corporate"
                 items={corporateItems.map((i) => ({ title: i.title, href: i.href }))}
                 onItemClick={closeMobileMenu}
               />
               <a
-                href="/insights"
+                href="/insights/"
                 className="block px-4 py-3 text-sm font-medium transition-colors hover:text-foreground"
                 onClick={closeMobileMenu}
                 data-testid="link-mobile-insights"
@@ -418,7 +418,7 @@ export function MainHeader() {
                 <div className="px-4">
                   <Button asChild className="w-full h-14 text-base font-semibold">
                     <a 
-                      href="/corporate/contact" 
+                      href="/corporate/contact/" 
                       onClick={handleConsultationClick}
                       data-testid="button-mobile-schedule-consultation"
                     >

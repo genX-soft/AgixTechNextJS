@@ -224,7 +224,7 @@ export default function InsightsPage() {
             Our team of AI experts can help you implement the strategies discussed in our insights.
           </p>
           <Button size="lg" asChild>
-            <Link href="/corporate/contact" data-testid="button-insights-cta">
+            <Link href="/corporate/contact/" data-testid="button-insights-cta">
               Schedule a Consultation
               <ArrowRight className="w-4 h-4 ml-2" />
             </Link>

@@ -510,7 +510,7 @@ function PasscodeGate({ onSuccess }: { onSuccess: () => void }) {
 
             <div className="mt-6 pt-4 border-t border-slate-700/50 text-center">
               <Link 
-                href="/tools/content-engine" 
+                href="/tools/content-engine/" 
                 className="text-sm text-slate-400 hover:text-white transition-colors inline-flex items-center gap-1"
                 data-testid="link-back-to-engine"
               >
@@ -565,7 +565,7 @@ export default function BlogArticlePage() {
             <AlertCircle className="h-12 w-12 text-red-400 mx-auto mb-4" />
             <h1 className="text-xl font-bold text-white mb-2">Article Not Found</h1>
             <p className="text-slate-400 mb-4">The article you are looking for does not exist.</p>
-            <Link href="/tools/content-engine">
+            <Link href="/tools/content-engine/">
               <Button className="mt-4">
                 <ArrowLeft className="h-4 w-4 mr-2" />
                 Back to Content Engine
@@ -583,7 +583,7 @@ export default function BlogArticlePage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 py-4">
           <div className="flex items-center justify-between gap-4">
             <Link 
-              href="/tools/content-engine" 
+              href="/tools/content-engine/" 
               className="flex items-center gap-2 text-slate-400 hover:text-white transition-colors"
               data-testid="link-back"
             >
@@ -786,7 +786,7 @@ export default function BlogArticlePage() {
             <div className="text-sm text-slate-500">
               Last updated: {article.lastUpdated}
             </div>
-            <Link href="/tools/content-engine">
+            <Link href="/tools/content-engine/">
               <Button variant="outline" className="text-slate-300">
                 <ArrowLeft className="h-4 w-4 mr-2" />
                 Back to All Articles

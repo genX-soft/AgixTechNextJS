@@ -2478,7 +2478,7 @@ function CaseStudiesSection() {
           className="text-center mt-10"
         >
           <Button variant="outline" asChild data-testid="button-case-studies-all">
-            <Link href="/case-studies">
+            <Link href="/case-studies/">
               View All Case Studies
               <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
