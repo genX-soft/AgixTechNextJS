@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./providers";
+import { homepageOrganizationSchema } from "@/lib/seo/page-schemas";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -92,34 +93,7 @@ export const metadata: Metadata = {
     'script:ld+json': JSON.stringify({
       "@context": "https://schema.org",
       "@graph": [
-        {
-          "@type": "Organization",
-          "@id": "https://agixtech.com/#organization",
-          "name": "AGIX Technologies",
-          "url": "https://agixtech.com/",
-          "logo": {
-            "@type": "ImageObject",
-            "url": "https://agixtech.com/wp-content/uploads/agix-logo.png"
-          },
-          "description": "Agix Technologies is an AI Systems Engineering and Agentic Intelligence company helping enterprises architect, deploy, and scale autonomous AI systems for measurable business outcomes.",
-          "foundingDate": "2020",
-          "founders": [
-            {
-              "@type": "Person",
-              "name": "AGIX Team"
-            }
-          ],
-          "contactPoint": {
-            "@type": "ContactPoint",
-            "telephone": "+1-XXX-XXX-XXXX",
-            "contactType": "customer service",
-            "availableLanguage": "English"
-          },
-          "sameAs": [
-            "https://twitter.com/agixtech",
-            "https://linkedin.com/company/agixtech"
-          ]
-        },
+        homepageOrganizationSchema,
         {
           "@type": "WebSite",
           "@id": "https://agixtech.com/#website",
