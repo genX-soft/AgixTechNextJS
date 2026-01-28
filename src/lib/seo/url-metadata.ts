@@ -387,7 +387,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     ogDescription: 'Bridge the gap in digital health! See how AgixTech structured a regulator-approved triage system in 15+ languages. Read more.',
     twitterTitle: '99.2% Urgent Case Detection | Babylon Case Study | Agix Technologies',
     twitterDescription: 'Global healthcare meets AI safety. Discover how we helped Babylon Health reach millions with faster, smarter triage. Learn more.',
-    featuredImage: 'https://drive.google.com/uc?export=view&id=1wRkkdHPxosaGL6TuD0-HKXW-O1ScibWG',
+    featuredImage: 'https://cms.agixtech.com/wp-content/uploads/2026/01/Babylon-Health-Case-Study-Image.png',
     schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article'],
   },
 
@@ -401,7 +401,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     ogDescription: 'Supercharge user trust! Explore how AGIX powered Kite Therapy with emotional intelligence and seamless human escalation. Read more.',
     twitterTitle: 'AI for Mental Health | Kite Case Study | AgixTech',
     twitterDescription: 'Transform the patient journey! See how AGIX streamlined Kite Therapy reach a 4.8/5 user rating through calibrated AI support.',
-    featuredImage: 'https://drive.google.com/uc?export=view&id=1FORAPxhm8u7b38qxftEYWoYLGLwJ7A0b',
+    featuredImage: 'https://cms.agixtech.com/wp-content/uploads/2026/01/Kite-Therapy-Case-Study-Image.png',
     schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article'],
   },
 
