@@ -372,7 +372,7 @@ export default function InsightArticlePage() {
                 <img
                   src={featuredImage}
                   alt={post.title.rendered}
-                  className="w-full h-auto max-h-[500px] object-cover"
+                  className="w-full h-auto max-h-[300px] sm:max-h-[400px] md:max-h-[500px] object-cover"
                 />
               </div>
             )}
