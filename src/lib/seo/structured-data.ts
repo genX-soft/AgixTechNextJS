@@ -1,6 +1,6 @@
 const SITE_URL = 'https://agixtech.com';
 const SITE_NAME = 'AGIX Technologies';
-const LOGO_URL = `${SITE_URL}/og-image.png`;
+const LOGO_URL = 'https://cms.agixtech.com/wp-content/uploads/2026/01/AGIX-Technologies-logo-scaled.png';
 
 export interface BreadcrumbItem {
   name: string;

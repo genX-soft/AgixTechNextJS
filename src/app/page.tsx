@@ -2745,7 +2745,7 @@ export default function Home() {
     "url": "https://agixtech.com",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://agixtech.com/og-image.png",
+      "url": "https://cms.agixtech.com/wp-content/uploads/2026/01/AGIX-Technologies-logo-scaled.png",
       "@id": "https://agixtech.com/#logo"
     },
     "description": "AGIX Technologies is a leading AI Systems Engineering company helping enterprises design, deploy, and scale autonomous AI systems including agentic AI, voice AI, RAG systems, and predictive analytics.",
