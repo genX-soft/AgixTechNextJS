@@ -16,6 +16,5 @@ export default function robots(): MetadataRoute.Robots {
       },
     ],
     sitemap: 'https://agixtech.com/sitemap.xml',
-    host: 'https://agixtech.com',
   };
 }
