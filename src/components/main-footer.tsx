@@ -40,42 +40,42 @@ const awards = [
 ];
 
 const services = [
-  { title: "AI Automation Services", href: "/services/ai-automation" },
-  { title: "AI Voice Agents", href: "/services/ai-voice-agents" },
-  { title: "Conversational AI Chatbots", href: "/services/conversational-ai-chatbots" },
-  { title: "Agentic AI Systems", href: "/services/agentic-ai-systems" },
-  { title: "RAG & Knowledge AI", href: "/services/rag-knowledge-ai" },
-  { title: "Predictive Analytics AI", href: "/services/ai-predictive-analytics" },
-  { title: "Computer Vision Solutions", href: "/services/ai-computer-vision" },
-  { title: "Custom AI Development", href: "/services/custom-ai-product-development" },
+  { title: "AI Automation Services", href: "/services/ai-automation/" },
+  { title: "AI Voice Agents", href: "/services/ai-voice-agents/" },
+  { title: "Conversational AI Chatbots", href: "/services/conversational-ai-chatbots/" },
+  { title: "Agentic AI Systems", href: "/services/agentic-ai-systems/" },
+  { title: "RAG & Knowledge AI", href: "/services/rag-knowledge-ai/" },
+  { title: "Predictive Analytics AI", href: "/services/ai-predictive-analytics/" },
+  { title: "Computer Vision Solutions", href: "/services/ai-computer-vision/" },
+  { title: "Custom AI Development", href: "/services/custom-ai-product-development/" },
 ];
 
 const industries = [
-  { title: "Healthcare", href: "/industries/healthcare-ai-solutions" },
-  { title: "Real Estate", href: "/industries/real-estate-ai-solutions" },
-  { title: "Fintech", href: "/industries/fintech-ai-solutions" },
-  { title: "Retail & E-commerce", href: "/industries/retail-ai-solutions" },
-  { title: "Insurance", href: "/industries/insurance-ai-solutions" },
-  { title: "Logistics", href: "/industries/logistics-ai-solutions" },
-  { title: "EdTech", href: "/industries/edtech-ai-solutions" },
-  { title: "Hospitality", href: "/industries/hospitality-ai-solutions" },
+  { title: "Healthcare", href: "/industries/healthcare-ai-solutions/" },
+  { title: "Real Estate", href: "/industries/real-estate-ai-solutions/" },
+  { title: "Fintech", href: "/industries/fintech-ai-solutions/" },
+  { title: "Retail & E-commerce", href: "/industries/retail-ai-solutions/" },
+  { title: "Insurance", href: "/industries/insurance-ai-solutions/" },
+  { title: "Logistics", href: "/industries/logistics-ai-solutions/" },
+  { title: "EdTech", href: "/industries/edtech-ai-solutions/" },
+  { title: "Hospitality", href: "/industries/hospitality-ai-solutions/" },
 ];
 
 const intelligence = [
-  { title: "Operational Intelligence", href: "/intelligence/operational-ai" },
-  { title: "Conversational Intelligence", href: "/intelligence/conversational-ai" },
-  { title: "Decision Intelligence", href: "/intelligence/decision-ai" },
-  { title: "Agentic Systems", href: "/intelligence/autonomous-agentic-ai" },
-  { title: "Enterprise Knowledge", href: "/intelligence/enterprise-knowledge-ai" },
+  { title: "Operational Intelligence", href: "/intelligence/operational-ai/" },
+  { title: "Conversational Intelligence", href: "/intelligence/conversational-ai/" },
+  { title: "Decision Intelligence", href: "/intelligence/decision-ai/" },
+  { title: "Agentic Systems", href: "/intelligence/autonomous-agentic-ai/" },
+  { title: "Enterprise Knowledge", href: "/intelligence/enterprise-knowledge-ai/" },
 ];
 
 const corporate: { title: string; href: string; external?: boolean }[] = [
-  { title: "About Us", href: "/corporate/about" },
-  { title: "Case Studies", href: "/case-studies" },
-  { title: "Contact Us", href: "/corporate/contact" },
-  { title: "Careers", href: "/corporate/careers" },
-  { title: "News & Media", href: "/newsroom" },
-  { title: "Content Engine", href: "/tools/content-engine" },
+  { title: "About Us", href: "/corporate/about/" },
+  { title: "Case Studies", href: "/case-studies/" },
+  { title: "Contact Us", href: "/corporate/contact/" },
+  { title: "Careers", href: "/corporate/careers/" },
+  { title: "News & Media", href: "/newsroom/" },
+  { title: "Content Engine", href: "/tools/content-engine/" },
 ];
 
 const certifications = [
