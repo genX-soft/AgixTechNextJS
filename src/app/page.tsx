@@ -2617,11 +2617,11 @@ function ContactSection() {
                 <div className="flex items-center gap-3">
                   <Mail className="h-5 w-5 text-primary" />
                   <a 
-                    href="mailto:hello@agixtech.com" 
+                    href="mailto:santosh@agixtech.com" 
                     className="text-muted-foreground hover:text-foreground transition-colors"
                     data-testid="link-email"
                   >
-                    hello@agixtech.com
+                    santosh@agixtech.com
                   </a>
                 </div>
               </div>

@@ -504,11 +504,11 @@ export default function CareersPage() {
                                 <Mail className="w-5 h-5 text-primary" />
                                 <span className="font-medium">Send Resume:</span>
                                 <a 
-                                  href="mailto:hello@agixtech.com" 
+                                  href="mailto:santosh@agixtech.com" 
                                   className="text-primary hover:underline"
                                   data-testid={`link-email-${job.id}`}
                                 >
-                                  hello@agixtech.com
+                                  santosh@agixtech.com
                                 </a>
                               </div>
                               <Badge variant="outline">Subject: {job.emailSubject}</Badge>
