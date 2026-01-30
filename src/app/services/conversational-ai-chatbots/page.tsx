@@ -1013,7 +1013,7 @@ function ROICalculator() {
                 <div className="mt-6 pt-4 border-t border-border">
                   <p className="text-sm text-muted-foreground">
                     This is a preliminary recommendation based on your selections. 
-                    <a href="/corporate/contact" className="text-primary hover:underline ml-1">Schedule a consultation</a> for a detailed analysis.
+                    <a href="/corporate/contact/" className="text-primary hover:underline ml-1">Schedule a consultation</a> for a detailed analysis.
                   </p>
                 </div>
               </motion.div>
@@ -1033,7 +1033,7 @@ function ROICalculator() {
             Want an exact cost & ROI for your use case?
           </p>
           <Button size="lg" asChild>
-            <a href="/corporate/contact" data-testid="button-chatbot-calculator-cta">
+            <a href="/corporate/contact/" data-testid="button-chatbot-calculator-cta">
               Get a Custom Conversational AI Cost Breakdown
               <ArrowRight className="w-4 h-4 ml-2" />
             </a>

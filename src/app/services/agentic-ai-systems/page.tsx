@@ -1113,7 +1113,7 @@ function AgenticCostCalculator() {
             Want an exact cost & ROI for your use case?
           </p>
           <Button size="lg" asChild>
-            <a href="/corporate/contact" data-testid="button-agentic-calculator-cta">
+            <a href="/corporate/contact/" data-testid="button-agentic-calculator-cta">
               Get a Custom Agentic AI Assessment
               <ArrowRight className="w-4 h-4 ml-2" />
             </a>
@@ -2357,7 +2357,7 @@ export default function AgenticAISystems() {
               Get a clear recommendation — automation, conversational AI, or agentic system — based on your specific use case.
             </p>
             <Button size="lg" className="text-lg px-8 py-6" asChild>
-              <a href="/corporate/contact" data-testid="button-final-cta">
+              <a href="/corporate/contact/" data-testid="button-final-cta">
                 Run a 30-Minute Agentic Readiness Session
                 <ArrowRight className="w-5 h-5 ml-2" />
               </a>

@@ -368,11 +368,11 @@ export default function InsightArticlePage() {
             </div>
 
             {featuredImage && (
-              <div className="relative rounded-lg overflow-hidden mb-10 aspect-[16/9] sm:aspect-[2/1] md:aspect-[21/9] w-full">
+              <div className="relative rounded-lg overflow-hidden mb-10 w-full">
                 <img
                   src={featuredImage}
                   alt={post.title.rendered}
-                  className="absolute inset-0 w-full h-full object-cover"
+                  className="w-full h-auto object-contain max-h-[400px] sm:max-h-[500px] md:max-h-[600px]"
                 />
               </div>
             )}

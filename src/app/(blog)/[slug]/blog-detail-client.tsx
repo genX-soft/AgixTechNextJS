@@ -323,14 +323,11 @@ export default function BlogArticlePage() {
             </div>
 
             {featuredImage && (
-              <div className="relative rounded-lg overflow-hidden mb-10 min-h-[320px] lg:min-h-[350px] w-full">
-                <Image
+              <div className="relative rounded-lg overflow-hidden mb-10 w-full">
+                <img
                   src={featuredImage}
                   alt={post.title.rendered}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 300px"
-                  quality={75}
-                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  className="w-full h-auto object-contain max-h-[400px] sm:max-h-[500px] md:max-h-[600px]"
                 />
               </div>
             )}

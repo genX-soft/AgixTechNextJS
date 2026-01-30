@@ -563,7 +563,7 @@ export default function CareersPage() {
                 asChild
                 data-testid="button-closing-contact"
               >
-                <a href="/corporate/contact">
+                <a href="/corporate/contact/">
                   <Mail className="w-5 h-5 mr-2" />
                   Contact Us
                 </a>
