@@ -415,35 +415,35 @@ function IntelligenceFrameworkSection() {
       name: "Conversational Intelligence",
       description: "How intent enters the system — safely and contextually.",
       color: "purple",
-      href: "/intelligence/conversational"
+      href: "/intelligence/conversational-ai/"
     },
     {
       icon: BarChart3,
       name: "Decision Intelligence",
       description: "How choices are evaluated, explained, and improved over time.",
       color: "emerald",
-      href: "/intelligence/decision"
+      href: "/intelligence/decision-ai/"
     },
     {
       icon: Settings,
       name: "Operational Intelligence",
       description: "How work runs, adapts, and improves in real time.",
       color: "orange",
-      href: "/intelligence/operational"
+      href: "/intelligence/operational-ai/"
     },
     {
       icon: Bot,
       name: "Autonomous Agentic Systems",
       description: "How execution scales — without chaos or blind autonomy.",
       color: "cyan",
-      href: "/intelligence/agentic"
+      href: "/intelligence/autonomous-agentic-ai/"
     },
     {
       icon: Database,
       name: "Enterprise Knowledge Intelligence",
       description: "How trust, truth, and compliance are enforced.",
       color: "indigo",
-      href: "/intelligence/enterprise-knowledge"
+      href: "/intelligence/enterprise-knowledge-ai/"
     }
   ];
 

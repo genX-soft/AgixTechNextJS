@@ -80,7 +80,7 @@ const config: AssessmentConfig = {
       ],
       recommendedPath: {
         title: "AI Automation + Lightweight Conversational AI",
-        link: "/services/chatbots",
+        link: "/services/conversational-ai-chatbots/",
       },
       journey: {
         now: "Automation + AI copilots",
@@ -88,8 +88,8 @@ const config: AssessmentConfig = {
         later: "Agentic workflows",
       },
       nextActions: [
-        { label: "Explore AI Workflows", link: "/intelligence/operational" },
-        { label: "View Startup Cases", link: "/case-studies" },
+        { label: "Explore AI Workflows", link: "/intelligence/operational-ai/" },
+        { label: "View Startup Cases", link: "/case-studies/" },
       ],
     },
     {
@@ -106,7 +106,7 @@ const config: AssessmentConfig = {
       ],
       recommendedPath: {
         title: "Custom AI Product Development",
-        link: "/services/custom-ai-product",
+        link: "/services/custom-ai-product-development/",
       },
       journey: {
         now: "Custom AI features",
@@ -114,8 +114,8 @@ const config: AssessmentConfig = {
         later: "AI-first product strategy",
       },
       nextActions: [
-        { label: "Custom AI Solutions", link: "/services/custom-ai-product" },
-        { label: "Talk to Us", link: "/corporate/contact" },
+        { label: "Custom AI Solutions", link: "/services/custom-ai-product-development/" },
+        { label: "Talk to Us", link: "/corporate/contact/" },
       ],
     },
     {
@@ -132,7 +132,7 @@ const config: AssessmentConfig = {
       ],
       recommendedPath: {
         title: "Agentic AI Systems",
-        link: "/services/agentic-ai-systems",
+        link: "/services/agentic-ai-systems/",
       },
       journey: {
         now: "Agentic workflows",
@@ -140,8 +140,8 @@ const config: AssessmentConfig = {
         later: "AI-native architecture",
       },
       nextActions: [
-        { label: "Explore Agentic AI", link: "/services/agentic-ai-systems" },
-        { label: "Schedule Strategy Call", link: "/corporate/contact" },
+        { label: "Explore Agentic AI", link: "/services/agentic-ai-systems/" },
+        { label: "Schedule Strategy Call", link: "/corporate/contact/" },
       ],
     },
   ],

@@ -71,7 +71,7 @@ const config: AssessmentConfig = {
       ],
       recommendedPath: {
         title: "Enterprise AI Readiness Framework",
-        link: "/intelligence/enterprise-knowledge",
+        link: "/intelligence/enterprise-knowledge-ai/",
       },
       journey: {
         now: "Readiness & risk assessment",
@@ -79,8 +79,8 @@ const config: AssessmentConfig = {
         later: "Agentic & decision systems",
       },
       nextActions: [
-        { label: "Enterprise Readiness", link: "/intelligence/enterprise-knowledge" },
-        { label: "Talk to AI Architect", link: "/corporate/contact" },
+        { label: "Enterprise Readiness", link: "/intelligence/enterprise-knowledge-ai/" },
+        { label: "Talk to AI Architect", link: "/corporate/contact/" },
       ],
     },
     {
@@ -97,7 +97,7 @@ const config: AssessmentConfig = {
       ],
       recommendedPath: {
         title: "Enterprise Knowledge Intelligence",
-        link: "/intelligence/enterprise-knowledge",
+        link: "/intelligence/enterprise-knowledge-ai/",
       },
       journey: {
         now: "Governance & orchestration",
@@ -105,8 +105,8 @@ const config: AssessmentConfig = {
         later: "Autonomous enterprise AI",
       },
       nextActions: [
-        { label: "Knowledge Intelligence", link: "/intelligence/enterprise-knowledge" },
-        { label: "Request Architecture Review", link: "/corporate/contact" },
+        { label: "Knowledge Intelligence", link: "/intelligence/enterprise-knowledge-ai/" },
+        { label: "Request Architecture Review", link: "/corporate/contact/" },
       ],
     },
     {
@@ -123,7 +123,7 @@ const config: AssessmentConfig = {
       ],
       recommendedPath: {
         title: "Agentic AI Systems",
-        link: "/intelligence/agentic",
+        link: "/intelligence/autonomous-agentic-ai/",
       },
       journey: {
         now: "Scaled AI deployment",
@@ -131,8 +131,8 @@ const config: AssessmentConfig = {
         later: "AI-native enterprise",
       },
       nextActions: [
-        { label: "Agentic AI Systems", link: "/intelligence/agentic" },
-        { label: "Enterprise Consultation", link: "/corporate/contact" },
+        { label: "Agentic AI Systems", link: "/intelligence/autonomous-agentic-ai/" },
+        { label: "Enterprise Consultation", link: "/corporate/contact/" },
       ],
     },
   ],

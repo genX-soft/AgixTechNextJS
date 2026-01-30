@@ -443,7 +443,7 @@ const assessmentConfigs: Record<string, AssessmentConfig> = {
         ],
         recommendedPath: {
           title: "Start with Operational Intelligence",
-          link: "/intelligence/operational",
+          link: "/intelligence/operational-ai/",
         },
         journey: {
           now: "Simple AI-powered automation",
@@ -451,8 +451,8 @@ const assessmentConfigs: Record<string, AssessmentConfig> = {
           later: "Decision & analytics systems",
         },
         nextActions: [
-          { label: "Explore Simple Automation", link: "/intelligence/operational" },
-          { label: "Talk to an Expert", link: "/corporate/contact" },
+          { label: "Explore Simple Automation", link: "/intelligence/operational-ai/" },
+          { label: "Talk to an Expert", link: "/corporate/contact/" },
         ],
       },
       {
@@ -469,7 +469,7 @@ const assessmentConfigs: Record<string, AssessmentConfig> = {
         ],
         recommendedPath: {
           title: "Conversational Intelligence",
-          link: "/intelligence/conversational",
+          link: "/intelligence/conversational-ai/",
         },
         journey: {
           now: "Chatbots and workflow automation",
@@ -477,8 +477,8 @@ const assessmentConfigs: Record<string, AssessmentConfig> = {
           later: "Advanced decision systems",
         },
         nextActions: [
-          { label: "Explore Conversational AI", link: "/intelligence/conversational" },
-          { label: "View Case Studies", link: "/case-studies" },
+          { label: "Explore Conversational AI", link: "/intelligence/conversational-ai/" },
+          { label: "View Case Studies", link: "/case-studies/" },
         ],
       },
       {
@@ -495,7 +495,7 @@ const assessmentConfigs: Record<string, AssessmentConfig> = {
         ],
         recommendedPath: {
           title: "Decision Intelligence",
-          link: "/intelligence/decision",
+          link: "/intelligence/decision-ai/",
         },
         journey: {
           now: "Decision support and analytics",
@@ -503,8 +503,8 @@ const assessmentConfigs: Record<string, AssessmentConfig> = {
           later: "Enterprise-wide AI transformation",
         },
         nextActions: [
-          { label: "Explore Decision Intelligence", link: "/intelligence/decision" },
-          { label: "Schedule Consultation", link: "/corporate/contact" },
+          { label: "Explore Decision Intelligence", link: "/intelligence/decision-ai/" },
+          { label: "Schedule Consultation", link: "/corporate/contact/" },
         ],
       },
     ],
@@ -587,7 +587,7 @@ const assessmentConfigs: Record<string, AssessmentConfig> = {
         ],
         recommendedPath: {
           title: "AI Automation + Lightweight Conversational AI",
-          link: "/services/chatbots",
+          link: "/services/conversational-ai-chatbots/",
         },
         journey: {
           now: "Automation + AI copilots",
@@ -595,8 +595,8 @@ const assessmentConfigs: Record<string, AssessmentConfig> = {
           later: "Agentic workflows",
         },
         nextActions: [
-          { label: "Explore AI Workflows", link: "/intelligence/operational" },
-          { label: "View Startup Cases", link: "/case-studies" },
+          { label: "Explore AI Workflows", link: "/intelligence/operational-ai/" },
+          { label: "View Startup Cases", link: "/case-studies/" },
         ],
       },
       {
@@ -613,7 +613,7 @@ const assessmentConfigs: Record<string, AssessmentConfig> = {
         ],
         recommendedPath: {
           title: "Custom AI Product Development",
-          link: "/services/custom-ai-product",
+          link: "/services/custom-ai-product-development/",
         },
         journey: {
           now: "Custom AI features",
@@ -621,8 +621,8 @@ const assessmentConfigs: Record<string, AssessmentConfig> = {
           later: "AI-first product strategy",
         },
         nextActions: [
-          { label: "Custom AI Solutions", link: "/services/custom-ai-product" },
-          { label: "Talk to Us", link: "/corporate/contact" },
+          { label: "Custom AI Solutions", link: "/services/custom-ai-product-development/" },
+          { label: "Talk to Us", link: "/corporate/contact/" },
         ],
       },
       {
@@ -639,7 +639,7 @@ const assessmentConfigs: Record<string, AssessmentConfig> = {
         ],
         recommendedPath: {
           title: "Agentic AI Systems",
-          link: "/services/agentic-ai-systems",
+          link: "/services/agentic-ai-systems/",
         },
         journey: {
           now: "Agentic workflows",
@@ -647,8 +647,8 @@ const assessmentConfigs: Record<string, AssessmentConfig> = {
           later: "AI-native architecture",
         },
         nextActions: [
-          { label: "Explore Agentic AI", link: "/services/agentic-ai-systems" },
-          { label: "Schedule Strategy Call", link: "/corporate/contact" },
+          { label: "Explore Agentic AI", link: "/services/agentic-ai-systems/" },
+          { label: "Schedule Strategy Call", link: "/corporate/contact/" },
         ],
       },
     ],
@@ -721,7 +721,7 @@ const assessmentConfigs: Record<string, AssessmentConfig> = {
         ],
         recommendedPath: {
           title: "Operational Intelligence",
-          link: "/intelligence/operational",
+          link: "/intelligence/operational-ai/",
         },
         journey: {
           now: "Targeted workflow automation",
@@ -729,8 +729,8 @@ const assessmentConfigs: Record<string, AssessmentConfig> = {
           later: "Predictive operations",
         },
         nextActions: [
-          { label: "Operational Intelligence", link: "/intelligence/operational" },
-          { label: "View SMB Cases", link: "/case-studies" },
+          { label: "Operational Intelligence", link: "/intelligence/operational-ai/" },
+          { label: "View SMB Cases", link: "/case-studies/" },
         ],
       },
       {
@@ -747,7 +747,7 @@ const assessmentConfigs: Record<string, AssessmentConfig> = {
         ],
         recommendedPath: {
           title: "Operational + Decision Intelligence",
-          link: "/intelligence/decision",
+          link: "/intelligence/decision-ai/",
         },
         journey: {
           now: "Workflow automation",
@@ -755,8 +755,8 @@ const assessmentConfigs: Record<string, AssessmentConfig> = {
           later: "Agent-assisted operations",
         },
         nextActions: [
-          { label: "Decision Intelligence", link: "/intelligence/decision" },
-          { label: "Calculate Savings", link: "/corporate/contact" },
+          { label: "Decision Intelligence", link: "/intelligence/decision-ai/" },
+          { label: "Calculate Savings", link: "/corporate/contact/" },
         ],
       },
       {
@@ -773,7 +773,7 @@ const assessmentConfigs: Record<string, AssessmentConfig> = {
         ],
         recommendedPath: {
           title: "Enterprise-Grade AI Transformation",
-          link: "/intelligence/enterprise-knowledge",
+          link: "/intelligence/enterprise-knowledge-ai/",
         },
         journey: {
           now: "Immediate automation wins",
@@ -781,8 +781,8 @@ const assessmentConfigs: Record<string, AssessmentConfig> = {
           later: "Autonomous operations",
         },
         nextActions: [
-          { label: "Enterprise Solutions", link: "/intelligence/enterprise-knowledge" },
-          { label: "Request Assessment", link: "/corporate/contact" },
+          { label: "Enterprise Solutions", link: "/intelligence/enterprise-knowledge-ai/" },
+          { label: "Request Assessment", link: "/corporate/contact/" },
         ],
       },
     ],
@@ -856,7 +856,7 @@ const assessmentConfigs: Record<string, AssessmentConfig> = {
         ],
         recommendedPath: {
           title: "Enterprise AI Readiness Framework",
-          link: "/intelligence/enterprise-knowledge",
+          link: "/intelligence/enterprise-knowledge-ai/",
         },
         journey: {
           now: "Readiness & risk assessment",
@@ -864,8 +864,8 @@ const assessmentConfigs: Record<string, AssessmentConfig> = {
           later: "Agentic & decision systems",
         },
         nextActions: [
-          { label: "Enterprise Readiness", link: "/intelligence/enterprise-knowledge" },
-          { label: "Talk to AI Architect", link: "/corporate/contact" },
+          { label: "Enterprise Readiness", link: "/intelligence/enterprise-knowledge-ai/" },
+          { label: "Talk to AI Architect", link: "/corporate/contact/" },
         ],
       },
       {
@@ -882,7 +882,7 @@ const assessmentConfigs: Record<string, AssessmentConfig> = {
         ],
         recommendedPath: {
           title: "Enterprise Knowledge Intelligence",
-          link: "/intelligence/enterprise-knowledge",
+          link: "/intelligence/enterprise-knowledge-ai/",
         },
         journey: {
           now: "Governance & orchestration",
@@ -890,8 +890,8 @@ const assessmentConfigs: Record<string, AssessmentConfig> = {
           later: "Autonomous enterprise AI",
         },
         nextActions: [
-          { label: "Knowledge Intelligence", link: "/intelligence/enterprise-knowledge" },
-          { label: "Request Architecture Review", link: "/corporate/contact" },
+          { label: "Knowledge Intelligence", link: "/intelligence/enterprise-knowledge-ai/" },
+          { label: "Request Architecture Review", link: "/corporate/contact/" },
         ],
       },
       {
@@ -908,7 +908,7 @@ const assessmentConfigs: Record<string, AssessmentConfig> = {
         ],
         recommendedPath: {
           title: "Agentic AI Systems",
-          link: "/intelligence/agentic",
+          link: "/intelligence/autonomous-agentic-ai/",
         },
         journey: {
           now: "Scaled AI deployment",
@@ -916,8 +916,8 @@ const assessmentConfigs: Record<string, AssessmentConfig> = {
           later: "AI-native enterprise",
         },
         nextActions: [
-          { label: "Agentic AI Systems", link: "/intelligence/agentic" },
-          { label: "Enterprise Consultation", link: "/corporate/contact" },
+          { label: "Agentic AI Systems", link: "/intelligence/autonomous-agentic-ai/" },
+          { label: "Enterprise Consultation", link: "/corporate/contact/" },
         ],
       },
     ],
@@ -1335,7 +1335,7 @@ const intelligenceTypes = [
     icon: Workflow,
     title: "Operational Intelligence",
     description: "Streamline operations with AI-driven insights that optimize workflows, reduce bottlenecks, and improve efficiency across your organization.",
-    link: "/intelligence/operational",
+    link: "/intelligence/operational-ai/",
     color: "from-blue-500/10 to-blue-600/10",
     metrics: [
       { value: "72%", label: "Cycle Time Reduction" },
@@ -1347,7 +1347,7 @@ const intelligenceTypes = [
     icon: MessageSquare,
     title: "Conversational Intelligence",
     description: "Natural language understanding and processing that powers intelligent chatbots, voice assistants, and customer interactions.",
-    link: "/intelligence/conversational",
+    link: "/intelligence/conversational-ai/",
     color: "from-green-500/10 to-green-600/10",
     metrics: [
       { value: "63%", label: "First-Contact Resolution" },
@@ -1359,7 +1359,7 @@ const intelligenceTypes = [
     icon: Brain,
     title: "Decision Intelligence",
     description: "Data-driven decision support systems that analyze complex scenarios and provide actionable recommendations.",
-    link: "/intelligence/decision",
+    link: "/intelligence/decision-ai/",
     color: "from-purple-500/10 to-purple-600/10",
     metrics: [
       { value: "89%", label: "Forecast Accuracy" },
@@ -1371,7 +1371,7 @@ const intelligenceTypes = [
     icon: Bot,
     title: "Autonomous Agentic Systems",
     description: "Self-learning autonomous AI agents that execute complex tasks, adapt to changing conditions, and operate independently.",
-    link: "/intelligence/agentic",
+    link: "/intelligence/autonomous-agentic-ai/",
     color: "from-amber-500/10 to-amber-600/10",
     metrics: [
       { value: "87%", label: "Hands-Free Execution" },
@@ -1383,7 +1383,7 @@ const intelligenceTypes = [
     icon: Database,
     title: "Enterprise Knowledge Intelligence",
     description: "Unified enterprise knowledge management that captures, organizes, and surfaces institutional knowledge when needed.",
-    link: "/intelligence/enterprise-knowledge",
+    link: "/intelligence/enterprise-knowledge-ai/",
     color: "from-rose-500/10 to-rose-600/10",
     metrics: [
       { value: "92%", label: "Retrieval Precision" },
@@ -1537,7 +1537,7 @@ const allServices = [
     title: "AI Automation Services",
     tagline: "From Manual to Intelligent",
     description: "End-to-end workflow automation that transforms manual processes into intelligent, self-improving systems that scale with your business.",
-    link: "/services/ai-automation",
+    link: "/services/ai-automation/",
     heroStat: { value: "80%", label: "Less Manual Work" },
     before: "Staff spending 6+ hours daily on data entry, copy-paste tasks, and spreadsheet updates",
     after: ["Automated end-to-end workflows", "Staff focus on strategic work", "Zero data entry errors"],
@@ -1552,7 +1552,7 @@ const allServices = [
     title: "AI Voice Agents",
     tagline: "24/7 Human-Like Conversations",
     description: "Intelligent voice-based interactions that handle customer calls, appointments, and support with natural, human-like understanding.",
-    link: "/services/voice-agents",
+    link: "/services/ai-voice-agents/",
     heroStat: { value: "70%", label: "Call Deflection" },
     before: "Long hold times, missed calls after hours, agents overwhelmed by routine inquiries",
     after: ["Instant pickup, zero wait time", "24/7 coverage without overtime", "Agents handle only complex cases"],
@@ -1567,7 +1567,7 @@ const allServices = [
     title: "Conversational AI (Chatbots)",
     tagline: "Instant, Intelligent Support",
     description: "Smart conversational interfaces that engage customers, answer questions, and resolve issues instantly across all your channels.",
-    link: "/services/chatbots",
+    link: "/services/conversational-ai-chatbots/",
     heroStat: { value: "3s", label: "Response Time" },
     before: "Customers waiting hours for email replies, support tickets piling up overnight",
     after: ["Instant answers to 80% of questions", "Consistent experience across channels", "Support team handles escalations only"],
@@ -1582,7 +1582,7 @@ const allServices = [
     title: "Agentic AI Systems",
     tagline: "Autonomous AI That Gets Things Done",
     description: "Self-governing AI solutions that plan, execute, and adapt to complete complex multi-step tasks independently, learning and improving over time.",
-    link: "/services/agentic-ai-systems",
+    link: "/services/agentic-ai-systems/",
     heroStat: { value: "87%", label: "Hands-Free Tasks" },
     before: "Multi-step processes requiring constant human oversight and manual handoffs between systems",
     after: ["End-to-end autonomous execution", "Self-correcting when issues arise", "Humans only approve final outputs"],
@@ -1597,7 +1597,7 @@ const allServices = [
     title: "RAG & Knowledge AI",
     tagline: "Your Knowledge, Instantly Accessible",
     description: "Retrieval-augmented generation that combines your enterprise knowledge with AI for accurate, contextual responses grounded in your data.",
-    link: "/services/rag-knowledge",
+    link: "/services/rag-knowledge-ai/",
     heroStat: { value: "95%", label: "Answer Accuracy" },
     before: "Employees searching 5+ systems to find answers, tribal knowledge leaving with departing staff",
     after: ["One search finds everything", "Institutional knowledge preserved", "New hires productive in days"],
@@ -1612,7 +1612,7 @@ const allServices = [
     title: "Predictive & Analytics AI",
     tagline: "See the Future, Act Today",
     description: "Advanced predictive modeling that forecasts trends, identifies patterns, and drives data-informed decisions before problems happen.",
-    link: "/services/predictive-analytics",
+    link: "/services/ai-predictive-analytics/",
     heroStat: { value: "30%", label: "Better Forecasts" },
     before: "Decisions based on gut feel and outdated reports, surprises hitting after it's too late to act",
     after: ["Predict issues 2-4 weeks ahead", "Clear recommendations with confidence scores", "Real-time anomaly alerts"],
@@ -1627,7 +1627,7 @@ const allServices = [
     title: "Computer Vision Solutions",
     tagline: "AI That Sees and Understands",
     description: "Visual AI and image processing that automates inspection, recognition, and analysis of visual data with superhuman accuracy.",
-    link: "/services/computer-vision",
+    link: "/services/ai-computer-vision/",
     heroStat: { value: "99.9%", label: "Detection Accuracy" },
     before: "Manual visual inspections causing fatigue, missed defects, and production delays",
     after: ["Every item inspected in milliseconds", "Defects caught before shipping", "Inspectors focus on edge cases"],
@@ -1642,7 +1642,7 @@ const allServices = [
     title: "Custom AI Product Development",
     tagline: "Your Vision, Built Right",
     description: "Build, launch, and scale custom AI products tailored to your unique business requirements and market needs, from idea to production.",
-    link: "/services/custom-ai-product",
+    link: "/services/custom-ai-product-development/",
     heroStat: { value: "MVP", label: "to Production" },
     before: "Great AI idea but no team to build it, failed prototypes from inexperienced vendors",
     after: ["Production-ready AI product", "Full IP ownership from day one", "Technical partner for ongoing evolution"],
@@ -1855,7 +1855,7 @@ const industries = [
   { 
     icon: HeartPulse, 
     title: "Healthcare", 
-    link: "/industries/healthcare",
+    link: "/industries/healthcare-ai-solutions/",
     description: "Transform patient care with AI-powered diagnostics, automated clinical workflows, and intelligent health data management systems that improve outcomes while reducing costs.",
     useCases: [
       { name: "Patient Intake Automation", result: "75% faster registration" },
@@ -1876,7 +1876,7 @@ const industries = [
   { 
     icon: HomeIcon, 
     title: "Real Estate", 
-    link: "/industries/real-estate",
+    link: "/industries/real-estate-ai-solutions/",
     description: "Accelerate property transactions with intelligent lead qualification, automated valuations, and seamless document management that closes deals faster.",
     useCases: [
       { name: "Lead Qualification & Scoring", result: "3x conversion rate" },
@@ -1897,7 +1897,7 @@ const industries = [
   { 
     icon: Landmark, 
     title: "Fintech & Lending", 
-    link: "/industries/fintech",
+    link: "/industries/fintech-ai-solutions/",
     description: "Accelerate loan processing with AI-powered credit decisioning, fraud detection, and regulatory compliance automation that wins customers and protects margins.",
     useCases: [
       { name: "Instant Credit Scoring", result: "Real-time decisions" },
@@ -1918,7 +1918,7 @@ const industries = [
   { 
     icon: Building2, 
     title: "Insurance", 
-    link: "/industries/insurance",
+    link: "/industries/insurance-ai-solutions/",
     description: "Modernize claims processing with intelligent automation, predictive underwriting, and customer service AI that reduces costs while improving satisfaction.",
     useCases: [
       { name: "Claims Processing Automation", result: "70% faster resolution" },
@@ -1939,7 +1939,7 @@ const industries = [
   { 
     icon: ShoppingCart, 
     title: "Retail & eCommerce", 
-    link: "/industries/retail",
+    link: "/industries/retail-ai-solutions/",
     description: "Drive conversions with personalized experiences, intelligent inventory management, and AI-powered customer service that scales with your business.",
     useCases: [
       { name: "Product Recommendations", result: "40% higher AOV" },
@@ -1960,7 +1960,7 @@ const industries = [
   { 
     icon: Truck, 
     title: "Logistics & Supply Chain", 
-    link: "/industries/logistics",
+    link: "/industries/logistics-ai-solutions/",
     description: "Optimize operations with intelligent route planning, predictive demand forecasting, and warehouse automation that reduces costs and improves delivery times.",
     useCases: [
       { name: "Route Optimization", result: "20% fuel savings" },
@@ -1981,7 +1981,7 @@ const industries = [
   { 
     icon: Sparkles, 
     title: "Hospitality & Wellness", 
-    link: "/industries/hospitality",
+    link: "/industries/hospitality-ai-solutions/",
     description: "Elevate guest experiences with personalized service, intelligent booking optimization, and operational automation that creates memorable stays.",
     useCases: [
       { name: "Guest Personalization", result: "50% higher satisfaction" },
@@ -2002,7 +2002,7 @@ const industries = [
   { 
     icon: GraduationCap, 
     title: "EdTech & E-Learning", 
-    link: "/industries/edtech",
+    link: "/industries/edtech-ai-solutions/",
     description: "Transform education with adaptive learning paths, automated content generation, and intelligent assessment systems that improve outcomes for every learner.",
     useCases: [
       { name: "Adaptive Learning Paths", result: "2x engagement" },
@@ -2349,7 +2349,7 @@ const caseStudies = [
     ],
     quote: "The transformation was remarkable. What took days now takes hours.",
     quoteAuthor: "Chief Operations Officer",
-    link: "/case-studies/healthcare-document-processing",
+    link: "/case-studies/healthcare-document-processing/",
     icon: HeartPulse,
     color: "from-rose-500/10 to-rose-600/10",
   },
@@ -2366,7 +2366,7 @@ const caseStudies = [
     ],
     quote: "We went from losing deals to winning them because of speed.",
     quoteAuthor: "VP of Lending",
-    link: "/case-studies/financial-services-automation",
+    link: "/case-studies/financial-services-automation/",
     icon: Landmark,
     color: "from-blue-500/10 to-blue-600/10",
   },
@@ -2383,7 +2383,7 @@ const caseStudies = [
     ],
     quote: "Finally, we can predict demand instead of reacting to it.",
     quoteAuthor: "Director of Operations",
-    link: "/case-studies/retail-inventory-intelligence",
+    link: "/case-studies/retail-inventory-intelligence/",
     icon: ShoppingCart,
     color: "from-amber-500/10 to-amber-600/10",
   },

@@ -70,7 +70,7 @@ const config: AssessmentConfig = {
       ],
       recommendedPath: {
         title: "Operational Intelligence",
-        link: "/intelligence/operational",
+        link: "/intelligence/operational-ai/",
       },
       journey: {
         now: "Targeted workflow automation",
@@ -78,8 +78,8 @@ const config: AssessmentConfig = {
         later: "Predictive operations",
       },
       nextActions: [
-        { label: "Operational Intelligence", link: "/intelligence/operational" },
-        { label: "View SMB Cases", link: "/case-studies" },
+        { label: "Operational Intelligence", link: "/intelligence/operational-ai/" },
+        { label: "View SMB Cases", link: "/case-studies/" },
       ],
     },
     {
@@ -96,7 +96,7 @@ const config: AssessmentConfig = {
       ],
       recommendedPath: {
         title: "Operational + Decision Intelligence",
-        link: "/intelligence/decision",
+        link: "/intelligence/decision-ai/",
       },
       journey: {
         now: "Workflow automation",
@@ -104,8 +104,8 @@ const config: AssessmentConfig = {
         later: "Agent-assisted operations",
       },
       nextActions: [
-        { label: "Decision Intelligence", link: "/intelligence/decision" },
-        { label: "Calculate Savings", link: "/corporate/contact" },
+        { label: "Decision Intelligence", link: "/intelligence/decision-ai/" },
+        { label: "Calculate Savings", link: "/corporate/contact/" },
       ],
     },
     {
@@ -122,7 +122,7 @@ const config: AssessmentConfig = {
       ],
       recommendedPath: {
         title: "Enterprise-Grade AI Transformation",
-        link: "/intelligence/enterprise-knowledge",
+        link: "/intelligence/enterprise-knowledge-ai/",
       },
       journey: {
         now: "Immediate automation wins",
@@ -130,8 +130,8 @@ const config: AssessmentConfig = {
         later: "Autonomous operations",
       },
       nextActions: [
-        { label: "Enterprise Solutions", link: "/intelligence/enterprise-knowledge" },
-        { label: "Request Assessment", link: "/corporate/contact" },
+        { label: "Enterprise Solutions", link: "/intelligence/enterprise-knowledge-ai/" },
+        { label: "Request Assessment", link: "/corporate/contact/" },
       ],
     },
   ],

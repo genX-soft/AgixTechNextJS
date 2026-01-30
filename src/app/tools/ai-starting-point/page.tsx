@@ -73,7 +73,7 @@ const config: AssessmentConfig = {
       ],
       recommendedPath: {
         title: "Start with Operational Intelligence",
-        link: "/intelligence/operational",
+        link: "/intelligence/operational-ai/",
       },
       journey: {
         now: "Simple AI-powered automation",
@@ -81,8 +81,8 @@ const config: AssessmentConfig = {
         later: "Decision & analytics systems",
       },
       nextActions: [
-        { label: "Explore Simple Automation", link: "/intelligence/operational" },
-        { label: "Talk to an Expert", link: "/corporate/contact" },
+        { label: "Explore Simple Automation", link: "/intelligence/operational-ai/" },
+        { label: "Talk to an Expert", link: "/corporate/contact/" },
       ],
     },
     {
@@ -99,7 +99,7 @@ const config: AssessmentConfig = {
       ],
       recommendedPath: {
         title: "Conversational Intelligence",
-        link: "/intelligence/conversational",
+        link: "/intelligence/conversational-ai/",
       },
       journey: {
         now: "Chatbots and workflow automation",
@@ -107,8 +107,8 @@ const config: AssessmentConfig = {
         later: "Advanced decision systems",
       },
       nextActions: [
-        { label: "Explore Conversational AI", link: "/intelligence/conversational" },
-        { label: "View Case Studies", link: "/case-studies" },
+        { label: "Explore Conversational AI", link: "/intelligence/conversational-ai/" },
+        { label: "View Case Studies", link: "/case-studies/" },
       ],
     },
     {
@@ -125,7 +125,7 @@ const config: AssessmentConfig = {
       ],
       recommendedPath: {
         title: "Decision Intelligence",
-        link: "/intelligence/decision",
+        link: "/intelligence/decision-ai/",
       },
       journey: {
         now: "Decision support and analytics",
@@ -133,8 +133,8 @@ const config: AssessmentConfig = {
         later: "Enterprise-wide AI transformation",
       },
       nextActions: [
-        { label: "Explore Decision Intelligence", link: "/intelligence/decision" },
-        { label: "Schedule Consultation", link: "/corporate/contact" },
+        { label: "Explore Decision Intelligence", link: "/intelligence/decision-ai/" },
+        { label: "Schedule Consultation", link: "/corporate/contact/" },
       ],
     },
   ],
