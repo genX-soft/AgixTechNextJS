@@ -335,7 +335,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'CollectionPage'],
   },
 
-  '/case-studies/enova': {
+  '/case-studies/enova/': {
     focusKeyword: 'Enova AI Credit Decisioning Case Study',
     keywords: 'Enova case study, AI credit decisioning, explainable AI, fintech AI',
     mainHeading: 'Enova International',
@@ -349,7 +349,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article'],
   },
 
-  '/case-studies/dave': {
+  '/case-studies/dave/': {
     focusKeyword: 'Dave Fintech AI Assistant Case Study',
     keywords: 'Dave case study, fintech AI, conversational AI, customer support AI',
     mainHeading: 'Dave',
@@ -363,7 +363,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article'],
   },
 
-  '/case-studies/ocrolus': {
+  '/case-studies/ocrolus/': {
     focusKeyword: 'Ocrolus Document AI Case Study',
     keywords: 'Ocrolus case study, document AI, document processing, OCR AI',
     mainHeading: 'Ocrolus',
@@ -377,7 +377,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article'],
   },
 
-  '/case-studies/babylon-health': {
+  '/case-studies/babylon-health/': {
     focusKeyword: 'Babylon Healthcare AI Case Study',
     keywords: 'Babylon Health case study, healthcare AI, clinical AI, triage AI',
     mainHeading: 'Babylon Health',
@@ -391,7 +391,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article'],
   },
 
-  '/case-studies/kite-therapy': {
+  '/case-studies/kite-therapy/': {
     focusKeyword: 'Kite Therapy Case Study',
     keywords: 'Kite Therapy case study, mental health AI, therapy AI, crisis detection',
     mainHeading: 'Kite Therapy',
@@ -405,7 +405,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article'],
   },
 
-  '/case-studies/hello-driven': {
+  '/case-studies/hello-driven/': {
     focusKeyword: 'Hello Driven AI Coach Case Study',
     keywords: 'Hello Driven case study, healthcare voice AI, patient scheduling, HIPAA AI',
     mainHeading: 'Hello Driven',
@@ -419,7 +419,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article'],
   },
 
-  '/case-studies/albertsons': {
+  '/case-studies/albertsons/': {
     focusKeyword: 'Albertson AI Analytics Case Study',
     keywords: 'Albertsons case study, retail AI, demand forecasting, food waste AI',
     mainHeading: 'Albertsons',
@@ -433,7 +433,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article'],
   },
 
-  '/case-studies/kroger': {
+  '/case-studies/kroger/': {
     focusKeyword: 'Kroger Case Study',
     keywords: 'Kroger case study, retail AI, fulfillment AI, e-commerce AI',
     mainHeading: 'Kroger',
@@ -447,7 +447,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article'],
   },
 
-  '/case-studies/stitch-fix': {
+  '/case-studies/stitch-fix/': {
     focusKeyword: 'Stitch Fix Case Study',
     keywords: 'Stitch Fix case study, fashion AI, personalization AI, styling AI',
     mainHeading: 'Stitch Fix',
@@ -461,7 +461,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article'],
   },
 
-  '/case-studies/ulta-beauty': {
+  '/case-studies/ulta-beauty/': {
     focusKeyword: 'Ulta Beauty Personalization AI Case Study',
     keywords: 'Ulta Beauty case study, retail personalization, loyalty AI, beauty AI',
     mainHeading: 'Ulta Beauty',
@@ -475,7 +475,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article'],
   },
 
-  '/case-studies/quizlet': {
+  '/case-studies/quizlet/': {
     focusKeyword: 'Quizlet AI Learning Case Study',
     keywords: 'Quizlet case study, EdTech AI, adaptive learning, AI tutoring',
     mainHeading: 'Quizlet',
@@ -489,7 +489,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article'],
   },
 
-  '/case-studies/knewton': {
+  '/case-studies/knewton/': {
     focusKeyword: 'Knewton Case Study',
     keywords: 'Knewton case study, adaptive learning, knowledge graph AI, EdTech AI',
     mainHeading: 'Knewton',
@@ -503,7 +503,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article'],
   },
 
-  '/case-studies/riiid-labs': {
+  '/case-studies/riiid-labs/': {
     focusKeyword: 'Riid Labs Case Study',
     keywords: 'Riiid Labs case study, test prep AI, adaptive assessment, EdTech AI',
     mainHeading: 'Riiid Labs',
@@ -517,7 +517,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article'],
   },
 
-  '/case-studies/hilton-hotels': {
+  '/case-studies/hilton-hotels/': {
     focusKeyword: 'Hilton Hotels Case Study',
     keywords: 'Hilton case study, hospitality AI, guest intelligence, hotel AI',
     mainHeading: 'Hilton Hotels',
@@ -531,7 +531,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article'],
   },
 
-  '/case-studies/housecanary': {
+  '/case-studies/housecanary/': {
     focusKeyword: 'HouseCanary',
     keywords: 'HouseCanary case study, real estate AI, property valuation AI, AVM',
     mainHeading: 'HouseCanary',
@@ -545,7 +545,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article'],
   },
 
-  '/case-studies/mindtrip': {
+  '/case-studies/mindtrip/': {
     focusKeyword: 'MindTrip',
     keywords: 'Mindtrip case study, travel AI, trip planning AI, conversational travel',
     mainHeading: 'Mindtrip',
@@ -559,7 +559,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article'],
   },
 
-  '/case-studies/polyai': {
+  '/case-studies/polyai/': {
     focusKeyword: 'PolyAI Voice AI',
     keywords: 'PolyAI case study, voice AI, call center AI, conversational AI',
     mainHeading: 'PolyAI',
@@ -573,7 +573,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article'],
   },
 
-  '/case-studies/brainfish': {
+  '/case-studies/brainfish/': {
     focusKeyword: 'Brainfish Case Study',
     keywords: 'Brainfish case study, support AI, ticket deflection, knowledge AI',
     mainHeading: 'Brainfish',
@@ -587,7 +587,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article'],
   },
 
-  '/case-studies/properti-ai': {
+  '/case-studies/properti-ai/': {
     focusKeyword: 'Properti AI Case Study',
     keywords: 'Properti AI case study, real estate matching, property AI, lead conversion',
     mainHeading: 'Properti AI',
@@ -601,7 +601,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article'],
   },
 
-  '/case-studies/dartmouth-college': {
+  '/case-studies/dartmouth-college/': {
     focusKeyword: 'Dartmouth College Case Study',
     keywords: 'Dartmouth case study, university AI, IT support AI, helpdesk AI',
     mainHeading: 'Dartmouth College',
@@ -615,7 +615,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article'],
   },
 
-  '/case-studies/suno': {
+  '/case-studies/suno/': {
     focusKeyword: 'Sonu Case Study',
     keywords: 'Suno case study, generative AI, music AI, audio synthesis',
     mainHeading: 'Suno',
@@ -629,7 +629,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article'],
   },
 
-  '/case-studies/innit': {
+  '/case-studies/innit/': {
     focusKeyword: 'Innit Case Study',
     keywords: 'Innit case study, smart kitchen AI, IoT AI, cooking AI',
     mainHeading: 'Innit',
@@ -643,7 +643,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article'],
   },
 
-  '/case-studies/hungryroot': {
+  '/case-studies/hungryroot/': {
     focusKeyword: 'Hungryroot Case Study',
     keywords: 'Hungryroot case study, meal planning AI, grocery AI, personalization',
     mainHeading: 'Hungryroot',
@@ -657,7 +657,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article'],
   },
 
-  '/case-studies/navan': {
+  '/case-studies/navan/': {
     focusKeyword: 'Navan AI Travel Assistant Case Study',
     keywords: 'Navan case study, corporate travel AI, expense AI, travel automation',
     mainHeading: 'Navan',
@@ -671,7 +671,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article'],
   },
 
-  '/case-studies/geovea': {
+  '/case-studies/geovea/': {
     focusKeyword: 'Geivea Case Study',
     keywords: 'Geovea case study, travel AI, trip planning, route intelligence',
     mainHeading: 'Geovea',
@@ -685,7 +685,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article'],
   },
 
-  '/case-studies/luxury-escapes': {
+  '/case-studies/luxury-escapes/': {
     focusKeyword: 'Luxury Escapes Case Study',
     keywords: 'Luxury Escapes case study, luxury travel AI, concierge AI, VIP experience',
     mainHeading: 'Luxury Escapes',
@@ -699,7 +699,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article'],
   },
 
-  '/case-studies/naratix': {
+  '/case-studies/naratix/': {
     focusKeyword: 'Nartix Case Study',
     keywords: 'Naratix case study, content localization AI, e-commerce AI, multilingual AI',
     mainHeading: 'Naratix',

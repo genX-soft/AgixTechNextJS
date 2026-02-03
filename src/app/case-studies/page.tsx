@@ -67,7 +67,7 @@ const caseStudies = [
     oneLiner: "AI-powered credit decisioning system enabling faster, fairer lending at scale.",
     challenge: "Manual underwriting and rigid scoring models limiting approval speed and inclusivity.",
     result: "Faster loan approvals, improved risk accuracy, expanded credit access.",
-    slug: "/case-studies/enova",
+    slug: "/case-studies/enova/",
     metrics: [
       { label: "Approval Rate", before: "29%", after: "51%", improvement: "+76%" },
       { label: "Decision Time", before: "3.2 sec", after: "780 ms", improvement: "76% faster" },
@@ -84,7 +84,7 @@ const caseStudies = [
     oneLiner: "Generative AI assistant delivering human-like financial guidance to users.",
     challenge: "High support load and lack of personalized financial advice at scale.",
     result: "Reduced support dependency and improved user engagement with AI-driven assistance.",
-    slug: "/case-studies/dave",
+    slug: "/case-studies/dave/",
     metrics: [
       { label: "First Response Time", before: "6.5 min", after: "1.2 min", improvement: "82% faster" },
       { label: "Support Tickets (Tier 1)", before: "89K/mo", after: "38K/mo", improvement: "-57%" },
@@ -101,7 +101,7 @@ const caseStudies = [
     oneLiner: "AI document intelligence engine for automated financial workflows.",
     challenge: "Manual document review slowing down fintech operations.",
     result: "Significant reduction in processing time and operational cost.",
-    slug: "/case-studies/ocrolus",
+    slug: "/case-studies/ocrolus/",
     metrics: [
       { label: "Document Processing Time", before: "9.4 min", after: "1.6 min", improvement: "83% faster" },
       { label: "Manual Review Dependency", before: "87%", after: "38%", improvement: "-56%" },
@@ -118,7 +118,7 @@ const caseStudies = [
     oneLiner: "AI-driven patient intake, symptom triage, and care routing at scale.",
     challenge: "Overloaded healthcare systems with inefficient triage and routing.",
     result: "Improved patient flow, faster triage, and optimized clinician workload.",
-    slug: "/case-studies/babylon-health",
+    slug: "/case-studies/babylon-health/",
     metrics: [
       { label: "Triage Accuracy", before: "76%", after: "94%", improvement: "+24%" },
       { label: "Patient Wait Time", before: "45 min", after: "8 min", improvement: "82% faster" },
@@ -135,7 +135,7 @@ const caseStudies = [
     oneLiner: "AI matchmaking engine connecting children to the right therapy providers.",
     challenge: "Manual therapist matching causing delays in care delivery.",
     result: "Faster placement and better therapy outcomes for families.",
-    slug: "/case-studies/kite-therapy",
+    slug: "/case-studies/kite-therapy/",
     metrics: [
       { label: "Wait Time for First Match", before: "6-9 weeks", after: "<10 days", improvement: "85% faster" },
       { label: "No-Show Rate", before: "18%", after: "7.4%", improvement: "-59%" },
@@ -152,7 +152,7 @@ const caseStudies = [
     oneLiner: "AI-powered mental resilience coach for scalable emotional wellbeing.",
     challenge: "Limited access to personalized mental health support.",
     result: "Always-on AI coaching with improved engagement and reach.",
-    slug: "/case-studies/hello-driven",
+    slug: "/case-studies/hello-driven/",
     metrics: [
       { label: "User Engagement", before: "2.1 sessions/week", after: "5.8 sessions/week", improvement: "+176%" },
       { label: "Response Time", before: "24-48 hrs", after: "Instant", improvement: "100% faster" },
@@ -169,7 +169,7 @@ const caseStudies = [
     oneLiner: "AI-driven consumer behavior analytics for predictive restocking.",
     challenge: "Stockouts and overstocking due to static demand planning.",
     result: "Improved inventory accuracy and reduced waste.",
-    slug: "/case-studies/albertsons",
+    slug: "/case-studies/albertsons/",
     metrics: [
       { label: "Out-of-Stock Rate (Top 100 SKUs)", before: "18%", after: "6.3%", improvement: "-65%" },
       { label: "Repeat Purchase Conversion", before: "27%", after: "72%", improvement: "+167%" },
@@ -186,7 +186,7 @@ const caseStudies = [
     oneLiner: "Predictive AI engine enabling smart reordering and cart automation.",
     challenge: "Inefficient replenishment impacting customer experience.",
     result: "Optimized ordering cycles and higher cart completion rates.",
-    slug: "/case-studies/kroger",
+    slug: "/case-studies/kroger/",
     metrics: [
       { label: "Cart Completion Rate", before: "61%", after: "84%", improvement: "+38%" },
       { label: "Reorder Prediction Accuracy", before: "67%", after: "91%", improvement: "+36%" },
@@ -203,7 +203,7 @@ const caseStudies = [
     oneLiner: "AI stylist engine delivering hyper-personalized fashion recommendations.",
     challenge: "Scaling personal styling without increasing human cost.",
     result: "Higher customer satisfaction and repeat purchases.",
-    slug: "/case-studies/stitch-fix",
+    slug: "/case-studies/stitch-fix/",
     metrics: [
       { label: "Styling Accuracy", before: "52%", after: "78%", improvement: "+50%" },
       { label: "Keep Rate", before: "64%", after: "86%", improvement: "+34%" },
@@ -220,7 +220,7 @@ const caseStudies = [
     oneLiner: "Predictive AI engine for personalized marketing and loyalty engagement.",
     challenge: "Generic campaigns failing to convert diverse customer segments.",
     result: "Increased engagement and loyalty program effectiveness.",
-    slug: "/case-studies/ulta-beauty",
+    slug: "/case-studies/ulta-beauty/",
     metrics: [
       { label: "Campaign Conversion Rate", before: "3.2%", after: "8.7%", improvement: "+172%" },
       { label: "Loyalty Program Engagement", before: "41%", after: "74%", improvement: "+80%" },
@@ -237,7 +237,7 @@ const caseStudies = [
     oneLiner: "AI-powered study engine for predictive and personalized learning.",
     challenge: "One-size-fits-all learning paths reducing retention.",
     result: "Adaptive learning experiences with improved outcomes.",
-    slug: "/case-studies/quizlet",
+    slug: "/case-studies/quizlet/",
     metrics: [
       { label: "Study Session Completion", before: "53%", after: "78%", improvement: "+47%" },
       { label: "Test Score Improvement", before: "+5.6%", after: "+13.9%", improvement: "+148%" },
@@ -254,7 +254,7 @@ const caseStudies = [
     oneLiner: "Real-time adaptive learning powered by continuous AI feedback loops.",
     challenge: "Static curricula unable to adapt to individual learner needs.",
     result: "Highly personalized education journeys.",
-    slug: "/case-studies/knewton",
+    slug: "/case-studies/knewton/",
     metrics: [
       { label: "Learning Path Personalization", before: "12%", after: "94%", improvement: "+683%" },
       { label: "Course Completion Rate", before: "34%", after: "71%", improvement: "+109%" },
@@ -271,7 +271,7 @@ const caseStudies = [
     oneLiner: "Adaptive AI engine for test mastery and learning optimization.",
     challenge: "Poor exam readiness due to lack of adaptive feedback.",
     result: "Improved learner performance and accuracy.",
-    slug: "/case-studies/riiid-labs",
+    slug: "/case-studies/riiid-labs/",
     metrics: [
       { label: "Score Improvement", before: "+45 pts", after: "+124 pts", improvement: "+176%" },
       { label: "Study Time Efficiency", before: "100 hrs", after: "42 hrs", improvement: "58% faster" },
@@ -288,7 +288,7 @@ const caseStudies = [
     oneLiner: "Enterprise AI for end-to-end guest personalization.",
     challenge: "Fragmented guest data across systems.",
     result: "Personalized experiences and improved guest satisfaction.",
-    slug: "/case-studies/hilton-hotels",
+    slug: "/case-studies/hilton-hotels/",
     metrics: [
       { label: "Guest Satisfaction", before: "78/100", after: "92/100", improvement: "+18%" },
       { label: "Personalization Accuracy", before: "34%", after: "87%", improvement: "+156%" },
@@ -305,7 +305,7 @@ const caseStudies = [
     oneLiner: "AI platform for real-time real estate valuation and market insights.",
     challenge: "Inaccurate and delayed property valuations.",
     result: "More accurate pricing and faster decision-making.",
-    slug: "/case-studies/housecanary",
+    slug: "/case-studies/housecanary/",
     metrics: [
       { label: "Valuation Accuracy", before: "89%", after: "97.4%", improvement: "+9.4%" },
       { label: "Time to Valuation", before: "3-5 days", after: "< 1 hour", improvement: "99% faster" },
@@ -322,7 +322,7 @@ const caseStudies = [
     oneLiner: "Conversational AI for effortless travel ideation and planning.",
     challenge: "Complex travel planning overwhelming users.",
     result: "Faster itinerary creation and higher engagement.",
-    slug: "/case-studies/mindtrip",
+    slug: "/case-studies/mindtrip/",
     metrics: [
       { label: "Itinerary Creation Time", before: "4.5 hours", after: "12 min", improvement: "96% faster" },
       { label: "User Engagement", before: "2.3 sessions", after: "7.8 sessions", improvement: "+239%" },
@@ -339,7 +339,7 @@ const caseStudies = [
     oneLiner: "Multilingual voice AI assistant delivering human-like customer service at enterprise scale.",
     challenge: "High call volumes and inconsistent customer experience across regions.",
     result: "24/7 automated voice support with improved resolution rates and lower support costs.",
-    slug: "/case-studies/polyai",
+    slug: "/case-studies/polyai/",
     metrics: [
       { label: "Call Resolution Rate", before: "62%", after: "89%", improvement: "+44%" },
       { label: "Average Handle Time", before: "8.2 min", after: "3.1 min", improvement: "62% faster" },
@@ -356,7 +356,7 @@ const caseStudies = [
     oneLiner: "Domain-specific AI chatbot enabling instant, high-accuracy customer support.",
     challenge: "Slow ticket resolution and overdependence on human agents.",
     result: "Faster self-service resolution and reduced support workload.",
-    slug: "/case-studies/brainfish",
+    slug: "/case-studies/brainfish/",
     metrics: [
       { label: "Self-Service Resolution", before: "23%", after: "78%", improvement: "+239%" },
       { label: "Response Accuracy", before: "71%", after: "96%", improvement: "+35%" },
@@ -373,7 +373,7 @@ const caseStudies = [
     oneLiner: "AI chatbot for personalized property discovery and buyer engagement.",
     challenge: "Manual lead handling and poor personalization in property search.",
     result: "Higher-quality leads and faster buyer decision cycles.",
-    slug: "/case-studies/properti-ai",
+    slug: "/case-studies/properti-ai/",
     metrics: [
       { label: "Lead Quality Score", before: "42/100", after: "81/100", improvement: "+93%" },
       { label: "Response Time", before: "4.2 hours", after: "< 30 sec", improvement: "99% faster" },
@@ -390,7 +390,7 @@ const caseStudies = [
     oneLiner: "24/7 AI helpdesk assistant for campus-wide IT support.",
     challenge: "High IT support demand outside office hours.",
     result: "Always-on IT assistance and reduced helpdesk backlog.",
-    slug: "/case-studies/dartmouth-college",
+    slug: "/case-studies/dartmouth-college/",
     metrics: [
       { label: "Ticket Deflection Rate", before: "-", after: "67%", improvement: "New capability" },
       { label: "After-Hours Resolution", before: "0%", after: "78%", improvement: "+100%" },
@@ -407,7 +407,7 @@ const caseStudies = [
     oneLiner: "Text-to-music AI engine enabling instant audio composition.",
     challenge: "Complex music creation workflows limiting creative experimentation.",
     result: "Rapid content creation and democratized music production.",
-    slug: "/case-studies/suno",
+    slug: "/case-studies/suno/",
     metrics: [
       { label: "Time to First Track", before: "2-4 weeks", after: "< 2 min", improvement: "99% faster" },
       { label: "User Creations/Month", before: "-", after: "14M+", improvement: "New capability" },
@@ -424,7 +424,7 @@ const caseStudies = [
     oneLiner: "AI sous-chef delivering personalized cooking guidance and pantry intelligence.",
     challenge: "Disconnected food planning, shopping, and cooking experiences.",
     result: "Personalized meal guidance and reduced food waste.",
-    slug: "/case-studies/innit",
+    slug: "/case-studies/innit/",
     metrics: [
       { label: "Food Waste Reduction", before: "-", after: "-34%", improvement: "-34%" },
       { label: "Meal Planning Time", before: "45 min/week", after: "8 min/week", improvement: "82% faster" },
@@ -441,7 +441,7 @@ const caseStudies = [
     oneLiner: "AI-driven meal planning and grocery customization platform.",
     challenge: "Generic meal plans failing to match dietary preferences.",
     result: "Higher customer retention and personalized nutrition journeys.",
-    slug: "/case-studies/hungryroot",
+    slug: "/case-studies/hungryroot/",
     metrics: [
       { label: "Meal Match Accuracy", before: "54%", after: "91%", improvement: "+69%" },
       { label: "Customer Retention (6-mo)", before: "38%", after: "72%", improvement: "+89%" },
@@ -458,7 +458,7 @@ const caseStudies = [
     oneLiner: "AI assistant for business travel planning and smart expense management.",
     challenge: "Manual expense reporting and fragmented travel workflows.",
     result: "Streamlined travel booking and faster expense reconciliation.",
-    slug: "/case-studies/navan",
+    slug: "/case-studies/navan/",
     metrics: [
       { label: "Expense Processing Time", before: "3.2 hours", after: "12 min", improvement: "94% faster" },
       { label: "Policy Compliance", before: "67%", after: "94%", improvement: "+40%" },
@@ -475,7 +475,7 @@ const caseStudies = [
     oneLiner: "Dynamic AI assistant for tailored travel itineraries.",
     challenge: "Time-consuming itinerary planning with low personalization.",
     result: "Highly personalized travel plans generated instantly.",
-    slug: "/case-studies/geovea",
+    slug: "/case-studies/geovea/",
     metrics: [
       { label: "Itinerary Creation Time", before: "6+ hours", after: "< 5 min", improvement: "99% faster" },
       { label: "Personalization Score", before: "34/100", after: "91/100", improvement: "+168%" },
@@ -492,7 +492,7 @@ const caseStudies = [
     oneLiner: "Concierge-grade AI chatbot for premium travel experiences.",
     challenge: "Scaling high-touch concierge service globally.",
     result: "Luxury-grade personalization delivered at scale.",
-    slug: "/case-studies/luxury-escapes",
+    slug: "/case-studies/luxury-escapes/",
     metrics: [
       { label: "Concierge Capacity", before: "120 guests/day", after: "4,500 guests/day", improvement: "+3,650%" },
       { label: "Response Time", before: "2.4 hours", after: "< 30 sec", improvement: "99% faster" },
@@ -509,7 +509,7 @@ const caseStudies = [
     oneLiner: "Intelligent AI agents for multilingual e-commerce content creation.",
     challenge: "Manual product content creation across global markets.",
     result: "Faster content localization and improved conversion.",
-    slug: "/case-studies/naratix",
+    slug: "/case-studies/naratix/",
     metrics: [
       { label: "Content Creation Time", before: "4.5 hours/product", after: "12 min/product", improvement: "96% faster" },
       { label: "Language Coverage", before: "3 languages", after: "28 languages", improvement: "+833%" },
@@ -526,7 +526,7 @@ const caseStudies = [
     oneLiner: "Real-time AI engine for market intelligence and research automation.",
     challenge: "Slow manual research across fragmented data sources.",
     result: "Faster insights and improved strategic decision-making.",
-    slug: "/case-studies/alphasense",
+    slug: "/case-studies/alphasense/",
     metrics: [
       { label: "Research Time", before: "8+ hours", after: "< 15 min", improvement: "97% faster" },
       { label: "Data Sources Analyzed", before: "12", after: "10,000+", improvement: "+83,233%" },
