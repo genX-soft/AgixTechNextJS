@@ -49,8 +49,13 @@ function extractFAQsFromContent(htmlContent: string): { faqs: FAQItem[]; cleaned
   let cleanedContent = htmlContent;
   
   // Pattern 1: Yoast FAQ Block structure with schema-faq classes
-  if (htmlContent.includes('schema-faq')) {
-    // Match individual schema-faq-section divs for extraction
+  // Structure: <div class="schema-faq wp-block-yoast-faq-block">
+  //   <div class="schema-faq-section">
+  //     <strong class="schema-faq-question">Question</strong>
+  //     <p class="schema-faq-answer">Answer</p>
+  //   </div>
+  // </div>
+  if (htmlContent.includes('schema-faq-section')) {
     const sectionPattern = /<div[^>]*class="[^"]*schema-faq-section[^"]*"[^>]*>[\s\S]*?<strong[^>]*class="[^"]*schema-faq-question[^"]*"[^>]*>([\s\S]*?)<\/strong>\s*<p[^>]*class="[^"]*schema-faq-answer[^"]*"[^>]*>([\s\S]*?)<\/p>\s*<\/div>/gi;
     let sectionMatch;
     
@@ -63,51 +68,50 @@ function extractFAQsFromContent(htmlContent: string): { faqs: FAQItem[]; cleaned
     }
     
     if (faqs.length > 0) {
-      // Remove the entire schema-faq wrapper block (greedy match to closing div)
+      // Remove the entire Yoast FAQ block including all nested content
+      cleanedContent = cleanedContent.replace(/<div[^>]*class="[^"]*schema-faq[^"]*wp-block-yoast-faq-block[^"]*"[^>]*>[\s\S]*?<\/div>\s*<\/div>\s*<\/div>\s*<\/div>\s*<\/div>\s*<\/div>/gi, '');
       cleanedContent = cleanedContent.replace(/<div[^>]*class="[^"]*schema-faq[^"]*wp-block-yoast-faq-block[^"]*"[^>]*>[\s\S]*?<\/div>/gi, '');
-      cleanedContent = cleanedContent.replace(/<div[^>]*class="[^"]*wp-block-yoast-faq-block[^"]*"[^>]*>[\s\S]*?<\/div>/gi, '');
-      // Remove individual schema-faq-section divs if still present
-      cleanedContent = cleanedContent.replace(/<div[^>]*class="[^"]*schema-faq-section[^"]*"[^>]*>[\s\S]*?<\/div>/gi, '');
-      // Remove any remaining schema-faq wrappers
-      cleanedContent = cleanedContent.replace(/<div[^>]*class="[^"]*schema-faq[^"]*"[^>]*>[\s\S]*?<\/div>/gi, '');
       // Remove the FAQ heading
-      cleanedContent = cleanedContent.replace(/<h[23][^>]*>\s*Frequently Asked Questions\s*<\/h[23]>/gi, '');
+      cleanedContent = cleanedContent.replace(/<h[23][^>]*>[^<]*Frequently Asked Questions[^<]*<\/h[23]>/gi, '');
     }
   }
   
-  // Pattern 2: "Frequently Asked Questions" section with H3/H4 questions and "Ans." answers
+  // Pattern 2: H4 questions with "Ans." answers (WordPress block format)
+  // Structure: <h2>Frequently Asked Questions</h2>
+  //   <h4 class="wp-block-heading">Question?</h4>
+  //   <p><strong>Ans.</strong> Answer text</p>
   if (faqs.length === 0) {
-    // Match FAQ section heading (H2 or H3)
-    const faqHeadingMatch = htmlContent.match(/<h[23][^>]*>\s*Frequently Asked Questions\s*<\/h[23]>/i);
+    const faqHeadingMatch = htmlContent.match(/<h2[^>]*>[^<]*Frequently Asked Questions[^<]*<\/h2>/i);
     
     if (faqHeadingMatch) {
       const faqHeadingIndex = htmlContent.indexOf(faqHeadingMatch[0]);
       const contentAfterHeading = htmlContent.slice(faqHeadingIndex + faqHeadingMatch[0].length);
       
-      // Find the next H2 heading to limit scope
+      // Find next H2 to limit scope (or end of content)
       const nextH2Match = contentAfterHeading.match(/<h2[^>]*>/i);
       const faqSectionBody = nextH2Match 
         ? contentAfterHeading.slice(0, contentAfterHeading.indexOf(nextH2Match[0]))
         : contentAfterHeading;
       
-      // Look for H3/H4 question followed by paragraph with optional "Ans." prefix
-      // Flexible matching: <strong> is optional, "Ans." is optional, allows various whitespace
-      const ansPattern = /<h[34][^>]*>([^<]+\??)<\/h[34]>\s*<p[^>]*>(?:\s*<strong>\s*)?(?:Ans\.?\s*)?(?:<\/strong>\s*)?([\s\S]*?)<\/p>/gi;
+      // Match H3 or H4 followed by paragraph with <strong>Ans.</strong>
+      // Use [\s\S] to match across newlines
+      const ansPattern = /<h[34][^>]*>([\s\S]*?)<\/h[34]>[\s\S]*?<p[^>]*><strong>Ans\.?<\/strong>\s*([\s\S]*?)<\/p>/gi;
       let ansMatch;
       const matchedBlocks: string[] = [];
       
       while ((ansMatch = ansPattern.exec(faqSectionBody)) !== null) {
-        const question = ansMatch[1].replace(/&[^;]+;/g, ' ').trim();
+        const question = ansMatch[1].replace(/<[^>]*>/g, '').replace(/&[^;]+;/g, "'").trim();
         const answer = ansMatch[2].trim();
-        if (question && answer && question.length > 10 && answer.length > 20) {
+        if (question && answer && question.length > 5 && answer.length > 10) {
           faqs.push({ question, answer });
           matchedBlocks.push(ansMatch[0]);
         }
       }
       
       if (faqs.length > 0) {
-        // Remove only the FAQ heading and matched Q&A blocks
+        // Remove the FAQ heading
         cleanedContent = cleanedContent.replace(faqHeadingMatch[0], '');
+        // Remove each matched Q&A block
         for (const block of matchedBlocks) {
           cleanedContent = cleanedContent.replace(block, '');
         }
@@ -115,10 +119,9 @@ function extractFAQsFromContent(htmlContent: string): { faqs: FAQItem[]; cleaned
     }
   }
 
-  // Clean up empty paragraphs and extra whitespace
+  // Clean up empty paragraphs
   if (faqs.length > 0) {
     cleanedContent = cleanedContent.replace(/<p[^>]*>\s*<\/p>/g, '');
-    cleanedContent = cleanedContent.replace(/\n{3,}/g, '\n\n');
   }
 
   return { faqs, cleanedContent };
