@@ -56,43 +56,54 @@ function extractFAQsFromContent(htmlContent: string): { faqs: FAQItem[]; cleaned
   let cleanedContent = htmlContent;
   const blocksToRemove: string[] = [];
 
-  // Pattern 1: H3 headings with question marks followed by paragraphs
-  const h3QuestionPattern = /<h3[^>]*>([^<]*\?[^<]*)<\/h3>\s*(<p[^>]*>[\s\S]*?<\/p>(?:\s*<p[^>]*>[\s\S]*?<\/p>)*)/gi;
+  // Pattern 1: Yoast FAQ Block structure (most reliable)
+  const yoastBlockPattern = /<div[^>]*class="[^"]*wp-block-yoast-faq-block[^"]*"[^>]*>[\s\S]*?<\/div>(?:\s*<\/div>)*/gi;
   
-  let h3Match;
-  while ((h3Match = h3QuestionPattern.exec(htmlContent)) !== null) {
-    const question = h3Match[1].replace(/&[^;]+;/g, ' ').trim();
-    const answerHtml = h3Match[2].trim();
+  let yoastMatch;
+  while ((yoastMatch = yoastBlockPattern.exec(htmlContent)) !== null) {
+    const blockHtml = yoastMatch[0];
     
-    if (question && answerHtml) {
-      faqs.push({ question, answer: answerHtml });
-      blocksToRemove.push(h3Match[0]);
+    const qaPairPattern = /<div[^>]*class="[^"]*schema-faq-question[^"]*"[^>]*>([\s\S]*?)<\/div>\s*<div[^>]*class="[^"]*schema-faq-answer[^"]*"[^>]*>([\s\S]*?)<\/div>/gi;
+    let qaMatch;
+    let foundInBlock = false;
+    
+    while ((qaMatch = qaPairPattern.exec(blockHtml)) !== null) {
+      const question = qaMatch[1].replace(/<[^>]*>/g, '').trim();
+      const answer = qaMatch[2].trim();
+      if (question && answer) {
+        faqs.push({ question, answer });
+        foundInBlock = true;
+      }
+    }
+    
+    if (foundInBlock) {
+      blocksToRemove.push(blockHtml);
     }
   }
 
-  // Pattern 2: Yoast FAQ Block structure
+  // Pattern 2: Look for explicit "Frequently Asked Questions" section and extract Q&A after it
   if (faqs.length === 0) {
-    const yoastBlockPattern = /<div[^>]*class="[^"]*wp-block-yoast-faq-block[^"]*"[^>]*>[\s\S]*?<\/div>(?:\s*<\/div>)*/gi;
+    const faqSectionMatch = htmlContent.match(/<h[23][^>]*>\s*(?:<[^>]+>)*\s*Frequently Asked Questions\s*(?:<\/[^>]+>)*\s*<\/h[23]>([\s\S]*?)(?=<h[12][^>]*>|$)/i);
     
-    let yoastMatch;
-    while ((yoastMatch = yoastBlockPattern.exec(htmlContent)) !== null) {
-      const blockHtml = yoastMatch[0];
+    if (faqSectionMatch) {
+      const faqSectionContent = faqSectionMatch[0];
+      const faqSectionBody = faqSectionMatch[1];
       
-      const qaPairPattern = /<div[^>]*class="[^"]*schema-faq-question[^"]*"[^>]*>([\s\S]*?)<\/div>\s*<div[^>]*class="[^"]*schema-faq-answer[^"]*"[^>]*>([\s\S]*?)<\/div>/gi;
-      let qaMatch;
-      let foundInBlock = false;
+      // Extract H3 questions with their answers from this section only
+      const h3Pattern = /<h3[^>]*>([^<]+\??)<\/h3>\s*(<p[^>]*>[\s\S]*?<\/p>(?:\s*(?:<(?:p|ol|ul)[^>]*>[\s\S]*?<\/(?:p|ol|ul)>)\s*)*)/gi;
+      let h3Match;
       
-      while ((qaMatch = qaPairPattern.exec(blockHtml)) !== null) {
-        const question = qaMatch[1].replace(/<[^>]*>/g, '').trim();
-        const answer = qaMatch[2].trim();
-        if (question && answer) {
-          faqs.push({ question, answer });
-          foundInBlock = true;
+      while ((h3Match = h3Pattern.exec(faqSectionBody)) !== null) {
+        const question = h3Match[1].replace(/&[^;]+;/g, ' ').trim();
+        const answerHtml = h3Match[2].trim();
+        
+        if (question && answerHtml && question.length > 10) {
+          faqs.push({ question, answer: answerHtml });
         }
       }
       
-      if (foundInBlock) {
-        blocksToRemove.push(blockHtml);
+      if (faqs.length > 0) {
+        blocksToRemove.push(faqSectionContent);
       }
     }
   }
@@ -108,42 +119,6 @@ function extractFAQsFromContent(htmlContent: string): { faqs: FAQItem[]; cleaned
       if (question && answer) {
         faqs.push({ question, answer });
         blocksToRemove.push(ansMatch[0]);
-      }
-    }
-  }
-
-  // Pattern 4: Strong/bold question pattern
-  if (faqs.length === 0) {
-    const boldQAPattern = /<p[^>]*>\s*<strong[^>]*>([^<]+\?)<\/strong>\s*<\/p>\s*<p[^>]*>([\s\S]*?)<\/p>/gi;
-    let boldMatch;
-    
-    while ((boldMatch = boldQAPattern.exec(htmlContent)) !== null) {
-      const question = boldMatch[1].trim();
-      const answer = boldMatch[2].trim();
-      if (question && answer) {
-        faqs.push({ question, answer });
-        blocksToRemove.push(boldMatch[0]);
-      }
-    }
-  }
-
-  // Pattern 5: Heading questions in FAQ sections
-  if (faqs.length === 0) {
-    const hasFaqSection = /<h[23][^>]*>[^<]*(?:FAQ|Frequently Asked|Questions)[^<]*<\/h[23]>/i.test(htmlContent);
-    
-    if (hasFaqSection) {
-      const qaPairPattern = /<h[34][^>]*>([^<]+)<\/h[34]>\s*<p[^>]*>([\s\S]*?)<\/p>(?:\s*<p[^>]*>[\s\S]*?<\/p>)*/gi;
-      let qaMatch;
-      
-      while ((qaMatch = qaPairPattern.exec(htmlContent)) !== null) {
-        const question = qaMatch[1].replace(/&[^;]+;/g, ' ').trim();
-        const fullMatch = qaMatch[0];
-        const answerHtml = fullMatch.replace(/<h[34][^>]*>[^<]+<\/h[34]>\s*/i, '').trim();
-        
-        if (question && answerHtml && question.length > 10) {
-          faqs.push({ question, answer: answerHtml });
-          blocksToRemove.push(fullMatch);
-        }
       }
     }
   }
