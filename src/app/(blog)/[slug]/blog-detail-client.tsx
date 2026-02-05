@@ -154,6 +154,12 @@ function extractFAQsFromContent(htmlContent: string): { faqs: FAQItem[]; cleaned
       const escapedBlock = block.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
       cleanedContent = cleanedContent.replace(new RegExp(escapedBlock, 'g'), '');
     }
+    
+    // Also remove "Frequently Asked Questions" headings
+    cleanedContent = cleanedContent.replace(/<h[23][^>]*>\s*(?:<[^>]+>)*\s*Frequently Asked Questions\s*(?:<\/[^>]+>)*\s*<\/h[23]>/gi, '');
+    
+    // Remove empty paragraphs and clean up extra whitespace
+    cleanedContent = cleanedContent.replace(/<p[^>]*>\s*<\/p>/g, '');
   }
 
   return { faqs, cleanedContent };
