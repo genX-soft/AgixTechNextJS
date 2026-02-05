@@ -28,6 +28,12 @@ import {
   ExternalLink,
   BookOpen
 } from 'lucide-react';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -245,14 +251,25 @@ function SectionRenderer({ section, index }: { section: BlogSection; index: numb
             <BookOpen className="h-5 w-5 text-purple-400" />
             {section.faqData?.title || 'Frequently Asked Questions'}
           </h3>
-          <div className="space-y-4">
+          <Accordion type="single" collapsible className="w-full">
             {section.faqData?.items.map((faq, i) => (
-              <div key={i} className="bg-slate-800/50 border border-slate-700/30 rounded-lg p-4">
-                <div className="font-semibold text-cyan-400 mb-2">{faq.question}</div>
-                <p className="text-sm text-slate-300">{faq.answer}</p>
-              </div>
+              <AccordionItem 
+                key={i} 
+                value={`faq-${i}`}
+                className="bg-slate-800/50 border border-slate-700/30 rounded-lg mb-3 px-4 data-[state=open]:bg-slate-800/70"
+              >
+                <AccordionTrigger 
+                  className="text-left font-semibold text-cyan-400 hover:text-cyan-300 hover:no-underline py-4"
+                  data-testid={`accordion-faq-${i}`}
+                >
+                  {faq.question}
+                </AccordionTrigger>
+                <AccordionContent className="text-slate-300 pb-4">
+                  {faq.answer}
+                </AccordionContent>
+              </AccordionItem>
             ))}
-          </div>
+          </Accordion>
         </div>
       );
     
