@@ -10,6 +10,12 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import "../wordpress-content.css";
 import { 
   Clock, 
@@ -18,7 +24,8 @@ import {
   ArrowRight, 
   User, 
   Linkedin,
-  Twitter
+  Twitter,
+  HelpCircle
 } from "lucide-react";
 import { 
   getPostBySlug, 
@@ -38,6 +45,149 @@ import {
   generateFullSchema 
 } from "@/lib/seo/structured-data";
 import Image from "next/image";
+
+interface FAQItem {
+  question: string;
+  answer: string;
+}
+
+function extractFAQsFromContent(htmlContent: string): { faqs: FAQItem[]; cleanedContent: string } {
+  const faqs: FAQItem[] = [];
+  let cleanedContent = htmlContent;
+  const blocksToRemove: string[] = [];
+
+  // Pattern 1: H3 headings with question marks followed by paragraphs
+  const h3QuestionPattern = /<h3[^>]*>([^<]*\?[^<]*)<\/h3>\s*(<p[^>]*>[\s\S]*?<\/p>(?:\s*<p[^>]*>[\s\S]*?<\/p>)*)/gi;
+  
+  let h3Match;
+  while ((h3Match = h3QuestionPattern.exec(htmlContent)) !== null) {
+    const question = h3Match[1].replace(/&[^;]+;/g, ' ').trim();
+    const answerHtml = h3Match[2].trim();
+    
+    if (question && answerHtml) {
+      faqs.push({ question, answer: answerHtml });
+      blocksToRemove.push(h3Match[0]);
+    }
+  }
+
+  // Pattern 2: Yoast FAQ Block structure
+  if (faqs.length === 0) {
+    const yoastBlockPattern = /<div[^>]*class="[^"]*wp-block-yoast-faq-block[^"]*"[^>]*>[\s\S]*?<\/div>(?:\s*<\/div>)*/gi;
+    
+    let yoastMatch;
+    while ((yoastMatch = yoastBlockPattern.exec(htmlContent)) !== null) {
+      const blockHtml = yoastMatch[0];
+      
+      const qaPairPattern = /<div[^>]*class="[^"]*schema-faq-question[^"]*"[^>]*>([\s\S]*?)<\/div>\s*<div[^>]*class="[^"]*schema-faq-answer[^"]*"[^>]*>([\s\S]*?)<\/div>/gi;
+      let qaMatch;
+      let foundInBlock = false;
+      
+      while ((qaMatch = qaPairPattern.exec(blockHtml)) !== null) {
+        const question = qaMatch[1].replace(/<[^>]*>/g, '').trim();
+        const answer = qaMatch[2].trim();
+        if (question && answer) {
+          faqs.push({ question, answer });
+          foundInBlock = true;
+        }
+      }
+      
+      if (foundInBlock) {
+        blocksToRemove.push(blockHtml);
+      }
+    }
+  }
+
+  // Pattern 3: H2/H3 question followed by "Ans." paragraph
+  if (faqs.length === 0) {
+    const ansPattern = /<h[23][^>]*>([^<]+\??)<\/h[23]>\s*<p[^>]*>\s*(?:<strong>)?Ans\.?\s*(?:<\/strong>)?\s*([\s\S]*?)<\/p>/gi;
+    let ansMatch;
+    
+    while ((ansMatch = ansPattern.exec(htmlContent)) !== null) {
+      const question = ansMatch[1].replace(/&[^;]+;/g, ' ').trim();
+      const answer = ansMatch[2].trim();
+      if (question && answer) {
+        faqs.push({ question, answer });
+        blocksToRemove.push(ansMatch[0]);
+      }
+    }
+  }
+
+  // Pattern 4: Strong/bold question pattern
+  if (faqs.length === 0) {
+    const boldQAPattern = /<p[^>]*>\s*<strong[^>]*>([^<]+\?)<\/strong>\s*<\/p>\s*<p[^>]*>([\s\S]*?)<\/p>/gi;
+    let boldMatch;
+    
+    while ((boldMatch = boldQAPattern.exec(htmlContent)) !== null) {
+      const question = boldMatch[1].trim();
+      const answer = boldMatch[2].trim();
+      if (question && answer) {
+        faqs.push({ question, answer });
+        blocksToRemove.push(boldMatch[0]);
+      }
+    }
+  }
+
+  // Pattern 5: Heading questions in FAQ sections
+  if (faqs.length === 0) {
+    const hasFaqSection = /<h[23][^>]*>[^<]*(?:FAQ|Frequently Asked|Questions)[^<]*<\/h[23]>/i.test(htmlContent);
+    
+    if (hasFaqSection) {
+      const qaPairPattern = /<h[34][^>]*>([^<]+)<\/h[34]>\s*<p[^>]*>([\s\S]*?)<\/p>(?:\s*<p[^>]*>[\s\S]*?<\/p>)*/gi;
+      let qaMatch;
+      
+      while ((qaMatch = qaPairPattern.exec(htmlContent)) !== null) {
+        const question = qaMatch[1].replace(/&[^;]+;/g, ' ').trim();
+        const fullMatch = qaMatch[0];
+        const answerHtml = fullMatch.replace(/<h[34][^>]*>[^<]+<\/h[34]>\s*/i, '').trim();
+        
+        if (question && answerHtml && question.length > 10) {
+          faqs.push({ question, answer: answerHtml });
+          blocksToRemove.push(fullMatch);
+        }
+      }
+    }
+  }
+
+  // Remove extracted FAQs from main content
+  if (faqs.length > 0 && blocksToRemove.length > 0) {
+    for (const block of blocksToRemove) {
+      const escapedBlock = block.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      cleanedContent = cleanedContent.replace(new RegExp(escapedBlock, 'g'), '');
+    }
+  }
+
+  return { faqs, cleanedContent };
+}
+
+function FAQAccordion({ faqs }: { faqs: FAQItem[] }) {
+  if (faqs.length === 0) return null;
+
+  return (
+    <div className="my-12 border rounded-lg bg-card">
+      <div className="px-6 py-4 border-b bg-muted/50 rounded-t-lg">
+        <h2 className="text-xl font-bold flex items-center gap-2">
+          <HelpCircle className="w-5 h-5 text-primary" />
+          Frequently Asked Questions
+        </h2>
+      </div>
+      <Accordion type="single" collapsible className="px-6">
+        {faqs.map((faq, index) => (
+          <AccordionItem key={index} value={`faq-${index}`} data-testid={`accordion-faq-${index}`}>
+            <AccordionTrigger className="text-left text-base font-medium hover:no-underline">
+              {faq.question}
+            </AccordionTrigger>
+            <AccordionContent>
+              <div 
+                className="wp-content text-muted-foreground"
+                dangerouslySetInnerHTML={{ __html: faq.answer }}
+              />
+            </AccordionContent>
+          </AccordionItem>
+        ))}
+      </Accordion>
+    </div>
+  );
+}
 
 function ArticleSkeleton() {
   return (
@@ -190,6 +340,7 @@ export default function BlogArticlePage() {
   const [relatedPosts, setRelatedPosts] = useState<WPPost[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [faqData, setFaqData] = useState<{ faqs: FAQItem[]; cleanedContent: string }>({ faqs: [], cleanedContent: "" });
 
   // Must call hook before any conditional returns
   useSEO(post, slug);
@@ -213,6 +364,11 @@ export default function BlogArticlePage() {
         
         setPost(fetchedPost);
         setRelatedPosts(recentPosts.posts.filter(p => p.slug !== slug).slice(0, 3));
+        
+        // Extract FAQs from post content
+        if (fetchedPost.content?.rendered) {
+          setFaqData(extractFAQsFromContent(fetchedPost.content.rendered));
+        }
       } catch (err) {
         setError("Unable to load article. Please try again later.");
         console.error("Error fetching post:", err);
@@ -338,8 +494,18 @@ export default function BlogArticlePage() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
             className="wp-content max-w-none mb-12"
-            dangerouslySetInnerHTML={{ __html: post.content.rendered }}
+            dangerouslySetInnerHTML={{ __html: faqData.cleanedContent || post.content.rendered }}
           />
+
+          {faqData.faqs.length > 0 && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+            >
+              <FAQAccordion faqs={faqData.faqs} />
+            </motion.div>
+          )}
 
           <div className="border-t border-border pt-8 mb-12">
             <div className="flex flex-wrap items-center justify-between gap-4">
