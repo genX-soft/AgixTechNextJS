@@ -133,6 +133,45 @@ function extractFAQsFromContent(htmlContent: string): { faqs: FAQItem[]; cleaned
     }
   }
 
+  // Pattern 5: H2/H3 question followed by "Ans." paragraph (common WordPress FAQ format)
+  if (faqs.length === 0) {
+    const ansPattern = /<h[23][^>]*>([^<]+\??)<\/h[23]>\s*<p[^>]*>\s*(?:<strong>)?Ans\.?\s*(?:<\/strong>)?\s*([\s\S]*?)<\/p>/gi;
+    let ansMatch;
+    
+    while ((ansMatch = ansPattern.exec(htmlContent)) !== null) {
+      const question = ansMatch[1].replace(/&[^;]+;/g, ' ').trim();
+      const answer = ansMatch[2].trim();
+      if (question && answer) {
+        faqs.push({ question, answer });
+        blocksToRemove.push(ansMatch[0]);
+      }
+    }
+  }
+
+  // Pattern 6: Heading questions without question marks (broader H2/H3 FAQ sections)
+  if (faqs.length === 0) {
+    // Look for FAQ section header first
+    const hasFaqSection = /<h[23][^>]*>[^<]*(?:FAQ|Frequently Asked|Questions)[^<]*<\/h[23]>/i.test(htmlContent);
+    
+    if (hasFaqSection) {
+      // Extract Q&A pairs after FAQ header - match h3/h4 followed by paragraph
+      const qaPairPattern = /<h[34][^>]*>([^<]+)<\/h[34]>\s*<p[^>]*>([\s\S]*?)<\/p>(?:\s*<p[^>]*>[\s\S]*?<\/p>)*/gi;
+      let qaMatch;
+      
+      while ((qaMatch = qaPairPattern.exec(htmlContent)) !== null) {
+        const question = qaMatch[1].replace(/&[^;]+;/g, ' ').trim();
+        // Get all following paragraphs as answer
+        const fullMatch = qaMatch[0];
+        const answerHtml = fullMatch.replace(/<h[34][^>]*>[^<]+<\/h[34]>\s*/i, '').trim();
+        
+        if (question && answerHtml && question.length > 10) {
+          faqs.push({ question, answer: answerHtml });
+          blocksToRemove.push(fullMatch);
+        }
+      }
+    }
+  }
+
   // Only remove content we successfully extracted FAQs from
   if (faqs.length > 0 && blocksToRemove.length > 0) {
     for (const block of blocksToRemove) {
