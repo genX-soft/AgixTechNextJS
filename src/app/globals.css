@@ -370,12 +370,3 @@ body {
   }
 }
 
-/* Accordion icon toggle */
-[data-state="open"] > .accordion-icon-plus,
-[data-state="open"] > * > .accordion-icon-plus {
-  display: none;
-}
-[data-state="open"] > .accordion-icon-minus,
-[data-state="open"] > * > .accordion-icon-minus {
-  display: block;
-}

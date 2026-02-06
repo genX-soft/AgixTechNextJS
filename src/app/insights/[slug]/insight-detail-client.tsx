@@ -131,22 +131,20 @@ function FAQAccordion({ faqs }: { faqs: FAQItem[] }) {
   if (faqs.length === 0) return null;
 
   return (
-    <div className="my-12 border rounded-lg bg-card">
-      <div className="px-6 py-4 border-b bg-muted/50 rounded-t-lg">
-        <h2 className="text-xl font-bold flex items-center gap-2">
-          <HelpCircle className="w-5 h-5 text-primary" />
-          Frequently Asked Questions
-        </h2>
-      </div>
-      <Accordion type="single" collapsible className="px-6">
+    <div className="my-12">
+      <h2 className="text-xl font-bold flex items-center gap-2 mb-4">
+        <HelpCircle className="w-5 h-5 text-primary" />
+        Frequently Asked Questions
+      </h2>
+      <Accordion type="single" collapsible className="space-y-3">
         {faqs.map((faq, index) => (
           <AccordionItem key={index} value={`faq-${index}`} data-testid={`accordion-faq-${index}`}>
-            <AccordionTrigger className="text-left text-base font-medium hover:no-underline">
+            <AccordionTrigger className="text-left hover:no-underline">
               {faq.question}
             </AccordionTrigger>
             <AccordionContent>
               <div 
-                className="wp-content text-muted-foreground"
+                className="wp-content"
                 dangerouslySetInnerHTML={{ __html: faq.answer }}
               />
             </AccordionContent>

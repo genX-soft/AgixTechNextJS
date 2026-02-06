@@ -251,20 +251,20 @@ function SectionRenderer({ section, index }: { section: BlogSection; index: numb
             <BookOpen className="h-5 w-5 text-purple-400" />
             {section.faqData?.title || 'Frequently Asked Questions'}
           </h3>
-          <Accordion type="single" collapsible className="w-full">
+          <Accordion type="single" collapsible className="space-y-3">
             {section.faqData?.items.map((faq, i) => (
               <AccordionItem 
                 key={i} 
                 value={`faq-${i}`}
-                className="bg-slate-800/50 border border-slate-700/30 rounded-lg mb-3 px-4 data-[state=open]:bg-slate-800/70"
+                className="bg-slate-800/50 border-slate-700/30 data-[state=open]:bg-slate-800/70"
               >
                 <AccordionTrigger 
-                  className="text-left font-semibold text-cyan-400 hover:text-cyan-300 hover:no-underline py-4"
+                  className="text-left text-cyan-400 hover:text-cyan-300 hover:no-underline hover:bg-slate-700/40"
                   data-testid={`accordion-faq-${i}`}
                 >
                   {faq.question}
                 </AccordionTrigger>
-                <AccordionContent className="text-slate-300 pb-4">
+                <AccordionContent className="text-slate-300 border-cyan-500/30 bg-slate-800/40">
                   {faq.answer}
                 </AccordionContent>
               </AccordionItem>
