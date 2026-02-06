@@ -15,9 +15,9 @@ const AccordionItem = React.forwardRef<
   <AccordionPrimitive.Item
     ref={ref}
     className={cn(
-      "rounded-lg border border-border/50",
-      "transition-colors duration-200",
-      "data-[state=open]:border-primary/20",
+      "rounded-lg border border-border bg-card",
+      "transition-all duration-200",
+      "data-[state=open]:border-primary/50 data-[state=open]:shadow-sm",
       className
     )}
     {...props}
@@ -33,21 +33,23 @@ const AccordionTrigger = React.forwardRef<
     <AccordionPrimitive.Trigger
       ref={ref}
       className={cn(
-        "group flex flex-1 items-center justify-between gap-3 py-4 px-4",
+        "group flex flex-1 items-center justify-between gap-4 py-5 px-5",
         "text-[15px] font-semibold text-foreground text-left",
         "rounded-lg transition-colors duration-200",
         "hover-elevate",
-        "data-[state=open]:bg-muted/40",
+        "data-[state=open]:bg-muted/50",
         "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
         className
       )}
       {...props}
     >
       {children}
-      <ChevronDown
-        className="h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-300 ease-in-out group-data-[state=open]:rotate-180"
-        aria-hidden="true"
-      />
+      <div className="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 border border-primary/20 shrink-0 transition-colors duration-200 group-data-[state=open]:bg-primary/20">
+        <ChevronDown
+          className="h-4 w-4 text-primary transition-transform duration-300 ease-in-out group-data-[state=open]:rotate-180"
+          aria-hidden="true"
+        />
+      </div>
     </AccordionPrimitive.Trigger>
   </AccordionPrimitive.Header>
 ))
@@ -62,15 +64,17 @@ const AccordionContent = React.forwardRef<
     className="overflow-hidden data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down"
     {...props}
   >
-    <div
-      className={cn(
-        "pb-4 pt-1 ml-4 pl-4 mr-4",
-        "border-l-2 border-primary/30",
-        "text-sm text-muted-foreground leading-relaxed",
-        className
-      )}
-    >
-      {children}
+    <div className="px-5 pb-5">
+      <div
+        className={cn(
+          "pl-4 py-3 rounded-md",
+          "border-l-2 border-primary/40 bg-muted/30",
+          "text-sm text-muted-foreground leading-relaxed",
+          className
+        )}
+      >
+        {children}
+      </div>
     </div>
   </AccordionPrimitive.Content>
 ))
