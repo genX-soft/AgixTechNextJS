@@ -1,8 +1,8 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { 
   ArrowLeft, 
   Target,
@@ -16,13 +16,18 @@ import {
   Zap,
   Clock,
   TrendingUp,
-  BarChart3
+  BarChart3,
+  Download,
+  Trash2,
+  X,
+  AlertTriangle
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
-import { blogArticles, blogTopics } from '@/lib/tools/blogContent';
+import { blogArticles as allBlogArticles, blogTopics } from '@/lib/tools/blogContent';
+import { downloadArticleAsWord } from '@/lib/tools/downloadArticle';
 
 const PASSCODE = '9636962228';
 const STORAGE_KEY = 'content-engine-auth';
@@ -46,14 +51,97 @@ function getDifficultyBg(difficulty: number): string {
   return 'bg-rose-500/10 border-rose-500/30';
 }
 
+function DeleteConfirmDialog({ 
+  articleTitle, 
+  onConfirm, 
+  onCancel,
+  isDeleting 
+}: { 
+  articleTitle: string;
+  onConfirm: () => void;
+  onCancel: () => void;
+  isDeleting: boolean;
+}) {
+  return (
+    <AnimatePresence>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm"
+        onClick={onCancel}
+      >
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95, y: 10 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 0.95, y: 10 }}
+          onClick={(e) => e.stopPropagation()}
+          className="w-full max-w-md"
+        >
+          <Card className="border-red-500/30 bg-slate-900 shadow-2xl shadow-red-900/20">
+            <CardContent className="p-6">
+              <div className="flex items-start gap-4 mb-5">
+                <div className="w-12 h-12 rounded-full bg-red-500/10 flex items-center justify-center flex-shrink-0">
+                  <AlertTriangle className="h-6 w-6 text-red-400" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-white mb-1">Delete Article Permanently</h3>
+                  <p className="text-sm text-slate-400">
+                    This action cannot be undone. The article will be permanently removed from the Content Engine.
+                  </p>
+                </div>
+              </div>
+              
+              <div className="p-3 bg-slate-800/80 rounded-lg border border-slate-700/50 mb-5">
+                <p className="text-sm text-white font-medium">{articleTitle}</p>
+              </div>
+
+              <div className="flex gap-3">
+                <Button 
+                  variant="outline" 
+                  className="flex-1 border-slate-600 text-slate-300"
+                  onClick={onCancel}
+                  disabled={isDeleting}
+                  data-testid="button-cancel-delete"
+                >
+                  Cancel
+                </Button>
+                <Button 
+                  className="flex-1 bg-red-600 hover:bg-red-700 text-white border-red-700"
+                  onClick={onConfirm}
+                  disabled={isDeleting}
+                  data-testid="button-confirm-delete"
+                >
+                  {isDeleting ? (
+                    <RefreshCw className="h-4 w-4 animate-spin mr-2" />
+                  ) : (
+                    <Trash2 className="h-4 w-4 mr-2" />
+                  )}
+                  {isDeleting ? 'Deleting...' : 'Delete Permanently'}
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+        </motion.div>
+      </motion.div>
+    </AnimatePresence>
+  );
+}
+
 function ArticleCard({ 
   article, 
   topic,
-  index 
+  index,
+  onDelete,
+  onDownload,
+  isDownloading
 }: { 
-  article: typeof blogArticles[0];
+  article: typeof allBlogArticles[0];
   topic: typeof blogTopics[0];
   index: number;
+  onDelete: (slug: string, title: string) => void;
+  onDownload: (slug: string) => void;
+  isDownloading: boolean;
 }) {
   return (
     <motion.div
@@ -169,13 +257,38 @@ function ArticleCard({
             </div>
           </div>
 
-          <div className="mt-5 pt-4 border-t border-slate-700/50">
+          <div className="mt-5 pt-4 border-t border-slate-700/50 space-y-2.5">
             <Link href={`/tools/content-engine/blog/${article.slug}/`}>
               <Button className="w-full bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-600 hover:to-cyan-600 text-white" data-testid={`button-view-article-${article.slug}`}>
                 <FileText className="h-4 w-4 mr-2" />
                 View Full Article ({article.wordCount.toLocaleString()} words)
               </Button>
             </Link>
+            
+            <Button 
+              variant="outline"
+              className="w-full border-blue-500/40 text-blue-400 hover:bg-blue-500/10 hover:text-blue-300"
+              onClick={() => onDownload(article.slug)}
+              disabled={isDownloading}
+              data-testid={`button-download-article-${article.slug}`}
+            >
+              {isDownloading ? (
+                <RefreshCw className="h-4 w-4 mr-2 animate-spin" />
+              ) : (
+                <Download className="h-4 w-4 mr-2" />
+              )}
+              {isDownloading ? 'Generating Document...' : 'Download Full Article (.docx)'}
+            </Button>
+
+            <Button 
+              variant="outline"
+              className="w-full border-red-500/40 text-red-400 hover:bg-red-500/10 hover:text-red-300"
+              onClick={() => onDelete(article.slug, article.title)}
+              data-testid={`button-delete-article-${article.slug}`}
+            >
+              <Trash2 className="h-4 w-4 mr-2" />
+              Delete Article
+            </Button>
           </div>
         </CardContent>
       </Card>
@@ -274,6 +387,24 @@ export default function ContentEnginePage() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [mounted, setMounted] = useState(false);
+  const [deletedSlugs, setDeletedSlugs] = useState<string[]>([]);
+  const [deleteTarget, setDeleteTarget] = useState<{ slug: string; title: string } | null>(null);
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [downloadingSlug, setDownloadingSlug] = useState<string | null>(null);
+
+  const fetchDeletedSlugs = useCallback(async () => {
+    try {
+      const res = await fetch('/api/content-engine/deleted-slugs', {
+        headers: { 'x-passcode': PASSCODE },
+      });
+      if (res.ok) {
+        const slugs = await res.json();
+        setDeletedSlugs(slugs);
+      }
+    } catch (err) {
+      console.error('Failed to fetch deleted slugs:', err);
+    }
+  }, []);
 
   useEffect(() => {
     setMounted(true);
@@ -283,6 +414,49 @@ export default function ContentEnginePage() {
     }
     setIsLoading(false);
   }, []);
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      fetchDeletedSlugs();
+    }
+  }, [isAuthenticated, fetchDeletedSlugs]);
+
+  const handleDelete = async () => {
+    if (!deleteTarget) return;
+    setIsDeleting(true);
+    try {
+      const res = await fetch('/api/content-engine/delete-article', {
+        method: 'POST',
+        headers: { 
+          'Content-Type': 'application/json',
+          'x-passcode': PASSCODE 
+        },
+        body: JSON.stringify({ slug: deleteTarget.slug }),
+      });
+      if (res.ok) {
+        setDeletedSlugs(prev => [...prev, deleteTarget.slug]);
+        setDeleteTarget(null);
+      }
+    } catch (err) {
+      console.error('Failed to delete article:', err);
+    } finally {
+      setIsDeleting(false);
+    }
+  };
+
+  const handleDownload = async (slug: string) => {
+    setDownloadingSlug(slug);
+    try {
+      const article = allBlogArticles.find(a => a.slug === slug);
+      if (article) {
+        await downloadArticleAsWord(article);
+      }
+    } catch (err) {
+      console.error('Failed to download article:', err);
+    } finally {
+      setDownloadingSlug(null);
+    }
+  };
 
   if (!mounted || isLoading) {
     return (
@@ -296,10 +470,20 @@ export default function ContentEnginePage() {
     return <PasscodeGate onSuccess={() => setIsAuthenticated(true)} />;
   }
 
-  const totalWords = blogArticles.reduce((acc, article) => acc + article.wordCount, 0);
+  const visibleArticles = allBlogArticles.filter(a => !deletedSlugs.includes(a.slug));
+  const totalWords = visibleArticles.reduce((acc, article) => acc + article.wordCount, 0);
 
   return (
     <div className="min-h-screen bg-slate-950">
+      {deleteTarget && (
+        <DeleteConfirmDialog
+          articleTitle={deleteTarget.title}
+          onConfirm={handleDelete}
+          onCancel={() => setDeleteTarget(null)}
+          isDeleting={isDeleting}
+        />
+      )}
+
       <div className="sticky top-0 z-50 bg-slate-950/95 backdrop-blur-sm border-b border-slate-800">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-4">
           <div className="flex items-center justify-between gap-4">
@@ -309,7 +493,7 @@ export default function ContentEnginePage() {
             </Link>
             <div className="flex items-center gap-3">
               <Badge variant="outline" className="bg-emerald-500/10 text-emerald-400 border-emerald-500/30">
-                {blogArticles.length} Articles
+                {visibleArticles.length} Articles
               </Badge>
               <Badge variant="outline" className="bg-purple-500/10 text-purple-400 border-purple-500/30">
                 {totalWords.toLocaleString()} Total Words
@@ -345,7 +529,7 @@ export default function ContentEnginePage() {
         </motion.div>
 
         <div className="space-y-6">
-          {blogArticles.map((article, index) => {
+          {visibleArticles.map((article, index) => {
             const topic = blogTopics.find(t => t.slug === article.slug);
             if (!topic) return null;
             return (
@@ -354,10 +538,21 @@ export default function ContentEnginePage() {
                 article={article} 
                 topic={topic}
                 index={index}
+                onDelete={(slug, title) => setDeleteTarget({ slug, title })}
+                onDownload={handleDownload}
+                isDownloading={downloadingSlug === article.slug}
               />
             );
           })}
         </div>
+
+        {visibleArticles.length === 0 && (
+          <div className="text-center py-20">
+            <FileText className="h-16 w-16 text-slate-700 mx-auto mb-4" />
+            <h3 className="text-xl font-semibold text-slate-400 mb-2">No Articles Available</h3>
+            <p className="text-slate-500">All articles have been deleted from the Content Engine.</p>
+          </div>
+        )}
       </div>
     </div>
   );

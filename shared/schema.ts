@@ -193,3 +193,11 @@ export const insertLeadSchema = createInsertSchema(leads).omit({
 
 export type InsertLead = z.infer<typeof insertLeadSchema>;
 export type Lead = typeof leads.$inferSelect;
+
+export const deletedContentSlugs = pgTable("deleted_content_slugs", {
+  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
+  slug: text("slug").notNull().unique(),
+  deletedAt: timestamp("deleted_at").defaultNow(),
+});
+
+export type DeletedContentSlug = typeof deletedContentSlugs.$inferSelect;

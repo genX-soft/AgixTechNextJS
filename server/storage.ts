@@ -1,7 +1,8 @@
 import { 
   type User, type InsertUser, type Lead, type InsertLead,
   type BlogArticle, type InsertBlogArticle,
-  users, leads, blogArticles
+  type DeletedContentSlug,
+  users, leads, blogArticles, deletedContentSlugs
 } from "@shared/schema";
 import { db } from "./db";
 import { eq, desc } from "drizzle-orm";
@@ -17,6 +18,8 @@ export interface IStorage {
   getBlogArticleBySlug(slug: string): Promise<BlogArticle | undefined>;
   createBlogArticle(article: InsertBlogArticle): Promise<BlogArticle>;
   deleteBlogArticle(id: string): Promise<void>;
+  getDeletedContentSlugs(): Promise<DeletedContentSlug[]>;
+  addDeletedContentSlug(slug: string): Promise<DeletedContentSlug>;
 }
 
 export class DatabaseStorage implements IStorage {
@@ -65,6 +68,15 @@ export class DatabaseStorage implements IStorage {
 
   async deleteBlogArticle(id: string): Promise<void> {
     await db.delete(blogArticles).where(eq(blogArticles.id, id));
+  }
+
+  async getDeletedContentSlugs(): Promise<DeletedContentSlug[]> {
+    return await db.select().from(deletedContentSlugs).orderBy(desc(deletedContentSlugs.deletedAt));
+  }
+
+  async addDeletedContentSlug(slug: string): Promise<DeletedContentSlug> {
+    const [result] = await db.insert(deletedContentSlugs).values({ slug }).returning();
+    return result;
   }
 }
 

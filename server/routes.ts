@@ -154,5 +154,39 @@ export async function registerRoutes(
     }
   });
 
+  app.get("/api/content-engine/deleted-slugs", async (req, res) => {
+    const passcode = req.headers['x-passcode'];
+    if (passcode !== PASSCODE) {
+      return res.status(401).json({ error: "Invalid passcode" });
+    }
+    
+    try {
+      const deleted = await storage.getDeletedContentSlugs();
+      return res.json(deleted.map(d => d.slug));
+    } catch (error) {
+      console.error("Error fetching deleted slugs:", error);
+      return res.status(500).json({ error: "Failed to fetch deleted articles" });
+    }
+  });
+
+  app.post("/api/content-engine/delete-article", async (req, res) => {
+    const passcode = req.headers['x-passcode'];
+    if (passcode !== PASSCODE) {
+      return res.status(401).json({ error: "Invalid passcode" });
+    }
+    
+    try {
+      const { slug } = req.body;
+      if (!slug || typeof slug !== 'string') {
+        return res.status(400).json({ error: "Valid slug is required" });
+      }
+      const result = await storage.addDeletedContentSlug(slug);
+      return res.status(201).json(result);
+    } catch (error) {
+      console.error("Error deleting content article:", error);
+      return res.status(500).json({ error: "Failed to delete article" });
+    }
+  });
+
   return httpServer;
 }
