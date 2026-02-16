@@ -107,7 +107,7 @@ function DeleteConfirmDialog({
                   Cancel
                 </Button>
                 <Button 
-                  className="flex-1 bg-red-600 hover:bg-red-700 text-white border-red-700"
+                  className="flex-1 bg-red-600 text-white border-red-600"
                   onClick={onConfirm}
                   disabled={isDeleting}
                   data-testid="button-confirm-delete"
@@ -267,7 +267,7 @@ function ArticleCard({
             
             <Button 
               variant="outline"
-              className="w-full border-blue-500/40 text-blue-400 hover:bg-blue-500/10 hover:text-blue-300"
+              className="w-full border-blue-500/40 text-blue-400"
               onClick={() => onDownload(article.slug)}
               disabled={isDownloading}
               data-testid={`button-download-article-${article.slug}`}
@@ -282,7 +282,7 @@ function ArticleCard({
 
             <Button 
               variant="outline"
-              className="w-full border-red-500/40 text-red-400 hover:bg-red-500/10 hover:text-red-300"
+              className="w-full border-red-500/40 text-red-400"
               onClick={() => onDelete(article.slug, article.title)}
               data-testid={`button-delete-article-${article.slug}`}
             >

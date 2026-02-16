@@ -311,6 +311,21 @@ function convertSectionToDocx(section: BlogSection): Paragraph[] {
       }
       break;
 
+    case 'image':
+      if (section.imageData) {
+        paragraphs.push(new Paragraph({
+          spacing: { before: 200, after: 100 },
+          children: [new TextRun({ text: `[Image: ${section.imageData.alt}]`, bold: true, size: 22 })],
+        }));
+        if (section.imageData.caption) {
+          paragraphs.push(new Paragraph({
+            spacing: { after: 200 },
+            children: [new TextRun({ text: section.imageData.caption, italics: true, size: 20, color: '666666' })],
+          }));
+        }
+      }
+      break;
+
     default:
       if (section.content) {
         paragraphs.push(new Paragraph({
