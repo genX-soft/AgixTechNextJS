@@ -394,7 +394,7 @@ export default function ContentEnginePage() {
 
   const fetchDeletedSlugs = useCallback(async () => {
     try {
-      const res = await fetch('/api/content-engine/deleted-slugs', {
+      const res = await fetch('/api/content-engine/deleted-slugs/', {
         headers: { 'x-passcode': PASSCODE },
       });
       if (res.ok) {
@@ -425,7 +425,7 @@ export default function ContentEnginePage() {
     if (!deleteTarget) return;
     setIsDeleting(true);
     try {
-      const res = await fetch('/api/content-engine/delete-article', {
+      const res = await fetch('/api/content-engine/delete-article/', {
         method: 'POST',
         headers: { 
           'Content-Type': 'application/json',
