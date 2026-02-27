@@ -712,12 +712,27 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     featuredImage: 'https://cms.agixtech.com/wp-content/uploads/2026/01/AlphaSense-Case-Study-Image.png',
     schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article'],
   },
+
+  '/case-studies/alphasense/': {
+    focusKeyword: 'AlphaSense Case Study',
+    keywords: 'AlphaSense case study, financial research AI, NLP analytics, market intelligence AI, analyst productivity AI',
+    mainHeading: 'AlphaSense',
+    metaTitle: 'AI-Powered Financial Research & NLP Analytics | AlphaSense Case Study | AGIX',
+    metaDescription: 'Discover how AGIX helped AlphaSense achieve 97% faster research with 500% analyst productivity gains using advanced NLP analytics across earnings transcripts, SEC filings, and research reports.',
+    ogTitle: 'Financial Research Intelligence Transformation | AlphaSense Success Story',
+    ogDescription: 'AGIX engineered NLP-powered research systems for AlphaSense that surface signals from earnings calls, filings, and research in seconds—boosting analyst productivity by 500%.',
+    twitterTitle: 'AI-Powered Financial Research | AlphaSense Case Study',
+    twitterDescription: 'How AGIX transformed AlphaSense research workflows with NLP analytics, delivering 97% faster research and 500% analyst productivity improvement.',
+    featuredImage: 'https://cms.agixtech.com/wp-content/uploads/2026/01/AlphaSense-Case-Study-Image.png',
+    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article'],
+  },
 };
 
 export function getURLMetadata(path: string): URLMetadata | null {
-  const normalizedPath = path.endsWith('/') ? path.slice(0, -1) : path;
-  const pathWithoutLeading = normalizedPath.startsWith('/') ? normalizedPath : `/${normalizedPath}`;
-  return urlMetadataConfig[pathWithoutLeading] || null;
+  const withLeading = path.startsWith('/') ? path : `/${path}`;
+  const withoutTrailing = withLeading.endsWith('/') ? withLeading.slice(0, -1) : withLeading;
+  const withTrailing = withoutTrailing + '/';
+  return urlMetadataConfig[withoutTrailing] || urlMetadataConfig[withTrailing] || urlMetadataConfig[withLeading] || null;
 }
 
 export function getKeywordsArray(keywords: string): string[] {

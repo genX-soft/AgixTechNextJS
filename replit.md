@@ -150,7 +150,7 @@ export const metadata: Metadata = generateMetadataFromURL('/path/to/page')
 - Intelligence pages (5): operational-ai, conversational-ai, decision-ai, autonomous-agentic-ai, enterprise-knowledge-ai
 - Services pages (8): ai-automation, ai-voice-agents, conversational-ai-chatbots, agentic-ai-systems, rag-knowledge-ai, ai-predictive-analytics, ai-computer-vision, custom-ai-product-development
 - Industries pages (8): healthcare, real-estate, fintech, insurance, retail, logistics, hospitality, edtech
-- Case studies index and 27 individual case study pages
+- Case studies index and 28 individual case study pages (including alphasense)
 
 ### Other SEO Features
 - 301 redirects for URL normalization (next.config.mjs)
