@@ -675,6 +675,580 @@ export const industriesPageSchemas: Record<string, PageSchemaData> = {
   }
 };
 
+export interface CaseStudySchemaData {
+  webPage: {
+    name: string;
+    description: string;
+  };
+  breadcrumbs: { name: string; url: string }[];
+  article: {
+    headline: string;
+    description: string;
+    image: string;
+    client: string;
+    industry: string;
+  };
+}
+
+export const caseStudyPageSchemas: Record<string, CaseStudySchemaData> = {
+  'enova': {
+    webPage: {
+      name: 'Enova International AI Case Study',
+      description: 'How AGIX built an explainable AI system for Enova to hit 94.7% accuracy and 100% audit compliance in credit decisioning.',
+    },
+    breadcrumbs: [
+      { name: 'Home', url: `${SITE_URL}/` },
+      { name: 'Case Studies', url: `${SITE_URL}/case-studies/` },
+      { name: 'Enova International', url: `${SITE_URL}/case-studies/enova/` },
+    ],
+    article: {
+      headline: 'Enova International Case Study — Explainable AI Credit Decisioning',
+      description: 'How AGIX built an explainable AI system for Enova to hit 94.7% accuracy and 100% audit compliance.',
+      image: 'https://cms.agixtech.com/wp-content/uploads/2026/01/Enova-International-Case-Study-Image.png',
+      client: 'Enova International',
+      industry: 'Fintech',
+    },
+  },
+  'dave': {
+    webPage: {
+      name: 'Dave Fintech AI Case Study',
+      description: 'How AGIX built an empathetic AI assistant for Dave to slash support volume by 57% and hit a 93 CSAT score.',
+    },
+    breadcrumbs: [
+      { name: 'Home', url: `${SITE_URL}/` },
+      { name: 'Case Studies', url: `${SITE_URL}/case-studies/` },
+      { name: 'Dave', url: `${SITE_URL}/case-studies/dave/` },
+    ],
+    article: {
+      headline: 'Dave Case Study — Empathetic AI Assistant for Neobanking',
+      description: 'How AGIX built a conversational AI that handles 94% of inquiries for 10M members with a 93 CSAT score.',
+      image: 'https://cms.agixtech.com/wp-content/uploads/2026/01/Dave-Case-Study-Image.png',
+      client: 'Dave',
+      industry: 'Fintech',
+    },
+  },
+  'ocrolus': {
+    webPage: {
+      name: 'Ocrolus Document AI Case Study',
+      description: 'How AGIX built a document AI for Ocrolus to process 6M+ docs monthly with 99.2% accuracy.',
+    },
+    breadcrumbs: [
+      { name: 'Home', url: `${SITE_URL}/` },
+      { name: 'Case Studies', url: `${SITE_URL}/case-studies/` },
+      { name: 'Ocrolus', url: `${SITE_URL}/case-studies/ocrolus/` },
+    ],
+    article: {
+      headline: 'Ocrolus Case Study — Document AI with 99.2% Accuracy',
+      description: 'How AGIX automated 6 million financial documents monthly with 99.2% accuracy, saving $1.8M in annual labor costs.',
+      image: 'https://cms.agixtech.com/wp-content/uploads/2026/01/Ocrolus-Case-Study-Image.png',
+      client: 'Ocrolus',
+      industry: 'Fintech',
+    },
+  },
+  'babylon-health': {
+    webPage: {
+      name: 'Babylon Health Clinical AI Case Study',
+      description: 'How AGIX built a safety-first clinical AI triage system for Babylon Health with 99.2% urgent case detection.',
+    },
+    breadcrumbs: [
+      { name: 'Home', url: `${SITE_URL}/` },
+      { name: 'Case Studies', url: `${SITE_URL}/case-studies/` },
+      { name: 'Babylon Health', url: `${SITE_URL}/case-studies/babylon-health/` },
+    ],
+    article: {
+      headline: 'Babylon Health Case Study — Clinical AI Triage at Scale',
+      description: 'How AGIX structured a regulator-approved AI triage system in 15+ languages with 99.2% precision for urgent cases.',
+      image: 'https://cms.agixtech.com/wp-content/uploads/2026/01/Babylon-Health-Case-Study-Image.png',
+      client: 'Babylon Health',
+      industry: 'Healthcare',
+    },
+  },
+  'kite-therapy': {
+    webPage: {
+      name: 'Kite Therapy Mental Health AI Case Study',
+      description: 'How AGIX developed an empathetic AI for Kite Therapy to boost retention by 89% with zero-miss crisis detection.',
+    },
+    breadcrumbs: [
+      { name: 'Home', url: `${SITE_URL}/` },
+      { name: 'Case Studies', url: `${SITE_URL}/case-studies/` },
+      { name: 'Kite Therapy', url: `${SITE_URL}/case-studies/kite-therapy/` },
+    ],
+    article: {
+      headline: 'Kite Therapy Case Study — Safe Mental Health AI with Crisis Detection',
+      description: 'How AGIX powered Kite Therapy with emotional intelligence, 100% crisis detection, and seamless human escalation.',
+      image: 'https://cms.agixtech.com/wp-content/uploads/2026/01/Kite-Therapy-Case-Study-Image.png',
+      client: 'Kite Therapy',
+      industry: 'Healthcare',
+    },
+  },
+  'hello-driven': {
+    webPage: {
+      name: 'Hello Driven Healthcare Voice AI Case Study',
+      description: 'How AGIX built a healthcare voice AI for Hello Driven to reach 78% answer rate and eliminate 61% of no-shows.',
+    },
+    breadcrumbs: [
+      { name: 'Home', url: `${SITE_URL}/` },
+      { name: 'Case Studies', url: `${SITE_URL}/case-studies/` },
+      { name: 'Hello Driven', url: `${SITE_URL}/case-studies/hello-driven/` },
+    ],
+    article: {
+      headline: 'Hello Driven Case Study — Healthcare Voice AI for Patient Scheduling',
+      description: 'How AGIX engineered life-like voice agents with HIPAA-grade security, sub-300ms response times, and 50+ EHR integrations.',
+      image: 'https://cms.agixtech.com/wp-content/uploads/2026/01/Hello-Driven-Case-Study-Image.png',
+      client: 'Hello Driven',
+      industry: 'Healthcare',
+    },
+  },
+  'albertsons': {
+    webPage: {
+      name: 'Albertsons Retail AI Demand Forecasting Case Study',
+      description: 'How AGIX built an AI forecasting system for Albertsons to cut food waste by 45% and save $83M annually.',
+    },
+    breadcrumbs: [
+      { name: 'Home', url: `${SITE_URL}/` },
+      { name: 'Case Studies', url: `${SITE_URL}/case-studies/` },
+      { name: 'Albertsons', url: `${SITE_URL}/case-studies/albertsons/` },
+    ],
+    article: {
+      headline: 'Albertsons Case Study — AI-Powered Demand Forecasting',
+      description: 'How AGIX structured multi-signal demand intelligence to cut food waste by 45% and save $83M annually.',
+      image: 'https://cms.agixtech.com/wp-content/uploads/2026/01/Albertsons-Case-Study-Image.png',
+      client: 'Albertsons',
+      industry: 'Retail',
+    },
+  },
+  'kroger': {
+    webPage: {
+      name: 'Kroger E-commerce Fulfillment AI Case Study',
+      description: 'How AGIX engineered fulfillment AI for Kroger to slice pick times by 47% and drop delivery costs by 42%.',
+    },
+    breadcrumbs: [
+      { name: 'Home', url: `${SITE_URL}/` },
+      { name: 'Case Studies', url: `${SITE_URL}/case-studies/` },
+      { name: 'Kroger', url: `${SITE_URL}/case-studies/kroger/` },
+    ],
+    article: {
+      headline: 'Kroger Case Study — Smart Retail Fulfillment AI',
+      description: 'How AGIX engineered pick-path intelligence and smart substitutions for 2,700+ stores with 94% on-time delivery.',
+      image: 'https://cms.agixtech.com/wp-content/uploads/2026/01/Kroger-Case-Study-Image.png',
+      client: 'Kroger',
+      industry: 'Retail',
+    },
+  },
+  'stitch-fix': {
+    webPage: {
+      name: 'Stitch Fix Fashion AI Personalization Case Study',
+      description: 'How AGIX developed a stylist copilot for Stitch Fix to boost keep rates to 61% and cut 58% off styling time.',
+    },
+    breadcrumbs: [
+      { name: 'Home', url: `${SITE_URL}/` },
+      { name: 'Case Studies', url: `${SITE_URL}/case-studies/` },
+      { name: 'Stitch Fix', url: `${SITE_URL}/case-studies/stitch-fix/` },
+    ],
+    article: {
+      headline: 'Stitch Fix Case Study — AI-Powered Fashion Personalization',
+      description: 'How AGIX powered Stitch Fix with AI fit prediction and human-in-the-loop styling, boosting client value by 42%.',
+      image: 'https://cms.agixtech.com/wp-content/uploads/2026/01/Stitch-Fix-Case-Study-Image.png',
+      client: 'Stitch Fix',
+      industry: 'Retail',
+    },
+  },
+  'ulta-beauty': {
+    webPage: {
+      name: 'Ulta Beauty Retail Personalization AI Case Study',
+      description: 'How AGIX built a personalization engine for Ulta Beauty to skyrocket conversions by 172% and drop churn by 57%.',
+    },
+    breadcrumbs: [
+      { name: 'Home', url: `${SITE_URL}/` },
+      { name: 'Case Studies', url: `${SITE_URL}/case-studies/` },
+      { name: 'Ulta Beauty', url: `${SITE_URL}/case-studies/ulta-beauty/` },
+    ],
+    article: {
+      headline: 'Ulta Beauty Case Study — Retail Loyalty Personalization AI',
+      description: 'How AGIX engineered predictive marketing and dynamic rewards for 37M Ulta Beauty members.',
+      image: 'https://cms.agixtech.com/wp-content/uploads/2026/01/Ulta-Beauty-Case-Study-Image.png',
+      client: 'Ulta Beauty',
+      industry: 'Retail',
+    },
+  },
+  'quizlet': {
+    webPage: {
+      name: 'Quizlet Adaptive Learning AI Case Study',
+      description: 'How AGIX built Q-Chat for Quizlet to resolve 89% of misconceptions and boost learning gains by 67%.',
+    },
+    breadcrumbs: [
+      { name: 'Home', url: `${SITE_URL}/` },
+      { name: 'Case Studies', url: `${SITE_URL}/case-studies/` },
+      { name: 'Quizlet', url: `${SITE_URL}/case-studies/quizlet/` },
+    ],
+    article: {
+      headline: 'Quizlet Case Study — Socratic AI Tutor for 60M Students',
+      description: 'How AGIX structured a Socratic AI tutor for 60M students to resolve 89% of misconceptions and boost learning gains by 67%.',
+      image: 'https://cms.agixtech.com/wp-content/uploads/2026/01/Quizlet-Case-Study-Image.png',
+      client: 'Quizlet',
+      industry: 'EdTech',
+    },
+  },
+  'knewton': {
+    webPage: {
+      name: 'Knewton Adaptive Learning Systems Case Study',
+      description: 'How AGIX engineered real-time AI feedback loops for Knewton to boost course completion by 109%.',
+    },
+    breadcrumbs: [
+      { name: 'Home', url: `${SITE_URL}/` },
+      { name: 'Case Studies', url: `${SITE_URL}/case-studies/` },
+      { name: 'Knewton', url: `${SITE_URL}/case-studies/knewton/` },
+    ],
+    article: {
+      headline: 'Knewton Case Study — Knowledge Graph AI for Adaptive Learning',
+      description: 'How AGIX developed knowledge graph mapping to deliver 683% better personalization and 109% course completion boost.',
+      image: 'https://cms.agixtech.com/wp-content/uploads/2026/01/Knewton-Case-Study-Image.png',
+      client: 'Knewton',
+      industry: 'EdTech',
+    },
+  },
+  'riiid-labs': {
+    webPage: {
+      name: 'Riiid Labs Adaptive Test Prep AI Case Study',
+      description: 'How AGIX built the Santa AI engine for Riiid Labs to increase exam scores by 176% while cutting study time by 58%.',
+    },
+    breadcrumbs: [
+      { name: 'Home', url: `${SITE_URL}/` },
+      { name: 'Case Studies', url: `${SITE_URL}/case-studies/` },
+      { name: 'Riiid Labs', url: `${SITE_URL}/case-studies/riiid-labs/` },
+    ],
+    article: {
+      headline: 'Riiid Labs Case Study — Precision Adaptive Test Intelligence',
+      description: 'How AGIX constructed diagnostic AI to map 400+ concept nodes and maximize study efficiency with 176% score improvement.',
+      image: 'https://cms.agixtech.com/wp-content/uploads/2026/01/Riiid-Labs-Case-Study-Image.png',
+      client: 'Riiid Labs',
+      industry: 'EdTech',
+    },
+  },
+  'hilton-hotels': {
+    webPage: {
+      name: 'Hilton Hotels Guest Intelligence AI Case Study',
+      description: 'How AGIX engineered a guest intelligence engine for Hilton to increase RevPAR by 4.7% across 7,000 properties.',
+    },
+    breadcrumbs: [
+      { name: 'Home', url: `${SITE_URL}/` },
+      { name: 'Case Studies', url: `${SITE_URL}/case-studies/` },
+      { name: 'Hilton Hotels', url: `${SITE_URL}/case-studies/hilton-hotels/` },
+    ],
+    article: {
+      headline: 'Hilton Hotels Case Study — Predictive Guest Intelligence',
+      description: 'How AGIX architected predictive upsell engines and real-time pricing for 173M annual guests across 7,000 properties.',
+      image: 'https://cms.agixtech.com/wp-content/uploads/2026/01/Hilton-Hotels-Case-Study-Image.png',
+      client: 'Hilton Hotels',
+      industry: 'Hospitality',
+    },
+  },
+  'housecanary': {
+    webPage: {
+      name: 'HouseCanary Property Valuation AI Case Study',
+      description: 'How AGIX structured an AVM engine for HouseCanary to achieve 97.2% accuracy across 400+ property signals.',
+    },
+    breadcrumbs: [
+      { name: 'Home', url: `${SITE_URL}/` },
+      { name: 'Case Studies', url: `${SITE_URL}/case-studies/` },
+      { name: 'HouseCanary', url: `${SITE_URL}/case-studies/housecanary/` },
+    ],
+    article: {
+      headline: 'HouseCanary Case Study — Real-Time Property Valuation AI',
+      description: 'How AGIX orchestrated an AVM engine that analyzes 400+ signals with institutional-grade precision and 97.2% accuracy.',
+      image: 'https://cms.agixtech.com/wp-content/uploads/2026/01/HouseCanary-Case-Study-Image.png',
+      client: 'HouseCanary',
+      industry: 'Real Estate',
+    },
+  },
+  'mindtrip': {
+    webPage: {
+      name: 'Mindtrip Conversational Travel AI Case Study',
+      description: 'How AGIX architected a travel AI framework for Mindtrip that compressed planning cycles by 99%.',
+    },
+    breadcrumbs: [
+      { name: 'Home', url: `${SITE_URL}/` },
+      { name: 'Case Studies', url: `${SITE_URL}/case-studies/` },
+      { name: 'Mindtrip', url: `${SITE_URL}/case-studies/mindtrip/` },
+    ],
+    article: {
+      headline: 'Mindtrip Case Study — AI-Driven Trip Discovery Engine',
+      description: 'How AGIX developed a conversational engine that understands traveler personas with 91% personalization accuracy.',
+      image: 'https://cms.agixtech.com/wp-content/uploads/2026/01/Mindtrip-Case-Study-Image.png',
+      client: 'Mindtrip',
+      industry: 'Travel',
+    },
+  },
+  'polyai': {
+    webPage: {
+      name: 'PolyAI Enterprise Voice AI Case Study',
+      description: 'How AGIX engineered a voice AI for PolyAI to resolve 89% of calls and reduce costs by 74%.',
+    },
+    breadcrumbs: [
+      { name: 'Home', url: `${SITE_URL}/` },
+      { name: 'Case Studies', url: `${SITE_URL}/case-studies/` },
+      { name: 'PolyAI', url: `${SITE_URL}/case-studies/polyai/` },
+    ],
+    article: {
+      headline: 'PolyAI Case Study — Enterprise Voice AI Automation',
+      description: 'How AGIX optimized multilingual voice AI that handles millions of calls with 81% first-call resolution across 8+ languages.',
+      image: 'https://cms.agixtech.com/wp-content/uploads/2026/01/PolyAI-Case-Study-Image.png',
+      client: 'PolyAI',
+      industry: 'Customer Service',
+    },
+  },
+  'brainfish': {
+    webPage: {
+      name: 'Brainfish Support AI Case Study',
+      description: 'How AGIX built a logic-led system for Brainfish to handle 83% of ticket volume via real-time intent alignment.',
+    },
+    breadcrumbs: [
+      { name: 'Home', url: `${SITE_URL}/` },
+      { name: 'Case Studies', url: `${SITE_URL}/case-studies/` },
+      { name: 'Brainfish', url: `${SITE_URL}/case-studies/brainfish/` },
+    ],
+    article: {
+      headline: 'Brainfish Case Study — AI-Powered Support Ticket Deflection',
+      description: 'How AGIX developed a knowledge distillation engine that handles 100k+ monthly queries with 83% ticket deflection.',
+      image: 'https://cms.agixtech.com/wp-content/uploads/2026/01/Brainfish-Case-Study-Image.png',
+      client: 'Brainfish',
+      industry: 'Customer Service',
+    },
+  },
+  'properti-ai': {
+    webPage: {
+      name: 'Properti AI Real Estate Matching Case Study',
+      description: 'How AGIX engineered a property matching engine for Properti AI to boost lead conversion by 156%.',
+    },
+    breadcrumbs: [
+      { name: 'Home', url: `${SITE_URL}/` },
+      { name: 'Case Studies', url: `${SITE_URL}/case-studies/` },
+      { name: 'Properti AI', url: `${SITE_URL}/case-studies/properti-ai/` },
+    ],
+    article: {
+      headline: 'Properti AI Case Study — Lifestyle-Aware Property Discovery',
+      description: 'How AGIX optimized lifestyle-aware search to boost lead conversion by 156% and achieve 89% match accuracy.',
+      image: 'https://cms.agixtech.com/wp-content/uploads/2026/01/Properti-AI-Case-Study-Image.png',
+      client: 'Properti AI',
+      industry: 'Real Estate',
+    },
+  },
+  'dartmouth-college': {
+    webPage: {
+      name: 'Dartmouth College IT Support AI Case Study',
+      description: 'How AGIX built a 24/7 helpdesk for Dartmouth College to deflect 74% of tickets and achieve 2-minute resolution.',
+    },
+    breadcrumbs: [
+      { name: 'Home', url: `${SITE_URL}/` },
+      { name: 'Case Studies', url: `${SITE_URL}/case-studies/` },
+      { name: 'Dartmouth College', url: `${SITE_URL}/case-studies/dartmouth-college/` },
+    ],
+    article: {
+      headline: 'Dartmouth College Case Study — AI-Powered Campus IT Support',
+      description: 'How AGIX developed a support engine to handle routine IT queries with 74% ticket deflection and 96% satisfaction.',
+      image: 'https://cms.agixtech.com/wp-content/uploads/2026/01/Dartmouth-Case-Study-Image.png',
+      client: 'Dartmouth College',
+      industry: 'Education',
+    },
+  },
+  'suno': {
+    webPage: {
+      name: 'Suno Generative Music AI Case Study',
+      description: 'How AGIX re-engineered Suno audio synthesis to drop generation time from 90s to 20s and increase user retention by 34%.',
+    },
+    breadcrumbs: [
+      { name: 'Home', url: `${SITE_URL}/` },
+      { name: 'Case Studies', url: `${SITE_URL}/case-studies/` },
+      { name: 'Suno', url: `${SITE_URL}/case-studies/suno/` },
+    ],
+    article: {
+      headline: 'Suno Case Study — Accelerating Generative Music Pipelines',
+      description: 'How AGIX integrated parallel processing pipelines for real-time music iteration and multi-GPU sharding.',
+      image: 'https://cms.agixtech.com/wp-content/uploads/2026/01/Suno-Case-Study-Image.png',
+      client: 'Suno',
+      industry: 'Generative AI',
+    },
+  },
+  'innit': {
+    webPage: {
+      name: 'Innit Connected Kitchen AI Case Study',
+      description: 'How AGIX built a real-time cooking guidance engine that synchronized smart kitchen ecosystems for Innit.',
+    },
+    breadcrumbs: [
+      { name: 'Home', url: `${SITE_URL}/` },
+      { name: 'Case Studies', url: `${SITE_URL}/case-studies/` },
+      { name: 'Innit', url: `${SITE_URL}/case-studies/innit/` },
+    ],
+    article: {
+      headline: 'Innit Case Study — Connected Kitchen Systems Engineering',
+      description: 'How AGIX architected appliance coordination to uplift recipe success rates by 89% and compress preparation cycles by 45%.',
+      image: 'https://cms.agixtech.com/wp-content/uploads/2026/01/Innit-Case-Study-Image.png',
+      client: 'Innit',
+      industry: 'IoT / Smart Home',
+    },
+  },
+  'hungryroot': {
+    webPage: {
+      name: 'Hungryroot Meal Planning AI Case Study',
+      description: 'How AGIX reduced food waste by 73% using the grocery optimization engine engineered for Hungryroot.',
+    },
+    breadcrumbs: [
+      { name: 'Home', url: `${SITE_URL}/` },
+      { name: 'Case Studies', url: `${SITE_URL}/case-studies/` },
+      { name: 'Hungryroot', url: `${SITE_URL}/case-studies/hungryroot/` },
+    ],
+    article: {
+      headline: 'Hungryroot Case Study — Customized Meal Planning AI',
+      description: 'How AGIX deployed a selection lattice that maps dietary requirements against weekly food logistics with 94% meal alignment.',
+      image: 'https://cms.agixtech.com/wp-content/uploads/2026/01/Hungryroot-Case-Study-Image.png',
+      client: 'Hungryroot',
+      industry: 'Food Tech',
+    },
+  },
+  'naratix': {
+    webPage: {
+      name: 'Naratix Content Localization AI Case Study',
+      description: 'How AGIX drove a 129% conversion uplift with a cultural adaptation framework for 28 markets.',
+    },
+    breadcrumbs: [
+      { name: 'Home', url: `${SITE_URL}/` },
+      { name: 'Case Studies', url: `${SITE_URL}/case-studies/` },
+      { name: 'Naratix', url: `${SITE_URL}/case-studies/naratix/` },
+    ],
+    article: {
+      headline: 'Naratix Case Study — Multi-Market Content Localization',
+      description: 'How AGIX engineered a content automation studio to localize product content for 28 markets with 129% conversion uplift.',
+      image: 'https://cms.agixtech.com/wp-content/uploads/2026/01/AlphaSense-Case-Study-Image.png',
+      client: 'Naratix',
+      industry: 'E-commerce',
+    },
+  },
+  'alphasense': {
+    webPage: {
+      name: 'AlphaSense Financial Research AI Case Study',
+      description: 'How AGIX helped AlphaSense achieve 97% faster research with 500% analyst productivity gains using NLP analytics.',
+    },
+    breadcrumbs: [
+      { name: 'Home', url: `${SITE_URL}/` },
+      { name: 'Case Studies', url: `${SITE_URL}/case-studies/` },
+      { name: 'AlphaSense', url: `${SITE_URL}/case-studies/alphasense/` },
+    ],
+    article: {
+      headline: 'AlphaSense Case Study — AI-Powered Financial Research & NLP Analytics',
+      description: 'How AGIX engineered NLP-powered research systems that surface signals from earnings calls, filings, and research in seconds.',
+      image: 'https://cms.agixtech.com/wp-content/uploads/2026/01/AlphaSense-Case-Study-Image.png',
+      client: 'AlphaSense',
+      industry: 'Financial Services',
+    },
+  },
+  'navan': {
+    webPage: {
+      name: 'Navan Corporate Travel AI Case Study',
+      description: 'How AGIX lowered corporate travel overhead by 23% with an expense governance framework achieving 94% policy compliance.',
+    },
+    breadcrumbs: [
+      { name: 'Home', url: `${SITE_URL}/` },
+      { name: 'Case Studies', url: `${SITE_URL}/case-studies/` },
+      { name: 'Navan', url: `${SITE_URL}/case-studies/navan/` },
+    ],
+    article: {
+      headline: 'Navan Case Study — Corporate Spend Governance Systems',
+      description: 'How AGIX architected a risk-mapping engine that processes high-volume travel logistics and automates expense reporting in real-time.',
+      image: 'https://cms.agixtech.com/wp-content/uploads/2026/01/Navan-Case-Study-Image.png',
+      client: 'Navan',
+      industry: 'Corporate Travel',
+    },
+  },
+  'geovea': {
+    webPage: {
+      name: 'Geovea Dynamic Trip Planning AI Case Study',
+      description: 'How AGIX drove travel engagement by 214% with a route intelligence lattice providing 92% plan accuracy.',
+    },
+    breadcrumbs: [
+      { name: 'Home', url: `${SITE_URL}/` },
+      { name: 'Case Studies', url: `${SITE_URL}/case-studies/` },
+      { name: 'Geovea', url: `${SITE_URL}/case-studies/geovea/` },
+    ],
+    article: {
+      headline: 'Geovea Case Study — Dynamic Trip Itinerary Systems',
+      description: 'How AGIX deployed a synchronization framework with crowd-avoidance profiling to optimize journey flows and raise user ratings to 4.9/5.',
+      image: 'https://cms.agixtech.com/wp-content/uploads/2026/01/Luxury-Escapes-Case-Study-Image.png',
+      client: 'Geovea',
+      industry: 'Travel',
+    },
+  },
+  'luxury-escapes': {
+    webPage: {
+      name: 'Luxury Escapes Premium Concierge AI Case Study',
+      description: 'How AGIX expanded concierge service capacity by 36x with a high-touch curation framework achieving 96/100 guest satisfaction.',
+    },
+    breadcrumbs: [
+      { name: 'Home', url: `${SITE_URL}/` },
+      { name: 'Case Studies', url: `${SITE_URL}/case-studies/` },
+      { name: 'Luxury Escapes', url: `${SITE_URL}/case-studies/luxury-escapes/` },
+    ],
+    article: {
+      headline: 'Luxury Escapes Case Study — Premium Concierge Scaling Systems',
+      description: 'How AGIX developed a curation engine processing 47 preference signals to deliver bespoke VIP experiences for 4,500 guests daily.',
+      image: 'https://cms.agixtech.com/wp-content/uploads/2026/01/AlphaSense-Case-Study-Image.png',
+      client: 'Luxury Escapes',
+      industry: 'Luxury Travel',
+    },
+  },
+};
+
+export function generateCaseStudyPageSchema(path: string, data: CaseStudySchemaData) {
+  const url = `${SITE_URL}${path}`;
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": `${SITE_URL}/#organization`,
+        "name": "AGIX Technologies",
+        "url": SITE_URL,
+        "logo": `${SITE_URL}/logo.png`,
+      },
+      {
+        "@type": "WebPage",
+        "@id": `${url}#webpage`,
+        "url": url,
+        "name": data.webPage.name,
+        "description": data.webPage.description,
+        "isPartOf": { "@type": "WebSite", "@id": `${SITE_URL}/#website` },
+        "about": { "@type": "Organization", "@id": `${SITE_URL}/#organization` },
+        "inLanguage": "en",
+        "publisher": { "@type": "Organization", "@id": `${SITE_URL}/#organization` },
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": `${url}#breadcrumb`,
+        "itemListElement": data.breadcrumbs.map((item, index) => ({
+          "@type": "ListItem",
+          "position": index + 1,
+          "name": item.name,
+          "item": item.url,
+        })),
+      },
+      {
+        "@type": "Article",
+        "@id": `${url}#article`,
+        "headline": data.article.headline,
+        "description": data.article.description,
+        "url": url,
+        "image": data.article.image,
+        "author": { "@type": "Organization", "@id": `${SITE_URL}/#organization` },
+        "publisher": { "@type": "Organization", "@id": `${SITE_URL}/#organization` },
+        "mainEntityOfPage": { "@id": `${url}#webpage` },
+        "articleSection": "Case Study",
+        "about": { "@type": "Thing", "name": data.article.industry },
+        "mentions": { "@type": "Organization", "name": data.article.client },
+        "inLanguage": "en",
+      },
+    ],
+  };
+}
+
 export function generatePageSchema(path: string, data: PageSchemaData) {
   const url = `${SITE_URL}${path}`;
   return {
