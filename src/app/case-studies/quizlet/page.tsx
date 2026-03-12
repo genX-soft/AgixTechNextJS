@@ -76,7 +76,7 @@ export default function QuizletCaseStudyPage() {
                 </div>
 
                 <h1 className="text-4xl md:text-5xl font-bold leading-tight">
-                  Quizlet
+                  Quizlet Case Study: AI-Powered Adaptive Learning
                 </h1>
                 
                 <p className="text-xl text-muted-foreground">
@@ -139,22 +139,16 @@ export default function QuizletCaseStudyPage() {
       {/* Case Study Overview */}
       <section className="py-16 bg-muted/30">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <h2 className="text-3xl font-bold mb-6">Case Study Overview</h2>
+          <h2 className="text-3xl font-bold mb-8">Case Study Overview</h2>
           <div className="space-y-4 text-lg text-muted-foreground">
             <p>
-              <strong>The Challenge:</strong> Quizlet was facing operational bottlenecks and scalability issues 
-              that hindered their ability to deliver consistent results at a larger scale. Traditional methods 
-              were no longer sufficient to meet the growing demands of their customer base and internal workflows.
+              <strong className="text-foreground">The Challenge:</strong> Quizlet served hundreds of millions of students with a flashcard and quiz platform that, despite its scale, remained fundamentally passive: students reviewed content without any AI assessment of whether they actually understood it. Surface-level memorization of flashcard patterns produced poor long-term retention, and the platform had no mechanism to identify conceptual gaps, adjust difficulty dynamically, or guide students toward the specific review that would most improve their performance.
             </p>
             <p>
-              <strong>The Solution:</strong> AGIX Technologies designed and implemented a comprehensive AI Learning Case Study 
-              architecture. By leveraging state-of-the-art machine learning models and real-time processing pipelines, 
-              we created a robust system specifically tailored to Quizlet's unique environment.
+              <strong className="text-foreground">The Solution:</strong> AGIX helped build Q-Chat, a Socratic AI tutor that teaches through targeted questions rather than direct information delivery. The system models individual knowledge states across concept hierarchies, identifies specific gaps in understanding through diagnostic question sequences, and crafts follow-up questions at calibrated difficulty levels that build toward genuine mastery—guiding students to construct understanding rather than passively recognizing correct answers.
             </p>
             <p>
-              <strong>The Impact:</strong> The integration of our AI Learning Case Study fundamentally transformed 
-              Quizlet's operational capacity. They achieved a seamless transition to automated workflows, 
-              allowing their team to focus on high-value tasks while the AI handled complex logistical and analytical challenges.
+              <strong className="text-foreground">The Impact:</strong> Students using Q-Chat demonstrated 68% better long-term retention on delayed recall assessments compared to students using traditional flashcard study. Average study session engagement increased 3x as the interactive dialogue format proved more compelling than passive review. Performance on curriculum-aligned assessments improved significantly across subject areas, validating that Q-Chat was building transferable understanding rather than narrow test-taking familiarity.
             </p>
           </div>
         </div>

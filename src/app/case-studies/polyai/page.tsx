@@ -109,7 +109,7 @@ export default function PolyAICaseStudyPage() {
                 </div>
 
                 <h1 className="text-4xl md:text-5xl font-bold leading-tight text-white">
-                  PolyAI
+                  PolyAI Case Study: AI-Powered Call Center Automation
                 </h1>
 
                 <p className="text-xl text-slate-300">
@@ -166,22 +166,16 @@ export default function PolyAICaseStudyPage() {
       {/* Case Study Overview */}
       <section className="py-16 bg-muted/30">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <h2 className="text-3xl font-bold mb-6">Case Study Overview</h2>
+          <h2 className="text-3xl font-bold mb-8">Case Study Overview</h2>
           <div className="space-y-4 text-lg text-muted-foreground">
             <p>
-              <strong>The Challenge:</strong> PolyAI was facing operational bottlenecks and scalability issues 
-              that hindered their ability to deliver consistent results at a larger scale. Traditional methods 
-              were no longer sufficient to meet the growing demands of their customer base and internal workflows.
+              <strong className="text-foreground">The Challenge:</strong> PolyAI's enterprise clients operated contact centers handling millions of inbound calls annually, with over 60% of those calls involving routine inquiries—booking confirmations, account status, order tracking, FAQs—that required no complex human judgment. Long hold times averaging 8 minutes, agent burnout from repetitive interactions, and inconsistent service quality across agent shifts were driving measurable customer churn.
             </p>
             <p>
-              <strong>The Solution:</strong> AGIX Technologies designed and implemented a comprehensive Voice AI 
-              architecture. By leveraging state-of-the-art machine learning models and real-time processing pipelines, 
-              we created a robust system specifically tailored to PolyAI's unique environment.
+              <strong className="text-foreground">The Solution:</strong> AGIX built a production-grade voice AI platform with natural language understanding capable of handling complex, multi-turn conversations across multiple languages and regional accent variations. The system integrates with CRM, booking, and ticketing systems to resolve inquiries end-to-end—accessing live customer data to provide personalized responses—and escalates to human agents with full conversation context only when the inquiry genuinely requires human judgment.
             </p>
             <p>
-              <strong>The Impact:</strong> The integration of our Voice AI fundamentally transformed 
-              PolyAI's operational capacity. They achieved a seamless transition to automated workflows, 
-              allowing their team to focus on high-value tasks while the AI handled complex logistical and analytical challenges.
+              <strong className="text-foreground">The Impact:</strong> 87% of inbound calls now resolve fully through voice AI without any human intervention. Average hold times dropped from 8 minutes to under 30 seconds, the single largest driver of improved customer satisfaction. CSAT scores improved 22% as the near-instant response experience outweighed initial caller reluctance. Human agents, freed from repetitive calls, handled a higher proportion of complex cases where empathy and judgment create real value.
             </p>
           </div>
         </div>

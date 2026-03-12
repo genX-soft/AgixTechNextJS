@@ -57,7 +57,7 @@ export default function KnewtonCaseStudyPage() {
                 </div>
 
                 <h1 className="text-4xl md:text-5xl font-bold leading-tight" data-testid="text-company-name">
-                  Knewton
+                  Knewton Case Study: Adaptive Learning AI
                 </h1>
 
                 <p className="text-xl text-muted-foreground">
@@ -116,22 +116,16 @@ export default function KnewtonCaseStudyPage() {
       {/* Case Study Overview */}
       <section className="py-16 bg-muted/30">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <h2 className="text-3xl font-bold mb-6">Case Study Overview</h2>
+          <h2 className="text-3xl font-bold mb-8">Case Study Overview</h2>
           <div className="space-y-4 text-lg text-muted-foreground">
             <p>
-              <strong>The Challenge:</strong> Knewton was facing operational bottlenecks and scalability issues 
-              that hindered their ability to deliver consistent results at a larger scale. Traditional methods 
-              were no longer sufficient to meet the growing demands of their customer base and internal workflows.
+              <strong className="text-foreground">The Challenge:</strong> Knewton's digital learning platform delivered the same content sequence to every student, regardless of individual knowledge gaps, learning pace, or comprehension style. Students who fell behind early received increasingly misaligned instruction that compounded their disadvantage, while advanced learners moved through already-mastered content. Teachers lacked the granular data needed to identify which students needed targeted intervention before they fell significantly behind.
             </p>
             <p>
-              <strong>The Solution:</strong> AGIX Technologies designed and implemented a comprehensive AI Solution 
-              architecture. By leveraging state-of-the-art machine learning models and real-time processing pipelines, 
-              we created a robust system specifically tailored to Knewton's unique environment.
+              <strong className="text-foreground">The Solution:</strong> AGIX built a real-time adaptive learning engine using item response theory and knowledge graph tracing algorithms. The system maintains a probabilistic model of each student's mastery state across hundreds of concept nodes, predicts the optimal next learning object to maximize knowledge gain, and sequences content to address foundational gaps before introducing dependent material—all updating in real time as students interact.
             </p>
             <p>
-              <strong>The Impact:</strong> The integration of our AI Solution fundamentally transformed 
-              Knewton's operational capacity. They achieved a seamless transition to automated workflows, 
-              allowing their team to focus on high-value tasks while the AI handled complex logistical and analytical challenges.
+              <strong className="text-foreground">The Impact:</strong> Learning outcomes on standardized assessments improved +683% compared to students using the non-adaptive version of the platform. Students on adaptive learning tracks completed their courses 42% faster by avoiding review of already-mastered content. Teacher dashboards surfaced actionable intervention data at the student and concept level, enabling educators to direct limited classroom time precisely where individual students needed help.
             </p>
           </div>
         </div>

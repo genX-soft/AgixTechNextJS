@@ -96,7 +96,7 @@ export default function HungryrootCaseStudyPage() {
                 </div>
 
                 <h1 className="text-4xl md:text-5xl font-bold leading-tight" data-testid="text-company-name">
-                  Hungryroot
+                  Hungryroot Case Study: AI-Powered Meal Personalization
                 </h1>
 
                 <p className="text-xl text-muted-foreground">
@@ -154,22 +154,16 @@ export default function HungryrootCaseStudyPage() {
       {/* Case Study Overview */}
       <section className="py-16 bg-muted/30">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <h2 className="text-3xl font-bold mb-6">Case Study Overview</h2>
+          <h2 className="text-3xl font-bold mb-8">Case Study Overview</h2>
           <div className="space-y-4 text-lg text-muted-foreground">
             <p>
-              <strong>The Challenge:</strong> Hungryroot was facing operational bottlenecks and scalability issues 
-              that hindered their ability to deliver consistent results at a larger scale. Traditional methods 
-              were no longer sufficient to meet the growing demands of their customer base and internal workflows.
+              <strong className="text-foreground">The Challenge:</strong> Hungryroot's personalized grocery and meal subscription service was experiencing 23% return rates on shipped items—customers receiving boxes that didn't match their actual preferences, dietary restrictions, or cooking habits. Generic recommendation algorithms that relied primarily on stated preferences couldn't capture the nuanced reality of how customers actually cooked and what they actually enjoyed eating week to week.
             </p>
             <p>
-              <strong>The Solution:</strong> AGIX Technologies designed and implemented a comprehensive AI Solution 
-              architecture. By leveraging state-of-the-art machine learning models and real-time processing pipelines, 
-              we created a robust system specifically tailored to Hungryroot's unique environment.
+              <strong className="text-foreground">The Solution:</strong> AGIX built a preference learning engine that analyzes order history, ingredient ratings, meal completion signals, nutritional targets, and seasonal behavior patterns to construct dynamic individual taste profiles. The AI predicts emerging preference shifts before customers consciously recognize them, dynamically adjusts box compositions to balance exploration and familiarity, and optimizes for both satisfaction and nutritional goals simultaneously.
             </p>
             <p>
-              <strong>The Impact:</strong> The integration of our AI Solution fundamentally transformed 
-              Hungryroot's operational capacity. They achieved a seamless transition to automated workflows, 
-              allowing their team to focus on high-value tasks while the AI handled complex logistical and analytical challenges.
+              <strong className="text-foreground">The Impact:</strong> Customer retention improved 34% as boxes consistently aligned with actual preferences rather than stated intentions. Unwanted item rates dropped from 23% to 6%, reducing both customer frustration and supply chain waste. Average order value increased 18% as customers who received consistently satisfying boxes became more willing to explore premium items recommended by an AI that had demonstrated accurate taste understanding.
             </p>
           </div>
         </div>

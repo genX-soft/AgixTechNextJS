@@ -87,7 +87,7 @@ export default function AlphaSenseCaseStudyPage() {
                 </div>
 
                 <h1 className="text-4xl md:text-5xl font-bold leading-tight" data-testid="text-company-name">
-                  AlphaSense
+                  AlphaSense Case Study: AI-Powered Market Intelligence
                 </h1>
 
                 <p className="text-xl text-muted-foreground">
@@ -145,22 +145,16 @@ export default function AlphaSenseCaseStudyPage() {
       {/* Case Study Overview */}
       <section className="py-16 bg-muted/30">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <h2 className="text-3xl font-bold mb-6">Case Study Overview</h2>
+          <h2 className="text-3xl font-bold mb-8">Case Study Overview</h2>
           <div className="space-y-4 text-lg text-muted-foreground">
             <p>
-              <strong>The Challenge:</strong> AlphaSense was facing operational bottlenecks and scalability issues 
-              that hindered their ability to deliver consistent results at a larger scale. Traditional methods 
-              were no longer sufficient to meet the growing demands of their customer base and internal workflows.
+              <strong className="text-foreground">The Challenge:</strong> Financial analysts at investment firms were spending up to 80% of their time manually searching earnings calls, SEC filings, analyst reports, and news articles for market signals. The sheer volume of documents—millions published every day—made it impossible to stay current across all relevant companies. Competitors who could surface critical insights faster gained decisive advantages that compounded over time.
             </p>
             <p>
-              <strong>The Solution:</strong> AGIX Technologies designed and implemented a comprehensive AI Solution 
-              architecture. By leveraging state-of-the-art machine learning models and real-time processing pipelines, 
-              we created a robust system specifically tailored to AlphaSense's unique environment.
+              <strong className="text-foreground">The Solution:</strong> AGIX built a large-scale NLP analytics engine that ingests 10,000+ data sources in real time, including earnings call transcripts, SEC filings, broker research, news, and supply chain data. Custom financial language models extract signals, track sentiment changes over time, identify anomalies, and surface pattern matches that would take human analysts weeks to discover manually.
             </p>
             <p>
-              <strong>The Impact:</strong> The integration of our AI Solution fundamentally transformed 
-              AlphaSense's operational capacity. They achieved a seamless transition to automated workflows, 
-              allowing their team to focus on high-value tasks while the AI handled complex logistical and analytical challenges.
+              <strong className="text-foreground">The Impact:</strong> Research time dropped 97%, allowing analysts to cover five times more companies with the same headcount. Clients reported +500% productivity gains across their research teams. Some funds attributed early position entries to AI-surfaced signals that became market-moving news an average of 18 hours later, creating measurable alpha generation directly tied to the platform.
             </p>
           </div>
         </div>

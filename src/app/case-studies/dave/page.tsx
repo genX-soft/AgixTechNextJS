@@ -108,7 +108,7 @@ export default function DaveCaseStudyPage() {
                 </div>
 
                 <h1 className="text-4xl md:text-5xl font-bold leading-tight">
-                  Dave
+                  Dave Case Study: Conversational AI for Personal Finance
                 </h1>
 
                 <p className="text-xl text-muted-foreground">
@@ -170,22 +170,16 @@ export default function DaveCaseStudyPage() {
       {/* Case Study Overview */}
       <section className="py-16 bg-muted/30">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <h2 className="text-3xl font-bold mb-6">Case Study Overview</h2>
+          <h2 className="text-3xl font-bold mb-8">Case Study Overview</h2>
           <div className="space-y-4 text-lg text-muted-foreground">
             <p>
-              <strong>The Challenge:</strong> Dave was facing operational bottlenecks and scalability issues 
-              that hindered their ability to deliver consistent results at a larger scale. Traditional methods 
-              were no longer sufficient to meet the growing demands of their customer base and internal workflows.
+              <strong className="text-foreground">The Challenge:</strong> Dave's users—primarily younger, underbanked adults with irregular income streams—frequently experienced overdrafts because traditional banking apps provided no proactive cash flow visibility. Generic spending alerts arrived too late to be actionable, and users had no accessible tool to understand how gig income, subscription charges, and variable expenses were interacting to create account gaps.
             </p>
             <p>
-              <strong>The Solution:</strong> AGIX Technologies designed and implemented a comprehensive Fintech AI Assistant Case Study 
-              architecture. By leveraging state-of-the-art machine learning models and real-time processing pipelines, 
-              we created a robust system specifically tailored to Dave's unique environment.
+              <strong className="text-foreground">The Solution:</strong> AGIX built a conversational AI financial coach that proactively monitors each user's income patterns, upcoming bill obligations, and spending velocity. Using predictive cash flow modeling calibrated for gig economy income irregularity, the system surfaces personalized, empathetic guidance in natural language before shortfalls occur—recommending specific actions like timing a transfer or deferring a discretionary purchase.
             </p>
             <p>
-              <strong>The Impact:</strong> The integration of our Fintech AI Assistant Case Study fundamentally transformed 
-              Dave's operational capacity. They achieved a seamless transition to automated workflows, 
-              allowing their team to focus on high-value tasks while the AI handled complex logistical and analytical challenges.
+              <strong className="text-foreground">The Impact:</strong> Overdraft incidents among actively engaged users dropped 31%. User interaction with financial insights increased 4x, indicating that the conversational format resonated where traditional notification-based approaches had failed. Dave's AI coaching feature became the top-rated element of the app in user surveys, contributing to a 12% improvement in monthly active user retention among the core demographic.
             </p>
           </div>
         </div>

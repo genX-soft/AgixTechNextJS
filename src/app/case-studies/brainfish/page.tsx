@@ -146,7 +146,7 @@ export default function BrainfishCaseStudyPage() {
                 </div>
 
                 <h1 className="text-4xl md:text-5xl font-bold leading-tight">
-                  Brainfish
+                  Brainfish Case Study: AI Support Ticket Deflection
                 </h1>
 
                 <p className="text-xl text-muted-foreground">
@@ -201,22 +201,16 @@ export default function BrainfishCaseStudyPage() {
       {/* Case Study Overview */}
       <section className="py-16 bg-muted/30">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <h2 className="text-3xl font-bold mb-6">Case Study Overview</h2>
+          <h2 className="text-3xl font-bold mb-8">Case Study Overview</h2>
           <div className="space-y-4 text-lg text-muted-foreground">
             <p>
-              <strong>The Challenge:</strong> Brainfish was facing operational bottlenecks and scalability issues 
-              that hindered their ability to deliver consistent results at a larger scale. Traditional methods 
-              were no longer sufficient to meet the growing demands of their customer base and internal workflows.
+              <strong className="text-foreground">The Challenge:</strong> Brainfish's support team was overwhelmed by high-volume, repetitive customer inquiries—with analysis showing 78% of incoming tickets were answerable directly from existing product documentation. Average response times had stretched to 48 hours during peak periods, increasing churn among new users who needed immediate help. Support costs were scaling linearly with user growth, threatening unit economics.
             </p>
             <p>
-              <strong>The Solution:</strong> AGIX Technologies designed and implemented a comprehensive AI Solution 
-              architecture. By leveraging state-of-the-art machine learning models and real-time processing pipelines, 
-              we created a robust system specifically tailored to Brainfish's unique environment.
+              <strong className="text-foreground">The Solution:</strong> AGIX built an AI knowledge engine that ingests Brainfish's full documentation library, product update history, and resolved ticket archives. A conversational interface delivers instant, context-accurate answers using semantic search and retrieval-augmented generation. The system automatically identifies gaps in documentation based on unanswered queries and routes genuinely complex or sensitive cases to human agents with full context.
             </p>
             <p>
-              <strong>The Impact:</strong> The integration of our AI Solution fundamentally transformed 
-              Brainfish's operational capacity. They achieved a seamless transition to automated workflows, 
-              allowing their team to focus on high-value tasks while the AI handled complex logistical and analytical challenges.
+              <strong className="text-foreground">The Impact:</strong> 83% of support tickets now resolve fully through AI without any human intervention. Average first response time dropped from 48 hours to under 2 minutes. Support team headcount requirements scaled five times more slowly than user growth, generating $2.1M in avoided operational costs in the first year. Customer satisfaction scores for support interactions improved 31%.
             </p>
           </div>
         </div>

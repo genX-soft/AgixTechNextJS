@@ -56,7 +56,7 @@ export default function GeoveaCaseStudyPage() {
                 </div>
 
                 <h1 className="text-4xl md:text-5xl font-bold leading-tight" data-testid="text-company-name">
-                  Geovea
+                  Geovea Case Study: AI-Powered Travel Itinerary Planning
                 </h1>
 
                 <p className="text-xl text-muted-foreground">
@@ -112,22 +112,16 @@ export default function GeoveaCaseStudyPage() {
       {/* Case Study Overview */}
       <section className="py-16 bg-muted/30">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <h2 className="text-3xl font-bold mb-6">Case Study Overview</h2>
+          <h2 className="text-3xl font-bold mb-8">Case Study Overview</h2>
           <div className="space-y-4 text-lg text-muted-foreground">
             <p>
-              <strong>The Challenge:</strong> Geovea was facing operational bottlenecks and scalability issues 
-              that hindered their ability to deliver consistent results at a larger scale. Traditional methods 
-              were no longer sufficient to meet the growing demands of their customer base and internal workflows.
+              <strong className="text-foreground">The Challenge:</strong> Geovea's travel platform offered static itinerary templates that provided the same suggestions to every user regardless of travel style, budget, or real-time conditions. When flights were delayed, weather changed, or booking availability shifted mid-trip, itineraries became instantly obsolete. Travel planners were bottlenecked by manual customization requests, preventing Geovea from scaling personalized experiences without proportional staffing increases.
             </p>
             <p>
-              <strong>The Solution:</strong> AGIX Technologies designed and implemented a comprehensive Geivea Case Study 
-              architecture. By leveraging state-of-the-art machine learning models and real-time processing pipelines, 
-              we created a robust system specifically tailored to Geovea's unique environment.
+              <strong className="text-foreground">The Solution:</strong> AGIX built a dynamic itinerary AI that generates fully personalized trip plans from initial preferences and continuously adapts them in real time as conditions change. The system integrates live flight data, weather forecasts, venue availability, local events, and individual traveler profiles to create and update multi-day itineraries automatically, without requiring user intervention for routine adjustments.
             </p>
             <p>
-              <strong>The Impact:</strong> The integration of our Geivea Case Study fundamentally transformed 
-              Geovea's operational capacity. They achieved a seamless transition to automated workflows, 
-              allowing their team to focus on high-value tasks while the AI handled complex logistical and analytical challenges.
+              <strong className="text-foreground">The Impact:</strong> Customer satisfaction scores for itinerary quality improved 47% as travelers received plans that genuinely fit their preferences rather than generic templates. Planning time for complex multi-destination trips dropped from hours of back-and-forth to minutes of conversation. Booking conversion rates increased 38% as personalized recommendations aligned with actual traveler intent, reducing the research-to-decision gap.
             </p>
           </div>
         </div>

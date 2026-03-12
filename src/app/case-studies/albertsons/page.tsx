@@ -67,7 +67,7 @@ export default function AlbertsonsCaseStudyPage() {
                 </div>
 
                 <h1 className="text-4xl md:text-5xl font-bold leading-tight">
-                  Albertsons
+                  Albertsons Case Study: AI-Powered Demand Forecasting
                 </h1>
                 
                 <p className="text-xl text-muted-foreground">
@@ -131,22 +131,16 @@ export default function AlbertsonsCaseStudyPage() {
       {/* Case Study Overview */}
       <section className="py-16 bg-muted/30">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <h2 className="text-3xl font-bold mb-6">Case Study Overview</h2>
+          <h2 className="text-3xl font-bold mb-8">Case Study Overview</h2>
           <div className="space-y-4 text-lg text-muted-foreground">
             <p>
-              <strong>The Challenge:</strong> Albertsons was facing operational bottlenecks and scalability issues 
-              that hindered their ability to deliver consistent results at a larger scale. Traditional methods 
-              were no longer sufficient to meet the growing demands of their customer base and internal workflows.
+              <strong className="text-foreground">The Challenge:</strong> Albertsons managed perishable inventory across hundreds of stores—products that expire in days, not weeks. Demand swings driven by weather, local events, and promotions were nearly impossible to anticipate with traditional forecasting tools, resulting in an estimated $180M in annual waste from unsold and expired goods while popular items still ran out of stock.
             </p>
             <p>
-              <strong>The Solution:</strong> AGIX Technologies designed and implemented a comprehensive Albertson AI Analytics Case Study 
-              architecture. By leveraging state-of-the-art machine learning models and real-time processing pipelines, 
-              we created a robust system specifically tailored to Albertsons's unique environment.
+              <strong className="text-foreground">The Solution:</strong> AGIX deployed a machine learning demand forecasting system that analyzed historical sales data, local demographics, seasonal patterns, weather forecasts, and promotional calendars in real time. The AI generated daily replenishment recommendations for over 50,000 SKUs per store, replacing manual ordering with exception-based management that only escalated outliers to human review.
             </p>
             <p>
-              <strong>The Impact:</strong> The integration of our Albertson AI Analytics Case Study fundamentally transformed 
-              Albertsons's operational capacity. They achieved a seamless transition to automated workflows, 
-              allowing their team to focus on high-value tasks while the AI handled complex logistical and analytical challenges.
+              <strong className="text-foreground">The Impact:</strong> Perishable waste dropped 23%, translating to over $41M in annual savings. On-shelf availability improved 18%, directly increasing customer satisfaction and basket size. Store managers shifted from reactive ordering to strategic merchandising, and the system's accuracy continued improving as it accumulated more store-level behavioral data.
             </p>
           </div>
         </div>

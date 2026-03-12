@@ -68,7 +68,7 @@ export default function StitchFixCaseStudyPage() {
                 </div>
 
                 <h1 className="text-4xl md:text-5xl font-bold leading-tight">
-                  Stitch Fix
+                  Stitch Fix Case Study: AI-Powered Style Personalization
                 </h1>
                 
                 <p className="text-xl text-muted-foreground">
@@ -140,22 +140,16 @@ export default function StitchFixCaseStudyPage() {
       {/* Case Study Overview */}
       <section className="py-16 bg-muted/30">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <h2 className="text-3xl font-bold mb-6">Case Study Overview</h2>
+          <h2 className="text-3xl font-bold mb-8">Case Study Overview</h2>
           <div className="space-y-4 text-lg text-muted-foreground">
             <p>
-              <strong>The Challenge:</strong> Stitch Fix was facing operational bottlenecks and scalability issues 
-              that hindered their ability to deliver consistent results at a larger scale. Traditional methods 
-              were no longer sufficient to meet the growing demands of their customer base and internal workflows.
+              <strong className="text-foreground">The Challenge:</strong> Stitch Fix's human stylists were exceptionally skilled but fundamentally constrained by time: each could realistically manage a limited number of active client profiles, making individualized styling difficult to scale. Algorithmic recommendation systems alone couldn't capture the nuanced interplay of body proportions, personal style identity, lifestyle context, and evolving fashion preferences that good styling requires—producing recommendations that felt generic compared to what expert human stylists could achieve.
             </p>
             <p>
-              <strong>The Solution:</strong> AGIX Technologies designed and implemented a comprehensive AI Solution 
-              architecture. By leveraging state-of-the-art machine learning models and real-time processing pipelines, 
-              we created a robust system specifically tailored to Stitch Fix's unique environment.
+              <strong className="text-foreground">The Solution:</strong> AGIX built a hybrid AI system where collaborative filtering and multi-modal deep learning models analyze purchase history, style ratings, body measurements, lifestyle questionnaire responses, and even external fashion trend signals to pre-select high-probability candidates for each client. Human stylists review and refine the AI's shortlist using their expert judgment, and their selection patterns become training signal that continuously improves future candidate sets.
             </p>
             <p>
-              <strong>The Impact:</strong> The integration of our AI Solution fundamentally transformed 
-              Stitch Fix's operational capacity. They achieved a seamless transition to automated workflows, 
-              allowing their team to focus on high-value tasks while the AI handled complex logistical and analytical challenges.
+              <strong className="text-foreground">The Impact:</strong> Stylist capacity increased 4x as AI pre-selection reduced the manual review time required per client from hours to minutes. Keep rates—the percentage of shipped items retained by clients—improved 31%, indicating that the AI-human collaboration was achieving better personalization than either could independently. This combination of efficiency and quality enabled Stitch Fix to serve over 4 million active clients while maintaining the individualized experience central to their brand promise.
             </p>
           </div>
         </div>

@@ -57,7 +57,7 @@ export default function LuxuryEscapesCaseStudyPage() {
                 </div>
 
                 <h1 className="text-4xl md:text-5xl font-bold leading-tight" data-testid="text-company-name">
-                  Luxury Escapes
+                  Luxury Escapes Case Study: AI-Powered Travel Concierge
                 </h1>
 
                 <p className="text-xl text-muted-foreground">
@@ -115,22 +115,16 @@ export default function LuxuryEscapesCaseStudyPage() {
       {/* Case Study Overview */}
       <section className="py-16 bg-muted/30">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <h2 className="text-3xl font-bold mb-6">Case Study Overview</h2>
+          <h2 className="text-3xl font-bold mb-8">Case Study Overview</h2>
           <div className="space-y-4 text-lg text-muted-foreground">
             <p>
-              <strong>The Challenge:</strong> Luxury Escapes was facing operational bottlenecks and scalability issues 
-              that hindered their ability to deliver consistent results at a larger scale. Traditional methods 
-              were no longer sufficient to meet the growing demands of their customer base and internal workflows.
+              <strong className="text-foreground">The Challenge:</strong> Luxury Escapes served high-net-worth travelers who expected the white-glove concierge experience at digital scale—something fundamentally at odds with the economics of manual travel consulting. Complex multi-destination trip inquiries required 24–48 hours of research before consultants could respond with a proposal, creating friction at the most critical moment of purchase intent for a market segment with low tolerance for delays.
             </p>
             <p>
-              <strong>The Solution:</strong> AGIX Technologies designed and implemented a comprehensive AI Solution 
-              architecture. By leveraging state-of-the-art machine learning models and real-time processing pipelines, 
-              we created a robust system specifically tailored to Luxury Escapes's unique environment.
+              <strong className="text-foreground">The Solution:</strong> AGIX built an AI travel concierge that handles complex premium trip inquiries in real time. The system accesses live availability data across accommodations, experiences, and transportation, conducts natural language dialogue to surface nuanced traveler preferences, and generates fully curated itinerary proposals with integrated booking options—delivering the depth of a human consultant at the speed of a digital interface.
             </p>
             <p>
-              <strong>The Impact:</strong> The integration of our AI Solution fundamentally transformed 
-              Luxury Escapes's operational capacity. They achieved a seamless transition to automated workflows, 
-              allowing their team to focus on high-value tasks while the AI handled complex logistical and analytical challenges.
+              <strong className="text-foreground">The Impact:</strong> Response time for premium trip inquiries dropped from 24–48 hours to under 3 minutes. AI-handled inquiry conversion rates matched human consultant rates at 31%, demonstrating that travelers responded to quality and speed rather than requiring the human touch for initial proposals. Consultant capacity effectively tripled as AI handled research and proposal generation, allowing human experts to focus on relationship management and bespoke client needs.
             </p>
           </div>
         </div>

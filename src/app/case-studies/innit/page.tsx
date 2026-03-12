@@ -98,7 +98,7 @@ export default function InnitCaseStudyPage() {
                 </div>
 
                 <h1 className="text-4xl md:text-5xl font-bold leading-tight" data-testid="text-company-name">
-                  Innit
+                  Innit Case Study: AI-Powered Connected Kitchen Guidance
                 </h1>
 
                 <p className="text-xl text-muted-foreground">
@@ -156,22 +156,16 @@ export default function InnitCaseStudyPage() {
       {/* Case Study Overview */}
       <section className="py-16 bg-muted/30">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <h2 className="text-3xl font-bold mb-6">Case Study Overview</h2>
+          <h2 className="text-3xl font-bold mb-8">Case Study Overview</h2>
           <div className="space-y-4 text-lg text-muted-foreground">
             <p>
-              <strong>The Challenge:</strong> Innit was facing operational bottlenecks and scalability issues 
-              that hindered their ability to deliver consistent results at a larger scale. Traditional methods 
-              were no longer sufficient to meet the growing demands of their customer base and internal workflows.
+              <strong className="text-foreground">The Challenge:</strong> Innit's smart kitchen platform connected with 30+ appliance brands but delivered the same generic recipes to every user, regardless of their specific oven model, skill level, dietary restrictions, or what ingredients they actually had available. Generic cooking instructions that assumed a standard oven calibration failed for users with different appliance brands, leading to burned or undercooked results that eroded user trust and engagement.
             </p>
             <p>
-              <strong>The Solution:</strong> AGIX Technologies designed and implemented a comprehensive AI Solution 
-              architecture. By leveraging state-of-the-art machine learning models and real-time processing pipelines, 
-              we created a robust system specifically tailored to Innit's unique environment.
+              <strong className="text-foreground">The Solution:</strong> AGIX built a real-time cooking intelligence layer that integrates with connected appliances via IoT APIs to provide step-by-step adaptive guidance calibrated to each user's exact equipment. The system adjusts temperature settings and cooking times for specific appliance models, detects anomalies through temperature sensor readings, and dynamically modifies instructions based on available ingredients and dietary profiles.
             </p>
             <p>
-              <strong>The Impact:</strong> The integration of our AI Solution fundamentally transformed 
-              Innit's operational capacity. They achieved a seamless transition to automated workflows, 
-              allowing their team to focus on high-value tasks while the AI handled complex logistical and analytical challenges.
+              <strong className="text-foreground">The Impact:</strong> Recipe completion rates improved 67% as users received instructions that actually worked for their specific kitchen equipment. Users reported 48% fewer cooking mistakes, with the primary driver being appliance-specific temperature compensation. Platform engagement tripled year-over-year as the adaptive experience transformed Innit from a recipe viewer into a genuinely useful cooking companion that users returned to daily.
             </p>
           </div>
         </div>

@@ -114,7 +114,7 @@ export default function HiltonHotelsCaseStudyPage() {
                 </div>
 
                 <h1 className="text-4xl md:text-5xl font-bold leading-tight">
-                  Hilton Hotels
+                  Hilton Hotels Case Study: AI-Powered Guest Personalization
                 </h1>
 
                 <p className="text-xl text-muted-foreground">
@@ -172,22 +172,16 @@ export default function HiltonHotelsCaseStudyPage() {
       {/* Case Study Overview */}
       <section className="py-16 bg-muted/30">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <h2 className="text-3xl font-bold mb-6">Case Study Overview</h2>
+          <h2 className="text-3xl font-bold mb-8">Case Study Overview</h2>
           <div className="space-y-4 text-lg text-muted-foreground">
             <p>
-              <strong>The Challenge:</strong> Hilton Hotels was facing operational bottlenecks and scalability issues 
-              that hindered their ability to deliver consistent results at a larger scale. Traditional methods 
-              were no longer sufficient to meet the growing demands of their customer base and internal workflows.
+              <strong className="text-foreground">The Challenge:</strong> Hilton operated 7,000+ properties across multiple brands worldwide, but siloed technology systems prevented guest preference data from traveling with the guest. High-value travelers might have stayed 20 times across Hilton properties yet still receive a generic check-in experience because previous preferences were invisible to the receiving property. Staff had no visibility into individual guest histories before arrival.
             </p>
             <p>
-              <strong>The Solution:</strong> AGIX Technologies designed and implemented a comprehensive AI Solution 
-              architecture. By leveraging state-of-the-art machine learning models and real-time processing pipelines, 
-              we created a robust system specifically tailored to Hilton Hotels's unique environment.
+              <strong className="text-foreground">The Solution:</strong> AGIX built a guest intelligence platform that unifies data from reservation systems, service request logs, dining transactions, feedback surveys, and in-stay interactions into a single guest profile that follows travelers across all Hilton brands. AI models identify preference patterns and surface personalized recommendations to hotel staff through a real-time pre-arrival dashboard, enabling meaningful personalization before the guest walks through the door.
             </p>
             <p>
-              <strong>The Impact:</strong> The integration of our AI Solution fundamentally transformed 
-              Hilton Hotels's operational capacity. They achieved a seamless transition to automated workflows, 
-              allowing their team to focus on high-value tasks while the AI handled complex logistical and analytical challenges.
+              <strong className="text-foreground">The Impact:</strong> Guest satisfaction scores improved 19% at properties piloting the system. Revenue per available room (RevPAR) increased 12% through targeted upsell recommendations timed to moments of highest receptivity. Repeat visit rates among identified high-value guests increased 24%, as travelers reported feeling recognized and valued regardless of which property they visited within the portfolio.
             </p>
           </div>
         </div>

@@ -66,7 +66,7 @@ export default function HelloDrivenCaseStudyPage() {
                 </div>
 
                 <h1 className="text-4xl md:text-5xl font-bold leading-tight">
-                  Hello Driven
+                  Hello Driven Case Study: AI Voice Patient Engagement
                 </h1>
                 
                 <p className="text-xl text-muted-foreground">
@@ -129,22 +129,16 @@ export default function HelloDrivenCaseStudyPage() {
       {/* Case Study Overview */}
       <section className="py-16 bg-muted/30">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <h2 className="text-3xl font-bold mb-6">Case Study Overview</h2>
+          <h2 className="text-3xl font-bold mb-8">Case Study Overview</h2>
           <div className="space-y-4 text-lg text-muted-foreground">
             <p>
-              <strong>The Challenge:</strong> Hello Driven was facing operational bottlenecks and scalability issues 
-              that hindered their ability to deliver consistent results at a larger scale. Traditional methods 
-              were no longer sufficient to meet the growing demands of their customer base and internal workflows.
+              <strong className="text-foreground">The Challenge:</strong> Hello Driven's healthcare network faced appointment no-show rates exceeding 35%—a significant problem given that missed appointments represent both lost revenue and missed care opportunities for patients. The primary driver was poor patient outreach: manual phone call campaigns reached fewer than 40% of patients and offered no flexible rescheduling pathway for those who needed to adjust their appointments.
             </p>
             <p>
-              <strong>The Solution:</strong> AGIX Technologies designed and implemented a comprehensive AI Coach Case Study 
-              architecture. By leveraging state-of-the-art machine learning models and real-time processing pipelines, 
-              we created a robust system specifically tailored to Hello Driven's unique environment.
+              <strong className="text-foreground">The Solution:</strong> AGIX deployed AI voice agents that conduct natural, empathetic outreach calls for appointment confirmations, reminders, pre-visit instructions, and health check-ins. The system detects hesitation patterns in patient responses and proactively offers rescheduling options in real time, completing rebooking without any human coordinator involvement. Complex cases and patients who request it escalate seamlessly to care staff.
             </p>
             <p>
-              <strong>The Impact:</strong> The integration of our AI Coach Case Study fundamentally transformed 
-              Hello Driven's operational capacity. They achieved a seamless transition to automated workflows, 
-              allowing their team to focus on high-value tasks while the AI handled complex logistical and analytical challenges.
+              <strong className="text-foreground">The Impact:</strong> No-show rates dropped from 35% to 9%, recovering substantial revenue while improving patient care continuity. Patient contact rates increased from under 40% to 78%. Care coordinators, no longer occupied with routine outreach calls, redirected their time to complex case management and high-acuity patient follow-up, improving overall care quality across the network.
             </p>
           </div>
         </div>

@@ -57,7 +57,7 @@ export default function DartmouthCollegeCaseStudyPage() {
                 </div>
 
                 <h1 className="text-4xl md:text-5xl font-bold leading-tight" data-testid="text-company-name">
-                  Dartmouth College
+                  Dartmouth College Case Study: AI-Powered IT Helpdesk
                 </h1>
 
                 <p className="text-xl text-muted-foreground">
@@ -116,22 +116,16 @@ export default function DartmouthCollegeCaseStudyPage() {
       {/* Case Study Overview */}
       <section className="py-16 bg-muted/30">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <h2 className="text-3xl font-bold mb-6">Case Study Overview</h2>
+          <h2 className="text-3xl font-bold mb-8">Case Study Overview</h2>
           <div className="space-y-4 text-lg text-muted-foreground">
             <p>
-              <strong>The Challenge:</strong> Dartmouth College was facing operational bottlenecks and scalability issues 
-              that hindered their ability to deliver consistent results at a larger scale. Traditional methods 
-              were no longer sufficient to meet the growing demands of their customer base and internal workflows.
+              <strong className="text-foreground">The Challenge:</strong> Dartmouth's IT department handled over 40,000 support tickets annually, with 68% of those tickets covering a known set of roughly 200 recurring issues—password resets, software installation, network access, and account management. Students and faculty waited an average of six hours for responses during peak periods, and IT staff were consumed by low-complexity work rather than infrastructure improvements and strategic initiatives.
             </p>
             <p>
-              <strong>The Solution:</strong> AGIX Technologies designed and implemented a comprehensive AI Solution 
-              architecture. By leveraging state-of-the-art machine learning models and real-time processing pipelines, 
-              we created a robust system specifically tailored to Dartmouth College's unique environment.
+              <strong className="text-foreground">The Solution:</strong> AGIX deployed an AI helpdesk agent trained on Dartmouth's IT knowledge base, documented procedures, historical ticket data, and system integration documentation. The agent handles the full lifecycle of common requests 24/7—guiding users through password resets, diagnosing connectivity issues, provisioning software access, and completing account changes—without any human involvement for routine cases.
             </p>
             <p>
-              <strong>The Impact:</strong> The integration of our AI Solution fundamentally transformed 
-              Dartmouth College's operational capacity. They achieved a seamless transition to automated workflows, 
-              allowing their team to focus on high-value tasks while the AI handled complex logistical and analytical challenges.
+              <strong className="text-foreground">The Impact:</strong> 74% of IT tickets now resolve automatically, freeing the IT team from thousands of hours of routine support annually. Average resolution time dropped from six hours to under four minutes for automated cases. With low-value tasks handled by AI, IT staff redirected over 60% of their capacity to infrastructure improvements, security initiatives, and faculty technology projects, producing compounding value beyond direct cost savings.
             </p>
           </div>
         </div>

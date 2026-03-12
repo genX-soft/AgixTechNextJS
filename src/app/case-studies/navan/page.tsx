@@ -56,7 +56,7 @@ export default function NavanCaseStudyPage() {
                 </div>
 
                 <h1 className="text-4xl md:text-5xl font-bold leading-tight" data-testid="text-company-name">
-                  Navan
+                  Navan Case Study: AI Travel and Expense Management
                 </h1>
 
                 <p className="text-xl text-muted-foreground">
@@ -114,22 +114,16 @@ export default function NavanCaseStudyPage() {
       {/* Case Study Overview */}
       <section className="py-16 bg-muted/30">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <h2 className="text-3xl font-bold mb-6">Case Study Overview</h2>
+          <h2 className="text-3xl font-bold mb-8">Case Study Overview</h2>
           <div className="space-y-4 text-lg text-muted-foreground">
             <p>
-              <strong>The Challenge:</strong> Navan was facing operational bottlenecks and scalability issues 
-              that hindered their ability to deliver consistent results at a larger scale. Traditional methods 
-              were no longer sufficient to meet the growing demands of their customer base and internal workflows.
+              <strong className="text-foreground">The Challenge:</strong> Corporate travel and expense management at Navan's target enterprises was characterized by fragmented booking systems, manual receipt processing, and policy compliance enforcement that happened after the fact—when violations were already committed and harder to reverse. Finance teams estimated that expense report processing consumed an average of 3.5 hours per employee per month, and out-of-policy spend remained persistently high despite policy communications.
             </p>
             <p>
-              <strong>The Solution:</strong> AGIX Technologies designed and implemented a comprehensive AI Travel Assistant Case Study 
-              architecture. By leveraging state-of-the-art machine learning models and real-time processing pipelines, 
-              we created a robust system specifically tailored to Navan's unique environment.
+              <strong className="text-foreground">The Solution:</strong> AGIX built an intelligent travel and expense AI that enforces policy compliance at the point of booking rather than during post-trip audit, integrating directly with travel inventory systems to surface only compliant options by default. Computer vision automates receipt extraction and categorization, while predictive analytics identify policy risk patterns that enable finance teams to address systemic compliance gaps before they generate significant exposure.
             </p>
             <p>
-              <strong>The Impact:</strong> The integration of our AI Travel Assistant Case Study fundamentally transformed 
-              Navan's operational capacity. They achieved a seamless transition to automated workflows, 
-              allowing their team to focus on high-value tasks while the AI handled complex logistical and analytical challenges.
+              <strong className="text-foreground">The Impact:</strong> Expense processing time dropped from 3.5 hours to 22 minutes per employee per month—a reduction of nearly 90%. Policy violations caught in real time increased 89% compared to traditional post-trip auditing, with the shift to point-of-booking enforcement eliminating the majority of violations before they were committed. Finance teams used the spend visibility data to renegotiate supplier contracts, generating additional savings that exceeded the platform cost in the first year.
             </p>
           </div>
         </div>
