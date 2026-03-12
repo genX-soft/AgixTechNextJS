@@ -38,31 +38,33 @@ export default function LeadDetailPage() {
   const leadId = params.id as string
   
   const [isAuthenticated, setIsAuthenticated] = useState(false)
-  const [passcode, setPasscode] = useState('')
-  const [storedPasscode, setStoredPasscode] = useState('')
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
+  const [storedToken, setStoredToken] = useState('')
   const [error, setError] = useState('')
   const [lead, setLead] = useState<Lead | null>(null)
   const [isLoading, setIsLoading] = useState(false)
 
-  const handlePasscodeSubmit = async (e: React.FormEvent) => {
+  const handleLoginSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsLoading(true)
     setError('')
     
     try {
+      const token = btoa(`${username}:${password}`)
       const response = await fetch(`/api/leads/${leadId}`, {
         headers: {
-          'x-passcode': passcode,
+          'Authorization': `Basic ${token}`,
         },
       })
       
       if (response.ok) {
         const data = await response.json()
         setLead(data)
-        setStoredPasscode(passcode)
+        setStoredToken(token)
         setIsAuthenticated(true)
       } else if (response.status === 401) {
-        setError('Invalid passcode')
+        setError('Invalid credentials')
       } else if (response.status === 404) {
         setError('Lead not found')
       } else {
@@ -117,18 +119,24 @@ export default function LeadDetailPage() {
               </div>
               <CardTitle>View Lead Details</CardTitle>
               <CardDescription>
-                Enter the passcode to view this lead
+                Enter your credentials to view this lead
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <form onSubmit={handlePasscodeSubmit} className="space-y-4">
+              <form onSubmit={handleLoginSubmit} className="space-y-4">
+                <Input
+                  type="text"
+                  placeholder="Username"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                  data-testid="input-lead-detail-username"
+                />
                 <Input
                   type="password"
-                  placeholder="Enter passcode"
-                  value={passcode}
-                  onChange={(e) => setPasscode(e.target.value)}
-                  className="text-center text-lg tracking-widest"
-                  data-testid="input-lead-detail-passcode"
+                  placeholder="Password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  data-testid="input-lead-detail-password"
                 />
                 {error && (
                   <p className="text-sm text-destructive text-center">{error}</p>

@@ -55,7 +55,6 @@ const corporateItems = [
   { title: "About Us", href: "/corporate/about/", icon: Info, description: "Learn about AGIX and our mission" },
   { title: "Contact Us", href: "/corporate/contact/", icon: Mail, description: "Get in touch with our team" },
   { title: "Careers", href: "/corporate/careers/", icon: Briefcase, description: "Join our team and build intelligent systems" },
-  { title: "News & Media", href: "https://agixtech.com/newsroom/", icon: Newspaper, description: "Latest news and press releases", external: true },
 ];
 
 interface ListItemProps {
@@ -299,7 +298,7 @@ export function MainHeader() {
                         <li key={item.href}>
                           <a
                             href={item.href}
-                            {...(item.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                            {...(('external' in item && item.external) ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                             className="block select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover-elevate focus:ring-2 focus:ring-primary focus:ring-offset-2"
                             data-testid={`link-nav-${item.title.toLowerCase().replace(/\s+/g, "-")}`}
                           >

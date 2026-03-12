@@ -1,16 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { storage } from '@/lib/storage'
 
-const ADMIN_PASSCODE = '9636962228'
+import { authenticateAdmin } from '@/lib/auth'
 
 export async function GET(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const passcode = request.headers.get('x-passcode')
-    
-    if (passcode !== ADMIN_PASSCODE) {
+    if (!(await authenticateAdmin(request))) {
       return NextResponse.json(
         { error: "Unauthorized" },
         { status: 401 }
@@ -42,9 +40,7 @@ export async function PATCH(
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const passcode = request.headers.get('x-passcode')
-    
-    if (passcode !== ADMIN_PASSCODE) {
+    if (!(await authenticateAdmin(request))) {
       return NextResponse.json(
         { error: "Unauthorized" },
         { status: 401 }
@@ -77,9 +73,7 @@ export async function DELETE(
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const passcode = request.headers.get('x-passcode')
-    
-    if (passcode !== ADMIN_PASSCODE) {
+    if (!(await authenticateAdmin(request))) {
       return NextResponse.json(
         { error: "Unauthorized" },
         { status: 401 }

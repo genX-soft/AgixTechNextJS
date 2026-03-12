@@ -1,7 +1,8 @@
 'use client'
-import { motion } from "framer-motion";
-import { MainHeader } from "@/components/main-header";
-import { MainFooter } from "@/components/main-footer";
+import { motion } from "framer-motion";import { CaseStudyTemplate } from "@/components/shared/case-study-template";
+
+
+
 import { CtaForm } from "@/components/forms/cta-form";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -30,8 +31,7 @@ import Link from "next/link";
 
 export default function LuxuryEscapesCaseStudyPage() {
   return (
-    <div className="min-h-screen bg-background">
-      <MainHeader />
+    <CaseStudyTemplate prevCase={undefined} nextCase={undefined}>
 
       {/* Hero Section - Uniform Layout */}
       <section className="pt-24 lg:pt-28 pb-16 bg-gradient-to-br from-amber-500/10 via-background to-yellow-500/10 min-h-[80vh] flex items-center">
@@ -111,6 +111,31 @@ export default function LuxuryEscapesCaseStudyPage() {
           </motion.div>
         </div>
       </section>
+
+      {/* Case Study Overview */}
+      <section className="py-16 bg-muted/30">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6">
+          <h2 className="text-3xl font-bold mb-6">Case Study Overview</h2>
+          <div className="space-y-4 text-lg text-muted-foreground">
+            <p>
+              <strong>The Challenge:</strong> Luxury Escapes was facing operational bottlenecks and scalability issues 
+              that hindered their ability to deliver consistent results at a larger scale. Traditional methods 
+              were no longer sufficient to meet the growing demands of their customer base and internal workflows.
+            </p>
+            <p>
+              <strong>The Solution:</strong> AGIX Technologies designed and implemented a comprehensive AI Solution 
+              architecture. By leveraging state-of-the-art machine learning models and real-time processing pipelines, 
+              we created a robust system specifically tailored to Luxury Escapes's unique environment.
+            </p>
+            <p>
+              <strong>The Impact:</strong> The integration of our AI Solution fundamentally transformed 
+              Luxury Escapes's operational capacity. They achieved a seamless transition to automated workflows, 
+              allowing their team to focus on high-value tasks while the AI handled complex logistical and analytical challenges.
+            </p>
+          </div>
+        </div>
+      </section>
+
 
       {/* The Challenge */}
       <section className="py-16">
@@ -377,7 +402,6 @@ export default function LuxuryEscapesCaseStudyPage() {
         </div>
       </section>
 
-      <MainFooter />
-    </div>
+      </CaseStudyTemplate>
   );
 }

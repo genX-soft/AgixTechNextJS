@@ -1,8 +1,9 @@
+import { CaseStudyTemplate } from "@/components/shared/case-study-template";
 'use client'
-import { MainFooter } from "@/components/main-footer";
+
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MainHeader } from "@/components/main-header";
+
 import { CtaForm } from "@/components/forms/cta-form";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -74,8 +75,7 @@ export default function SunoCaseStudyPage() {
   const currentGenre = genres.find(g => g.id === selectedGenre) || genres[0];
 
   return (
-    <div className="min-h-screen bg-background">
-      <MainHeader />
+    <CaseStudyTemplate prevCase={{ name: "Dave", url: "/case-studies/dave/" }} nextCase={{ name: "Hilton Hotels", url: "/case-studies/hilton-hotels/" }}>
 
       {/* Hero Section - Uniform Layout */}
       <section className="pt-24 lg:pt-28 pb-16 bg-gradient-to-br from-background via-purple-500/5 to-pink-500/10 min-h-[80vh] flex items-center">
@@ -155,6 +155,31 @@ export default function SunoCaseStudyPage() {
           </motion.div>
         </div>
       </section>
+
+      {/* Case Study Overview */}
+      <section className="py-16 bg-muted/30">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6">
+          <h2 className="text-3xl font-bold mb-6">Case Study Overview</h2>
+          <div className="space-y-4 text-lg text-muted-foreground">
+            <p>
+              <strong>The Challenge:</strong> Suno was facing operational bottlenecks and scalability issues 
+              that hindered their ability to deliver consistent results at a larger scale. Traditional methods 
+              were no longer sufficient to meet the growing demands of their customer base and internal workflows.
+            </p>
+            <p>
+              <strong>The Solution:</strong> AGIX Technologies designed and implemented a comprehensive Sonu Case Study 
+              architecture. By leveraging state-of-the-art machine learning models and real-time processing pipelines, 
+              we created a robust system specifically tailored to Suno's unique environment.
+            </p>
+            <p>
+              <strong>The Impact:</strong> The integration of our Sonu Case Study fundamentally transformed 
+              Suno's operational capacity. They achieved a seamless transition to automated workflows, 
+              allowing their team to focus on high-value tasks while the AI handled complex logistical and analytical challenges.
+            </p>
+          </div>
+        </div>
+      </section>
+
 
       {/* The Challenge */}
       <section className="py-16">
@@ -533,24 +558,7 @@ export default function SunoCaseStudyPage() {
         </div>
       </section>
 
-      {/* Navigation */}
-      <section className="py-8 border-t border-border/50">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 flex justify-between">
-          <Link href="/case-studies/dave/">
-            <Button variant="ghost" size="sm" className="gap-2" data-testid="button-prev-case">
-              <ArrowLeft className="w-4 h-4" />
-              Dave
-            </Button>
-          </Link>
-          <Link href="/case-studies/hilton-hotels/">
-            <Button variant="ghost" size="sm" className="gap-2" data-testid="button-next-case">
-              Hilton Hotels
-              <ArrowRight className="w-4 h-4" />
-            </Button>
-          </Link>
-        </div>
-      </section>
-      <MainFooter />
-    </div>
+      
+      </CaseStudyTemplate>
   );
 }

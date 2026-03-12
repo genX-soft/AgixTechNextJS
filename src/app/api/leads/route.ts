@@ -3,7 +3,7 @@ import { storage } from '@/lib/storage'
 import { insertLeadSchema } from '@shared/schema'
 import { fromError } from 'zod-validation-error'
 
-const ADMIN_PASSCODE = '9636962228'
+import { authenticateAdmin } from '@/lib/auth'
 
 export async function POST(request: NextRequest) {
   try {
@@ -31,9 +31,7 @@ export async function POST(request: NextRequest) {
 
 export async function GET(request: NextRequest) {
   try {
-    const passcode = request.headers.get('x-passcode')
-    
-    if (passcode !== ADMIN_PASSCODE) {
+    if (!(await authenticateAdmin(request))) {
       return NextResponse.json(
         { error: "Unauthorized" },
         { status: 401 }

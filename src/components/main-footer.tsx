@@ -74,8 +74,6 @@ const corporate: { title: string; href: string; external?: boolean }[] = [
   { title: "Case Studies", href: "/case-studies/" },
   { title: "Contact Us", href: "/corporate/contact/" },
   { title: "Careers", href: "/corporate/careers/" },
-  { title: "News & Media", href: "/newsroom/" },
-  { title: "Content Engine", href: "/tools/content-engine/" },
 ];
 
 const certifications = [
@@ -453,7 +451,6 @@ export function MainFooter() {
               <span className="hidden md:inline">|</span>
               <Link href="/privacy-policy/" className="hover:text-white transition-colors">Privacy Policy</Link>
               <Link href="/terms-of-service/" className="hover:text-white transition-colors">Terms of Service</Link>
-              <Link href="/tools/content-engine/" className="hover:text-white transition-colors" data-testid="link-footer-content-engine">Content Engine</Link>
               <Link href="/admin/leads/" className="hover:text-white transition-colors" data-testid="link-footer-admin">Admin</Link>
             </div>
             <div className="flex items-center gap-2 text-xs text-slate-500">

@@ -132,6 +132,23 @@ function FAQAccordion({ faqs }: { faqs: FAQItem[] }) {
 
   return (
     <div className="my-12">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: faqs.map((faq) => ({
+              "@type": "Question",
+              name: faq.question,
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: faq.answer,
+              },
+            })),
+          }),
+        }}
+      />
       <h2 className="text-xl font-bold flex items-center gap-2 mb-4">
         <HelpCircle className="w-5 h-5 text-primary" />
         Frequently Asked Questions

@@ -21,32 +21,34 @@ import type { Lead } from '@shared/schema'
 
 export default function AdminLeadsPage() {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
-  const [passcode, setPasscode] = useState('')
-  const [storedPasscode, setStoredPasscode] = useState('')
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
+  const [storedToken, setStoredToken] = useState('')
   const [error, setError] = useState('')
   const [leads, setLeads] = useState<Lead[]>([])
   const [isLoading, setIsLoading] = useState(false)
   const [deletingId, setDeletingId] = useState<string | null>(null)
 
-  const handlePasscodeSubmit = async (e: React.FormEvent) => {
+  const handleLoginSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsLoading(true)
     setError('')
     
     try {
+      const token = btoa(`${username}:${password}`)
       const response = await fetch('/api/leads', {
         headers: {
-          'x-passcode': passcode,
+          'Authorization': `Basic ${token}`,
         },
       })
       
       if (response.ok) {
         const data = await response.json()
         setLeads(data)
-        setStoredPasscode(passcode)
+        setStoredToken(token)
         setIsAuthenticated(true)
       } else {
-        setError('Invalid passcode')
+        setError('Invalid credentials')
       }
     } catch (err) {
       setError('Failed to connect. Please try again.')
@@ -56,13 +58,13 @@ export default function AdminLeadsPage() {
   }
 
   const fetchLeads = async () => {
-    if (!storedPasscode) return
+    if (!storedToken) return
     
     setIsLoading(true)
     try {
       const response = await fetch('/api/leads', {
         headers: {
-          'x-passcode': storedPasscode,
+          'Authorization': `Basic ${storedToken}`,
         },
       })
       if (response.ok) {
@@ -70,8 +72,8 @@ export default function AdminLeadsPage() {
         setLeads(data)
       } else if (response.status === 401) {
         setIsAuthenticated(false)
-        setStoredPasscode('')
-        setError('Session expired. Please re-enter passcode.')
+        setStoredToken('')
+        setError('Session expired. Please re-enter credentials.')
       }
     } catch (err) {
       console.error('Failed to fetch leads:', err)
@@ -90,7 +92,7 @@ export default function AdminLeadsPage() {
       const response = await fetch(`/api/leads/${leadId}`, {
         method: 'DELETE',
         headers: {
-          'x-passcode': storedPasscode,
+          'Authorization': `Basic ${storedToken}`,
         },
       })
       
@@ -170,18 +172,24 @@ export default function AdminLeadsPage() {
               </div>
               <CardTitle>Admin Access</CardTitle>
               <CardDescription>
-                Enter the passcode to view lead data
+                Enter your credentials to view lead data
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <form onSubmit={handlePasscodeSubmit} className="space-y-4">
+              <form onSubmit={handleLoginSubmit} className="space-y-4">
+                <Input
+                  type="text"
+                  placeholder="Username"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                  data-testid="input-admin-username"
+                />
                 <Input
                   type="password"
-                  placeholder="Enter passcode"
-                  value={passcode}
-                  onChange={(e) => setPasscode(e.target.value)}
-                  className="text-center text-lg tracking-widest"
-                  data-testid="input-admin-passcode"
+                  placeholder="Password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  data-testid="input-admin-password"
                 />
                 {error && (
                   <p className="text-sm text-destructive text-center">{error}</p>
