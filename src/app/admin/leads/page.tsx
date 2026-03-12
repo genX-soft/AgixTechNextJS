@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -15,19 +15,66 @@ import {
   TableRow,
 } from '@/components/ui/table'
 import { ScrollArea } from '@/components/ui/scroll-area'
-import { Lock, Loader2, Eye, ArrowLeft, RefreshCw, Users, ExternalLink, Trash2 } from 'lucide-react'
+import { Lock, Loader2, ArrowLeft, RefreshCw, Users, ExternalLink, Trash2, UserPlus, ShieldCheck } from 'lucide-react'
 import Link from 'next/link'
 import type { Lead } from '@shared/schema'
 
+type AuthMode = 'checking' | 'setup' | 'login'
+
 export default function AdminLeadsPage() {
+  const [authMode, setAuthMode] = useState<AuthMode>('checking')
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState('')
   const [storedToken, setStoredToken] = useState('')
   const [error, setError] = useState('')
   const [leads, setLeads] = useState<Lead[]>([])
   const [isLoading, setIsLoading] = useState(false)
   const [deletingId, setDeletingId] = useState<string | null>(null)
+
+  useEffect(() => {
+    fetch('/api/admin/setup')
+      .then(r => r.json())
+      .then(data => setAuthMode(data.needsSetup ? 'setup' : 'login'))
+      .catch(() => setAuthMode('login'))
+  }, [])
+
+  const handleSetupSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setError('')
+
+    if (password !== confirmPassword) {
+      setError('Passwords do not match')
+      return
+    }
+    if (password.length < 8) {
+      setError('Password must be at least 8 characters')
+      return
+    }
+
+    setIsLoading(true)
+    try {
+      const res = await fetch('/api/admin/setup', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password }),
+      })
+      const data = await res.json()
+      if (res.ok) {
+        setAuthMode('login')
+        setPassword('')
+        setConfirmPassword('')
+        setError('')
+      } else {
+        setError(data.error || 'Setup failed')
+      }
+    } catch {
+      setError('Failed to connect. Please try again.')
+    } finally {
+      setIsLoading(false)
+    }
+  }
 
   const handleLoginSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -158,6 +205,14 @@ export default function AdminLeadsPage() {
   }
 
   if (!isAuthenticated) {
+    if (authMode === 'checking') {
+      return (
+        <div className="min-h-screen bg-background flex items-center justify-center">
+          <Loader2 className="w-8 h-8 animate-spin text-muted-foreground" />
+        </div>
+      )
+    }
+
     return (
       <div className="min-h-screen bg-background flex items-center justify-center p-4">
         <motion.div
@@ -168,29 +223,52 @@ export default function AdminLeadsPage() {
           <Card className="w-full max-w-md">
             <CardHeader className="text-center">
               <div className="mx-auto mb-4 w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
-                <Lock className="w-6 h-6 text-primary" />
+                {authMode === 'setup' ? (
+                  <UserPlus className="w-6 h-6 text-primary" />
+                ) : (
+                  <ShieldCheck className="w-6 h-6 text-primary" />
+                )}
               </div>
-              <CardTitle>Admin Access</CardTitle>
+              <CardTitle>
+                {authMode === 'setup' ? 'Create Admin Account' : 'Admin Access'}
+              </CardTitle>
               <CardDescription>
-                Enter your credentials to view lead data
+                {authMode === 'setup'
+                  ? 'No admin account found. Create one to get started.'
+                  : 'Enter your credentials to view lead data'}
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <form onSubmit={handleLoginSubmit} className="space-y-4">
+              <form onSubmit={authMode === 'setup' ? handleSetupSubmit : handleLoginSubmit} className="space-y-4">
                 <Input
                   type="text"
                   placeholder="Username"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
+                  autoComplete="username"
+                  required
                   data-testid="input-admin-username"
                 />
                 <Input
                   type="password"
-                  placeholder="Password"
+                  placeholder={authMode === 'setup' ? 'Password (min 8 characters)' : 'Password'}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
+                  autoComplete={authMode === 'setup' ? 'new-password' : 'current-password'}
+                  required
                   data-testid="input-admin-password"
                 />
+                {authMode === 'setup' && (
+                  <Input
+                    type="password"
+                    placeholder="Confirm password"
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    autoComplete="new-password"
+                    required
+                    data-testid="input-admin-confirm-password"
+                  />
+                )}
                 {error && (
                   <p className="text-sm text-destructive text-center">{error}</p>
                 )}
@@ -198,10 +276,18 @@ export default function AdminLeadsPage() {
                   {isLoading ? (
                     <>
                       <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                      Verifying...
+                      {authMode === 'setup' ? 'Creating account...' : 'Verifying...'}
+                    </>
+                  ) : authMode === 'setup' ? (
+                    <>
+                      <UserPlus className="w-4 h-4 mr-2" />
+                      Create Admin Account
                     </>
                   ) : (
-                    'Unlock'
+                    <>
+                      <Lock className="w-4 h-4 mr-2" />
+                      Unlock
+                    </>
                   )}
                 </Button>
               </form>
