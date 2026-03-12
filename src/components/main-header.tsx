@@ -335,12 +335,12 @@ export function MainHeader() {
 
           <div className="flex items-center gap-4">
             <a
-              href="tel:+18573656167"
+              href="tel:+18574141353"
               className="hidden lg:flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
               data-testid="link-phone"
             >
               <Phone className="w-4 h-4" aria-hidden="true" />
-              <span>+1 857-365-6167</span>
+              <span>+1 857 4141 353</span>
             </a>
             <Button asChild className="hidden md:inline-flex">
               <a 
@@ -407,12 +407,12 @@ export function MainHeader() {
 
               <div className="pt-4 border-t border-border mt-4 space-y-3">
                 <a
-                  href="tel:+18573656167"
+                  href="tel:+18574141353"
                   className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-muted-foreground"
                   data-testid="link-mobile-phone"
                 >
                   <Phone className="w-4 h-4" aria-hidden="true" />
-                  +1 857-365-6167
+                  +1 857 4141 353
                 </a>
                 <div className="px-4">
                   <Button asChild className="w-full h-14 text-base font-semibold">

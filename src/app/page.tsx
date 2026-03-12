@@ -2607,11 +2607,11 @@ function ContactSection() {
                 <div className="flex items-center gap-3">
                   <Phone className="h-5 w-5 text-primary" />
                   <a 
-                    href="tel:+18573656167" 
+                    href="tel:+18574141353" 
                     className="text-muted-foreground hover:text-foreground text-xms transition-colors"
                     data-testid="link-phone"
                   >
-                    +1 857-365-6167
+                    +1 857 4141 353
                   </a>
                 </div>
                 <div className="flex items-center gap-3">
@@ -2757,7 +2757,7 @@ export default function Home() {
     ],
     "contactPoint": {
       "@type": "ContactPoint",
-      "telephone": "+1-857-365-6167",
+      "telephone": "+1-857-4141-353",
       "contactType": "sales",
       "email": "santosh@agixtech.com",
       "areaServed": "US",

@@ -600,11 +600,11 @@ export default function ContactPage() {
                   </h4>
                   <p className="text-sm text-muted-foreground mb-3">Have a question right now?</p>
                   <a
-                    href="tel:+18573656167"
+                    href="tel:+18574141353"
                     className="text-lg font-semibold text-primary hover:underline"
                     data-testid="link-phone-number"
                   >
-                    +1 857 365 6167
+                    +1 857 4141 353
                   </a>
                 </CardContent>
               </Card>

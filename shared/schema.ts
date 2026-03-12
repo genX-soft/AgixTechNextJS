@@ -60,12 +60,14 @@ export type BlogArticle = typeof blogArticles.$inferSelect;
 export const users = pgTable("users", {
   id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
   username: text("username").notNull().unique(),
-  password: text("password").notNull(),
+  password_hash: text("password_hash").notNull(),
+  created_at: timestamp("created_at").defaultNow(),
+  updated_at: timestamp("updated_at").defaultNow(),
 });
 
 export const insertUserSchema = createInsertSchema(users).pick({
   username: true,
-  password: true,
+  password_hash: true,
 });
 
 export type InsertUser = z.infer<typeof insertUserSchema>;

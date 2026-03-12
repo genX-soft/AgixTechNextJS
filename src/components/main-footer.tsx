@@ -341,9 +341,9 @@ export function MainFooter() {
              Enterprise AI Systems Engineering. Designing, deploying, and stewarding agentic AI systems that transform business operations.
             </p>
             <div className="space-y-4">
-              <a href="tel:+18573656167" className="flex items-center gap-2 text-sm text-slate-400 hover:text-white transition-colors">
+              <a href="tel:+18574141353" className="flex items-center gap-2 text-sm text-slate-400 hover:text-white transition-colors">
                 <Phone className="w-4 h-4 text-primary" />
-                +1 857-365-6167
+                +1 857 4141 353
               </a>
               <a href="mailto:santosh@agixtech.com" className="flex items-center gap-2 text-sm text-slate-400 hover:text-white transition-colors">
                 <Mail className="w-4 h-4 text-primary" />

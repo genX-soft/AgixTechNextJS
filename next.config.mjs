@@ -2,7 +2,8 @@
 const nextConfig = {
   reactStrictMode: true,
   trailingSlash: true,
-  allowedDevOrigins: ['*.replit.dev', '*.sisko.replit.dev', '127.0.0.1'],
+  serverExternalPackages: ['bcryptjs', 'pg'],
+  allowedDevOrigins: ['*.replit.dev', '*.sisko.replit.dev', '127.0.0.1', '192.168.0.101'],
   images: {
     remotePatterns: [
       {

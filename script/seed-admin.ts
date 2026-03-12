@@ -1,3 +1,4 @@
+import 'dotenv/config'
 import { db } from '../src/lib/db'
 import { users } from '../shared/schema'
 import { hashSync } from 'bcryptjs'
@@ -12,7 +13,7 @@ async function seedAdmin() {
   try {
     await db.insert(users).values({
       username,
-      password: hashedPassword,
+      password_hash: hashedPassword,
     })
     console.log(`Successfully seeded admin user: ${username}`)
     console.log(`Password is: ${plainPassword}`)
