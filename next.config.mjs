@@ -81,11 +81,32 @@ const nextConfig = {
       { source: '/service/mvp-prototyping', destination: '/services/custom-ai-product-development/', permanent: true },
       { source: '/service/api-development-integration-services', destination: '/services/custom-ai-product-development/', permanent: true },
       { source: '/service/ai-consulting-services', destination: '/intelligence/operational-ai/', permanent: true },
+      { source: '/service/enterprise-app-development-services', destination: '/intelligence/enterprise-knowledge-ai/', permanent: true },
+      { source: '/service/enterprise-security-solutions', destination: '/intelligence/enterprise-knowledge-ai/', permanent: true },
+      { source: '/service/digital-transformation-consulting', destination: '/intelligence/operational-ai/', permanent: true },
+      { source: '/service/custom-ai-agents-models', destination: '/services/agentic-ai-systems/', permanent: true },
+
+      // ===== BLOG URL REDIRECTS =====
+      { source: '/blog', destination: '/insights/', permanent: true },
+      { source: '/blog/page/:page', destination: '/insights/', permanent: true },
+      { source: '/blog/voice-ai-roi-calculator', destination: '/voice-ai-roi-calculator/', permanent: true },
+      { source: '/blog/ai-chatbot-development-cost', destination: '/ai-chatbot-development-cost/', permanent: true },
+      { source: '/blog/ai-call-center-solutions-cost-reduction-voice-ai', destination: '/ai-call-center-solutions-cost-reduction-voice-ai/', permanent: true },
+      { source: '/blog/ai-voice-agents-complete-guide', destination: '/ai-voice-agents-complete-guide/', permanent: true },
+      { source: '/blog/ai-automation-for-business', destination: '/ai-automation-for-business/', permanent: true },
+      { source: '/blog/service/computer-vision-solutions', destination: '/services/ai-computer-vision/', permanent: true },
+      { source: '/blog/service/ai-automation-services', destination: '/services/ai-automation/', permanent: true },
+      { source: '/blog/service/workflow-optimization-services', destination: '/services/ai-automation/', permanent: true },
+      { source: '/blog/service/saas-product-development', destination: '/services/custom-ai-product-development/', permanent: true },
       
       // ===== CORPORATE PAGE REDIRECTS =====
       { source: '/portfolio', destination: '/case-studies/', permanent: true },
       { source: '/terms-and-condition', destination: '/terms-of-service/', permanent: true },
+      { source: '/terms', destination: '/terms-of-service/', permanent: true },
+      { source: '/privacy', destination: '/privacy-policy/', permanent: true },
       { source: '/career', destination: '/corporate/careers/', permanent: true },
+      { source: '/careers', destination: '/corporate/careers/', permanent: true },
+      { source: '/contact', destination: '/corporate/contact/', permanent: true },
       { source: '/about-us', destination: '/corporate/about/', permanent: true },
       { source: '/contact-us', destination: '/corporate/contact/', permanent: true },
       
