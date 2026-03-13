@@ -29,6 +29,20 @@ import { trackEvent } from "@/lib/analytics";
 import {
 import { IndustryCaseStudies, IndustryServices } from "@/components/industry-sections";
 
+const caseStudies = [
+  { company: "Enova", description: "AI-powered credit decisioning platform enabling smarter, more inclusive lending across underserved borrower segments.", impact: ["80% faster credit decisioning", "Reduced default rates", "Expanded credit access"], href: "/case-studies/enova/" },
+  { company: "Dave", description: "Generative AI financial assistant providing smart, human-like support for personal finance management.", impact: ["Personalized financial guidance at scale", "Higher user engagement", "Reduced support costs"], href: "/case-studies/dave/" },
+  { company: "Ocrolus", description: "AI document intelligence engine automating financial document review and data extraction for fintech workflows.", impact: ["90%+ document processing accuracy", "Faster loan origination", "Reduced manual review hours"], href: "/case-studies/ocrolus/" },
+];
+
+const industryServices = [
+  { title: "AI Automation", description: "End-to-end automation of financial workflows including document processing, compliance checks, and reporting.", useCases: ["Loan origination automation", "KYC/AML workflows", "Regulatory reporting"], href: "/services/ai-automation/", ctaText: "Explore AI Automation" },
+  { title: "Predictive & Analytics AI", description: "AI models that assess credit risk, detect fraud, and forecast financial outcomes with high accuracy.", useCases: ["Credit risk scoring", "Fraud detection", "Revenue forecasting"], href: "/services/ai-predictive-analytics/", ctaText: "Explore Predictive AI" },
+  { title: "Agentic AI Systems", description: "Autonomous AI agents that monitor markets, execute workflows, and escalate exceptions without human involvement.", useCases: ["Trade monitoring", "Compliance monitoring", "Customer lifecycle automation"], href: "/services/agentic-ai-systems/", ctaText: "Explore Agentic AI" },
+  { title: "RAG & Knowledge AI", description: "AI retrieval systems that surface relevant financial regulations, policies, and client data on demand.", useCases: ["Regulatory guidance", "Policy retrieval", "Client document Q&A"], href: "/services/rag-knowledge-ai/", ctaText: "Explore Knowledge AI" },
+];
+
+
   Landmark,
   Users,
   CreditCard,
@@ -568,18 +582,7 @@ function FintechSolutionFinder() {
     setResult({ system, why, timeline, cost, nextPhase });
     setStep(5);
   };
-const caseStudies = [
-  { company: "Enova", description: "AI-powered credit decisioning platform enabling smarter, more inclusive lending across underserved borrower segments.", impact: ["80% faster credit decisioning", "Reduced default rates", "Expanded credit access"], href: "/case-studies/enova/" },
-  { company: "Dave", description: "Generative AI financial assistant providing smart, human-like support for personal finance management.", impact: ["Personalized financial guidance at scale", "Higher user engagement", "Reduced support costs"], href: "/case-studies/dave/" },
-  { company: "Ocrolus", description: "AI document intelligence engine automating financial document review and data extraction for fintech workflows.", impact: ["90%+ document processing accuracy", "Faster loan origination", "Reduced manual review hours"], href: "/case-studies/ocrolus/" },
-];
 
-const industryServices = [
-  { title: "AI Automation", description: "End-to-end automation of financial workflows including document processing, compliance checks, and reporting.", useCases: ["Loan origination automation", "KYC/AML workflows", "Regulatory reporting"], href: "/services/ai-automation/", ctaText: "Explore AI Automation" },
-  { title: "Predictive & Analytics AI", description: "AI models that assess credit risk, detect fraud, and forecast financial outcomes with high accuracy.", useCases: ["Credit risk scoring", "Fraud detection", "Revenue forecasting"], href: "/services/ai-predictive-analytics/", ctaText: "Explore Predictive AI" },
-  { title: "Agentic AI Systems", description: "Autonomous AI agents that monitor markets, execute workflows, and escalate exceptions without human involvement.", useCases: ["Trade monitoring", "Compliance monitoring", "Customer lifecycle automation"], href: "/services/agentic-ai-systems/", ctaText: "Explore Agentic AI" },
-  { title: "RAG & Knowledge AI", description: "AI retrieval systems that surface relevant financial regulations, policies, and client data on demand.", useCases: ["Regulatory guidance", "Policy retrieval", "Client document Q&A"], href: "/services/rag-knowledge-ai/", ctaText: "Explore Knowledge AI" },
-];
 
 
   return (

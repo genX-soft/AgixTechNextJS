@@ -72,6 +72,20 @@ import { submitLead } from "@/lib/lead-submission";
 import { useCelebration } from "@/components/success-celebration";
 import { IndustryCaseStudies, IndustryServices } from "@/components/industry-sections";
 
+const caseStudies = [
+  { company: "Enova", description: "AI-driven risk assessment and credit decisioning platform reducing manual underwriting and improving precision.", impact: ["Faster risk decisioning", "Reduced underwriting costs", "Improved risk model accuracy"], href: "/case-studies/enova/" },
+  { company: "Ocrolus", description: "AI document intelligence platform automating insurance document extraction, claims review, and data validation.", impact: ["90%+ document accuracy", "Faster claims processing", "Reduced manual review workload"], href: "/case-studies/ocrolus/" },
+  { company: "AlphaSense", description: "AI-powered market and financial intelligence platform used by insurers to monitor risks and competitive trends.", impact: ["Real-time risk signal monitoring", "Deeper market intelligence", "Faster analyst workflows"], href: "/case-studies/alphasense/" },
+];
+
+const industryServices = [
+  { title: "AI Automation", description: "Automate claims intake, document review, and policy management workflows to reduce costs and processing time.", useCases: ["Claims automation", "Policy processing", "Compliance checks"], href: "/services/ai-automation/", ctaText: "Explore AI Automation" },
+  { title: "Predictive & Analytics AI", description: "AI models that score risk, predict claims likelihood, and identify fraud patterns across portfolios.", useCases: ["Underwriting risk scoring", "Fraud detection", "Claims prediction"], href: "/services/ai-predictive-analytics/", ctaText: "Explore Predictive AI" },
+  { title: "Computer Vision Solutions", description: "AI vision systems that assess property damage, vehicle accidents, and incident evidence from images and video.", useCases: ["Damage assessment", "Accident reconstruction", "Evidence analysis"], href: "/services/ai-computer-vision/", ctaText: "Explore Computer Vision" },
+  { title: "RAG & Knowledge AI", description: "AI systems that retrieve policy terms, regulatory guidelines, and compliance documentation instantly.", useCases: ["Policy retrieval", "Regulatory compliance guidance", "Agent knowledge assist"], href: "/services/rag-knowledge-ai/", ctaText: "Explore Knowledge AI" },
+];
+
+
 
 const insurerTypes = [
   { id: "carrier", label: "Insurance Carrier", icon: Building2 },
@@ -582,18 +596,7 @@ function InsuranceSolutionFinder() {
     setResult({ system, why, timeline, cost, nextPhase });
     setStep(5);
   };
-const caseStudies = [
-  { company: "Enova", description: "AI-driven risk assessment and credit decisioning platform reducing manual underwriting and improving precision.", impact: ["Faster risk decisioning", "Reduced underwriting costs", "Improved risk model accuracy"], href: "/case-studies/enova/" },
-  { company: "Ocrolus", description: "AI document intelligence platform automating insurance document extraction, claims review, and data validation.", impact: ["90%+ document accuracy", "Faster claims processing", "Reduced manual review workload"], href: "/case-studies/ocrolus/" },
-  { company: "AlphaSense", description: "AI-powered market and financial intelligence platform used by insurers to monitor risks and competitive trends.", impact: ["Real-time risk signal monitoring", "Deeper market intelligence", "Faster analyst workflows"], href: "/case-studies/alphasense/" },
-];
 
-const industryServices = [
-  { title: "AI Automation", description: "Automate claims intake, document review, and policy management workflows to reduce costs and processing time.", useCases: ["Claims automation", "Policy processing", "Compliance checks"], href: "/services/ai-automation/", ctaText: "Explore AI Automation" },
-  { title: "Predictive & Analytics AI", description: "AI models that score risk, predict claims likelihood, and identify fraud patterns across portfolios.", useCases: ["Underwriting risk scoring", "Fraud detection", "Claims prediction"], href: "/services/ai-predictive-analytics/", ctaText: "Explore Predictive AI" },
-  { title: "Computer Vision Solutions", description: "AI vision systems that assess property damage, vehicle accidents, and incident evidence from images and video.", useCases: ["Damage assessment", "Accident reconstruction", "Evidence analysis"], href: "/services/ai-computer-vision/", ctaText: "Explore Computer Vision" },
-  { title: "RAG & Knowledge AI", description: "AI systems that retrieve policy terms, regulatory guidelines, and compliance documentation instantly.", useCases: ["Policy retrieval", "Regulatory compliance guidance", "Agent knowledge assist"], href: "/services/rag-knowledge-ai/", ctaText: "Explore Knowledge AI" },
-];
 
 
   return (

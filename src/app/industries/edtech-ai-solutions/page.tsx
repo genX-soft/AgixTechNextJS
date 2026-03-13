@@ -55,6 +55,20 @@ import { useCelebration } from "@/components/success-celebration";
 import { trackEvent } from "@/lib/analytics";
 import { IndustryCaseStudies, IndustryServices } from "@/components/industry-sections";
 
+const caseStudies = [
+  { company: "Quizlet", description: "AI-powered study engine delivering personalized, predictive learning experiences for millions of students worldwide.", impact: ["Improved knowledge retention", "Personalized study paths", "Higher exam pass rates"], href: "/case-studies/quizlet/" },
+  { company: "Knewton", description: "Real-time adaptive learning platform that adjusts content difficulty based on continuous AI feedback loops.", impact: ["Faster skill mastery", "Reduced learning gaps", "Data-driven curriculum insights"], href: "/case-studies/knewton/" },
+  { company: "Riiid Labs", description: "Adaptive AI engine for personalized learning and test preparation mastery, proven across global standardized tests.", impact: ["Significant score improvements", "Efficient study time allocation", "Scalable to millions of learners"], href: "/case-studies/riiid-labs/" },
+];
+
+const industryServices = [
+  { title: "RAG & Knowledge AI", description: "AI systems that retrieve and surface course content, research papers, and institutional knowledge on demand.", useCases: ["Course content retrieval", "Research assistance", "Knowledge base Q&A"], href: "/services/rag-knowledge-ai/", ctaText: "Explore Knowledge AI" },
+  { title: "Conversational AI", description: "AI tutors and teaching assistants that answer student questions, provide feedback, and guide learning journeys.", useCases: ["AI tutoring", "Assignment feedback", "Student onboarding"], href: "/services/conversational-ai-chatbots/", ctaText: "Explore Conversational AI" },
+  { title: "Agentic AI Systems", description: "Autonomous AI agents that personalize curriculum, track progress, and intervene when students fall behind.", useCases: ["Adaptive curriculum delivery", "Progress monitoring", "Early intervention alerts"], href: "/services/agentic-ai-systems/", ctaText: "Explore Agentic AI" },
+  { title: "Custom AI Product Development", description: "Fully custom AI-powered EdTech products built from scratch — from adaptive learning engines to AI proctoring systems.", useCases: ["Custom LMS AI features", "Adaptive assessment engines", "AI proctoring tools"], href: "/services/custom-ai-product-development/", ctaText: "Explore Custom AI Development" },
+];
+
+
 
 const institutionTypes = [
   { id: "edtech", label: "EdTech Startup", icon: Lightbulb },
@@ -524,18 +538,7 @@ function EdTechSolutionFinder() {
     setResult({ system, why, timeline, cost, nextPhase });
     setStep(5);
   };
-const caseStudies = [
-  { company: "Quizlet", description: "AI-powered study engine delivering personalized, predictive learning experiences for millions of students worldwide.", impact: ["Improved knowledge retention", "Personalized study paths", "Higher exam pass rates"], href: "/case-studies/quizlet/" },
-  { company: "Knewton", description: "Real-time adaptive learning platform that adjusts content difficulty based on continuous AI feedback loops.", impact: ["Faster skill mastery", "Reduced learning gaps", "Data-driven curriculum insights"], href: "/case-studies/knewton/" },
-  { company: "Riiid Labs", description: "Adaptive AI engine for personalized learning and test preparation mastery, proven across global standardized tests.", impact: ["Significant score improvements", "Efficient study time allocation", "Scalable to millions of learners"], href: "/case-studies/riiid-labs/" },
-];
 
-const industryServices = [
-  { title: "RAG & Knowledge AI", description: "AI systems that retrieve and surface course content, research papers, and institutional knowledge on demand.", useCases: ["Course content retrieval", "Research assistance", "Knowledge base Q&A"], href: "/services/rag-knowledge-ai/", ctaText: "Explore Knowledge AI" },
-  { title: "Conversational AI", description: "AI tutors and teaching assistants that answer student questions, provide feedback, and guide learning journeys.", useCases: ["AI tutoring", "Assignment feedback", "Student onboarding"], href: "/services/conversational-ai-chatbots/", ctaText: "Explore Conversational AI" },
-  { title: "Agentic AI Systems", description: "Autonomous AI agents that personalize curriculum, track progress, and intervene when students fall behind.", useCases: ["Adaptive curriculum delivery", "Progress monitoring", "Early intervention alerts"], href: "/services/agentic-ai-systems/", ctaText: "Explore Agentic AI" },
-  { title: "Custom AI Product Development", description: "Fully custom AI-powered EdTech products built from scratch — from adaptive learning engines to AI proctoring systems.", useCases: ["Custom LMS AI features", "Adaptive assessment engines", "AI proctoring tools"], href: "/services/custom-ai-product-development/", ctaText: "Explore Custom AI Development" },
-];
 
 
   return (
