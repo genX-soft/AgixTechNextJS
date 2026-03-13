@@ -50,6 +50,8 @@ import { useToast } from "@/hooks/use-toast";
 import { submitLead } from "@/lib/lead-submission";
 import { useCelebration } from "@/components/success-celebration";
 import { trackEvent } from "@/lib/analytics";
+import { IndustryCaseStudies, IndustryServices } from "@/components/industry-sections";
+
 
 const institutionTypes = [
   { id: "d2c", label: "D2C Brand", icon: ShoppingBag },
@@ -437,6 +439,19 @@ function ECommerceSolutionFinder() {
     setResult({ system, why, timeline, cost, nextPhase });
     setStep(4);
   };
+const caseStudies = [
+  { company: "Albertsons", description: "AI-driven demand forecasting system reducing perishable waste and improving on-shelf availability across stores.", impact: ["23% reduction in perishable waste", "$41M in annual savings", "18% improvement in on-shelf availability"], href: "/case-studies/albertsons/" },
+  { company: "Kroger", description: "Predictive AI engine enabling smart reordering and cart automation for improved inventory efficiency.", impact: ["Reduced out-of-stock events", "Automated replenishment workflows", "Higher cart conversion rates"], href: "/case-studies/kroger/" },
+  { company: "Stitch Fix", description: "AI stylist engine delivering hyper-personalized product recommendations that drive engagement and retention.", impact: ["Higher customer lifetime value", "Improved style match accuracy", "Reduced return rates"], href: "/case-studies/stitch-fix/" },
+];
+
+const industryServices = [
+  { title: "Predictive & Analytics AI", description: "AI models that forecast demand, optimize pricing, and identify sales trends across SKUs and store locations.", useCases: ["Demand forecasting", "Dynamic pricing", "Sales trend analysis"], href: "/services/ai-predictive-analytics/", ctaText: "Explore Predictive AI" },
+  { title: "Computer Vision Solutions", description: "AI vision systems for shelf monitoring, loss prevention, checkout automation, and store analytics.", useCases: ["Shelf availability monitoring", "Loss prevention", "Checkout automation"], href: "/services/ai-computer-vision/", ctaText: "Explore Computer Vision" },
+  { title: "Conversational AI", description: "AI shopping assistants that help customers discover products, check availability, and get personalized recommendations.", useCases: ["Product discovery", "Order tracking", "Personalized recommendations"], href: "/services/conversational-ai-chatbots/", ctaText: "Explore Conversational AI" },
+  { title: "AI Automation", description: "Automate inventory management, supplier communications, and back-office retail operations at scale.", useCases: ["Inventory automation", "Supplier workflows", "Returns processing"], href: "/services/ai-automation/", ctaText: "Explore AI Automation" },
+];
+
 
   return (
     <Card id="solution-finder" className="border-2 border-primary/20">
@@ -1351,6 +1366,13 @@ export default function EcommerceIndustryPage() {
           </div>
         </div>
       </section>
+
+
+      {/* Industry Case Studies Section */}
+      <IndustryCaseStudies caseStudies={caseStudies} />
+
+      {/* Industry Services Section */}
+      <IndustryServices services={industryServices} />
 
       {/* Interactive Tools Section */}
       <section id="leakage-calculator" className="py-20 bg-muted/30">

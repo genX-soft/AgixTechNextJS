@@ -69,6 +69,8 @@ import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
 import { submitLead } from "@/lib/lead-submission";
 import { useCelebration } from "@/components/success-celebration";
+import { IndustryCaseStudies, IndustryServices } from "@/components/industry-sections";
+
 
 const businessTypes = [
   { id: "logistics", label: "Logistics Provider", icon: Truck },
@@ -526,6 +528,19 @@ function LogisticsSolutionFinder() {
     setInputs({ businessType: "", challenge: "", volume: "", warehouses: "", dataReadiness: "" });
     setShowResult(false);
   };
+const caseStudies = [
+  { company: "Navan", description: "AI assistant for seamless business travel management and smart expense automation across enterprise teams.", impact: ["Automated expense reporting", "Optimized travel bookings", "Reduced policy violations"], href: "/case-studies/navan/" },
+  { company: "Hungryroot", description: "AI-driven meal planning and grocery delivery platform optimizing inventory, routing, and customer personalization.", impact: ["Reduced food waste", "Improved delivery efficiency", "Higher subscription retention"], href: "/case-studies/hungryroot/" },
+  { company: "Naratix", description: "Intelligent AI agents enabling global multilingual e-commerce content operations and supply chain communication.", impact: ["Faster cross-border operations", "Multilingual content automation", "Reduced operational overhead"], href: "/case-studies/naratix/" },
+];
+
+const industryServices = [
+  { title: "AI Automation", description: "Automate shipment tracking, warehouse operations, supplier workflows, and last-mile delivery coordination.", useCases: ["Shipment automation", "Warehouse management", "Supplier coordination"], href: "/services/ai-automation/", ctaText: "Explore AI Automation" },
+  { title: "Predictive & Analytics AI", description: "AI models that forecast demand, optimize routes, and predict supply chain disruptions before they occur.", useCases: ["Demand forecasting", "Route optimization", "Disruption prediction"], href: "/services/ai-predictive-analytics/", ctaText: "Explore Predictive AI" },
+  { title: "Agentic AI Systems", description: "Autonomous AI agents that monitor shipments, manage exceptions, and coordinate across logistics networks.", useCases: ["Exception management", "Cross-carrier coordination", "Delivery status automation"], href: "/services/agentic-ai-systems/", ctaText: "Explore Agentic AI" },
+  { title: "Computer Vision Solutions", description: "AI vision systems for package inspection, warehouse automation, vehicle monitoring, and damage detection.", useCases: ["Package inspection", "Warehouse automation", "Damage detection"], href: "/services/ai-computer-vision/", ctaText: "Explore Computer Vision" },
+];
+
 
   return (
     <Card className="border-primary/20 bg-gradient-to-br from-primary/5 to-cyan-500/5" id="solution-finder">
@@ -1638,6 +1653,13 @@ export default function LogisticsIndustryPage() {
           </motion.div>
         </div>
       </section>
+
+
+      {/* Industry Case Studies Section */}
+      <IndustryCaseStudies caseStudies={caseStudies} />
+
+      {/* Industry Services Section */}
+      <IndustryServices services={industryServices} />
 
       {/* Interactive Tools Section */}
       <section className="py-20 bg-muted/30">

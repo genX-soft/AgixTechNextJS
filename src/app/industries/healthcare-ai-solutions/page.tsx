@@ -55,6 +55,8 @@ import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
 import { submitLead } from "@/lib/lead-submission";
 import { useCelebration } from "@/components/success-celebration";
+import { IndustryCaseStudies, IndustryServices } from "@/components/industry-sections";
+
 
 const heroValuePoints = [
   "Reduce patient intake & triage delays",
@@ -555,6 +557,19 @@ function HealthcareSolutionFinder() {
     setCareModel(null);
     setShowResult(false);
   };
+const caseStudies = [
+  { company: "Babylon Health", description: "AI-powered digital triage and telehealth platform improving patient accessibility and care delivery at scale.", impact: ["Faster patient symptom assessment", "Scalable telemedicine consultations", "Reduced triage workload"], href: "/case-studies/babylon-health/" },
+  { company: "Kite Therapy", description: "AI-assisted therapy management platform improving care coordination between clinicians and pediatric patients.", impact: ["Better treatment planning", "Improved patient engagement", "Enhanced clinician insights"], href: "/case-studies/kite-therapy/" },
+  { company: "Hello Driven", description: "AI-driven healthcare engagement platform automating patient follow-ups and continuity of care.", impact: ["Automated patient communication", "Reduced missed follow-ups", "Improved care continuity"], href: "/case-studies/hello-driven/" },
+];
+
+const industryServices = [
+  { title: "AI Voice Agents", description: "Automate patient calls, appointment reminders, and triage interactions with conversational voice AI.", useCases: ["Appointment scheduling", "Patient reminders", "Triage assistance"], href: "/services/ai-voice-agents/", ctaText: "Explore Voice AI" },
+  { title: "Conversational AI", description: "Healthcare chatbots that assist patients with symptom intake, appointment booking, and information requests.", useCases: ["Digital triage", "Patient FAQs", "Intake forms"], href: "/services/conversational-ai-chatbots/", ctaText: "Explore Conversational AI" },
+  { title: "RAG & Knowledge AI", description: "AI systems that retrieve accurate information from medical knowledge bases, protocols, and documentation.", useCases: ["Clinical knowledge retrieval", "Protocol guidance", "Medical documentation assistance"], href: "/services/rag-knowledge-ai/", ctaText: "Explore Knowledge AI" },
+  { title: "Predictive & Analytics AI", description: "AI models that identify patterns in patient and operational data to support clinical decision making.", useCases: ["Patient risk prediction", "Operational forecasting", "Resource planning"], href: "/services/ai-predictive-analytics/", ctaText: "Explore Predictive AI" },
+];
+
 
   return (
     <Card className="border-blue-500/20 bg-gradient-to-br from-slate-900/50 to-blue-950/30">
@@ -2108,6 +2123,13 @@ export default function HealthcareIndustryPage() {
           </div>
         </div>
       </section>
+
+
+      {/* Industry Case Studies Section */}
+      <IndustryCaseStudies caseStudies={caseStudies} />
+
+      {/* Industry Services Section */}
+      <IndustryServices services={industryServices} />
 
       {/* ==================== PART 4: COST, ROI & DECISION TOOLS ==================== */}
       <DecisionToolsSection />

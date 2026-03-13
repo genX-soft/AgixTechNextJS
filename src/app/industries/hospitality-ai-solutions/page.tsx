@@ -74,6 +74,8 @@ import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
 import { submitLead } from "@/lib/lead-submission";
 import { useCelebration } from "@/components/success-celebration";
+import { IndustryCaseStudies, IndustryServices } from "@/components/industry-sections";
+
 
 const businessTypes = [
   { id: "hotel", label: "Hotel / Resort", icon: Bed },
@@ -468,6 +470,19 @@ function HospitalitySolutionFinder() {
     setAutomationLevel(null);
     setShowResult(false);
   };
+const caseStudies = [
+  { company: "Hilton Hotels", description: "Enterprise AI platform enabling end-to-end guest personalization across reservations, services, and communications.", impact: ["Higher guest satisfaction scores", "Increased upsell revenue", "Reduced front desk workload"], href: "/case-studies/hilton-hotels/" },
+  { company: "Luxury Escapes", description: "Concierge-grade AI chatbot delivering premium travel and hospitality experiences through personalized conversations.", impact: ["24/7 guest support", "Higher booking conversion", "Improved customer satisfaction"], href: "/case-studies/luxury-escapes/" },
+  { company: "Mindtrip", description: "Conversational AI travel planning platform that creates personalized itineraries through natural dialogue.", impact: ["Faster trip planning", "Higher user engagement", "Improved booking intent"], href: "/case-studies/mindtrip/" },
+];
+
+const industryServices = [
+  { title: "AI Voice Agents", description: "Automate guest calls, reservation confirmations, and concierge interactions with natural voice AI.", useCases: ["Reservation management", "Guest inquiries", "Concierge automation"], href: "/services/ai-voice-agents/", ctaText: "Explore Voice AI" },
+  { title: "Conversational AI", description: "AI chatbots that handle bookings, answer FAQs, and provide personalized recommendations around the clock.", useCases: ["Booking assistance", "Guest FAQs", "Upsell recommendations"], href: "/services/conversational-ai-chatbots/", ctaText: "Explore Conversational AI" },
+  { title: "RAG & Knowledge AI", description: "AI retrieval systems that surface property information, policies, and local knowledge for staff and guests.", useCases: ["Property information retrieval", "Staff knowledge assist", "Local recommendations"], href: "/services/rag-knowledge-ai/", ctaText: "Explore Knowledge AI" },
+  { title: "Predictive & Analytics AI", description: "AI models that forecast occupancy, optimize pricing, and personalize guest experiences based on behavioral data.", useCases: ["Occupancy forecasting", "Dynamic pricing", "Guest personalization"], href: "/services/ai-predictive-analytics/", ctaText: "Explore Predictive AI" },
+];
+
 
   return (
     <Card className="border-primary/20 bg-gradient-to-br from-primary/5 to-pink-500/5">
@@ -1641,6 +1656,13 @@ export default function HospitalityIndustryPage() {
           </motion.div>
         </div>
       </section>
+
+
+      {/* Industry Case Studies Section */}
+      <IndustryCaseStudies caseStudies={caseStudies} />
+
+      {/* Industry Services Section */}
+      <IndustryServices services={industryServices} />
 
       {/* Interactive Tools Section */}
       <section className="py-20 bg-muted/30">

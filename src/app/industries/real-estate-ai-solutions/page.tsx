@@ -70,6 +70,8 @@ import {
 import { trackEvent } from "@/lib/analytics";
 import { submitLead } from "@/lib/lead-submission";
 import { useCelebration } from "@/components/success-celebration";
+import { IndustryCaseStudies, IndustryServices } from "@/components/industry-sections";
+
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -585,6 +587,19 @@ function HeroLeadForm() {
       });
     }
   };
+const caseStudies = [
+  { company: "HouseCanary", description: "AI platform delivering real-time property valuation and market forecasting for real estate investors and lenders.", impact: ["Automated property valuations at scale", "More accurate market predictions", "Faster deal underwriting"], href: "/case-studies/housecanary/" },
+  { company: "Properti AI", description: "AI-powered property discovery chatbot offering personalized, always-on search experiences for homebuyers.", impact: ["24/7 property discovery assistance", "Personalized listing recommendations", "Higher buyer engagement rates"], href: "/case-studies/properti-ai/" },
+  { company: "AlphaSense", description: "AI-powered market intelligence platform enabling real estate investors to extract insights from vast data sources.", impact: ["Faster market research cycles", "Deeper investment insights", "Reduced analyst workload"], href: "/case-studies/alphasense/" },
+];
+
+const industryServices = [
+  { title: "Conversational AI", description: "AI chatbots that engage buyers and renters 24/7, answer property questions, and qualify leads automatically.", useCases: ["Lead qualification", "Property FAQs", "Viewing scheduling"], href: "/services/conversational-ai-chatbots/", ctaText: "Explore Conversational AI" },
+  { title: "Predictive & Analytics AI", description: "AI models that forecast property values, rental yields, and market trends with precision.", useCases: ["Property valuation", "Market trend forecasting", "Investment risk scoring"], href: "/services/ai-predictive-analytics/", ctaText: "Explore Predictive AI" },
+  { title: "RAG & Knowledge AI", description: "AI systems that surface relevant listings, contracts, and market data from large document repositories.", useCases: ["Contract analysis", "Listing intelligence", "Regulatory compliance retrieval"], href: "/services/rag-knowledge-ai/", ctaText: "Explore Knowledge AI" },
+  { title: "Agentic AI Systems", description: "Autonomous AI agents that handle property research, outreach, and transaction coordination end-to-end.", useCases: ["Automated outreach", "Transaction coordination", "Due diligence automation"], href: "/services/agentic-ai-systems/", ctaText: "Explore Agentic AI" },
+];
+
 
   return (
     <Card className="bg-card/95 backdrop-blur-sm border-border">
@@ -1698,6 +1713,13 @@ export default function RealEstateIndustryPage() {
           </div>
         </div>
       </section>
+
+
+      {/* Industry Case Studies Section */}
+      <IndustryCaseStudies caseStudies={caseStudies} />
+
+      {/* Industry Services Section */}
+      <IndustryServices services={industryServices} />
 
       {/* Interactive Tools Section */}
       <section id="leakage-calculator" className="py-20 bg-muted/30">
