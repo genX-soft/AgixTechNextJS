@@ -23,13 +23,15 @@ export interface ServiceCard {
 
 interface IndustryCaseStudiesProps {
   caseStudies: CaseStudyCard[];
+  industryName: string;
 }
 
 interface IndustryServicesProps {
   services: ServiceCard[];
+  industryName: string;
 }
 
-export function IndustryCaseStudies({ caseStudies }: IndustryCaseStudiesProps) {
+export function IndustryCaseStudies({ caseStudies, industryName }: IndustryCaseStudiesProps) {
   return (
     <section className="py-20 bg-muted/30">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
@@ -42,10 +44,10 @@ export function IndustryCaseStudies({ caseStudies }: IndustryCaseStudiesProps) {
           <Badge className="mb-4">Real Results</Badge>
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             AI in Action:{" "}
-            <span className="text-primary">Real Industry Case Studies</span>
+            <span className="text-primary">{industryName} Case Studies</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-            See how organizations are deploying AI to solve real operational challenges.
+            See how organizations are deploying AI in the {industryName} to solve real operational challenges.
           </p>
         </motion.div>
 
@@ -96,7 +98,7 @@ export function IndustryCaseStudies({ caseStudies }: IndustryCaseStudiesProps) {
   );
 }
 
-export function IndustryServices({ services }: IndustryServicesProps) {
+export function IndustryServices({ services, industryName }: IndustryServicesProps) {
   return (
     <section className="py-20">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
@@ -111,11 +113,11 @@ export function IndustryServices({ services }: IndustryServicesProps) {
             AI Services
           </Badge>
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Solutions Built{" "}
-            <span className="text-primary">For This Industry</span>
+            Solutions Built For{" "}
+            <span className="text-primary">{industryName}</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-            AGIX builds custom AI systems tailored to your industry&apos;s specific challenges and workflows.
+            AGIX builds custom AI systems tailored to your {industryName} specific challenges and workflows.
           </p>
         </motion.div>
 

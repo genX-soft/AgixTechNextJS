@@ -1662,10 +1662,10 @@ export default function HospitalityIndustryPage() {
 
 
       {/* Industry Case Studies Section */}
-      <IndustryCaseStudies caseStudies={caseStudies} />
+      <IndustryCaseStudies caseStudies={caseStudies} industryName="Hospitality" />
 
       {/* Industry Services Section */}
-      <IndustryServices services={industryServices} />
+      <IndustryServices services={industryServices} industryName="Hospitality" />
 
       {/* Interactive Tools Section */}
       <section className="py-20 bg-muted/30">

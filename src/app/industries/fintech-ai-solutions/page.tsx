@@ -1616,10 +1616,10 @@ export default function FintechIndustryPage() {
 
 
       {/* Industry Case Studies Section */}
-      <IndustryCaseStudies caseStudies={caseStudies} />
+      <IndustryCaseStudies caseStudies={caseStudies} industryName="Fintech" />
 
       {/* Industry Services Section */}
-      <IndustryServices services={industryServices} />
+      <IndustryServices services={industryServices} industryName="Fintech" />
 
       {/* Interactive Tools Section */}
       <section id="leakage-calculator" className="py-20 bg-muted/30">

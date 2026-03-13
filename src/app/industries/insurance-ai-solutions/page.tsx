@@ -1721,10 +1721,10 @@ export default function InsuranceIndustryPage() {
 
 
       {/* Industry Case Studies Section */}
-      <IndustryCaseStudies caseStudies={caseStudies} />
+      <IndustryCaseStudies caseStudies={caseStudies} industryName="Insurance" />
 
       {/* Industry Services Section */}
-      <IndustryServices services={industryServices} />
+      <IndustryServices services={industryServices} industryName="Insurance" />
 
       {/* Interactive Tools Section */}
       <section className="py-20">

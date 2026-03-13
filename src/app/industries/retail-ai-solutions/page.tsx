@@ -1372,10 +1372,10 @@ export default function EcommerceIndustryPage() {
 
 
       {/* Industry Case Studies Section */}
-      <IndustryCaseStudies caseStudies={caseStudies} />
+      <IndustryCaseStudies caseStudies={caseStudies} industryName="Retail" />
 
       {/* Industry Services Section */}
-      <IndustryServices services={industryServices} />
+      <IndustryServices services={industryServices} industryName="Retail" />
 
       {/* Interactive Tools Section */}
       <section id="leakage-calculator" className="py-20 bg-muted/30">

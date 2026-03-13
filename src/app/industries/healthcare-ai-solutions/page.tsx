@@ -2129,10 +2129,10 @@ export default function HealthcareIndustryPage() {
 
 
       {/* Industry Case Studies Section */}
-      <IndustryCaseStudies caseStudies={caseStudies} />
+      <IndustryCaseStudies caseStudies={caseStudies} industryName="Healthcare" />
 
       {/* Industry Services Section */}
-      <IndustryServices services={industryServices} />
+      <IndustryServices services={industryServices} industryName="Healthcare" />
 
       {/* ==================== PART 4: COST, ROI & DECISION TOOLS ==================== */}
       <DecisionToolsSection />

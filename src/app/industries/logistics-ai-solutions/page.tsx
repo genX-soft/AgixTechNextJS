@@ -1659,10 +1659,10 @@ export default function LogisticsIndustryPage() {
 
 
       {/* Industry Case Studies Section */}
-      <IndustryCaseStudies caseStudies={caseStudies} />
+      <IndustryCaseStudies caseStudies={caseStudies} industryName="Logistics" />
 
       {/* Industry Services Section */}
-      <IndustryServices services={industryServices} />
+      <IndustryServices services={industryServices} industryName="Logistics" />
 
       {/* Interactive Tools Section */}
       <section className="py-20 bg-muted/30">
