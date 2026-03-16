@@ -55,6 +55,7 @@ export default function FloatingButtonStack() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.3, duration: 0.3 }}
             onClick={openModal}
+            aria-label="Open AI guide"
             className="flex items-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-white px-3 py-2 rounded-l-lg shadow-lg transition-all cursor-pointer border-l-2 border-t-2 border-b-2 border-emerald-400/50 hover:pr-4"
             data-testid="button-floating-guide"
           >
@@ -68,6 +69,7 @@ export default function FloatingButtonStack() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.5, duration: 0.3 }}
           onClick={() => setGlossaryOpen(true)}
+          aria-label="Open AI glossary"
           className="flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white px-3 py-2 rounded-l-lg shadow-lg transition-all cursor-pointer border-l-2 border-t-2 border-b-2 border-blue-400/50 hover:pr-4"
           data-testid="button-floating-glossary"
         >
@@ -80,6 +82,7 @@ export default function FloatingButtonStack() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.7, duration: 0.3 }}
           onClick={() => setToolsOpen(true)}
+          aria-label="Open AI tools"
           className="flex items-center gap-2 bg-purple-600 hover:bg-purple-500 text-white px-3 py-2 rounded-l-lg shadow-lg transition-all cursor-pointer border-l-2 border-t-2 border-b-2 border-purple-400/50 hover:pr-4"
           data-testid="button-floating-tools"
         >
@@ -103,6 +106,7 @@ export default function FloatingButtonStack() {
                 {!isModalOpen && (
                   <button
                     onClick={handleGuideClick}
+                    aria-label="Open guide menu item"
                     className="flex flex-col items-center gap-1 p-3 rounded-xl bg-emerald-500/20 border border-emerald-500/30 flex-1 min-w-0 active:scale-95 transition-transform"
                     data-testid="button-mobile-guide"
                   >
@@ -113,6 +117,7 @@ export default function FloatingButtonStack() {
                 
                 <button
                   onClick={handleGlossaryClick}
+                  aria-label="Open glossary menu item"
                   className="flex flex-col items-center gap-1 p-3 rounded-xl bg-blue-500/20 border border-blue-500/30 flex-1 min-w-0 active:scale-95 transition-transform"
                   data-testid="button-mobile-glossary"
                 >
@@ -122,6 +127,7 @@ export default function FloatingButtonStack() {
                 
                 <button
                   onClick={handleToolsClick}
+                  aria-label="Open tools menu item"
                   className="flex flex-col items-center gap-1 p-3 rounded-xl bg-purple-500/20 border border-purple-500/30 flex-1 min-w-0 active:scale-95 transition-transform"
                   data-testid="button-mobile-tools"
                 >
@@ -138,6 +144,7 @@ export default function FloatingButtonStack() {
           <div className="flex items-center justify-center">
             <motion.button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label={mobileMenuOpen ? "Close AI tools menu" : "Open AI tools menu"}
               className="flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-primary/90 to-orange-500/90 text-white font-semibold shadow-lg shadow-primary/30 active:scale-95 transition-transform min-h-[48px]"
               whileTap={{ scale: 0.95 }}
               data-testid="button-mobile-dock-toggle"
