@@ -167,11 +167,12 @@ export function MainHeader() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [corporateOpen, setCorporateOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
-    handleScroll();
-    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -204,6 +205,7 @@ export function MainHeader() {
             <span className="font-bold text-xl tracking-tight">AGIX</span>
           </a>
 
+          {mounted ? (
           <NavigationMenu className="hidden lg:flex">
             <NavigationMenuList>
               <NavigationMenuItem>
@@ -327,6 +329,9 @@ export function MainHeader() {
 
             </NavigationMenuList>
           </NavigationMenu>
+          ) : (
+            <div className="hidden lg:flex" />
+          )}
 
           <div className="flex items-center gap-4">
             <a
