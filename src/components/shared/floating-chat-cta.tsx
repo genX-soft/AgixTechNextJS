@@ -63,11 +63,12 @@ export function FloatingChatCta() {
                   <Button 
                     size="icon" 
                     variant="ghost" 
+                    aria-label="Close"
                     className="shrink-0"
                     onClick={() => setIsExpanded(false)}
                     data-testid="button-floating-cta-close"
                   >
-                    <X className="w-4 h-4" />
+                    <X className="w-4 h-4" aria-hidden="true" />
                   </Button>
                 </div>
               </CardHeader>

@@ -119,21 +119,32 @@ function DidYouKnowSection() {
 
 // ============================================
 // DYNAMIC SCROLL BACKGROUND HOOK
+// Uses refs + direct DOM mutations to avoid React re-renders on every scroll tick
 // ============================================
 function useScrollBackground() {
-  const [scrollY, setScrollY] = useState(0);
+  const grad1Ref = useRef<HTMLDivElement>(null);
+  const grad2Ref = useRef<HTMLDivElement>(null);
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
     setIsMounted(true);
     const handleScroll = () => {
-      setScrollY(window.scrollY);
+      const sy = window.scrollY;
+      const offset = Math.min(sy * 0.1, 30);
+      const op1 = Math.max(0.15 - sy * 0.0003, 0.05).toFixed(3);
+      const op2 = Math.max(0.08 - sy * 0.0002, 0.02).toFixed(3);
+      if (grad1Ref.current) {
+        grad1Ref.current.style.backgroundImage = `radial-gradient(ellipse 80% 50% at 50% ${(-20 + offset).toFixed(1)}%, rgba(249,115,22,${op1}), transparent)`;
+      }
+      if (grad2Ref.current) {
+        grad2Ref.current.style.backgroundImage = `radial-gradient(ellipse 50% 80% at ${(80 - offset * 0.5).toFixed(1)}% 50%, rgba(249,115,22,${op2}), transparent)`;
+      }
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  return { scrollY, isMounted };
+  return { grad1Ref, grad2Ref, isMounted };
 }
 
 // ============================================
@@ -148,78 +159,55 @@ const floatingCards = [
 ];
 
 function HeroSection() {
-  const { scrollY, isMounted } = useScrollBackground();
-  const gradientOffset = isMounted ? Math.min(scrollY * 0.1, 30) : 0;
-  const gradientOpacity = isMounted ? Math.max(0.15 - scrollY * 0.0003, 0.05) : 0.15;
-  const secondGradientOpacity = isMounted ? Math.max(0.08 - scrollY * 0.0002, 0.02) : 0.08;
+  const { grad1Ref, grad2Ref, isMounted } = useScrollBackground();
 
   return (
     <section className="min-h-[80vh] pt-24 lg:pt-28 flex flex-col justify-center bg-slate-950 relative overflow-hidden">
-      <div 
-        className="absolute inset-0 transition-all duration-300"
-        style={{
-          background: `radial-gradient(ellipse 80% 50% at 50% ${-20 + gradientOffset}%, rgba(249,115,22,${gradientOpacity}), transparent)`
-        }}
+      {/* Gradient backgrounds updated directly via refs to avoid scroll-triggered React re-renders */}
+      <div
+        ref={grad1Ref}
+        aria-hidden="true"
+        className="absolute inset-0"
+        style={{ backgroundImage: 'radial-gradient(ellipse 80% 50% at 50% -20%, rgba(249,115,22,0.15), transparent)' }}
       />
-      <div 
-        className="absolute inset-0 transition-all duration-300"
-        style={{
-          background: `radial-gradient(ellipse 50% 80% at ${80 - gradientOffset * 0.5}% 50%, rgba(249,115,22,${secondGradientOpacity}), transparent)`
-        }}
+      <div
+        ref={grad2Ref}
+        aria-hidden="true"
+        className="absolute inset-0"
+        style={{ backgroundImage: 'radial-gradient(ellipse 50% 80% at 80% 50%, rgba(249,115,22,0.08), transparent)' }}
       />
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
+      <div aria-hidden="true" className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative z-10 w-full">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            className="space-y-8"
-          >
+          {/* Hero text — rendered immediately for fast LCP; no opacity:0 on critical content */}
+          <div className="space-y-8">
             <div className="space-y-6">
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 }}
-              >
+              <div>
                 <Badge variant="outline" className="border-primary/30 text-primary mb-4">
-                 AI Systems Engineering & Agentic Intelligence Company
+                  AI Systems Engineering &amp; Agentic Intelligence Company
                 </Badge>
-              </motion.div>
+              </div>
               
-              <motion.h1 
+              <h1
                 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-bold tracking-tight text-white leading-tight"
                 data-testid="heading-hero"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 }}
               >
                 Not Sure Where to Start{" "}
                 <span className="text-primary">With AI?</span>
-              </motion.h1>
+              </h1>
               
-              <motion.p 
-                className="text-lg text-slate-400 max-w-xl"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4 }}
-              >
-                You're not alone. Most businesses know AI matters but struggle with where to begin. 
+              <p className="text-lg text-slate-400 max-w-xl">
+                You&apos;re not alone. Most businesses know AI matters but struggle with where to begin.
                 We help you find the right starting point for your situation.
-              </motion.p>
+              </p>
             </div>
 
-            <motion.div 
-              className="flex flex-col sm:flex-row gap-4"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 }}
-            >
+            <div className="flex flex-col sm:flex-row gap-4">
               <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg shadow-primary/25" asChild data-testid="button-hero-discover">
                 <a href="#discovery">
                   Find Your Starting Point
-                  <ArrowRight className="ml-2 h-4 w-4" />
+                  <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
                 </a>
               </Button>
               <Button size="lg" variant="outline" className="border-slate-700 text-slate-300 hover:bg-slate-800" asChild data-testid="button-hero-contact">
@@ -227,20 +215,15 @@ function HeroSection() {
                   Talk to Us
                 </a>
               </Button>
-            </motion.div>
+            </div>
 
-            <motion.div 
-              className="flex flex-wrap gap-3 pt-4"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.6 }}
-            >
+            <div className="flex flex-wrap gap-3 pt-4">
               {[
                 { value: "100+", label: "Projects" },
                 { value: "24/7", label: "Support" },
                 { value: "40%", label: "Cost Savings" },
-              ].map((stat, i) => (
-                <div 
+              ].map((stat) => (
+                <div
                   key={stat.label}
                   className="flex items-center gap-2 px-4 py-2 rounded-full bg-slate-800/50 border border-slate-700/50"
                 >
@@ -248,8 +231,8 @@ function HeroSection() {
                   <span className="text-slate-400 text-sm">{stat.label}</span>
                 </div>
               ))}
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
 
           <div className="relative hidden lg:block" suppressHydrationWarning>
             <div className="relative w-full aspect-square max-w-lg mx-auto">
@@ -1684,15 +1667,17 @@ function ServicesSection() {
                 size="icon" 
                 variant="outline" 
                 onClick={goPrev}
+                aria-label="Previous service"
                 className="border-slate-700 text-slate-400 hover:bg-slate-800 hover:text-white"
                 data-testid="button-service-prev"
               >
-                <ArrowLeft className="h-4 w-4" />
+                <ArrowLeft className="h-4 w-4" aria-hidden="true" />
               </Button>
               <Button 
                 size="icon" 
                 variant="outline" 
                 onClick={goNext}
+                aria-label="Next service"
                 className="border-slate-700 text-slate-400 hover:bg-slate-800 hover:text-white"
                 data-testid="button-service-next"
               >
@@ -2269,18 +2254,20 @@ function TestimonialsSection() {
               
               <button
                 onClick={goToPrev}
+                aria-label="Previous testimonial"
                 className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-muted/50 hover:bg-muted flex items-center justify-center transition-colors"
                 data-testid="button-testimonial-prev"
               >
-                <ChevronLeft className="h-5 w-5" />
+                <ChevronLeft className="h-5 w-5" aria-hidden="true" />
               </button>
               
               <button
                 onClick={goToNext}
+                aria-label="Next testimonial"
                 className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-muted/50 hover:bg-muted flex items-center justify-center transition-colors"
                 data-testid="button-testimonial-next"
               >
-                <ChevronRight className="h-5 w-5" />
+                <ChevronRight className="h-5 w-5" aria-hidden="true" />
               </button>
               
               <AnimatePresence mode="wait">
