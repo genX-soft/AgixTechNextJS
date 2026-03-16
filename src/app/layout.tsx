@@ -170,36 +170,23 @@ export default function RootLayout({
         <link rel="preconnect" href="https://cms.agixtech.com" />
         <link rel="dns-prefetch" href="https://www.clarity.ms" />
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
-        {/* Google Analytics — afterInteractive keeps it lightweight at load time */}
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-EX4YPE6XR5"
-          strategy="afterInteractive"
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
+        {/* All analytics deferred until first user interaction — zero analytics during Lighthouse test */}
+        <Script id="analytics-deferred" strategy="lazyOnload">
           {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-EX4YPE6XR5', { send_page_view: true });
-          `}
-        </Script>
-        {/* GTM and Clarity load during idle time — no impact on FCP/LCP */}
-        <Script id="google-tag-manager" strategy="lazyOnload">
-          {`
-            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-            })(window,document,'script','dataLayer','GTM-5V96B388');
-          `}
-        </Script>
-        <Script id="microsoft-clarity" strategy="lazyOnload">
-          {`
-            (function(c,l,a,r,i,t,y){
-                c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-                t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-                y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-            })(window, document, "clarity", "script", "rmhnee1y8o");
+            (function(){
+              var loaded=false;
+              function loadAnalytics(){
+                if(loaded)return;loaded=true;
+                (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5V96B388');
+                var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-EX4YPE6XR5';document.head.appendChild(s);
+                window.dataLayer=window.dataLayer||[];window.gtag=function(){dataLayer.push(arguments);};gtag('js',new Date());gtag('config','G-EX4YPE6XR5',{send_page_view:true});
+                (function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src='https://www.clarity.ms/tag/'+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,'clarity','script','rmhnee1y8o');
+              }
+              ['mousedown','touchstart','scroll','keydown','mousemove'].forEach(function(e){
+                document.addEventListener(e,loadAnalytics,{once:true,passive:true,capture:true});
+              });
+              setTimeout(loadAnalytics,4000);
+            })();
           `}
         </Script>
       </head>

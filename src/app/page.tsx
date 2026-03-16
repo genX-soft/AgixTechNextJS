@@ -77,10 +77,15 @@ const aiFacts = [
 
 function DidYouKnowSection() {
   const [currentFact, setCurrentFact] = useState(0);
+  const [visible, setVisible] = useState(true);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentFact((prev) => (prev + 1) % aiFacts.length);
+      setVisible(false);
+      setTimeout(() => {
+        setCurrentFact((prev) => (prev + 1) % aiFacts.length);
+        setVisible(true);
+      }, 350);
     }, 5000);
     return () => clearInterval(interval);
   }, []);
@@ -88,32 +93,25 @@ function DidYouKnowSection() {
   const CurrentIcon = aiFacts[currentFact].icon;
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.8 }}
-      className="mt-8 pt-6 border-t border-slate-800/50"
-    >
+    <div className="mt-8 pt-6 border-t border-slate-800/50" style={{ animation: 'agix-fade-up 0.5s ease-out 0.8s both' }}>
       <div className="flex items-center gap-3 text-slate-400">
         <div className="flex items-center gap-2 text-primary text-sm font-medium whitespace-nowrap">
           <Lightbulb className="w-4 h-4" />
           <span>Did you know?</span>
         </div>
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={currentFact}
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -20 }}
-            transition={{ duration: 0.4 }}
-            className="flex items-center gap-2 text-sm"
-          >
-            <CurrentIcon className="w-4 h-4 text-primary/70 flex-shrink-0 hidden sm:block" />
-            <span className="text-slate-300">{aiFacts[currentFact].fact}</span>
-          </motion.div>
-        </AnimatePresence>
+        <div
+          className="flex items-center gap-2 text-sm"
+          style={{
+            opacity: visible ? 1 : 0,
+            transform: visible ? 'translateX(0)' : 'translateX(-12px)',
+            transition: 'opacity 0.35s ease, transform 0.35s ease',
+          }}
+        >
+          <CurrentIcon className="w-4 h-4 text-primary/70 flex-shrink-0 hidden sm:block" />
+          <span className="text-slate-300">{aiFacts[currentFact].fact}</span>
+        </div>
       </div>
-    </motion.div>
+    </div>
   );
 }
 
@@ -125,9 +123,11 @@ function useScrollBackground() {
   const grad1Ref = useRef<HTMLDivElement>(null);
   const grad2Ref = useRef<HTMLDivElement>(null);
   const [isMounted, setIsMounted] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(false);
 
   useEffect(() => {
     setIsMounted(true);
+    setIsDesktop(window.matchMedia('(min-width: 1024px)').matches);
     const handleScroll = () => {
       const sy = window.scrollY;
       const offset = Math.min(sy * 0.1, 30);
@@ -144,7 +144,7 @@ function useScrollBackground() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  return { grad1Ref, grad2Ref, isMounted };
+  return { grad1Ref, grad2Ref, isMounted, isDesktop };
 }
 
 // ============================================
@@ -159,7 +159,7 @@ const floatingCards = [
 ];
 
 function HeroSection() {
-  const { grad1Ref, grad2Ref, isMounted } = useScrollBackground();
+  const { grad1Ref, grad2Ref, isMounted, isDesktop } = useScrollBackground();
 
   return (
     <section className="min-h-[80vh] pt-24 lg:pt-28 flex flex-col justify-center bg-slate-950 relative overflow-hidden">
@@ -243,7 +243,7 @@ function HeroSection() {
               <div className="absolute inset-24 rounded-full border border-primary/20" />
               
               <div className="absolute inset-0 flex items-center justify-center">
-                {isMounted && (
+                {isDesktop && isMounted && (
                   <motion.div
                     animate={{ rotate: 360 }}
                     transition={{ duration: 60, repeat: Infinity, ease: "linear" }}

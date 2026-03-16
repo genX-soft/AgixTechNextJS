@@ -2,7 +2,6 @@
 
 import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Phone, ChevronDown, Sparkles, Brain, Bot, MessageSquare, Workflow, Database, LineChart, Eye, Code, Building2, Briefcase, BookOpen, Users, Lightbulb, HeartPulse, Home, Landmark, ShoppingCart, Layers, Truck, GraduationCap, Info, Mail, Rocket } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -119,34 +118,29 @@ function MobileMenuItem({ title, items, href, onItemClick }: MobileMenuItemProps
           {title}
           <ChevronDown className={cn("h-4 w-4 transition-transform", isOpen && "rotate-180")} aria-hidden="true" />
         </button>
-        <AnimatePresence>
-          {isOpen && (
-            <motion.div
-              id={menuId}
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: "auto", opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.15 }}
-              className="overflow-hidden"
-              role="region"
-              aria-label={`${title} submenu`}
-            >
-              <div className="pl-4 pb-2 space-y-1">
-                {items.map((item) => (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    onClick={onItemClick}
-                    className="block px-4 py-3 text-sm text-muted-foreground hover-elevate rounded-md min-h-[44px] flex items-center"
-                    data-testid={`link-mobile-${item.title.toLowerCase().replace(/\s+/g, "-")}`}
-                  >
-                    {item.title}
-                  </Link>
-                ))}
-              </div>
-            </motion.div>
+        <div
+          id={menuId}
+          role="region"
+          aria-label={`${title} submenu`}
+          className={cn(
+            "overflow-hidden transition-all duration-150 ease-in-out",
+            isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0 pointer-events-none"
           )}
-        </AnimatePresence>
+        >
+          <div className="pl-4 pb-2 space-y-1">
+            {items.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={onItemClick}
+                className="block px-4 py-3 text-sm text-muted-foreground hover-elevate rounded-md min-h-[44px] flex items-center"
+                data-testid={`link-mobile-${item.title.toLowerCase().replace(/\s+/g, "-")}`}
+              >
+                {item.title}
+              </Link>
+            ))}
+          </div>
+        </div>
       </div>
     );
   }
@@ -365,15 +359,12 @@ export function MainHeader() {
         </div>
       </div>
 
-      <AnimatePresence>
-        {mobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.15 }}
-            className="lg:hidden bg-background/95 backdrop-blur-md border-b border-border overflow-hidden"
-          >
+      <div
+        className={cn(
+          "lg:hidden bg-background/95 backdrop-blur-md border-b border-border overflow-hidden transition-all duration-150 ease-in-out",
+          mobileMenuOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0 pointer-events-none"
+        )}
+      >
             <nav className="max-w-7xl mx-auto px-4 py-4 space-y-1">
               <MobileMenuItem
                 title="Intelligence"
@@ -427,9 +418,7 @@ export function MainHeader() {
                 </div>
               </div>
             </nav>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      </div>
     </header>
   );
 }
