@@ -65,7 +65,6 @@ export function FloatingChatCta() {
                     variant="ghost" 
                     className="shrink-0"
                     onClick={() => setIsExpanded(false)}
-                    aria-label="Close floating consultation panel"
                     data-testid="button-floating-cta-close"
                   >
                     <X className="w-4 h-4" />
@@ -106,7 +105,6 @@ export function FloatingChatCta() {
               size="lg"
               className="rounded-full w-14 h-14 p-0 bg-orange-500 hover:bg-orange-600 shadow-xl shadow-orange-500/30"
               onClick={() => setIsExpanded(true)}
-              aria-label="Open floating consultation panel"
               data-testid="button-floating-cta-toggle"
             >
               <MessageCircle className="w-6 h-6" />

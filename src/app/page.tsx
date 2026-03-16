@@ -21,6 +21,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useToast } from "@/hooks/use-toast";
 import { insertLeadSchema, type InsertLead } from "@shared/schema";
 import { motion, AnimatePresence } from "framer-motion";
+import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { useCelebration } from "@/components/success-celebration";
 import { 
@@ -63,34 +64,83 @@ import Link from "next/link";
 
 function useScrollAnimation() {
   const ref = useRef(null);
-  return { ref, isInView: true };
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  return { ref, isInView };
 }
 
 // ============================================
 // AI FACTS FOR "DID YOU KNOW?" SECTION
 // ============================================
-const heroFact = {
-  fact: "AI-powered automation can save businesses 20+ hours per week on repetitive tasks.",
-  icon: Zap,
-};
+const aiFacts = [
+  { fact: "AI can process documents 100x faster than humans while maintaining 99% accuracy", icon: Zap },
+  { fact: "Companies using AI chatbots reduce customer service costs by up to 30%", icon: MessageSquare },
+  { fact: "Predictive AI can forecast demand with 95% accuracy, reducing inventory waste", icon: TrendingUp },
+  { fact: "Voice AI agents can handle 10,000+ calls simultaneously without fatigue", icon: Users },
+  { fact: "AI-powered automation can save businesses 20+ hours per week on repetitive tasks", icon: Clock },
+  { fact: "Machine learning models improve by 15-25% every year through continuous learning", icon: Brain },
+  { fact: "Computer vision AI can detect manufacturing defects invisible to the human eye", icon: Eye },
+  { fact: "RAG systems can search through millions of documents in under 3 seconds", icon: Database },
+];
 
 function DidYouKnowSection() {
-  const CurrentIcon = heroFact.icon;
+  const [currentFact, setCurrentFact] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentFact((prev) => (prev + 1) % aiFacts.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const CurrentIcon = aiFacts[currentFact].icon;
 
   return (
-    <div className="mt-8 border-t border-slate-800/50 pt-6">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.8 }}
+      className="mt-8 pt-6 border-t border-slate-800/50"
+    >
       <div className="flex items-center gap-3 text-slate-400">
         <div className="flex items-center gap-2 text-primary text-sm font-medium whitespace-nowrap">
-          <Lightbulb className="w-4 h-4" aria-hidden="true" />
+          <Lightbulb className="w-4 h-4" />
           <span>Did you know?</span>
         </div>
-        <div className="flex items-center gap-2 text-sm">
-          <CurrentIcon className="hidden w-4 h-4 flex-shrink-0 text-primary/70 sm:block" aria-hidden="true" />
-          <span className="text-slate-300">{heroFact.fact}</span>
-        </div>
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentFact}
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -20 }}
+            transition={{ duration: 0.4 }}
+            className="flex items-center gap-2 text-sm"
+          >
+            <CurrentIcon className="w-4 h-4 text-primary/70 flex-shrink-0 hidden sm:block" />
+            <span className="text-slate-300">{aiFacts[currentFact].fact}</span>
+          </motion.div>
+        </AnimatePresence>
       </div>
-    </div>
+    </motion.div>
   );
+}
+
+// ============================================
+// DYNAMIC SCROLL BACKGROUND HOOK
+// ============================================
+function useScrollBackground() {
+  const [scrollY, setScrollY] = useState(0);
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  return { scrollY, isMounted };
 }
 
 // ============================================
@@ -105,35 +155,74 @@ const floatingCards = [
 ];
 
 function HeroSection() {
+  const { scrollY, isMounted } = useScrollBackground();
+  const gradientOffset = isMounted ? Math.min(scrollY * 0.1, 30) : 0;
+  const gradientOpacity = isMounted ? Math.max(0.15 - scrollY * 0.0003, 0.05) : 0.15;
+  const secondGradientOpacity = isMounted ? Math.max(0.08 - scrollY * 0.0002, 0.02) : 0.08;
+
   return (
     <section className="min-h-[80vh] pt-24 lg:pt-28 flex flex-col justify-center bg-slate-950 relative overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(249,115,22,0.15),transparent)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_50%_80%_at_80%_50%,rgba(249,115,22,0.08),transparent)]" />
+      <div 
+        className="absolute inset-0 transition-all duration-300"
+        style={{
+          background: `radial-gradient(ellipse 80% 50% at 50% ${-20 + gradientOffset}%, rgba(249,115,22,${gradientOpacity}), transparent)`
+        }}
+      />
+      <div 
+        className="absolute inset-0 transition-all duration-300"
+        style={{
+          background: `radial-gradient(ellipse 50% 80% at ${80 - gradientOffset * 0.5}% 50%, rgba(249,115,22,${secondGradientOpacity}), transparent)`
+        }}
+      />
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative z-10 w-full">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          <div className="space-y-8">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            className="space-y-8"
+          >
             <div className="space-y-6">
-              <Badge variant="outline" className="border-primary/30 text-primary mb-4">
-                AI Systems Engineering & Agentic Intelligence Company
-              </Badge>
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+              >
+                <Badge variant="outline" className="border-primary/30 text-primary mb-4">
+                 AI Systems Engineering & Agentic Intelligence Company
+                </Badge>
+              </motion.div>
               
-              <h1
+              <motion.h1 
                 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-bold tracking-tight text-white leading-tight"
                 data-testid="heading-hero"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
               >
                 Not Sure Where to Start{" "}
                 <span className="text-primary">With AI?</span>
-              </h1>
+              </motion.h1>
               
-              <p className="text-lg text-slate-300 max-w-xl">
+              <motion.p 
+                className="text-lg text-slate-400 max-w-xl"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 }}
+              >
                 You're not alone. Most businesses know AI matters but struggle with where to begin. 
                 We help you find the right starting point for your situation.
-              </p>
+              </motion.p>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4">
+            <motion.div 
+              className="flex flex-col sm:flex-row gap-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5 }}
+            >
               <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg shadow-primary/25" asChild data-testid="button-hero-discover">
                 <a href="#discovery">
                   Find Your Starting Point
@@ -145,14 +234,19 @@ function HeroSection() {
                   Talk to Us
                 </a>
               </Button>
-            </div>
+            </motion.div>
 
-            <div className="flex flex-wrap gap-3 pt-4">
+            <motion.div 
+              className="flex flex-wrap gap-3 pt-4"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.6 }}
+            >
               {[
                 { value: "100+", label: "Projects" },
                 { value: "24/7", label: "Support" },
                 { value: "40%", label: "Cost Savings" },
-              ].map((stat) => (
+              ].map((stat, i) => (
                 <div 
                   key={stat.label}
                   className="flex items-center gap-2 px-4 py-2 rounded-full bg-slate-800/50 border border-slate-700/50"
@@ -161,8 +255,8 @@ function HeroSection() {
                   <span className="text-slate-400 text-sm">{stat.label}</span>
                 </div>
               ))}
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
           <div className="relative hidden lg:block" suppressHydrationWarning>
             <div className="relative w-full aspect-square max-w-lg mx-auto">
@@ -173,12 +267,17 @@ function HeroSection() {
               <div className="absolute inset-24 rounded-full border border-primary/20" />
               
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="absolute inset-8">
+                {isMounted && (
+                  <motion.div
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+                    className="absolute inset-8"
+                  >
                     {floatingCards.map((card, i) => {
                       const angle = (i * 360) / floatingCards.length;
                       const radius = 42;
                       return (
-                        <div
+                        <motion.div
                           key={card.label}
                           className="absolute"
                           style={{
@@ -186,19 +285,33 @@ function HeroSection() {
                             top: `${50 + radius * Math.sin((angle * Math.PI) / 180)}%`,
                             transform: "translate(-50%, -50%)",
                           }}
+                          initial={{ opacity: 0, scale: 0 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          transition={{ delay: 0.5 + card.delay }}
                         >
-                          <div className="flex flex-col items-center gap-2 rounded-xl border border-slate-700/50 bg-slate-800/80 p-3 backdrop-blur-sm">
-                            <card.icon className="h-5 w-5 text-primary" aria-hidden="true" />
+                          <motion.div
+                            animate={{ rotate: -360 }}
+                            transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+                            className="flex flex-col items-center gap-2 p-3 rounded-xl bg-slate-800/80 border border-slate-700/50 backdrop-blur-sm"
+                          >
+                            <card.icon className="h-5 w-5 text-primary" />
                             <span className="text-xs text-slate-300 whitespace-nowrap">{card.label}</span>
-                          </div>
-                        </div>
+                          </motion.div>
+                        </motion.div>
                       );
                     })}
-                </div>
+                  </motion.div>
+                )}
                 
-                <div className="flex h-24 w-24 items-center justify-center rounded-2xl bg-gradient-to-br from-primary to-primary/80 shadow-xl shadow-primary/30">
-                  <Sparkles className="h-10 w-10 text-white" aria-hidden="true" />
-                </div>
+                <motion.div 
+                  className="w-24 h-24 rounded-2xl bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center shadow-xl shadow-primary/30"
+                  animate={{ 
+                    boxShadow: ["0 0 30px rgba(249,115,22,0.3)", "0 0 50px rgba(249,115,22,0.5)", "0 0 30px rgba(249,115,22,0.3)"]
+                  }}
+                  transition={{ duration: 3, repeat: Infinity }}
+                >
+                  <Sparkles className="h-10 w-10 text-white" />
+                </motion.div>
               </div>
             </div>
           </div>
@@ -1173,10 +1286,8 @@ function GuidedAssessmentSection() {
                     transition={{ duration: 0.3, delay: index * 0.05 }}
                   >
                     <button
-                      type="button"
                       onClick={() => setActiveAssessment(tool.key)}
                       className="w-full text-left"
-                      aria-label={`Open the ${tool.title} guided assessment`}
                     >
                       <Card className="h-full min-h-[280px] hover-elevate border-border/50 group" data-testid={`card-tool-${tool.forLabel.toLowerCase().replace(/\s+/g, '-')}`}>
                         <CardContent className={`p-6 h-full bg-gradient-to-br ${tool.color} rounded-lg flex flex-col`}>
@@ -1310,7 +1421,7 @@ function IntelligenceSection() {
         </motion.div>
 
         <div className="flex flex-col lg:flex-row gap-6">
-          <div className="lg:w-1/3 space-y-2" role="tablist" aria-label="AI intelligence categories">
+          <div className="lg:w-1/3 space-y-2">
             {intelligenceTypes.map((intel, index) => (
               <motion.button
                 key={intel.title}
@@ -1323,11 +1434,6 @@ function IntelligenceSection() {
                     ? "bg-gradient-to-r from-amber-500/20 to-amber-600/10 border border-amber-500/30"
                     : "bg-slate-800/40 border border-slate-700/30 hover:bg-slate-800/60 hover:border-slate-600/50"
                 }`}
-                type="button"
-                role="tab"
-                id={`intelligence-tab-${index}`}
-                aria-selected={activeIndex === index}
-                aria-controls={`intelligence-panel-${index}`}
                 data-testid={`tab-intelligence-${index}`}
               >
                 <div className={`flex-shrink-0 w-10 h-10 rounded-lg flex items-center justify-center transition-colors ${
@@ -1361,9 +1467,6 @@ function IntelligenceSection() {
               >
                 <div 
                   className="h-full p-8 md:p-10 rounded-2xl bg-gradient-to-br from-slate-800/90 to-slate-900/90 border border-slate-700/50 relative overflow-hidden"
-                  id={`intelligence-panel-${activeIndex}`}
-                  role="tabpanel"
-                  aria-labelledby={`intelligence-tab-${activeIndex}`}
                   data-testid={`panel-intelligence-${activeIndex}`}
                 >
                   <div className="absolute top-0 right-0 w-64 h-64 bg-amber-500/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
@@ -1560,7 +1663,7 @@ function ServicesSection() {
   const goPrev = () => setActiveService((prev) => (prev - 1 + allServices.length) % allServices.length);
 
   return (
-    <section id="services" className="py-24 bg-gradient-to-b from-slate-900 to-slate-950 overflow-hidden" ref={ref}>
+    <section className="py-24 bg-gradient-to-b from-slate-900 to-slate-950 overflow-hidden" ref={ref}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -1590,7 +1693,6 @@ function ServicesSection() {
                 variant="outline" 
                 onClick={goPrev}
                 className="border-slate-700 text-slate-400 hover:bg-slate-800 hover:text-white"
-                aria-label="Show previous service"
                 data-testid="button-service-prev"
               >
                 <ArrowLeft className="h-4 w-4" />
@@ -1600,7 +1702,6 @@ function ServicesSection() {
                 variant="outline" 
                 onClick={goNext}
                 className="border-slate-700 text-slate-400 hover:bg-slate-800 hover:text-white"
-                aria-label="Show next service"
                 data-testid="button-service-next"
               >
                 <ArrowRight className="h-4 w-4" />
@@ -1693,15 +1794,12 @@ function ServicesSection() {
               {allServices.map((s, index) => (
                 <button
                   key={s.title}
-                  type="button"
                   onClick={() => setActiveService(index)}
                   className={`flex items-center gap-2 px-3 py-2 rounded-full transition-all ${
                     activeService === index
                       ? "bg-emerald-500/20 text-emerald-400"
                       : "text-slate-500 hover:text-slate-300"
                   }`}
-                  aria-label={`Show ${s.title}`}
-                  aria-pressed={activeService === index}
                   data-testid={`service-dot-${index}`}
                 >
                   <s.icon className="h-4 w-4" />
@@ -1957,15 +2055,12 @@ function IndustriesSection() {
           {industries.map((industry, index) => (
             <button
               key={industry.title}
-              type="button"
               onClick={() => setActiveIndustry(index)}
               className={`flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2.5 sm:py-2 rounded-full text-xs sm:text-sm font-medium transition-all touch-target-sm ${
                 activeIndustry === index 
                   ? 'bg-primary text-primary-foreground' 
                   : 'bg-muted/50 text-muted-foreground hover:bg-muted hover:text-foreground'
               }`}
-              aria-label={`Show ${industry.title} industry solutions`}
-              aria-pressed={activeIndustry === index}
               data-testid={`button-industry-${index}`}
             >
               <industry.icon className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
@@ -2181,20 +2276,16 @@ function TestimonialsSection() {
               <Quote className="h-12 w-12 text-primary/20 absolute top-6 left-6" />
               
               <button
-                type="button"
                 onClick={goToPrev}
                 className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-muted/50 hover:bg-muted flex items-center justify-center transition-colors"
-                aria-label="Show previous testimonial"
                 data-testid="button-testimonial-prev"
               >
                 <ChevronLeft className="h-5 w-5" />
               </button>
               
               <button
-                type="button"
                 onClick={goToNext}
                 className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-muted/50 hover:bg-muted flex items-center justify-center transition-colors"
-                aria-label="Show next testimonial"
                 data-testid="button-testimonial-next"
               >
                 <ChevronRight className="h-5 w-5" />
@@ -2225,13 +2316,10 @@ function TestimonialsSection() {
                 {testimonials.map((_, index) => (
                   <button
                     key={index}
-                    type="button"
                     onClick={() => setActiveIndex(index)}
                     className={`w-2 h-2 rounded-full transition-colors ${
                       index === activeIndex ? 'bg-primary' : 'bg-muted hover:bg-muted-foreground/50'
                     }`}
-                    aria-label={`Go to testimonial ${index + 1}`}
-                    aria-pressed={index === activeIndex}
                     data-testid={`button-testimonial-${index}`}
                   />
                 ))}

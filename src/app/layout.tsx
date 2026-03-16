@@ -3,6 +3,7 @@ import { Inter, Space_Grotesk } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import { Providers } from "./providers";
+import { homepageOrganizationSchema } from "@/lib/seo/page-schemas";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -36,8 +37,8 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: "/favicon.svg", type: "image/svg+xml" },
       { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon.png", type: "image/png" },
     ],
     apple: [{ url: "/apple-touch-icon.png" }],
   },
@@ -88,6 +89,69 @@ export const metadata: Metadata = {
   },
   category: 'Technology',
   classification: 'AI Systems Engineering',
+  other: {
+    'script:ld+json': JSON.stringify({
+      "@context": "https://schema.org",
+      "@graph": [
+        homepageOrganizationSchema,
+        {
+          "@type": "WebSite",
+          "@id": "https://agixtech.com/#website",
+          "url": "https://agixtech.com/",
+          "name": "AGIX Technologies",
+          "description": "Leading AI Systems Engineering and Agentic Intelligence company",
+          "publisher": {
+            "@id": "https://agixtech.com/#organization"
+          },
+          "potentialAction": [
+            {
+              "@type": "SearchAction",
+              "target": {
+                "@type": "EntryPoint",
+                "urlTemplate": "https://agixtech.com/search?q={search_term_string}"
+              },
+              "query-input": "required name=search_term_string"
+            }
+          ]
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://agixtech.com/#webpage",
+          "url": "https://agixtech.com/",
+          "name": "AI Systems Engineering & Agentic Intelligence Company | Agix Technologies",
+          "isPartOf": {
+            "@id": "https://agixtech.com/#website"
+          },
+          "about": {
+            "@id": "https://agixtech.com/#organization"
+          },
+          "description": "Enterprise AI Systems Engineering and Agentic Intelligence solutions for measurable business outcomes.",
+          "breadcrumb": {
+            "@id": "https://agixtech.com/#breadcrumb"
+          },
+          "inLanguage": "en-US",
+          "potentialAction": [
+            {
+              "@type": "ReadAction",
+              "target": ["https://agixtech.com/"]
+            }
+          ]
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://agixtech.com/#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://agixtech.com/"
+            }
+          ]
+        }
+      ]
+    }),
+  },
 };
 
 export default function RootLayout({
@@ -98,19 +162,19 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
       <head>
-        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-        <link rel="dns-prefetch" href="https://www.clarity.ms" />
-        <link rel="preconnect" href="https://www.googletagmanager.com" crossOrigin="anonymous" />
-        <link rel="preconnect" href="https://www.clarity.ms" crossOrigin="anonymous" />
-        <Script id="analytics-bootstrap" strategy="lazyOnload">
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-EX4YPE6XR5"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
-            window.gtag = window.gtag || gtag;
             gtag('js', new Date());
+            gtag('config', 'G-EX4YPE6XR5');
           `}
         </Script>
-        <Script id="google-tag-manager" strategy="lazyOnload">
+        <Script id="google-tag-manager" strategy="afterInteractive">
           {`
             (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
             new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -119,7 +183,7 @@ export default function RootLayout({
             })(window,document,'script','dataLayer','GTM-5V96B388');
           `}
         </Script>
-        <Script id="microsoft-clarity" strategy="lazyOnload">
+        <Script id="microsoft-clarity" strategy="afterInteractive">
           {`
             (function(c,l,a,r,i,t,y){
                 c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
