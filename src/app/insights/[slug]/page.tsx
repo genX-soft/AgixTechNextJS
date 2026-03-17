@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import InsightDetailClient from './insight-detail-client';
 
-const WP_API_BASE = "https://r7t.66a.myftpupload.com/wp-json/wp/v2";
+const WP_API_BASE = "https://cms.agixtech.com/wp-json/wp/v2";
 const SITE_URL = 'https://agixtech.com';
 
 interface WPPostMeta {
