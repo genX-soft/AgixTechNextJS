@@ -3,6 +3,14 @@
   "version": "1.0.0",
   "type": "module",
   "license": "MIT",
+  "browserslist": [
+    "chrome >= 111",
+    "edge >= 111",
+    "firefox >= 115",
+    "safari >= 16.4",
+    "ios_saf >= 16.4",
+    "not dead"
+  ],
   "scripts": {
     "dev": "cross-env NODE_ENV=development tsx server/index.ts",
     "build": "tsx script/build.ts",

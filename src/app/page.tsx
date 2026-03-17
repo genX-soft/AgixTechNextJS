@@ -36,24 +36,31 @@ import {
   HeartPulse,
   Home as HomeIcon,
   Landmark,
+  Quote,
   ShoppingCart,
   Truck,
   GraduationCap,
-  Quote,
   TrendingUp,
   Clock,
   PartyPopper,
   Star,
   Users,
-  ChevronLeft,
-  ChevronRight,
 } from "lucide-react";
 import Link from "next/link";
+import styles from "./page.module.css";
 
 const DynamicContactSection = dynamic(
   () => import("@/components/home/contact-section").then((m) => ({ default: m.ContactSection })),
   { ssr: false }
 );
+
+const DynamicTestimonialsSection = dynamic(() => import("@/components/home/TestimonialsSection"), {
+  ssr: false,
+});
+
+const DynamicCaseStudiesSection = dynamic(() => import("@/components/home/CaseStudiesSection"), {
+  ssr: false,
+});
 
 function useScrollAnimation() {
   const ref = useRef(null);
@@ -93,7 +100,7 @@ function DidYouKnowSection() {
   const CurrentIcon = aiFacts[currentFact].icon;
 
   return (
-    <div className="mt-8 pt-6 border-t border-slate-800/50" style={{ animation: 'agix-fade-up 0.5s ease-out 0.8s both' }}>
+    <div className={`mt-8 pt-6 border-t border-slate-800/50 ${styles.factReveal}`}>
       <div className="flex items-center gap-3 text-slate-300">
         <div className="flex items-center gap-2 text-primary text-sm font-medium whitespace-nowrap">
           <Lightbulb className="w-4 h-4" />
@@ -162,7 +169,7 @@ function HeroSection() {
   const { grad1Ref, grad2Ref, isMounted, isDesktop } = useScrollBackground();
 
   return (
-    <section className="min-h-[80vh] pt-24 lg:pt-28 flex flex-col justify-center bg-slate-950 relative overflow-hidden">
+    <section data-home-hero className="min-h-[80vh] pt-24 lg:pt-28 flex flex-col justify-center bg-slate-950 relative overflow-hidden">
       {/* Gradient backgrounds updated directly via refs to avoid scroll-triggered React re-renders */}
       <div
         ref={grad1Ref}
@@ -2161,325 +2168,6 @@ function IndustriesSection() {
 }
 
 // ============================================
-// TESTIMONIALS SECTION
-// ============================================
-const testimonials = [
-  {
-    quote: "AGIX transformed our document processing from a 3-day ordeal to a 3-hour task. The ROI was visible within the first month.",
-    author: "Sarah Chen",
-    role: "VP of Operations",
-    company: "TechFlow Inc.",
-  },
-  {
-    quote: "They didn't just build us an AI solution they helped us understand exactly what we needed. The discovery process alone was invaluable.",
-    author: "Michael Roberts",
-    role: "CTO",
-    company: "Meridian Health",
-  },
-  {
-    quote: "As a startup, we needed speed and flexibility. AGIX delivered a working prototype in 6 weeks that we're still scaling today.",
-    author: "Lisa Park",
-    role: "Founder & CEO",
-    company: "DataSync",
-  },
-  {
-    quote: "Our customer service response time dropped by 70% after implementing their AI chatbot. It handles 80% of queries without human intervention.",
-    author: "James Anderson",
-    role: "Director of Customer Experience",
-    company: "RetailMax",
-  },
-  {
-    quote: "The predictive analytics solution helped us reduce inventory costs by 40%. We now know what customers want before they do.",
-    author: "Priya Sharma",
-    role: "Chief Supply Chain Officer",
-    company: "GlobalMart",
-  },
-  {
-    quote: "AGIX's voice AI agents are handling 5,000 calls daily for us. The quality is indistinguishable from human agents.",
-    author: "David Mueller",
-    role: "Head of Operations",
-    company: "InsureFirst",
-  },
-  {
-    quote: "We automated our entire compliance workflow. What used to take a team of 12 now runs automatically with 99.8% accuracy.",
-    author: "Amanda Foster",
-    role: "Chief Compliance Officer",
-    company: "Apex Financial",
-  },
-  {
-    quote: "Their computer vision system catches defects our human inspectors miss. Quality issues dropped by 90% in three months.",
-    author: "Robert Kim",
-    role: "Manufacturing Director",
-    company: "PrecisionTech",
-  },
-];
-
-function TestimonialsSection() {
-  const { ref, isInView } = useScrollAnimation();
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
-
-  useEffect(() => {
-    if (isPaused) return;
-    const interval = setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % testimonials.length);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, [isPaused]);
-
-  const goToNext = () => setActiveIndex((prev) => (prev + 1) % testimonials.length);
-  const goToPrev = () => setActiveIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
-
-  return (
-    <section className="py-24 bg-background" ref={ref}>
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-12"
-        >
-          <Badge variant="outline" className="mb-4">Client Stories</Badge>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4" data-testid="heading-testimonials">
-            What Our Clients Say
-          </h2>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5, delay: 0.2 }}
-        >
-          <Card 
-            className="border-border/50"
-            onMouseEnter={() => setIsPaused(true)}
-            onMouseLeave={() => setIsPaused(false)}
-          >
-            <CardContent className="p-8 md:p-12 text-center relative">
-              <Quote className="h-12 w-12 text-primary/20 absolute top-6 left-6" />
-              
-              <button
-                onClick={goToPrev}
-                aria-label="Previous testimonial"
-                type="button"
-                className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-muted/50 hover:bg-muted flex items-center justify-center transition-colors"
-                data-testid="button-testimonial-prev"
-              >
-                <ChevronLeft className="h-5 w-5" aria-hidden="true" />
-              </button>
-              
-              <button
-                onClick={goToNext}
-                aria-label="Next testimonial"
-                type="button"
-                className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-muted/50 hover:bg-muted flex items-center justify-center transition-colors"
-                data-testid="button-testimonial-next"
-              >
-                <ChevronRight className="h-5 w-5" aria-hidden="true" />
-              </button>
-              
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={activeIndex}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  transition={{ duration: 0.3 }}
-                  className="space-y-6 px-8"
-                >
-                  <p className="text-lg md:text-xl text-foreground italic leading-relaxed">
-                    "{testimonials[activeIndex].quote}"
-                  </p>
-                  <div>
-                    <p className="font-semibold">{testimonials[activeIndex].author}</p>
-                    <p className="text-sm text-muted-foreground">
-                      {testimonials[activeIndex].role}, {testimonials[activeIndex].company}
-                    </p>
-                  </div>
-                </motion.div>
-              </AnimatePresence>
-
-              <div className="flex items-center justify-center gap-2 mt-8">
-                {testimonials.map((_, index) => (
-                  <button
-                    key={index}
-                    type="button"
-                    aria-label={`Go to testimonial ${index + 1}`}
-                    onClick={() => setActiveIndex(index)}
-                    className={`w-2 h-2 rounded-full transition-colors ${
-                      index === activeIndex ? 'bg-primary' : 'bg-muted hover:bg-muted-foreground/50'
-                    }`}
-                    data-testid={`button-testimonial-${index}`}
-                  />
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-        </motion.div>
-      </div>
-    </section>
-  );
-}
-
-// ============================================
-// CASE STUDIES SECTION - Enhanced Presentation
-// ============================================
-const caseStudies = [
-  {
-    title: "Healthcare Document Automation",
-    client: "Regional Hospital Network",
-    industry: "Healthcare",
-    challenge: "Manual patient intake and insurance verification taking 3+ days",
-    solution: "AI-powered document processing with automated data extraction",
-    results: [
-      { metric: "85%", label: "Faster Processing" },
-      { metric: "95%", label: "Accuracy Rate" },
-      { metric: "$2.4M", label: "Annual Savings" },
-    ],
-    quote: "The transformation was remarkable. What took days now takes hours.",
-    quoteAuthor: "Chief Operations Officer",
-    link: "/case-studies/babylon-health/",
-    icon: HeartPulse,
-    color: "from-rose-500/10 to-rose-600/10",
-  },
-  {
-    title: "Loan Processing Automation",
-    client: "Mid-Size Credit Union",
-    industry: "Finance",
-    challenge: "Slow loan approval process losing customers to faster competitors",
-    solution: "End-to-end loan processing with AI-powered credit analysis",
-    results: [
-      { metric: "60%", label: "Cost Reduction" },
-      { metric: "4x", label: "Faster Approval" },
-      { metric: "35%", label: "More Applications" },
-    ],
-    quote: "We went from losing deals to winning them because of speed.",
-    quoteAuthor: "VP of Lending",
-    link: "/case-studies/enova/",
-    icon: Landmark,
-    color: "from-blue-500/10 to-blue-600/10",
-  },
-  {
-    title: "Retail Inventory Intelligence",
-    client: "E-commerce Platform",
-    industry: "Retail",
-    challenge: "Stockouts and overstock costing millions in lost revenue",
-    solution: "AI demand forecasting with automated inventory optimization",
-    results: [
-      { metric: "3x", label: "Faster Decisions" },
-      { metric: "40%", label: "Less Stockouts" },
-      { metric: "$1.8M", label: "Inventory Savings" },
-    ],
-    quote: "Finally, we can predict demand instead of reacting to it.",
-    quoteAuthor: "Director of Operations",
-    link: "/case-studies/albertsons/",
-    icon: ShoppingCart,
-    color: "from-amber-500/10 to-amber-600/10",
-  },
-];
-
-function CaseStudiesSection() {
-  const { ref, isInView } = useScrollAnimation();
-
-  return (
-    <section className="py-24 bg-slate-950/30" ref={ref}>
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-12"
-        >
-          <Badge variant="outline" className="mb-4">Case Studies</Badge>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4" data-testid="heading-case-studies">
-            Real Results, Real Impact
-          </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            See how businesses across industries have transformed their operations with AGIX.
-          </p>
-        </motion.div>
-
-        <div className="space-y-8">
-          {caseStudies.map((study, index) => (
-            <motion.div
-              key={study.title}
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: index * 0.15 }}
-            >
-              <Link href={study.link}>
-                <Card className="hover-elevate border-border/50 group overflow-hidden" data-testid={`card-case-study-${index}`}>
-                  <CardContent className={`p-0`}>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-0">
-                      <div className={`p-6 sm:p-8 bg-gradient-to-br ${study.color}`}>
-                        <div className="space-y-3 sm:space-y-4">
-                          <div className="flex items-center gap-3 sm:block">
-                            <study.icon className="h-8 w-8 sm:h-10 sm:w-10 text-primary sm:mb-3" />
-                            <Badge variant="secondary">{study.industry}</Badge>
-                          </div>
-                          <h3 className="text-lg sm:text-xl font-bold">{study.title}</h3>
-                          <p className="text-sm text-muted-foreground">{study.client}</p>
-                        </div>
-                      </div>
-                      
-                      <div className="p-6 sm:p-8 space-y-4">
-                        <div>
-                          <h4 className="font-semibold text-sm text-muted-foreground mb-1">Challenge</h4>
-                          <p className="text-sm">{study.challenge}</p>
-                        </div>
-                        <div>
-                          <h4 className="font-semibold text-sm text-muted-foreground mb-1">Solution</h4>
-                          <p className="text-sm">{study.solution}</p>
-                        </div>
-                        <div className="pt-2 hidden sm:block">
-                          <p className="text-sm italic text-muted-foreground">"{study.quote}"</p>
-                          <p className="text-xs text-muted-foreground mt-1">— {study.quoteAuthor}</p>
-                        </div>
-                      </div>
-                      
-                      <div className="p-6 sm:p-8 bg-muted/30 flex flex-col justify-center">
-                        <h4 className="font-semibold text-sm text-muted-foreground mb-3 sm:mb-4">Results</h4>
-                        <div className="flex flex-wrap gap-4 sm:gap-0 sm:flex-col sm:space-y-4">
-                          {study.results.map((result) => (
-                            <div key={result.label} className="flex items-center gap-2 sm:gap-3">
-                              <div className="text-xl sm:text-2xl font-bold text-primary">{result.metric}</div>
-                              <div className="text-xs sm:text-sm text-muted-foreground">{result.label}</div>
-                            </div>
-                          ))}
-                        </div>
-                        <div className="flex items-center text-sm text-primary mt-4 sm:mt-6 group-hover:gap-2 transition-all">
-                          Read Full Case Study
-                          <ArrowRight className="ml-1 h-4 w-4" />
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </Link>
-            </motion.div>
-          ))}
-        </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5, delay: 0.5 }}
-          className="text-center mt-10"
-        >
-          <Button variant="outline" asChild data-testid="button-case-studies-all">
-            <Link href="/case-studies/">
-              View All Case Studies
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Link>
-          </Button>
-        </motion.div>
-      </div>
-    </section>
-  );
-}
-
-
-// ============================================
 // MAIN PAGE
 // ============================================
 
@@ -2691,10 +2379,10 @@ export default function Home() {
           <IndustriesSection />
         </LazyMount>
         <LazyMount fallbackHeight="400px">
-          <TestimonialsSection />
+          <DynamicTestimonialsSection />
         </LazyMount>
         <LazyMount fallbackHeight="400px">
-          <CaseStudiesSection />
+          <DynamicCaseStudiesSection />
         </LazyMount>
         <LazyMount fallbackHeight="500px">
           <DynamicContactSection />

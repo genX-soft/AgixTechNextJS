@@ -5,6 +5,33 @@ import "./globals.css";
 import { Providers } from "./providers";
 import { homepageOrganizationSchema } from "@/lib/seo/page-schemas";
 
+const criticalHomeStyles = `
+  [data-home-header] {
+    position: fixed;
+    inset: 0 0 auto 0;
+    z-index: 50;
+    transition: all 0.3s ease;
+  }
+
+  [data-home-hero] {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    min-height: 80vh;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 6rem;
+    background: rgb(2 8 23);
+    color: rgb(248 250 252);
+  }
+
+  @media (min-width: 1024px) {
+    [data-home-hero] {
+      padding-top: 7rem;
+    }
+  }
+`;
+
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-sans",
@@ -163,13 +190,11 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
       <head>
-        {/* Preconnect to critical third-party origins to reduce connection latency */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link rel="preconnect" href="https://www.googletagmanager.com" />
-        <link rel="preconnect" href="https://cms.agixtech.com" />
-        <link rel="dns-prefetch" href="https://www.clarity.ms" />
-        <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+        <style dangerouslySetInnerHTML={{ __html: criticalHomeStyles }} />
+        <link rel="preload" as="style" href="/deferred-styles.css" />
+        <noscript>
+          <link rel="stylesheet" href="/deferred-styles.css" />
+        </noscript>
         {/* All analytics deferred until first user interaction — zero analytics during Lighthouse test */}
         <Script id="analytics-deferred" strategy="lazyOnload">
           {`
@@ -186,6 +211,18 @@ export default function RootLayout({
                 document.addEventListener(e,loadAnalytics,{once:true,passive:true,capture:true});
               });
               setTimeout(loadAnalytics,4000);
+            })();
+          `}
+        </Script>
+        <Script id="deferred-stylesheet" strategy="lazyOnload">
+          {`
+            (function() {
+              var existing = document.querySelector('link[href="/deferred-styles.css"][rel="stylesheet"]');
+              if (existing) return;
+              var link = document.createElement('link');
+              link.rel = 'stylesheet';
+              link.href = '/deferred-styles.css';
+              document.head.appendChild(link);
             })();
           `}
         </Script>

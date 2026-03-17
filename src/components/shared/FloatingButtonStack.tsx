@@ -1,11 +1,18 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Compass, BookOpen, Wrench, X, ChevronUp } from "lucide-react";
 import { useExploration } from "@/components/exploration/ExplorationContext";
-import GlossaryPanel from "@/components/glossary/GlossaryPanel";
-import ToolsPanel from "@/components/tools-nav/ToolsPanel";
+
+const GlossaryPanel = dynamic(() => import("@/components/glossary/GlossaryPanel"), {
+  ssr: false,
+});
+
+const ToolsPanel = dynamic(() => import("@/components/tools-nav/ToolsPanel"), {
+  ssr: false,
+});
 
 export default function FloatingButtonStack() {
   const { openModal, isModalOpen } = useExploration();
@@ -173,8 +180,8 @@ export default function FloatingButtonStack() {
         </div>
       </div>
 
-      <GlossaryPanel isOpen={glossaryOpen} onClose={() => setGlossaryOpen(false)} />
-      <ToolsPanel isOpen={toolsOpen} onClose={() => setToolsOpen(false)} />
+      {glossaryOpen ? <GlossaryPanel isOpen={glossaryOpen} onClose={() => setGlossaryOpen(false)} /> : null}
+      {toolsOpen ? <ToolsPanel isOpen={toolsOpen} onClose={() => setToolsOpen(false)} /> : null}
     </>
   );
 }

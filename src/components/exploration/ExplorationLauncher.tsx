@@ -1,7 +1,11 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { useState, useEffect } from "react";
-import ExplorationModal from "./ExplorationModal";
+
+const ExplorationModal = dynamic(() => import("./ExplorationModal"), {
+  ssr: false,
+});
 
 export default function ExplorationLauncher() {
   const [isMounted, setIsMounted] = useState(false);

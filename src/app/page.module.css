@@ -1,0 +1,15 @@
+.factReveal {
+  animation: agix-fade-up 0.5s ease-out 0.8s both;
+}
+
+@keyframes agix-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
