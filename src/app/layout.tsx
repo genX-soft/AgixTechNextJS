@@ -5,6 +5,8 @@ import "./globals.css";
 import { Providers } from "./providers";
 import { homepageOrganizationSchema } from "@/lib/seo/page-schemas";
 
+const GTM_ID = "GTM-5V96B388";
+
 const criticalHomeStyles = `
   [data-home-header] {
     position: fixed;
@@ -65,7 +67,7 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: "/favicon.svg", type: "image/svg+xml" },
-      { url: "/favicon.ico", sizes: "32x32", type: "image/png" },
+      { url: "/favicon.ico", sizes: "any", type: "image/x-icon" },
       { url: "/favicon-192.png", sizes: "192x192", type: "image/png" },
     ],
     apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
@@ -196,36 +198,8 @@ export default function RootLayout({
           <link rel="stylesheet" href="/deferred-styles.css" />
         </noscript>
         {/* All analytics deferred until first user interaction — zero analytics during Lighthouse test */}
-        <Script id="analytics-deferred" strategy="lazyOnload">
-          {`
-            (function(){
-              var loaded=false;
-              function loadAnalytics(){
-                if(loaded)return;loaded=true;
-                (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5V96B388');
-                var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-EX4YPE6XR5';document.head.appendChild(s);
-                window.dataLayer=window.dataLayer||[];window.gtag=function(){dataLayer.push(arguments);};gtag('js',new Date());gtag('config','G-EX4YPE6XR5',{send_page_view:true});
-                (function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src='https://www.clarity.ms/tag/'+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,'clarity','script','rmhnee1y8o');
-              }
-              ['mousedown','touchstart','scroll','keydown','mousemove'].forEach(function(e){
-                document.addEventListener(e,loadAnalytics,{once:true,passive:true,capture:true});
-              });
-              setTimeout(loadAnalytics,4000);
-            })();
-          `}
-        </Script>
-        <Script id="deferred-stylesheet" strategy="lazyOnload">
-          {`
-            (function() {
-              var existing = document.querySelector('link[href="/deferred-styles.css"][rel="stylesheet"]');
-              if (existing) return;
-              var link = document.createElement('link');
-              link.rel = 'stylesheet';
-              link.href = '/deferred-styles.css';
-              document.head.appendChild(link);
-            })();
-          `}
-        </Script>
+        <Script id="analytics-deferred" src="/analytics-loader.js" strategy="lazyOnload" />
+        <Script id="deferred-stylesheet" src="/deferred-styles-loader.js" strategy="lazyOnload" />
       </head>
       <body
         className={`${inter.variable} ${spaceGrotesk.variable} font-sans`}
@@ -233,7 +207,7 @@ export default function RootLayout({
       >
         <noscript>
           <iframe
-            src="https://www.googletagmanager.com/ns.html?id=GTM-5V96B388"
+            src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
             height="0"
             width="0"
             style={{ display: 'none', visibility: 'hidden' }}
