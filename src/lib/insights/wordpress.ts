@@ -1,4 +1,12 @@
-const WP_API_BASE = "https://r7t.66a.myftpupload.com/wp-json/wp/v2";
+const WP_SERVER_BASE = "https://cms.agixtech.com/wp-json/wp/v2";
+const WP_CLIENT_BASE = "/api/wp";
+
+function getBase(path: 'posts' | 'categories' | 'pages'): string {
+  if (typeof window === 'undefined') {
+    return `${WP_SERVER_BASE}/${path}`;
+  }
+  return `${WP_CLIENT_BASE}/${path}`;
+}
 
 export interface WPYoastSEO {
   title?: string;
@@ -109,7 +117,7 @@ export async function getPosts(params?: {
     searchParams.set("search", params.search);
   }
 
-  const response = await fetch(`${WP_API_BASE}/posts?${searchParams.toString()}`, {
+  const response = await fetch(`${getBase('posts')}?${searchParams.toString()}`, {
     headers: {
       "Accept": "application/json",
     },
@@ -131,7 +139,7 @@ export async function getPostBySlug(slug: string): Promise<WPPost | null> {
   searchParams.set("_embed", "true");
   searchParams.set("slug", slug);
 
-  const response = await fetch(`${WP_API_BASE}/posts?${searchParams.toString()}`, {
+  const response = await fetch(`${getBase('posts')}?${searchParams.toString()}`, {
     headers: {
       "Accept": "application/json",
     },
@@ -146,7 +154,7 @@ export async function getPostBySlug(slug: string): Promise<WPPost | null> {
 }
 
 export async function getCategories(): Promise<WPCategory[]> {
-  const response = await fetch(`${WP_API_BASE}/categories?per_page=100`, {
+  const response = await fetch(`${getBase('categories')}?per_page=100`, {
     headers: {
       "Accept": "application/json",
     },
