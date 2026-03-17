@@ -94,7 +94,7 @@ function DidYouKnowSection() {
 
   return (
     <div className="mt-8 pt-6 border-t border-slate-800/50" style={{ animation: 'agix-fade-up 0.5s ease-out 0.8s both' }}>
-      <div className="flex items-center gap-3 text-slate-400">
+      <div className="flex items-center gap-3 text-slate-300">
         <div className="flex items-center gap-2 text-primary text-sm font-medium whitespace-nowrap">
           <Lightbulb className="w-4 h-4" />
           <span>Did you know?</span>
@@ -197,7 +197,7 @@ function HeroSection() {
                 <span className="text-primary">With AI?</span>
               </h1>
               
-              <p className="text-lg text-slate-400 max-w-xl">
+              <p className="text-lg text-slate-300 max-w-xl">
                 You&apos;re not alone. Most businesses know AI matters but struggle with where to begin.
                 We help you find the right starting point for your situation.
               </p>
@@ -228,7 +228,7 @@ function HeroSection() {
                   className="flex items-center gap-2 px-4 py-2 rounded-full bg-slate-800/50 border border-slate-700/50"
                 >
                   <span className="text-primary font-bold">{stat.value}</span>
-                  <span className="text-slate-400 text-sm">{stat.label}</span>
+                  <span className="text-slate-300 text-sm">{stat.label}</span>
                 </div>
               ))}
             </div>
@@ -1097,6 +1097,7 @@ function InlineAssessment({
                     {config.questions[currentQuestion].options.map((option) => (
                       <button
                         key={option.value}
+                        type="button"
                         onClick={() => handleAnswer(
                           config.questions[currentQuestion].id,
                           option.value,
@@ -1261,13 +1262,15 @@ function GuidedAssessmentSection() {
                     transition={{ duration: 0.3, delay: index * 0.05 }}
                   >
                     <button
+                      type="button"
+                      aria-label={`Open ${tool.title} assessment`}
                       onClick={() => setActiveAssessment(tool.key)}
                       className="w-full text-left"
                     >
                       <Card className="h-full min-h-[280px] hover-elevate border-border/50 group" data-testid={`card-tool-${tool.forLabel.toLowerCase().replace(/\s+/g, '-')}`}>
                         <CardContent className={`p-6 h-full bg-gradient-to-br ${tool.color} rounded-lg flex flex-col`}>
                           <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors mb-4">
-                            <tool.icon className="h-6 w-6 text-primary" />
+                            <tool.icon className="h-6 w-6 text-primary" aria-hidden="true" />
                           </div>
                           <div className="mb-3">
                             <Badge variant="secondary" className="mb-2 text-xs">{tool.forLabel}</Badge>
@@ -1278,7 +1281,7 @@ function GuidedAssessmentSection() {
                           </p>
                           <div className="flex items-center text-sm text-primary pt-4 font-medium mt-auto">
                             Find AI Solution
-                            <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                            <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
                           </div>
                         </CardContent>
                       </Card>
@@ -1389,7 +1392,7 @@ function IntelligenceSection() {
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-white" data-testid="heading-intelligence">
             Five Dimensions of AI Intelligence
           </h2>
-          <p className="text-slate-400 max-w-2xl mx-auto text-lg">
+          <p className="text-slate-300 max-w-2xl mx-auto text-lg">
             We specialize in five core areas of AI intelligence, each designed to solve 
             specific business challenges and drive measurable outcomes.
           </p>
@@ -1415,11 +1418,11 @@ function IntelligenceSection() {
                   activeIndex === index ? "bg-amber-500/20" : "bg-slate-700/50 group-hover:bg-slate-700"
                 }`}>
                   <intel.icon className={`h-5 w-5 transition-colors ${
-                    activeIndex === index ? "text-amber-500" : "text-slate-400 group-hover:text-slate-300"
+                    activeIndex === index ? "text-amber-500" : "text-slate-300 group-hover:text-slate-200"
                   }`} />
                 </div>
                 <span className={`font-medium transition-colors ${
-                  activeIndex === index ? "text-white" : "text-slate-400 group-hover:text-slate-300"
+                  activeIndex === index ? "text-white" : "text-slate-300 group-hover:text-slate-200"
                 }`}>
                   {intel.title}
                 </span>
@@ -1455,7 +1458,7 @@ function IntelligenceSection() {
                         <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">
                           {activeIntel.title}
                         </h3>
-                        <p className="text-slate-400 text-lg leading-relaxed">
+                        <p className="text-slate-300 text-lg leading-relaxed">
                           {activeIntel.description}
                         </p>
                       </div>
@@ -1472,7 +1475,7 @@ function IntelligenceSection() {
                             className="text-center p-4 rounded-lg bg-slate-800/50"
                           >
                             <div className="text-2xl font-bold text-amber-500">{metric.value}</div>
-                            <div className="text-xs text-slate-500 mt-1">{metric.label}</div>
+                            <div className="text-xs text-slate-300 mt-1">{metric.label}</div>
                           </motion.div>
                         ))}
                       </div>
@@ -1650,7 +1653,7 @@ function ServicesSection() {
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-white" data-testid="heading-services">
             AI Solutions Built for Results
           </h2>
-          <p className="text-slate-400 max-w-2xl mx-auto">
+          <p className="text-slate-300 max-w-2xl mx-auto">
         Each service is a modular capability within a governed AI system — deployable independently or as part of an enterprise-wide intelligence architecture.
           </p>
         </motion.div>
@@ -1660,7 +1663,7 @@ function ServicesSection() {
             <div className="flex items-center gap-2">
               <span className="text-emerald-400 font-mono text-sm">{String(activeService + 1).padStart(2, '0')}</span>
               <span className="text-slate-600">/</span>
-              <span className="text-slate-500 font-mono text-sm">{String(allServices.length).padStart(2, '0')}</span>
+              <span className="text-slate-300 font-mono text-sm">{String(allServices.length).padStart(2, '0')}</span>
             </div>
             <div className="flex items-center gap-2">
               <Button 
@@ -1668,7 +1671,7 @@ function ServicesSection() {
                 variant="outline" 
                 onClick={goPrev}
                 aria-label="Previous service"
-                className="border-slate-700 text-slate-400 hover:bg-slate-800 hover:text-white"
+                className="border-slate-700 text-slate-300 hover:bg-slate-800 hover:text-white"
                 data-testid="button-service-prev"
               >
                 <ArrowLeft className="h-4 w-4" aria-hidden="true" />
@@ -1678,10 +1681,10 @@ function ServicesSection() {
                 variant="outline" 
                 onClick={goNext}
                 aria-label="Next service"
-                className="border-slate-700 text-slate-400 hover:bg-slate-800 hover:text-white"
+                className="border-slate-700 text-slate-300 hover:bg-slate-800 hover:text-white"
                 data-testid="button-service-next"
               >
-                <ArrowRight className="h-4 w-4" />
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </Button>
             </div>
           </div>
@@ -1699,16 +1702,16 @@ function ServicesSection() {
                 <div className="p-6 sm:p-8 lg:p-10 flex flex-col justify-center">
                   <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
                     <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-emerald-500/10 flex items-center justify-center">
-                      <service.icon className="h-5 w-5 sm:h-6 sm:w-6 text-emerald-400" />
+                      <service.icon className="h-5 w-5 sm:h-6 sm:w-6 text-emerald-400" aria-hidden="true" />
                     </div>
-                    <Badge variant="outline" className="border-slate-600 text-slate-400 text-xs">
+                    <Badge variant="outline" className="border-slate-600 text-slate-300 text-xs">
                       {serviceCategories.find(c => c.id === service.category)?.label}
                     </Badge>
                   </div>
                   
                   <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-2">{service.title}</h3>
                   <p className="text-emerald-400 text-base sm:text-lg mb-3 sm:mb-4">{service.tagline}</p>
-                  <p className="text-slate-400 text-sm sm:text-base mb-4 sm:mb-6">{service.description}</p>
+                  <p className="text-slate-300 text-sm sm:text-base mb-4 sm:mb-6">{service.description}</p>
 
                   <div className="flex flex-wrap gap-2 mb-4 sm:mb-6">
                     {service.differentiators.slice(0, 2).map((diff, i) => (
@@ -1725,8 +1728,8 @@ function ServicesSection() {
                         <ArrowRight className="ml-2 h-4 w-4" />
                       </Link>
                     </Button>
-                    <span className="text-sm text-slate-500 flex items-center justify-center gap-1.5">
-                      <Clock className="h-4 w-4" />
+                    <span className="text-sm text-slate-300 flex items-center justify-center gap-1.5">
+                      <Clock className="h-4 w-4" aria-hidden="true" />
                       {service.timeline}
                     </span>
                   </div>
@@ -1735,20 +1738,20 @@ function ServicesSection() {
                 <div className="bg-slate-900/50 p-6 sm:p-8 lg:p-10 border-t lg:border-t-0 lg:border-l border-slate-700/50 flex flex-col items-center justify-center">
                   <div className="text-center mb-4 sm:mb-6">
                     <div className="text-4xl sm:text-5xl lg:text-6xl font-bold text-emerald-400 mb-1 sm:mb-2">{service.heroStat.value}</div>
-                    <div className="text-slate-400 text-sm sm:text-base">{service.heroStat.label}</div>
+                    <div className="text-slate-300 text-sm sm:text-base">{service.heroStat.label}</div>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 w-full max-w-md">
                     <div className="p-4 rounded-xl bg-red-500/5 border border-red-500/20">
                       <div className="flex items-center gap-2 mb-2">
-                        <X className="h-3 w-3 text-red-400" />
+                        <X className="h-3 w-3 text-red-400" aria-hidden="true" />
                         <span className="text-xs font-medium text-red-400">Before</span>
                       </div>
-                      <p className="text-xs text-slate-500">{service.before}</p>
+                      <p className="text-xs text-slate-300">{service.before}</p>
                     </div>
                     <div className="p-4 rounded-xl bg-emerald-500/5 border border-emerald-500/20">
                       <div className="flex items-center gap-2 mb-2">
-                        <CheckCircle2 className="h-3 w-3 text-emerald-400" />
+                        <CheckCircle2 className="h-3 w-3 text-emerald-400" aria-hidden="true" />
                         <span className="text-xs font-medium text-emerald-400">After</span>
                       </div>
                       <div className="space-y-1.5">
@@ -1771,15 +1774,16 @@ function ServicesSection() {
               {allServices.map((s, index) => (
                 <button
                   key={s.title}
+                  type="button"
                   onClick={() => setActiveService(index)}
                   className={`flex items-center gap-2 px-3 py-2 rounded-full transition-all ${
                     activeService === index
                       ? "bg-emerald-500/20 text-emerald-400"
-                      : "text-slate-500 hover:text-slate-300"
+                      : "text-slate-300 hover:text-slate-200"
                   }`}
                   data-testid={`service-dot-${index}`}
                 >
-                  <s.icon className="h-4 w-4" />
+                  <s.icon className="h-4 w-4" aria-hidden="true" />
                   <span className={`text-xs font-medium hidden sm:inline ${
                     activeService === index ? "" : "sr-only sm:not-sr-only"
                   }`}>
@@ -1800,7 +1804,7 @@ function ServicesSection() {
           <div className="p-8 rounded-2xl bg-gradient-to-r from-emerald-900/20 to-emerald-800/10 border border-emerald-500/20 flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="text-center md:text-left">
               <h3 className="text-xl font-bold text-white mb-2">Not sure which service fits?</h3>
-              <p className="text-slate-400">
+              <p className="text-slate-300">
                 Take our quick assessment or talk to an AI expert.
               </p>
             </div>
@@ -2032,6 +2036,8 @@ function IndustriesSection() {
           {industries.map((industry, index) => (
             <button
               key={industry.title}
+              type="button"
+              aria-label={`Show ${industry.title} industry solutions`}
               onClick={() => setActiveIndustry(index)}
               className={`flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2.5 sm:py-2 rounded-full text-xs sm:text-sm font-medium transition-all touch-target-sm ${
                 activeIndustry === index 
@@ -2040,7 +2046,7 @@ function IndustriesSection() {
               }`}
               data-testid={`button-industry-${index}`}
             >
-              <industry.icon className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+              <industry.icon className="h-3.5 w-3.5 sm:h-4 sm:w-4" aria-hidden="true" />
               <span className="hidden xs:inline">{industry.title}</span>
               <span className="xs:hidden">{industry.title.split(' ')[0]}</span>
             </button>
@@ -2255,6 +2261,7 @@ function TestimonialsSection() {
               <button
                 onClick={goToPrev}
                 aria-label="Previous testimonial"
+                type="button"
                 className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-muted/50 hover:bg-muted flex items-center justify-center transition-colors"
                 data-testid="button-testimonial-prev"
               >
@@ -2264,6 +2271,7 @@ function TestimonialsSection() {
               <button
                 onClick={goToNext}
                 aria-label="Next testimonial"
+                type="button"
                 className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-muted/50 hover:bg-muted flex items-center justify-center transition-colors"
                 data-testid="button-testimonial-next"
               >
@@ -2295,6 +2303,8 @@ function TestimonialsSection() {
                 {testimonials.map((_, index) => (
                   <button
                     key={index}
+                    type="button"
+                    aria-label={`Go to testimonial ${index + 1}`}
                     onClick={() => setActiveIndex(index)}
                     className={`w-2 h-2 rounded-full transition-colors ${
                       index === activeIndex ? 'bg-primary' : 'bg-muted hover:bg-muted-foreground/50'

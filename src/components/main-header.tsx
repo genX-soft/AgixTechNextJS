@@ -161,12 +161,11 @@ export function MainHeader() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [corporateOpen, setCorporateOpen] = useState(false);
-  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -199,7 +198,6 @@ export function MainHeader() {
             <span className="font-bold text-xl tracking-tight">AGIX</span>
           </a>
 
-          {mounted ? (
           <NavigationMenu className="hidden lg:flex">
             <NavigationMenuList>
               <NavigationMenuItem>
@@ -271,7 +269,7 @@ export function MainHeader() {
                 </NavigationMenuLink>
               </NavigationMenuItem>
 
-              <div 
+              <NavigationMenuItem
                 className="relative"
                 onMouseEnter={() => setCorporateOpen(true)}
                 onMouseLeave={() => setCorporateOpen(false)}
@@ -279,11 +277,14 @@ export function MainHeader() {
                 <DropdownMenu open={corporateOpen} onOpenChange={setCorporateOpen}>
                   <DropdownMenuTrigger asChild>
                     <button
+                      type="button"
+                      aria-haspopup="menu"
+                      aria-expanded={corporateOpen}
                       className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-transparent px-4 py-2 text-sm font-medium transition-colors hover-elevate focus:ring-2 focus:ring-primary focus:ring-offset-2 data-[state=open]:bg-accent/50"
                       data-testid="button-nav-corporate"
                     >
                       Corporate
-                      <ChevronDown className={cn("relative top-[1px] ml-1 h-3 w-3 transition duration-200", corporateOpen && "rotate-180")} />
+                      <ChevronDown className={cn("relative top-[1px] ml-1 h-3 w-3 transition duration-200", corporateOpen && "rotate-180")} aria-hidden="true" />
                     </button>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent align="end" className="w-[320px] p-4">
@@ -309,7 +310,7 @@ export function MainHeader() {
                     </ul>
                   </DropdownMenuContent>
                 </DropdownMenu>
-              </div>
+              </NavigationMenuItem>
 
               <NavigationMenuItem>
                 <a
@@ -323,9 +324,6 @@ export function MainHeader() {
 
             </NavigationMenuList>
           </NavigationMenu>
-          ) : (
-            <div className="hidden lg:flex" />
-          )}
 
           <div className="flex items-center gap-4">
             <a

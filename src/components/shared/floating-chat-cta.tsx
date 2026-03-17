@@ -57,7 +57,7 @@ export function FloatingChatCta() {
               <CardHeader className="pb-2">
                 <div className="flex items-center justify-between gap-2">
                   <CardTitle className="text-base flex items-center gap-2">
-                    <Sparkles className="w-4 h-4 text-primary" />
+                    <Sparkles className="w-4 h-4 text-primary" aria-hidden="true" />
                     Ready to Transform?
                   </CardTitle>
                   <Button 
@@ -82,7 +82,7 @@ export function FloatingChatCta() {
                   data-testid="button-floating-cta-contact"
                 >
                   Schedule a Consultation
-                  <ArrowRight className="w-4 h-4 ml-2" />
+                  <ArrowRight className="w-4 h-4 ml-2" aria-hidden="true" />
                 </Button>
                 <Button 
                   variant="outline" 
@@ -106,9 +106,10 @@ export function FloatingChatCta() {
               size="lg"
               className="rounded-full w-14 h-14 p-0 bg-orange-500 hover:bg-orange-600 shadow-xl shadow-orange-500/30"
               onClick={() => setIsExpanded(true)}
+              aria-label="Open chat support"
               data-testid="button-floating-cta-toggle"
             >
-              <MessageCircle className="w-6 h-6" />
+              <MessageCircle className="w-6 h-6" aria-hidden="true" />
             </Button>
           </motion.div>
         )}
