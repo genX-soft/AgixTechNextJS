@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
-import { motion } from "framer-motion";
 import Link from "next/link";
 import { MainHeader } from "@/components/main-header";
 import { MainFooter } from "@/components/main-footer";
@@ -250,11 +249,7 @@ export default function BlogArticlePage({ initialPost, initialFaqData }: Props) 
 
       <article className="pt-24 lg:pt-28">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
+          <div>
             <Link
               href="/insights/"
               className="inline-flex items-center text-sm text-muted-foreground hover:text-foreground mb-6 transition-colors"
@@ -303,7 +298,7 @@ export default function BlogArticlePage({ initialPost, initialFaqData }: Props) 
                 />
               </div>
             )}
-          </motion.div>
+          </div>
 
           <div
             className="wp-content max-w-none mb-12"

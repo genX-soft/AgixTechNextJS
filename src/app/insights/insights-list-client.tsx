@@ -1,7 +1,6 @@
 'use client'
 
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
 import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -43,11 +42,7 @@ function PostCard({ post }: { post: WPPost }) {
   const categories = post._embedded?.["wp:term"]?.[0] || [];
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4 }}
-    >
+    <div>
       <Link href={`/${post.slug}/`} data-testid={`card-post-${post.id}`}>
         <Card className="overflow-hidden group hover-elevate cursor-pointer h-full flex flex-col">
           <div className="relative h-48 overflow-hidden bg-muted">
@@ -93,7 +88,7 @@ function PostCard({ post }: { post: WPPost }) {
           </CardContent>
         </Card>
       </Link>
-    </motion.div>
+    </div>
   );
 }
 
