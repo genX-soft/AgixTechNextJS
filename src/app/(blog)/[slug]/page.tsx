@@ -1,36 +1,16 @@
 import { Metadata } from 'next';
+import { cache } from 'react';
 import BlogDetailClient from './blog-detail-client';
+import { WPPost } from '@/lib/insights/wordpress';
+import { extractFAQsFromContent, FAQData } from '@/lib/insights/faq-utils';
 
-const WP_API_BASE = "https://cms.agixtech.com/wp-json/wp/v2";
+const WP_API_BASE = 'https://cms.agixtech.com/wp-json/wp/v2';
 const SITE_URL = 'https://agixtech.com';
 
-interface WPPostMeta {
-  id: number;
-  slug: string;
-  title: { rendered: string };
-  excerpt: { rendered: string };
-  yoast_head_json?: {
-    title?: string;
-    description?: string;
-    og_title?: string;
-    og_description?: string;
-    og_image?: Array<{ url: string; width?: number; height?: number }>;
-    twitter_title?: string;
-    twitter_description?: string;
-    twitter_image?: string;
-    canonical?: string;
-  };
-  _embedded?: {
-    "wp:featuredmedia"?: Array<{
-      source_url: string;
-    }>;
-  };
-}
-
-async function getPostMetadata(slug: string): Promise<WPPostMeta | null> {
+const getFullPost = cache(async (slug: string): Promise<WPPost | null> => {
   try {
     const response = await fetch(
-      `${WP_API_BASE}/posts?slug=${slug}&_embed=true`,
+      `${WP_API_BASE}/posts?slug=${encodeURIComponent(slug)}&_embed=true`,
       { next: { revalidate: 3600 } }
     );
     if (!response.ok) return null;
@@ -39,40 +19,42 @@ async function getPostMetadata(slug: string): Promise<WPPostMeta | null> {
   } catch {
     return null;
   }
-}
+});
 
 function stripHtml(html: string): string {
   return html.replace(/<[^>]*>/g, '').replace(/&[^;]+;/g, ' ').trim();
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
-  const resolvedParams = await params;
-  const post = await getPostMetadata(resolvedParams.slug);
-  
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const post = await getFullPost(slug);
+
   if (!post) {
     return {
       title: 'Article Not Found',
       description: 'The requested article could not be found.',
-      alternates: {
-        canonical: `${SITE_URL}/${resolvedParams.slug}/`,
-      },
+      alternates: { canonical: `${SITE_URL}/${slug}/` },
     };
   }
 
   const yoast = post.yoast_head_json;
   const title = yoast?.title || stripHtml(post.title.rendered);
-  const description = yoast?.description || stripHtml(post.excerpt.rendered).slice(0, 160);
-  const canonicalUrl = `${SITE_URL}/${resolvedParams.slug}/`;
-  const ogImage = yoast?.og_image?.[0]?.url || 
-    post._embedded?.["wp:featuredmedia"]?.[0]?.source_url ||
+  const description =
+    yoast?.description || stripHtml(post.excerpt.rendered).slice(0, 160);
+  const canonicalUrl = `${SITE_URL}/${slug}/`;
+  const ogImage =
+    yoast?.og_image?.[0]?.url ||
+    post._embedded?.['wp:featuredmedia']?.[0]?.source_url ||
     `${SITE_URL}/og-image.png`;
 
   return {
     title,
     description,
-    alternates: {
-      canonical: canonicalUrl,
-    },
+    alternates: { canonical: canonicalUrl },
     openGraph: {
       title: yoast?.og_title || title,
       description: yoast?.og_description || description,
@@ -87,13 +69,22 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       description: yoast?.twitter_description || description,
       images: [yoast?.twitter_image || ogImage],
     },
-    robots: {
-      index: true,
-      follow: true,
-    },
+    robots: { index: true, follow: true },
   };
 }
 
-export default function BlogDetailPage() {
-  return <BlogDetailClient />;
+export default async function BlogDetailPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const post = await getFullPost(slug);
+
+  const faqData: FAQData =
+    post?.content?.rendered
+      ? extractFAQsFromContent(post.content.rendered)
+      : { faqs: [], cleanedContent: '' };
+
+  return <BlogDetailClient initialPost={post} initialFaqData={faqData} />;
 }

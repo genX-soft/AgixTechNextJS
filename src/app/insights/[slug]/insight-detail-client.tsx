@@ -9,7 +9,6 @@ import { MainFooter } from "@/components/main-footer";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Skeleton } from "@/components/ui/skeleton";
 import {
   Accordion,
   AccordionContent,
@@ -17,114 +16,31 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import "../wordpress-content.css";
-import { 
-  Clock, 
-  Calendar, 
-  ArrowLeft, 
-  ArrowRight, 
-  User, 
+import {
+  Clock,
+  Calendar,
+  ArrowLeft,
+  ArrowRight,
+  User,
   Share2,
   Linkedin,
   Twitter,
-  HelpCircle
+  HelpCircle,
 } from "lucide-react";
-import { 
-  getPostBySlug, 
+import {
   getPosts,
-  WPPost, 
-  getFeaturedImageUrl, 
-  getAuthorName, 
+  WPPost,
+  getFeaturedImageUrl,
+  getAuthorName,
   formatDate,
   estimateReadTime,
-  getExcerpt
+  getExcerpt,
 } from "@/lib/insights/wordpress";
+import { FAQData, FAQItem } from "@/lib/insights/faq-utils";
 
-interface FAQItem {
-  question: string;
-  answer: string;
-}
-
-function extractFAQsFromContent(htmlContent: string): { faqs: FAQItem[]; cleanedContent: string } {
-  const faqs: FAQItem[] = [];
-  let cleanedContent = htmlContent;
-  
-  // Pattern 1: Yoast FAQ Block structure with schema-faq classes
-  // Structure: <div class="schema-faq wp-block-yoast-faq-block">
-  //   <div class="schema-faq-section">
-  //     <strong class="schema-faq-question">Question</strong>
-  //     <p class="schema-faq-answer">Answer</p>
-  //   </div>
-  // </div>
-  if (htmlContent.includes('schema-faq-section')) {
-    const sectionPattern = /<div[^>]*class="[^"]*schema-faq-section[^"]*"[^>]*>[\s\S]*?<strong[^>]*class="[^"]*schema-faq-question[^"]*"[^>]*>([\s\S]*?)<\/strong>\s*<p[^>]*class="[^"]*schema-faq-answer[^"]*"[^>]*>([\s\S]*?)<\/p>\s*<\/div>/gi;
-    let sectionMatch;
-    
-    while ((sectionMatch = sectionPattern.exec(htmlContent)) !== null) {
-      const question = sectionMatch[1].replace(/<[^>]*>/g, '').trim();
-      const answer = sectionMatch[2].trim();
-      if (question && answer) {
-        faqs.push({ question, answer });
-      }
-    }
-    
-    if (faqs.length > 0) {
-      // Remove the entire Yoast FAQ block including all nested content
-      cleanedContent = cleanedContent.replace(/<div[^>]*class="[^"]*schema-faq[^"]*wp-block-yoast-faq-block[^"]*"[^>]*>[\s\S]*?<\/div>\s*<\/div>\s*<\/div>\s*<\/div>\s*<\/div>\s*<\/div>/gi, '');
-      cleanedContent = cleanedContent.replace(/<div[^>]*class="[^"]*schema-faq[^"]*wp-block-yoast-faq-block[^"]*"[^>]*>[\s\S]*?<\/div>/gi, '');
-      // Remove the FAQ heading
-      cleanedContent = cleanedContent.replace(/<h[23][^>]*>[^<]*Frequently Asked Questions[^<]*<\/h[23]>/gi, '');
-    }
-  }
-  
-  // Pattern 2: H4 questions with "Ans." answers (WordPress block format)
-  // Structure: <h2>Frequently Asked Questions</h2>
-  //   <h4 class="wp-block-heading">Question?</h4>
-  //   <p><strong>Ans.</strong> Answer text</p>
-  if (faqs.length === 0) {
-    const faqHeadingMatch = htmlContent.match(/<h2[^>]*>[^<]*Frequently Asked Questions[^<]*<\/h2>/i);
-    
-    if (faqHeadingMatch) {
-      const faqHeadingIndex = htmlContent.indexOf(faqHeadingMatch[0]);
-      const contentAfterHeading = htmlContent.slice(faqHeadingIndex + faqHeadingMatch[0].length);
-      
-      // Find next H2 to limit scope (or end of content)
-      const nextH2Match = contentAfterHeading.match(/<h2[^>]*>/i);
-      const faqSectionBody = nextH2Match 
-        ? contentAfterHeading.slice(0, contentAfterHeading.indexOf(nextH2Match[0]))
-        : contentAfterHeading;
-      
-      // Match H3 or H4 followed by paragraph with <strong>Ans.</strong>
-      // Use [\s\S] to match across newlines
-      const ansPattern = /<h[34][^>]*>([\s\S]*?)<\/h[34]>[\s\S]*?<p[^>]*><strong>Ans\.?<\/strong>\s*([\s\S]*?)<\/p>/gi;
-      let ansMatch;
-      const matchedBlocks: string[] = [];
-      
-      while ((ansMatch = ansPattern.exec(faqSectionBody)) !== null) {
-        const question = ansMatch[1].replace(/<[^>]*>/g, '').replace(/&[^;]+;/g, "'").trim();
-        const answer = ansMatch[2].trim();
-        if (question && answer && question.length > 5 && answer.length > 10) {
-          faqs.push({ question, answer });
-          matchedBlocks.push(ansMatch[0]);
-        }
-      }
-      
-      if (faqs.length > 0) {
-        // Remove the FAQ heading
-        cleanedContent = cleanedContent.replace(faqHeadingMatch[0], '');
-        // Remove each matched Q&A block
-        for (const block of matchedBlocks) {
-          cleanedContent = cleanedContent.replace(block, '');
-        }
-      }
-    }
-  }
-
-  // Clean up empty paragraphs
-  if (faqs.length > 0) {
-    cleanedContent = cleanedContent.replace(/<p[^>]*>\s*<\/p>/g, '');
-  }
-
-  return { faqs, cleanedContent };
+interface Props {
+  initialPost: WPPost | null;
+  initialFaqData: FAQData;
 }
 
 function FAQAccordion({ faqs }: { faqs: FAQItem[] }) {
@@ -155,12 +71,16 @@ function FAQAccordion({ faqs }: { faqs: FAQItem[] }) {
       </h2>
       <Accordion type="single" collapsible className="space-y-3">
         {faqs.map((faq, index) => (
-          <AccordionItem key={index} value={`faq-${index}`} data-testid={`accordion-faq-${index}`}>
+          <AccordionItem
+            key={index}
+            value={`faq-${index}`}
+            data-testid={`accordion-faq-${index}`}
+          >
             <AccordionTrigger className="text-left hover:no-underline">
               {faq.question}
             </AccordionTrigger>
             <AccordionContent>
-              <div 
+              <div
                 className="wp-content"
                 dangerouslySetInnerHTML={{ __html: faq.answer }}
               />
@@ -168,27 +88,6 @@ function FAQAccordion({ faqs }: { faqs: FAQItem[] }) {
           </AccordionItem>
         ))}
       </Accordion>
-    </div>
-  );
-}
-
-function ArticleSkeleton() {
-  return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 py-12">
-      <Skeleton className="h-8 w-32 mb-6" />
-      <Skeleton className="h-12 w-full mb-4" />
-      <Skeleton className="h-12 w-3/4 mb-6" />
-      <div className="flex gap-4 mb-8">
-        <Skeleton className="h-4 w-32" />
-        <Skeleton className="h-4 w-24" />
-        <Skeleton className="h-4 w-24" />
-      </div>
-      <Skeleton className="h-80 w-full mb-8 rounded-lg" />
-      <div className="space-y-4">
-        {[...Array(8)].map((_, i) => (
-          <Skeleton key={i} className="h-4 w-full" />
-        ))}
-      </div>
     </div>
   );
 }
@@ -212,7 +111,7 @@ function RelatedPostCard({ post }: { post: WPPost }) {
           )}
         </div>
         <CardContent className="p-4">
-          <h4 
+          <h4
             className="font-semibold text-sm line-clamp-2 group-hover:text-primary transition-colors"
             dangerouslySetInnerHTML={{ __html: post.title.rendered }}
           />
@@ -223,46 +122,21 @@ function RelatedPostCard({ post }: { post: WPPost }) {
   );
 }
 
-export default function InsightArticlePage() {
+export default function InsightArticlePage({ initialPost, initialFaqData }: Props) {
   const params = useParams();
   const slug = params?.slug as string;
-  
-  const [post, setPost] = useState<WPPost | null>(null);
+
+  const post = initialPost;
+  const faqData = initialFaqData;
   const [relatedPosts, setRelatedPosts] = useState<WPPost[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-  const [faqData, setFaqData] = useState<{ faqs: Array<{question: string; answer: string}>; cleanedContent: string }>({ faqs: [], cleanedContent: "" });
 
   useEffect(() => {
-    async function fetchPost() {
-      if (!slug) return;
-      setLoading(true);
-      setError(null);
-      try {
-        const [fetchedPost, recentPosts] = await Promise.all([
-          getPostBySlug(slug),
-          getPosts({ perPage: 4 })
-        ]);
-        
-        if (!fetchedPost) {
-          setError("Article not found");
-          return;
-        }
-        
-        setPost(fetchedPost);
-        setRelatedPosts(recentPosts.posts.filter(p => p.slug !== slug).slice(0, 3));
-        // Extract FAQs from post content
-        if (fetchedPost.content?.rendered) {
-          setFaqData(extractFAQsFromContent(fetchedPost.content.rendered));
-        }
-      } catch (err) {
-        setError("Unable to load article. Please try again later.");
-        console.error("Error fetching post:", err);
-      } finally {
-        setLoading(false);
-      }
-    }
-    fetchPost();
+    if (!slug) return;
+    getPosts({ perPage: 4 })
+      .then((result) => {
+        setRelatedPosts(result.posts.filter((p) => p.slug !== slug).slice(0, 3));
+      })
+      .catch(() => {});
   }, [slug]);
 
   const shareOnTwitter = () => {
@@ -278,24 +152,14 @@ export default function InsightArticlePage() {
     window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}`, "_blank");
   };
 
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-background">
-        <MainHeader />
-        <ArticleSkeleton />
-        <MainFooter />
-      </div>
-    );
-  }
-
-  if (error || !post) {
+  if (!post) {
     return (
       <div className="min-h-screen bg-background">
         <MainHeader />
         <div className="max-w-4xl mx-auto px-4 sm:px-6 py-24 text-center">
-          <h1 className="text-2xl font-bold mb-4">{error || "Article not found"}</h1>
+          <h1 className="text-2xl font-bold mb-4">Article not found</h1>
           <p className="text-muted-foreground mb-6">
-            The article you're looking for doesn't exist or has been moved.
+            The article you&apos;re looking for doesn&apos;t exist or has been moved.
           </p>
           <Button asChild>
             <Link href="/insights/" data-testid="button-back-to-insights">
@@ -317,7 +181,7 @@ export default function InsightArticlePage() {
   return (
     <div className="min-h-screen bg-background">
       <MainHeader />
-      
+
       <article className="pt-24 lg:pt-28">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
           <motion.div
@@ -325,8 +189,8 @@ export default function InsightArticlePage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <Link 
-              href="/insights/" 
+            <Link
+              href="/insights/"
               className="inline-flex items-center text-sm text-muted-foreground hover:text-foreground mb-6 transition-colors"
               data-testid="link-back-to-insights"
             >
@@ -344,7 +208,7 @@ export default function InsightArticlePage() {
               </div>
             )}
 
-            <h1 
+            <h1
               className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6"
               dangerouslySetInnerHTML={{ __html: post.title.rendered }}
             />
@@ -375,32 +239,35 @@ export default function InsightArticlePage() {
             )}
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+          <div
             className="wp-content max-w-none mb-12"
-            dangerouslySetInnerHTML={{ __html: faqData.cleanedContent || post.content?.rendered || "" }}
+            dangerouslySetInnerHTML={{
+              __html: faqData.cleanedContent || post.content?.rendered || "",
+            }}
           />
 
           {faqData.faqs.length > 0 && (
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-            >
-              <FAQAccordion faqs={faqData.faqs} />
-            </motion.div>
+            <FAQAccordion faqs={faqData.faqs} />
           )}
 
           <div className="border-t border-border pt-8 mb-12">
             <div className="flex flex-wrap items-center justify-between gap-4">
               <div className="flex items-center gap-2">
                 <span className="text-sm text-muted-foreground">Share this article:</span>
-                <Button variant="outline" size="icon" onClick={shareOnTwitter} data-testid="button-share-twitter">
+                <Button
+                  variant="outline"
+                  size="icon"
+                  onClick={shareOnTwitter}
+                  data-testid="button-share-twitter"
+                >
                   <Twitter className="w-4 h-4" />
                 </Button>
-                <Button variant="outline" size="icon" onClick={shareOnLinkedin} data-testid="button-share-linkedin">
+                <Button
+                  variant="outline"
+                  size="icon"
+                  onClick={shareOnLinkedin}
+                  data-testid="button-share-linkedin"
+                >
                   <Linkedin className="w-4 h-4" />
                 </Button>
               </div>
@@ -429,7 +296,8 @@ export default function InsightArticlePage() {
                   Ready to Implement These Strategies?
                 </h2>
                 <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-                  Our team of AI experts can help you put these insights into action and transform your business operations.
+                  Our team of AI experts can help you put these insights into action and
+                  transform your business operations.
                 </p>
                 <Button size="lg" asChild>
                   <Link href="/corporate/contact/" data-testid="button-article-cta">
