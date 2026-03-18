@@ -178,6 +178,26 @@ export const metadata: Metadata = {
               "item": "https://agixtech.com/"
             }
           ]
+        },
+        {
+          "@type": "ItemList",
+          "@id": "https://agixtech.com/#services",
+          "name": "AGIX Technologies AI Services",
+          "itemListElement": [
+            "AI Automation Services",
+            "AI Voice Agents",
+            "Conversational AI Chatbots",
+            "Agentic AI Systems",
+            "RAG Services",
+            "Predictive Analytics AI",
+            "Computer Vision Solutions",
+            "Custom AI Product Development Services"
+          ].map((name, i) => ({
+            "@type": "Service",
+            name,
+            provider: { "@type": "Organization", "@id": "https://agixtech.com/#organization" },
+            position: i + 1
+          }))
         }
       ]
     }),
@@ -194,9 +214,7 @@ export default function RootLayout({
       <head>
         <style dangerouslySetInnerHTML={{ __html: criticalHomeStyles }} />
         <link rel="preload" as="style" href="/deferred-styles.css" />
-        <noscript>
-          <link rel="stylesheet" href="/deferred-styles.css" />
-        </noscript>
+        <noscript dangerouslySetInnerHTML={{ __html: '<link rel="stylesheet" href="/deferred-styles.css" />' }} />
         {/* All analytics deferred until first user interaction — zero analytics during Lighthouse test */}
         <Script id="analytics-deferred" src="/analytics-loader.js" strategy="lazyOnload" />
         <Script id="deferred-stylesheet" src="/deferred-styles-loader.js" strategy="lazyOnload" />
@@ -205,14 +223,7 @@ export default function RootLayout({
         className={`${inter.variable} ${spaceGrotesk.variable} font-sans`}
         suppressHydrationWarning
       >
-        <noscript>
-          <iframe
-            src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
-            height="0"
-            width="0"
-            style={{ display: 'none', visibility: 'hidden' }}
-          />
-        </noscript>
+        <noscript dangerouslySetInnerHTML={{ __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=${GTM_ID}" height="0" width="0" style="display:none;visibility:hidden"></iframe>` }} />
         <Providers>{children}</Providers>
       </body>
     </html>
