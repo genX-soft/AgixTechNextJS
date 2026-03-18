@@ -88,6 +88,11 @@ const nextConfig = {
       { source: '/service/digital-transformation-consulting', destination: '/intelligence/operational-ai/', permanent: true },
       { source: '/service/custom-ai-agents-models', destination: '/services/agentic-ai-systems/', permanent: true },
 
+      // ===== INSIGHTS SLUG CONSOLIDATION =====
+      // /insights/[slug]/ is no longer the canonical URL — all posts live at /[slug]/
+      { source: '/insights/:slug/', destination: '/:slug/', permanent: true },
+      { source: '/insights/:slug', destination: '/:slug/', permanent: true },
+
       // ===== BLOG URL REDIRECTS =====
       { source: '/blog', destination: '/insights/', permanent: true },
       { source: '/blog/page/:page', destination: '/insights/', permanent: true },
