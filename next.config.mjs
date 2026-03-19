@@ -63,6 +63,7 @@ const nextConfig = {
       { source: '/intelligence/enterprise-knowledge', destination: '/intelligence/enterprise-knowledge-ai/', permanent: true },
       
       // ===== SERVICE PAGE REDIRECTS =====
+      { source: '/services/agentic-ai-system', destination: '/services/agentic-ai-systems/', permanent: true },
       { source: '/services/voice-agents', destination: '/services/ai-voice-agents/', permanent: true },
       { source: '/services/chatbots', destination: '/services/conversational-ai-chatbots/', permanent: true },
       { source: '/services/rag-knowledge', destination: '/services/rag-knowledge-ai/', permanent: true },
@@ -93,6 +94,7 @@ const nextConfig = {
       { source: '/industry/ai-in-education-institutions', destination: '/industries/edtech-ai-solutions/', permanent: true },
       
       // ===== OLD /service/ PATH REDIRECTS =====
+      { source: '/service/ai-automation', destination: '/services/ai-automation/', permanent: true },
       { source: '/service/workflow-optimization-services', destination: '/services/ai-automation/', permanent: true },
       { source: '/service/ai-automation-services', destination: '/services/ai-automation/', permanent: true },
       { source: '/service/custom-ai-agent-development', destination: '/services/agentic-ai-systems/', permanent: true },
@@ -117,6 +119,7 @@ const nextConfig = {
       { source: '/retell-vs-twilio-voice-vs-vonage-ai-best-voice-api-for-gpt4', destination: '/retell-vs-twilio-voice-vs-vonage-ai-gpt-4-call-agents/', permanent: true },
 
       // ===== BLOG URL REDIRECTS =====
+      { source: '/blog/comparing-voice-ai-models-for-real-time-transcription', destination: '/', permanent: true },
       { source: '/blog', destination: '/insights/', permanent: true },
       { source: '/blog/page/:page', destination: '/insights/', permanent: true },
       { source: '/blog/voice-ai-roi-calculator', destination: '/voice-ai-roi-calculator/', permanent: true },
