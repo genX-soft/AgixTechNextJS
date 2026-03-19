@@ -26,38 +26,31 @@ const DynamicGuidedAssessment = dynamic(
 );
 
 const DynamicContactSection = dynamic(
-  () => import("@/components/home/contact-section").then((m) => ({ default: m.ContactSection })),
-  { ssr: false }
+  () => import("@/components/home/contact-section").then((m) => ({ default: m.ContactSection }))
 );
 
 const DynamicTestimonialsSection = dynamic(
-  () => import("@/components/home/TestimonialsSection"),
-  { ssr: false }
+  () => import("@/components/home/TestimonialsSection")
 );
 
 const DynamicCaseStudiesSection = dynamic(
-  () => import("@/components/home/CaseStudiesSection"),
-  { ssr: false }
+  () => import("@/components/home/CaseStudiesSection")
 );
 
 const DynamicIntelligenceSection = dynamic(
-  () => import("@/components/home/IntelligenceSection"),
-  { ssr: false }
+  () => import("@/components/home/IntelligenceSection")
 );
 
 const DynamicServicesSection = dynamic(
-  () => import("@/components/home/ServicesSection"),
-  { ssr: false }
+  () => import("@/components/home/ServicesSection")
 );
 
 const DynamicIndustriesSection = dynamic(
-  () => import("@/components/home/IndustriesSection"),
-  { ssr: false }
+  () => import("@/components/home/IndustriesSection")
 );
 
 const DynamicMainFooter = dynamic(
-  () => import("@/components/main-footer").then((m) => ({ default: m.MainFooter })),
-  { ssr: false }
+  () => import("@/components/main-footer").then((m) => ({ default: m.MainFooter }))
 );
 
 const DynamicOrbitAnimation = dynamic(
@@ -261,28 +254,14 @@ export default function Home() {
         <LazyMount fallbackHeight="700px">
           <DynamicGuidedAssessment />
         </LazyMount>
-        <LazyMount fallbackHeight="800px">
-          <DynamicIntelligenceSection />
-        </LazyMount>
-        <LazyMount fallbackHeight="900px">
-          <DynamicServicesSection />
-        </LazyMount>
-        <LazyMount fallbackHeight="700px">
-          <DynamicIndustriesSection />
-        </LazyMount>
-        <LazyMount fallbackHeight="400px">
-          <DynamicTestimonialsSection />
-        </LazyMount>
-        <LazyMount fallbackHeight="400px">
-          <DynamicCaseStudiesSection />
-        </LazyMount>
-        <LazyMount fallbackHeight="500px">
-          <DynamicContactSection />
-        </LazyMount>
+        <DynamicIntelligenceSection />
+        <DynamicServicesSection />
+        <DynamicIndustriesSection />
+        <DynamicTestimonialsSection />
+        <DynamicCaseStudiesSection />
+        <DynamicContactSection />
       </main>
-      <LazyMount fallbackHeight="360px">
-        <DynamicMainFooter />
-      </LazyMount>
+      <DynamicMainFooter />
     </div>
   );
 }

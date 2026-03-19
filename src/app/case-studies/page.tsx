@@ -1,5 +1,5 @@
 'use client'
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MainHeader } from "@/components/main-header";
 import { MainFooter } from "@/components/main-footer";
@@ -546,11 +546,6 @@ const categoryMapping: Record<string, string> = {
 
 export default function CaseStudiesPage() {
   const [activeFilter, setActiveFilter] = useState("all");
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   const filteredCaseStudies = activeFilter === "all"
     ? caseStudies
@@ -649,7 +644,7 @@ export default function CaseStudiesPage() {
 
           {/* Case Study Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {mounted && filteredCaseStudies.map((cs, index) => (
+            {filteredCaseStudies.map((cs, index) => (
               <motion.div
                 key={cs.company}
                 initial={{ opacity: 0, y: 20 }}
