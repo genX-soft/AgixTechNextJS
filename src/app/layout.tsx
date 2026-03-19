@@ -216,11 +216,14 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <style dangerouslySetInnerHTML={{ __html: criticalHomeStyles }} />
+        {/* Preload deferred-styles.css so it's already in cache when afterInteractive script injects it */}
         <link rel="preload" as="style" href="/deferred-styles.css" />
+        {/* Fallback for JS-disabled browsers */}
         <noscript dangerouslySetInnerHTML={{ __html: '<link rel="stylesheet" href="/deferred-styles.css" />' }} />
         {/* All analytics deferred until first user interaction — zero analytics during Lighthouse test */}
         <Script id="analytics-deferred" src="/analytics-loader.js" strategy="lazyOnload" />
-        <Script id="deferred-stylesheet" src="/deferred-styles-loader.js" strategy="lazyOnload" />
+        {/* Uses afterInteractive (not lazyOnload) so styles apply right after hydration, not idle */}
+        <Script id="deferred-stylesheet" src="/deferred-styles-loader.js" strategy="afterInteractive" />
       </head>
       <body
         className={`${inter.variable} ${spaceGrotesk.variable} font-sans`}

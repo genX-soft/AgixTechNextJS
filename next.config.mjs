@@ -22,7 +22,7 @@ const nextConfig = {
     formats: ['image/avif', 'image/webp'],
     unoptimized: process.env.NODE_ENV === 'development',
   },
-  turbopack: {},
+
   experimental: {
     serverActions: {
       bodySizeLimit: '2mb',
@@ -33,7 +33,7 @@ const nextConfig = {
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
   },
-  // turbopack disabled — it conflicts with optimizeCss (critters) which handles render-blocking CSS
+
   webpack(config, { isServer }) {
     if (!isServer) {
       // Next.js injects polyfills for older browsers via next/dist/client/polyfills.
