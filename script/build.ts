@@ -3,9 +3,9 @@ import { build as esbuild } from "esbuild";
 import { readFile } from "fs/promises";
 
 async function buildAll() {
-  console.log("Building Next.js application with Turbopack...");
+  console.log("Building Next.js application...");
   
-  // Build Next.js app using Turbopack (default in Next.js 16)
+  // Build Next.js app (turbopack: {} in next.config.mjs handles bundler config)
   await new Promise<void>((resolve, reject) => {
     const nextBuild = spawn("npx", ["next", "build"], {
       stdio: "inherit",
