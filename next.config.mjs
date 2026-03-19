@@ -27,7 +27,16 @@ const nextConfig = {
     serverActions: {
       bodySizeLimit: '2mb',
     },
-    optimizeCss: true,
+    optimizeCss: {
+      // Pass config down to critters to aggressively inline the CSS
+      // rather than just fetching it as a render-blocking <link>.
+      // We set inlineThreshold to infinity (a large number) because 
+      // the total CSS payload is already small enough (~25KB).
+      inlineStyles: true,
+      inlineFonts: true,
+      inlineThreshold: Infinity,
+      preload: 'swap',
+    },
     optimizePackageImports: ['lucide-react', 'framer-motion', '@radix-ui/react-icons'],
   },
   compiler: {

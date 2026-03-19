@@ -71,15 +71,9 @@ const aiFacts = [
 
 function DidYouKnowSection() {
   const [currentFact, setCurrentFact] = useState(0);
-  const [visible, setVisible] = useState(true);
-
   useEffect(() => {
     const interval = setInterval(() => {
-      setVisible(false);
-      setTimeout(() => {
-        setCurrentFact((prev) => (prev + 1) % aiFacts.length);
-        setVisible(true);
-      }, 350);
+      setCurrentFact((prev) => (prev + 1) % aiFacts.length);
     }, 5000);
     return () => clearInterval(interval);
   }, []);
@@ -93,13 +87,9 @@ function DidYouKnowSection() {
           <Lightbulb className="w-4 h-4" />
           <span>Did you know?</span>
         </div>
-        <div
-          className="flex items-center gap-2 text-sm"
-          style={{
-            opacity: visible ? 1 : 0,
-            transform: visible ? "translateX(0)" : "translateX(-12px)",
-            transition: "opacity 0.35s ease, transform 0.35s ease",
-          }}
+        <div 
+          key={currentFact} 
+          className="flex items-center gap-2 text-sm animate-in fade-in slide-in-from-left-4 duration-500"
         >
           <CurrentIcon className="w-4 h-4 text-primary/70 flex-shrink-0 hidden sm:block" />
           <span className="text-slate-300">{aiFacts[currentFact].fact}</span>
