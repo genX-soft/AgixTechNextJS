@@ -4,7 +4,7 @@ const isProduction = process.env.NODE_ENV === "production";
 
 const command = isProduction 
   ? ["next", "start", "-p", "5000"]
-  : ["next", "dev", "-p", "5000"];
+  : ["next", "dev", "--webpack", "-p", "5000"];
 
 console.log(`Starting Next.js in ${isProduction ? "production" : "development"} mode...`);
 

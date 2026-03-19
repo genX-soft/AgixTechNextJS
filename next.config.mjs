@@ -22,13 +22,11 @@ const nextConfig = {
     formats: ['image/avif', 'image/webp'],
     unoptimized: process.env.NODE_ENV === 'development',
   },
-  turbopack: {},
   experimental: {
     serverActions: {
       bodySizeLimit: '2mb',
     },
     optimizeCss: true,
-    cssChunking: 'loose',
     optimizePackageImports: ['lucide-react', 'framer-motion', '@radix-ui/react-icons'],
   },
   compiler: {
