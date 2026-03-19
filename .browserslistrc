@@ -1,0 +1,8 @@
+# Modern browsers only — polyfills for Array.at, Object.hasOwn, etc. are not needed
+# These targets align with Baseline 2022 Widely Available support
+chrome >= 111
+edge >= 111
+firefox >= 115
+safari >= 16.4
+ios_saf >= 16.4
+not dead

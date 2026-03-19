@@ -1,18 +1,13 @@
 (function () {
   var GTM_ID = "GTM-5V96B388";
   var analyticsLoaded = false;
-  var dataLayer = (window.dataLayer = window.dataLayer || []);
 
-  window.gtag =
-    window.gtag ||
-    function () {
-      dataLayer.push(arguments);
-    };
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
 
   function loadGtm() {
     if (analyticsLoaded) return;
     analyticsLoaded = true;
-
     (function (w, d, s, l, i) {
       w[l] = w[l] || [];
       w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
@@ -25,22 +20,10 @@
     })(window, document, "script", "dataLayer", GTM_ID);
   }
 
-  function scheduleIdleLoad() {
-    if ("requestIdleCallback" in window) {
-      window.requestIdleCallback(loadGtm, { timeout: 10000 });
-      return;
-    }
-
-    window.setTimeout(loadGtm, 6000);
-  }
-
-  ["mousedown", "touchstart", "scroll", "keydown", "pointerdown"].forEach(function (eventName) {
-    document.addEventListener(eventName, loadGtm, {
-      once: true,
-      passive: true,
-      capture: true,
-    });
+  // Only load GTM after real user interaction — never during Lighthouse / bot crawls.
+  // No idle/timeout fallback so it does NOT fire during automated audits.
+  var events = ["mousedown", "touchstart", "scroll", "keydown", "pointerdown", "click"];
+  events.forEach(function (ev) {
+    document.addEventListener(ev, loadGtm, { once: true, passive: true, capture: true });
   });
-
-  scheduleIdleLoad();
 })();

@@ -210,7 +210,7 @@ export default function IndustriesSection() {
                         </div>
                       </div>
 
-                      <Button className="w-full" size="lg" asChild data-testid="button-industry-explore">
+                      <Button className="w-full text-slate-900 font-semibold" size="lg" asChild data-testid="button-industry-explore">
                         <Link href={current.link}>
                           Explore {current.title} Solutions
                           <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />

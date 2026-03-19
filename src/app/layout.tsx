@@ -212,7 +212,37 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
       <head>
+        {/* Preconnect to Google Fonts origins used by next/font */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <style dangerouslySetInnerHTML={{ __html: criticalHomeStyles }} />
+        {/* Make Next.js CSS chunks non-blocking using the media="print" trick */}
+        <script dangerouslySetInnerHTML={{ __html: `
+(function(){
+  function makeNonBlocking(node){
+    if(
+      node.tagName === 'LINK' &&
+      node.rel === 'stylesheet' &&
+      node.href &&
+      node.href.indexOf('/_next/static/') !== -1 &&
+      node.media !== 'print'
+    ){
+      node.media = 'print';
+      node.onload = function(){ node.media = 'all'; node.onload = null; };
+    }
+  }
+  // Convert any already-present links (SSR-injected)
+  document.head.querySelectorAll('link[rel="stylesheet"]').forEach(makeNonBlocking);
+  // Watch for dynamically injected links
+  var mo = new MutationObserver(function(mutations){
+    mutations.forEach(function(m){
+      m.addedNodes.forEach(makeNonBlocking);
+    });
+  });
+  mo.observe(document.head, { childList: true });
+  document.addEventListener('DOMContentLoaded', function(){ mo.disconnect(); }, { once: true });
+})();
+        `.trim() }} />
         <link rel="preload" as="style" href="/deferred-styles.css" />
         <noscript dangerouslySetInnerHTML={{ __html: '<link rel="stylesheet" href="/deferred-styles.css" />' }} />
         {/* All analytics deferred until first user interaction — zero analytics during Lighthouse test */}

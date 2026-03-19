@@ -243,7 +243,7 @@ export default function ServicesSection() {
           <div className="mt-8 flex justify-center">
             <div className="inline-flex items-center gap-1 p-1 rounded-full bg-slate-800/50 border border-slate-700/50">
               {allServices.map((s, index) => (
-                <button key={s.title} type="button" onClick={() => setActiveService(index)} className={`flex items-center gap-2 px-3 py-2 rounded-full transition-all ${activeService === index ? "bg-emerald-500/20 text-emerald-400" : "text-slate-300 hover:text-slate-200"}`} data-testid={`service-dot-${index}`}>
+                <button key={s.title} type="button" onClick={() => setActiveService(index)} aria-label={`View ${s.title}`} aria-pressed={activeService === index} className={`flex items-center gap-2 px-3 py-2 rounded-full transition-all ${activeService === index ? "bg-emerald-500/20 text-emerald-400" : "text-slate-300 hover:text-slate-200"}`} data-testid={`service-dot-${index}`}>
                   <s.icon className="h-4 w-4" aria-hidden="true" />
                   <span className={`text-xs font-medium hidden sm:inline ${activeService === index ? "" : "sr-only sm:not-sr-only"}`}>
                     {activeService === index ? s.title.split(" ")[0] : ""}

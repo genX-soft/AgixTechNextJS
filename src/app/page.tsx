@@ -196,7 +196,7 @@ function HeroSection() {
             <div className="flex flex-col sm:flex-row gap-4">
               <Button
                 size="lg"
-                className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg shadow-primary/25"
+                className="bg-primary hover:bg-primary/90 text-slate-900 font-semibold shadow-lg shadow-primary/25"
                 asChild
                 data-testid="button-hero-discover"
               >

@@ -144,4 +144,7 @@ export default {
     },
   },
   plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
+  // Prevent prose utilities from the typography plugin from landing in the global CSS bundle.
+  // prose is only used on blog/legal pages — not the homepage — so this cuts unused CSS.
+  blocklist: ["prose"],
 } satisfies Config;

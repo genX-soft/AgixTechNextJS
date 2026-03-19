@@ -27,12 +27,32 @@ const nextConfig = {
       bodySizeLimit: '2mb',
     },
     optimizeCss: true,
+    cssChunking: 'loose',
     optimizePackageImports: ['lucide-react', 'framer-motion', '@radix-ui/react-icons'],
   },
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
   },
-  turbopack: {},
+  // turbopack disabled — it conflicts with optimizeCss (critters) which handles render-blocking CSS
+  webpack(config, { isServer }) {
+    if (!isServer) {
+      // Next.js injects polyfills for older browsers via next/dist/client/polyfills.
+      // Since our browserslist targets only modern browsers (Chrome 111+, Safari 16.4+),
+      // these methods are all natively available — alias the polyfill chunk to a no-op.
+      config.resolve.alias = {
+        ...config.resolve.alias,
+        // These are natively available in all our target browsers
+        'core-js/modules/es.array.at': false,
+        'core-js/modules/es.array.flat': false,
+        'core-js/modules/es.array.flat-map': false,
+        'core-js/modules/es.object.from-entries': false,
+        'core-js/modules/es.object.has-own': false,
+        'core-js/modules/es.string.trim-end': false,
+        'core-js/modules/es.string.trim-start': false,
+      };
+    }
+    return config;
+  },
   async redirects() {
     const redirectList = [
       // ===== INTELLIGENCE PAGE REDIRECTS =====
@@ -179,7 +199,7 @@ const nextConfig = {
         key: 'Content-Security-Policy',
         value: [
           "default-src 'self'",
-          "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://www.clarity.ms",
+          "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://www.clarity.ms https://scripts.clarity.ms",
           "script-src-attr 'none'",
           "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
           "font-src 'self' data: https://fonts.gstatic.com",
