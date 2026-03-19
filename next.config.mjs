@@ -113,6 +113,9 @@ const nextConfig = {
       { source: '/insights/:slug/', destination: '/:slug/', permanent: true },
       { source: '/insights/:slug', destination: '/:slug/', permanent: true },
 
+      // ===== BLOG POST URL REDIRECTS =====
+      { source: '/retell-vs-twilio-voice-vs-vonage-ai-best-voice-api-for-gpt4', destination: '/retell-vs-twilio-voice-vs-vonage-ai-gpt-4-call-agents/', permanent: true },
+
       // ===== BLOG URL REDIRECTS =====
       { source: '/blog', destination: '/insights/', permanent: true },
       { source: '/blog/page/:page', destination: '/insights/', permanent: true },
