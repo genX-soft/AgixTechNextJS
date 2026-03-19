@@ -7,7 +7,7 @@ async function buildAll() {
   
   // Build Next.js app (turbopack: {} in next.config.mjs handles bundler config)
   await new Promise<void>((resolve, reject) => {
-    const nextBuild = spawn("npx", ["next", "build"], {
+    const nextBuild = spawn("npx", ["next", "build", "--webpack"], {
       stdio: "inherit",
       shell: true,
       env: { ...process.env, NODE_ENV: "production" }

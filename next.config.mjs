@@ -22,6 +22,7 @@ const nextConfig = {
     formats: ['image/avif', 'image/webp'],
     unoptimized: process.env.NODE_ENV === 'development',
   },
+  turbopack: {},
   experimental: {
     serverActions: {
       bodySizeLimit: '2mb',
