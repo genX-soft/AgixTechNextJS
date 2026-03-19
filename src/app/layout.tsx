@@ -212,9 +212,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
       <head>
-        {/* Preconnect to Google Fonts origins used by next/font */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        {/* next/font self-hosts font files under /_next/static/media/ — no Google Fonts preconnects needed */}
         <style dangerouslySetInnerHTML={{ __html: criticalHomeStyles }} />
         {/* Preload deferred-styles.css so it's already in cache when afterInteractive script injects it */}
         <link rel="preload" as="style" href="/deferred-styles.css" />
