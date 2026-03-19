@@ -254,14 +254,28 @@ export default function Home() {
         <LazyMount fallbackHeight="700px">
           <DynamicGuidedAssessment />
         </LazyMount>
-        <DynamicIntelligenceSection />
-        <DynamicServicesSection />
-        <DynamicIndustriesSection />
-        <DynamicTestimonialsSection />
-        <DynamicCaseStudiesSection />
-        <DynamicContactSection />
+        <LazyMount fallbackHeight="600px">
+          <DynamicIntelligenceSection />
+        </LazyMount>
+        <LazyMount fallbackHeight="800px">
+          <DynamicServicesSection />
+        </LazyMount>
+        <LazyMount fallbackHeight="600px">
+          <DynamicIndustriesSection />
+        </LazyMount>
+        <LazyMount fallbackHeight="500px">
+          <DynamicTestimonialsSection />
+        </LazyMount>
+        <LazyMount fallbackHeight="800px">
+          <DynamicCaseStudiesSection />
+        </LazyMount>
+        <LazyMount fallbackHeight="600px">
+          <DynamicContactSection />
+        </LazyMount>
       </main>
-      <DynamicMainFooter />
+      <LazyMount fallbackHeight="400px">
+        <DynamicMainFooter />
+      </LazyMount>
     </div>
   );
 }
