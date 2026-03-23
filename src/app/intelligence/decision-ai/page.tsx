@@ -1024,7 +1024,7 @@ function SolutionFinderTool() {
           <CardTitle>Decision Intelligence Solution Finder</CardTitle>
           <Badge variant="outline" className="border-emerald-500/30">Step {step} of 3</Badge>
         </div>
-        <Progress value={step * 33.33} className="h-2" />
+        <Progress value={step * 33.33} className="h-2" aria-label={`Step ${step} of 3`} />
       </CardHeader>
       <CardContent className="space-y-6">
         {step === 1 && (
@@ -1951,19 +1951,21 @@ export default function DecisionIntelligencePage() {
   return (
     <div className="min-h-screen bg-background">
       <MainHeader />
-      <HeroSection />
-      <TrustStrip />
-      <WhatIsDecisionIntelligence />
-      <WhyMoreDataDoesntHelp />
-      <DecisionTypesSection />
-      <ComparisonSection />
-      <WhyBusinessesNeedIt />
-      <ArchitectureSection />
-      <AgixMethodology />
-      <InteractiveToolsSection />
-      <FAQSection />
-      <MakeBetterDecisionsSection />
-      <FinalCTASection />
+      <main id="main-content">
+        <HeroSection />
+        <TrustStrip />
+        <WhatIsDecisionIntelligence />
+        <WhyMoreDataDoesntHelp />
+        <DecisionTypesSection />
+        <ComparisonSection />
+        <WhyBusinessesNeedIt />
+        <ArchitectureSection />
+        <AgixMethodology />
+        <InteractiveToolsSection />
+        <FAQSection />
+        <MakeBetterDecisionsSection />
+        <FinalCTASection />
+      </main>
       <MainFooter />
     </div>
   );
