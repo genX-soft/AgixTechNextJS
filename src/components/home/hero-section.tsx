@@ -69,16 +69,23 @@ function useScrollBackground() {
   const grad2Ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    let ticking = false;
     const handleScroll = () => {
-      const sy = window.scrollY;
-      const offset = Math.min(sy * 0.1, 30);
-      const op1 = Math.max(0.15 - sy * 0.0003, 0.05).toFixed(3);
-      const op2 = Math.max(0.08 - sy * 0.0002, 0.02).toFixed(3);
-      if (grad1Ref.current) {
-        grad1Ref.current.style.backgroundImage = `radial-gradient(ellipse 80% 50% at 50% ${(-20 + offset).toFixed(1)}%, rgba(249,115,22,${op1}), transparent)`;
-      }
-      if (grad2Ref.current) {
-        grad2Ref.current.style.backgroundImage = `radial-gradient(ellipse 50% 80% at ${(80 - offset * 0.5).toFixed(1)}% 50%, rgba(249,115,22,${op2}), transparent)`;
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const sy = window.scrollY;
+          const offset = Math.min(sy * 0.1, 30);
+          const op1 = Math.max(0.15 - sy * 0.0003, 0.05).toFixed(3);
+          const op2 = Math.max(0.08 - sy * 0.0002, 0.02).toFixed(3);
+          if (grad1Ref.current) {
+            grad1Ref.current.style.backgroundImage = `radial-gradient(ellipse 80% 50% at 50% ${(-20 + offset).toFixed(1)}%, rgba(249,115,22,${op1}), transparent)`;
+          }
+          if (grad2Ref.current) {
+            grad2Ref.current.style.backgroundImage = `radial-gradient(ellipse 50% 80% at ${(80 - offset * 0.5).toFixed(1)}% 50%, rgba(249,115,22,${op2}), transparent)`;
+          }
+          ticking = false;
+        });
+        ticking = true;
       }
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
