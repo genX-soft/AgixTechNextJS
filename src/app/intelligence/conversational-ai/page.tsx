@@ -878,7 +878,7 @@ function AgixMethodology() {
                         <span className="text-sm font-bold text-orange-400">{step.step}</span>
                       </div>
                       <div>
-                        <h4 className="font-medium">{step.title}</h4>
+                        <h3 className="font-medium text-base">{step.title}</h3>
                         <p className="text-sm text-muted-foreground">{step.description}</p>
                       </div>
                     </div>
@@ -1017,8 +1017,8 @@ function InteractiveToolsSection() {
                       <p className="text-muted-foreground">Step 1: Conversation Context</p>
                       <div className="grid md:grid-cols-2 gap-4">
                         <div>
-                          <p className="block text-sm font-medium mb-2">Industry</p>
-                          <select className="w-full p-3 rounded-lg bg-slate-800 border border-slate-700" value={solutionFinder.industry} onChange={(e) => setSolutionFinder({ ...solutionFinder, industry: e.target.value })} data-testid="select-industry">
+                          <label htmlFor="conv-industry" className="block text-sm font-medium mb-2">Industry</label>
+                          <select id="conv-industry" name="industry" autoComplete="off" className="w-full p-3 rounded-lg bg-slate-800 border border-slate-700" value={solutionFinder.industry} onChange={(e) => setSolutionFinder({ ...solutionFinder, industry: e.target.value })} data-testid="select-industry">
                             <option value="">Select industry</option>
                             <option value="healthcare">Healthcare</option>
                             <option value="finance">Finance & Insurance</option>
@@ -1028,8 +1028,8 @@ function InteractiveToolsSection() {
                           </select>
                         </div>
                         <div>
-                          <p className="block text-sm font-medium mb-2">Primary Use Case</p>
-                          <select className="w-full p-3 rounded-lg bg-slate-800 border border-slate-700" value={solutionFinder.useCase} onChange={(e) => setSolutionFinder({ ...solutionFinder, useCase: e.target.value })} data-testid="select-usecase">
+                          <label htmlFor="conv-usecase" className="block text-sm font-medium mb-2">Primary Use Case</label>
+                          <select id="conv-usecase" name="useCase" autoComplete="off" className="w-full p-3 rounded-lg bg-slate-800 border border-slate-700" value={solutionFinder.useCase} onChange={(e) => setSolutionFinder({ ...solutionFinder, useCase: e.target.value })} data-testid="select-usecase">
                             <option value="">Select use case</option>
                             <option value="support">Customer Support</option>
                             <option value="sales">Sales & Lead Qualification</option>
@@ -1038,8 +1038,8 @@ function InteractiveToolsSection() {
                           </select>
                         </div>
                         <div>
-                          <p className="block text-sm font-medium mb-2">Channel Preference</p>
-                          <select className="w-full p-3 rounded-lg bg-slate-800 border border-slate-700" value={solutionFinder.channel} onChange={(e) => setSolutionFinder({ ...solutionFinder, channel: e.target.value })} data-testid="select-channel">
+                          <label htmlFor="conv-channel" className="block text-sm font-medium mb-2">Channel Preference</label>
+                          <select id="conv-channel" name="channel" autoComplete="off" className="w-full p-3 rounded-lg bg-slate-800 border border-slate-700" value={solutionFinder.channel} onChange={(e) => setSolutionFinder({ ...solutionFinder, channel: e.target.value })} data-testid="select-channel">
                             <option value="">Select channel</option>
                             <option value="chat">Chat Only</option>
                             <option value="voice">Voice Only</option>
@@ -1048,8 +1048,8 @@ function InteractiveToolsSection() {
                           </select>
                         </div>
                         <div>
-                          <p className="block text-sm font-medium mb-2">Monthly Conversation Volume</p>
-                          <select className="w-full p-3 rounded-lg bg-slate-800 border border-slate-700" value={solutionFinder.volume} onChange={(e) => setSolutionFinder({ ...solutionFinder, volume: e.target.value })} data-testid="select-volume">
+                          <label htmlFor="conv-volume" className="block text-sm font-medium mb-2">Monthly Conversation Volume</label>
+                          <select id="conv-volume" name="volume" autoComplete="off" className="w-full p-3 rounded-lg bg-slate-800 border border-slate-700" value={solutionFinder.volume} onChange={(e) => setSolutionFinder({ ...solutionFinder, volume: e.target.value })} data-testid="select-volume">
                             <option value="">Select volume</option>
                             <option value="low">Under 1,000</option>
                             <option value="medium">1,000 - 10,000</option>
@@ -1537,26 +1537,28 @@ export default function ConversationalIntelligencePage() {
   return (
     <div className="min-h-screen bg-background">
       <MainHeader />
-      <HeroSection />
-      <TrustStrip />
-      <WhatIsConversationalIntelligence />
-      <ConversationCategories />
-      <WhyChatbotsFail />
-      <ComparisonTable />
-      <WhyBusinessesNeedIt />
-      <ArchitectureSection />
-      <AgixMethodology />
-      <InteractiveToolsSection />
-      <ResultsMetrics />
-      <FAQSection />
-      <section id="cta-form" className="py-20 scroll-mt-20">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <CtaForm 
-            headline="Build Conversations That Actually Understand"
-            subheadline="Your conversations don't need more scripts. They need intelligence. Let's discuss how Conversational Intelligence can transform your customer interactions."
-          />
-        </div>
-      </section>
+      <main id="main-content">
+        <HeroSection />
+        <TrustStrip />
+        <WhatIsConversationalIntelligence />
+        <ConversationCategories />
+        <WhyChatbotsFail />
+        <ComparisonTable />
+        <WhyBusinessesNeedIt />
+        <ArchitectureSection />
+        <AgixMethodology />
+        <InteractiveToolsSection />
+        <ResultsMetrics />
+        <FAQSection />
+        <section id="cta-form" className="py-20 scroll-mt-20">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6">
+            <CtaForm 
+              headline="Build Conversations That Actually Understand"
+              subheadline="Your conversations don't need more scripts. They need intelligence. Let's discuss how Conversational Intelligence can transform your customer interactions."
+            />
+          </div>
+        </section>
+      </main>
       <MainFooter />
       <StickyCTA />
     </div>
