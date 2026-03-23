@@ -214,8 +214,6 @@ export default function RootLayout({
       <head>
         {/* next/font self-hosts font files under /_next/static/media/ — no Google Fonts preconnects needed */}
         <style dangerouslySetInnerHTML={{ __html: criticalHomeStyles }} />
-        {/* Preload deferred-styles.css so it's already in cache when afterInteractive script injects it */}
-        <link rel="preload" as="style" href="/deferred-styles.css" />
         {/* Fallback for JS-disabled browsers */}
         <noscript dangerouslySetInnerHTML={{ __html: '<link rel="stylesheet" href="/deferred-styles.css" />' }} />
         {/* All analytics deferred until first user interaction — zero analytics during Lighthouse test */}
