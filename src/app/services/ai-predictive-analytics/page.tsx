@@ -25,8 +25,6 @@ import {
 import { MainHeader } from "@/components/main-header";
 import { MainFooter } from "@/components/main-footer";
 import { useToast } from "@/hooks/use-toast";
-import { useMutation } from "@tanstack/react-query";
-import { apiRequest } from "@/lib/queryClient";
 import { 
   LineChart,
   Brain,

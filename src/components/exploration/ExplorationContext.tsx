@@ -1,6 +1,5 @@
 "use client";
 
-import { v4 as uuidv4 } from "uuid";
 import { createContext, useContext, useEffect, useState, useCallback } from "react";
 import { ExplorationState, PageType } from "@/lib/exploration/types";
 import { loadState, saveState, resetState } from "@/lib/exploration/storage";
@@ -49,7 +48,7 @@ export function ExplorationProvider({ children }: { children: React.ReactNode })
       const defaults = getPageContextDefaults(pageCtx.pageType, pageCtx.slug);
       
       const fresh: ExplorationState = {
-        sessionId: uuidv4(),
+        sessionId: crypto.randomUUID(),
         entryUrl: pathname,
         pageType: pageCtx.pageType,
         pageSlug: pageCtx.slug,
@@ -83,7 +82,7 @@ export function ExplorationProvider({ children }: { children: React.ReactNode })
     const defaults = getPageContextDefaults(pageCtx.pageType, pageCtx.slug);
     
     const fresh: ExplorationState = {
-      sessionId: uuidv4(),
+      sessionId: crypto.randomUUID(),
       entryUrl: pathname,
       pageType: pageCtx.pageType,
       pageSlug: pageCtx.slug,

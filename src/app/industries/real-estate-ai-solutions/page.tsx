@@ -1,6 +1,6 @@
 'use client'
-import { useState, useEffect, useRef, useMemo } from "react";
-import { motion, useInView, AnimatePresence } from "@/lib/motion";
+import { useState, useMemo } from "react";
+import { motion, AnimatePresence } from "@/lib/motion";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -8,7 +8,6 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Slider } from "@/components/ui/slider";
 import { Textarea } from "@/components/ui/textarea";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   Select,
   SelectContent,
@@ -25,8 +24,6 @@ import {
 import { MainHeader } from "@/components/main-header";
 import { MainFooter } from "@/components/main-footer";
 import { useToast } from "@/hooks/use-toast";
-import { useMutation } from "@tanstack/react-query";
-import { apiRequest } from "@/lib/queryClient";
 import { 
   Home,
   Building2,

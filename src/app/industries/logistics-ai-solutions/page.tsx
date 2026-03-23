@@ -66,7 +66,6 @@ import {
   Timer,
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-import { apiRequest } from "@/lib/queryClient";
 import { submitLead } from "@/lib/lead-submission";
 import { useCelebration } from "@/components/success-celebration";
 import { IndustryCaseStudies, IndustryServices } from "@/components/industry-sections";

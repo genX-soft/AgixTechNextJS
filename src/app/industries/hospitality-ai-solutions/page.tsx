@@ -9,7 +9,6 @@ import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Slider } from "@/components/ui/slider";
-import { Textarea } from "@/components/ui/textarea";
 import {
   Accordion,
   AccordionContent,
@@ -71,7 +70,6 @@ import {
   HeartHandshake,
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-import { apiRequest } from "@/lib/queryClient";
 import { submitLead } from "@/lib/lead-submission";
 import { useCelebration } from "@/components/success-celebration";
 import { IndustryCaseStudies, IndustryServices } from "@/components/industry-sections";

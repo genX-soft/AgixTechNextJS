@@ -33,7 +33,24 @@ const nextConfig = {
       bodySizeLimit: '2mb',
     },
     inlineCss: true,
-    optimizePackageImports: ['lucide-react', 'framer-motion', '@radix-ui/react-icons'],
+    optimizePackageImports: [
+      'lucide-react',
+      'framer-motion',
+      '@radix-ui/react-icons',
+      'react-icons',
+      'date-fns',
+      '@tanstack/react-query',
+    ],
+  },
+  modularizeImports: {
+    'react-icons/si': {
+      transform: 'react-icons/si/{{member}}',
+      skipDefaultConversion: true,
+    },
+    'react-icons/fa': {
+      transform: 'react-icons/fa/{{member}}',
+      skipDefaultConversion: true,
+    },
   },
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',

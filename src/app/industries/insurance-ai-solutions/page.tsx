@@ -2,7 +2,6 @@
 import { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "@/lib/motion";
 import { MainHeader } from "@/components/main-header";
-import { MainFooter } from "@/components/main-footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -67,7 +66,6 @@ import {
   Smartphone,
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-import { apiRequest } from "@/lib/queryClient";
 import { submitLead } from "@/lib/lead-submission";
 import { useCelebration } from "@/components/success-celebration";
 import { IndustryCaseStudies, IndustryServices } from "@/components/industry-sections";
