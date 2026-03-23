@@ -1705,7 +1705,7 @@ function RiskAssessmentTool() {
         <div className="space-y-6">
           <div>
             <div className="flex justify-between mb-2">
-              <label className="text-sm font-medium">Execution Risk</label>
+              <p className="text-sm font-medium">Execution Risk</p>
               <span className="text-sm text-muted-foreground">{executionRisk[0]}%</span>
             </div>
             <Slider
@@ -1721,7 +1721,7 @@ function RiskAssessmentTool() {
 
           <div>
             <div className="flex justify-between mb-2">
-              <label className="text-sm font-medium">Decision Sensitivity</label>
+              <p className="text-sm font-medium">Decision Sensitivity</p>
               <span className="text-sm text-muted-foreground">{decisionSensitivity[0]}%</span>
             </div>
             <Slider
@@ -1737,7 +1737,7 @@ function RiskAssessmentTool() {
 
           <div>
             <div className="flex justify-between mb-2">
-              <label className="text-sm font-medium">System Exposure</label>
+              <p className="text-sm font-medium">System Exposure</p>
               <span className="text-sm text-muted-foreground">{systemExposure[0]}%</span>
             </div>
             <Slider
@@ -1753,7 +1753,7 @@ function RiskAssessmentTool() {
 
           <div>
             <div className="flex justify-between mb-2">
-              <label className="text-sm font-medium">Oversight Readiness</label>
+              <p className="text-sm font-medium">Oversight Readiness</p>
               <span className="text-sm text-muted-foreground">{oversightReadiness[0]}%</span>
             </div>
             <Slider

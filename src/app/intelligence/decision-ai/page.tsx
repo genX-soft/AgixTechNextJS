@@ -1436,9 +1436,9 @@ function DelayCostEstimator() {
       <CardContent className="space-y-6">
         <div className="grid md:grid-cols-2 gap-6">
           <div>
-            <label className="text-sm font-medium mb-2 block">
+            <p className="text-sm font-medium mb-2 block">
               Average Time to Make Key Decisions (days)
-            </label>
+            </p>
             <input
               type="number"
               value={inputs.avgDecisionTime}
@@ -1447,9 +1447,9 @@ function DelayCostEstimator() {
             />
           </div>
           <div>
-            <label className="text-sm font-medium mb-2 block">
+            <p className="text-sm font-medium mb-2 block">
               Delayed Decisions per Month
-            </label>
+            </p>
             <input
               type="number"
               value={inputs.delayedDecisions}
@@ -1458,9 +1458,9 @@ function DelayCostEstimator() {
             />
           </div>
           <div>
-            <label className="text-sm font-medium mb-2 block">
+            <p className="text-sm font-medium mb-2 block">
               Revenue/Cost Impact per Delay ($)
-            </label>
+            </p>
             <input
               type="number"
               value={inputs.revenueImpact}
@@ -1469,9 +1469,9 @@ function DelayCostEstimator() {
             />
           </div>
           <div>
-            <label className="text-sm font-medium mb-2 block">
+            <p className="text-sm font-medium mb-2 block">
               Opportunity Loss per Delay ($)
-            </label>
+            </p>
             <input
               type="number"
               value={inputs.opportunityCost}

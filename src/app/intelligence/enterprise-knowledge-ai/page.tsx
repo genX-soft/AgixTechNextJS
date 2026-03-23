@@ -982,17 +982,17 @@ function HallucinationRiskTool() {
       </CardHeader>
       <CardContent className="space-y-6">
         <div>
-          <label className="text-sm mb-2 block">Source Reliability</label>
+          <p className="text-sm mb-2 block">Source Reliability</p>
           <Slider value={sourceReliability} onValueChange={setSourceReliability} max={100} step={10} />
           <p className="text-xs text-muted-foreground mt-1">{sourceReliability[0]}% - Approved vs informal content</p>
         </div>
         <div>
-          <label className="text-sm mb-2 block">Content Freshness</label>
+          <p className="text-sm mb-2 block">Content Freshness</p>
           <Slider value={contentFreshness} onValueChange={setContentFreshness} max={100} step={10} />
           <p className="text-xs text-muted-foreground mt-1">{contentFreshness[0]}% - How current is your documentation</p>
         </div>
         <div>
-          <label className="text-sm mb-2 block">Semantic Clarity</label>
+          <p className="text-sm mb-2 block">Semantic Clarity</p>
           <Slider value={semanticClarity} onValueChange={setSemanticClarity} max={100} step={10} />
           <p className="text-xs text-muted-foreground mt-1">{semanticClarity[0]}% - Consistency of terminology</p>
         </div>
@@ -1056,7 +1056,7 @@ function AccessControlTool() {
       </CardHeader>
       <CardContent className="space-y-4">
         <div>
-          <label className="text-sm mb-2 block">User Roles</label>
+          <p className="text-sm mb-2 block">User Roles</p>
           <div className="flex flex-wrap gap-2">
             {["Employee", "Manager", "Legal", "Support", "Customer"].map((role) => (
               <Button
@@ -1073,7 +1073,7 @@ function AccessControlTool() {
           </div>
         </div>
         <div>
-          <label className="text-sm mb-2 block">Knowledge Sensitivity</label>
+          <p className="text-sm mb-2 block">Knowledge Sensitivity</p>
           <Select value={sensitivity} onValueChange={setSensitivity}>
             <SelectTrigger>
               <SelectValue placeholder="Select level" />
@@ -1086,7 +1086,7 @@ function AccessControlTool() {
           </Select>
         </div>
         <div>
-          <label className="text-sm mb-2 block">Regulatory Exposure</label>
+          <p className="text-sm mb-2 block">Regulatory Exposure</p>
           <div className="flex flex-wrap gap-2">
             {["GDPR", "HIPAA", "SOC 2", "PCI"].map((reg) => (
               <Button
@@ -1218,17 +1218,17 @@ function ROIEstimatorTool() {
       </CardHeader>
       <CardContent className="space-y-6">
         <div>
-          <label className="text-sm mb-2 block">Hours spent searching for info (per person/week)</label>
+          <p className="text-sm mb-2 block">Hours spent searching for info (per person/week)</p>
           <Slider value={searchHours} onValueChange={setSearchHours} max={20} step={1} />
           <p className="text-xs text-muted-foreground mt-1">{searchHours[0]} hours/week</p>
         </div>
         <div>
-          <label className="text-sm mb-2 block">Frequency of incorrect answers (%)</label>
+          <p className="text-sm mb-2 block">Frequency of incorrect answers (%)</p>
           <Slider value={errorFrequency} onValueChange={setErrorFrequency} max={50} step={5} />
           <p className="text-xs text-muted-foreground mt-1">{errorFrequency[0]}% error rate</p>
         </div>
         <div>
-          <label className="text-sm mb-2 block">Team size</label>
+          <p className="text-sm mb-2 block">Team size</p>
           <Slider value={teamSize} onValueChange={setTeamSize} max={200} step={10} />
           <p className="text-xs text-muted-foreground mt-1">{teamSize[0]} people</p>
         </div>

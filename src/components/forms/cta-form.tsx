@@ -218,7 +218,7 @@ export function CtaForm({
                           <FormItem className="text-left">
                             <FormLabel>Full Name</FormLabel>
                             <FormControl>
-                              <Input placeholder="John Smith" className="h-12 sm:h-10" {...field} data-testid="input-cta-name" />
+                              <Input placeholder="John Smith" className="h-12 sm:h-10" {...field} data-testid="input-cta-name" autoComplete="name" />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -231,7 +231,7 @@ export function CtaForm({
                           <FormItem className="text-left">
                             <FormLabel>Work Email</FormLabel>
                             <FormControl>
-                              <Input placeholder="john@company.com" type="email" className="h-12 sm:h-10" {...field} data-testid="input-cta-email" />
+                              <Input placeholder="john@company.com" type="email" className="h-12 sm:h-10" {...field} data-testid="input-cta-email" autoComplete="email" />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -247,7 +247,7 @@ export function CtaForm({
                           <FormItem className="text-left">
                             <FormLabel>Company</FormLabel>
                             <FormControl>
-                              <Input placeholder="Acme Inc." className="h-12 sm:h-10" {...field} data-testid="input-cta-company" />
+                              <Input placeholder="Acme Inc." className="h-12 sm:h-10" {...field} data-testid="input-cta-company" autoComplete="organization" />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -260,7 +260,7 @@ export function CtaForm({
                           <FormItem className="text-left">
                             <FormLabel>Your Role</FormLabel>
                             <FormControl>
-                              <Input placeholder="VP of Engineering" className="h-12 sm:h-10" {...field} data-testid="input-cta-role" />
+                              <Input placeholder="VP of Engineering" className="h-12 sm:h-10" {...field} data-testid="input-cta-role" autoComplete="organization-title" />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -275,7 +275,7 @@ export function CtaForm({
                         render={({ field }) => (
                           <FormItem className="text-left">
                             <FormLabel>Industry</FormLabel>
-                            <Select onValueChange={field.onChange} defaultValue={field.value}>
+                            <Select onValueChange={field.onChange} defaultValue={field.value} name={field.name} autoComplete="off">
                               <FormControl>
                                 <SelectTrigger data-testid="select-cta-industry">
                                   <SelectValue placeholder="Select industry" />
@@ -297,7 +297,7 @@ export function CtaForm({
                         render={({ field }) => (
                           <FormItem className="text-left">
                             <FormLabel>Company Size</FormLabel>
-                            <Select onValueChange={field.onChange} defaultValue={field.value}>
+                            <Select onValueChange={field.onChange} defaultValue={field.value} name={field.name} autoComplete="off">
                               <FormControl>
                                 <SelectTrigger data-testid="select-cta-company-size">
                                   <SelectValue placeholder="Select size" />
@@ -360,7 +360,7 @@ export function CtaForm({
                       render={({ field }) => (
                         <FormItem className="text-left">
                           <FormLabel>Project Timeline</FormLabel>
-                          <Select onValueChange={field.onChange} defaultValue={field.value}>
+                          <Select onValueChange={field.onChange} defaultValue={field.value} name={field.name} autoComplete="off">
                             <FormControl>
                               <SelectTrigger data-testid="select-cta-urgency">
                                 <SelectValue placeholder="When do you want to start?" />
@@ -389,6 +389,7 @@ export function CtaForm({
                               className="min-h-[80px] resize-none"
                               {...field}
                               data-testid="textarea-cta-message"
+                              autoComplete="off"
                             />
                           </FormControl>
                           <FormMessage />

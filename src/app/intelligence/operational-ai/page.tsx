@@ -865,7 +865,7 @@ function InteractiveToolsSection() {
                       {finderStep === 0 && (
                         <div className="space-y-4">
                           <div>
-                            <label className="block text-sm font-medium mb-2">Your Industry</label>
+                            <p className="block text-sm font-medium mb-2">Your Industry</p>
                             <div className="grid grid-cols-4 gap-2">
                               {industries.map((ind) => (
                                 <Button key={ind} variant={selectedIndustry === ind ? "default" : "outline"} size="sm" onClick={() => setSelectedIndustry(ind)} className={selectedIndustry === ind ? "bg-orange-500 hover:bg-orange-600" : ""} data-testid={`button-industry-${ind.toLowerCase()}`}>{ind}</Button>
@@ -873,7 +873,7 @@ function InteractiveToolsSection() {
                             </div>
                           </div>
                           <div>
-                            <label className="block text-sm font-medium mb-2">Business Model</label>
+                            <p className="block text-sm font-medium mb-2">Business Model</p>
                             <div className="flex gap-2">
                               {businessModels.map((model) => (
                                 <Button key={model} variant={selectedBusinessModel === model ? "default" : "outline"} size="sm" onClick={() => setSelectedBusinessModel(model)} className={selectedBusinessModel === model ? "bg-orange-500 hover:bg-orange-600" : ""} data-testid={`button-model-${model.toLowerCase()}`}>{model}</Button>
@@ -888,7 +888,7 @@ function InteractiveToolsSection() {
 
                       {finderStep === 1 && (
                         <div className="space-y-4">
-                          <label className="block text-sm font-medium">Select your operational pain points:</label>
+                          <p className="block text-sm font-medium mb-2">Select your operational pain points:</p>
                           <div className="grid gap-2">
                             {painPoints.map((point) => (
                               <button key={point.id} onClick={() => togglePainPoint(point.id)} className={`w-full text-left p-3 rounded-lg border transition-all flex items-center gap-3 ${selectedPainPoints.includes(point.id) ? 'border-orange-500 bg-orange-500/10' : 'border-slate-700 hover:border-slate-600'}`} data-testid={`button-pain-${point.id}`}>

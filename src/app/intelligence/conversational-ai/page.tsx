@@ -1010,7 +1010,7 @@ function InteractiveToolsSection() {
                       <p className="text-muted-foreground">Step 1: Conversation Context</p>
                       <div className="grid md:grid-cols-2 gap-4">
                         <div>
-                          <label className="block text-sm font-medium mb-2">Industry</label>
+                          <p className="block text-sm font-medium mb-2">Industry</p>
                           <select className="w-full p-3 rounded-lg bg-slate-800 border border-slate-700" value={solutionFinder.industry} onChange={(e) => setSolutionFinder({ ...solutionFinder, industry: e.target.value })} data-testid="select-industry">
                             <option value="">Select industry</option>
                             <option value="healthcare">Healthcare</option>
@@ -1021,7 +1021,7 @@ function InteractiveToolsSection() {
                           </select>
                         </div>
                         <div>
-                          <label className="block text-sm font-medium mb-2">Primary Use Case</label>
+                          <p className="block text-sm font-medium mb-2">Primary Use Case</p>
                           <select className="w-full p-3 rounded-lg bg-slate-800 border border-slate-700" value={solutionFinder.useCase} onChange={(e) => setSolutionFinder({ ...solutionFinder, useCase: e.target.value })} data-testid="select-usecase">
                             <option value="">Select use case</option>
                             <option value="support">Customer Support</option>
@@ -1031,7 +1031,7 @@ function InteractiveToolsSection() {
                           </select>
                         </div>
                         <div>
-                          <label className="block text-sm font-medium mb-2">Channel Preference</label>
+                          <p className="block text-sm font-medium mb-2">Channel Preference</p>
                           <select className="w-full p-3 rounded-lg bg-slate-800 border border-slate-700" value={solutionFinder.channel} onChange={(e) => setSolutionFinder({ ...solutionFinder, channel: e.target.value })} data-testid="select-channel">
                             <option value="">Select channel</option>
                             <option value="chat">Chat Only</option>
@@ -1041,7 +1041,7 @@ function InteractiveToolsSection() {
                           </select>
                         </div>
                         <div>
-                          <label className="block text-sm font-medium mb-2">Monthly Conversation Volume</label>
+                          <p className="block text-sm font-medium mb-2">Monthly Conversation Volume</p>
                           <select className="w-full p-3 rounded-lg bg-slate-800 border border-slate-700" value={solutionFinder.volume} onChange={(e) => setSolutionFinder({ ...solutionFinder, volume: e.target.value })} data-testid="select-volume">
                             <option value="">Select volume</option>
                             <option value="low">Under 1,000</option>
@@ -1062,7 +1062,7 @@ function InteractiveToolsSection() {
                       <p className="text-muted-foreground">Step 2: Conversation Complexity</p>
                       <div className="grid md:grid-cols-2 gap-4">
                         <div>
-                          <label className="block text-sm font-medium mb-2">Are conversations repetitive or open-ended?</label>
+                          <p className="block text-sm font-medium mb-2">Are conversations repetitive or open-ended?</p>
                           <select className="w-full p-3 rounded-lg bg-slate-800 border border-slate-700" value={solutionFinder.complexity} onChange={(e) => setSolutionFinder({ ...solutionFinder, complexity: e.target.value })} data-testid="select-complexity">
                             <option value="">Select</option>
                             <option value="repetitive">Mostly repetitive</option>
@@ -1071,7 +1071,7 @@ function InteractiveToolsSection() {
                           </select>
                         </div>
                         <div>
-                          <label className="block text-sm font-medium mb-2">Do conversations require system actions?</label>
+                          <p className="block text-sm font-medium mb-2">Do conversations require system actions?</p>
                           <select className="w-full p-3 rounded-lg bg-slate-800 border border-slate-700" value={solutionFinder.systemActions} onChange={(e) => setSolutionFinder({ ...solutionFinder, systemActions: e.target.value })} data-testid="select-actions">
                             <option value="">Select</option>
                             <option value="no">No, just information</option>
@@ -1080,7 +1080,7 @@ function InteractiveToolsSection() {
                           </select>
                         </div>
                         <div>
-                          <label className="block text-sm font-medium mb-2">How often do conversations escalate to humans?</label>
+                          <p className="block text-sm font-medium mb-2">How often do conversations escalate to humans?</p>
                           <select className="w-full p-3 rounded-lg bg-slate-800 border border-slate-700" value={solutionFinder.escalation} onChange={(e) => setSolutionFinder({ ...solutionFinder, escalation: e.target.value })} data-testid="select-escalation">
                             <option value="">Select</option>
                             <option value="rarely">Rarely (under 10%)</option>
@@ -1089,7 +1089,7 @@ function InteractiveToolsSection() {
                           </select>
                         </div>
                         <div>
-                          <label className="block text-sm font-medium mb-2">Is compliance or accuracy critical?</label>
+                          <p className="block text-sm font-medium mb-2">Is compliance or accuracy critical?</p>
                           <select className="w-full p-3 rounded-lg bg-slate-800 border border-slate-700" value={solutionFinder.compliance} onChange={(e) => setSolutionFinder({ ...solutionFinder, compliance: e.target.value })} data-testid="select-compliance">
                             <option value="">Select</option>
                             <option value="low">Not particularly</option>
@@ -1112,7 +1112,7 @@ function InteractiveToolsSection() {
                       <p className="text-muted-foreground">Step 3: Risk & Control Signals</p>
                       <div className="grid md:grid-cols-2 gap-4">
                         <div>
-                          <label className="block text-sm font-medium mb-2">Tolerance for wrong answers</label>
+                          <p className="block text-sm font-medium mb-2">Tolerance for wrong answers</p>
                           <select className="w-full p-3 rounded-lg bg-slate-800 border border-slate-700" value={solutionFinder.tolerance} onChange={(e) => setSolutionFinder({ ...solutionFinder, tolerance: e.target.value })} data-testid="select-tolerance">
                             <option value="">Select</option>
                             <option value="low">Low tolerance</option>
@@ -1121,7 +1121,7 @@ function InteractiveToolsSection() {
                           </select>
                         </div>
                         <div>
-                          <label className="block text-sm font-medium mb-2">Need for human fallback</label>
+                          <p className="block text-sm font-medium mb-2">Need for human fallback</p>
                           <select className="w-full p-3 rounded-lg bg-slate-800 border border-slate-700" value={solutionFinder.humanFallback} onChange={(e) => setSolutionFinder({ ...solutionFinder, humanFallback: e.target.value })} data-testid="select-fallback">
                             <option value="">Select</option>
                             <option value="always">Always available</option>
@@ -1130,7 +1130,7 @@ function InteractiveToolsSection() {
                           </select>
                         </div>
                         <div>
-                          <label className="block text-sm font-medium mb-2">Brand sensitivity</label>
+                          <p className="block text-sm font-medium mb-2">Brand sensitivity</p>
                           <select className="w-full p-3 rounded-lg bg-slate-800 border border-slate-700" value={solutionFinder.brandSensitivity} onChange={(e) => setSolutionFinder({ ...solutionFinder, brandSensitivity: e.target.value })} data-testid="select-brand">
                             <option value="">Select</option>
                             <option value="high">High - premium brand</option>
@@ -1169,7 +1169,7 @@ function InteractiveToolsSection() {
                     <div className="space-y-6">
                       <div className="grid md:grid-cols-2 gap-4">
                         <div>
-                          <label className="block text-sm font-medium mb-2">Impact of wrong answers</label>
+                          <p className="block text-sm font-medium mb-2">Impact of wrong answers</p>
                           <select className="w-full p-3 rounded-lg bg-slate-800 border border-slate-700" value={riskAssessment.wrongAnswerImpact} onChange={(e) => setRiskAssessment({ ...riskAssessment, wrongAnswerImpact: e.target.value })} data-testid="select-risk-impact">
                             <option value="">Select</option>
                             <option value="low">Low - minor inconvenience</option>
@@ -1178,7 +1178,7 @@ function InteractiveToolsSection() {
                           </select>
                         </div>
                         <div>
-                          <label className="block text-sm font-medium mb-2">Multi-turn conversation complexity</label>
+                          <p className="block text-sm font-medium mb-2">Multi-turn conversation complexity</p>
                           <select className="w-full p-3 rounded-lg bg-slate-800 border border-slate-700" value={riskAssessment.multiTurn} onChange={(e) => setRiskAssessment({ ...riskAssessment, multiTurn: e.target.value })} data-testid="select-risk-multiturn">
                             <option value="">Select</option>
                             <option value="simple">Simple - 1-3 turns</option>
@@ -1187,7 +1187,7 @@ function InteractiveToolsSection() {
                           </select>
                         </div>
                         <div>
-                          <label className="block text-sm font-medium mb-2">Data sensitivity level</label>
+                          <p className="block text-sm font-medium mb-2">Data sensitivity level</p>
                           <select className="w-full p-3 rounded-lg bg-slate-800 border border-slate-700" value={riskAssessment.dataSensitivity} onChange={(e) => setRiskAssessment({ ...riskAssessment, dataSensitivity: e.target.value })} data-testid="select-risk-data">
                             <option value="">Select</option>
                             <option value="public">Public information only</option>
@@ -1196,7 +1196,7 @@ function InteractiveToolsSection() {
                           </select>
                         </div>
                         <div>
-                          <label className="block text-sm font-medium mb-2">Human judgment requirement</label>
+                          <p className="block text-sm font-medium mb-2">Human judgment requirement</p>
                           <select className="w-full p-3 rounded-lg bg-slate-800 border border-slate-700" value={riskAssessment.humanJudgment} onChange={(e) => setRiskAssessment({ ...riskAssessment, humanJudgment: e.target.value })} data-testid="select-risk-human">
                             <option value="">Select</option>
                             <option value="rarely">Rarely needed</option>
@@ -1241,23 +1241,23 @@ function InteractiveToolsSection() {
                     <div className="space-y-6">
                       <div className="grid md:grid-cols-2 gap-4">
                         <div>
-                          <label className="block text-sm font-medium mb-2">Monthly conversation volume</label>
+                          <p className="block text-sm font-medium mb-2">Monthly conversation volume</p>
                           <input type="number" placeholder="e.g., 5000" className="w-full p-3 rounded-lg bg-slate-800 border border-slate-700" value={costEstimator.monthlyVolume} onChange={(e) => setCostEstimator({ ...costEstimator, monthlyVolume: e.target.value })} data-testid="input-cost-volume" />
                         </div>
                         <div>
-                          <label className="block text-sm font-medium mb-2">Avg handling time (minutes)</label>
+                          <p className="block text-sm font-medium mb-2">Avg handling time (minutes)</p>
                           <input type="number" placeholder="e.g., 8" className="w-full p-3 rounded-lg bg-slate-800 border border-slate-700" value={costEstimator.avgHandlingTime} onChange={(e) => setCostEstimator({ ...costEstimator, avgHandlingTime: e.target.value })} data-testid="input-cost-time" />
                         </div>
                         <div>
-                          <label className="block text-sm font-medium mb-2">% repetitive questions</label>
+                          <p className="block text-sm font-medium mb-2">% repetitive questions</p>
                           <input type="number" placeholder="e.g., 60" className="w-full p-3 rounded-lg bg-slate-800 border border-slate-700" value={costEstimator.repetitivePercent} onChange={(e) => setCostEstimator({ ...costEstimator, repetitivePercent: e.target.value })} data-testid="input-cost-repetitive" />
                         </div>
                         <div>
-                          <label className="block text-sm font-medium mb-2">Human involvement rate (%)</label>
+                          <p className="block text-sm font-medium mb-2">Human involvement rate (%)</p>
                           <input type="number" placeholder="e.g., 80" className="w-full p-3 rounded-lg bg-slate-800 border border-slate-700" value={costEstimator.humanRate} onChange={(e) => setCostEstimator({ ...costEstimator, humanRate: e.target.value })} data-testid="input-cost-human" />
                         </div>
                         <div className="md:col-span-2">
-                          <label className="block text-sm font-medium mb-2">Avg cost per interaction ($)</label>
+                          <p className="block text-sm font-medium mb-2">Avg cost per interaction ($)</p>
                           <input type="number" placeholder="e.g., 12" className="w-full p-3 rounded-lg bg-slate-800 border border-slate-700" value={costEstimator.costPerInteraction} onChange={(e) => setCostEstimator({ ...costEstimator, costPerInteraction: e.target.value })} data-testid="input-cost-per" />
                         </div>
                       </div>

@@ -516,7 +516,7 @@ function AgenticReadinessChecker() {
       <CardContent className="space-y-6">
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
           <div className="space-y-2">
-            <label className="text-sm font-medium">Problem Duration</label>
+            <p className="text-sm font-medium">Problem Duration</p>
             <Select value={problemDuration} onValueChange={setProblemDuration}>
               <SelectTrigger data-testid="select-readiness-duration">
                 <SelectValue placeholder="Select duration" />
@@ -530,7 +530,7 @@ function AgenticReadinessChecker() {
           </div>
 
           <div className="space-y-2">
-            <label className="text-sm font-medium">Decision Complexity</label>
+            <p className="text-sm font-medium">Decision Complexity</p>
             <Select value={decisionComplexity} onValueChange={setDecisionComplexity}>
               <SelectTrigger data-testid="select-readiness-complexity">
                 <SelectValue placeholder="Select complexity" />
@@ -544,7 +544,7 @@ function AgenticReadinessChecker() {
           </div>
 
           <div className="space-y-2">
-            <label className="text-sm font-medium">Systems Involved</label>
+            <p className="text-sm font-medium">Systems Involved</p>
             <Select value={systemsCount} onValueChange={setSystemsCount}>
               <SelectTrigger data-testid="select-readiness-systems">
                 <SelectValue placeholder="Select count" />
@@ -558,7 +558,7 @@ function AgenticReadinessChecker() {
           </div>
 
           <div className="space-y-2">
-            <label className="text-sm font-medium">Exception Frequency</label>
+            <p className="text-sm font-medium">Exception Frequency</p>
             <Select value={exceptionFrequency} onValueChange={setExceptionFrequency}>
               <SelectTrigger data-testid="select-readiness-exceptions">
                 <SelectValue placeholder="Select frequency" />
@@ -572,7 +572,7 @@ function AgenticReadinessChecker() {
           </div>
 
           <div className="space-y-2">
-            <label className="text-sm font-medium">Human Coordination Today</label>
+            <p className="text-sm font-medium">Human Coordination Today</p>
             <Select value={humanCoordination} onValueChange={setHumanCoordination}>
               <SelectTrigger data-testid="select-readiness-coordination">
                 <SelectValue placeholder="Select level" />
@@ -783,7 +783,7 @@ function AgenticCostCalculator() {
           <TabsContent value="development" className="space-y-6">
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
               <div className="space-y-2">
-                <label className="text-sm font-medium">System Type</label>
+                <p className="text-sm font-medium">System Type</p>
                 <Select value={systemType} onValueChange={setSystemType}>
                   <SelectTrigger data-testid="select-system-type">
                     <SelectValue />
@@ -797,7 +797,7 @@ function AgenticCostCalculator() {
               </div>
 
               <div className="space-y-2">
-                <label className="text-sm font-medium">Autonomy Level</label>
+                <p className="text-sm font-medium">Autonomy Level</p>
                 <Select value={autonomyLevel} onValueChange={setAutonomyLevel}>
                   <SelectTrigger data-testid="select-autonomy-level">
                     <SelectValue />
@@ -811,7 +811,7 @@ function AgenticCostCalculator() {
               </div>
 
               <div className="space-y-2">
-                <label className="text-sm font-medium">Tools & Integrations</label>
+                <p className="text-sm font-medium">Tools & Integrations</p>
                 <Select value={toolCount} onValueChange={setToolCount}>
                   <SelectTrigger data-testid="select-tool-count">
                     <SelectValue />
@@ -825,7 +825,7 @@ function AgenticCostCalculator() {
               </div>
 
               <div className="space-y-2">
-                <label className="text-sm font-medium">Memory & Duration</label>
+                <p className="text-sm font-medium">Memory & Duration</p>
                 <Select value={memoryDuration} onValueChange={setMemoryDuration}>
                   <SelectTrigger data-testid="select-memory-duration">
                     <SelectValue />
@@ -839,7 +839,7 @@ function AgenticCostCalculator() {
               </div>
 
               <div className="space-y-2">
-                <label className="text-sm font-medium">Governance & Compliance</label>
+                <p className="text-sm font-medium">Governance & Compliance</p>
                 <Select value={governance} onValueChange={setGovernance}>
                   <SelectTrigger data-testid="select-governance">
                     <SelectValue />
@@ -916,7 +916,7 @@ function AgenticCostCalculator() {
             <div className="grid md:grid-cols-2 gap-6">
               <div className="space-y-4">
                 <div className="space-y-2">
-                  <label className="text-sm font-medium">Roles Impacted: {rolesCount[0]}</label>
+                  <p className="text-sm font-medium">Roles Impacted: {rolesCount[0]}</p>
                   <Slider
                     value={rolesCount}
                     onValueChange={setRolesCount}
@@ -928,7 +928,7 @@ function AgenticCostCalculator() {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-sm font-medium">Avg Cost per Role: ${avgRoleCost[0].toLocaleString()}/mo</label>
+                  <p className="text-sm font-medium">Avg Cost per Role: ${avgRoleCost[0].toLocaleString()}/mo</p>
                   <Slider
                     value={avgRoleCost}
                     onValueChange={setAvgRoleCost}
@@ -940,7 +940,7 @@ function AgenticCostCalculator() {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-sm font-medium">Efficiency Gain: {efficiencyGain[0]}%</label>
+                  <p className="text-sm font-medium">Efficiency Gain: {efficiencyGain[0]}%</p>
                   <Slider
                     value={efficiencyGain}
                     onValueChange={setEfficiencyGain}
@@ -1003,7 +1003,7 @@ function AgenticCostCalculator() {
           <TabsContent value="explorer" className="space-y-6">
             <div className="grid md:grid-cols-3 gap-4">
               <div className="space-y-2">
-                <label className="text-sm font-medium">Industry</label>
+                <p className="text-sm font-medium">Industry</p>
                 <Select value={explorerIndustry} onValueChange={setExplorerIndustry}>
                   <SelectTrigger data-testid="select-explorer-industry">
                     <SelectValue placeholder="Select industry" />
@@ -1017,7 +1017,7 @@ function AgenticCostCalculator() {
               </div>
 
               <div className="space-y-2">
-                <label className="text-sm font-medium">Department</label>
+                <p className="text-sm font-medium">Department</p>
                 <Select value={explorerDepartment} onValueChange={setExplorerDepartment}>
                   <SelectTrigger data-testid="select-explorer-department">
                     <SelectValue placeholder="Select department" />
@@ -1031,7 +1031,7 @@ function AgenticCostCalculator() {
               </div>
 
               <div className="space-y-2">
-                <label className="text-sm font-medium">Pain Point</label>
+                <p className="text-sm font-medium">Pain Point</p>
                 <Select value={explorerProblem} onValueChange={setExplorerProblem}>
                   <SelectTrigger data-testid="select-explorer-problem">
                     <SelectValue placeholder="Select pain point" />

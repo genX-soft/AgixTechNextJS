@@ -176,7 +176,7 @@ export function ContactSection() {
                           <FormItem>
                             <FormLabel>Name</FormLabel>
                             <FormControl>
-                              <Input placeholder="Your name" {...field} data-testid="input-name" />
+                              <Input placeholder="Your name" {...field} data-testid="input-name" autoComplete="name" />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -189,7 +189,7 @@ export function ContactSection() {
                           <FormItem>
                             <FormLabel>Email</FormLabel>
                             <FormControl>
-                              <Input type="email" placeholder="you@company.com" {...field} data-testid="input-email" />
+                              <Input type="email" placeholder="you@company.com" {...field} data-testid="input-email" autoComplete="email" />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -204,7 +204,7 @@ export function ContactSection() {
                           <FormItem>
                             <FormLabel>Company</FormLabel>
                             <FormControl>
-                              <Input placeholder="Your company" {...field} data-testid="input-company" />
+                              <Input placeholder="Your company" {...field} data-testid="input-company" autoComplete="organization" />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -217,7 +217,7 @@ export function ContactSection() {
                           <FormItem>
                             <FormLabel>Role</FormLabel>
                             <FormControl>
-                              <Input placeholder="Your role" {...field} data-testid="input-role" />
+                              <Input placeholder="Your role" {...field} data-testid="input-role" autoComplete="organization-title" />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -236,6 +236,7 @@ export function ContactSection() {
                               className="min-h-[100px]"
                               {...field}
                               data-testid="textarea-message"
+                              autoComplete="off"
                             />
                           </FormControl>
                           <FormMessage />
