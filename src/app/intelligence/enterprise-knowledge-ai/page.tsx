@@ -100,7 +100,7 @@ function HeroSection() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
               size="lg"
-              className="bg-indigo-500 hover:bg-indigo-600 text-white"
+              className="bg-indigo-700 hover:bg-indigo-800 text-white"
               onClick={() => scrollToSection("cta-form")}
               data-testid="button-hero-primary"
             >
@@ -1278,7 +1278,7 @@ function InteractiveToolsSection() {
             <Button
               key={i}
               variant={activeTool === i ? "default" : "outline"}
-              className={activeTool === i ? "bg-indigo-500 hover:bg-indigo-600" : ""}
+              className={activeTool === i ? "bg-indigo-700 hover:bg-indigo-800 text-white" : ""}
               onClick={() => setActiveTool(i)}
             >
               <tool.icon className="w-4 h-4 mr-2" />
@@ -1361,7 +1361,7 @@ function IndustryUseCases() {
             <Button
               key={i}
               variant={activeIndustry === i ? "default" : "outline"}
-              className={activeIndustry === i ? "bg-indigo-500 hover:bg-indigo-600" : ""}
+              className={activeIndustry === i ? "bg-indigo-700 hover:bg-indigo-800 text-white" : ""}
               onClick={() => setActiveIndustry(i)}
             >
               <ind.icon className="w-4 h-4 mr-2" />
@@ -1382,7 +1382,7 @@ function IndustryUseCases() {
           </CardHeader>
           <CardContent className="space-y-6">
             <div>
-              <h4 className="font-medium mb-3">Knowledge Use Cases</h4>
+              <h3 className="font-medium mb-3">Knowledge Use Cases</h3>
               <div className="grid sm:grid-cols-2 gap-2">
                 {industries[activeIndustry].useCases.map((uc, i) => (
                   <div key={i} className="flex items-center gap-2 text-sm">
@@ -1394,12 +1394,12 @@ function IndustryUseCases() {
             </div>
             <div className="grid sm:grid-cols-2 gap-4">
               <div className="p-4 rounded-lg bg-amber-500/10">
-                <h4 className="font-medium text-amber-400 mb-2">Why Knowledge Intelligence Matters</h4>
-                <p className="text-sm text-muted-foreground">{industries[activeIndustry].why}</p>
+                <h3 className="font-medium text-amber-400 mb-2">Why Knowledge Intelligence Matters</h3>
+                <p className="text-sm text-foreground/80">{industries[activeIndustry].why}</p>
               </div>
               <div className="p-4 rounded-lg bg-indigo-500/10">
-                <h4 className="font-medium text-indigo-400 mb-2">Outcome</h4>
-                <p className="text-sm text-muted-foreground">{industries[activeIndustry].outcome}</p>
+                <h3 className="font-medium text-indigo-400 mb-2">Outcome</h3>
+                <p className="text-sm text-foreground/80">{industries[activeIndustry].outcome}</p>
               </div>
             </div>
           </CardContent>
@@ -1529,21 +1529,23 @@ export default function EnterpriseKnowledgePage() {
   return (
     <div className="min-h-screen bg-background">
       <MainHeader />
-      <HeroSection />
-      <TrustStrip />
-      <WhatIsKnowledgeIntelligence />
-      <WhyTraditionalFails />
-      <WhyRAGNotEnough />
-      <KnowledgeTypesSection />
-      <ComparisonSection />
-      <WhyKICritical />
-      <ArchitectureSection />
-      <AgixMethodology />
-      <InteractiveToolsSection />
-      <IndustryUseCases />
-      <FAQSection />
-      <ClosingValueSection />
-      <FinalCTASection />
+      <main id="main-content">
+        <HeroSection />
+        <TrustStrip />
+        <WhatIsKnowledgeIntelligence />
+        <WhyTraditionalFails />
+        <WhyRAGNotEnough />
+        <KnowledgeTypesSection />
+        <ComparisonSection />
+        <WhyKICritical />
+        <ArchitectureSection />
+        <AgixMethodology />
+        <InteractiveToolsSection />
+        <IndustryUseCases />
+        <FAQSection />
+        <ClosingValueSection />
+        <FinalCTASection />
+      </main>
       <MainFooter />
     </div>
   );
