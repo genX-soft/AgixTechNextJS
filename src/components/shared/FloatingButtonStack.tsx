@@ -64,7 +64,7 @@ export default function FloatingButtonStack() {
             type="button"
             onClick={openModal}
             aria-label="Open AI guide"
-            className="flex items-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-white px-3 py-2 rounded-l-lg shadow-lg transition-all cursor-pointer border-l-2 border-t-2 border-b-2 border-emerald-400/50 hover:pr-4"
+            className="flex items-center gap-2 bg-emerald-700 hover:bg-emerald-600 text-white px-3 py-2 rounded-l-lg shadow-lg transition-all cursor-pointer border-l-2 border-t-2 border-b-2 border-emerald-600/50 hover:pr-4"
             data-testid="button-floating-guide"
           >
             <Compass className="h-4 w-4" aria-hidden="true" />

@@ -24,7 +24,7 @@ export default function FloatingGuideButton() {
       animate={{ opacity: 1, x: 0 }}
       transition={{ delay: 0.5, duration: 0.3 }}
       onClick={openModal}
-      className="fixed right-0 z-40 hidden md:flex items-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-white px-4 py-4 rounded-l-xl shadow-xl transition-all cursor-pointer border-2 border-emerald-400/50 hover:scale-105"
+      className="fixed right-0 z-40 hidden md:flex items-center gap-2 bg-emerald-700 hover:bg-emerald-600 text-white px-4 py-4 rounded-l-xl shadow-xl transition-all cursor-pointer border-2 border-emerald-600/50 hover:scale-105"
       style={{ 
         writingMode: "vertical-rl", 
         textOrientation: "mixed",
