@@ -73,6 +73,7 @@ const nextConfig = {
       { source: '/services/predictive-analytics', destination: '/services/ai-predictive-analytics/', permanent: true },
       { source: '/services/computer-vision', destination: '/services/ai-computer-vision/', permanent: true },
       { source: '/services/custom-ai-product', destination: '/services/custom-ai-product-development/', permanent: true },
+      { source: '/services/custom-ai-product/-development', destination: '/services/custom-ai-product-development/', permanent: true },
       
       // ===== INDUSTRY PAGE REDIRECTS =====
       { source: '/industries/healthcare', destination: '/industries/healthcare-ai-solutions/', permanent: true },
