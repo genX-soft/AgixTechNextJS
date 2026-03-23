@@ -320,7 +320,7 @@ export function CtaForm({
                       name="challenges"
                       render={() => (
                         <FormItem className="text-left">
-                          <FormLabel>What challenges are you facing? (Select all that apply)</FormLabel>
+                          <p className="text-sm font-medium leading-none">What challenges are you facing? (Select all that apply)</p>
                           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-2">
                             {CHALLENGES.map((challenge) => (
                               <FormField
