@@ -102,7 +102,7 @@ function HeroSection() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
               size="lg"
-              className="bg-cyan-500 hover:bg-cyan-600 text-white"
+              className="bg-cyan-500 hover:bg-cyan-600 text-slate-900"
               onClick={() => scrollToSection("cta-form")}
               data-testid="button-hero-primary"
             >
@@ -1391,7 +1391,7 @@ function ReadinessFinderTool() {
           <div className="text-center p-6 rounded-lg bg-slate-950">
             <p className="text-sm text-muted-foreground mb-2">Agentic Suitability Score</p>
             <p className="text-5xl font-bold text-cyan-400 mb-2">{score}%</p>
-            <Progress value={score} className="h-3 mb-4" />
+            <Progress value={score} className="h-3 mb-4" aria-label="Agentic Suitability Score" />
             <p className="text-lg">
               Recommended Autonomy Level: <span className={`font-bold ${autonomy.color}`}>{autonomy.level}</span>
             </p>
@@ -1438,7 +1438,7 @@ function ReadinessFinderTool() {
         <CardDescription>
           Determine whether agentic systems are right for your workflows
         </CardDescription>
-        <Progress value={(step / 3) * 100} className="h-2" />
+        <Progress value={(step / 3) * 100} className="h-2" aria-label={`Step ${step} of 3`} />
       </CardHeader>
       <CardContent className="space-y-6">
         {step === 1 && (
@@ -2576,24 +2576,26 @@ export default function AgenticSystemsPage() {
   return (
     <div className="min-h-screen bg-background">
       <MainHeader />
-      <HeroSection />
-      <TrustStrip />
-      <WhatAreAgenticSystems />
-      <WhyAutomationNotEnough />
-      <ComparisonSection />
-      <WhatMakesAgentic />
-      <WhyBusinessesExploring />
-      <AgixApproach />
-      <ExecutionBottleneck />
-      <HiddenCostOfCoordination />
-      <RiskOfUngoverned />
-      <ArchitectureSection />
-      <AgixMethodology />
-      <InteractiveToolsSection />
-      <IndustryUseCases />
-      <FAQSection />
-      <ClosingValueSection />
-      <FinalCTASection />
+      <main id="main-content">
+        <HeroSection />
+        <TrustStrip />
+        <WhatAreAgenticSystems />
+        <WhyAutomationNotEnough />
+        <ComparisonSection />
+        <WhatMakesAgentic />
+        <WhyBusinessesExploring />
+        <AgixApproach />
+        <ExecutionBottleneck />
+        <HiddenCostOfCoordination />
+        <RiskOfUngoverned />
+        <ArchitectureSection />
+        <AgixMethodology />
+        <InteractiveToolsSection />
+        <IndustryUseCases />
+        <FAQSection />
+        <ClosingValueSection />
+        <FinalCTASection />
+      </main>
       <MainFooter />
     </div>
   );

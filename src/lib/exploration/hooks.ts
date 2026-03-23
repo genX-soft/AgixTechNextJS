@@ -69,17 +69,15 @@ export function useScrollTrigger(
       return;
     }
 
-    const handleScroll = () => {
+    let rafId: number | null = null;
+
+    const checkScroll = () => {
       if (triggeredRef.current) return;
-      
       const scrollHeight = document.documentElement.scrollHeight;
       const viewportHeight = window.innerHeight;
       const scrollableDistance = scrollHeight - viewportHeight;
-      
       if (scrollableDistance <= 0) return;
-      
       const scrollPercentage = window.scrollY / scrollableDistance;
-      
       if (scrollPercentage >= threshold) {
         triggeredRef.current = true;
         sessionStorage.setItem(SESSION_KEY_SCROLL_TRIGGERED, "true");
@@ -87,12 +85,24 @@ export function useScrollTrigger(
       }
     };
 
+    const handleScroll = () => {
+      if (triggeredRef.current || rafId !== null) return;
+      rafId = requestAnimationFrame(() => {
+        rafId = null;
+        checkScroll();
+      });
+    };
+
     window.addEventListener("scroll", handleScroll, { passive: true });
-    
-    handleScroll();
+
+    rafId = requestAnimationFrame(() => {
+      rafId = null;
+      checkScroll();
+    });
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
+      if (rafId !== null) cancelAnimationFrame(rafId);
     };
   }, [enabled, threshold]);
 }
