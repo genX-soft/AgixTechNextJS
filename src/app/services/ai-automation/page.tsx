@@ -680,9 +680,9 @@ function AutomationCalculator() {
           <TabsContent value="scanner" className="space-y-6">
             <div className="grid md:grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label>Industry</Label>
+                <Label htmlFor="scanner-industry">Industry</Label>
                 <Select value={industry} onValueChange={setIndustry}>
-                  <SelectTrigger data-testid="select-scanner-industry">
+                  <SelectTrigger id="scanner-industry" data-testid="select-scanner-industry">
                     <SelectValue placeholder="Select your industry" />
                   </SelectTrigger>
                   <SelectContent>
@@ -693,9 +693,9 @@ function AutomationCalculator() {
                 </Select>
               </div>
               <div className="space-y-2">
-                <Label>Department</Label>
+                <Label htmlFor="scanner-dept">Department</Label>
                 <Select value={department} onValueChange={setDepartment}>
-                  <SelectTrigger data-testid="select-scanner-department">
+                  <SelectTrigger id="scanner-dept" data-testid="select-scanner-department">
                     <SelectValue placeholder="Select department" />
                   </SelectTrigger>
                   <SelectContent>
@@ -706,9 +706,9 @@ function AutomationCalculator() {
                 </Select>
               </div>
               <div className="space-y-2">
-                <Label>Biggest Bottleneck</Label>
+                <Label htmlFor="scanner-bottleneck">Biggest Bottleneck</Label>
                 <Select value={bottleneck} onValueChange={setBottleneck}>
-                  <SelectTrigger data-testid="select-scanner-bottleneck">
+                  <SelectTrigger id="scanner-bottleneck" data-testid="select-scanner-bottleneck">
                     <SelectValue placeholder="Select bottleneck" />
                   </SelectTrigger>
                   <SelectContent>
@@ -719,9 +719,9 @@ function AutomationCalculator() {
                 </Select>
               </div>
               <div className="space-y-2">
-                <Label>Monthly Volume</Label>
+                <Label htmlFor="scanner-volume">Monthly Volume</Label>
                 <Select value={volume} onValueChange={setVolume}>
-                  <SelectTrigger data-testid="select-scanner-volume">
+                  <SelectTrigger id="scanner-volume" data-testid="select-scanner-volume">
                     <SelectValue placeholder="Select volume" />
                   </SelectTrigger>
                   <SelectContent>
@@ -786,9 +786,9 @@ function AutomationCalculator() {
           <TabsContent value="cost" className="space-y-6">
             <div className="grid md:grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label>Automation Type</Label>
+                <Label htmlFor="cost-type">Automation Type</Label>
                 <Select value={automationType} onValueChange={setAutomationType}>
-                  <SelectTrigger data-testid="select-cost-type">
+                  <SelectTrigger id="cost-type" data-testid="select-cost-type">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
@@ -801,9 +801,9 @@ function AutomationCalculator() {
                 </Select>
               </div>
               <div className="space-y-2">
-                <Label>Number of Systems</Label>
+                <Label htmlFor="cost-systems">Number of Systems</Label>
                 <Select value={systemCount} onValueChange={setSystemCount}>
-                  <SelectTrigger data-testid="select-cost-systems">
+                  <SelectTrigger id="cost-systems" data-testid="select-cost-systems">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
@@ -814,9 +814,9 @@ function AutomationCalculator() {
                 </Select>
               </div>
               <div className="space-y-2">
-                <Label>Decision Complexity</Label>
+                <Label htmlFor="cost-complexity">Decision Complexity</Label>
                 <Select value={complexity} onValueChange={setComplexity}>
-                  <SelectTrigger data-testid="select-cost-complexity">
+                  <SelectTrigger id="cost-complexity" data-testid="select-cost-complexity">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
@@ -827,9 +827,9 @@ function AutomationCalculator() {
                 </Select>
               </div>
               <div className="space-y-2">
-                <Label>Volume Level</Label>
+                <Label htmlFor="cost-volume">Volume Level</Label>
                 <Select value={volumeLevel} onValueChange={setVolumeLevel}>
-                  <SelectTrigger data-testid="select-cost-volume">
+                  <SelectTrigger id="cost-volume" data-testid="select-cost-volume">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
@@ -1080,6 +1080,7 @@ export default function AIAutomationPage() {
   return (
     <div className="min-h-screen bg-background">
       <MainHeader />
+      <main id="main-content">
 
       {/* Hero Section */}
       <section className="relative min-h-[90vh] flex items-center pt-24 lg:pt-28 pb-16 overflow-hidden bg-gradient-to-br from-background via-primary/5 to-cyan-500/10">
@@ -1856,6 +1857,7 @@ export default function AIAutomationPage() {
         </div>
       </section>
 
+      </main>
       <MainFooter />
     </div>
   );
