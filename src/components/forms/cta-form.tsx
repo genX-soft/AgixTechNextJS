@@ -30,7 +30,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { ArrowRight, CheckCircle2, Sparkles, Loader2 } from "lucide-react";
 import { submitLead } from "@/lib/lead-submission";
 import { useCelebration } from "@/components/success-celebration";
-import { INDUSTRIES, COMPANY_SIZES, CHALLENGES, URGENCY_LEVELS } from "@shared/schema";
+import { INDUSTRIES, COMPANY_SIZES, CHALLENGES, URGENCY_LEVELS } from "@shared/constants";
 
 const ctaFormSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
