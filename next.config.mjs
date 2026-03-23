@@ -1,3 +1,8 @@
+import { fileURLToPath } from 'url';
+import path from 'path';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
@@ -34,22 +39,20 @@ const nextConfig = {
     removeConsole: process.env.NODE_ENV === 'production',
   },
 
-  webpack(config, { isServer }) {
+  webpack(config, { isServer, webpack }) {
     if (!isServer) {
-      // Next.js injects polyfills for older browsers via next/dist/client/polyfills.
-      // Since our browserslist targets only modern browsers (Chrome 111+, Safari 16.4+),
-      // these methods are all natively available — alias the polyfill chunk to a no-op.
-      config.resolve.alias = {
-        ...config.resolve.alias,
-        // These are natively available in all our target browsers
-        'core-js/modules/es.array.at': false,
-        'core-js/modules/es.array.flat': false,
-        'core-js/modules/es.array.flat-map': false,
-        'core-js/modules/es.object.from-entries': false,
-        'core-js/modules/es.object.has-own': false,
-        'core-js/modules/es.string.trim-end': false,
-        'core-js/modules/es.string.trim-start': false,
-      };
+      // Replace legacy core-js polyfills with a no-op empty module.
+      // Our browserslist targets Chrome 111+, Edge 111+, Firefox 115+, Safari 16.4+
+      // where Array.at, Array.flat, Object.fromEntries, Object.hasOwn, String.trim*
+      // are all natively available. NormalModuleReplacementPlugin intercepts the
+      // module at resolution time — more reliable than resolve.alias for entry-injected polyfills.
+      const noopPath = path.resolve(__dirname, 'src/lib/polyfill-noop.js');
+      config.plugins.push(
+        new webpack.NormalModuleReplacementPlugin(
+          /core-js[\\/]modules[\\/]es\.(array\.(at|flat|flat-map)|object\.(from-entries|has-own)|string\.trim-(end|start))(\.js)?$/,
+          noopPath
+        )
+      );
     }
     return config;
   },
