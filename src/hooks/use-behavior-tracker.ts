@@ -124,13 +124,17 @@ export function useBehaviorTracker() {
     document.addEventListener("mouseleave", handleMouseLeave);
     document.addEventListener("click", handleInteraction);
 
-    const initialDepth = calculateScrollDepth();
-    if (dataRef.current && initialDepth > dataRef.current.maxScrollDepth) {
-      dataRef.current.maxScrollDepth = initialDepth;
-      saveBehaviorData(dataRef.current);
-    }
+    const initialRafId = requestAnimationFrame(() => {
+      if (!dataRef.current) return;
+      const initialDepth = calculateScrollDepth();
+      if (initialDepth > dataRef.current.maxScrollDepth) {
+        dataRef.current.maxScrollDepth = initialDepth;
+        saveBehaviorData(dataRef.current);
+      }
+    });
 
     return () => {
+      cancelAnimationFrame(initialRafId);
       window.removeEventListener("scroll", handleScroll);
       document.removeEventListener("mouseleave", handleMouseLeave);
       document.removeEventListener("click", handleInteraction);
