@@ -1157,8 +1157,11 @@ function FintechLeadForm() {
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <Label className="text-sm">Full Name</Label>
+                    <Label htmlFor="fintech-name" className="text-sm">Full Name</Label>
                     <Input
+                      id="fintech-name"
+                      name="name"
+                      autoComplete="name"
                       value={formData.fullName}
                       onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
                       placeholder="Your name"
@@ -1166,9 +1169,12 @@ function FintechLeadForm() {
                     />
                   </div>
                   <div>
-                    <Label className="text-sm">Work Email *</Label>
+                    <Label htmlFor="fintech-email" className="text-sm">Work Email *</Label>
                     <Input
+                      id="fintech-email"
+                      name="email"
                       type="email"
+                      autoComplete="email"
                       value={formData.workEmail}
                       onChange={(e) => setFormData({ ...formData, workEmail: e.target.value })}
                       placeholder="you@company.com"
@@ -1179,8 +1185,11 @@ function FintechLeadForm() {
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <Label className="text-sm">Company</Label>
+                    <Label htmlFor="fintech-company" className="text-sm">Company</Label>
                     <Input
+                      id="fintech-company"
+                      name="organization"
+                      autoComplete="organization"
                       value={formData.company}
                       onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                       placeholder="Your company"
@@ -1188,9 +1197,9 @@ function FintechLeadForm() {
                     />
                   </div>
                   <div>
-                    <Label className="text-sm">Your Role</Label>
+                    <Label htmlFor="fintech-role" className="text-sm">Your Role</Label>
                     <Select value={formData.role} onValueChange={(v) => setFormData({ ...formData, role: v })}>
-                      <SelectTrigger data-testid="select-fintech-role">
+                      <SelectTrigger id="fintech-role" data-testid="select-fintech-role">
                         <SelectValue placeholder="Select role" />
                       </SelectTrigger>
                       <SelectContent>
@@ -1206,9 +1215,9 @@ function FintechLeadForm() {
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <Label className="text-sm">Organization Type *</Label>
+                    <Label htmlFor="fintech-org-type" className="text-sm">Organization Type *</Label>
                     <Select value={formData.orgType} onValueChange={(v) => setFormData({ ...formData, orgType: v })}>
-                      <SelectTrigger data-testid="select-fintech-org-type">
+                      <SelectTrigger id="fintech-org-type" data-testid="select-fintech-org-type">
                         <SelectValue placeholder="Select type" />
                       </SelectTrigger>
                       <SelectContent>
@@ -1221,9 +1230,9 @@ function FintechLeadForm() {
                     </Select>
                   </div>
                   <div>
-                    <Label className="text-sm">Primary Challenge *</Label>
+                    <Label htmlFor="fintech-challenge" className="text-sm">Primary Challenge *</Label>
                     <Select value={formData.challenge} onValueChange={(v) => setFormData({ ...formData, challenge: v })}>
-                      <SelectTrigger data-testid="select-fintech-challenge">
+                      <SelectTrigger id="fintech-challenge" data-testid="select-fintech-challenge">
                         <SelectValue placeholder="Select challenge" />
                       </SelectTrigger>
                       <SelectContent>
@@ -1240,9 +1249,9 @@ function FintechLeadForm() {
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <Label className="text-sm">Lending Type</Label>
+                    <Label htmlFor="fintech-lending-type" className="text-sm">Lending Type</Label>
                     <Select value={formData.lendingType} onValueChange={(v) => setFormData({ ...formData, lendingType: v })}>
-                      <SelectTrigger data-testid="select-fintech-lending-type">
+                      <SelectTrigger id="fintech-lending-type" data-testid="select-fintech-lending-type">
                         <SelectValue placeholder="Select type" />
                       </SelectTrigger>
                       <SelectContent>
@@ -1255,9 +1264,9 @@ function FintechLeadForm() {
                     </Select>
                   </div>
                   <div>
-                    <Label className="text-sm">Portfolio Size</Label>
+                    <Label htmlFor="fintech-portfolio" className="text-sm">Portfolio Size</Label>
                     <Select value={formData.portfolioSize} onValueChange={(v) => setFormData({ ...formData, portfolioSize: v })}>
-                      <SelectTrigger data-testid="select-fintech-portfolio">
+                      <SelectTrigger id="fintech-portfolio" data-testid="select-fintech-portfolio">
                         <SelectValue placeholder="Select size" />
                       </SelectTrigger>
                       <SelectContent>

@@ -616,8 +616,11 @@ function HeroLeadForm() {
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <Label className="text-sm">Full Name</Label>
+              <Label htmlFor="re-fullname" className="text-sm">Full Name</Label>
               <Input
+                id="re-fullname"
+                name="name"
+                autoComplete="name"
                 value={formData.fullName}
                 onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
                 placeholder="John Smith"
@@ -626,9 +629,12 @@ function HeroLeadForm() {
               />
             </div>
             <div>
-              <Label className="text-sm">Work Email</Label>
+              <Label htmlFor="re-email" className="text-sm">Work Email</Label>
               <Input
+                id="re-email"
+                name="email"
                 type="email"
+                autoComplete="email"
                 value={formData.workEmail}
                 onChange={(e) => setFormData({ ...formData, workEmail: e.target.value })}
                 placeholder="john@realty.com"
@@ -638,12 +644,12 @@ function HeroLeadForm() {
             </div>
           </div>
           <div>
-            <Label className="text-sm">Your Role</Label>
+            <Label htmlFor="re-role" className="text-sm">Your Role</Label>
             <Select
               value={formData.role}
               onValueChange={(value) => setFormData({ ...formData, role: value })}
             >
-              <SelectTrigger data-testid="select-realestate-role">
+              <SelectTrigger id="re-role" data-testid="select-realestate-role">
                 <SelectValue placeholder="Select your role" />
               </SelectTrigger>
               <SelectContent>
@@ -656,12 +662,12 @@ function HeroLeadForm() {
             </Select>
           </div>
           <div>
-            <Label className="text-sm">Biggest Challenge</Label>
+            <Label htmlFor="re-challenge" className="text-sm">Biggest Challenge</Label>
             <Select
               value={formData.challenge}
               onValueChange={(value) => setFormData({ ...formData, challenge: value })}
             >
-              <SelectTrigger data-testid="select-realestate-challenge">
+              <SelectTrigger id="re-challenge" data-testid="select-realestate-challenge">
                 <SelectValue placeholder="What's your biggest challenge?" />
               </SelectTrigger>
               <SelectContent>
@@ -676,8 +682,11 @@ function HeroLeadForm() {
           </div>
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <Label className="text-sm">Team Size</Label>
+              <Label htmlFor="re-teamsize" className="text-sm">Team Size</Label>
               <Input
+                id="re-teamsize"
+                name="teamSize"
+                autoComplete="off"
                 value={formData.teamSize}
                 onChange={(e) => setFormData({ ...formData, teamSize: e.target.value })}
                 placeholder="e.g., 5"
@@ -685,8 +694,11 @@ function HeroLeadForm() {
               />
             </div>
             <div>
-              <Label className="text-sm">Primary Market</Label>
+              <Label htmlFor="re-market" className="text-sm">Primary Market</Label>
               <Input
+                id="re-market"
+                name="market"
+                autoComplete="off"
                 value={formData.market}
                 onChange={(e) => setFormData({ ...formData, market: e.target.value })}
                 placeholder="e.g., NYC"
@@ -695,8 +707,11 @@ function HeroLeadForm() {
             </div>
           </div>
           <div>
-            <Label className="text-sm">Briefly describe your situation (optional)</Label>
+            <Label htmlFor="re-description" className="text-sm">Briefly describe your situation (optional)</Label>
             <Textarea
+              id="re-description"
+              name="message"
+              autoComplete="off"
               value={formData.description}
               onChange={(e) => setFormData({ ...formData, description: e.target.value })}
               placeholder="Tell us more about your workflow..."

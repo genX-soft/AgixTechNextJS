@@ -1228,6 +1228,8 @@ function HeroLeadForm() {
               <Label htmlFor="fullName" className="text-white text-sm">Full Name</Label>
               <Input
                 id="fullName"
+                name="name"
+                autoComplete="name"
                 placeholder="Your full name"
                 value={formData.fullName}
                 onChange={(e) => setFormData(prev => ({ ...prev, fullName: e.target.value }))}
@@ -1240,7 +1242,9 @@ function HeroLeadForm() {
               <Label htmlFor="workEmail" className="text-white text-sm">Work Email</Label>
               <Input
                 id="workEmail"
+                name="email"
                 type="email"
+                autoComplete="email"
                 placeholder="you@company.com"
                 value={formData.workEmail}
                 onChange={(e) => setFormData(prev => ({ ...prev, workEmail: e.target.value }))}
@@ -1253,6 +1257,8 @@ function HeroLeadForm() {
               <Label htmlFor="companyName" className="text-white text-sm">Company Name</Label>
               <Input
                 id="companyName"
+                name="organization"
+                autoComplete="organization"
                 placeholder="Your company"
                 value={formData.companyName}
                 onChange={(e) => setFormData(prev => ({ ...prev, companyName: e.target.value }))}
@@ -1262,12 +1268,12 @@ function HeroLeadForm() {
             </div>
 
             <div className="space-y-2">
-              <Label className="text-white text-sm">Company Stage</Label>
+              <Label htmlFor="companyStage" className="text-white text-sm">Company Stage</Label>
               <Select
                 value={formData.companyStage}
                 onValueChange={(value) => setFormData(prev => ({ ...prev, companyStage: value }))}
               >
-                <SelectTrigger className="bg-white/10 border-white/20 text-white" data-testid="select-hero-stage">
+                <SelectTrigger id="companyStage" className="bg-white/10 border-white/20 text-white" data-testid="select-hero-stage">
                   <SelectValue placeholder="Select company stage" />
                 </SelectTrigger>
                 <SelectContent>

@@ -517,6 +517,8 @@ function HeroLeadForm() {
               <Label htmlFor="fullName">Full Name *</Label>
               <Input
                 id="fullName"
+                name="name"
+                autoComplete="name"
                 value={formData.fullName}
                 onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
                 placeholder="Your name"
@@ -527,7 +529,9 @@ function HeroLeadForm() {
               <Label htmlFor="workEmail">Work Email *</Label>
               <Input
                 id="workEmail"
+                name="email"
                 type="email"
+                autoComplete="email"
                 value={formData.workEmail}
                 onChange={(e) => setFormData({ ...formData, workEmail: e.target.value })}
                 placeholder="you@company.com"
@@ -539,6 +543,8 @@ function HeroLeadForm() {
             <Label htmlFor="organization">Organization / Company *</Label>
             <Input
               id="organization"
+              name="organization"
+              autoComplete="organization"
               value={formData.organization}
               onChange={(e) => setFormData({ ...formData, organization: e.target.value })}
               placeholder="Your organization"
@@ -546,9 +552,9 @@ function HeroLeadForm() {
             />
           </div>
           <div className="space-y-2">
-            <Label>Industry *</Label>
+            <Label htmlFor="industry">Industry *</Label>
             <Select value={formData.industry} onValueChange={(v) => setFormData({ ...formData, industry: v })}>
-              <SelectTrigger data-testid="select-industry">
+              <SelectTrigger id="industry" data-testid="select-industry">
                 <SelectValue placeholder="Select your industry" />
               </SelectTrigger>
               <SelectContent>
@@ -559,9 +565,9 @@ function HeroLeadForm() {
             </Select>
           </div>
           <div className="space-y-2">
-            <Label>Primary Vision Use Case *</Label>
+            <Label htmlFor="useCase">Primary Vision Use Case *</Label>
             <Select value={formData.useCase} onValueChange={(v) => setFormData({ ...formData, useCase: v })}>
-              <SelectTrigger data-testid="select-usecase">
+              <SelectTrigger id="useCase" data-testid="select-usecase">
                 <SelectValue placeholder="What do you need vision AI for?" />
               </SelectTrigger>
               <SelectContent>
@@ -572,9 +578,9 @@ function HeroLeadForm() {
             </Select>
           </div>
           <div className="space-y-2">
-            <Label>Timeline (Optional)</Label>
+            <Label htmlFor="timeline">Timeline (Optional)</Label>
             <Select value={formData.timeline} onValueChange={(v) => setFormData({ ...formData, timeline: v })}>
-              <SelectTrigger data-testid="select-timeline">
+              <SelectTrigger id="timeline" data-testid="select-timeline">
                 <SelectValue placeholder="When do you need this?" />
               </SelectTrigger>
               <SelectContent>

@@ -1078,8 +1078,11 @@ function LeadForm() {
 
           <div className="grid md:grid-cols-2 gap-4">
             <div className="space-y-2">
-              <Label>Monthly Order Volume</Label>
+              <Label htmlFor="logistics-volume">Monthly Order Volume</Label>
               <Input
+                id="logistics-volume"
+                name="volume"
+                autoComplete="off"
                 placeholder="e.g., 50,000"
                 value={formData.volume}
                 onChange={(e) => setFormData({ ...formData, volume: e.target.value })}
@@ -1087,8 +1090,11 @@ function LeadForm() {
               />
             </div>
             <div className="space-y-2">
-              <Label>Number of Warehouses/Routes</Label>
+              <Label htmlFor="logistics-warehouses">Number of Warehouses/Routes</Label>
               <Input
+                id="logistics-warehouses"
+                name="warehouses"
+                autoComplete="off"
                 placeholder="e.g., 5 warehouses"
                 value={formData.warehouses}
                 onChange={(e) => setFormData({ ...formData, warehouses: e.target.value })}
@@ -1099,8 +1105,11 @@ function LeadForm() {
 
           <div className="grid md:grid-cols-2 gap-4">
             <div className="space-y-2">
-              <Label>Country / Operating Region</Label>
+              <Label htmlFor="logistics-country">Country / Operating Region</Label>
               <Input
+                id="logistics-country"
+                name="country"
+                autoComplete="country-name"
                 placeholder="e.g., United States"
                 value={formData.country}
                 onChange={(e) => setFormData({ ...formData, country: e.target.value })}
@@ -1108,9 +1117,12 @@ function LeadForm() {
               />
             </div>
             <div className="space-y-2">
-              <Label>Work Email</Label>
+              <Label htmlFor="logistics-email">Work Email</Label>
               <Input
+                id="logistics-email"
+                name="email"
                 type="email"
+                autoComplete="email"
                 placeholder="you@company.com"
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -1121,8 +1133,11 @@ function LeadForm() {
           </div>
 
           <div className="space-y-2">
-            <Label>Additional Context (Optional)</Label>
+            <Label htmlFor="logistics-message">Additional Context (Optional)</Label>
             <Textarea
+              id="logistics-message"
+              name="message"
+              autoComplete="off"
               placeholder="Tell us more about your supply chain challenges..."
               value={formData.message}
               onChange={(e) => setFormData({ ...formData, message: e.target.value })}

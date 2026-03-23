@@ -1149,22 +1149,22 @@ function LeadForm() {
           <div className="grid md:grid-cols-2 gap-4">
             <div>
               <Label htmlFor="name">Full Name</Label>
-              <Input id="name" name="name" required data-testid="input-insurance-name" />
+              <Input id="name" name="name" autoComplete="name" required data-testid="input-insurance-name" />
             </div>
             <div>
               <Label htmlFor="email">Work Email</Label>
-              <Input id="email" name="email" type="email" required data-testid="input-insurance-email" />
+              <Input id="email" name="email" type="email" autoComplete="email" required data-testid="input-insurance-email" />
             </div>
           </div>
           <div className="grid md:grid-cols-2 gap-4">
             <div>
               <Label htmlFor="company">Company Name</Label>
-              <Input id="company" name="company" required data-testid="input-insurance-company" />
+              <Input id="company" name="company" autoComplete="organization" required data-testid="input-insurance-company" />
             </div>
             <div>
               <Label htmlFor="insurerType">Organization Type</Label>
               <Select name="insurerType" required>
-                <SelectTrigger data-testid="select-insurance-type">
+                <SelectTrigger id="insurerType" data-testid="select-insurance-type">
                   <SelectValue placeholder="Select type" />
                 </SelectTrigger>
                 <SelectContent>
@@ -1182,7 +1182,7 @@ function LeadForm() {
             <div>
               <Label htmlFor="insuranceLine">Line of Insurance</Label>
               <Select name="insuranceLine" required>
-                <SelectTrigger data-testid="select-insurance-line">
+                <SelectTrigger id="insuranceLine" data-testid="select-insurance-line">
                   <SelectValue placeholder="Select line" />
                 </SelectTrigger>
                 <SelectContent>
@@ -1199,7 +1199,7 @@ function LeadForm() {
             <div>
               <Label htmlFor="challenge">Primary Challenge</Label>
               <Select name="challenge" required>
-                <SelectTrigger data-testid="select-insurance-challenge">
+                <SelectTrigger id="challenge" data-testid="select-insurance-challenge">
                   <SelectValue placeholder="Select challenge" />
                 </SelectTrigger>
                 <SelectContent>
@@ -1219,7 +1219,7 @@ function LeadForm() {
             <div>
               <Label htmlFor="volume">Monthly Claims/Policy Volume</Label>
               <Select name="volume" required>
-                <SelectTrigger data-testid="select-insurance-volume">
+                <SelectTrigger id="volume" data-testid="select-insurance-volume">
                   <SelectValue placeholder="Select volume" />
                 </SelectTrigger>
                 <SelectContent>
@@ -1233,7 +1233,7 @@ function LeadForm() {
             <div>
               <Label htmlFor="region">Country / Region</Label>
               <Select name="region" required>
-                <SelectTrigger data-testid="select-insurance-region">
+                <SelectTrigger id="region" data-testid="select-insurance-region">
                   <SelectValue placeholder="Select region" />
                 </SelectTrigger>
                 <SelectContent>
@@ -1253,6 +1253,7 @@ function LeadForm() {
             <Textarea
               id="message"
               name="message"
+              autoComplete="off"
               rows={3}
               placeholder="Current systems, specific pain points, timeline..."
               data-testid="textarea-insurance-message"

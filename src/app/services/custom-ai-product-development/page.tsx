@@ -587,6 +587,8 @@ function HeroLeadForm() {
               <Label htmlFor="fullName">Full Name *</Label>
               <Input
                 id="fullName"
+                name="name"
+                autoComplete="name"
                 value={formData.fullName}
                 onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
                 placeholder="Your name"
@@ -597,7 +599,9 @@ function HeroLeadForm() {
               <Label htmlFor="workEmail">Work Email *</Label>
               <Input
                 id="workEmail"
+                name="email"
                 type="email"
+                autoComplete="email"
                 value={formData.workEmail}
                 onChange={(e) => setFormData({ ...formData, workEmail: e.target.value })}
                 placeholder="you@company.com"
@@ -609,6 +613,8 @@ function HeroLeadForm() {
             <Label htmlFor="company">Company / Startup Name *</Label>
             <Input
               id="company"
+              name="organization"
+              autoComplete="organization"
               value={formData.company}
               onChange={(e) => setFormData({ ...formData, company: e.target.value })}
               placeholder="Your company or 'Idea / Pre-startup'"
@@ -616,9 +622,9 @@ function HeroLeadForm() {
             />
           </div>
           <div className="space-y-2">
-            <Label>What Are You Trying to Build? *</Label>
+            <Label htmlFor="productType">What Are You Trying to Build? *</Label>
             <Select value={formData.productType} onValueChange={(v) => setFormData({ ...formData, productType: v })}>
-              <SelectTrigger data-testid="select-product-type">
+              <SelectTrigger id="productType" data-testid="select-product-type">
                 <SelectValue placeholder="Select product type" />
               </SelectTrigger>
               <SelectContent>
@@ -629,9 +635,9 @@ function HeroLeadForm() {
             </Select>
           </div>
           <div className="space-y-2">
-            <Label>Industry *</Label>
+            <Label htmlFor="industry">Industry *</Label>
             <Select value={formData.industry} onValueChange={(v) => setFormData({ ...formData, industry: v })}>
-              <SelectTrigger data-testid="select-industry">
+              <SelectTrigger id="industry" data-testid="select-industry">
                 <SelectValue placeholder="Select your industry" />
               </SelectTrigger>
               <SelectContent>
@@ -642,9 +648,9 @@ function HeroLeadForm() {
             </Select>
           </div>
           <div className="space-y-2">
-            <Label>Current Stage *</Label>
+            <Label htmlFor="stage">Current Stage *</Label>
             <Select value={formData.stage} onValueChange={(v) => setFormData({ ...formData, stage: v })}>
-              <SelectTrigger data-testid="select-stage">
+              <SelectTrigger id="stage" data-testid="select-stage">
                 <SelectValue placeholder="Where are you now?" />
               </SelectTrigger>
               <SelectContent>

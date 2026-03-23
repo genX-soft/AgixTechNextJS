@@ -904,9 +904,12 @@ function EdTechLeadForm() {
                   </div>
                 </div>
                 <div>
-                  <Label>Work Email *</Label>
+                  <Label htmlFor="edtech-email">Work Email *</Label>
                   <Input
+                    id="edtech-email"
+                    name="email"
                     type="email"
+                    autoComplete="email"
                     placeholder="you@institution.com"
                     className="mt-1.5"
                     value={formData.email}
@@ -915,9 +918,12 @@ function EdTechLeadForm() {
                   />
                 </div>
                 <div>
-                  <Label>Country</Label>
+                  <Label htmlFor="edtech-country">Country</Label>
                   <Input
+                    id="edtech-country"
+                    name="country"
                     type="text"
+                    autoComplete="country-name"
                     placeholder="Your country"
                     className="mt-1.5"
                     value={formData.country}

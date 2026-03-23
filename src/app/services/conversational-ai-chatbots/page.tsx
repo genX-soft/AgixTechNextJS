@@ -805,9 +805,12 @@ function ROICalculator() {
             <div className="grid md:grid-cols-2 gap-6">
               <div className="space-y-4">
                 <div>
-                  <Label>Avg Human Agent Cost per Month ($)</Label>
+                  <Label htmlFor="chatbot-agent-cost">Avg Human Agent Cost per Month ($)</Label>
                   <Input
+                    id="chatbot-agent-cost"
+                    name="agent-cost"
                     type="number"
+                    autoComplete="off"
                     value={agentCost}
                     onChange={(e) => setAgentCost(e.target.value)}
                     placeholder="3000"
@@ -1200,8 +1203,11 @@ export default function ConversationalAIChatbots() {
                 <CardContent>
                   <form onSubmit={handleDemoSubmit} className="space-y-4">
                     <div>
-                      <Label className="text-gray-300">Name</Label>
+                      <Label htmlFor="chatbot-demo-name" className="text-gray-300">Name</Label>
                       <Input
+                        id="chatbot-demo-name"
+                        name="name"
+                        autoComplete="name"
                         value={demoFormData.name}
                         onChange={(e) => setDemoFormData({ ...demoFormData, name: e.target.value })}
                         className="bg-white/10 border-white/20 text-white placeholder:text-gray-500"
@@ -1210,9 +1216,12 @@ export default function ConversationalAIChatbots() {
                       />
                     </div>
                     <div>
-                      <Label className="text-gray-300">Business Email</Label>
+                      <Label htmlFor="chatbot-demo-email" className="text-gray-300">Business Email</Label>
                       <Input
+                        id="chatbot-demo-email"
+                        name="email"
                         type="email"
+                        autoComplete="email"
                         value={demoFormData.email}
                         onChange={(e) => setDemoFormData({ ...demoFormData, email: e.target.value })}
                         className="bg-white/10 border-white/20 text-white placeholder:text-gray-500"
@@ -1221,8 +1230,11 @@ export default function ConversationalAIChatbots() {
                       />
                     </div>
                     <div>
-                      <Label className="text-gray-300">Company / Industry</Label>
+                      <Label htmlFor="chatbot-demo-company" className="text-gray-300">Company / Industry</Label>
                       <Input
+                        id="chatbot-demo-company"
+                        name="organization"
+                        autoComplete="organization"
                         value={demoFormData.company}
                         onChange={(e) => setDemoFormData({ ...demoFormData, company: e.target.value })}
                         className="bg-white/10 border-white/20 text-white placeholder:text-gray-500"
@@ -1231,12 +1243,12 @@ export default function ConversationalAIChatbots() {
                       />
                     </div>
                     <div>
-                      <Label className="text-gray-300">Primary Use Case</Label>
+                      <Label htmlFor="chatbot-demo-use-case" className="text-gray-300">Primary Use Case</Label>
                       <Select
                         value={demoFormData.useCase}
                         onValueChange={(value) => setDemoFormData({ ...demoFormData, useCase: value })}
                       >
-                        <SelectTrigger className="bg-white/10 border-white/20 text-white" data-testid="select-chatbot-demo-use-case">
+                        <SelectTrigger id="chatbot-demo-use-case" className="bg-white/10 border-white/20 text-white" data-testid="select-chatbot-demo-use-case">
                           <SelectValue placeholder="Select use case" />
                         </SelectTrigger>
                         <SelectContent>

@@ -784,9 +784,12 @@ function RetailLeadForm() {
                   </div>
                 </div>
                 <div>
-                  <Label>Work Email *</Label>
+                  <Label htmlFor="retail-email">Work Email *</Label>
                   <Input
+                    id="retail-email"
+                    name="email"
                     type="email"
+                    autoComplete="email"
                     placeholder="you@company.com"
                     className="mt-1.5"
                     value={formData.email}
@@ -795,9 +798,12 @@ function RetailLeadForm() {
                   />
                 </div>
                 <div>
-                  <Label>Country</Label>
+                  <Label htmlFor="retail-country">Country</Label>
                   <Input
+                    id="retail-country"
+                    name="country"
                     type="text"
+                    autoComplete="country-name"
                     placeholder="Your country"
                     className="mt-1.5"
                     value={formData.country}

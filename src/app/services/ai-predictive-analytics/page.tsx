@@ -526,6 +526,8 @@ function HeroLeadForm() {
               <Label htmlFor="fullName">Full Name *</Label>
               <Input
                 id="fullName"
+                name="name"
+                autoComplete="name"
                 value={formData.fullName}
                 onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
                 placeholder="Your name"
@@ -536,7 +538,9 @@ function HeroLeadForm() {
               <Label htmlFor="workEmail">Work Email *</Label>
               <Input
                 id="workEmail"
+                name="email"
                 type="email"
+                autoComplete="email"
                 value={formData.workEmail}
                 onChange={(e) => setFormData({ ...formData, workEmail: e.target.value })}
                 placeholder="you@company.com"
@@ -548,6 +552,8 @@ function HeroLeadForm() {
             <Label htmlFor="companyName">Company Name *</Label>
             <Input
               id="companyName"
+              name="organization"
+              autoComplete="organization"
               value={formData.companyName}
               onChange={(e) => setFormData({ ...formData, companyName: e.target.value })}
               placeholder="Your company"
@@ -555,9 +561,9 @@ function HeroLeadForm() {
             />
           </div>
           <div className="space-y-2">
-            <Label>Company Size *</Label>
+            <Label htmlFor="companySize">Company Size *</Label>
             <Select value={formData.companySize} onValueChange={(v) => setFormData({ ...formData, companySize: v })}>
-              <SelectTrigger data-testid="select-company-size">
+              <SelectTrigger id="companySize" data-testid="select-company-size">
                 <SelectValue placeholder="Select company size" />
               </SelectTrigger>
               <SelectContent>
@@ -568,9 +574,9 @@ function HeroLeadForm() {
             </Select>
           </div>
           <div className="space-y-2">
-            <Label>Primary Focus Area *</Label>
+            <Label htmlFor="focusArea">Primary Focus Area *</Label>
             <Select value={formData.focusArea} onValueChange={(v) => setFormData({ ...formData, focusArea: v })}>
-              <SelectTrigger data-testid="select-focus-area">
+              <SelectTrigger id="focusArea" data-testid="select-focus-area">
                 <SelectValue placeholder="What's your primary focus?" />
               </SelectTrigger>
               <SelectContent>
@@ -581,9 +587,9 @@ function HeroLeadForm() {
             </Select>
           </div>
           <div className="space-y-2">
-            <Label>Timeline (Optional)</Label>
+            <Label htmlFor="timeline">Timeline (Optional)</Label>
             <Select value={formData.timeline} onValueChange={(v) => setFormData({ ...formData, timeline: v })}>
-              <SelectTrigger data-testid="select-timeline">
+              <SelectTrigger id="timeline" data-testid="select-timeline">
                 <SelectValue placeholder="When do you need this?" />
               </SelectTrigger>
               <SelectContent>

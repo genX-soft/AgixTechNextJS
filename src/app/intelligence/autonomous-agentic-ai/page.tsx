@@ -1446,9 +1446,9 @@ function ReadinessFinderTool() {
             <h3 className="font-medium">Step 1: Workflow Context</h3>
             <div className="grid md:grid-cols-2 gap-4">
               <div>
-                <label className="text-sm text-muted-foreground mb-2 block">Industry</label>
+                <label htmlFor="agentic-industry" className="text-sm text-muted-foreground mb-2 block">Industry</label>
                 <Select value={industry} onValueChange={setIndustry}>
-                  <SelectTrigger data-testid="select-industry">
+                  <SelectTrigger id="agentic-industry" data-testid="select-industry">
                     <SelectValue placeholder="Select industry" />
                   </SelectTrigger>
                   <SelectContent>
@@ -1461,9 +1461,9 @@ function ReadinessFinderTool() {
                 </Select>
               </div>
               <div>
-                <label className="text-sm text-muted-foreground mb-2 block">Workflow Type</label>
+                <label htmlFor="agentic-workflow-type" className="text-sm text-muted-foreground mb-2 block">Workflow Type</label>
                 <Select value={workflowType} onValueChange={setWorkflowType}>
-                  <SelectTrigger data-testid="select-workflow-type">
+                  <SelectTrigger id="agentic-workflow-type" data-testid="select-workflow-type">
                     <SelectValue placeholder="Select type" />
                   </SelectTrigger>
                   <SelectContent>
@@ -1476,9 +1476,9 @@ function ReadinessFinderTool() {
                 </Select>
               </div>
               <div>
-                <label className="text-sm text-muted-foreground mb-2 block">Systems Involved</label>
+                <label htmlFor="agentic-system-count" className="text-sm text-muted-foreground mb-2 block">Systems Involved</label>
                 <Select value={systemCount} onValueChange={setSystemCount}>
-                  <SelectTrigger data-testid="select-system-count">
+                  <SelectTrigger id="agentic-system-count" data-testid="select-system-count">
                     <SelectValue placeholder="Select count" />
                   </SelectTrigger>
                   <SelectContent>
@@ -1489,9 +1489,9 @@ function ReadinessFinderTool() {
                 </Select>
               </div>
               <div>
-                <label className="text-sm text-muted-foreground mb-2 block">Execution Frequency</label>
+                <label htmlFor="agentic-frequency" className="text-sm text-muted-foreground mb-2 block">Execution Frequency</label>
                 <Select value={frequency} onValueChange={setFrequency}>
-                  <SelectTrigger data-testid="select-frequency">
+                  <SelectTrigger id="agentic-frequency" data-testid="select-frequency">
                     <SelectValue placeholder="Select frequency" />
                   </SelectTrigger>
                   <SelectContent>
@@ -1569,9 +1569,9 @@ function ReadinessFinderTool() {
             <h3 className="font-medium">Step 3: Risk Signals</h3>
             <div className="grid md:grid-cols-2 gap-4">
               <div>
-                <label className="text-sm text-muted-foreground mb-2 block">Cost of Wrong Execution</label>
+                <label htmlFor="agentic-wrong-cost" className="text-sm text-muted-foreground mb-2 block">Cost of Wrong Execution</label>
                 <Select value={wrongExecutionCost} onValueChange={setWrongExecutionCost}>
-                  <SelectTrigger data-testid="select-wrong-execution-cost">
+                  <SelectTrigger id="agentic-wrong-cost" data-testid="select-wrong-execution-cost">
                     <SelectValue placeholder="Select level" />
                   </SelectTrigger>
                   <SelectContent>
@@ -1582,9 +1582,9 @@ function ReadinessFinderTool() {
                 </Select>
               </div>
               <div>
-                <label className="text-sm text-muted-foreground mb-2 block">Compliance Sensitivity</label>
+                <label htmlFor="agentic-compliance" className="text-sm text-muted-foreground mb-2 block">Compliance Sensitivity</label>
                 <Select value={complianceSensitivity} onValueChange={setComplianceSensitivity}>
-                  <SelectTrigger data-testid="select-compliance-sensitivity">
+                  <SelectTrigger id="agentic-compliance" data-testid="select-compliance-sensitivity">
                     <SelectValue placeholder="Select level" />
                   </SelectTrigger>
                   <SelectContent>
@@ -1713,6 +1713,7 @@ function RiskAssessmentTool() {
               onValueChange={setExecutionRisk}
               max={100}
               step={10}
+              aria-label="Execution Risk"
               className="cursor-pointer"
             />
             <p className="text-xs text-muted-foreground mt-1">Financial impact of wrong action, irreversibility</p>
@@ -1728,6 +1729,7 @@ function RiskAssessmentTool() {
               onValueChange={setDecisionSensitivity}
               max={100}
               step={10}
+              aria-label="Decision Sensitivity"
               className="cursor-pointer"
             />
             <p className="text-xs text-muted-foreground mt-1">Subjective judgment, ethical/legal implications</p>
@@ -1743,6 +1745,7 @@ function RiskAssessmentTool() {
               onValueChange={setSystemExposure}
               max={100}
               step={10}
+              aria-label="System Exposure"
               className="cursor-pointer"
             />
             <p className="text-xs text-muted-foreground mt-1">Number of connected systems, access privileges</p>
@@ -1758,6 +1761,7 @@ function RiskAssessmentTool() {
               onValueChange={setOversightReadiness}
               max={100}
               step={10}
+              aria-label="Oversight Readiness"
               className="cursor-pointer"
             />
             <p className="text-xs text-muted-foreground mt-1">Human monitoring capacity, approval latency</p>
@@ -1864,9 +1868,12 @@ function ROIEstimatorTool() {
       <CardContent className="space-y-6">
         <div className="grid md:grid-cols-2 gap-4">
           <div>
-            <label className="text-sm text-muted-foreground mb-2 block">Weekly Execution Volume</label>
+            <label htmlFor="weekly-volume" className="text-sm text-muted-foreground mb-2 block">Weekly Execution Volume</label>
             <input
+              id="weekly-volume"
+              name="weekly-volume"
               type="number"
+              autoComplete="off"
               value={weeklyVolume}
               onChange={(e) => setWeeklyVolume(e.target.value)}
               placeholder="e.g., 500 tasks"
@@ -1875,9 +1882,12 @@ function ROIEstimatorTool() {
             />
           </div>
           <div>
-            <label className="text-sm text-muted-foreground mb-2 block">Manual Coordination Hours / Week</label>
+            <label htmlFor="coord-hours" className="text-sm text-muted-foreground mb-2 block">Manual Coordination Hours / Week</label>
             <input
+              id="coord-hours"
+              name="coord-hours"
               type="number"
+              autoComplete="off"
               value={coordHours}
               onChange={(e) => setCoordHours(e.target.value)}
               placeholder="e.g., 20 hours"
@@ -1886,9 +1896,12 @@ function ROIEstimatorTool() {
             />
           </div>
           <div>
-            <label className="text-sm text-muted-foreground mb-2 block">Error Recovery Hours / Week</label>
+            <label htmlFor="error-hours" className="text-sm text-muted-foreground mb-2 block">Error Recovery Hours / Week</label>
             <input
+              id="error-hours"
+              name="error-hours"
               type="number"
+              autoComplete="off"
               value={errorRecoveryHours}
               onChange={(e) => setErrorRecoveryHours(e.target.value)}
               placeholder="e.g., 10 hours"
@@ -1897,9 +1910,12 @@ function ROIEstimatorTool() {
             />
           </div>
           <div>
-            <label className="text-sm text-muted-foreground mb-2 block">SLA Breach Cost / Month ($)</label>
+            <label htmlFor="sla-cost" className="text-sm text-muted-foreground mb-2 block">SLA Breach Cost / Month ($)</label>
             <input
+              id="sla-cost"
+              name="sla-cost"
               type="number"
+              autoComplete="off"
               value={slaBreachCost}
               onChange={(e) => setSlaBreachCost(e.target.value)}
               placeholder="e.g., 5000"

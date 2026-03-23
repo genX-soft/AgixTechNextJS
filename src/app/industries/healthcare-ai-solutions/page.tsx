@@ -918,6 +918,8 @@ function LeadForm() {
               <Label htmlFor="country">Country / Region</Label>
               <Input
                 id="country"
+                name="country"
+                autoComplete="country-name"
                 value={formData.country}
                 onChange={(e) => setFormData({ ...formData, country: e.target.value })}
                 placeholder="e.g., United States"
@@ -929,7 +931,9 @@ function LeadForm() {
               <Label htmlFor="email">Work Email</Label>
               <Input
                 id="email"
+                name="email"
                 type="email"
+                autoComplete="email"
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 placeholder="you@organization.com"

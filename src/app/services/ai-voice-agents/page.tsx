@@ -937,9 +937,12 @@ function ROICalculator() {
             <div className="grid md:grid-cols-2 gap-6">
               <div className="space-y-4">
                 <div>
-                  <Label>Human Agent Cost per Month ($)</Label>
+                  <Label htmlFor="agent-cost">Human Agent Cost per Month ($)</Label>
                   <Input
+                    id="agent-cost"
+                    name="agent-cost"
                     type="number"
+                    autoComplete="off"
                     value={agentCost}
                     onChange={(e) => setAgentCost(e.target.value)}
                     placeholder="3000"
@@ -974,9 +977,12 @@ function ROICalculator() {
                 </div>
 
                 <div>
-                  <Label>Missed Call Revenue Loss ($/month) - Optional</Label>
+                  <Label htmlFor="missed-call-loss">Missed Call Revenue Loss ($/month) - Optional</Label>
                   <Input
+                    id="missed-call-loss"
+                    name="missed-call-loss"
                     type="number"
+                    autoComplete="off"
                     value={missedCallLoss}
                     onChange={(e) => setMissedCallLoss(e.target.value)}
                     placeholder="2000"
@@ -1210,8 +1216,11 @@ export default function AIVoiceAgents() {
                 <CardContent>
                   <form onSubmit={handleDemoSubmit} className="space-y-4">
                     <div>
-                      <Label className="text-gray-300">Name</Label>
+                      <Label htmlFor="demo-name" className="text-gray-300">Name</Label>
                       <Input
+                        id="demo-name"
+                        name="name"
+                        autoComplete="name"
                         value={demoFormData.name}
                         onChange={(e) => setDemoFormData({ ...demoFormData, name: e.target.value })}
                         className="bg-white/10 border-white/20 text-white placeholder:text-gray-500"
@@ -1220,9 +1229,12 @@ export default function AIVoiceAgents() {
                       />
                     </div>
                     <div>
-                      <Label className="text-gray-300">Work Email</Label>
+                      <Label htmlFor="demo-email" className="text-gray-300">Work Email</Label>
                       <Input
+                        id="demo-email"
+                        name="email"
                         type="email"
+                        autoComplete="email"
                         value={demoFormData.email}
                         onChange={(e) => setDemoFormData({ ...demoFormData, email: e.target.value })}
                         className="bg-white/10 border-white/20 text-white placeholder:text-gray-500"
@@ -1231,8 +1243,11 @@ export default function AIVoiceAgents() {
                       />
                     </div>
                     <div>
-                      <Label className="text-gray-300">Company / Industry</Label>
+                      <Label htmlFor="demo-company" className="text-gray-300">Company / Industry</Label>
                       <Input
+                        id="demo-company"
+                        name="organization"
+                        autoComplete="organization"
                         value={demoFormData.company}
                         onChange={(e) => setDemoFormData({ ...demoFormData, company: e.target.value })}
                         className="bg-white/10 border-white/20 text-white placeholder:text-gray-500"
@@ -1241,12 +1256,12 @@ export default function AIVoiceAgents() {
                       />
                     </div>
                     <div>
-                      <Label className="text-gray-300">Primary Use Case</Label>
+                      <Label htmlFor="demo-use-case" className="text-gray-300">Primary Use Case</Label>
                       <Select
                         value={demoFormData.useCase}
                         onValueChange={(value) => setDemoFormData({ ...demoFormData, useCase: value })}
                       >
-                        <SelectTrigger className="bg-white/10 border-white/20 text-white" data-testid="select-demo-use-case">
+                        <SelectTrigger id="demo-use-case" className="bg-white/10 border-white/20 text-white" data-testid="select-demo-use-case">
                           <SelectValue placeholder="Select use case" />
                         </SelectTrigger>
                         <SelectContent>

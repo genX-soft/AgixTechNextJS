@@ -1146,6 +1146,8 @@ export default function AIAutomationPage() {
                       <Label htmlFor="name">Name *</Label>
                       <Input
                         id="name"
+                        name="name"
+                        autoComplete="name"
                         placeholder="Your name"
                         value={formData.name}
                         onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
@@ -1157,7 +1159,9 @@ export default function AIAutomationPage() {
                       <Label htmlFor="email">Business Email *</Label>
                       <Input
                         id="email"
+                        name="email"
                         type="email"
+                        autoComplete="email"
                         placeholder="you@company.com"
                         value={formData.email}
                         onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
@@ -1171,7 +1175,7 @@ export default function AIAutomationPage() {
                         value={formData.companySize}
                         onValueChange={(value) => setFormData(prev => ({ ...prev, companySize: value }))}
                       >
-                        <SelectTrigger data-testid="select-company-size">
+                        <SelectTrigger id="companySize" data-testid="select-company-size">
                           <SelectValue placeholder="Select company size" />
                         </SelectTrigger>
                         <SelectContent>
@@ -1188,6 +1192,8 @@ export default function AIAutomationPage() {
                       <Label htmlFor="automationGoal">What do you want to automate?</Label>
                       <Textarea
                         id="automationGoal"
+                        name="message"
+                        autoComplete="off"
                         placeholder="Describe your automation goals..."
                         value={formData.automationGoal}
                         onChange={(e) => setFormData(prev => ({ ...prev, automationGoal: e.target.value }))}
