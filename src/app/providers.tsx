@@ -2,6 +2,7 @@
 
 import { useState, useEffect, Suspense } from 'react'
 import dynamic from 'next/dynamic'
+import { LazyMotion, domAnimation } from 'framer-motion'
 import { QueryClientProvider } from '@tanstack/react-query'
 import { queryClient } from '@/lib/queryClient'
 import { TooltipProvider } from '@/components/ui/tooltip'
@@ -69,16 +70,18 @@ function DeferredComponents() {
 
 export function Providers({ children }: { children: React.ReactNode }) {
   return (
-    <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <CelebrationProvider>
-          <ExplorationProvider>
-            {children}
-            <ScrollToHash />
-            <DeferredComponents />
-          </ExplorationProvider>
-        </CelebrationProvider>
-      </TooltipProvider>
-    </QueryClientProvider>
+    <LazyMotion features={domAnimation} strict>
+      <QueryClientProvider client={queryClient}>
+        <TooltipProvider>
+          <CelebrationProvider>
+            <ExplorationProvider>
+              {children}
+              <ScrollToHash />
+              <DeferredComponents />
+            </ExplorationProvider>
+          </CelebrationProvider>
+        </TooltipProvider>
+      </QueryClientProvider>
+    </LazyMotion>
   )
 }

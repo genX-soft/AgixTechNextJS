@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion } from "@/lib/motion";
 import { Workflow, Brain, MessageSquare, LineChart, Bot, Sparkles } from "lucide-react";
 import styles from "@/app/page.module.css";
 

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "@/lib/motion";
 import { BookOpen } from "lucide-react";
 import { GlossaryTerm } from "@/lib/glossary/terms";
 

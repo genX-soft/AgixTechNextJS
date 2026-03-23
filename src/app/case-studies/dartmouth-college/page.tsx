@@ -1,5 +1,5 @@
 'use client'
-import { motion } from "framer-motion";import { CaseStudyTemplate } from "@/components/shared/case-study-template";
+import { motion } from "@/lib/motion";import { CaseStudyTemplate } from "@/components/shared/case-study-template";
 
 
 

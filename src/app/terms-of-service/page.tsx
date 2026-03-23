@@ -2,7 +2,7 @@
 
 import { MainHeader } from "@/components/main-header";
 import { MainFooter } from "@/components/main-footer";
-import { motion } from "framer-motion";
+import { motion } from "@/lib/motion";
 import { FileText } from "lucide-react";
 
 export default function TermsOfServicePage() {

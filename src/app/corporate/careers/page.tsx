@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion } from "@/lib/motion";
 import { MainHeader } from "@/components/main-header";
 import { MainFooter } from "@/components/main-footer";
 import { Button } from "@/components/ui/button";

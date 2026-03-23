@@ -3,7 +3,7 @@
 import { CaseStudyTemplate } from "@/components/shared/case-study-template";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "@/lib/motion";
 
 import { CtaForm } from "@/components/forms/cta-form";
 import { Button } from "@/components/ui/button";

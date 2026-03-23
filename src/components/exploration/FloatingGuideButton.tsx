@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { motion } from "@/lib/motion";
 import { Compass } from "lucide-react";
 import { useExploration } from "./ExplorationContext";
 

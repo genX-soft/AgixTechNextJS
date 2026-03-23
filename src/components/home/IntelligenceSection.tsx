@@ -2,7 +2,7 @@
 
 import { useRef, useState } from "react";
 import Link from "next/link";
-import { AnimatePresence, motion, useInView } from "framer-motion";
+import { AnimatePresence, motion, useInView } from "@/lib/motion";
 import { ArrowRight, Bot, Brain, Database, MessageSquare, Workflow } from "lucide-react";
 import { Button } from "@/components/ui/button";
 

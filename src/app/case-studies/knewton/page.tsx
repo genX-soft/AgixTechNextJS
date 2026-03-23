@@ -1,7 +1,7 @@
 'use client'
 import { useState } from "react";import { CaseStudyTemplate } from "@/components/shared/case-study-template";
 
-import { motion } from "framer-motion";
+import { motion } from "@/lib/motion";
 
 
 import { CtaForm } from "@/components/forms/cta-form";

@@ -2,7 +2,7 @@
 
 import { useRef, useState } from "react";
 import Link from "next/link";
-import { AnimatePresence, motion, useInView } from "framer-motion";
+import { AnimatePresence, motion, useInView } from "@/lib/motion";
 import { ArrowRight, Building2, CheckCircle2, GraduationCap, HeartPulse, Home, Landmark, Quote, ShoppingCart, Sparkles, Target, Truck } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";

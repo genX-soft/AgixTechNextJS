@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "@/lib/motion";
 import { PartyPopper, Star, Sparkles } from "lucide-react";
 
 const celebrationMessages = [

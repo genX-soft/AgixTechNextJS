@@ -2,7 +2,7 @@
 
 import dynamic from "next/dynamic";
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "@/lib/motion";
 import { Compass, BookOpen, Wrench, X, ChevronUp } from "lucide-react";
 import { useExploration } from "@/components/exploration/ExplorationContext";
 

@@ -1,6 +1,6 @@
 'use client'
 import { useState, useRef } from "react";
-import { useInView, motion } from "framer-motion";
+import { useInView, motion } from "@/lib/motion";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useToast } from "@/hooks/use-toast";

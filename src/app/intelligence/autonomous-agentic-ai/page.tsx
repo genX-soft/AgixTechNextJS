@@ -1,6 +1,6 @@
 'use client'
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion } from "@/lib/motion";
 import Link from "next/link";
 import { MainHeader } from "@/components/main-header";
 import { MainFooter } from "@/components/main-footer";
