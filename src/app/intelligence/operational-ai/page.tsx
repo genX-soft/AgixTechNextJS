@@ -172,7 +172,7 @@ function HeroSection() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-6">
             <Button 
               size="lg" 
-              className="bg-orange-500 hover:bg-orange-600 text-white shadow-lg shadow-orange-500/25 focus:ring-2 focus:ring-orange-500/50" 
+              className="bg-orange-500 hover:bg-orange-600 text-gray-900 shadow-lg shadow-orange-500/25 focus:ring-2 focus:ring-orange-500/50" 
               onClick={() => scrollToSection("interactive-tools")}
               data-testid="button-hero-cta-primary"
             >
@@ -710,7 +710,7 @@ function AgixMethodology() {
                   <div className="w-10 h-10 rounded-full bg-orange-500 flex items-center justify-center mx-auto mb-3 text-white font-bold">
                     {item.step}
                   </div>
-                  <h4 className="font-semibold text-sm mb-1">{item.title}</h4>
+                  <h3 className="font-semibold text-sm mb-1">{item.title}</h3>
                   <p className="text-xs text-muted-foreground">{item.desc}</p>
                 </CardContent>
               </Card>
@@ -1214,25 +1214,27 @@ export default function OperationalIntelligencePage() {
   return (
     <div className="min-h-screen bg-background">
       <MainHeader />
-      <HeroSection />
-      <TrustStrip />
-      <WhatIsOperationalIntelligence />
-      <OperationsCategories />
-      <ComparisonTable />
-      <WhyBusinessesNeedIt />
-      <ArchitectureSection />
-      <AgixMethodology />
-      <InteractiveToolsSection />
-      <ResultsMetrics />
-      <FAQSection />
-      <section id="cta-form" className="py-20 scroll-mt-20">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <CtaForm 
-            headline="Ready to Transform Your Operations?"
-            subheadline="Let's discuss how Operational Intelligence can bring clarity, control, and confidence to your business."
-          />
-        </div>
-      </section>
+      <main id="main-content">
+        <HeroSection />
+        <TrustStrip />
+        <WhatIsOperationalIntelligence />
+        <OperationsCategories />
+        <ComparisonTable />
+        <WhyBusinessesNeedIt />
+        <ArchitectureSection />
+        <AgixMethodology />
+        <InteractiveToolsSection />
+        <ResultsMetrics />
+        <FAQSection />
+        <section id="cta-form" className="py-20 scroll-mt-20">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6">
+            <CtaForm 
+              headline="Ready to Transform Your Operations?"
+              subheadline="Let's discuss how Operational Intelligence can bring clarity, control, and confidence to your business."
+            />
+          </div>
+        </section>
+      </main>
       <MainFooter />
       <StickyCTA />
     </div>
