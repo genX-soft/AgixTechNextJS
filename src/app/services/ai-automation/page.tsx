@@ -66,10 +66,10 @@ import { trackEvent } from "@/lib/analytics";
 import { submitLead } from "@/lib/lead-submission";
 import { useCelebration } from "@/components/success-celebration";
 
-const AutomationCalculator = dynamic(() => import("./automation-calculator"), { ssr: false });
-const CapabilitiesSection = dynamic(() => import("./sections/capabilities-section"), { ssr: false });
-const EngineSection = dynamic(() => import("./sections/engine-section"), { ssr: false });
-const FaqPricingSection = dynamic(() => import("./sections/faq-pricing-section"), { ssr: false });
+const AutomationCalculator = dynamic(() => import("./automation-calculator"));
+const CapabilitiesSection = dynamic(() => import("./sections/capabilities-section"));
+const EngineSection = dynamic(() => import("./sections/engine-section"));
+const FaqPricingSection = dynamic(() => import("./sections/faq-pricing-section"));
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
