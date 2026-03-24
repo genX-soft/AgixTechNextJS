@@ -624,7 +624,7 @@ function HeroLeadForm() {
           <div className="space-y-2">
             <Label htmlFor="productType">What Are You Trying to Build? *</Label>
             <Select value={formData.productType} onValueChange={(v) => setFormData({ ...formData, productType: v })}>
-              <SelectTrigger id="productType" data-testid="select-product-type">
+              <SelectTrigger aria-label="Product Type" id="productType" data-testid="select-product-type">
                 <SelectValue placeholder="Select product type" />
               </SelectTrigger>
               <SelectContent>
@@ -637,7 +637,7 @@ function HeroLeadForm() {
           <div className="space-y-2">
             <Label htmlFor="industry">Industry *</Label>
             <Select value={formData.industry} onValueChange={(v) => setFormData({ ...formData, industry: v })}>
-              <SelectTrigger id="industry" data-testid="select-industry">
+              <SelectTrigger aria-label="Industry" id="industry" data-testid="select-industry">
                 <SelectValue placeholder="Select your industry" />
               </SelectTrigger>
               <SelectContent>
@@ -650,7 +650,7 @@ function HeroLeadForm() {
           <div className="space-y-2">
             <Label htmlFor="stage">Current Stage *</Label>
             <Select value={formData.stage} onValueChange={(v) => setFormData({ ...formData, stage: v })}>
-              <SelectTrigger id="stage" data-testid="select-stage">
+              <SelectTrigger aria-label="Current Stage" id="stage" data-testid="select-stage">
                 <SelectValue placeholder="Where are you now?" />
               </SelectTrigger>
               <SelectContent>
@@ -660,7 +660,7 @@ function HeroLeadForm() {
               </SelectContent>
             </Select>
           </div>
-          <Button type="submit" className="w-full bg-cyan-600 hover:bg-cyan-700 text-white border-cyan-600" size="lg" disabled={isSubmitting} data-testid="button-submit-lead">
+          <Button type="submit" className="w-full bg-cyan-700 hover:bg-cyan-800 text-white border-cyan-700" size="lg" disabled={isSubmitting} data-testid="button-submit-lead">
             {isSubmitting ? (
               <>
                 <Loader2 className="w-4 h-4 mr-2 animate-spin" />
@@ -815,7 +815,7 @@ function MVPCostEstimator() {
               <span>AI Complexity</span>
               <span className="text-primary font-semibold">{complexity[0]}%</span>
             </Label>
-            <Slider value={complexity} onValueChange={setComplexity} min={10} max={100} step={10} />
+            <Slider aria-label="AI Complexity" value={complexity} onValueChange={setComplexity} min={10} max={100} step={10} />
             <p className="text-xs text-muted-foreground mt-1">Simple automation to complex reasoning</p>
           </div>
           <div>
@@ -823,21 +823,21 @@ function MVPCostEstimator() {
               <span>Number of AI features</span>
               <span className="text-primary font-semibold">{aiFeatures[0]}</span>
             </Label>
-            <Slider value={aiFeatures} onValueChange={setAiFeatures} min={1} max={8} step={1} />
+            <Slider aria-label="Number of AI features" value={aiFeatures} onValueChange={setAiFeatures} min={1} max={8} step={1} />
           </div>
           <div>
             <Label className="flex justify-between mb-2">
               <span>Expected initial users</span>
               <span className="text-primary font-semibold">{users[0]}</span>
             </Label>
-            <Slider value={users} onValueChange={setUsers} min={10} max={1000} step={10} />
+            <Slider aria-label="Expected initial users" value={users} onValueChange={setUsers} min={10} max={1000} step={10} />
           </div>
           <div>
             <Label className="flex justify-between mb-2">
               <span>Preferred timeline (weeks)</span>
               <span className="text-primary font-semibold">{timeline[0]} weeks</span>
             </Label>
-            <Slider value={timeline} onValueChange={setTimeline} min={4} max={12} step={1} />
+            <Slider aria-label="Preferred timeline in weeks" value={timeline} onValueChange={setTimeline} min={4} max={12} step={1} />
           </div>
         </div>
 
@@ -1009,7 +1009,7 @@ export default function CustomAIProductDevelopmentPage() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <Badge className="mb-4 bg-destructive/10 text-destructive border-destructive/20">
+            <Badge className="mb-4 bg-destructive/10 text-red-600 dark:text-red-500 border-destructive/20">
               <AlertCircle className="w-3 h-3 mr-1" />
               The Hard Truth
             </Badge>
@@ -1029,13 +1029,13 @@ export default function CustomAIProductDevelopmentPage() {
             >
               <Card className="h-full bg-destructive/5 border-destructive/20">
                 <CardHeader>
-                  <CardTitle className="text-lg text-destructive">They fail because:</CardTitle>
+                  <CardTitle className="text-lg text-red-600 dark:text-red-500">They fail because:</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <ul className="space-y-3">
                     {whyAIProductsFail.map((reason, i) => (
                       <li key={i} className="flex items-start gap-2">
-                        <XCircle className="w-5 h-5 text-destructive shrink-0 mt-0.5" />
+                        <XCircle className="w-5 h-5 text-red-600 dark:text-red-500 shrink-0 mt-0.5" />
                         <span>{reason}</span>
                       </li>
                     ))}
@@ -1080,7 +1080,7 @@ export default function CustomAIProductDevelopmentPage() {
               <CardContent>
                 <div className="flex flex-wrap gap-2">
                   {ignoreRealitiesLeadsTo.map((item, i) => (
-                    <Badge key={i} variant="secondary" className="bg-destructive/10 text-destructive border-destructive/20">
+                    <Badge key={i} variant="secondary" className="bg-destructive/10 text-red-600 dark:text-red-500 border-destructive/20">
                       {item}
                     </Badge>
                   ))}
@@ -1107,7 +1107,7 @@ export default function CustomAIProductDevelopmentPage() {
               <ul className="space-y-3 mb-8">
                 {commonMistakes.map((mistake, i) => (
                   <li key={i} className="flex items-center gap-3 p-3 bg-destructive/5 rounded-lg border border-destructive/10">
-                    <XCircle className="w-5 h-5 text-destructive shrink-0" />
+                    <XCircle className="w-5 h-5 text-red-600 dark:text-red-500 shrink-0" />
                     <span>{mistake}</span>
                   </li>
                 ))}
@@ -1251,7 +1251,7 @@ export default function CustomAIProductDevelopmentPage() {
           >
             <Card className="bg-destructive/5 border-destructive/20 inline-block mb-4">
               <CardContent className="py-4 px-6">
-                <p className="text-sm text-destructive">Most failed AI products focus only on layer 2.</p>
+                <p className="text-sm text-red-600 dark:text-red-500">Most failed AI products focus only on layer 2.</p>
               </CardContent>
             </Card>
             <br />
@@ -1352,11 +1352,11 @@ export default function CustomAIProductDevelopmentPage() {
 
                         <div className="space-y-6">
                           <div>
-                            <h4 className="font-semibold mb-3 text-sm uppercase tracking-wide text-destructive">Common Struggles</h4>
+                            <h4 className="font-semibold mb-3 text-sm uppercase tracking-wide text-red-600 dark:text-red-500">Common Struggles</h4>
                             <ul className="space-y-2">
                               {cat.struggles.map((s, i) => (
                                 <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
-                                  <XCircle className="w-4 h-4 text-destructive shrink-0 mt-0.5" />
+                                  <XCircle className="w-4 h-4 text-red-600 dark:text-red-500 shrink-0 mt-0.5" />
                                   {s}
                                 </li>
                               ))}
@@ -1607,11 +1607,11 @@ export default function CustomAIProductDevelopmentPage() {
                       </ul>
                     </div>
                     <div>
-                      <p className="text-sm font-medium text-destructive mb-2">We avoid:</p>
+                      <p className="text-sm font-medium text-red-600 dark:text-red-500 mb-2">We avoid:</p>
                       <ul className="space-y-1">
                         {mvpSafe.avoids.map((a, i) => (
                           <li key={i} className="flex items-center gap-2 text-sm text-muted-foreground">
-                            <XCircle className="w-4 h-4 text-destructive" />
+                            <XCircle className="w-4 h-4 text-red-600 dark:text-red-500" />
                             {a}
                           </li>
                         ))}
@@ -1673,7 +1673,7 @@ export default function CustomAIProductDevelopmentPage() {
             <CardContent className="pt-6">
               <div className="grid grid-cols-2 gap-4">
                 <div className="text-center pb-4 border-b border-border">
-                  <p className="text-sm font-semibold text-destructive">Typical AI Agency</p>
+                  <p className="text-sm font-semibold text-red-600 dark:text-red-500">Typical AI Agency</p>
                 </div>
                 <div className="text-center pb-4 border-b border-border">
                   <p className="text-sm font-semibold text-primary">AGIX</p>
@@ -1681,7 +1681,7 @@ export default function CustomAIProductDevelopmentPage() {
                 {agixVsTypical.map((row, i) => (
                   <>
                     <div key={`typical-${i}`} className="py-3 flex items-center justify-center gap-2 text-center">
-                      <XCircle className="w-4 h-4 text-destructive shrink-0" />
+                      <XCircle className="w-4 h-4 text-red-600 dark:text-red-500 shrink-0" />
                       <span className="text-sm text-muted-foreground">{row.typical}</span>
                     </div>
                     <div key={`agix-${i}`} className="py-3 flex items-center justify-center gap-2 text-center">
