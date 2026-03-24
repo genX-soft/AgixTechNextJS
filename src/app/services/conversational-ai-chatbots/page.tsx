@@ -1310,7 +1310,7 @@ export default function ConversationalAIChatbots() {
                 <Card className="h-full bg-red-500/5 border-red-500/20">
                   <CardContent className="pt-6">
                     <item.icon className="w-8 h-8 text-red-400 mb-3" />
-                    <h4 className="font-semibold mb-2">{item.title}</h4>
+                    <h3 className="font-semibold mb-2">{item.title}</h3>
                     <p className="text-sm text-muted-foreground">{item.description}</p>
                   </CardContent>
                 </Card>
@@ -1394,7 +1394,7 @@ export default function ConversationalAIChatbots() {
             >
               <Card className="bg-gradient-to-br from-primary/10 to-cyan-500/10 border-primary/20">
                 <CardContent className="pt-6">
-                  <h4 className="font-semibold text-lg mb-4">It allows users to:</h4>
+                  <h3 className="font-semibold text-lg mb-4">It allows users to:</h3>
                   <ul className="space-y-3">
                     {[
                       "Ask questions in natural language",
@@ -1778,7 +1778,7 @@ export default function ConversationalAIChatbots() {
                       <div className="p-2 rounded-lg bg-primary/20">
                         <comp.icon className="w-5 h-5 text-primary" />
                       </div>
-                      <h4 className="font-semibold">{comp.title}</h4>
+                      <h3 className="font-semibold">{comp.title}</h3>
                     </div>
                     <p className="text-sm text-muted-foreground">{comp.description}</p>
                   </CardContent>
