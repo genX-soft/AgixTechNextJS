@@ -539,7 +539,7 @@ function HeroLeadForm() {
           <div className="space-y-2">
             <Label htmlFor="companySize">Company Size *</Label>
             <Select value={formData.companySize} onValueChange={(v) => setFormData({ ...formData, companySize: v })}>
-              <SelectTrigger id="companySize" data-testid="select-company-size">
+              <SelectTrigger aria-label="Company Size" id="companySize" data-testid="select-company-size">
                 <SelectValue placeholder="Select company size" />
               </SelectTrigger>
               <SelectContent>
@@ -552,7 +552,7 @@ function HeroLeadForm() {
           <div className="space-y-2">
             <Label htmlFor="primaryGoal">Primary Goal *</Label>
             <Select value={formData.primaryGoal} onValueChange={(v) => setFormData({ ...formData, primaryGoal: v })}>
-              <SelectTrigger id="primaryGoal" data-testid="select-primary-goal">
+              <SelectTrigger aria-label="Primary Goal" id="primaryGoal" data-testid="select-primary-goal">
                 <SelectValue placeholder="What do you want to build?" />
               </SelectTrigger>
               <SelectContent>
@@ -565,7 +565,7 @@ function HeroLeadForm() {
           <div className="space-y-2">
             <Label htmlFor="timeline">Timeline (Optional)</Label>
             <Select value={formData.timeline} onValueChange={(v) => setFormData({ ...formData, timeline: v })}>
-              <SelectTrigger id="timeline" data-testid="select-timeline">
+              <SelectTrigger aria-label="Timeline" id="timeline" data-testid="select-timeline">
                 <SelectValue placeholder="When do you need this?" />
               </SelectTrigger>
               <SelectContent>
@@ -575,7 +575,7 @@ function HeroLeadForm() {
               </SelectContent>
             </Select>
           </div>
-          <Button type="submit" className="w-full bg-cyan-600 hover:bg-cyan-700 text-white border-cyan-600" disabled={isSubmitting} data-testid="button-submit-lead">
+          <Button type="submit" className="w-full bg-cyan-700 hover:bg-cyan-800 text-white border-cyan-600" disabled={isSubmitting} data-testid="button-submit-lead">
             {isSubmitting ? (
               <>
                 <Loader2 className="w-4 h-4 mr-2 animate-spin" />
@@ -727,21 +727,21 @@ function ROICalculator() {
               <span>Number of employees</span>
               <span className="text-primary font-semibold">{employees[0]}</span>
             </Label>
-            <Slider value={employees} onValueChange={setEmployees} min={10} max={500} step={10} />
+            <Slider aria-label="Number of employees" value={employees} onValueChange={setEmployees} min={10} max={500} step={10} />
           </div>
           <div>
             <Label className="flex justify-between mb-2">
               <span>Avg. time searching per day (minutes)</span>
               <span className="text-primary font-semibold">{searchTime[0]} min</span>
             </Label>
-            <Slider value={searchTime} onValueChange={setSearchTime} min={10} max={120} step={5} />
+            <Slider aria-label="Avg. time searching per day" value={searchTime} onValueChange={setSearchTime} min={10} max={120} step={5} />
           </div>
           <div>
             <Label className="flex justify-between mb-2">
               <span>Average hourly rate ($)</span>
               <span className="text-primary font-semibold">${hourlyRate[0]}</span>
             </Label>
-            <Slider value={hourlyRate} onValueChange={setHourlyRate} min={25} max={150} step={5} />
+            <Slider aria-label="Average hourly rate" value={hourlyRate} onValueChange={setHourlyRate} min={25} max={150} step={5} />
           </div>
         </div>
 
