@@ -818,7 +818,7 @@ export default function ComputerVisionSolutionsPage() {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="animate-[fade-in-up_0.5s_ease-out_forwards]">
+            <motion.div {...fadeInUp}>
               <Badge className="mb-4 bg-violet-500/10 text-violet-400 border-violet-500/20">
                 <Eye className="w-3 h-3 mr-1" />
                 Computer Vision Solutions
@@ -873,11 +873,16 @@ export default function ComputerVisionSolutionsPage() {
                   </div>
                 </a>
               </motion.div>
-            </div>
+            </motion.div>
 
-            <div className="sticky top-24 z-10 self-start animate-[slide-in-right_0.5s_ease-out_forwards]">
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.2 }}
+              className="sticky top-24 z-10 self-start"
+            >
               <HeroLeadForm />
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
