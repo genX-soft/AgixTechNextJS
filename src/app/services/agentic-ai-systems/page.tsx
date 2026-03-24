@@ -518,7 +518,7 @@ function AgenticReadinessChecker() {
           <div className="space-y-2">
             <p className="text-sm font-medium">Problem Duration</p>
             <Select value={problemDuration} onValueChange={setProblemDuration}>
-              <SelectTrigger data-testid="select-readiness-duration">
+              <SelectTrigger aria-label="Problem Duration" data-testid="select-readiness-duration">
                 <SelectValue placeholder="Select duration" />
               </SelectTrigger>
               <SelectContent>
@@ -532,7 +532,7 @@ function AgenticReadinessChecker() {
           <div className="space-y-2">
             <p className="text-sm font-medium">Decision Complexity</p>
             <Select value={decisionComplexity} onValueChange={setDecisionComplexity}>
-              <SelectTrigger data-testid="select-readiness-complexity">
+              <SelectTrigger aria-label="Decision Complexity" data-testid="select-readiness-complexity">
                 <SelectValue placeholder="Select complexity" />
               </SelectTrigger>
               <SelectContent>
@@ -546,7 +546,7 @@ function AgenticReadinessChecker() {
           <div className="space-y-2">
             <p className="text-sm font-medium">Systems Involved</p>
             <Select value={systemsCount} onValueChange={setSystemsCount}>
-              <SelectTrigger data-testid="select-readiness-systems">
+              <SelectTrigger aria-label="Systems Involved" data-testid="select-readiness-systems">
                 <SelectValue placeholder="Select count" />
               </SelectTrigger>
               <SelectContent>
@@ -560,7 +560,7 @@ function AgenticReadinessChecker() {
           <div className="space-y-2">
             <p className="text-sm font-medium">Exception Frequency</p>
             <Select value={exceptionFrequency} onValueChange={setExceptionFrequency}>
-              <SelectTrigger data-testid="select-readiness-exceptions">
+              <SelectTrigger aria-label="Exception Frequency" data-testid="select-readiness-exceptions">
                 <SelectValue placeholder="Select frequency" />
               </SelectTrigger>
               <SelectContent>
@@ -574,7 +574,7 @@ function AgenticReadinessChecker() {
           <div className="space-y-2">
             <p className="text-sm font-medium">Human Coordination Today</p>
             <Select value={humanCoordination} onValueChange={setHumanCoordination}>
-              <SelectTrigger data-testid="select-readiness-coordination">
+              <SelectTrigger aria-label="Human Coordination Today" data-testid="select-readiness-coordination">
                 <SelectValue placeholder="Select level" />
               </SelectTrigger>
               <SelectContent>
@@ -762,19 +762,19 @@ function AgenticCostCalculator() {
       <CardContent>
         <Tabs value={activeTab} onValueChange={setActiveTab}>
           <TabsList className="grid grid-cols-4 mb-6">
-            <TabsTrigger value="development" data-testid="tab-agentic-development">
+            <TabsTrigger value="development" data-testid="tab-agentic-development" className="data-[state=inactive]:text-gray-600 dark:data-[state=inactive]:text-gray-400">
               <DollarSign className="w-4 h-4 mr-2" />
               Development
             </TabsTrigger>
-            <TabsTrigger value="monthly" data-testid="tab-agentic-monthly">
+            <TabsTrigger value="monthly" data-testid="tab-agentic-monthly" className="data-[state=inactive]:text-gray-600 dark:data-[state=inactive]:text-gray-400">
               <RefreshCw className="w-4 h-4 mr-2" />
               Monthly Cost
             </TabsTrigger>
-            <TabsTrigger value="roi" data-testid="tab-agentic-roi">
+            <TabsTrigger value="roi" data-testid="tab-agentic-roi" className="data-[state=inactive]:text-gray-600 dark:data-[state=inactive]:text-gray-400">
               <TrendingUp className="w-4 h-4 mr-2" />
               ROI Analysis
             </TabsTrigger>
-            <TabsTrigger value="explorer" data-testid="tab-agentic-explorer">
+            <TabsTrigger value="explorer" data-testid="tab-agentic-explorer" className="data-[state=inactive]:text-gray-600 dark:data-[state=inactive]:text-gray-400">
               <Search className="w-4 h-4 mr-2" />
               Agent Explorer
             </TabsTrigger>
@@ -785,7 +785,7 @@ function AgenticCostCalculator() {
               <div className="space-y-2">
                 <p className="text-sm font-medium">System Type</p>
                 <Select value={systemType} onValueChange={setSystemType}>
-                  <SelectTrigger data-testid="select-system-type">
+                  <SelectTrigger aria-label="System Type" data-testid="select-system-type">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
@@ -799,7 +799,7 @@ function AgenticCostCalculator() {
               <div className="space-y-2">
                 <p className="text-sm font-medium">Autonomy Level</p>
                 <Select value={autonomyLevel} onValueChange={setAutonomyLevel}>
-                  <SelectTrigger data-testid="select-autonomy-level">
+                  <SelectTrigger aria-label="Autonomy Level" data-testid="select-autonomy-level">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
@@ -813,7 +813,7 @@ function AgenticCostCalculator() {
               <div className="space-y-2">
                 <p className="text-sm font-medium">Tools & Integrations</p>
                 <Select value={toolCount} onValueChange={setToolCount}>
-                  <SelectTrigger data-testid="select-tool-count">
+                  <SelectTrigger aria-label="Tools and Integrations" data-testid="select-tool-count">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
@@ -827,7 +827,7 @@ function AgenticCostCalculator() {
               <div className="space-y-2">
                 <p className="text-sm font-medium">Memory & Duration</p>
                 <Select value={memoryDuration} onValueChange={setMemoryDuration}>
-                  <SelectTrigger data-testid="select-memory-duration">
+                  <SelectTrigger aria-label="Memory and Duration" data-testid="select-memory-duration">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
@@ -841,7 +841,7 @@ function AgenticCostCalculator() {
               <div className="space-y-2">
                 <p className="text-sm font-medium">Governance & Compliance</p>
                 <Select value={governance} onValueChange={setGovernance}>
-                  <SelectTrigger data-testid="select-governance">
+                  <SelectTrigger aria-label="Governance and Compliance" data-testid="select-governance">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
@@ -917,7 +917,7 @@ function AgenticCostCalculator() {
               <div className="space-y-4">
                 <div className="space-y-2">
                   <p className="text-sm font-medium">Roles Impacted: {rolesCount[0]}</p>
-                  <Slider
+                  <Slider aria-label="Roles Impacted"
                     value={rolesCount}
                     onValueChange={setRolesCount}
                     min={1}
@@ -929,7 +929,7 @@ function AgenticCostCalculator() {
 
                 <div className="space-y-2">
                   <p className="text-sm font-medium">Avg Cost per Role: ${avgRoleCost[0].toLocaleString()}/mo</p>
-                  <Slider
+                  <Slider aria-label="Average Cost per Role"
                     value={avgRoleCost}
                     onValueChange={setAvgRoleCost}
                     min={2000}
@@ -941,7 +941,7 @@ function AgenticCostCalculator() {
 
                 <div className="space-y-2">
                   <p className="text-sm font-medium">Efficiency Gain: {efficiencyGain[0]}%</p>
-                  <Slider
+                  <Slider aria-label="Efficiency Gain"
                     value={efficiencyGain}
                     onValueChange={setEfficiencyGain}
                     min={20}
@@ -1005,7 +1005,7 @@ function AgenticCostCalculator() {
               <div className="space-y-2">
                 <p className="text-sm font-medium">Industry</p>
                 <Select value={explorerIndustry} onValueChange={setExplorerIndustry}>
-                  <SelectTrigger data-testid="select-explorer-industry">
+                  <SelectTrigger aria-label="Explore by Industry" data-testid="select-explorer-industry">
                     <SelectValue placeholder="Select industry" />
                   </SelectTrigger>
                   <SelectContent>
@@ -1019,7 +1019,7 @@ function AgenticCostCalculator() {
               <div className="space-y-2">
                 <p className="text-sm font-medium">Department</p>
                 <Select value={explorerDepartment} onValueChange={setExplorerDepartment}>
-                  <SelectTrigger data-testid="select-explorer-department">
+                  <SelectTrigger aria-label="Explore by Department" data-testid="select-explorer-department">
                     <SelectValue placeholder="Select department" />
                   </SelectTrigger>
                   <SelectContent>
@@ -1033,7 +1033,7 @@ function AgenticCostCalculator() {
               <div className="space-y-2">
                 <p className="text-sm font-medium">Pain Point</p>
                 <Select value={explorerProblem} onValueChange={setExplorerProblem}>
-                  <SelectTrigger data-testid="select-explorer-problem">
+                  <SelectTrigger aria-label="Explore by Problem" data-testid="select-explorer-problem">
                     <SelectValue placeholder="Select pain point" />
                   </SelectTrigger>
                   <SelectContent>
@@ -1051,10 +1051,10 @@ function AgenticCostCalculator() {
                 animate={{ opacity: 1, y: 0 }}
                 className="p-6 bg-background rounded-lg border border-border space-y-4"
               >
-                <h4 className="text-lg font-semibold flex items-center gap-2">
+                <h3 className="text-lg font-semibold flex items-center gap-2">
                   <Bot className="w-5 h-5 text-primary" />
                   Your Recommended Agent Configuration
-                </h4>
+                </h3>
 
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
@@ -1273,7 +1273,7 @@ function HeroLeadForm() {
                 value={formData.companyStage}
                 onValueChange={(value) => setFormData(prev => ({ ...prev, companyStage: value }))}
               >
-                <SelectTrigger id="companyStage" className="bg-white/10 border-white/20 text-white" data-testid="select-hero-stage">
+                <SelectTrigger id="companyStage" aria-label="Company Stage" className="bg-white/10 border-white/20 text-white" data-testid="select-hero-stage">
                   <SelectValue placeholder="Select company stage" />
                 </SelectTrigger>
                 <SelectContent>
@@ -1314,7 +1314,7 @@ function HeroLeadForm() {
             <Button
               type="submit"
               size="lg"
-              className="w-full text-base bg-cyan-600 hover:bg-cyan-700 text-white border-cyan-600"
+              className="w-full text-base bg-cyan-700 hover:bg-cyan-800 text-white border-cyan-600"
               disabled={isSubmitting}
               data-testid="button-hero-submit"
             >
@@ -1348,7 +1348,10 @@ export default function AgenticAISystems() {
   return (
     <div className="min-h-screen bg-background">
       <MainHeader />
-      
+      <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 z-50 bg-primary text-primary-foreground px-4 py-2 rounded-md">
+        Skip to main content
+      </a>
+      <main id="main-content">
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-gradient-to-b from-[#0A0F1D] via-[#1E2A4F] to-background pt-24 lg:pt-28 pb-16">
         <div className="absolute inset-0 opacity-20">
@@ -1775,19 +1778,19 @@ export default function AgenticAISystems() {
                     <p className="text-muted-foreground">{selectedCapability.description}</p>
 
                     <div>
-                      <h4 className="font-semibold mb-3">Agent Roles</h4>
+                      <h3 className="font-semibold mb-3">Agent Roles</h3>
                       <div className="flex flex-wrap gap-2">
                         {selectedCapability.agentRoles.map((role, i) => (
                           <Badge key={i} variant="secondary" className="py-1">
                             <span className="font-medium">{role.name}</span>
-                            <span className="text-muted-foreground ml-1">({role.role})</span>
+                            <span className="text-gray-600 dark:text-gray-400 ml-1">({role.role})</span>
                           </Badge>
                         ))}
                       </div>
                     </div>
 
                     <div className="p-4 bg-background rounded-lg border border-border">
-                      <h4 className="font-semibold mb-2">Real Use Case: {selectedCapability.useCase.title}</h4>
+                      <h3 className="font-semibold mb-2">Real Use Case: {selectedCapability.useCase.title}</h3>
                       <p className="text-sm text-muted-foreground mb-3"><span className="font-medium text-foreground">Problem:</span> {selectedCapability.useCase.problem}</p>
                       <p className="text-sm"><span className="font-medium text-primary">Solution:</span> {selectedCapability.useCase.solution}</p>
                     </div>
@@ -2382,6 +2385,7 @@ export default function AgenticAISystems() {
         </div>
       </section>
 
+      </main>
       <MainFooter />
     </div>
   );
