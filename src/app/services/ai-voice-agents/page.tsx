@@ -735,9 +735,9 @@ function ROICalculator() {
             <div className="grid md:grid-cols-2 gap-6">
               <div className="space-y-4">
                 <div>
-                  <Label>Primary Use Case</Label>
+                  <Label htmlFor="roi-use-case">Primary Use Case</Label>
                   <Select value={useCase} onValueChange={setUseCase}>
-                    <SelectTrigger data-testid="select-use-case">
+                    <SelectTrigger id="roi-use-case" aria-label="Primary Use Case" data-testid="select-use-case">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
@@ -760,13 +760,14 @@ function ROICalculator() {
                     step={1}
                     className="mt-2"
                     data-testid="slider-call-flows"
+                    aria-label="Number of Call Flows"
                   />
                 </div>
 
                 <div>
-                  <Label>CRM / System Integrations</Label>
+                  <Label htmlFor="roi-integrations">CRM / System Integrations</Label>
                   <Select value={integrations} onValueChange={setIntegrations}>
-                    <SelectTrigger data-testid="select-integrations">
+                    <SelectTrigger id="roi-integrations" aria-label="CRM & System Integrations" data-testid="select-integrations">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
@@ -779,9 +780,9 @@ function ROICalculator() {
                 </div>
 
                 <div>
-                  <Label>Compliance Requirement</Label>
+                  <Label htmlFor="roi-compliance">Compliance Requirement</Label>
                   <Select value={compliance} onValueChange={setCompliance}>
-                    <SelectTrigger data-testid="select-compliance">
+                    <SelectTrigger id="roi-compliance" aria-label="Compliance Requirement" data-testid="select-compliance">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
@@ -792,9 +793,9 @@ function ROICalculator() {
                 </div>
 
                 <div>
-                  <Label>Languages Required</Label>
+                  <Label htmlFor="roi-languages">Languages Required</Label>
                   <Select value={languages} onValueChange={setLanguages}>
-                    <SelectTrigger data-testid="select-languages">
+                    <SelectTrigger id="roi-languages" aria-label="Languages Required" data-testid="select-languages">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
@@ -848,13 +849,14 @@ function ROICalculator() {
                     step={100}
                     className="mt-2"
                     data-testid="slider-call-volume"
+                    aria-label="Monthly Call Volume"
                   />
                 </div>
 
                 <div>
-                  <Label>Average Call Duration</Label>
+                  <Label htmlFor="monthly-duration">Average Call Duration</Label>
                   <Select value={avgCallDuration} onValueChange={setAvgCallDuration}>
-                    <SelectTrigger data-testid="select-call-duration">
+                    <SelectTrigger id="monthly-duration" aria-label="Average Call Duration" data-testid="select-call-duration">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
@@ -866,9 +868,9 @@ function ROICalculator() {
                 </div>
 
                 <div>
-                  <Label>Call Type</Label>
+                  <Label htmlFor="monthly-type">Call Type</Label>
                   <Select value={callType} onValueChange={setCallType}>
-                    <SelectTrigger data-testid="select-call-type">
+                    <SelectTrigger id="monthly-type" aria-label="Call Type" data-testid="select-call-type">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
@@ -880,9 +882,9 @@ function ROICalculator() {
                 </div>
 
                 <div>
-                  <Label>Languages Active</Label>
+                  <Label htmlFor="monthly-languages">Languages Active</Label>
                   <Select value={activeLanguages} onValueChange={setActiveLanguages}>
-                    <SelectTrigger data-testid="select-active-languages">
+                    <SelectTrigger id="monthly-languages" aria-label="Languages Active" data-testid="select-active-languages">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
@@ -960,6 +962,7 @@ function ROICalculator() {
                     step={1}
                     className="mt-2"
                     data-testid="slider-agents-replaced"
+                    aria-label="Number of Agents Replaced or Assisted"
                   />
                 </div>
 
@@ -973,6 +976,7 @@ function ROICalculator() {
                     step={5}
                     className="mt-2"
                     data-testid="slider-automation-percent"
+                    aria-label="Percentage of Calls Automated"
                   />
                 </div>
 
@@ -1261,7 +1265,7 @@ export default function AIVoiceAgents() {
                         value={demoFormData.useCase}
                         onValueChange={(value) => setDemoFormData({ ...demoFormData, useCase: value })}
                       >
-                        <SelectTrigger id="demo-use-case" className="bg-white/10 border-white/20 text-white" data-testid="select-demo-use-case">
+                        <SelectTrigger id="demo-use-case" aria-label="Primary Use Case" className="bg-white/10 border-white/20 text-white" data-testid="select-demo-use-case">
                           <SelectValue placeholder="Select use case" />
                         </SelectTrigger>
                         <SelectContent>
@@ -1273,7 +1277,7 @@ export default function AIVoiceAgents() {
                         </SelectContent>
                       </Select>
                     </div>
-                    <Button type="submit" className="w-full bg-cyan-600 hover:bg-cyan-700 text-white border-cyan-600" size="lg" disabled={isSubmitting} data-testid="button-schedule-demo">
+                    <Button type="submit" className="w-full bg-cyan-700 hover:bg-cyan-800 text-white border-cyan-700" size="lg" disabled={isSubmitting} data-testid="button-schedule-demo">
                       {isSubmitting ? "Submitting..." : "Schedule Voice Demo"}
                       {!isSubmitting && <ArrowRight className="w-4 h-4 ml-2" />}
                     </Button>
@@ -1307,42 +1311,42 @@ export default function AIVoiceAgents() {
             <Card className="bg-red-500/5 border-red-500/20">
               <CardContent className="pt-6">
                 <XCircle className="w-8 h-8 text-red-400 mb-3" />
-                <h4 className="font-semibold mb-2">Missed inbound calls</h4>
+                <h3 className="font-semibold mb-2">Missed inbound calls</h3>
                 <p className="text-sm text-muted-foreground">Every unanswered call is lost revenue</p>
               </CardContent>
             </Card>
             <Card className="bg-red-500/5 border-red-500/20">
               <CardContent className="pt-6">
                 <Clock className="w-8 h-8 text-red-400 mb-3" />
-                <h4 className="font-semibold mb-2">Long wait times</h4>
+                <h3 className="font-semibold mb-2">Long wait times</h3>
                 <p className="text-sm text-muted-foreground">Customers hang up before connecting</p>
               </CardContent>
             </Card>
             <Card className="bg-red-500/5 border-red-500/20">
               <CardContent className="pt-6">
                 <DollarSign className="w-8 h-8 text-red-400 mb-3" />
-                <h4 className="font-semibold mb-2">High call center costs</h4>
+                <h3 className="font-semibold mb-2">High call center costs</h3>
                 <p className="text-sm text-muted-foreground">Rising labor costs hurt margins</p>
               </CardContent>
             </Card>
             <Card className="bg-red-500/5 border-red-500/20">
               <CardContent className="pt-6">
                 <Users className="w-8 h-8 text-red-400 mb-3" />
-                <h4 className="font-semibold mb-2">Inconsistent agent quality</h4>
+                <h3 className="font-semibold mb-2">Inconsistent agent quality</h3>
                 <p className="text-sm text-muted-foreground">Service varies by shift and person</p>
               </CardContent>
             </Card>
             <Card className="bg-red-500/5 border-red-500/20">
               <CardContent className="pt-6">
                 <Clock className="w-8 h-8 text-red-400 mb-3" />
-                <h4 className="font-semibold mb-2">Limited after-hours availability</h4>
+                <h3 className="font-semibold mb-2">Limited after-hours availability</h3>
                 <p className="text-sm text-muted-foreground">Customers expect 24/7 support</p>
               </CardContent>
             </Card>
             <Card className="bg-green-500/5 border-green-500/20">
               <CardContent className="pt-6">
                 <CheckCircle2 className="w-8 h-8 text-green-400 mb-3" />
-                <h4 className="font-semibold mb-2">Customers still prefer calling</h4>
+                <h3 className="font-semibold mb-2">Customers still prefer calling</h3>
                 <p className="text-sm text-muted-foreground">For urgent, complex, or high-value interactions</p>
               </CardContent>
             </Card>
@@ -1398,7 +1402,7 @@ export default function AIVoiceAgents() {
             >
               <Card className="bg-gradient-to-br from-primary/10 to-cyan-500/10 border-primary/20">
                 <CardContent className="pt-6">
-                  <h4 className="font-semibold text-lg mb-4">AGIX voice agents combine:</h4>
+                  <h3 className="font-semibold text-lg mb-4">AGIX voice agents combine:</h3>
                   <div className="grid grid-cols-2 gap-4">
                     {[
                       { icon: Mic, label: "Speech-to-text" },
@@ -1505,7 +1509,7 @@ export default function AIVoiceAgents() {
                             <item.icon className="w-6 h-6 text-red-400" />
                           </div>
                           <div>
-                            <h4 className="font-semibold text-red-400 mb-1">{item.problem}</h4>
+                            <h3 className="font-semibold text-red-400 mb-1">{item.problem}</h3>
                             <p className="text-muted-foreground text-sm">{item.description}</p>
                           </div>
                         </div>
@@ -1516,7 +1520,7 @@ export default function AIVoiceAgents() {
                             <Zap className="w-6 h-6 text-green-400" />
                           </div>
                           <div>
-                            <h4 className="font-semibold text-green-400 mb-1">Solution</h4>
+                            <h3 className="font-semibold text-green-400 mb-1">Solution</h3>
                             <p className="text-sm">{item.solution}</p>
                           </div>
                         </div>
@@ -1958,7 +1962,7 @@ export default function AIVoiceAgents() {
 
           <Card className="bg-muted/50">
             <CardContent className="pt-6">
-              <h4 className="font-semibold mb-4">Ongoing Costs (Transparency)</h4>
+              <h3 className="font-semibold mb-4">Ongoing Costs (Transparency)</h3>
               <div className="grid md:grid-cols-4 gap-4">
                 <div className="text-center">
                   <Phone className="w-6 h-6 mx-auto text-primary mb-2" />
