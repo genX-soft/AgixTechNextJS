@@ -554,7 +554,7 @@ function HeroLeadForm() {
           <div className="space-y-2">
             <Label htmlFor="industry">Industry *</Label>
             <Select value={formData.industry} onValueChange={(v) => setFormData({ ...formData, industry: v })}>
-              <SelectTrigger id="industry" data-testid="select-industry">
+              <SelectTrigger aria-label="Industry" id="industry" data-testid="select-industry">
                 <SelectValue placeholder="Select your industry" />
               </SelectTrigger>
               <SelectContent>
@@ -567,7 +567,7 @@ function HeroLeadForm() {
           <div className="space-y-2">
             <Label htmlFor="useCase">Primary Vision Use Case *</Label>
             <Select value={formData.useCase} onValueChange={(v) => setFormData({ ...formData, useCase: v })}>
-              <SelectTrigger id="useCase" data-testid="select-usecase">
+              <SelectTrigger aria-label="Primary Vision Use Case" id="useCase" data-testid="select-usecase">
                 <SelectValue placeholder="What do you need vision AI for?" />
               </SelectTrigger>
               <SelectContent>
@@ -580,7 +580,7 @@ function HeroLeadForm() {
           <div className="space-y-2">
             <Label htmlFor="timeline">Timeline (Optional)</Label>
             <Select value={formData.timeline} onValueChange={(v) => setFormData({ ...formData, timeline: v })}>
-              <SelectTrigger id="timeline" data-testid="select-timeline">
+              <SelectTrigger aria-label="Timeline" id="timeline" data-testid="select-timeline">
                 <SelectValue placeholder="When do you need this?" />
               </SelectTrigger>
               <SelectContent>
@@ -590,7 +590,7 @@ function HeroLeadForm() {
               </SelectContent>
             </Select>
           </div>
-          <Button type="submit" className="w-full bg-cyan-600 hover:bg-cyan-700 text-white border-cyan-600" disabled={isSubmitting} data-testid="button-submit-lead">
+          <Button type="submit" className="w-full bg-cyan-700 hover:bg-cyan-800 text-white border-cyan-700" disabled={isSubmitting} data-testid="button-submit-lead">
             {isSubmitting ? (
               <>
                 <Loader2 className="w-4 h-4 mr-2 animate-spin" />
@@ -741,28 +741,28 @@ function VisionROICalculator() {
               <span>Monthly processing volume</span>
               <span className="text-primary font-semibold">{volume[0].toLocaleString()} items</span>
             </Label>
-            <Slider value={volume} onValueChange={setVolume} min={100} max={10000} step={100} />
+            <Slider aria-label="Monthly processing volume" value={volume} onValueChange={setVolume} min={100} max={10000} step={100} />
           </div>
           <div>
             <Label className="flex justify-between mb-2">
               <span>Current manual cost per item</span>
               <span className="text-primary font-semibold">${manualCost[0]}</span>
             </Label>
-            <Slider value={manualCost} onValueChange={setManualCost} min={10} max={200} step={10} />
+            <Slider aria-label="Current manual cost per item" value={manualCost} onValueChange={setManualCost} min={10} max={200} step={10} />
           </div>
           <div>
             <Label className="flex justify-between mb-2">
               <span>Cost per error/defect missed</span>
               <span className="text-primary font-semibold">${errorCost[0]}</span>
             </Label>
-            <Slider value={errorCost} onValueChange={setErrorCost} min={100} max={5000} step={100} />
+            <Slider aria-label="Cost per error or defect missed" value={errorCost} onValueChange={setErrorCost} min={100} max={5000} step={100} />
           </div>
           <div>
             <Label className="flex justify-between mb-2">
               <span>Expected accuracy improvement</span>
               <span className="text-primary font-semibold">{accuracyGain[0]}%</span>
             </Label>
-            <Slider value={accuracyGain} onValueChange={setAccuracyGain} min={10} max={50} step={5} />
+            <Slider aria-label="Expected accuracy improvement" value={accuracyGain} onValueChange={setAccuracyGain} min={10} max={50} step={5} />
           </div>
         </div>
 
@@ -912,7 +912,7 @@ export default function ComputerVisionSolutionsPage() {
             >
               <Card className="h-full bg-background border-border">
                 <CardHeader>
-                  <CardTitle className="text-lg text-destructive">Real environments introduce:</CardTitle>
+                  <CardTitle className="text-lg text-red-600 dark:text-red-500">Real environments introduce:</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-3">
@@ -943,7 +943,7 @@ export default function ComputerVisionSolutionsPage() {
                     </p>
                   </div>
                   <div className="p-4 bg-destructive/10 rounded-lg border border-destructive/20">
-                    <p className="font-medium text-destructive mb-2">The consequences:</p>
+                    <p className="font-medium text-red-600 dark:text-red-500 mb-2">The consequences:</p>
                     <ul className="space-y-1 text-sm">
                       <li>Accuracy decay</li>
                       <li>Silent failures</li>
@@ -1030,7 +1030,7 @@ export default function ComputerVisionSolutionsPage() {
             >
               <Card className="h-full bg-destructive/5 border-destructive/20">
                 <CardHeader>
-                  <CardTitle className="text-lg text-destructive">Most vendors focus on:</CardTitle>
+                  <CardTitle className="text-lg text-red-600 dark:text-red-500">Most vendors focus on:</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <ul className="space-y-2">
@@ -1470,7 +1470,7 @@ export default function ComputerVisionSolutionsPage() {
             <CardContent className="pt-6">
               <div className="grid grid-cols-2 gap-4">
                 <div className="text-center pb-4 border-b border-border">
-                  <p className="text-sm font-semibold text-destructive">Typical Vision Project</p>
+                  <p className="text-sm font-semibold text-red-600 dark:text-red-500">Typical Vision Project</p>
                 </div>
                 <div className="text-center pb-4 border-b border-border">
                   <p className="text-sm font-semibold text-primary">AGIX Vision System</p>
