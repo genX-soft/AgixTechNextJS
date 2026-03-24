@@ -563,7 +563,7 @@ function HeroLeadForm() {
           <div className="space-y-2">
             <Label htmlFor="companySize">Company Size *</Label>
             <Select value={formData.companySize} onValueChange={(v) => setFormData({ ...formData, companySize: v })}>
-              <SelectTrigger id="companySize" data-testid="select-company-size">
+              <SelectTrigger aria-label="Company Size" id="companySize" data-testid="select-company-size">
                 <SelectValue placeholder="Select company size" />
               </SelectTrigger>
               <SelectContent>
@@ -576,7 +576,7 @@ function HeroLeadForm() {
           <div className="space-y-2">
             <Label htmlFor="focusArea">Primary Focus Area *</Label>
             <Select value={formData.focusArea} onValueChange={(v) => setFormData({ ...formData, focusArea: v })}>
-              <SelectTrigger id="focusArea" data-testid="select-focus-area">
+              <SelectTrigger aria-label="Primary Focus Area" id="focusArea" data-testid="select-focus-area">
                 <SelectValue placeholder="What's your primary focus?" />
               </SelectTrigger>
               <SelectContent>
@@ -589,7 +589,7 @@ function HeroLeadForm() {
           <div className="space-y-2">
             <Label htmlFor="timeline">Timeline (Optional)</Label>
             <Select value={formData.timeline} onValueChange={(v) => setFormData({ ...formData, timeline: v })}>
-              <SelectTrigger id="timeline" data-testid="select-timeline">
+              <SelectTrigger aria-label="Timeline" id="timeline" data-testid="select-timeline">
                 <SelectValue placeholder="When do you need this?" />
               </SelectTrigger>
               <SelectContent>
@@ -599,7 +599,7 @@ function HeroLeadForm() {
               </SelectContent>
             </Select>
           </div>
-          <Button type="submit" className="w-full bg-cyan-600 hover:bg-cyan-700 text-white border-cyan-600" disabled={isSubmitting} data-testid="button-submit-lead">
+          <Button type="submit" className="w-full bg-cyan-700 hover:bg-cyan-800 text-white border-cyan-600" disabled={isSubmitting} data-testid="button-submit-lead">
             {isSubmitting ? (
               <>
                 <Loader2 className="w-4 h-4 mr-2 animate-spin" />
@@ -748,28 +748,28 @@ function ForecastValueCalculator() {
               <span>Current forecast accuracy</span>
               <span className="text-primary font-semibold">{currentAccuracy[0]}%</span>
             </Label>
-            <Slider value={currentAccuracy} onValueChange={setCurrentAccuracy} min={50} max={90} step={5} />
+            <Slider aria-label="Current forecast accuracy" value={currentAccuracy} onValueChange={setCurrentAccuracy} min={50} max={90} step={5} />
           </div>
           <div>
             <Label className="flex justify-between mb-2">
               <span>Monthly cost of forecast error</span>
               <span className="text-primary font-semibold">${errorCost[0].toLocaleString()}</span>
             </Label>
-            <Slider value={errorCost} onValueChange={setErrorCost} min={10000} max={500000} step={10000} />
+            <Slider aria-label="Monthly cost of forecast error" value={errorCost} onValueChange={setErrorCost} min={10000} max={500000} step={10000} />
           </div>
           <div>
             <Label className="flex justify-between mb-2">
               <span>Expected accuracy improvement</span>
               <span className="text-primary font-semibold">+{improvementPotential[0]}%</span>
             </Label>
-            <Slider value={improvementPotential} onValueChange={setImprovementPotential} min={5} max={25} step={5} />
+            <Slider aria-label="Expected accuracy improvement" value={improvementPotential} onValueChange={setImprovementPotential} min={5} max={25} step={5} />
           </div>
         </div>
 
         <div className="grid grid-cols-2 gap-4 pt-4 border-t border-border">
           <div className="text-center p-3 bg-destructive/10 rounded-lg">
             <p className="text-sm text-muted-foreground">Current Annual Loss</p>
-            <p className="text-2xl font-bold text-destructive">${calculations.currentAnnualLoss.toLocaleString()}</p>
+            <p className="text-2xl font-bold text-red-600 dark:text-red-500">${calculations.currentAnnualLoss.toLocaleString()}</p>
           </div>
           <div className="text-center p-3 bg-green-500/10 rounded-lg">
             <p className="text-sm text-muted-foreground">Estimated Annual Savings</p>
@@ -1358,7 +1358,7 @@ export default function PredictiveAnalyticsAIPage() {
             <CardContent className="pt-6">
               <div className="grid grid-cols-2 gap-4">
                 <div className="text-center pb-4 border-b border-border">
-                  <p className="text-sm font-semibold text-destructive">Weak Predictive AI</p>
+                  <p className="text-sm font-semibold text-red-600 dark:text-red-500">Weak Predictive AI</p>
                 </div>
                 <div className="text-center pb-4 border-b border-border">
                   <p className="text-sm font-semibold text-primary">AGIX Predictive Systems</p>
@@ -1366,7 +1366,7 @@ export default function PredictiveAnalyticsAIPage() {
                 {weakVsAGIX.map((row, index) => (
                   <>
                     <div key={`weak-${index}`} className="py-3 flex items-center justify-center gap-2 text-center">
-                      <XCircle className="w-4 h-4 text-destructive shrink-0" />
+                      <XCircle className="w-4 h-4 text-red-600 dark:text-red-500 shrink-0" />
                       <span className="text-sm text-muted-foreground">{row.weak}</span>
                     </div>
                     <div key={`agix-${index}`} className="py-3 flex items-center justify-center gap-2 text-center">
