@@ -603,9 +603,9 @@ function ROICalculator() {
             <div className="grid md:grid-cols-2 gap-6">
               <div className="space-y-4">
                 <div>
-                  <Label>Primary Use Case</Label>
+                  <Label htmlFor="calc-use-case">Primary Use Case</Label>
                   <Select value={useCase} onValueChange={setUseCase}>
-                    <SelectTrigger data-testid="select-chatbot-use-case">
+                    <SelectTrigger id="calc-use-case" aria-label="Primary Use Case" data-testid="select-chatbot-use-case">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
@@ -618,9 +618,9 @@ function ROICalculator() {
                 </div>
 
                 <div>
-                  <Label>Knowledge Depth</Label>
+                  <Label htmlFor="calc-knowledge-depth">Knowledge Depth</Label>
                   <Select value={knowledgeDepth} onValueChange={setKnowledgeDepth}>
-                    <SelectTrigger data-testid="select-knowledge-depth">
+                    <SelectTrigger id="calc-knowledge-depth" aria-label="Knowledge Depth" data-testid="select-knowledge-depth">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
@@ -632,9 +632,9 @@ function ROICalculator() {
                 </div>
 
                 <div>
-                  <Label>Integrations Required</Label>
+                  <Label htmlFor="calc-integrations">Integrations Required</Label>
                   <Select value={integrations} onValueChange={setIntegrations}>
-                    <SelectTrigger data-testid="select-chatbot-integrations">
+                    <SelectTrigger id="calc-integrations" aria-label="Integrations Required" data-testid="select-chatbot-integrations">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
@@ -647,9 +647,9 @@ function ROICalculator() {
                 </div>
 
                 <div>
-                  <Label>User Scale</Label>
+                  <Label htmlFor="calc-user-scale">User Scale</Label>
                   <Select value={userScale} onValueChange={setUserScale}>
-                    <SelectTrigger data-testid="select-user-scale">
+                    <SelectTrigger id="calc-user-scale" aria-label="User Scale" data-testid="select-user-scale">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
@@ -661,9 +661,9 @@ function ROICalculator() {
                 </div>
 
                 <div>
-                  <Label>Security / Compliance</Label>
+                  <Label htmlFor="calc-compliance">Security / Compliance</Label>
                   <Select value={compliance} onValueChange={setCompliance}>
-                    <SelectTrigger data-testid="select-chatbot-compliance">
+                    <SelectTrigger id="calc-compliance" aria-label="Security & Compliance" data-testid="select-chatbot-compliance">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
@@ -675,7 +675,7 @@ function ROICalculator() {
               </div>
 
               <div className="bg-muted/50 rounded-lg p-6 space-y-4">
-                <h4 className="font-semibold text-lg">Estimated Development Cost</h4>
+                <h3 className="font-semibold text-lg">Estimated Development Cost</h3>
                 <motion.div
                   key={developmentCost.min}
                   initial={{ scale: 0.9, opacity: 0 }}
@@ -686,7 +686,7 @@ function ROICalculator() {
                 </motion.div>
                 
                 <div className="pt-4 border-t border-border">
-                  <h4 className="font-semibold mb-2">Estimated Timeline</h4>
+                  <h3 className="font-semibold mb-2">Estimated Timeline</h3>
                   <div className="flex items-center gap-2">
                     <Clock className="w-5 h-5 text-muted-foreground" />
                     <span className="text-xl font-medium">{developmentCost.weeks} – {developmentCost.weeks + 2} weeks</span>
@@ -716,13 +716,14 @@ function ROICalculator() {
                     step={1000}
                     className="mt-2"
                     data-testid="slider-monthly-conversations"
+                    aria-label="Monthly Conversations"
                   />
                 </div>
 
                 <div>
-                  <Label>Avg Messages per Conversation</Label>
+                  <Label htmlFor="calc-messages">Avg Messages per Conversation</Label>
                   <Select value={messagesPerConversation} onValueChange={setMessagesPerConversation}>
-                    <SelectTrigger data-testid="select-messages-per-conv">
+                    <SelectTrigger id="calc-messages" aria-label="Average Messages per Conversation" data-testid="select-messages-per-conv">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
@@ -734,9 +735,9 @@ function ROICalculator() {
                 </div>
 
                 <div>
-                  <Label>AI Capability Level</Label>
+                  <Label htmlFor="calc-ai-capability">AI Capability Level</Label>
                   <Select value={aiCapability} onValueChange={setAiCapability}>
-                    <SelectTrigger data-testid="select-ai-capability">
+                    <SelectTrigger id="calc-ai-capability" aria-label="AI Capability Level" data-testid="select-ai-capability">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
@@ -748,9 +749,9 @@ function ROICalculator() {
                 </div>
 
                 <div>
-                  <Label>Deployment Type</Label>
+                  <Label htmlFor="calc-deployment-type">Deployment Type</Label>
                   <Select value={deploymentType} onValueChange={setDeploymentType}>
-                    <SelectTrigger data-testid="select-deployment-type">
+                    <SelectTrigger id="calc-deployment-type" aria-label="Deployment Type" data-testid="select-deployment-type">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
@@ -763,7 +764,7 @@ function ROICalculator() {
               </div>
 
               <div className="bg-muted/50 rounded-lg p-6 space-y-4">
-                <h4 className="font-semibold text-lg">Estimated Monthly Cost</h4>
+                <h3 className="font-semibold text-lg">Estimated Monthly Cost</h3>
                 
                 <div className="space-y-3">
                   <div className="flex justify-between items-center">
@@ -828,6 +829,7 @@ function ROICalculator() {
                     step={1}
                     className="mt-2"
                     data-testid="slider-agents-supported"
+                    aria-label="Number of Agents Supported or Replaced"
                   />
                 </div>
 
@@ -841,12 +843,13 @@ function ROICalculator() {
                     step={5}
                     className="mt-2"
                     data-testid="slider-chatbot-automation"
+                    aria-label="Percentage of Conversations Automated"
                   />
                 </div>
               </div>
 
               <div className="bg-gradient-to-br from-primary/10 to-cyan-500/10 rounded-lg p-6 space-y-4 border border-primary/20">
-                <h4 className="font-semibold text-lg">ROI Analysis</h4>
+                <h3 className="font-semibold text-lg">ROI Analysis</h3>
                 
                 <div className="space-y-3">
                   <div className="flex justify-between items-center">
@@ -898,15 +901,15 @@ function ROICalculator() {
 
           <TabsContent value="explorer" className="space-y-6">
             <div className="text-center mb-6">
-              <h4 className="text-lg font-semibold mb-2">What Can Conversational AI Handle in My Business?</h4>
+              <h3 className="text-lg font-semibold mb-2">What Can Conversational AI Handle in My Business?</h3>
               <p className="text-muted-foreground text-sm">Select your context to see recommended solutions</p>
             </div>
             
             <div className="grid md:grid-cols-3 gap-4 mb-6">
               <div>
-                <Label>Industry</Label>
+                <Label htmlFor="calc-explorer-industry">Industry</Label>
                 <Select value={explorerIndustry} onValueChange={setExplorerIndustry}>
-                  <SelectTrigger data-testid="select-explorer-industry">
+                  <SelectTrigger id="calc-explorer-industry" aria-label="Industry" data-testid="select-explorer-industry">
                     <SelectValue placeholder="Select industry" />
                   </SelectTrigger>
                   <SelectContent>
@@ -923,9 +926,9 @@ function ROICalculator() {
               </div>
 
               <div>
-                <Label>Department</Label>
+                <Label htmlFor="calc-explorer-dept">Department</Label>
                 <Select value={explorerDepartment} onValueChange={setExplorerDepartment}>
-                  <SelectTrigger data-testid="select-explorer-department">
+                  <SelectTrigger id="calc-explorer-dept" aria-label="Department" data-testid="select-explorer-department">
                     <SelectValue placeholder="Select department" />
                   </SelectTrigger>
                   <SelectContent>
@@ -940,9 +943,9 @@ function ROICalculator() {
               </div>
 
               <div>
-                <Label>Primary Problem</Label>
+                <Label htmlFor="calc-explorer-problem">Primary Problem</Label>
                 <Select value={explorerProblem} onValueChange={setExplorerProblem}>
-                  <SelectTrigger data-testid="select-explorer-problem">
+                  <SelectTrigger id="calc-explorer-problem" aria-label="Primary Problem" data-testid="select-explorer-problem">
                     <SelectValue placeholder="Select problem" />
                   </SelectTrigger>
                   <SelectContent>
@@ -963,10 +966,10 @@ function ROICalculator() {
                 animate={{ opacity: 1, y: 0 }}
                 className="bg-gradient-to-br from-primary/10 to-cyan-500/10 rounded-lg p-6 border border-primary/20"
               >
-                <h4 className="font-semibold text-lg mb-4 flex items-center gap-2">
+                <h3 className="font-semibold text-lg mb-4 flex items-center gap-2">
                   <Sparkles className="w-5 h-5 text-primary" />
                   Recommended Solution
-                </h4>
+                </h3>
                 
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="space-y-4">
@@ -1109,9 +1112,11 @@ export default function ConversationalAIChatbots() {
 
   return (
     <div className="min-h-screen bg-background">
+      <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-primary focus:text-white focus:rounded">Skip to main content</a>
       <MainHeader />
       
       {/* Hero Section */}
+      <main id="main-content">
       <section className="relative overflow-hidden bg-gradient-to-b from-[#0A0F1D] via-[#1E2A4F] to-background pt-24 lg:pt-28 pb-16">
         <div className="absolute inset-0 opacity-20">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,106,0,0.15),transparent_50%)]" />
@@ -1248,7 +1253,7 @@ export default function ConversationalAIChatbots() {
                         value={demoFormData.useCase}
                         onValueChange={(value) => setDemoFormData({ ...demoFormData, useCase: value })}
                       >
-                        <SelectTrigger id="chatbot-demo-use-case" className="bg-white/10 border-white/20 text-white" data-testid="select-chatbot-demo-use-case">
+                        <SelectTrigger id="chatbot-demo-use-case" aria-label="Primary Use Case" className="bg-white/10 border-white/20 text-white" data-testid="select-chatbot-demo-use-case">
                           <SelectValue placeholder="Select use case" />
                         </SelectTrigger>
                         <SelectContent>
@@ -1260,7 +1265,7 @@ export default function ConversationalAIChatbots() {
                         </SelectContent>
                       </Select>
                     </div>
-                    <Button type="submit" className="w-full bg-cyan-600 hover:bg-cyan-700 text-white border-cyan-600" size="lg" data-testid="button-chatbot-schedule-demo" disabled={isSubmitting}>
+                    <Button type="submit" className="w-full bg-cyan-700 hover:bg-cyan-800 text-white border-cyan-700" size="lg" data-testid="button-chatbot-schedule-demo" disabled={isSubmitting}>
                       {isSubmitting ? "Submitting..." : "Schedule Demo"}
                       {!isSubmitting && <ArrowRight className="w-4 h-4 ml-2" />}
                     </Button>
@@ -1929,6 +1934,7 @@ export default function ConversationalAIChatbots() {
       {/* Footer spacer */}
       <div className="h-20 bg-[#0A0F1D]" />
 
+      </main>
       <MainFooter />
     </div>
   );
