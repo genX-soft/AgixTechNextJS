@@ -51,10 +51,10 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata: Metadata = {
   metadataBase: new URL('https://agixtech.com/'),
   title: {
-    default: 'AI Systems Engineering & Agentic Intelligence | Agix',
+    default: 'AI Systems Engineering & Agentic Intelligence Company | Agix Technologies',
     template: '%s | AGIX Technologies',
   },
-  description: 'Agix Technologies delivers enterprise AI systems engineering and autonomous agent development, helping Fortune 500 companies achieve 40% operational efficiency gains.',
+  description: 'We are an AI Systems Engineering & Agentic Intelligence company helping enterprises design, deploy, and scale autonomous AI systems that deliver measurable ROI.',
   keywords: ['AI automation', 'enterprise AI', 'intelligent automation', 'AI automation services for business', 'enterprise AI systems', 'AI workflow automation company', 'agentic AI', 'AI agents', 'conversational AI', 'predictive analytics'],
   authors: [{ name: 'AGIX Technologies' }],
   creator: 'AGIX Technologies',
@@ -78,8 +78,8 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: 'https://agixtech.com/',
     siteName: 'AGIX Technologies',
-    title: 'AI Systems Engineering & Agentic Intelligence | Agix',
-    description: 'Agix Technologies delivers enterprise AI systems engineering and autonomous agent development, helping Fortune 500 companies achieve 40% operational efficiency gains.',
+    title: 'AI Systems Engineering & Agentic Intelligence Company',
+    description: 'Enterprise-grade AI Systems Engineering and Agentic Intelligence solutions strategy, architecture, and deployment that drive real business outcomes.',
     images: [
       {
         url: 'https://cms.agixtech.com/wp-content/uploads/2026/01/AI-Systems-Engineering-Company-page-banner.png',
@@ -91,8 +91,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'AI Systems Engineering & Agentic Intelligence | Agix',
-    description: 'Agix Technologies delivers enterprise AI systems engineering and autonomous agent development, helping Fortune 500 companies achieve 40% operational efficiency gains.',
+    title: 'AI Systems Engineering & Agentic Intelligence Company',
+    description: 'We build enterprise AI systems and agentic intelligence solutions that move from strategy to scalable, ROI-driven deployment.',
     images: ['https://cms.agixtech.com/wp-content/uploads/2026/01/AI-Systems-Engineering-Company-page-banner.png'],
     creator: '@agixtech',
     site: '@agixtech',
