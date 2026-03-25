@@ -15,6 +15,7 @@ export interface PageMetadataOptions {
   ogDescription?: string;
   twitterTitle?: string;
   twitterDescription?: string;
+  absoluteTitle?: boolean;
 }
 
 export function generatePageMetadata({
@@ -28,12 +29,13 @@ export function generatePageMetadata({
   ogDescription,
   twitterTitle,
   twitterDescription,
+  absoluteTitle = false,
 }: PageMetadataOptions): Metadata {
   const url = `${SITE_URL}${path.startsWith('/') ? path : `/${path}`}`;
   const canonicalUrl = url.endsWith('/') ? url : `${url}/`;
   
   return {
-    title,
+    title: absoluteTitle ? { absolute: title } : title,
     description,
     keywords: [
       'AI automation', 'enterprise AI', 'agentic AI', 'AI systems engineering',
@@ -75,6 +77,7 @@ export function generateMetadataFromURL(path: string, fallback?: Partial<PageMet
       twitterDescription: urlMeta.twitterDescription,
       image: urlMeta.featuredImage || fallback?.image,
       noIndex: fallback?.noIndex,
+      absoluteTitle: urlMeta.absoluteTitle || fallback?.absoluteTitle,
     });
   }
   
@@ -132,7 +135,7 @@ export function generateBlogPostMetadata(
   const canonicalUrl = `${SITE_URL}/${slug}/`;
   
   return {
-    title,
+    title: { absolute: title.includes('| Agix') ? title : `${title} | Agix` },
     description,
     alternates: {
       canonical: canonicalUrl,
