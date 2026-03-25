@@ -3,13 +3,16 @@ import type { Metadata } from 'next'
 const SITE_URL = 'https://agixtech.com';
 
 export const metadata: Metadata = {
-  title: 'AI Insights & Articles | AGIX Technologies',
+  title: {
+    default: 'AI Insights & Articles | Agix',
+    template: '%s | Agix',
+  },
   description: 'Expert insights on AI automation, enterprise AI solutions, and digital transformation strategies from AGIX Technologies.',
   alternates: {
     canonical: `${SITE_URL}/insights/`,
   },
   openGraph: {
-    title: 'AI Insights & Articles | AGIX Technologies',
+    title: 'AI Insights & Articles | Agix',
     description: 'Expert insights on AI automation, enterprise AI solutions, and digital transformation strategies from AGIX Technologies.',
     url: `${SITE_URL}/insights/`,
     siteName: 'AGIX Technologies',
@@ -18,7 +21,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'AI Insights & Articles | AGIX Technologies',
+    title: 'AI Insights & Articles | Agix',
     description: 'Expert insights on AI automation, enterprise AI solutions, and digital transformation strategies from AGIX Technologies.',
     images: ['https://cms.agixtech.com/wp-content/uploads/2026/01/AI-Systems-Engineering-Company-page-banner.png'],
   },
