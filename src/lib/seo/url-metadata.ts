@@ -732,7 +732,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     focusKeyword: 'About Agix Technologies',
     keywords: 'About Agix Technologies, AI systems engineering, agentic intelligence company',
     mainHeading: 'Engineering Intelligence Systems Businesses Can Actually Trust',
-    metaTitle: 'About Us | Agix Technologies',
+    metaTitle: 'About Agix Technologies | AI Systems Engineering',
     absoluteTitle: true,
     metaDescription: 'Agix Technologies is an AI-First System Engineering Company building intelligent automation for global enterprises. 200+ AI implementations delivered.',
     ogTitle: 'About Agix Technologies | An Agentic Intelligence Company for the Enterprise',
