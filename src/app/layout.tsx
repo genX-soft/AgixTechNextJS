@@ -51,8 +51,8 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata: Metadata = {
   metadataBase: new URL('https://agixtech.com/'),
   title: {
-    default: 'AI Systems Engineering & Agentic Intelligence Company | Agix',
-    template: '%s | Agix',
+    default: 'AI Systems & Agentic Intelligence | Agix Technologies',
+    template: '%s | Agix Technologies',
   },
   description: 'We are an AI Systems Engineering & Agentic Intelligence company helping enterprises design, deploy, and scale autonomous AI systems that deliver measurable ROI.',
   keywords: ['AI automation', 'enterprise AI', 'intelligent automation', 'AI automation services for business', 'enterprise AI systems', 'AI workflow automation company', 'agentic AI', 'AI agents', 'conversational AI', 'predictive analytics'],

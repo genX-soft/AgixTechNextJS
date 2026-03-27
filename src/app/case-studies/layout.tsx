@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   ...base,
   title: {
     default: base.title as string,
-    template: '%s | Agix',
+    template: '%s | Agix Technologies',
   },
 }
 

@@ -3,6 +3,14 @@ import { getURLMetadata, getKeywordsArray } from './url-metadata';
 
 const SITE_URL = 'https://agixtech.com';
 const SITE_NAME = 'AGIX Technologies';
+const BRAND_SUFFIX = ' | Agix Technologies';
+
+function formatTitle(title: string): string {
+  if (title.endsWith(BRAND_SUFFIX)) return title;
+  const cleaned = title.replace(/ \| (Agix Technologies|Agix|AGIX)$/, '');
+  return `${cleaned}${BRAND_SUFFIX}`;
+}
+
 
 export interface PageMetadataOptions {
   title: string;
@@ -34,8 +42,11 @@ export function generatePageMetadata({
   const url = `${SITE_URL}${path.startsWith('/') ? path : `/${path}`}`;
   const canonicalUrl = url.endsWith('/') ? url : `${url}/`;
   
+  const ogTitleFinal = formatTitle(ogTitle || title);
+  const twitterTitleFinal = formatTitle(twitterTitle || title);
+
   return {
-    title: absoluteTitle ? { absolute: title } : title,
+    title: absoluteTitle ? { absolute: formatTitle(title) } : title,
     description,
     keywords: [
       'AI automation', 'enterprise AI', 'agentic AI', 'AI systems engineering',
@@ -45,7 +56,7 @@ export function generatePageMetadata({
       canonical: canonicalUrl,
     },
     openGraph: {
-      title: ogTitle || title,
+      title: ogTitleFinal,
       description: ogDescription || description,
       url: canonicalUrl,
       siteName: SITE_NAME,
@@ -54,7 +65,7 @@ export function generatePageMetadata({
     },
     twitter: {
       card: 'summary_large_image',
-      title: twitterTitle || title,
+      title: twitterTitleFinal,
       description: twitterDescription || description,
       images: [image.startsWith('http') ? image : `${SITE_URL}${image}`],
     },
