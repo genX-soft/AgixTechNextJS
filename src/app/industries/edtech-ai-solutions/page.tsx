@@ -392,7 +392,7 @@ const bottlenecks = [
 const faqs = [
   {
     question: "Will AI replace teachers or mentors?",
-    answer: "No. AGIX designs AI to support educators, not replace them. AI handles repetitive doubts, basic explanations, and admin load — educators focus on teaching, mentoring, and higher-order thinking.",
+    answer: "No. AGIX Technologies designs AI to support educators, not replace them. AI handles repetitive doubts, basic explanations, and admin load — educators focus on teaching, mentoring, and higher-order thinking.",
   },
   {
     question: "Is AI accurate for academic doubt-solving?",
@@ -447,8 +447,8 @@ const faqs = [
     answer: "Yes. AI systems can support multiple languages, regional content, and localized explanations.",
   },
   {
-    question: "What role does AGIX play after launch?",
-    answer: "AGIX works as a long-term AI systems partner, providing monitoring & improvement, model tuning, expansion planning, and ongoing support.",
+    question: "What role does AGIX Technologies play after launch?",
+    answer: "AGIX Technologies works as a long-term AI systems partner, providing monitoring & improvement, model tuning, expansion planning, and ongoing support.",
   },
 ];
 
@@ -1187,7 +1187,7 @@ export default function EdTechIndustryPage() {
               </h1>
               <p className="text-lg text-muted-foreground mb-6">
                 From EdTech startups and coaching institutes to universities and corporate L&D teams,
-                AGIX builds AI systems that scale doubt-solving, personalize learning, and reduce learner dropouts — with measurable outcomes.
+                AGIX Technologies builds AI systems that scale doubt-solving, personalize learning, and reduce learner dropouts — with measurable outcomes.
               </p>
 
               <div className="p-4 bg-muted/50 rounded-lg border border-border">
@@ -1433,9 +1433,9 @@ export default function EdTechIndustryPage() {
             <div>
               <Card className="bg-gradient-to-br from-primary/5 to-cyan-500/5">
                 <CardContent className="pt-6">
-                  <h3 className="text-xl font-bold mb-4">AGIX EdTech Expertise</h3>
+                  <h3 className="text-xl font-bold mb-4">AGIX Technologies EdTech Expertise</h3>
                   <p className="text-muted-foreground mb-4">
-                    AGIX is an AI-first systems engineering company focused on practical AI for education:
+                    AGIX Technologies is an AI-first systems engineering company focused on practical AI for education:
                   </p>
                   <ul className="space-y-2">
                     {[
@@ -1669,7 +1669,7 @@ export default function EdTechIndustryPage() {
               <span className="text-primary">AI Opportunity</span>
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Use these tools to self-diagnose first — and talk to AGIX only when things make sense.
+              Use these tools to self-diagnose first — and talk to AGIX Technologies only when things make sense.
             </p>
           </motion.div>
 
@@ -1736,7 +1736,7 @@ export default function EdTechIndustryPage() {
             <div>
               <h2 className="text-3xl font-bold mb-6">Trust, Safety & Academic Integrity</h2>
               <p className="text-muted-foreground mb-6">
-                How AGIX builds responsible EdTech AI:
+                How AGIX Technologies builds responsible EdTech AI:
               </p>
               <div className="space-y-3">
                 {[

@@ -1207,7 +1207,7 @@ export default function LogisticsIndustryPage() {
               <div className="p-4 bg-gradient-to-r from-muted/50 to-muted/30 rounded-lg border border-border/50">
                 <p className="text-lg text-muted-foreground leading-relaxed">
                   From logistics providers and 3PLs to manufacturers, distributors, and e-commerce fulfillment networks—
-                  AGIX builds AI systems that predict demand accurately, balance inventory, optimize routes, and deliver real-time visibility.
+                  AGIX Technologies builds AI systems that predict demand accurately, balance inventory, optimize routes, and deliver real-time visibility.
                 </p>
               </div>
 
@@ -1768,13 +1768,13 @@ export default function LogisticsIndustryPage() {
 
           <div className="mt-8 text-center">
             <p className="text-lg font-medium text-primary">
-              AGIX builds decision intelligence systems, not surface-level analytics.
+              AGIX Technologies builds decision intelligence systems, not surface-level analytics.
             </p>
           </div>
         </div>
       </section>
 
-      {/* AGIX Expertise Section */}
+      {/* AGIX Technologies Expertise Section */}
       <section className="py-16 bg-muted/30 border-y border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <motion.div
@@ -1788,13 +1788,13 @@ export default function LogisticsIndustryPage() {
               Our Expertise
             </Badge>
             <h2 className="text-2xl md:text-3xl font-bold mb-3">
-              AGIX Logistics & Supply Chain{" "}
+              AGIX Technologies Logistics & Supply Chain{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-teal-400">
                 AI Capabilities
               </span>
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              AGIX is an AI-first systems engineering company focused on operational intelligence for logistics and supply chains.
+              AGIX Technologies is an AI-first systems engineering company focused on operational intelligence for logistics and supply chains.
             </p>
           </motion.div>
 
@@ -2013,7 +2013,7 @@ export default function LogisticsIndustryPage() {
             {[
               {
                 q: "Will AI replace our ERP, WMS, or TMS?",
-                a: "No. AGIX builds AI layers that sit on top of existing systems. Your ERP/WMS/TMS remains the system of record. We enhance, not replace.",
+                a: "No. AGIX Technologies builds AI layers that sit on top of existing systems. Your ERP/WMS/TMS remains the system of record. We enhance, not replace.",
               },
               {
                 q: "Can we start with one warehouse, route, or SKU group?",
@@ -2068,8 +2068,8 @@ export default function LogisticsIndustryPage() {
                 a: "AI reduces manual effort and firefighting, allowing teams to focus on exceptions, planning quality, and supplier coordination — not repetitive tasks.",
               },
               {
-                q: "What is AGIX's role after go-live?",
-                a: "AGIX acts as a long-term AI systems partner, providing monitoring & tuning, expansion planning, governance updates, and performance reviews.",
+                q: "What is AGIX Technologies's role after go-live?",
+                a: "AGIX Technologies acts as a long-term AI systems partner, providing monitoring & tuning, expansion planning, governance updates, and performance reviews.",
               },
             ].map((faq, i) => (
               <AccordionItem key={i} value={`faq-${i}`} className="bg-card border rounded-lg px-4">

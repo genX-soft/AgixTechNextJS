@@ -259,7 +259,7 @@ export default function AIAutomationPage() {
               </p>
 
               <p className="text-lg text-muted-foreground">
-                AGIX delivers AI Automation Services that replace repetitive human work with intelligent, 
+                AGIX Technologies delivers AI Automation Services that replace repetitive human work with intelligent, 
                 self-operating systems — helping businesses reduce cost, improve speed, and scale without increasing headcount.
               </p>
 

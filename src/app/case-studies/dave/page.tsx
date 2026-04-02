@@ -176,7 +176,7 @@ export default function DaveCaseStudyPage() {
               <strong className="text-foreground">The Challenge:</strong> Dave's users—primarily younger, underbanked adults with irregular income streams—frequently experienced overdrafts because traditional banking apps provided no proactive cash flow visibility. Generic spending alerts arrived too late to be actionable, and users had no accessible tool to understand how gig income, subscription charges, and variable expenses were interacting to create account gaps.
             </p>
             <p>
-              <strong className="text-foreground">The Solution:</strong> AGIX built a conversational AI financial coach that proactively monitors each user's income patterns, upcoming bill obligations, and spending velocity. Using predictive cash flow modeling calibrated for gig economy income irregularity, the system surfaces personalized, empathetic guidance in natural language before shortfalls occur—recommending specific actions like timing a transfer or deferring a discretionary purchase.
+              <strong className="text-foreground">The Solution:</strong> AGIX Technologies built a conversational AI financial coach that proactively monitors each user's income patterns, upcoming bill obligations, and spending velocity. Using predictive cash flow modeling calibrated for gig economy income irregularity, the system surfaces personalized, empathetic guidance in natural language before shortfalls occur—recommending specific actions like timing a transfer or deferring a discretionary purchase.
             </p>
             <p>
               <strong className="text-foreground">The Impact:</strong> Overdraft incidents among actively engaged users dropped 31%. User interaction with financial insights increased 4x, indicating that the conversational format resonated where traditional notification-based approaches had failed. Dave's AI coaching feature became the top-rated element of the app in user surveys, contributing to a 12% improvement in monthly active user retention among the core demographic.
@@ -509,7 +509,7 @@ export default function DaveCaseStudyPage() {
             <CardContent className="p-8 md:p-12">
               <Quote className="w-10 h-10 text-green-500/30 mb-4" />
               <blockquote className="text-xl md:text-2xl font-medium leading-relaxed mb-6">
-                "Our members don't just need answers—they need empathy. AGIX built an AI that understands financial stress and responds with genuine care. Support tickets are down, but more importantly, our members feel heard."
+                "Our members don't just need answers—they need empathy. AGIX Technologies built an AI that understands financial stress and responds with genuine care. Support tickets are down, but more importantly, our members feel heard."
               </blockquote>
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 rounded-full bg-gradient-to-br from-green-500 to-emerald-500 flex items-center justify-center text-white font-bold">

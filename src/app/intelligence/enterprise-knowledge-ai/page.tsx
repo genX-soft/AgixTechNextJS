@@ -94,7 +94,7 @@ function HeroSection() {
           </h1>
 
           <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
-            AI systems that understand, govern, and reason over your organization's knowledge — safely and accurately. Agix Technologies transforms documents, data, and institutional knowledge into a trusted, explainable intelligence layer.
+            AI systems that understand, govern, and reason over your organization's knowledge — safely and accurately. AGIX Technologies transforms documents, data, and institutional knowledge into a trusted, explainable intelligence layer.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -360,7 +360,7 @@ function WhyRAGNotEnough() {
 
         <div className="text-center mt-8">
           <p className="text-lg font-medium text-indigo-400">
-            AGIX treats RAG as infrastructure, not intelligence.
+            AGIX Technologies treats RAG as infrastructure, not intelligence.
           </p>
         </div>
       </div>
@@ -629,7 +629,7 @@ function ArchitectureSection() {
       number: "3",
       title: "Governance & Access Control Layer",
       subtitle: "Enforcing Enterprise Rules",
-      description: "Where most RAG systems fail — and where AGIX leads.",
+      description: "Where most RAG systems fail — and where AGIX Technologies leads.",
       items: ["Role-based access (who can see what)", "Data sensitivity rules", "Regulatory constraints", "Audit and logging requirements"]
     },
     {
@@ -661,7 +661,7 @@ function ArchitectureSection() {
             Architecture
           </Badge>
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            The AGIX Enterprise Knowledge Intelligence Architecture
+            The AGIX Technologies Enterprise Knowledge Intelligence Architecture
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             A five-layer architecture ensuring accuracy, traceability, and compliance.
@@ -735,10 +735,10 @@ function AgixMethodology() {
           className="text-center mb-12"
         >
           <Badge className="mb-4 bg-indigo-500/10 text-indigo-400 border-indigo-500/30">
-            AGIX Method
+            AGIX Technologies Method
           </Badge>
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            How AGIX Engineers Knowledge Intelligence
+            How AGIX Technologies Engineers Knowledge Intelligence
           </h2>
           <p className="text-muted-foreground">
             We don't start with embeddings or vector stores. We follow a disciplined approach.
@@ -1415,10 +1415,10 @@ function FAQSection() {
     { q: "Is Enterprise Knowledge Intelligence just RAG?", a: "No. RAG is a retrieval method. Knowledge Intelligence adds governance, validation, access control, and trust." },
     { q: "Why do AI systems hallucinate even with RAG?", a: "Because the underlying knowledge is unverified, outdated, or conflicting. Hallucinations are often knowledge problems, not model problems." },
     { q: "How does Knowledge Intelligence prevent hallucinations?", a: "By enforcing source validation, version control, role-based access, multi-source verification, and explainable answers." },
-    { q: "Can Knowledge Intelligence work with our existing documents?", a: "Yes. AGIX builds intelligence layers on top of your existing knowledge sources, not replacements." },
+    { q: "Can Knowledge Intelligence work with our existing documents?", a: "Yes. AGIX Technologies builds intelligence layers on top of your existing knowledge sources, not replacements." },
     { q: "Do we need to clean all our data before using Knowledge Intelligence?", a: "No. The system helps identify what is trustworthy and what needs cleanup, instead of blocking adoption." },
     { q: "How does it handle sensitive or confidential data?", a: "Through role-based access, data segmentation, audit logging, and compliance-aware retrieval. AI only sees what it is allowed to see." },
-    { q: "Is it safe for regulated industries?", a: "Yes — when designed with governance, auditability, and explainability, which AGIX prioritizes." },
+    { q: "Is it safe for regulated industries?", a: "Yes — when designed with governance, auditability, and explainability, which AGIX Technologies prioritizes." },
     { q: "How is this different from enterprise search?", a: "Search finds documents. Knowledge Intelligence answers questions with verified, governed knowledge." },
     { q: "Can it support conversational AI and agents?", a: "Yes. It is the foundation layer that makes conversational AI and agentic systems safe and reliable." },
     { q: "How long does it take to implement?", a: "Initial value can be achieved in 4–6 weeks, with expansion over time." },
@@ -1486,7 +1486,7 @@ function ClosingValueSection() {
             AI Is Only As Smart As the Knowledge It Can Trust.
           </p>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Agix Technologies helps enterprises build Knowledge Intelligence systems that make AI accurate, explainable, and safe to scale.
+            AGIX Technologies helps enterprises build Knowledge Intelligence systems that make AI accurate, explainable, and safe to scale.
           </p>
         </motion.div>
       </div>

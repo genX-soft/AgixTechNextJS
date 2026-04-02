@@ -23,7 +23,7 @@ const industries = [
       { name: "Lab Result Analysis", result: "Instant interpretations" },
     ],
     stats: [{ value: "85%", label: "Faster Processing" }, { value: "$2.4M", label: "Annual Savings" }, { value: "95%", label: "Accuracy Rate" }],
-    testimonial: "AGIX reduced our patient intake from 3 days to 3 hours. The accuracy improvements have been remarkable.",
+    testimonial: "AGIX Technologies reduced our patient intake from 3 days to 3 hours. The accuracy improvements have been remarkable.",
     testimonialAuthor: "Chief Medical Officer, Regional Health Network",
   },
   {
@@ -142,7 +142,7 @@ const industries = [
       { name: "Curriculum Optimization", result: "Data-driven updates" },
     ],
     stats: [{ value: "2x", label: "Engagement" }, { value: "45%", label: "Better Outcomes" }, { value: "80%", label: "Completion Rate" }],
-    testimonial: "Students learn at their own pace with instant feedback. Completion rates have doubled since we implemented AGIX.",
+    testimonial: "Students learn at their own pace with instant feedback. Completion rates have doubled since we implemented AGIX Technologies.",
     testimonialAuthor: "Chief Learning Officer, Online University",
   },
 ];

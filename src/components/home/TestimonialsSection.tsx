@@ -8,7 +8,7 @@ import { Card, CardContent } from "@/components/ui/card";
 
 const testimonials = [
   {
-    quote: "As a startup, we needed speed and flexibility. AGIX delivered a working prototype in 6 weeks that we're still scaling today.",
+    quote: "As a startup, we needed speed and flexibility. AGIX Technologies delivered a working prototype in 6 weeks that we're still scaling today.",
     author: "Lisa Park",
     role: "Founder & CEO",
     company: "DataSync",
@@ -26,7 +26,7 @@ const testimonials = [
     company: "GlobalMart",
   },
   {
-    quote: "AGIX's voice AI agents are handling 5,000 calls daily for us. The quality is indistinguishable from human agents.",
+    quote: "AGIX Technologies's voice AI agents are handling 5,000 calls daily for us. The quality is indistinguishable from human agents.",
     author: "David Mueller",
     role: "Head of Operations",
     company: "InsureFirst",

@@ -139,13 +139,13 @@ export default function EngineSection() {
             Delivery System
           </Badge>
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            The AGIX Automation Engine
+            The AGIX Technologies Automation Engine
           </h2>
           <p className="text-xl text-muted-foreground">
             A 6-Layer System for Building Scalable AI Automation
           </p>
           <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
-            Most vendors automate workflows. AGIX engineers an automation operating layer for your business.
+            Most vendors automate workflows. AGIX Technologies engineers an automation operating layer for your business.
           </p>
         </motion.div>
 

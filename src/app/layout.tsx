@@ -51,8 +51,8 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata: Metadata = {
   metadataBase: new URL('https://agixtech.com/'),
   title: {
-    default: 'AI Systems & Agentic Intelligence | Agix Technologies',
-    template: '%s | Agix Technologies',
+    default: 'AI Systems Engineering & Agentic Intelligence Company | AGIX Technologies',
+    template: '%s | AGIX Technologies',
   },
   description: 'We are an AI Systems Engineering & Agentic Intelligence company helping enterprises design, deploy, and scale autonomous AI systems that deliver measurable ROI.',
   keywords: ['AI automation', 'enterprise AI', 'intelligent automation', 'AI automation services for business', 'enterprise AI systems', 'AI workflow automation company', 'agentic AI', 'AI agents', 'conversational AI', 'predictive analytics'],
@@ -148,14 +148,14 @@ export const metadata: Metadata = {
           "@type": "WebPage",
           "@id": "https://agixtech.com/#webpage",
           "url": "https://agixtech.com/",
-          "name": "AI Systems Engineering & Agentic Intelligence | Agix",
+          "name": "AGIX Technologies",
           "isPartOf": {
             "@id": "https://agixtech.com/#website"
           },
           "about": {
             "@id": "https://agixtech.com/#organization"
           },
-          "description": "Agix Technologies delivers enterprise AI systems engineering and autonomous agent development, helping Fortune 500 companies achieve 40% operational efficiency gains.",
+          "description": "AGIX Technologies delivers enterprise AI systems engineering and autonomous agent development, helping Fortune 500 companies achieve 40% operational efficiency gains.",
           "breadcrumb": {
             "@id": "https://agixtech.com/#breadcrumb"
           },

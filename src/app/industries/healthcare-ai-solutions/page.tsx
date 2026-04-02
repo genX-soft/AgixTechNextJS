@@ -439,19 +439,19 @@ const roleBasedStartingPoints = [
 const faqs = [
   {
     q: "Is AI safe to use in healthcare environments?",
-    a: "Yes — when designed correctly. AGIX builds assistive AI systems with human-in-the-loop controls, explainability, and audit trails, ensuring AI supports care delivery without introducing clinical risk.",
+    a: "Yes — when designed correctly. AGIX Technologies builds assistive AI systems with human-in-the-loop controls, explainability, and audit trails, ensuring AI supports care delivery without introducing clinical risk.",
   },
   {
     q: "Will AI replace doctors, nurses, or clinicians?",
-    a: "No. AGIX does not build autonomous clinical decision systems. Our AI supports clinicians by reducing administrative burden and improving workflow efficiency, while final medical decisions always remain with humans.",
+    a: "No. AGIX Technologies does not build autonomous clinical decision systems. Our AI supports clinicians by reducing administrative burden and improving workflow efficiency, while final medical decisions always remain with humans.",
   },
   {
-    q: "How does AGIX ensure patient data privacy?",
+    q: "How does AGIX Technologies ensure patient data privacy?",
     a: "Patient data is handled with strict access controls, purpose limitation, and traceability. Data is never used to train public AI models and remains governed under healthcare data protection standards.",
   },
   {
     q: "Can AI integrate with our existing HIS or EMR systems?",
-    a: "Yes. AGIX designs AI systems to integrate with existing HIS, EMR, LIS, and billing systems, avoiding costly replacements or workflow disruption.",
+    a: "Yes. AGIX Technologies designs AI systems to integrate with existing HIS, EMR, LIS, and billing systems, avoiding costly replacements or workflow disruption.",
   },
   {
     q: "What healthcare processes benefit most from AI?",
@@ -463,7 +463,7 @@ const faqs = [
   },
   {
     q: "Is healthcare AI compliant with regulations?",
-    a: "AGIX systems are designed with compliance, explainability, and traceability as first-class requirements, making them suitable for regulated healthcare environments.",
+    a: "AGIX Technologies systems are designed with compliance, explainability, and traceability as first-class requirements, making them suitable for regulated healthcare environments.",
   },
   {
     q: "What happens if AI provides an incorrect recommendation?",
@@ -471,7 +471,7 @@ const faqs = [
   },
   {
     q: "Can small clinics and diagnostic centers use AI, or is it only for large hospitals?",
-    a: "AGIX healthcare AI solutions are scalable — suitable for small clinics, diagnostic centers, specialty practices, and large hospital networks alike.",
+    a: "AGIX Technologies healthcare AI solutions are scalable — suitable for small clinics, diagnostic centers, specialty practices, and large hospital networks alike.",
   },
   {
     q: "How does AI help reduce clinician burnout?",
@@ -487,15 +487,15 @@ const faqs = [
   },
   {
     q: "Does AI make clinical workflows more complex?",
-    a: "No. AGIX AI is designed to simplify workflows, not add extra steps. The goal is fewer screens, fewer manual tasks, and clearer information flow.",
+    a: "No. AGIX Technologies AI is designed to simplify workflows, not add extra steps. The goal is fewer screens, fewer manual tasks, and clearer information flow.",
   },
   {
-    q: "How does AGIX handle AI governance and audits?",
+    q: "How does AGIX Technologies handle AI governance and audits?",
     a: "Every AI action is logged, traceable, and reviewable. Governance layers ensure leadership can confidently answer 'who decided what, and why' during audits.",
   },
   {
     q: "Is healthcare AI suitable for telemedicine and digital health platforms?",
-    a: "Yes. AGIX healthcare AI works well across in-person, telehealth, and hybrid care models, supporting scalable and compliant digital health operations.",
+    a: "Yes. AGIX Technologies healthcare AI works well across in-person, telehealth, and hybrid care models, supporting scalable and compliant digital health operations.",
   },
 ];
 
@@ -1603,12 +1603,12 @@ export default function HealthcareIndustryPage() {
             </CardContent>
           </Card>
 
-          {/* AGIX Approach */}
+          {/* AGIX Technologies Approach */}
           <Card className="mb-8 border-primary/20 bg-gradient-to-r from-primary/5 to-cyan-500/5">
             <CardHeader>
-              <CardTitle className="text-xl text-center">How AGIX Approaches Healthcare AI Differently</CardTitle>
+              <CardTitle className="text-xl text-center">How AGIX Technologies Approaches Healthcare AI Differently</CardTitle>
               <p className="text-center text-muted-foreground">
-                AGIX builds healthcare-aligned AI systems, not generic tools. Our approach is grounded in five principles:
+                AGIX Technologies builds healthcare-aligned AI systems, not generic tools. Our approach is grounded in five principles:
               </p>
             </CardHeader>
             <CardContent>
@@ -1689,7 +1689,7 @@ export default function HealthcareIndustryPage() {
                   </ul>
                 </div>
                 <div>
-                  <h4 className="font-semibold text-foreground mb-3">AGIX builds AI systems that:</h4>
+                  <h4 className="font-semibold text-foreground mb-3">AGIX Technologies builds AI systems that:</h4>
                   <ul className="space-y-2">
                     {[
                       "Reduce cognitive and administrative load",
@@ -1943,11 +1943,11 @@ export default function HealthcareIndustryPage() {
               Healthcare AI Systems
             </Badge>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              How AGIX Solves Healthcare Bottlenecks with{" "}
+              How AGIX Technologies Solves Healthcare Bottlenecks with{" "}
               <span className="text-green-500">Safe, Explainable AI</span>
             </h2>
             <p className="text-muted-foreground max-w-3xl mx-auto">
-              AGIX does not deploy one large, opaque AI platform. We design modular healthcare AI systems, each built to solve a specific bottleneck, with human-in-the-loop control, explainable outputs, audit-ready traceability, and integration with existing HIS / EMR systems. Every system is assistive by design, never autonomous in clinical decision-making.
+              AGIX Technologies does not deploy one large, opaque AI platform. We design modular healthcare AI systems, each built to solve a specific bottleneck, with human-in-the-loop control, explainable outputs, audit-ready traceability, and integration with existing HIS / EMR systems. Every system is assistive by design, never autonomous in clinical decision-making.
             </p>
           </motion.div>
 
@@ -2168,7 +2168,7 @@ export default function HealthcareIndustryPage() {
               <Badge variant="outline">Patients who expect safety and privacy</Badge>
             </div>
             <p className="text-foreground font-medium mt-4">
-              AGIX builds healthcare AI systems that are designed for trust first — performance second.
+              AGIX Technologies builds healthcare AI systems that are designed for trust first — performance second.
             </p>
           </motion.div>
 
@@ -2177,7 +2177,7 @@ export default function HealthcareIndustryPage() {
             <CardHeader>
               <CardTitle className="text-center">Our Healthcare AI Principles (Non-Negotiable)</CardTitle>
               <p className="text-center text-sm text-muted-foreground">
-                Every healthcare AI system built by AGIX follows these principles:
+                Every healthcare AI system built by AGIX Technologies follows these principles:
               </p>
             </CardHeader>
             <CardContent>
@@ -2213,7 +2213,7 @@ export default function HealthcareIndustryPage() {
             <CardContent>
               <div className="grid md:grid-cols-2 gap-8">
                 <div>
-                  <p className="text-sm font-medium mb-3">AGIX healthcare AI systems are built to align with:</p>
+                  <p className="text-sm font-medium mb-3">AGIX Technologies healthcare AI systems are built to align with:</p>
                   <ul className="space-y-2">
                     {[
                       "Healthcare data privacy requirements",

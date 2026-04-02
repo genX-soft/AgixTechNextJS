@@ -180,7 +180,7 @@ export default function CapabilitiesSection() {
             Core Automation Capabilities
           </h2>
           <p className="text-muted-foreground max-w-3xl mx-auto">
-            AGIX delivers AI Automation Services through five tightly integrated capability layers.
+            AGIX Technologies delivers AI Automation Services through five tightly integrated capability layers.
             These are not separate offerings — they work together as one automation ecosystem.
           </p>
         </motion.div>
@@ -267,7 +267,7 @@ export default function CapabilitiesSection() {
                       <div>
                         <h4 className="font-semibold mb-3 flex items-center gap-2">
                           <Cog className="w-4 h-4 text-primary" />
-                          How AGIX Automates
+                          How AGIX Technologies Automates
                         </h4>
                         <div className="flex flex-wrap gap-2">
                           {capability.howWeAutomate.map((method, i) => (

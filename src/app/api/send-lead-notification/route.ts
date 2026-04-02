@@ -57,7 +57,7 @@ Entry URL: ${data.entryUrl}
 Submitted: ${new Date().toISOString()}
 
 ---
-This lead was captured via the AGIX AI Discovery Engine.
+This lead was captured via the AGIX Technologies AI Discovery Engine.
 Follow up within 24 hours for best conversion.
     `.trim();
 
@@ -73,7 +73,7 @@ Follow up within 24 hours for best conversion.
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          from: 'AGIX Leads <leads@agixtech.com>',
+          from: 'AGIX Technologies Leads <leads@agixtech.com>',
           to: ['santosh@agixtech.com'],
           subject: emailSubject,
           text: emailBody,

@@ -84,7 +84,7 @@ function HeroSection() {
           </h1>
 
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto" data-testid="text-hero-subheadline">
-            Most businesses don't struggle because they lack data. They struggle because decisions are delayed, inconsistent, or made with incomplete context. Agix Technologies builds Decision Intelligence systems that help organizations evaluate trade-offs, understand risk, and make better decisions — faster and with confidence.
+            Most businesses don't struggle because they lack data. They struggle because decisions are delayed, inconsistent, or made with incomplete context. AGIX Technologies builds Decision Intelligence systems that help organizations evaluate trade-offs, understand risk, and make better decisions — faster and with confidence.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-8">
@@ -793,10 +793,10 @@ function AgixMethodology() {
             Our Approach
           </Badge>
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            How AGIX Builds Decision Intelligence
+            How AGIX Technologies Builds Decision Intelligence
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            AGIX does not start with models. We follow a disciplined approach.
+            AGIX Technologies does not start with models. We follow a disciplined approach.
           </p>
         </motion.div>
 
@@ -834,7 +834,7 @@ function AgixMethodology() {
             </CardHeader>
             <CardContent>
               <p className="text-sm text-muted-foreground mb-4">
-                AGIX Decision Intelligence systems include:
+                AGIX Technologies Decision Intelligence systems include:
               </p>
               <ul className="space-y-3">
                 {governance.map((item, i) => (
@@ -846,7 +846,7 @@ function AgixMethodology() {
               </ul>
               <p className="text-sm text-muted-foreground mt-6 pt-4 border-t border-emerald-500/20">
                 Decision Intelligence without governance creates risk.<br />
-                <span className="text-emerald-400 font-medium">AGIX designs responsible decision systems.</span>
+                <span className="text-emerald-400 font-medium">AGIX Technologies designs responsible decision systems.</span>
               </p>
             </CardContent>
           </Card>
@@ -1755,7 +1755,7 @@ function FAQSection() {
     },
     {
       question: "Can AI make business decisions on its own?",
-      answer: "AI can support decisions, but final judgment should remain with humans. Agix builds systems that recommend, not dictate."
+      answer: "AI can support decisions, but final judgment should remain with humans. AGIX Technologies builds systems that recommend, not dictate."
     },
     {
       question: "Is Decision Intelligence safe for regulated industries?",
@@ -1807,11 +1807,11 @@ function FAQSection() {
     },
     {
       question: "Can Decision Intelligence integrate with existing systems?",
-      answer: "Yes. Agix builds decision layers that integrate with CRM, ERP, analytics, and operational platforms."
+      answer: "Yes. AGIX Technologies builds decision layers that integrate with CRM, ERP, analytics, and operational platforms."
     },
     {
       question: "Do humans stay in control with Decision Intelligence?",
-      answer: "Always. Agix designs systems where humans remain the final decision makers with full override capability."
+      answer: "Always. AGIX Technologies designs systems where humans remain the final decision makers with full override capability."
     },
     {
       question: "What types of decisions benefit most from AI support?",
@@ -1883,7 +1883,7 @@ function MakeBetterDecisionsSection() {
             <span className="text-emerald-400 font-medium">Your Systems Do.</span>
           </p>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Agix Technologies helps organizations design Decision Intelligence systems that support clarity, confidence, and accountability.
+            AGIX Technologies helps organizations design Decision Intelligence systems that support clarity, confidence, and accountability.
           </p>
           
           <div className="grid sm:grid-cols-3 gap-6 pt-8">
@@ -1908,7 +1908,7 @@ function MakeBetterDecisionsSection() {
           </div>
           
           <p className="text-sm text-muted-foreground italic pt-4">
-            Agix Technologies builds AI systems that don't replace judgment — they strengthen it.
+            AGIX Technologies builds AI systems that don't replace judgment — they strengthen it.
           </p>
         </motion.div>
       </div>

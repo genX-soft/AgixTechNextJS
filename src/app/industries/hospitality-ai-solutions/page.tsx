@@ -1174,7 +1174,7 @@ export default function HospitalityIndustryPage() {
               </p>
 
               <p className="text-lg text-muted-foreground max-w-xl">
-                Whether you operate a boutique hotel, luxury resort, fine dining restaurant, wellness spa, holistic clinic, meditation retreat, or lifestyle experience brand—AGIX designs and builds custom AI systems that quietly work behind the scenes.
+                Whether you operate a boutique hotel, luxury resort, fine dining restaurant, wellness spa, holistic clinic, meditation retreat, or lifestyle experience brand—AGIX Technologies designs and builds custom AI systems that quietly work behind the scenes.
               </p>
             </motion.div>
 
@@ -1334,7 +1334,7 @@ export default function HospitalityIndustryPage() {
                   {" "}that technology—used thoughtfully—can help solve.
                 </p>
                 <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
-                  AGIX doesn't automate hospitality. We build AI systems that quietly support the humans who create great experiences.
+                  AGIX Technologies doesn't automate hospitality. We build AI systems that quietly support the humans who create great experiences.
                 </p>
                 <div className="flex flex-wrap justify-center gap-4 mt-6">
                   <Button asChild data-testid="link-reality-solution-finder">
@@ -1759,13 +1759,13 @@ export default function HospitalityIndustryPage() {
 
           <div className="mt-8 text-center">
             <p className="text-lg font-medium text-primary">
-              AGIX builds experience-support AI, not attention-stealing automation.
+              AGIX Technologies builds experience-support AI, not attention-stealing automation.
             </p>
           </div>
         </div>
       </section>
 
-      {/* AGIX Expertise Section */}
+      {/* AGIX Technologies Expertise Section */}
       <section className="py-16 bg-muted/30 border-y border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <motion.div
@@ -1779,13 +1779,13 @@ export default function HospitalityIndustryPage() {
               Our Expertise
             </Badge>
             <h2 className="text-2xl md:text-3xl font-bold mb-3">
-              AGIX Experience-First{" "}
+              AGIX Technologies Experience-First{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-primary">
                 AI Capabilities
               </span>
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              AGIX is an AI-first systems engineering company focused on guest-centric and care-centric businesses.
+              AGIX Technologies is an AI-first systems engineering company focused on guest-centric and care-centric businesses.
             </p>
           </motion.div>
 
@@ -2004,7 +2004,7 @@ export default function HospitalityIndustryPage() {
             {[
               {
                 q: "Will AI make our guest experience feel robotic?",
-                a: "No. AGIX designs AI to work behind the scenes, supporting staff with context—not replacing conversations or care.",
+                a: "No. AGIX Technologies designs AI to work behind the scenes, supporting staff with context—not replacing conversations or care.",
               },
               {
                 q: "Does AI ever talk to guests directly?",
@@ -2016,7 +2016,7 @@ export default function HospitalityIndustryPage() {
               },
               {
                 q: "Will staff feel monitored or replaced?",
-                a: "No. AGIX does not build surveillance or productivity-tracking systems. AI reduces mental load—it doesn't judge performance.",
+                a: "No. AGIX Technologies does not build surveillance or productivity-tracking systems. AI reduces mental load—it doesn't judge performance.",
               },
               {
                 q: "How do you protect guest privacy, especially in wellness?",
@@ -2059,8 +2059,8 @@ export default function HospitalityIndustryPage() {
                 a: "Never. Upsell suggestions are context-based, optional, and human-approved.",
               },
               {
-                q: "What role does AGIX play long-term?",
-                a: "AGIX acts as a quiet systems partner, offering monitoring, refinement, expansion planning, and ethical oversight.",
+                q: "What role does AGIX Technologies play long-term?",
+                a: "AGIX Technologies acts as a quiet systems partner, offering monitoring, refinement, expansion planning, and ethical oversight.",
               },
             ].map((faq, i) => (
               <AccordionItem key={i} value={`faq-${i}`} className="bg-card border rounded-lg px-4">
@@ -2093,7 +2093,7 @@ export default function HospitalityIndustryPage() {
               <span className="text-primary">seen, heard, and cared for</span>
             </h2>
             <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-              AI succeeds only when it protects that feeling—quietly. AGIX helps you reduce missed bookings, support overworked staff, improve reviews naturally, and increase revenue without losing warmth.
+              AI succeeds only when it protects that feeling—quietly. AGIX Technologies helps you reduce missed bookings, support overworked staff, improve reviews naturally, and increase revenue without losing warmth.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" asChild>

@@ -4,10 +4,10 @@ export const homepageOrganizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
   "@id": `${SITE_URL}/#organization`,
-  "name": "AGIX",
+  "name": "AGIX Technologies",
   "url": `${SITE_URL}/`,
   "logo": `${SITE_URL}/logo.png`,
-  "description": "AGIX builds governed, enterprise-grade AI systems including operational AI, conversational AI, decision intelligence, autonomous agentic systems, and industry-specific AI solutions.",
+  "description": "AGIX Technologies builds governed, enterprise-grade AI systems including operational AI, conversational AI, decision intelligence, autonomous agentic systems, and industry-specific AI solutions.",
   "sameAs": [
     "https://www.linkedin.com/company/agixtech",
     "https://twitter.com/agixtech"
@@ -33,7 +33,7 @@ export const homepageOrganizationSchema = {
   ],
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
-    "name": "AGIX AI Services & Solutions",
+    "name": "AGIX Technologies Services & Solutions",
     "itemListElement": [
       {
         "@type": "OfferCatalog",
@@ -121,7 +121,7 @@ export const intelligencePageSchemas: Record<string, PageSchemaData> = {
       { question: "Can Operational Intelligence work with legacy systems?", answer: "Yes. Our integration approach supports legacy systems through APIs, database connections, file-based integrations, and screen scraping when necessary. We have successfully integrated with systems dating back decades." },
       { question: "What happens when the AI makes a wrong decision?", answer: "Every AI decision includes confidence scores and reasoning. Low-confidence decisions are flagged for human review. All decisions are logged with full audit trails, enabling issue identification, retraining, and continuous improvement." },
       { question: "How do you measure the success of an Operational Intelligence implementation?", answer: "We establish baseline metrics before implementation and track KPIs such as decision speed, error rates, escalation frequency, cost per transaction, and employee satisfaction. Monthly reviews ensure alignment with business goals." },
-      { question: "What level of technical expertise does our team need?", answer: "No coding or technical expertise is required for day-to-day operations. We provide intuitive dashboards and interfaces, along with training for system oversight, while AGIX handles maintenance and updates." },
+      { question: "What level of technical expertise does our team need?", answer: "No coding or technical expertise is required for day-to-day operations. We provide intuitive dashboards and interfaces, along with training for system oversight, while AGIX Technologies handles maintenance and updates." },
       { question: "Can we start small and scale up later?", answer: "Yes. We recommend starting with a single department or process as a pilot. This validates value quickly, builds internal confidence, and creates a foundation for organization-wide deployment." },
       { question: "How does Operational Intelligence improve over time?", answer: "The system continuously learns from outcomes, user feedback, and changing patterns. Machine learning models are retrained regularly, allowing the intelligence layer to adapt as business processes evolve." },
       { question: "What support and maintenance is included?", answer: "All implementations include 24/7 monitoring, regular system health checks, proactive optimization recommendations, and dedicated support. Quarterly business reviews ensure ongoing alignment with evolving needs." }
@@ -146,21 +146,21 @@ export const intelligencePageSchemas: Record<string, PageSchemaData> = {
       { question: "What is Conversational Intelligence in simple terms?", answer: "Conversational Intelligence allows AI to understand intent and context in conversations and take the right action, not just reply with text or voice." },
       { question: "Is Conversational Intelligence the same as chatbots?", answer: "No. Chatbots respond to questions. Conversational Intelligence understands conversations, reasons safely, and connects to real business actions." },
       { question: "How is Conversational Intelligence different from Conversational AI?", answer: "Conversational AI often focuses on language generation. Conversational Intelligence focuses on understanding, decision-making, and outcomes, with governance and control." },
-      { question: "Are AI chatbots and voice agents safe for real customers?", answer: "They are safe only when designed with controls. Agix systems include human-in-the-loop, confidence thresholds, and auditability." },
+      { question: "Are AI chatbots and voice agents safe for real customers?", answer: "They are safe only when designed with controls. AGIX Technologies systems include human-in-the-loop, confidence thresholds, and auditability." },
       { question: "How do you prevent AI hallucinations in conversations?", answer: "By combining restricted knowledge sources, confidence scoring, decision rules, and human fallback mechanisms." },
       { question: "Can Conversational Intelligence work across chat, voice, and WhatsApp?", answer: "Yes. Conversational Intelligence is channel-agnostic and can operate across chat, voice, and messaging platforms." },
       { question: "Do I need a large dataset to start?", answer: "No. Conversational Intelligence systems can start with existing conversations and improve over time." },
       { question: "Will Conversational Intelligence replace human agents?", answer: "No. It reduces repetitive work and supports humans, allowing agents to focus on complex cases." },
       { question: "How long does it take to implement Conversational Intelligence?", answer: "Early value can be seen in 4-6 weeks, with more advanced capabilities rolling out gradually." },
       { question: "Is Conversational Intelligence expensive?", answer: "Cost depends on complexity, but starting with assistive intelligence is affordable compared to large automation projects." },
-      { question: "Can Conversational Intelligence integrate with CRM and internal systems?", answer: "Yes. Agix builds systems that integrate with CRM, ticketing, scheduling, and backend platforms." },
+      { question: "Can Conversational Intelligence integrate with CRM and internal systems?", answer: "Yes. AGIX Technologies builds systems that integrate with CRM, ticketing, scheduling, and backend platforms." },
       { question: "How does Conversational Intelligence handle sensitive data?", answer: "Through access controls, data masking, role-based permissions, and compliance-aware design." },
       { question: "What is the biggest mistake companies make with conversational AI?", answer: "Deploying LLMs without governance, intent control, or escalation logic." },
       { question: "Can Conversational Intelligence handle multilingual users?", answer: "Yes. It can understand and respond in multiple languages while maintaining context." },
       { question: "How does Conversational Intelligence improve over time?", answer: "It learns from successful resolutions, human corrections, feedback loops, and new conversation patterns." },
       { question: "Is Conversational Intelligence suitable for internal operations?", answer: "Absolutely. Many companies use it for IT, HR, and internal support to reduce ticket volume." },
       { question: "What types of conversations should not be automated?", answer: "High-risk, highly subjective, or legally sensitive conversations should always involve human oversight." },
-      { question: "How do we decide where to start with Conversational Intelligence?", answer: "Agix provides Solution Finder and Risk Assessment tools to guide safe starting points." },
+      { question: "How do we decide where to start with Conversational Intelligence?", answer: "AGIX Technologies provides Solution Finder and Risk Assessment tools to guide safe starting points." },
       { question: "Can Conversational Intelligence help increase sales?", answer: "Yes, by qualifying leads, answering product questions, reducing response time, and guiding users to the right next step." },
       { question: "Is Conversational Intelligence a one-time setup?", answer: "No. It's a living system that evolves as conversations, products, and customers change." }
     ]
@@ -211,7 +211,7 @@ export const intelligencePageSchemas: Record<string, PageSchemaData> = {
     faqs: [
       { question: "What is Agentic AI?", answer: "Agentic AI refers to AI systems that can autonomously reason, plan, and execute multi-step tasks rather than just responding to single prompts." },
       { question: "How is Agentic AI different from chatbots?", answer: "Chatbots respond to individual queries. Agentic AI can plan and execute complex workflows, make decisions, and take actions across multiple systems." },
-      { question: "Is autonomous AI safe for enterprise use?", answer: "Yes, when designed with appropriate governance. AGIX builds agentic systems with human oversight, guardrails, and audit trails." },
+      { question: "Is autonomous AI safe for enterprise use?", answer: "Yes, when designed with appropriate governance. AGIX Technologies builds agentic systems with human oversight, guardrails, and audit trails." },
       { question: "What tasks can Agentic AI handle?", answer: "Complex operational workflows, research tasks, document processing, customer service escalations, and multi-step business processes." },
       { question: "How do you prevent AI agents from making mistakes?", answer: "Through confidence thresholds, human-in-the-loop checkpoints, sandbox testing, and comprehensive monitoring." },
       { question: "Can Agentic AI work with our existing systems?", answer: "Yes. Agents are designed to integrate with existing tools, APIs, and databases." },
@@ -241,10 +241,10 @@ export const intelligencePageSchemas: Record<string, PageSchemaData> = {
       { question: "Is Enterprise Knowledge Intelligence just RAG?", answer: "No. RAG is a retrieval method. Knowledge Intelligence adds governance, validation, access control, and trust." },
       { question: "Why do AI systems hallucinate even with RAG?", answer: "Because the underlying knowledge is unverified, outdated, or conflicting. Hallucinations are often knowledge problems, not model problems." },
       { question: "How does Knowledge Intelligence prevent hallucinations?", answer: "By enforcing source validation, version control, role-based access, multi-source verification, and explainable answers." },
-      { question: "Can Knowledge Intelligence work with our existing documents?", answer: "Yes. AGIX builds intelligence layers on top of your existing knowledge sources, not replacements." },
+      { question: "Can Knowledge Intelligence work with our existing documents?", answer: "Yes. AGIX Technologies builds intelligence layers on top of your existing knowledge sources, not replacements." },
       { question: "Do we need to clean all our data before using Knowledge Intelligence?", answer: "No. The system helps identify what is trustworthy and what needs cleanup, instead of blocking adoption." },
       { question: "How does it handle sensitive or confidential data?", answer: "Through role-based access, data segmentation, audit logging, and compliance-aware retrieval. AI only sees what it is allowed to see." },
-      { question: "Is it safe for regulated industries?", answer: "Yes — when designed with governance, auditability, and explainability, which AGIX prioritizes." },
+      { question: "Is it safe for regulated industries?", answer: "Yes — when designed with governance, auditability, and explainability, which AGIX Technologies prioritizes." },
       { question: "How is this different from enterprise search?", answer: "Search finds documents. Knowledge Intelligence answers questions with verified, governed knowledge." },
       { question: "Can it support conversational AI and agents?", answer: "Yes. It is the foundation layer that makes conversational AI and agentic systems safe and reliable." },
       { question: "How long does it take to implement?", answer: "Initial value can be achieved in 4–6 weeks, with expansion over time." },
@@ -338,7 +338,7 @@ export const servicesPageSchemas: Record<string, PageSchemaData> = {
     faqs: [
       { question: "What makes a chatbot conversational AI?", answer: "Conversational AI chatbots understand context, handle multi-turn conversations, and can take actions beyond just answering questions." },
       { question: "How is this different from rule-based chatbots?", answer: "Rule-based chatbots follow scripted flows. Conversational AI understands intent, handles variations, and adapts to user needs dynamically." },
-      { question: "Can chatbots integrate with our systems?", answer: "Yes. AGIX builds chatbots that integrate with CRMs, databases, ticketing systems, and internal tools." },
+      { question: "Can chatbots integrate with our systems?", answer: "Yes. AGIX Technologies builds chatbots that integrate with CRMs, databases, ticketing systems, and internal tools." },
       { question: "How do you prevent chatbots from giving wrong answers?", answer: "Through confidence thresholds, knowledge governance, human escalation paths, and continuous monitoring." },
       { question: "What channels can chatbots work on?", answer: "Chatbots can operate on websites, mobile apps, WhatsApp, Slack, Microsoft Teams, and other messaging platforms." },
       { question: "How long does implementation take?", answer: "Basic chatbots can be deployed in 3–4 weeks. Complex integrations may take 6–8 weeks." },
@@ -365,7 +365,7 @@ export const servicesPageSchemas: Record<string, PageSchemaData> = {
     faqs: [
       { question: "What are agentic AI systems?", answer: "Agentic AI systems are AI agents that can autonomously plan, reason, and execute multi-step tasks rather than just responding to individual prompts." },
       { question: "How do agents differ from chatbots?", answer: "Chatbots respond to queries. Agents can plan and execute complex workflows, make decisions, and take actions across multiple systems." },
-      { question: "Are agentic systems safe?", answer: "Yes, when designed with governance. AGIX builds agents with human oversight, guardrails, confidence thresholds, and comprehensive audit trails." },
+      { question: "Are agentic systems safe?", answer: "Yes, when designed with governance. AGIX Technologies builds agents with human oversight, guardrails, confidence thresholds, and comprehensive audit trails." },
       { question: "What tasks can agents handle?", answer: "Research workflows, document processing, customer service escalations, multi-step operations, and complex business processes." },
       { question: "How do you control agent behavior?", answer: "Through defined boundaries, human-in-the-loop checkpoints, sandbox testing, and continuous monitoring." },
       { question: "Can agents work with existing tools?", answer: "Yes. Agents integrate with APIs, databases, and existing business systems." },
@@ -394,7 +394,7 @@ export const servicesPageSchemas: Record<string, PageSchemaData> = {
       { question: "How does RAG prevent hallucinations?", answer: "By grounding responses in retrieved documents rather than relying solely on model knowledge, RAG significantly reduces fabricated answers." },
       { question: "What knowledge sources can be used?", answer: "Documents, databases, wikis, PDFs, internal knowledge bases, and structured data can all serve as knowledge sources." },
       { question: "How is this different from basic search?", answer: "RAG combines retrieval with generation, providing synthesized answers rather than just links to documents." },
-      { question: "Can RAG work with our existing content?", answer: "Yes. AGIX builds RAG systems that integrate with existing knowledge repositories without requiring content migration." },
+      { question: "Can RAG work with our existing content?", answer: "Yes. AGIX Technologies builds RAG systems that integrate with existing knowledge repositories without requiring content migration." },
       { question: "How do you ensure answer accuracy?", answer: "Through source validation, confidence scoring, citations, and human-in-the-loop verification for high-stakes queries." },
       { question: "What about data security?", answer: "RAG systems include role-based access control, ensuring users only retrieve information they're authorized to see." },
       { question: "How long does implementation take?", answer: "Basic RAG systems can be deployed in 4–6 weeks. Enterprise implementations may take 8–12 weeks." },
@@ -420,13 +420,13 @@ export const servicesPageSchemas: Record<string, PageSchemaData> = {
       { question: "What is AI predictive analytics?", answer: "AI predictive analytics uses machine learning to analyze historical data and predict future outcomes, enabling proactive decision-making." },
       { question: "What can be predicted?", answer: "Customer churn, demand forecasting, risk assessment, equipment failures, sales outcomes, and many other business metrics." },
       { question: "How accurate are predictions?", answer: "Accuracy depends on data quality and the problem domain. Well-designed systems typically achieve 80–95% accuracy for suitable use cases." },
-      { question: "What data is required?", answer: "Historical data relevant to the prediction target. AGIX helps identify required data and works with imperfect datasets." },
+      { question: "What data is required?", answer: "Historical data relevant to the prediction target. AGIX Technologies helps identify required data and works with imperfect datasets." },
       { question: "How long until we see value?", answer: "Initial models can be deployed in 4–8 weeks, with accuracy improving as more data is collected." },
       { question: "Can predictions integrate with our workflows?", answer: "Yes. Predictive insights can trigger alerts, automate actions, and feed into decision support systems." },
       { question: "How do you ensure model fairness?", answer: "Through bias detection, fairness metrics, and regular model audits." },
       { question: "What happens when conditions change?", answer: "Models are designed for continuous learning and retraining as patterns evolve." },
-      { question: "Is this suitable for regulated industries?", answer: "Yes. AGIX builds explainable models with audit trails suitable for regulatory requirements." },
-      { question: "What expertise is needed on our side?", answer: "No data science expertise required. AGIX handles model development while you provide domain knowledge." }
+      { question: "Is this suitable for regulated industries?", answer: "Yes. AGIX Technologies builds explainable models with audit trails suitable for regulatory requirements." },
+      { question: "What expertise is needed on our side?", answer: "No data science expertise required. AGIX Technologies handles model development while you provide domain knowledge." }
     ]
   },
   'ai-computer-vision': {
@@ -447,7 +447,7 @@ export const servicesPageSchemas: Record<string, PageSchemaData> = {
       { question: "What is computer vision?", answer: "Computer vision enables AI to understand and analyze images and video, detecting objects, patterns, and extracting meaningful information." },
       { question: "What applications does computer vision support?", answer: "Quality inspection, document processing, inventory monitoring, security surveillance, and visual search are common applications." },
       { question: "How accurate is computer vision?", answer: "Well-trained models achieve 95%+ accuracy for defined detection tasks, improving with more training data." },
-      { question: "What data is needed to get started?", answer: "Labeled images of what you want to detect. AGIX can help with data collection and labeling strategies." },
+      { question: "What data is needed to get started?", answer: "Labeled images of what you want to detect. AGIX Technologies can help with data collection and labeling strategies." },
       { question: "Can this work with our existing cameras?", answer: "Yes. Computer vision can integrate with existing camera infrastructure and video systems." },
       { question: "How long does implementation take?", answer: "Basic detection systems in 4–6 weeks. Complex multi-model systems may take 8–12 weeks." },
       { question: "What about processing at scale?", answer: "Systems are designed for high-throughput processing with appropriate infrastructure." },
@@ -471,21 +471,21 @@ export const servicesPageSchemas: Record<string, PageSchemaData> = {
       serviceType: "Custom AI Product Development"
     },
     faqs: [
-      { question: "Do I really need AI for my product, or am I forcing it?", answer: "Not every product needs AI. AGIX helps founders identify where AI adds real value, where rules or automation are sufficient, and what should be built later. If AI is not justified, this is communicated upfront to avoid wasted investment." },
+      { question: "Do I really need AI for my product, or am I forcing it?", answer: "Not every product needs AI. AGIX Technologies helps founders identify where AI adds real value, where rules or automation are sufficient, and what should be built later. If AI is not justified, this is communicated upfront to avoid wasted investment." },
       { question: "What's the difference between an AI MVP and a normal MVP?", answer: "A normal MVP tests product features. An AI MVP tests intelligence, usability, cost, latency, and user trust together. AI MVPs must account for data readiness, model behavior, cloud costs, and reliability, which requires a different design approach." },
       { question: "Can you build an AI product if I don't have data yet?", answer: "Yes. Options include using public or synthetic data, designing workflows that generate data, starting with rule-based or hybrid systems, and phasing AI gradually. Products are designed to progress even when data is limited initially." },
       { question: "How much does it actually cost to build an AI product?", answer: "Typical ranges include $12,000–$20,000 for an AI MVP or proof of concept, $20,000–$35,000 for a market-ready AI MVP, and $35,000–$60,000 or more for scalable AI products or platforms. Cost depends on scope and intelligence depth, not buzzwords." },
       { question: "How long does it take to launch an AI MVP?", answer: "Most AI MVPs launch in 4–6 weeks for validation-focused MVPs and 6–8 weeks for market-ready MVPs. Speed is prioritized without introducing long-term technical debt." },
-      { question: "Will my AI product scale if users increase suddenly?", answer: "Yes, when designed correctly. AGIX builds scalable backend architecture, cost controls, rate limits, and modular AI components so growth is planned from the start rather than patched later." },
+      { question: "Will my AI product scale if users increase suddenly?", answer: "Yes, when designed correctly. AGIX Technologies builds scalable backend architecture, cost controls, rate limits, and modular AI components so growth is planned from the start rather than patched later." },
       { question: "What AI technologies do you use?", answer: "Technologies are selected based on product needs, cost efficiency, and long-term maintainability. This may include commercial or open-source models, vector databases, cloud infrastructure, and custom APIs. There is no fixed or one-size-fits-all stack." },
       { question: "Will my AI product be secure and compliant?", answer: "Yes. Systems are built with secure APIs, data access controls, privacy-aware architecture, and compliance best practices. For regulated industries, compliance-ready design is incorporated from the beginning." },
-      { question: "Can you build AI SaaS products with subscriptions and billing?", answer: "Yes. AGIX builds multi-tenant AI SaaS products with usage tracking, subscription logic, billing integration, and role-based access control." },
+      { question: "Can you build AI SaaS products with subscriptions and billing?", answer: "Yes. AGIX Technologies builds multi-tenant AI SaaS products with usage tracking, subscription logic, billing integration, and role-based access control." },
       { question: "What happens after the MVP is launched?", answer: "After launch, support includes model tuning, feature iteration, cost optimization, scaling strategy, and investor or pilot demo preparation. AI products are treated as evolving systems, not one-time builds." },
-      { question: "Is it better to hire an in-house AI team or outsource?", answer: "For early-stage startups, outsourcing often reduces cost, risk, and time-to-market compared to hiring. Many teams validate with AGIX first and hire internally after product traction is proven." },
-      { question: "Can you work with non-technical founders?", answer: "Yes. Many clients are non-technical founders. AGIX explains trade-offs clearly, avoids unnecessary jargon, supports decision-making, and acts as a technical partner throughout the product journey." },
-      { question: "Will my AI product be investor-ready?", answer: "Yes. Products are built with clean architecture, scalable systems, and demo-ready workflows. Many clients use AGIX-built products for accelerator programs, investor pitches, and early enterprise pilots." },
+      { question: "Is it better to hire an in-house AI team or outsource?", answer: "For early-stage startups, outsourcing often reduces cost, risk, and time-to-market compared to hiring. Many teams validate with AGIX Technologies first and hire internally after product traction is proven." },
+      { question: "Can you work with non-technical founders?", answer: "Yes. Many clients are non-technical founders. AGIX Technologies explains trade-offs clearly, avoids unnecessary jargon, supports decision-making, and acts as a technical partner throughout the product journey." },
+      { question: "Will my AI product be investor-ready?", answer: "Yes. Products are built with clean architecture, scalable systems, and demo-ready workflows. Many clients use AGIX Technologies-built products for accelerator programs, investor pitches, and early enterprise pilots." },
       { question: "What if my idea changes during development?", answer: "Idea changes are expected. Systems are designed with modular components and flexible architecture to support iteration and pivots without major rework." },
-      { question: "How do I know if AGIX is the right partner for my AI product?", answer: "AGIX is a strong fit for founders who value clarity before building, want to avoid wasted spend, care about real users, and plan to scale responsibly. The focus is on building real products, not quick demos." }
+      { question: "How do I know if AGIX Technologies is the right partner for my AI product?", answer: "AGIX Technologies is a strong fit for founders who value clarity before building, want to avoid wasted spend, care about real users, and plan to scale responsibly. The focus is on building real products, not quick demos." }
     ]
   }
 };
@@ -506,15 +506,15 @@ export const industriesPageSchemas: Record<string, PageSchemaData> = {
       serviceType: "Healthcare AI Solutions"
     },
     faqs: [
-      { question: "Is AI safe to use in healthcare environments?", answer: "Yes, when designed correctly. AGIX builds assistive AI systems with human-in-the-loop controls, explainability, and audit trails so AI supports care delivery without introducing clinical risk." },
-      { question: "Will AI replace doctors, nurses, or clinicians?", answer: "No. AGIX does not build autonomous clinical decision systems. AI supports clinicians by reducing administrative burden and improving workflows, while final medical decisions always remain with humans." },
-      { question: "How does AGIX ensure patient data privacy?", answer: "Patient data is handled with strict access controls, purpose limitation, and full traceability. Data is not used to train public AI models and remains governed under healthcare data protection standards." },
-      { question: "Can AI integrate with our existing HIS or EMR systems?", answer: "Yes. AGIX designs AI systems to integrate with existing HIS, EMR, LIS, and billing platforms, avoiding system replacement or workflow disruption." },
+      { question: "Is AI safe to use in healthcare environments?", answer: "Yes, when designed correctly. AGIX Technologies builds assistive AI systems with human-in-the-loop controls, explainability, and audit trails so AI supports care delivery without introducing clinical risk." },
+      { question: "Will AI replace doctors, nurses, or clinicians?", answer: "No. AGIX Technologies does not build autonomous clinical decision systems. AI supports clinicians by reducing administrative burden and improving workflows, while final medical decisions always remain with humans." },
+      { question: "How does AGIX Technologies ensure patient data privacy?", answer: "Patient data is handled with strict access controls, purpose limitation, and full traceability. Data is not used to train public AI models and remains governed under healthcare data protection standards." },
+      { question: "Can AI integrate with our existing HIS or EMR systems?", answer: "Yes. AGIX Technologies designs AI systems to integrate with existing HIS, EMR, LIS, and billing platforms, avoiding system replacement or workflow disruption." },
       { question: "What healthcare processes benefit most from AI?", answer: "High-impact areas include patient intake and triage, clinical documentation support, follow-ups and care continuity, claims and revenue cycle workflows, and compliance and audit readiness." },
       { question: "How long does it take to implement healthcare AI?", answer: "Most healthcare AI systems are deployed within 4–8 weeks, depending on integration depth, data readiness, and governance requirements." },
-      { question: "Is healthcare AI compliant with regulations?", answer: "AGIX systems are designed with compliance, explainability, and traceability as first-class requirements, making them suitable for regulated healthcare environments." },
+      { question: "Is healthcare AI compliant with regulations?", answer: "AGIX Technologies systems are designed with compliance, explainability, and traceability as first-class requirements, making them suitable for regulated healthcare environments." },
       { question: "What happens if AI provides an incorrect recommendation?", answer: "AI outputs are non-binding and reviewable. Clinicians and administrators always validate recommendations before any action is taken." },
-      { question: "Can small clinics and diagnostic centers use AI?", answer: "Yes. AGIX healthcare AI solutions are scalable and suitable for small clinics, diagnostic centers, specialty practices, and large hospital networks." },
+      { question: "Can small clinics and diagnostic centers use AI?", answer: "Yes. AGIX Technologies healthcare AI solutions are scalable and suitable for small clinics, diagnostic centers, specialty practices, and large hospital networks." },
       { question: "How does AI help reduce clinician burnout?", answer: "By assisting with documentation, triage support, and non-clinical tasks, AI reduces cognitive load and allows clinicians to focus more on patient care." }
     ]
   },
@@ -537,7 +537,7 @@ export const industriesPageSchemas: Record<string, PageSchemaData> = {
       { question: "Will AI respond to leads faster than my team can?", answer: "Yes. AI responds instantly, 24/7, across calls, WhatsApp, website chat, and forms, even when agents are unavailable." },
       { question: "Can AI qualify leads before I speak to them?", answer: "Yes. AI asks structured qualification questions such as budget, timeline, intent, and location, then passes context-rich, high-intent leads to agents." },
       { question: "Will AI replace agents or salespeople?", answer: "No. AI handles repetitive communication and follow-ups, while humans focus on relationships, negotiations, and closing deals." },
-      { question: "Can this work with my existing CRM and tools?", answer: "Yes. AGIX builds AI systems that integrate with existing CRMs, property portals, and workflows rather than replacing them." },
+      { question: "Can this work with my existing CRM and tools?", answer: "Yes. AGIX Technologies builds AI systems that integrate with existing CRMs, property portals, and workflows rather than replacing them." },
       { question: "How long does it take to go live?", answer: "Most real estate AI systems go live in 3–4 weeks for core lead handling, 4–6 weeks for full automation, and 6–9 weeks for predictive intelligence capabilities." }
     ]
   },
@@ -580,7 +580,7 @@ export const industriesPageSchemas: Record<string, PageSchemaData> = {
     faqs: [
       { question: "Can AI automate claims processing?", answer: "Yes. AI can handle document extraction, validation, and routing, significantly reducing claims processing time." },
       { question: "How does AI improve underwriting?", answer: "AI analyzes more data points, identifies patterns, and provides more accurate risk assessments." },
-      { question: "Is AI suitable for regulated insurance environments?", answer: "Yes. AGIX builds systems with compliance, auditability, and explainability as core requirements." },
+      { question: "Is AI suitable for regulated insurance environments?", answer: "Yes. AGIX Technologies builds systems with compliance, auditability, and explainability as core requirements." },
       { question: "Can AI detect fraudulent claims?", answer: "Yes. AI identifies patterns and anomalies that may indicate fraud, flagging suspicious claims for review." },
       { question: "How long until we see ROI?", answer: "Most insurers see measurable improvements in processing speed and accuracy within 2–3 months." }
     ]
@@ -622,11 +622,11 @@ export const industriesPageSchemas: Record<string, PageSchemaData> = {
       serviceType: "Industry AI Solutions"
     },
     faqs: [
-      { question: "Will AI replace our ERP, WMS, or TMS?", answer: "No. AGIX builds AI layers that sit on top of existing systems. Your ERP, WMS, or TMS remains the system of record." },
+      { question: "Will AI replace our ERP, WMS, or TMS?", answer: "No. AGIX Technologies builds AI layers that sit on top of existing systems. Your ERP, WMS, or TMS remains the system of record." },
       { question: "Can we start with one warehouse or route?", answer: "Yes. Most deployments begin with a pilot scope and expand after validation." },
       { question: "How does AI handle demand spikes?", answer: "AI uses time-series models and external signals to adapt to volatility rather than relying on static forecasts." },
       { question: "How long before we see measurable ROI?", answer: "Typical timelines are 30–60 days for routing improvements and 60–90 days for inventory optimization." },
-      { question: "What data is required to get started?", answer: "Historical orders, inventory data, and route information. AGIX works with imperfect data and improves quality over time." }
+      { question: "What data is required to get started?", answer: "Historical orders, inventory data, and route information. AGIX Technologies works with imperfect data and improves quality over time." }
     ]
   },
   'hospitality-ai-solutions': {
@@ -644,7 +644,7 @@ export const industriesPageSchemas: Record<string, PageSchemaData> = {
       serviceType: "Industry AI Solutions"
     },
     faqs: [
-      { question: "Will AI make our guest experience feel robotic?", answer: "No. AGIX designs AI to work behind the scenes, supporting staff with context rather than replacing conversations or care." },
+      { question: "Will AI make our guest experience feel robotic?", answer: "No. AGIX Technologies designs AI to work behind the scenes, supporting staff with context rather than replacing conversations or care." },
       { question: "Does AI ever talk to guests directly?", answer: "Only where appropriate, such as booking assistance, and always in a brand-aligned, warm tone." },
       { question: "Is AI suitable for boutique hotels?", answer: "Yes. Smaller properties often see the fastest value by reducing missed bookings and staff overload." },
       { question: "How do you protect guest privacy?", answer: "Through explicit consent, role-based access control, data minimization, and privacy-first design." },
@@ -666,9 +666,9 @@ export const industriesPageSchemas: Record<string, PageSchemaData> = {
       serviceType: "Industry AI Solutions"
     },
     faqs: [
-      { question: "Will AI replace teachers or mentors?", answer: "No. AGIX designs AI to support educators, not replace them. AI handles repetitive doubts and administrative load." },
+      { question: "Will AI replace teachers or mentors?", answer: "No. AGIX Technologies designs AI to support educators, not replace them. AI handles repetitive doubts and administrative load." },
       { question: "Is AI accurate for academic doubt-solving?", answer: "Yes. Answers are generated only from approved course content using Retrieval-Augmented Generation (RAG)." },
-      { question: "Can this work with our existing LMS?", answer: "Yes. AGIX integrates with Moodle, Canvas, Blackboard, and custom LMS platforms." },
+      { question: "Can this work with our existing LMS?", answer: "Yes. AGIX Technologies integrates with Moodle, Canvas, Blackboard, and custom LMS platforms." },
       { question: "How do you ensure academic integrity?", answer: "Through content-restricted answers, plagiarism checks, confidence thresholds, and faculty override controls." },
       { question: "How long before we see results?", answer: "Most institutions see measurable impact within 4–8 weeks." }
     ]
@@ -694,7 +694,7 @@ export const caseStudyPageSchemas: Record<string, CaseStudySchemaData> = {
   'enova': {
     webPage: {
       name: 'Enova International AI Case Study',
-      description: 'How AGIX built an explainable AI system for Enova to hit 94.7% accuracy and 100% audit compliance in credit decisioning.',
+      description: 'How AGIX Technologies built an explainable AI system for Enova to hit 94.7% accuracy and 100% audit compliance in credit decisioning.',
     },
     breadcrumbs: [
       { name: 'Home', url: `${SITE_URL}/` },
@@ -703,7 +703,7 @@ export const caseStudyPageSchemas: Record<string, CaseStudySchemaData> = {
     ],
     article: {
       headline: 'Enova International Case Study — Explainable AI Credit Decisioning',
-      description: 'How AGIX built an explainable AI system for Enova to hit 94.7% accuracy and 100% audit compliance.',
+      description: 'How AGIX Technologies built an explainable AI system for Enova to hit 94.7% accuracy and 100% audit compliance.',
       image: 'https://cms.agixtech.com/wp-content/uploads/2026/01/Enova-International-Case-Study-Image.png',
       client: 'Enova International',
       industry: 'Fintech',
@@ -712,7 +712,7 @@ export const caseStudyPageSchemas: Record<string, CaseStudySchemaData> = {
   'dave': {
     webPage: {
       name: 'Dave Fintech AI Case Study',
-      description: 'How AGIX built an empathetic AI assistant for Dave to slash support volume by 57% and hit a 93 CSAT score.',
+      description: 'How AGIX Technologies built an empathetic AI assistant for Dave to slash support volume by 57% and hit a 93 CSAT score.',
     },
     breadcrumbs: [
       { name: 'Home', url: `${SITE_URL}/` },
@@ -721,7 +721,7 @@ export const caseStudyPageSchemas: Record<string, CaseStudySchemaData> = {
     ],
     article: {
       headline: 'Dave Case Study — Empathetic AI Assistant for Neobanking',
-      description: 'How AGIX built a conversational AI that handles 94% of inquiries for 10M members with a 93 CSAT score.',
+      description: 'How AGIX Technologies built a conversational AI that handles 94% of inquiries for 10M members with a 93 CSAT score.',
       image: 'https://cms.agixtech.com/wp-content/uploads/2026/01/Dave-Case-Study-Image.png',
       client: 'Dave',
       industry: 'Fintech',
@@ -730,7 +730,7 @@ export const caseStudyPageSchemas: Record<string, CaseStudySchemaData> = {
   'ocrolus': {
     webPage: {
       name: 'Ocrolus Document AI Case Study',
-      description: 'How AGIX built a document AI for Ocrolus to process 6M+ docs monthly with 99.2% accuracy.',
+      description: 'How AGIX Technologies built a document AI for Ocrolus to process 6M+ docs monthly with 99.2% accuracy.',
     },
     breadcrumbs: [
       { name: 'Home', url: `${SITE_URL}/` },
@@ -739,7 +739,7 @@ export const caseStudyPageSchemas: Record<string, CaseStudySchemaData> = {
     ],
     article: {
       headline: 'Ocrolus Case Study — Document AI with 99.2% Accuracy',
-      description: 'How AGIX automated 6 million financial documents monthly with 99.2% accuracy, saving $1.8M in annual labor costs.',
+      description: 'How AGIX Technologies automated 6 million financial documents monthly with 99.2% accuracy, saving $1.8M in annual labor costs.',
       image: 'https://cms.agixtech.com/wp-content/uploads/2026/01/Ocrolus-Case-Study-Image.png',
       client: 'Ocrolus',
       industry: 'Fintech',
@@ -748,7 +748,7 @@ export const caseStudyPageSchemas: Record<string, CaseStudySchemaData> = {
   'babylon-health': {
     webPage: {
       name: 'Babylon Health Clinical AI Case Study',
-      description: 'How AGIX built a safety-first clinical AI triage system for Babylon Health with 99.2% urgent case detection.',
+      description: 'How AGIX Technologies built a safety-first clinical AI triage system for Babylon Health with 99.2% urgent case detection.',
     },
     breadcrumbs: [
       { name: 'Home', url: `${SITE_URL}/` },
@@ -757,7 +757,7 @@ export const caseStudyPageSchemas: Record<string, CaseStudySchemaData> = {
     ],
     article: {
       headline: 'Babylon Health Case Study — Clinical AI Triage at Scale',
-      description: 'How AGIX structured a regulator-approved AI triage system in 15+ languages with 99.2% precision for urgent cases.',
+      description: 'How AGIX Technologies structured a regulator-approved AI triage system in 15+ languages with 99.2% precision for urgent cases.',
       image: 'https://cms.agixtech.com/wp-content/uploads/2026/01/Babylon-Health-Case-Study-Image.png',
       client: 'Babylon Health',
       industry: 'Healthcare',
@@ -766,7 +766,7 @@ export const caseStudyPageSchemas: Record<string, CaseStudySchemaData> = {
   'kite-therapy': {
     webPage: {
       name: 'Kite Therapy Mental Health AI Case Study',
-      description: 'How AGIX developed an empathetic AI for Kite Therapy to boost retention by 89% with zero-miss crisis detection.',
+      description: 'How AGIX Technologies developed an empathetic AI for Kite Therapy to boost retention by 89% with zero-miss crisis detection.',
     },
     breadcrumbs: [
       { name: 'Home', url: `${SITE_URL}/` },
@@ -775,7 +775,7 @@ export const caseStudyPageSchemas: Record<string, CaseStudySchemaData> = {
     ],
     article: {
       headline: 'Kite Therapy Case Study — Safe Mental Health AI with Crisis Detection',
-      description: 'How AGIX powered Kite Therapy with emotional intelligence, 100% crisis detection, and seamless human escalation.',
+      description: 'How AGIX Technologies powered Kite Therapy with emotional intelligence, 100% crisis detection, and seamless human escalation.',
       image: 'https://cms.agixtech.com/wp-content/uploads/2026/01/Kite-Therapy-Case-Study-Image.png',
       client: 'Kite Therapy',
       industry: 'Healthcare',
@@ -784,7 +784,7 @@ export const caseStudyPageSchemas: Record<string, CaseStudySchemaData> = {
   'hello-driven': {
     webPage: {
       name: 'Hello Driven Healthcare Voice AI Case Study',
-      description: 'How AGIX built a healthcare voice AI for Hello Driven to reach 78% answer rate and eliminate 61% of no-shows.',
+      description: 'How AGIX Technologies built a healthcare voice AI for Hello Driven to reach 78% answer rate and eliminate 61% of no-shows.',
     },
     breadcrumbs: [
       { name: 'Home', url: `${SITE_URL}/` },
@@ -793,7 +793,7 @@ export const caseStudyPageSchemas: Record<string, CaseStudySchemaData> = {
     ],
     article: {
       headline: 'Hello Driven Case Study — Healthcare Voice AI for Patient Scheduling',
-      description: 'How AGIX engineered life-like voice agents with HIPAA-grade security, sub-300ms response times, and 50+ EHR integrations.',
+      description: 'How AGIX Technologies engineered life-like voice agents with HIPAA-grade security, sub-300ms response times, and 50+ EHR integrations.',
       image: 'https://cms.agixtech.com/wp-content/uploads/2026/01/Hello-Driven-Case-Study-Image.png',
       client: 'Hello Driven',
       industry: 'Healthcare',
@@ -802,7 +802,7 @@ export const caseStudyPageSchemas: Record<string, CaseStudySchemaData> = {
   'albertsons': {
     webPage: {
       name: 'Albertsons Retail AI Demand Forecasting Case Study',
-      description: 'How AGIX built an AI forecasting system for Albertsons to cut food waste by 45% and save $83M annually.',
+      description: 'How AGIX Technologies built an AI forecasting system for Albertsons to cut food waste by 45% and save $83M annually.',
     },
     breadcrumbs: [
       { name: 'Home', url: `${SITE_URL}/` },
@@ -811,7 +811,7 @@ export const caseStudyPageSchemas: Record<string, CaseStudySchemaData> = {
     ],
     article: {
       headline: 'Albertsons Case Study — AI-Powered Demand Forecasting',
-      description: 'How AGIX structured multi-signal demand intelligence to cut food waste by 45% and save $83M annually.',
+      description: 'How AGIX Technologies structured multi-signal demand intelligence to cut food waste by 45% and save $83M annually.',
       image: 'https://cms.agixtech.com/wp-content/uploads/2026/01/Albertsons-Case-Study-Image.png',
       client: 'Albertsons',
       industry: 'Retail',
@@ -820,7 +820,7 @@ export const caseStudyPageSchemas: Record<string, CaseStudySchemaData> = {
   'kroger': {
     webPage: {
       name: 'Kroger E-commerce Fulfillment AI Case Study',
-      description: 'How AGIX engineered fulfillment AI for Kroger to slice pick times by 47% and drop delivery costs by 42%.',
+      description: 'How AGIX Technologies engineered fulfillment AI for Kroger to slice pick times by 47% and drop delivery costs by 42%.',
     },
     breadcrumbs: [
       { name: 'Home', url: `${SITE_URL}/` },
@@ -829,7 +829,7 @@ export const caseStudyPageSchemas: Record<string, CaseStudySchemaData> = {
     ],
     article: {
       headline: 'Kroger Case Study — Smart Retail Fulfillment AI',
-      description: 'How AGIX engineered pick-path intelligence and smart substitutions for 2,700+ stores with 94% on-time delivery.',
+      description: 'How AGIX Technologies engineered pick-path intelligence and smart substitutions for 2,700+ stores with 94% on-time delivery.',
       image: 'https://cms.agixtech.com/wp-content/uploads/2026/01/Kroger-Case-Study-Image.png',
       client: 'Kroger',
       industry: 'Retail',
@@ -838,7 +838,7 @@ export const caseStudyPageSchemas: Record<string, CaseStudySchemaData> = {
   'stitch-fix': {
     webPage: {
       name: 'Stitch Fix Fashion AI Personalization Case Study',
-      description: 'How AGIX developed a stylist copilot for Stitch Fix to boost keep rates to 61% and cut 58% off styling time.',
+      description: 'How AGIX Technologies developed a stylist copilot for Stitch Fix to boost keep rates to 61% and cut 58% off styling time.',
     },
     breadcrumbs: [
       { name: 'Home', url: `${SITE_URL}/` },
@@ -847,7 +847,7 @@ export const caseStudyPageSchemas: Record<string, CaseStudySchemaData> = {
     ],
     article: {
       headline: 'Stitch Fix Case Study — AI-Powered Fashion Personalization',
-      description: 'How AGIX powered Stitch Fix with AI fit prediction and human-in-the-loop styling, boosting client value by 42%.',
+      description: 'How AGIX Technologies powered Stitch Fix with AI fit prediction and human-in-the-loop styling, boosting client value by 42%.',
       image: 'https://cms.agixtech.com/wp-content/uploads/2026/01/Stitch-Fix-Case-Study-Image.png',
       client: 'Stitch Fix',
       industry: 'Retail',
@@ -856,7 +856,7 @@ export const caseStudyPageSchemas: Record<string, CaseStudySchemaData> = {
   'ulta-beauty': {
     webPage: {
       name: 'Ulta Beauty Retail Personalization AI Case Study',
-      description: 'How AGIX built a personalization engine for Ulta Beauty to skyrocket conversions by 172% and drop churn by 57%.',
+      description: 'How AGIX Technologies built a personalization engine for Ulta Beauty to skyrocket conversions by 172% and drop churn by 57%.',
     },
     breadcrumbs: [
       { name: 'Home', url: `${SITE_URL}/` },
@@ -865,7 +865,7 @@ export const caseStudyPageSchemas: Record<string, CaseStudySchemaData> = {
     ],
     article: {
       headline: 'Ulta Beauty Case Study — Retail Loyalty Personalization AI',
-      description: 'How AGIX engineered predictive marketing and dynamic rewards for 37M Ulta Beauty members.',
+      description: 'How AGIX Technologies engineered predictive marketing and dynamic rewards for 37M Ulta Beauty members.',
       image: 'https://cms.agixtech.com/wp-content/uploads/2026/01/Ulta-Beauty-Case-Study-Image.png',
       client: 'Ulta Beauty',
       industry: 'Retail',
@@ -874,7 +874,7 @@ export const caseStudyPageSchemas: Record<string, CaseStudySchemaData> = {
   'quizlet': {
     webPage: {
       name: 'Quizlet Adaptive Learning AI Case Study',
-      description: 'How AGIX built Q-Chat for Quizlet to resolve 89% of misconceptions and boost learning gains by 67%.',
+      description: 'How AGIX Technologies built Q-Chat for Quizlet to resolve 89% of misconceptions and boost learning gains by 67%.',
     },
     breadcrumbs: [
       { name: 'Home', url: `${SITE_URL}/` },
@@ -883,7 +883,7 @@ export const caseStudyPageSchemas: Record<string, CaseStudySchemaData> = {
     ],
     article: {
       headline: 'Quizlet Case Study — Socratic AI Tutor for 60M Students',
-      description: 'How AGIX structured a Socratic AI tutor for 60M students to resolve 89% of misconceptions and boost learning gains by 67%.',
+      description: 'How AGIX Technologies structured a Socratic AI tutor for 60M students to resolve 89% of misconceptions and boost learning gains by 67%.',
       image: 'https://cms.agixtech.com/wp-content/uploads/2026/01/Quizlet-Case-Study-Image.png',
       client: 'Quizlet',
       industry: 'EdTech',
@@ -892,7 +892,7 @@ export const caseStudyPageSchemas: Record<string, CaseStudySchemaData> = {
   'knewton': {
     webPage: {
       name: 'Knewton Adaptive Learning Systems Case Study',
-      description: 'How AGIX engineered real-time AI feedback loops for Knewton to boost course completion by 109%.',
+      description: 'How AGIX Technologies engineered real-time AI feedback loops for Knewton to boost course completion by 109%.',
     },
     breadcrumbs: [
       { name: 'Home', url: `${SITE_URL}/` },
@@ -901,7 +901,7 @@ export const caseStudyPageSchemas: Record<string, CaseStudySchemaData> = {
     ],
     article: {
       headline: 'Knewton Case Study — Knowledge Graph AI for Adaptive Learning',
-      description: 'How AGIX developed knowledge graph mapping to deliver 683% better personalization and 109% course completion boost.',
+      description: 'How AGIX Technologies developed knowledge graph mapping to deliver 683% better personalization and 109% course completion boost.',
       image: 'https://cms.agixtech.com/wp-content/uploads/2026/01/Knewton-Case-Study-Image.png',
       client: 'Knewton',
       industry: 'EdTech',
@@ -910,7 +910,7 @@ export const caseStudyPageSchemas: Record<string, CaseStudySchemaData> = {
   'riiid-labs': {
     webPage: {
       name: 'Riiid Labs Adaptive Test Prep AI Case Study',
-      description: 'How AGIX built the Santa AI engine for Riiid Labs to increase exam scores by 176% while cutting study time by 58%.',
+      description: 'How AGIX Technologies built the Santa AI engine for Riiid Labs to increase exam scores by 176% while cutting study time by 58%.',
     },
     breadcrumbs: [
       { name: 'Home', url: `${SITE_URL}/` },
@@ -919,7 +919,7 @@ export const caseStudyPageSchemas: Record<string, CaseStudySchemaData> = {
     ],
     article: {
       headline: 'Riiid Labs Case Study — Precision Adaptive Test Intelligence',
-      description: 'How AGIX constructed diagnostic AI to map 400+ concept nodes and maximize study efficiency with 176% score improvement.',
+      description: 'How AGIX Technologies constructed diagnostic AI to map 400+ concept nodes and maximize study efficiency with 176% score improvement.',
       image: 'https://cms.agixtech.com/wp-content/uploads/2026/01/Riiid-Labs-Case-Study-Image.png',
       client: 'Riiid Labs',
       industry: 'EdTech',
@@ -928,7 +928,7 @@ export const caseStudyPageSchemas: Record<string, CaseStudySchemaData> = {
   'hilton-hotels': {
     webPage: {
       name: 'Hilton Hotels Guest Intelligence AI Case Study',
-      description: 'How AGIX engineered a guest intelligence engine for Hilton to increase RevPAR by 4.7% across 7,000 properties.',
+      description: 'How AGIX Technologies engineered a guest intelligence engine for Hilton to increase RevPAR by 4.7% across 7,000 properties.',
     },
     breadcrumbs: [
       { name: 'Home', url: `${SITE_URL}/` },
@@ -937,7 +937,7 @@ export const caseStudyPageSchemas: Record<string, CaseStudySchemaData> = {
     ],
     article: {
       headline: 'Hilton Hotels Case Study — Predictive Guest Intelligence',
-      description: 'How AGIX architected predictive upsell engines and real-time pricing for 173M annual guests across 7,000 properties.',
+      description: 'How AGIX Technologies architected predictive upsell engines and real-time pricing for 173M annual guests across 7,000 properties.',
       image: 'https://cms.agixtech.com/wp-content/uploads/2026/01/Hilton-Hotels-Case-Study-Image.png',
       client: 'Hilton Hotels',
       industry: 'Hospitality',
@@ -946,7 +946,7 @@ export const caseStudyPageSchemas: Record<string, CaseStudySchemaData> = {
   'housecanary': {
     webPage: {
       name: 'HouseCanary Property Valuation AI Case Study',
-      description: 'How AGIX structured an AVM engine for HouseCanary to achieve 97.2% accuracy across 400+ property signals.',
+      description: 'How AGIX Technologies structured an AVM engine for HouseCanary to achieve 97.2% accuracy across 400+ property signals.',
     },
     breadcrumbs: [
       { name: 'Home', url: `${SITE_URL}/` },
@@ -955,7 +955,7 @@ export const caseStudyPageSchemas: Record<string, CaseStudySchemaData> = {
     ],
     article: {
       headline: 'HouseCanary Case Study — Real-Time Property Valuation AI',
-      description: 'How AGIX orchestrated an AVM engine that analyzes 400+ signals with institutional-grade precision and 97.2% accuracy.',
+      description: 'How AGIX Technologies orchestrated an AVM engine that analyzes 400+ signals with institutional-grade precision and 97.2% accuracy.',
       image: 'https://cms.agixtech.com/wp-content/uploads/2026/01/HouseCanary-Case-Study-Image.png',
       client: 'HouseCanary',
       industry: 'Real Estate',
@@ -964,7 +964,7 @@ export const caseStudyPageSchemas: Record<string, CaseStudySchemaData> = {
   'mindtrip': {
     webPage: {
       name: 'Mindtrip Conversational Travel AI Case Study',
-      description: 'How AGIX architected a travel AI framework for Mindtrip that compressed planning cycles by 99%.',
+      description: 'How AGIX Technologies architected a travel AI framework for Mindtrip that compressed planning cycles by 99%.',
     },
     breadcrumbs: [
       { name: 'Home', url: `${SITE_URL}/` },
@@ -973,7 +973,7 @@ export const caseStudyPageSchemas: Record<string, CaseStudySchemaData> = {
     ],
     article: {
       headline: 'Mindtrip Case Study — AI-Driven Trip Discovery Engine',
-      description: 'How AGIX developed a conversational engine that understands traveler personas with 91% personalization accuracy.',
+      description: 'How AGIX Technologies developed a conversational engine that understands traveler personas with 91% personalization accuracy.',
       image: 'https://cms.agixtech.com/wp-content/uploads/2026/01/Mindtrip-Case-Study-Image.png',
       client: 'Mindtrip',
       industry: 'Travel',
@@ -982,7 +982,7 @@ export const caseStudyPageSchemas: Record<string, CaseStudySchemaData> = {
   'polyai': {
     webPage: {
       name: 'PolyAI Enterprise Voice AI Case Study',
-      description: 'How AGIX engineered a voice AI for PolyAI to resolve 89% of calls and reduce costs by 74%.',
+      description: 'How AGIX Technologies engineered a voice AI for PolyAI to resolve 89% of calls and reduce costs by 74%.',
     },
     breadcrumbs: [
       { name: 'Home', url: `${SITE_URL}/` },
@@ -991,7 +991,7 @@ export const caseStudyPageSchemas: Record<string, CaseStudySchemaData> = {
     ],
     article: {
       headline: 'PolyAI Case Study — Enterprise Voice AI Automation',
-      description: 'How AGIX optimized multilingual voice AI that handles millions of calls with 81% first-call resolution across 8+ languages.',
+      description: 'How AGIX Technologies optimized multilingual voice AI that handles millions of calls with 81% first-call resolution across 8+ languages.',
       image: 'https://cms.agixtech.com/wp-content/uploads/2026/01/PolyAI-Case-Study-Image.png',
       client: 'PolyAI',
       industry: 'Customer Service',
@@ -1000,7 +1000,7 @@ export const caseStudyPageSchemas: Record<string, CaseStudySchemaData> = {
   'brainfish': {
     webPage: {
       name: 'Brainfish Support AI Case Study',
-      description: 'How AGIX built a logic-led system for Brainfish to handle 83% of ticket volume via real-time intent alignment.',
+      description: 'How AGIX Technologies built a logic-led system for Brainfish to handle 83% of ticket volume via real-time intent alignment.',
     },
     breadcrumbs: [
       { name: 'Home', url: `${SITE_URL}/` },
@@ -1009,7 +1009,7 @@ export const caseStudyPageSchemas: Record<string, CaseStudySchemaData> = {
     ],
     article: {
       headline: 'Brainfish Case Study — AI-Powered Support Ticket Deflection',
-      description: 'How AGIX developed a knowledge distillation engine that handles 100k+ monthly queries with 83% ticket deflection.',
+      description: 'How AGIX Technologies developed a knowledge distillation engine that handles 100k+ monthly queries with 83% ticket deflection.',
       image: 'https://cms.agixtech.com/wp-content/uploads/2026/01/Brainfish-Case-Study-Image.png',
       client: 'Brainfish',
       industry: 'Customer Service',
@@ -1018,7 +1018,7 @@ export const caseStudyPageSchemas: Record<string, CaseStudySchemaData> = {
   'properti-ai': {
     webPage: {
       name: 'Properti AI Real Estate Matching Case Study',
-      description: 'How AGIX engineered a property matching engine for Properti AI to boost lead conversion by 156%.',
+      description: 'How AGIX Technologies engineered a property matching engine for Properti AI to boost lead conversion by 156%.',
     },
     breadcrumbs: [
       { name: 'Home', url: `${SITE_URL}/` },
@@ -1027,7 +1027,7 @@ export const caseStudyPageSchemas: Record<string, CaseStudySchemaData> = {
     ],
     article: {
       headline: 'Properti AI Case Study — Lifestyle-Aware Property Discovery',
-      description: 'How AGIX optimized lifestyle-aware search to boost lead conversion by 156% and achieve 89% match accuracy.',
+      description: 'How AGIX Technologies optimized lifestyle-aware search to boost lead conversion by 156% and achieve 89% match accuracy.',
       image: 'https://cms.agixtech.com/wp-content/uploads/2026/01/Properti-AI-Case-Study-Image.png',
       client: 'Properti AI',
       industry: 'Real Estate',
@@ -1036,7 +1036,7 @@ export const caseStudyPageSchemas: Record<string, CaseStudySchemaData> = {
   'dartmouth-college': {
     webPage: {
       name: 'Dartmouth College IT Support AI Case Study',
-      description: 'How AGIX built a 24/7 helpdesk for Dartmouth College to deflect 74% of tickets and achieve 2-minute resolution.',
+      description: 'How AGIX Technologies built a 24/7 helpdesk for Dartmouth College to deflect 74% of tickets and achieve 2-minute resolution.',
     },
     breadcrumbs: [
       { name: 'Home', url: `${SITE_URL}/` },
@@ -1045,7 +1045,7 @@ export const caseStudyPageSchemas: Record<string, CaseStudySchemaData> = {
     ],
     article: {
       headline: 'Dartmouth College Case Study — AI-Powered Campus IT Support',
-      description: 'How AGIX developed a support engine to handle routine IT queries with 74% ticket deflection and 96% satisfaction.',
+      description: 'How AGIX Technologies developed a support engine to handle routine IT queries with 74% ticket deflection and 96% satisfaction.',
       image: 'https://cms.agixtech.com/wp-content/uploads/2026/01/Dartmouth-Case-Study-Image.png',
       client: 'Dartmouth College',
       industry: 'Education',
@@ -1054,7 +1054,7 @@ export const caseStudyPageSchemas: Record<string, CaseStudySchemaData> = {
   'suno': {
     webPage: {
       name: 'Suno Generative Music AI Case Study',
-      description: 'How AGIX re-engineered Suno audio synthesis to drop generation time from 90s to 20s and increase user retention by 34%.',
+      description: 'How AGIX Technologies re-engineered Suno audio synthesis to drop generation time from 90s to 20s and increase user retention by 34%.',
     },
     breadcrumbs: [
       { name: 'Home', url: `${SITE_URL}/` },
@@ -1063,7 +1063,7 @@ export const caseStudyPageSchemas: Record<string, CaseStudySchemaData> = {
     ],
     article: {
       headline: 'Suno Case Study — Accelerating Generative Music Pipelines',
-      description: 'How AGIX integrated parallel processing pipelines for real-time music iteration and multi-GPU sharding.',
+      description: 'How AGIX Technologies integrated parallel processing pipelines for real-time music iteration and multi-GPU sharding.',
       image: 'https://cms.agixtech.com/wp-content/uploads/2026/01/Suno-Case-Study-Image.png',
       client: 'Suno',
       industry: 'Generative AI',
@@ -1072,7 +1072,7 @@ export const caseStudyPageSchemas: Record<string, CaseStudySchemaData> = {
   'innit': {
     webPage: {
       name: 'Innit Connected Kitchen AI Case Study',
-      description: 'How AGIX built a real-time cooking guidance engine that synchronized smart kitchen ecosystems for Innit.',
+      description: 'How AGIX Technologies built a real-time cooking guidance engine that synchronized smart kitchen ecosystems for Innit.',
     },
     breadcrumbs: [
       { name: 'Home', url: `${SITE_URL}/` },
@@ -1081,7 +1081,7 @@ export const caseStudyPageSchemas: Record<string, CaseStudySchemaData> = {
     ],
     article: {
       headline: 'Innit Case Study — Connected Kitchen Systems Engineering',
-      description: 'How AGIX architected appliance coordination to uplift recipe success rates by 89% and compress preparation cycles by 45%.',
+      description: 'How AGIX Technologies architected appliance coordination to uplift recipe success rates by 89% and compress preparation cycles by 45%.',
       image: 'https://cms.agixtech.com/wp-content/uploads/2026/01/Innit-Case-Study-Image.png',
       client: 'Innit',
       industry: 'IoT / Smart Home',
@@ -1090,7 +1090,7 @@ export const caseStudyPageSchemas: Record<string, CaseStudySchemaData> = {
   'hungryroot': {
     webPage: {
       name: 'Hungryroot Meal Planning AI Case Study',
-      description: 'How AGIX reduced food waste by 73% using the grocery optimization engine engineered for Hungryroot.',
+      description: 'How AGIX Technologies reduced food waste by 73% using the grocery optimization engine engineered for Hungryroot.',
     },
     breadcrumbs: [
       { name: 'Home', url: `${SITE_URL}/` },
@@ -1099,7 +1099,7 @@ export const caseStudyPageSchemas: Record<string, CaseStudySchemaData> = {
     ],
     article: {
       headline: 'Hungryroot Case Study — Customized Meal Planning AI',
-      description: 'How AGIX deployed a selection lattice that maps dietary requirements against weekly food logistics with 94% meal alignment.',
+      description: 'How AGIX Technologies deployed a selection lattice that maps dietary requirements against weekly food logistics with 94% meal alignment.',
       image: 'https://cms.agixtech.com/wp-content/uploads/2026/01/Hungryroot-Case-Study-Image.png',
       client: 'Hungryroot',
       industry: 'Food Tech',
@@ -1108,7 +1108,7 @@ export const caseStudyPageSchemas: Record<string, CaseStudySchemaData> = {
   'naratix': {
     webPage: {
       name: 'Naratix Content Localization AI Case Study',
-      description: 'How AGIX drove a 129% conversion uplift with a cultural adaptation framework for 28 markets.',
+      description: 'How AGIX Technologies drove a 129% conversion uplift with a cultural adaptation framework for 28 markets.',
     },
     breadcrumbs: [
       { name: 'Home', url: `${SITE_URL}/` },
@@ -1117,7 +1117,7 @@ export const caseStudyPageSchemas: Record<string, CaseStudySchemaData> = {
     ],
     article: {
       headline: 'Naratix Case Study — Multi-Market Content Localization',
-      description: 'How AGIX engineered a content automation studio to localize product content for 28 markets with 129% conversion uplift.',
+      description: 'How AGIX Technologies engineered a content automation studio to localize product content for 28 markets with 129% conversion uplift.',
       image: 'https://cms.agixtech.com/wp-content/uploads/2026/01/AlphaSense-Case-Study-Image.png',
       client: 'Naratix',
       industry: 'E-commerce',
@@ -1126,7 +1126,7 @@ export const caseStudyPageSchemas: Record<string, CaseStudySchemaData> = {
   'alphasense': {
     webPage: {
       name: 'AlphaSense Financial Research AI Case Study',
-      description: 'How AGIX helped AlphaSense achieve 97% faster research with 500% analyst productivity gains using NLP analytics.',
+      description: 'How AGIX Technologies helped AlphaSense achieve 97% faster research with 500% analyst productivity gains using NLP analytics.',
     },
     breadcrumbs: [
       { name: 'Home', url: `${SITE_URL}/` },
@@ -1135,7 +1135,7 @@ export const caseStudyPageSchemas: Record<string, CaseStudySchemaData> = {
     ],
     article: {
       headline: 'AlphaSense Case Study — AI-Powered Financial Research & NLP Analytics',
-      description: 'How AGIX engineered NLP-powered research systems that surface signals from earnings calls, filings, and research in seconds.',
+      description: 'How AGIX Technologies engineered NLP-powered research systems that surface signals from earnings calls, filings, and research in seconds.',
       image: 'https://cms.agixtech.com/wp-content/uploads/2026/01/AlphaSense-Case-Study-Image.png',
       client: 'AlphaSense',
       industry: 'Financial Services',
@@ -1144,7 +1144,7 @@ export const caseStudyPageSchemas: Record<string, CaseStudySchemaData> = {
   'navan': {
     webPage: {
       name: 'Navan Corporate Travel AI Case Study',
-      description: 'How AGIX lowered corporate travel overhead by 23% with an expense governance framework achieving 94% policy compliance.',
+      description: 'How AGIX Technologies lowered corporate travel overhead by 23% with an expense governance framework achieving 94% policy compliance.',
     },
     breadcrumbs: [
       { name: 'Home', url: `${SITE_URL}/` },
@@ -1153,7 +1153,7 @@ export const caseStudyPageSchemas: Record<string, CaseStudySchemaData> = {
     ],
     article: {
       headline: 'Navan Case Study — Corporate Spend Governance Systems',
-      description: 'How AGIX architected a risk-mapping engine that processes high-volume travel logistics and automates expense reporting in real-time.',
+      description: 'How AGIX Technologies architected a risk-mapping engine that processes high-volume travel logistics and automates expense reporting in real-time.',
       image: 'https://cms.agixtech.com/wp-content/uploads/2026/01/Navan-Case-Study-Image.png',
       client: 'Navan',
       industry: 'Corporate Travel',
@@ -1162,7 +1162,7 @@ export const caseStudyPageSchemas: Record<string, CaseStudySchemaData> = {
   'geovea': {
     webPage: {
       name: 'Geovea Dynamic Trip Planning AI Case Study',
-      description: 'How AGIX drove travel engagement by 214% with a route intelligence lattice providing 92% plan accuracy.',
+      description: 'How AGIX Technologies drove travel engagement by 214% with a route intelligence lattice providing 92% plan accuracy.',
     },
     breadcrumbs: [
       { name: 'Home', url: `${SITE_URL}/` },
@@ -1171,7 +1171,7 @@ export const caseStudyPageSchemas: Record<string, CaseStudySchemaData> = {
     ],
     article: {
       headline: 'Geovea Case Study — Dynamic Trip Itinerary Systems',
-      description: 'How AGIX deployed a synchronization framework with crowd-avoidance profiling to optimize journey flows and raise user ratings to 4.9/5.',
+      description: 'How AGIX Technologies deployed a synchronization framework with crowd-avoidance profiling to optimize journey flows and raise user ratings to 4.9/5.',
       image: 'https://cms.agixtech.com/wp-content/uploads/2026/01/Luxury-Escapes-Case-Study-Image.png',
       client: 'Geovea',
       industry: 'Travel',
@@ -1180,7 +1180,7 @@ export const caseStudyPageSchemas: Record<string, CaseStudySchemaData> = {
   'luxury-escapes': {
     webPage: {
       name: 'Luxury Escapes Premium Concierge AI Case Study',
-      description: 'How AGIX expanded concierge service capacity by 36x with a high-touch curation framework achieving 96/100 guest satisfaction.',
+      description: 'How AGIX Technologies expanded concierge service capacity by 36x with a high-touch curation framework achieving 96/100 guest satisfaction.',
     },
     breadcrumbs: [
       { name: 'Home', url: `${SITE_URL}/` },
@@ -1189,7 +1189,7 @@ export const caseStudyPageSchemas: Record<string, CaseStudySchemaData> = {
     ],
     article: {
       headline: 'Luxury Escapes Case Study — Premium Concierge Scaling Systems',
-      description: 'How AGIX developed a curation engine processing 47 preference signals to deliver bespoke VIP experiences for 4,500 guests daily.',
+      description: 'How AGIX Technologies developed a curation engine processing 47 preference signals to deliver bespoke VIP experiences for 4,500 guests daily.',
       image: 'https://cms.agixtech.com/wp-content/uploads/2026/01/AlphaSense-Case-Study-Image.png',
       client: 'Luxury Escapes',
       industry: 'Luxury Travel',

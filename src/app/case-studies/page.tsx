@@ -602,7 +602,7 @@ export default function CaseStudiesPage() {
             </h1>
 
             <p className="text-lg md:text-xl text-muted-foreground max-w-4xl mx-auto">
-              Explore how AGIX engineers Operational, Conversational, Decision, and Agentic Intelligence
+              Explore how AGIX Technologies engineers Operational, Conversational, Decision, and Agentic Intelligence
               across healthcare, finance, retail, education, travel, and global enterprises —
               not as features, but as production-ready systems.
             </p>
@@ -767,7 +767,7 @@ export default function CaseStudiesPage() {
             <div className="pt-4">
               <Button size="lg" className="bg-primary hover:bg-primary/90" asChild>
                 <a href="/" data-testid="button-cta-build">
-                  Build Your AI System with AGIX
+                  Build Your AI System with AGIX Technologies
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </a>
               </Button>

@@ -491,7 +491,7 @@ const faqItems = [
   },
   {
     question: "Can this work with my existing CRM and tools?",
-    answer: "Yes. AGIX builds AI systems that integrate with your current CRM, portals, and workflows — not replace them."
+    answer: "Yes. AGIX Technologies builds AI systems that integrate with your current CRM, portals, and workflows — not replace them."
   },
   {
     question: "Does AI work for rentals and commercial real estate too?",
@@ -531,7 +531,7 @@ const faqItems = [
   },
   {
     question: "What happens after deployment — are we on our own?",
-    answer: "No. AGIX works as a long-term AI systems partner, providing monitoring & optimization, improvements over time, and support as your business scales."
+    answer: "No. AGIX Technologies works as a long-term AI systems partner, providing monitoring & optimization, improvements over time, and support as your business scales."
   }
 ];
 
@@ -1446,7 +1446,7 @@ export default function RealEstateIndustryPage() {
               </p>
               <p className="text-muted-foreground mb-6 max-w-xl">
                 Whether you're an individual agent, a brokerage, a property manager, a developer, or building a proptech platform,
-                AGIX helps you identify where deals are leaking, which AI system fixes it, and what it realistically costs.
+                AGIX Technologies helps you identify where deals are leaking, which AI system fixes it, and what it realistically costs.
               </p>
 
             </motion.div>
@@ -1690,7 +1690,7 @@ export default function RealEstateIndustryPage() {
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               Real estate is not one business model — and AI must adapt accordingly.
-              AGIX builds role-specific AI systems, not one-size-fits-all tools.
+              AGIX Technologies builds role-specific AI systems, not one-size-fits-all tools.
             </p>
           </motion.div>
 
@@ -2079,7 +2079,7 @@ export default function RealEstateIndustryPage() {
             </p>
             <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
               Whether you are a solo agent, running a brokerage, managing properties, selling inventory as a developer, 
-              or building a proptech platform — AGIX will help you identify the right AI starting point, 
+              or building a proptech platform — AGIX Technologies will help you identify the right AI starting point, 
               avoid over-engineering, and build AI systems that actually close deals.
             </p>
             <div className="flex flex-wrap gap-4 justify-center">

@@ -52,7 +52,7 @@ export async function generateMetadata({
     `${SITE_URL}/og-image.png`;
 
   return {
-    title: { absolute: title.includes('| Agix') ? title : `${title} | Agix` },
+    title: { absolute: title.includes('| AGIX Technologies') ? title : `${title} | AGIX Technologies` },
     description,
     alternates: { canonical: canonicalUrl },
     openGraph: {

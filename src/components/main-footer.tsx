@@ -111,7 +111,7 @@ export function MainFooter() {
                 <Sparkles className="h-4 w-4 text-white" aria-hidden="true" />
               </div>
               <span className="text-xl font-bold">
-                AGIX<span className="text-primary">.</span>
+                AGIX Technologies<span className="text-primary">.</span>
               </span>
             </Link>
             <p className="mb-6 text-sm leading-relaxed text-slate-300">

@@ -117,7 +117,7 @@ export function IndustryServices({ services, industryName }: IndustryServicesPro
             <span className="text-primary">{industryName}</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-            AGIX builds custom AI systems tailored to your {industryName} specific challenges and workflows.
+            AGIX Technologies builds custom AI systems tailored to your {industryName} specific challenges and workflows.
           </p>
         </motion.div>
 

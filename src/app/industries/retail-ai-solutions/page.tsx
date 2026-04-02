@@ -342,7 +342,7 @@ const faqs = [
   },
   {
     question: "Will AI integrate with Shopify or WooCommerce?",
-    answer: "Yes. AGIX builds AI systems that integrate directly with Shopify, WooCommerce, Magento, and custom ecommerce platforms through their APIs."
+    answer: "Yes. AGIX Technologies builds AI systems that integrate directly with Shopify, WooCommerce, Magento, and custom ecommerce platforms through their APIs."
   },
   {
     question: "Can AI really reduce customer support tickets?",
@@ -1101,7 +1101,7 @@ export default function EcommerceIndustryPage() {
               </h1>
               <p className="text-lg text-muted-foreground mb-6">
                 From D2C brands and Shopify stores to marketplaces and retail chains,
-                AGIX builds AI systems that reduce support tickets, recover abandoned carts, and automate operations — with clear ROI.
+                AGIX Technologies builds AI systems that reduce support tickets, recover abandoned carts, and automate operations — with clear ROI.
               </p>
 
               <div className="p-4 bg-muted/50 rounded-lg border border-border">
@@ -1347,9 +1347,9 @@ export default function EcommerceIndustryPage() {
             <div>
               <Card className="bg-gradient-to-br from-primary/5 to-cyan-500/5">
                 <CardContent className="pt-6">
-                  <h3 className="text-xl font-bold mb-4">AGIX E-Commerce Expertise</h3>
+                  <h3 className="text-xl font-bold mb-4">AGIX Technologies E-Commerce Expertise</h3>
                   <p className="text-muted-foreground mb-4">
-                    AGIX is an AI-first systems engineering company focused on practical AI for e-commerce:
+                    AGIX Technologies is an AI-first systems engineering company focused on practical AI for e-commerce:
                   </p>
                   <ul className="space-y-2">
                     {[

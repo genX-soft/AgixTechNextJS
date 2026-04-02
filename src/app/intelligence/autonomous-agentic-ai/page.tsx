@@ -96,7 +96,7 @@ function HeroSection() {
           </h1>
 
           <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
-            AI systems that plan, decide, execute, and learn — independently, but within clear governance. Agix Technologies builds Autonomous Agentic Systems that take ownership of goals, execute across systems, and adapt over time — without losing human control.
+            AI systems that plan, decide, execute, and learn — independently, but within clear governance. AGIX Technologies builds Autonomous Agentic Systems that take ownership of goals, execute across systems, and adapt over time — without losing human control.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -542,7 +542,7 @@ function WhatMakesAgentic() {
             Without governance, autonomy becomes risk.
           </p>
           <p className="text-cyan-400 font-medium">
-            AGIX treats control as a first-class feature, not an afterthought.
+            AGIX Technologies treats control as a first-class feature, not an afterthought.
           </p>
         </motion.div>
       </div>
@@ -676,7 +676,7 @@ function AgixApproach() {
           className="text-center mb-12"
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            How Agix Technologies Approaches Agentic Systems Differently
+            How AGIX Technologies Approaches Agentic Systems Differently
           </h2>
         </motion.div>
 
@@ -690,7 +690,7 @@ function AgixApproach() {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <XCircle className="w-5 h-5 text-red-400" />
-                  Agix does not build:
+                  AGIX Technologies does not build:
                 </CardTitle>
               </CardHeader>
               <CardContent>
@@ -982,7 +982,7 @@ function RiskOfUngoverned() {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Shield className="w-5 h-5 text-cyan-400" />
-                  AGIX builds agentic systems where:
+                  AGIX Technologies builds agentic systems where:
                 </CardTitle>
               </CardHeader>
               <CardContent>
@@ -1091,7 +1091,7 @@ function ArchitectureSection() {
         >
           <Badge variant="outline" className="mb-4 border-cyan-500/50 text-cyan-400">Part 3</Badge>
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            The AGIX Autonomous Agentic System Architecture
+            The AGIX Technologies Autonomous Agentic System Architecture
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             Every agentic system we design follows a five-layer architecture that ensures autonomy without chaos.
@@ -1193,7 +1193,7 @@ function ArchitectureSection() {
           className="mt-8 text-center p-6 rounded-lg bg-slate-950 border border-cyan-500/20"
         >
           <p className="text-lg font-medium text-cyan-400">
-            AGIX builds autonomy that is bounded by design.
+            AGIX Technologies builds autonomy that is bounded by design.
           </p>
         </motion.div>
       </div>
@@ -1220,10 +1220,10 @@ function AgixMethodology() {
           className="text-center mb-12"
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            How AGIX Engineers Agentic Systems
+            How AGIX Technologies Engineers Agentic Systems
           </h2>
           <p className="text-muted-foreground">
-            AGIX does not deploy agents blindly. We follow a disciplined approach:
+            AGIX Technologies does not deploy agents blindly. We follow a disciplined approach:
           </p>
         </motion.div>
 
@@ -2364,7 +2364,7 @@ function IndustryUseCases() {
           className="mt-8 text-center"
         >
           <p className="text-muted-foreground">
-            AGIX designs <span className="text-cyan-400 font-medium">industry-aligned agentic architectures</span>, not generic agents.
+            AGIX Technologies designs <span className="text-cyan-400 font-medium">industry-aligned agentic architectures</span>, not generic agents.
           </p>
         </motion.div>
       </div>
@@ -2388,7 +2388,7 @@ function FAQSection() {
     },
     {
       question: "Can Autonomous AI agents go out of control?",
-      answer: "They can — if governance is missing. AGIX systems are built with boundaries, approvals, audit logs, and kill-switches.",
+      answer: "They can — if governance is missing. AGIX Technologies systems are built with boundaries, approvals, audit logs, and kill-switches.",
     },
     {
       question: "Do Autonomous Agentic Systems replace human employees?",
@@ -2408,7 +2408,7 @@ function FAQSection() {
     },
     {
       question: "Are Autonomous Agentic Systems safe for regulated industries?",
-      answer: "Yes — when designed with governance, auditability, and human-in-the-loop controls, which AGIX prioritizes.",
+      answer: "Yes — when designed with governance, auditability, and human-in-the-loop controls, which AGIX Technologies prioritizes.",
     },
     {
       question: "How long does it take to deploy an agentic system?",
@@ -2420,7 +2420,7 @@ function FAQSection() {
     },
     {
       question: "Can agentic systems integrate with existing tools?",
-      answer: "Yes. AGIX builds agentic systems that operate across existing APIs, platforms, and workflows.",
+      answer: "Yes. AGIX Technologies builds agentic systems that operate across existing APIs, platforms, and workflows.",
     },
     {
       question: "What's the difference between single-agent and multi-agent systems?",
@@ -2508,7 +2508,7 @@ function ClosingValueSection() {
             <span className="text-cyan-400 font-medium">Accountability Should Not Break.</span>
           </p>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Agix Technologies designs Autonomous Agentic Systems that execute reliably, adapt intelligently, and remain fully governed.
+            AGIX Technologies designs Autonomous Agentic Systems that execute reliably, adapt intelligently, and remain fully governed.
           </p>
           
           <div className="grid sm:grid-cols-3 gap-6 pt-8">
@@ -2533,7 +2533,7 @@ function ClosingValueSection() {
           </div>
           
           <p className="text-sm text-muted-foreground italic pt-4">
-            Agix Technologies builds AI systems that don't just act — they act responsibly.
+            AGIX Technologies builds AI systems that don't just act — they act responsibly.
           </p>
         </motion.div>
       </div>

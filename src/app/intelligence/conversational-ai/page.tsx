@@ -176,7 +176,7 @@ function HeroSection() {
           </h1>
 
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto" data-testid="text-hero-subheadline">
-            Most businesses already use chatbots or voice systems. The real challenge is not replying to customers — it's understanding intent, context, and urgency, then acting correctly. Agix Technologies builds Conversational Intelligence systems that turn everyday conversations into meaningful decisions and outcomes.
+            Most businesses already use chatbots or voice systems. The real challenge is not replying to customers — it's understanding intent, context, and urgency, then acting correctly. AGIX Technologies builds Conversational Intelligence systems that turn everyday conversations into meaningful decisions and outcomes.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-8">
@@ -853,7 +853,7 @@ function AgixMethodology() {
             Our Approach
           </Badge>
           <h2 className="text-3xl md:text-4xl font-bold mb-4" data-testid="heading-methodology">
-            How Agix Builds Conversational Intelligence
+            How AGIX Technologies Builds Conversational Intelligence
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             We follow a structured approach that ensures trust, adoption, and measurable impact.
@@ -1452,21 +1452,21 @@ function FAQSection() {
     { question: "What is Conversational Intelligence in simple terms?", answer: "Conversational Intelligence allows AI to understand intent and context in conversations and take the right action, not just reply with text or voice." },
     { question: "Is Conversational Intelligence the same as chatbots?", answer: "No. Chatbots respond to questions. Conversational Intelligence understands conversations, reasons safely, and connects to real business actions." },
     { question: "How is Conversational Intelligence different from Conversational AI?", answer: "Conversational AI often focuses on language generation. Conversational Intelligence focuses on understanding, decision-making, and outcomes, with governance and control." },
-    { question: "Are AI chatbots and voice agents safe for real customers?", answer: "They are safe only when designed with controls. Agix systems include human-in-the-loop, confidence thresholds, and auditability." },
+    { question: "Are AI chatbots and voice agents safe for real customers?", answer: "They are safe only when designed with controls. AGIX Technologies systems include human-in-the-loop, confidence thresholds, and auditability." },
     { question: "How do you prevent AI hallucinations in conversations?", answer: "By combining restricted knowledge sources, confidence scoring, decision rules, and human fallback mechanisms." },
     { question: "Can Conversational Intelligence work across chat, voice, and WhatsApp?", answer: "Yes. Conversational Intelligence is channel-agnostic and can operate across chat, voice, and messaging platforms." },
     { question: "Do I need a large dataset to start?", answer: "No. Conversational Intelligence systems can start with existing conversations and improve over time." },
     { question: "Will Conversational Intelligence replace human agents?", answer: "No. It reduces repetitive work and supports humans, allowing agents to focus on complex cases." },
     { question: "How long does it take to implement Conversational Intelligence?", answer: "Early value can be seen in 4-6 weeks, with more advanced capabilities rolling out gradually." },
     { question: "Is Conversational Intelligence expensive?", answer: "Cost depends on complexity, but starting with assistive intelligence is affordable compared to large automation projects." },
-    { question: "Can Conversational Intelligence integrate with CRM and internal systems?", answer: "Yes. Agix builds systems that integrate with CRM, ticketing, scheduling, and backend platforms." },
+    { question: "Can Conversational Intelligence integrate with CRM and internal systems?", answer: "Yes. AGIX Technologies builds systems that integrate with CRM, ticketing, scheduling, and backend platforms." },
     { question: "How does Conversational Intelligence handle sensitive data?", answer: "Through access controls, data masking, role-based permissions, and compliance-aware design." },
     { question: "What is the biggest mistake companies make with conversational AI?", answer: "Deploying LLMs without governance, intent control, or escalation logic." },
     { question: "Can Conversational Intelligence handle multilingual users?", answer: "Yes. It can understand and respond in multiple languages while maintaining context." },
     { question: "How does Conversational Intelligence improve over time?", answer: "It learns from successful resolutions, human corrections, feedback loops, and new conversation patterns." },
     { question: "Is Conversational Intelligence suitable for internal operations?", answer: "Absolutely. Many companies use it for IT, HR, and internal support to reduce ticket volume." },
     { question: "What types of conversations should not be automated?", answer: "High-risk, highly subjective, or legally sensitive conversations should always involve human oversight." },
-    { question: "How do we decide where to start with Conversational Intelligence?", answer: "That's why Agix provides Solution Finder and Risk Assessment tools — to guide safe starting points." },
+    { question: "How do we decide where to start with Conversational Intelligence?", answer: "That's why AGIX Technologies provides Solution Finder and Risk Assessment tools — to guide safe starting points." },
     { question: "Can Conversational Intelligence help increase sales?", answer: "Yes, by qualifying leads, answering product questions, reducing response time, and guiding users to the right next step." },
     { question: "Is Conversational Intelligence a one-time setup?", answer: "No. It's a living system that evolves as conversations, products, and customers change." },
   ];

@@ -354,7 +354,7 @@ const voiceEngineLayers = [
       "Dynamic response generation",
       "Context-aware interactions"
     ],
-    outputs: ["AGIX does not rely on static scripts.", "We design adaptive conversation systems."]
+    outputs: ["AGIX Technologies does not rely on static scripts.", "We design adaptive conversation systems."]
   },
   {
     number: 3,
@@ -436,7 +436,7 @@ const voiceEngineLayers = [
       "Finance & insurance",
       "Enterprise IT environments"
     ],
-    outputs: ["Voice AI without governance is a liability.", "AGIX builds trust-first voice systems."]
+    outputs: ["Voice AI without governance is a liability.", "AGIX Technologies builds trust-first voice systems."]
   },
   {
     number: 7,
@@ -539,7 +539,7 @@ const faqItems = [
   },
   {
     question: "Can AI voice agents handle complex conversations?",
-    answer: "Yes, within defined boundaries. AGIX designs human-fallback logic for edge cases and compliance-sensitive situations."
+    answer: "Yes, within defined boundaries. AGIX Technologies designs human-fallback logic for edge cases and compliance-sensitive situations."
   },
   {
     question: "Can AI voice agents work 24/7?",
@@ -547,7 +547,7 @@ const faqItems = [
   },
   {
     question: "Do customers know they are talking to AI?",
-    answer: "This depends on compliance and business preference. AGIX supports transparent disclosure or hybrid approaches where required."
+    answer: "This depends on compliance and business preference. AGIX Technologies supports transparent disclosure or hybrid approaches where required."
   },
   {
     question: "Can AI voice agents book appointments automatically?",
@@ -555,7 +555,7 @@ const faqItems = [
   },
   {
     question: "Are AI voice agents secure?",
-    answer: "AGIX implements access controls, call recording governance, data masking, and audit trails. Security is built into the system, not added later."
+    answer: "AGIX Technologies implements access controls, call recording governance, data masking, and audit trails. Security is built into the system, not added later."
   },
   {
     question: "Can AI voice agents integrate with CRM and internal tools?",
@@ -571,7 +571,7 @@ const faqItems = [
   },
   {
     question: "Are AI voice agents legal and compliant?",
-    answer: "Yes, when designed correctly. AGIX builds voice agents aligned with regulatory and industry requirements."
+    answer: "Yes, when designed correctly. AGIX Technologies builds voice agents aligned with regulatory and industry requirements."
   },
   {
     question: "What businesses benefit most from AI voice agents?",
@@ -1158,7 +1158,7 @@ export default function AIVoiceAgents() {
               </p>
               
               <p className="text-gray-400 mb-8 max-w-xl">
-                AGIX builds AI Voice Agents that handle real phone conversations — answering calls, booking appointments, qualifying leads, resolving support queries, and executing workflows automatically.
+                AGIX Technologies builds AI Voice Agents that handle real phone conversations — answering calls, booking appointments, qualifying leads, resolving support queries, and executing workflows automatically.
               </p>
 
               <div className="bg-white/5 backdrop-blur-sm rounded-lg p-4 border border-white/10 mb-8">
@@ -1371,7 +1371,7 @@ export default function AIVoiceAgents() {
             >
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
                 What AI Voice Agents Mean at{" "}
-                <span className="text-primary">AGIX</span>
+                <span className="text-primary">AGIX Technologies</span>
               </h2>
               
               <p className="text-muted-foreground mb-6">
@@ -1402,7 +1402,7 @@ export default function AIVoiceAgents() {
             >
               <Card className="bg-gradient-to-br from-primary/10 to-cyan-500/10 border-primary/20">
                 <CardContent className="pt-6">
-                  <h3 className="font-semibold text-lg mb-4">AGIX voice agents combine:</h3>
+                  <h3 className="font-semibold text-lg mb-4">AGIX Technologies voice agents combine:</h3>
                   <div className="grid grid-cols-2 gap-4">
                     {[
                       { icon: Mic, label: "Speech-to-text" },
@@ -1548,7 +1548,7 @@ export default function AIVoiceAgents() {
               <span className="text-primary">Handle?</span>
             </h2>
             <p className="text-muted-foreground">
-              AI voice agents built by AGIX can manage:
+              AI voice agents built by AGIX Technologies can manage:
             </p>
           </motion.div>
 
@@ -1730,7 +1730,7 @@ export default function AIVoiceAgents() {
         </div>
       </section>
 
-      {/* AGIX Voice Intelligence Engine */}
+      {/* AGIX Technologies Voice Intelligence Engine */}
       <section className="py-20 bg-gradient-to-b from-muted/30 to-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <motion.div
@@ -1744,7 +1744,7 @@ export default function AIVoiceAgents() {
               Our Approach
             </Badge>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              The AGIX Voice Intelligence Engine
+              The AGIX Technologies Voice Intelligence Engine
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               A 7-Layer System Built for Production-Grade Voice AI
@@ -1862,7 +1862,7 @@ export default function AIVoiceAgents() {
               <span className="text-primary">Stack</span>
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Enterprise-grade voice AI infrastructure used by AGIX. Modular, vendor-agnostic stack selected based on use case, scale, latency, compliance, and cost efficiency.
+              Enterprise-grade voice AI infrastructure used by AGIX Technologies. Modular, vendor-agnostic stack selected based on use case, scale, latency, compliance, and cost efficiency.
             </p>
           </motion.div>
 
@@ -1986,7 +1986,7 @@ export default function AIVoiceAgents() {
                 </div>
               </div>
               <p className="text-center text-sm text-muted-foreground mt-6">
-                AGIX designs systems to minimize token waste, optimize call duration, and balance quality vs cost.
+                AGIX Technologies designs systems to minimize token waste, optimize call duration, and balance quality vs cost.
               </p>
             </CardContent>
           </Card>
@@ -2044,7 +2044,7 @@ export default function AIVoiceAgents() {
             </h2>
             
             <p className="text-gray-300 mb-8 max-w-2xl mx-auto">
-              If your business handles high call volumes, appointment scheduling, sales or support calls, or multilingual customers — AGIX can help you automate voice without breaking trust.
+              If your business handles high call volumes, appointment scheduling, sales or support calls, or multilingual customers — AGIX Technologies can help you automate voice without breaking trust.
             </p>
 
             <div className="flex flex-wrap gap-4 justify-center mb-8">
