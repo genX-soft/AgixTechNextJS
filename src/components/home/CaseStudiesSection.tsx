@@ -82,7 +82,7 @@ export default function CaseStudiesSection() {
             Real Results, Real Impact
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            See how businesses across industries have transformed their operations with AGIX.
+            See how businesses across industries have transformed their operations with AGIX Technologies.
           </p>
         </motion.div>
 

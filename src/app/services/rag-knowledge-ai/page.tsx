@@ -141,7 +141,7 @@ const architectureLayers = [
     number: 1,
     title: "Knowledge Discovery & Source Mapping",
     subtitle: "The Foundation Most Teams Skip",
-    description: "Before touching AI models, AGIX maps what knowledge exists, where it lives, which sources are authoritative, which are outdated, and who owns each knowledge domain.",
+    description: "Before touching AI models, AGIX Technologies maps what knowledge exists, where it lives, which sources are authoritative, which are outdated, and who owns each knowledge domain.",
     outputs: ["Knowledge source map", "Ownership & freshness tagging", "Priority-based ingestion plan"],
     color: "from-blue-500 to-blue-600"
   },
@@ -157,7 +157,7 @@ const architectureLayers = [
     number: 3,
     title: "Vector Indexing & Retrieval Logic",
     subtitle: "Semantic Search Done Correctly",
-    description: "AGIX optimizes for relevance, precision, recall, and freshness using semantic similarity, hybrid search, metadata constraints, top-k tuning, and confidence thresholds.",
+    description: "AGIX Technologies optimizes for relevance, precision, recall, and freshness using semantic similarity, hybrid search, metadata constraints, top-k tuning, and confidence thresholds.",
     outputs: ["Vector database setup", "Hybrid search configuration", "Retrieval optimization"],
     color: "from-teal-500 to-teal-600"
   },
@@ -173,7 +173,7 @@ const architectureLayers = [
     number: 5,
     title: "Access Control, Privacy & Governance",
     subtitle: "Critical for SMBs & Enterprises",
-    description: "AGIX enforces role-based access control, data isolation, knowledge-level permissions, audit logs for every query, and secure API boundaries.",
+    description: "AGIX Technologies enforces role-based access control, data isolation, knowledge-level permissions, audit logs for every query, and secure API boundaries.",
     outputs: ["Role-based access", "Audit trails", "Compliance readiness"],
     color: "from-amber-500 to-amber-600"
   },
@@ -338,7 +338,7 @@ const roiDrivers = [
 const buyVsBuild = [
   { option: "DIY RAG", reality: "High effort, poor accuracy" },
   { option: "Generic tools", reality: "Limited control & trust" },
-  { option: "AGIX RAG", reality: "Reliable, secure, scalable" }
+  { option: "AGIX Technologies RAG", reality: "Reliable, secure, scalable" }
 ];
 
 const faqItems = [
@@ -364,7 +364,7 @@ const faqItems = [
   },
   {
     question: "Is company data safe in a RAG system?",
-    answer: "Yes — when designed correctly. AGIX RAG systems ensure data isolation, role-based access control, no training on public models, secure retrieval pipelines, and full audit logs. Your data remains private and controlled."
+    answer: "Yes — when designed correctly. AGIX Technologies RAG systems ensure data isolation, role-based access control, no training on public models, secure retrieval pipelines, and full audit logs. Your data remains private and controlled."
   },
   {
     question: "What is the difference between enterprise search and RAG?",
@@ -392,7 +392,7 @@ const faqItems = [
   },
   {
     question: "How do you keep RAG knowledge up to date?",
-    answer: "AGIX implements scheduled re-indexing, version control, knowledge ownership tagging, and monitoring for outdated responses. This prevents knowledge decay over time."
+    answer: "AGIX Technologies implements scheduled re-indexing, version control, knowledge ownership tagging, and monitoring for outdated responses. This prevents knowledge decay over time."
   },
   {
     question: "Is RAG suitable for small and mid-sized businesses?",
@@ -400,7 +400,7 @@ const faqItems = [
   },
   {
     question: "How do I know if my business is ready for RAG?",
-    answer: "You are RAG-ready if knowledge exists but is hard to find, employees ask repetitive questions, accuracy matters, and AI answers must be trusted. If not, AGIX helps you prepare your knowledge first."
+    answer: "You are RAG-ready if knowledge exists but is hard to find, employees ask repetitive questions, accuracy matters, and AI answers must be trusted. If not, AGIX Technologies helps you prepare your knowledge first."
   }
 ];
 
@@ -797,7 +797,7 @@ export default function RAGKnowledgeAIPage() {
                 Private. Accurate. Secure. Enterprise-Grade RAG Systems.
               </p>
               <p className="text-muted-foreground mb-8 max-w-xl">
-                AGIX builds RAG & Knowledge AI systems that allow AI models to retrieve, reason over, and answer questions using your internal data — documents, systems, policies, and knowledge bases — without exposing it to public models.
+                AGIX Technologies builds RAG & Knowledge AI systems that allow AI models to retrieve, reason over, and answer questions using your internal data — documents, systems, policies, and knowledge bases — without exposing it to public models.
               </p>
               <p className="text-sm text-primary font-medium mb-8">
                 This is how businesses move from AI demos to AI systems they can trust.
@@ -1014,7 +1014,7 @@ export default function RAGKnowledgeAIPage() {
         </div>
       </section>
 
-      {/* What AGIX RAG Includes */}
+      {/* What AGIX Technologies RAG Includes */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <motion.div
@@ -1024,10 +1024,10 @@ export default function RAGKnowledgeAIPage() {
             className="text-center mb-12"
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              What RAG & Knowledge AI Means at AGIX
+              What RAG & Knowledge AI Means at AGIX Technologies
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto mb-4">
-              At AGIX, RAG & Knowledge AI is not just vector databases, embeddings, or document upload + chat.
+              At AGIX Technologies, RAG & Knowledge AI is not just vector databases, embeddings, or document upload + chat.
             </p>
             <p className="text-primary font-medium">
               It is a knowledge system designed as enterprise infrastructure, not experiments.
@@ -1063,7 +1063,7 @@ export default function RAGKnowledgeAIPage() {
             className="text-center mb-12"
           >
             <Badge className="mb-4 bg-primary/10 text-primary border-primary/20">
-              The AGIX Knowledge Intelligence Architecture
+              The AGIX Technologies Knowledge Intelligence Architecture
             </Badge>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               A 6-Layer System Built for Accuracy & Trust
@@ -1219,7 +1219,7 @@ export default function RAGKnowledgeAIPage() {
               Simple & Clear Pricing
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              AGIX pricing for RAG systems is scope-based, not per-document or per-token hype.
+              AGIX Technologies pricing for RAG systems is scope-based, not per-document or per-token hype.
             </p>
           </motion.div>
 
@@ -1298,7 +1298,7 @@ export default function RAGKnowledgeAIPage() {
                   ))}
                 </div>
                 <p className="text-center mt-6 text-primary font-medium">
-                  AGIX prices reliability and trust, not "AI features."
+                  AGIX Technologies prices reliability and trust, not "AI features."
                 </p>
               </CardContent>
             </Card>

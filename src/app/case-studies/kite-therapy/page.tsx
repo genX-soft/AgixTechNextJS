@@ -134,7 +134,7 @@ export default function KiteTherapyCaseStudyPage() {
               <strong className="text-foreground">The Challenge:</strong> Kite Therapy faced a mental health capacity crisis: therapist shortages created 6–8 week waitlists for patients seeking support, including those in active distress. Between scheduled sessions, patients had no access to evidence-based coping tools, and therapists had no visibility into how patients were managing day-to-day. The gap between sessions was precisely when many patients needed support most.
             </p>
             <p>
-              <strong className="text-foreground">The Solution:</strong> AGIX built an empathetic AI companion that provides CBT-informed coping tools, guided reflection exercises, and mood tracking between therapy sessions. The system uses NLP to analyze patient message patterns for emotional distress signals, maintains a longitudinal view of mood trends, and automatically alerts therapists when indicators cross predefined thresholds that suggest the need for earlier intervention.
+              <strong className="text-foreground">The Solution:</strong> AGIX Technologies built an empathetic AI companion that provides CBT-informed coping tools, guided reflection exercises, and mood tracking between therapy sessions. The system uses NLP to analyze patient message patterns for emotional distress signals, maintains a longitudinal view of mood trends, and automatically alerts therapists when indicators cross predefined thresholds that suggest the need for earlier intervention.
             </p>
             <p>
               <strong className="text-foreground">The Impact:</strong> Patient engagement between scheduled sessions tripled, with users voluntarily using the companion an average of 4.2 times per week. Therapists reported 40% better treatment outcomes—attributing the improvement to the continuous behavioral data that allowed more targeted, informed work during sessions. Crisis escalations were detected an average of 72 hours earlier than was possible without AI monitoring, enabling timely interventions that may have prevented hospitalizations.
@@ -380,7 +380,7 @@ export default function KiteTherapyCaseStudyPage() {
               <CardContent className="p-8 md:p-12">
                 <Quote className="w-12 h-12 text-rose-500/30 mb-6" />
                 <blockquote className="text-xl md:text-2xl font-medium leading-relaxed mb-8">
-                  "AGIX helped us build something that actually helps people—not just 
+                  "AGIX Technologies helped us build something that actually helps people—not just 
                   a chatbot that pretends to care. The emotional calibration system 
                   means responses feel genuine, and the crisis detection gives us 
                   confidence that we'll never miss someone who needs urgent help."

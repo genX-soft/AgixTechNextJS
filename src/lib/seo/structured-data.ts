@@ -1,6 +1,6 @@
 const SITE_URL = 'https://agixtech.com';
 const SITE_NAME = 'AGIX Technologies';
-const LOGO_URL = 'https://cms.agixtech.com/wp-content/uploads/2026/01/AGIX-Technologies-logo-scaled.png';
+const LOGO_URL = 'https://cms.agixtech.com/wp-content/uploads/2026/01/AGIX Technologies-Technologies-logo-scaled.png';
 
 export interface BreadcrumbItem {
   name: string;
@@ -19,6 +19,7 @@ export function generateOrganizationSchema() {
       "@id": `${SITE_URL}/#logo`
     },
     "description": "AI Systems Engineering and Agentic Intelligence company helping enterprises design, deploy, and scale autonomous AI systems.",
+    "telephone": "+18574141353",
     "foundingDate": "2020",
     "sameAs": [
       "https://twitter.com/agixtech",

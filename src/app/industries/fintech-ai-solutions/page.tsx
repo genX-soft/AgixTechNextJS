@@ -442,7 +442,7 @@ const faqItems = [
   },
   {
     question: "How do regulators audit AI-based decisions?",
-    answer: "Through explainable model outputs, feature contribution logs, decision thresholds, human override records, and versioned model history. AGIX designs systems to be audit-ready by default.",
+    answer: "Through explainable model outputs, feature contribution logs, decision thresholds, human override records, and versioned model history. AGIX Technologies designs systems to be audit-ready by default.",
   },
   {
     question: "Are these AI models black boxes?",
@@ -493,8 +493,8 @@ const faqItems = [
     answer: "Yes. AI systems are configured to align with region-specific regulatory frameworks, not hard-coded assumptions.",
   },
   {
-    question: "What role does AGIX play after deployment?",
-    answer: "AGIX works as a long-term AI systems partner, providing monitoring & optimization, governance updates, model tuning, and expansion planning.",
+    question: "What role does AGIX Technologies play after deployment?",
+    answer: "AGIX Technologies works as a long-term AI systems partner, providing monitoring & optimization, governance updates, model tuning, and expansion planning.",
   },
 ];
 
@@ -1352,7 +1352,7 @@ export default function FintechIndustryPage() {
               </p>
               <p className="text-muted-foreground mb-6 max-w-xl">
                 From FinTech startups and digital lenders to NBFCs, banks, and embedded finance platforms,
-                AGIX builds AI systems that accelerate underwriting, reduce default risk, automate compliance,
+                AGIX Technologies builds AI systems that accelerate underwriting, reduce default risk, automate compliance,
                 and strengthen customer trust — with explainable decisions.
               </p>
 
@@ -1922,7 +1922,7 @@ export default function FintechIndustryPage() {
                 ))}
               </div>
               <p className="text-center text-sm text-muted-foreground mt-6 p-4 bg-primary/5 rounded-lg">
-                AGIX builds governed, auditable AI systems for regulated finance.
+                AGIX Technologies builds governed, auditable AI systems for regulated finance.
                 We design decision systems that regulators, auditors, and customers can trust.
               </p>
             </CardContent>
@@ -1984,7 +1984,7 @@ export default function FintechIndustryPage() {
             </p>
             <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
               Whether you're a FinTech startup, digital lender, NBFC, or bank,
-              AGIX helps you choose safe, high-impact AI entry points,
+              AGIX Technologies helps you choose safe, high-impact AI entry points,
               avoid black-box risk, and scale decisions responsibly.
             </p>
             <div className="flex flex-wrap gap-4 justify-center">

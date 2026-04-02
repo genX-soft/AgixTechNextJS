@@ -96,8 +96,12 @@ function HeroSection() {
             </span>
           </h1>
 
+          <p className="text-base md:text-lg text-slate-300 max-w-2xl mx-auto mb-6 leading-relaxed border border-primary/20 bg-primary/5 rounded-lg px-6 py-3">
+            AGIX Technologies is a US-based AI systems engineering company headquartered in Boston, MA, founded in 2024.
+          </p>
+
           <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto mb-8 leading-relaxed">
-            We didn't start AGIX to build AI tools.
+            We didn't start AGIX Technologies to build AI tools.
             <span className="block mt-2 text-foreground font-medium">
               We built it to fix how AI is applied in the real world.
             </span>
@@ -199,7 +203,7 @@ function CoreTruthSection() {
 
               <div className="mt-12 text-center">
                 <p className="text-2xl font-bold bg-gradient-to-r from-primary to-blue-400 bg-clip-text text-transparent">
-                  AGIX exists to solve that gap.
+                  AGIX Technologies exists to solve that gap.
                 </p>
               </div>
             </CardContent>
@@ -246,7 +250,7 @@ function BeliefSection() {
                   <div className="w-10 h-10 rounded-lg bg-red-500/20 flex items-center justify-center">
                     <AlertTriangle className="w-5 h-5 text-red-400" />
                   </div>
-                  <h3 className="text-xl font-semibold text-red-400">AGIX Rejected the Idea That AI Is:</h3>
+                  <h3 className="text-xl font-semibold text-red-400">AGIX Technologies Rejected the Idea That AI Is:</h3>
                 </div>
                 <ul className="space-y-3">
                   {notAI.map((item, index) => (
@@ -321,7 +325,7 @@ function WhyWeBuiltSection() {
         <motion.div {...fadeInUp} className="text-center mb-16">
           <Badge variant="outline" className="mb-4 border-primary/40 bg-primary/10">
             <Rocket className="w-4 h-4 mr-2" />
-            Why We Built AGIX
+            Why We Built AGIX Technologies
           </Badge>
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             An Intelligence-First Company
@@ -382,7 +386,7 @@ function WhyWeBuiltSection() {
                   <div className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center">
                     <Sparkles className="w-5 h-5 text-primary" />
                   </div>
-                  <span className="text-sm font-medium text-primary uppercase tracking-wide">The AGIX Response</span>
+                  <span className="text-sm font-medium text-primary uppercase tracking-wide">The AGIX Technologies Response</span>
                 </div>
                 <p className="text-xl font-semibold text-foreground mb-2">
                   We responded by
@@ -397,7 +401,7 @@ function WhyWeBuiltSection() {
 
         <motion.div {...fadeInUp} className="mb-12">
           <div className="text-center p-8 rounded-xl bg-slate-800/50 border border-slate-700/50">
-            <p className="text-muted-foreground mb-3">AGIX was built to answer one core question:</p>
+            <p className="text-muted-foreground mb-3">AGIX Technologies was built to answer one core question:</p>
             <p className="text-xl md:text-2xl font-bold text-primary">
               "How do we make AI reliable, explainable, and safe enough to run real businesses?"
             </p>
@@ -461,13 +465,13 @@ function IntelligenceFrameworkSection() {
         <motion.div {...fadeInUp} className="text-center mb-16">
           <Badge variant="outline" className="mb-4 border-primary/40 bg-primary/10">
             <Layers className="w-4 h-4 mr-2" />
-            The AGIX Intelligence Framework
+            The AGIX Technologies Intelligence Framework
           </Badge>
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             A Systematic Way to Apply AI Without Losing Control
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Instead of selling isolated services, AGIX engineers interconnected intelligence layers:
+            Instead of selling isolated services, AGIX Technologies engineers interconnected intelligence layers:
           </p>
         </motion.div>
 
@@ -542,7 +546,7 @@ function SpecializationSection() {
               Not Models. Not Bots. Not Experiments.
             </p>
             <p className="text-lg text-muted-foreground mb-8">
-              AGIX specializes in AI systems engineering — the discipline of designing AI that works in the real world.
+              AGIX Technologies specializes in AI systems engineering — the discipline of designing AI that works in the real world.
             </p>
 
             <div className="space-y-4">
@@ -638,7 +642,7 @@ function DifferenceSection() {
             <Card className="h-full bg-primary/5 border-primary/20">
               <CardContent className="p-8">
                 <div className="text-center mb-6">
-                  <p className="text-muted-foreground mb-2">AGIX focuses on:</p>
+                  <p className="text-muted-foreground mb-2">AGIX Technologies focuses on:</p>
                   <div className="space-y-2">
                     <p className="text-xl font-bold text-primary">"What the AI should do"</p>
                     <p className="text-xl font-bold text-primary">"What it must not do"</p>
@@ -693,7 +697,7 @@ function JourneySection() {
       number: 3,
       title: "Systems Thinking",
       description: "We shifted focus from what AI can do to how AI should behave.",
-      highlight: "That shift became AGIX.",
+      highlight: "That shift became AGIX Technologies.",
       icon: Brain
     }
   ];
@@ -717,7 +721,7 @@ function JourneySection() {
             From Experiments to Enterprise-Grade Intelligence
           </h2>
           <p className="text-lg text-muted-foreground">
-            AGIX's journey mirrors the evolution of AI itself.
+            AGIX Technologies's journey mirrors the evolution of AI itself.
           </p>
         </motion.div>
 
@@ -974,7 +978,7 @@ function WhoWeWorkWithSection() {
                   <div className="w-10 h-10 rounded-lg bg-emerald-500/20 flex items-center justify-center">
                     <CheckCircle2 className="w-5 h-5 text-emerald-400" />
                   </div>
-                  <h3 className="text-xl font-semibold text-emerald-400">AGIX works best with organizations that:</h3>
+                  <h3 className="text-xl font-semibold text-emerald-400">AGIX Technologies works best with organizations that:</h3>
                 </div>
                 <ul className="space-y-3">
                   {bestFit.map((item, index) => (

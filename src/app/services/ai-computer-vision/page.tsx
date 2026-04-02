@@ -169,7 +169,7 @@ const architectureLayers = [
     number: 1,
     title: "Problem Framing & Visual Semantics",
     subtitle: "Where Most Vision Projects Go Wrong",
-    description: "Before touching data or models, AGIX clarifies what exactly needs to be seen, what constitutes success vs failure, what visual ambiguity is acceptable, and what happens when the system is uncertain.",
+    description: "Before touching data or models, AGIX Technologies clarifies what exactly needs to be seen, what constitutes success vs failure, what visual ambiguity is acceptable, and what happens when the system is uncertain.",
     outputs: ["Clear perception objectives", "Decision boundaries", "Risk tolerance definitions", "Human-override criteria"],
     color: "from-violet-500 to-violet-600"
   },
@@ -201,7 +201,7 @@ const architectureLayers = [
     number: 5,
     title: "Deployment, Optimization & Continuous Learning",
     subtitle: "Where Most Vision Systems Break",
-    description: "AGIX designs for edge vs cloud inference, hardware acceleration, latency constraints, and fail-safe behavior with performance monitoring, drift detection, and scheduled retraining.",
+    description: "AGIX Technologies designs for edge vs cloud inference, hardware acceleration, latency constraints, and fail-safe behavior with performance monitoring, drift detection, and scheduled retraining.",
     outputs: ["Edge/cloud optimization", "Drift detection", "Feedback loops", "Environment tuning"],
     color: "from-emerald-500 to-emerald-600"
   },
@@ -354,7 +354,7 @@ const buildVsBuy = [
   { option: "Off-the-shelf APIs", reality: "Break in real environments" },
   { option: "DIY research", reality: "High risk, slow" },
   { option: "Generic vendors", reality: "Demo-centric" },
-  { option: "AGIX systems", reality: "Research-backed, production-safe", highlight: true }
+  { option: "AGIX Technologies systems", reality: "Research-backed, production-safe", highlight: true }
 ];
 
 const faqItems = [
@@ -376,11 +376,11 @@ const faqItems = [
   },
   {
     question: "How accurate can Computer Vision systems realistically be?",
-    answer: "Accuracy depends on data quality and diversity, environmental variability, and definition of failure vs success. In real deployments, consistent and explainable performance matters more than peak accuracy numbers. AGIX focuses on reliable accuracy under changing conditions."
+    answer: "Accuracy depends on data quality and diversity, environmental variability, and definition of failure vs success. In real deployments, consistent and explainable performance matters more than peak accuracy numbers. AGIX Technologies focuses on reliable accuracy under changing conditions."
   },
   {
     question: "What data is required to build a Computer Vision system?",
-    answer: "Typically required: real-world images or video, representative edge cases, domain-specific labels, and metadata (lighting, camera type, environment). AGIX often begins with data feasibility audits before committing to models."
+    answer: "Typically required: real-world images or video, representative edge cases, domain-specific labels, and metadata (lighting, camera type, environment). AGIX Technologies often begins with data feasibility audits before committing to models."
   },
   {
     question: "How long does it take to build a Computer Vision system?",
@@ -392,19 +392,19 @@ const faqItems = [
   },
   {
     question: "Can Computer Vision run on edge devices?",
-    answer: "Yes. AGIX designs systems for edge inference, hybrid edge + cloud, and latency-sensitive environments. Model selection and optimization are tailored to hardware constraints."
+    answer: "Yes. AGIX Technologies designs systems for edge inference, hybrid edge + cloud, and latency-sensitive environments. Model selection and optimization are tailored to hardware constraints."
   },
   {
     question: "How do you handle bias and edge cases in vision systems?",
-    answer: "AGIX addresses this through data diversity analysis, targeted data collection, hard-example mining, synthetic data (where appropriate), and continuous feedback loops. Bias control is treated as an engineering requirement, not a research afterthought."
+    answer: "AGIX Technologies addresses this through data diversity analysis, targeted data collection, hard-example mining, synthetic data (where appropriate), and continuous feedback loops. Bias control is treated as an engineering requirement, not a research afterthought."
   },
   {
     question: "How do Computer Vision systems handle uncertainty or low confidence?",
-    answer: "Production systems must assign confidence scores, escalate uncertain cases, and avoid forced predictions. AGIX systems are designed to fail safely, not silently."
+    answer: "Production systems must assign confidence scores, escalate uncertain cases, and avoid forced predictions. AGIX Technologies systems are designed to fail safely, not silently."
   },
   {
     question: "Is Computer Vision suitable for safety-critical or regulated environments?",
-    answer: "Yes — when designed correctly. AGIX supports audit trails, explainable outcomes, human-in-the-loop workflows, versioned models, and compliance-aligned deployment. This is critical for healthcare, infrastructure, and industrial safety."
+    answer: "Yes — when designed correctly. AGIX Technologies supports audit trails, explainable outcomes, human-in-the-loop workflows, versioned models, and compliance-aligned deployment. This is critical for healthcare, infrastructure, and industrial safety."
   },
   {
     question: "How do Computer Vision systems improve over time?",
@@ -412,11 +412,11 @@ const faqItems = [
   },
   {
     question: "Can Computer Vision integrate with existing enterprise systems?",
-    answer: "Yes. AGIX integrates vision outputs into ERP systems, manufacturing execution systems, safety platforms, analytics dashboards, and decision workflows. Vision is most valuable when it drives action, not just insight."
+    answer: "Yes. AGIX Technologies integrates vision outputs into ERP systems, manufacturing execution systems, safety platforms, analytics dashboards, and decision workflows. Vision is most valuable when it drives action, not just insight."
   },
   {
     question: "How do we know if our use case is feasible for Computer Vision?",
-    answer: "A use case is viable if visual signals are meaningful, errors can be tolerated or managed, data can be collected reliably, and ROI outweighs complexity. AGIX conducts vision feasibility assessments before full builds."
+    answer: "A use case is viable if visual signals are meaningful, errors can be tolerated or managed, data can be collected reliably, and ROI outweighs complexity. AGIX Technologies conducts vision feasibility assessments before full builds."
   }
 ];
 
@@ -830,7 +830,7 @@ export default function ComputerVisionSolutionsPage() {
                 Production-Ready Computer Vision for High-Stakes, Real-World Environments
               </p>
               <p className="text-muted-foreground mb-6 max-w-xl">
-                AGIX designs Computer Vision systems that go beyond demos — systems that operate reliably in uncontrolled environments, scale across edge and cloud, and improve over time through continuous learning.
+                AGIX Technologies designs Computer Vision systems that go beyond demos — systems that operate reliably in uncontrolled environments, scale across edge and cloud, and improve over time through continuous learning.
               </p>
               <p className="text-primary font-medium mb-8">
                 This is vision AI for industries where accuracy, reliability, and failure modes matter.
@@ -969,7 +969,7 @@ export default function ComputerVisionSolutionsPage() {
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               The Real Enterprise Pain With Vision AI
             </h2>
-            <p className="text-muted-foreground">Across industries, AGIX consistently sees the same problems:</p>
+            <p className="text-muted-foreground">Across industries, AGIX Technologies consistently sees the same problems:</p>
           </motion.div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
@@ -1081,7 +1081,7 @@ export default function ComputerVisionSolutionsPage() {
         </div>
       </section>
 
-      {/* AGIX Mindset */}
+      {/* AGIX Technologies Mindset */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <motion.div
@@ -1094,10 +1094,10 @@ export default function ComputerVisionSolutionsPage() {
               Key Differentiator
             </Badge>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              The AGIX Computer Vision Mindset
+              The AGIX Technologies Computer Vision Mindset
             </h2>
             <p className="text-muted-foreground">
-              AGIX treats computer vision as a perception system that must:
+              AGIX Technologies treats computer vision as a perception system that must:
             </p>
           </motion.div>
 
@@ -1184,7 +1184,7 @@ export default function ComputerVisionSolutionsPage() {
             <Card className="bg-primary/5 border-primary/20 inline-block">
               <CardContent className="py-6 px-8">
                 <p className="text-lg">
-                  Most solutions stop at perception. <span className="text-primary font-semibold">AGIX designs all three layers end-to-end.</span>
+                  Most solutions stop at perception. <span className="text-primary font-semibold">AGIX Technologies designs all three layers end-to-end.</span>
                 </p>
               </CardContent>
             </Card>
@@ -1252,7 +1252,7 @@ export default function ComputerVisionSolutionsPage() {
             className="text-center mb-12"
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              What AGIX Means by "Computer Vision Solutions"
+              What AGIX Technologies Means by "Computer Vision Solutions"
             </h2>
             <p className="text-muted-foreground">All delivered as research-backed, production-ready systems.</p>
           </motion.div>
@@ -1306,7 +1306,7 @@ export default function ComputerVisionSolutionsPage() {
             className="text-center mb-12"
           >
             <Badge className="mb-4 bg-violet-500/10 text-violet-400 border-violet-500/20">
-              The AGIX Vision Systems Framework
+              The AGIX Technologies Vision Systems Framework
             </Badge>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               A 6-Layer Approach to Reliable Computer Vision
@@ -1432,7 +1432,7 @@ export default function ComputerVisionSolutionsPage() {
                         </div>
 
                         <div>
-                          <h4 className="font-semibold mb-3 text-sm uppercase tracking-wide text-muted-foreground">AGIX Design Approach</h4>
+                          <h4 className="font-semibold mb-3 text-sm uppercase tracking-wide text-muted-foreground">AGIX Technologies Design Approach</h4>
                           <ul className="space-y-2">
                             {cap.designApproach.map((item, i) => (
                               <li key={i} className="flex items-start gap-2 text-sm">
@@ -1452,7 +1452,7 @@ export default function ComputerVisionSolutionsPage() {
         </div>
       </section>
 
-      {/* Typical vs AGIX */}
+      {/* Typical vs AGIX Technologies */}
       <section className="py-20 bg-muted/30">
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <motion.div
@@ -1473,7 +1473,7 @@ export default function ComputerVisionSolutionsPage() {
                   <p className="text-sm font-semibold text-red-600 dark:text-red-500">Typical Vision Project</p>
                 </div>
                 <div className="text-center pb-4 border-b border-border">
-                  <p className="text-sm font-semibold text-primary">AGIX Vision System</p>
+                  <p className="text-sm font-semibold text-primary">AGIX Technologies Vision System</p>
                 </div>
                 {typicalVsAGIX.map((row, index) => (
                   <>
@@ -1506,7 +1506,7 @@ export default function ComputerVisionSolutionsPage() {
               Computer Vision Pricing Model
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              AGIX prices vision systems, not models or APIs. Pricing reflects risk, reliability, and long-term performance.
+              AGIX Technologies prices vision systems, not models or APIs. Pricing reflects risk, reliability, and long-term performance.
             </p>
           </motion.div>
 
@@ -1595,7 +1595,7 @@ export default function ComputerVisionSolutionsPage() {
                   ))}
                 </div>
                 <p className="text-center mt-6 text-primary font-medium">
-                  AGIX prices failure risk, not features.
+                  AGIX Technologies prices failure risk, not features.
                 </p>
               </CardContent>
             </Card>

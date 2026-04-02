@@ -57,7 +57,7 @@ const jobPositions = [
     title: "AI Engineer – LLMs & Generative AI",
     category: "AI",
     icon: Brain,
-    overview: "As an AI Engineer at AGIX, you will design and build LLM-powered systems such as RAG pipelines, AI assistants, and reasoning workflows that operate reliably in production environments.",
+    overview: "As an AI Engineer at AGIX Technologies, you will design and build LLM-powered systems such as RAG pipelines, AI assistants, and reasoning workflows that operate reliably in production environments.",
     responsibilities: [
       "Build and deploy LLM-based applications using structured and unstructured data",
       "Design and optimize RAG pipelines for accuracy and relevance",
@@ -174,7 +174,7 @@ const jobPositions = [
     title: "Backend Engineer (AI Systems)",
     category: "Engineering",
     icon: Server,
-    overview: "You will build the backbone that powers AGIX's AI systems — APIs, services, and integrations.",
+    overview: "You will build the backbone that powers AGIX Technologies's AI systems — APIs, services, and integrations.",
     responsibilities: [
       "Design and develop scalable backend services",
       "Integrate AI models and workflows into applications",
@@ -323,7 +323,7 @@ export default function CareersPage() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="text-lg text-muted-foreground max-w-2xl mx-auto"
             >
-              At AGIX, we don't just work with AI — we design intelligent systems that businesses rely on. If you care about clarity over hype, engineering over demos, and impact over buzzwords, you'll feel at home here.
+              At AGIX Technologies, we don't just work with AI — we design intelligent systems that businesses rely on. If you care about clarity over hype, engineering over demos, and impact over buzzwords, you'll feel at home here.
             </motion.p>
 
             <motion.div
@@ -352,7 +352,7 @@ export default function CareersPage() {
             <div className="space-y-8">
               <div>
                 <h2 className="text-2xl sm:text-3xl font-bold mb-4" data-testid="heading-why-work">
-                  Why Work at AGIX?
+                  Why Work at AGIX Technologies?
                 </h2>
               </div>
 

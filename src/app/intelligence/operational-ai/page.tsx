@@ -598,10 +598,10 @@ function AgixMethodology() {
         >
           <Badge variant="outline" className="border-orange-500/30 text-orange-400 mb-4" data-testid="badge-methodology">
             <Sparkles className="w-3 h-3 mr-1" />
-            The AGIX Way
+            The AGIX Technologies Way
           </Badge>
           <h2 className="text-3xl md:text-4xl font-bold mb-4" data-testid="heading-methodology">
-            How AGIX Approaches Operational Intelligence
+            How AGIX Technologies Approaches Operational Intelligence
           </h2>
         </motion.div>
 
@@ -684,7 +684,7 @@ function ResultsMetrics() {
             What Our Clients Achieve
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto" data-testid="text-results-description">
-            Real outcomes from businesses that implemented Operational Intelligence with AGIX.
+            Real outcomes from businesses that implemented Operational Intelligence with AGIX Technologies.
           </p>
         </motion.div>
 

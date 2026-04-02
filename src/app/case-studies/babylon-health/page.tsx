@@ -127,7 +127,7 @@ export default function BabylonHealthCaseStudyPage() {
               <strong className="text-foreground">The Challenge:</strong> Babylon Health needed to deploy clinical AI at global scale while meeting the rigorous safety and regulatory standards required in healthcare. Traditional rule-based systems couldn't handle the combinatorial complexity of differential diagnosis across millions of possible symptom presentations, and any AI operating in clinical settings faced intense scrutiny over explainability and error rates.
             </p>
             <p>
-              <strong className="text-foreground">The Solution:</strong> AGIX developed a probabilistic clinical reasoning engine trained on millions of de-identified patient cases and validated against established clinical guidelines across multiple jurisdictions. The system integrates safety guardrails that flag high-risk presentations for immediate escalation to clinicians, produces auditable decision trails for regulatory review, and continuously improves through structured clinician feedback loops.
+              <strong className="text-foreground">The Solution:</strong> AGIX Technologies developed a probabilistic clinical reasoning engine trained on millions of de-identified patient cases and validated against established clinical guidelines across multiple jurisdictions. The system integrates safety guardrails that flag high-risk presentations for immediate escalation to clinicians, produces auditable decision trails for regulatory review, and continuously improves through structured clinician feedback loops.
             </p>
             <p>
               <strong className="text-foreground">The Impact:</strong> The platform now serves 24 million users globally, with diagnostic accuracy benchmarks comparable to board-certified physicians in controlled validation studies. Unnecessary in-person visits dropped 60% among enrolled patients, reducing healthcare system strain while meaningfully expanding access to medical guidance in underserved markets. Regulatory approval was secured across multiple international markets.
@@ -305,7 +305,7 @@ export default function BabylonHealthCaseStudyPage() {
               <CardContent className="p-8 md:p-12">
                 <Quote className="w-12 h-12 text-teal-500/30 mb-6" />
                 <blockquote className="text-xl md:text-2xl font-medium leading-relaxed mb-8">
-                  "AGIX understood that in healthcare AI, the cost of a false negative is 
+                  "AGIX Technologies understood that in healthcare AI, the cost of a false negative is 
                   fundamentally different from a false positive. They built a system that 
                   errs on the side of safety while still being clinically useful. The regulatory 
                   bodies were impressed with the explainability framework."

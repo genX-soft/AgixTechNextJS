@@ -442,7 +442,7 @@ const faqItems = [
   },
   {
     question: "How is fraud explained to auditors and regulators?",
-    answer: "Through explainable model outputs, feature contribution scores, decision thresholds, and complete audit trails. AGIX designs systems to be audit-ready and regulator-friendly by default.",
+    answer: "Through explainable model outputs, feature contribution scores, decision thresholds, and complete audit trails. AGIX Technologies designs systems to be audit-ready and regulator-friendly by default.",
   },
   {
     question: "Is AI compliant with insurance regulations?",
@@ -485,7 +485,7 @@ const faqItems = [
     answer: "Yes. AI systems are configured to align with region-specific regulatory frameworks, not hard-coded assumptions. Multi-jurisdiction deployment is common.",
   },
   {
-    question: "How does AGIX handle data security?",
+    question: "How does AGIX Technologies handle data security?",
     answer: "Enterprise-grade security including encryption, access controls, audit logging, and compliance with SOC 2, HIPAA (for health), and other relevant standards.",
   },
   {
@@ -493,8 +493,8 @@ const faqItems = [
     answer: "Yes — through better risk selection in underwriting, earlier fraud detection, and more consistent claims handling. Most clients see 10-20% loss ratio improvement within 12 months.",
   },
   {
-    question: "What role does AGIX play after deployment?",
-    answer: "AGIX works as a long-term AI systems partner, providing monitoring, optimization, governance updates, model tuning, and expansion planning.",
+    question: "What role does AGIX Technologies play after deployment?",
+    answer: "AGIX Technologies works as a long-term AI systems partner, providing monitoring, optimization, governance updates, model tuning, and expansion planning.",
   },
 ];
 
@@ -1315,7 +1315,7 @@ export default function InsuranceIndustryPage() {
               <div className="p-4 bg-gradient-to-r from-muted/50 to-muted/30 rounded-lg border border-border/50">
                 <p className="text-lg text-muted-foreground leading-relaxed">
                   From insurance carriers and insurtech startups to MGAs, TPAs, and brokers—
-                  AGIX builds AI systems that shorten claim cycles, detect fraud early, improve underwriting accuracy, and keep operations audit-ready.
+                  AGIX Technologies builds AI systems that shorten claim cycles, detect fraud early, improve underwriting accuracy, and keep operations audit-ready.
                 </p>
               </div>
 
@@ -1975,7 +1975,7 @@ export default function InsuranceIndustryPage() {
       <footer className="py-12 border-t border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 text-center">
           <p className="text-muted-foreground">
-            AGIX builds governed, explainable AI systems for insurance operations.
+            AGIX Technologies builds governed, explainable AI systems for insurance operations.
           </p>
           <p className="text-sm text-muted-foreground mt-2">
             We don't deploy "AI tools." We design insurance decision systems that auditors, regulators, and customers can trust.

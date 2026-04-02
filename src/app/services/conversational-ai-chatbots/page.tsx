@@ -291,7 +291,7 @@ const intelligenceEngineLayers = [
       "Dynamic response generation",
       "Context-aware interactions"
     ],
-    outputs: ["AGIX designs multi-step reasoning flows, not single-prompt bots."]
+    outputs: ["AGIX Technologies designs multi-step reasoning flows, not single-prompt bots."]
   },
   {
     number: 3,
@@ -310,7 +310,7 @@ const intelligenceEngineLayers = [
       "Policy compliance",
       "Trustworthy responses"
     ],
-    outputs: ["LLMs are powerful — but ungrounded models hallucinate. AGIX prevents this."]
+    outputs: ["LLMs are powerful — but ungrounded models hallucinate. AGIX Technologies prevents this."]
   },
   {
     number: 4,
@@ -330,7 +330,7 @@ const intelligenceEngineLayers = [
       "System integration pipelines",
       "Real-time data sync"
     ],
-    outputs: ["A chatbot that only answers is not enough. AGIX builds action-capable systems."]
+    outputs: ["A chatbot that only answers is not enough. AGIX Technologies builds action-capable systems."]
   },
   {
     number: 5,
@@ -354,7 +354,7 @@ const intelligenceEngineLayers = [
   {
     number: 6,
     title: "Monitoring, QA & Continuous Optimization",
-    subtitle: "Why AGIX Systems Improve Over Time",
+    subtitle: "Why AGIX Technologies Systems Improve Over Time",
     icon: BarChart3,
     color: "from-pink-500 to-rose-500",
     whatWeAnalyze: [
@@ -390,7 +390,7 @@ const intelligenceEngineLayers = [
       "Finance & insurance governance",
       "Enterprise IT environments"
     ],
-    outputs: ["AGIX conversational AI is governed by design, not patched later."]
+    outputs: ["AGIX Technologies conversational AI is governed by design, not patched later."]
   }
 ];
 
@@ -447,7 +447,7 @@ const faqItems = [
   },
   {
     question: "Is conversational AI secure?",
-    answer: "Yes — when designed with access control, data governance, and audit logging, as AGIX does."
+    answer: "Yes — when designed with access control, data governance, and audit logging, as AGIX Technologies does."
   },
   {
     question: "Can conversational AI integrate with internal systems?",
@@ -463,7 +463,7 @@ const faqItems = [
   },
   {
     question: "Can conversational AI work internally and externally?",
-    answer: "Yes. AGIX designs conversational AI for customers, sales teams, and internal employees using the same core engine."
+    answer: "Yes. AGIX Technologies designs conversational AI for customers, sales teams, and internal employees using the same core engine."
   }
 ];
 
@@ -1005,7 +1005,7 @@ function ROICalculator() {
                     </div>
                     
                     <div>
-                      <div className="text-sm text-muted-foreground mb-1">Relevant AGIX Services</div>
+                      <div className="text-sm text-muted-foreground mb-1">Relevant AGIX Technologies Services</div>
                       <div className="flex flex-wrap gap-2">
                         <Badge variant="secondary">Conversational AI</Badge>
                         {explorerDepartment === "support" && <Badge variant="secondary">RAG & Knowledge AI</Badge>}
@@ -1147,7 +1147,7 @@ export default function ConversationalAIChatbots() {
               </p>
               
               <p className="text-gray-400 mb-6 max-w-xl">
-                AGIX builds enterprise-grade Conversational AI systems that handle customer conversations, assist sales, support internal teams, and interact with knowledge and systems — through a single, intelligent chat interface.
+                AGIX Technologies builds enterprise-grade Conversational AI systems that handle customer conversations, assist sales, support internal teams, and interact with knowledge and systems — through a single, intelligent chat interface.
               </p>
 
               <div className="bg-white/5 backdrop-blur-sm rounded-lg p-4 border border-white/10 mb-8">
@@ -1338,7 +1338,7 @@ export default function ConversationalAIChatbots() {
         </div>
       </section>
 
-      {/* What Conversational AI Means at AGIX */}
+      {/* What Conversational AI Means at AGIX Technologies */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -1349,7 +1349,7 @@ export default function ConversationalAIChatbots() {
             >
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
                 What Conversational AI Means at{" "}
-                <span className="text-primary">AGIX</span>
+                <span className="text-primary">AGIX Technologies</span>
               </h2>
               
               <p className="text-muted-foreground mb-6">
@@ -1431,7 +1431,7 @@ export default function ConversationalAIChatbots() {
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Traditional Chatbots vs{" "}
-              <span className="text-primary">AGIX Conversational AI</span>
+              <span className="text-primary">AGIX Technologies Conversational AI</span>
             </h2>
           </motion.div>
 
@@ -1442,7 +1442,7 @@ export default function ConversationalAIChatbots() {
                   Traditional Chatbots
                 </div>
                 <div className="p-4 bg-green-500/10 font-semibold text-center">
-                  AGIX Conversational AI
+                  AGIX Technologies Conversational AI
                 </div>
               </div>
               {comparisonData.map((row, i) => (
@@ -1627,7 +1627,7 @@ export default function ConversationalAIChatbots() {
         </div>
       </section>
 
-      {/* AGIX Conversational Intelligence Engine */}
+      {/* AGIX Technologies Conversational Intelligence Engine */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <motion.div
@@ -1641,7 +1641,7 @@ export default function ConversationalAIChatbots() {
               Our Approach
             </Badge>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              The AGIX Conversational Intelligence Engine
+              The AGIX Technologies Conversational Intelligence Engine
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               A 7-Layer Framework for Reliable, Scalable Conversational AI
@@ -1759,7 +1759,7 @@ export default function ConversationalAIChatbots() {
               <span className="text-primary">Architecture</span>
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              AGIX conversational systems include these core components for accuracy, scalability, and control.
+              AGIX Technologies conversational systems include these core components for accuracy, scalability, and control.
             </p>
           </motion.div>
 
@@ -1846,7 +1846,7 @@ export default function ConversationalAIChatbots() {
           <Card className="bg-muted/50">
             <CardContent className="pt-6 text-center">
               <p className="text-sm text-muted-foreground">
-                AGIX does not price chatbots per flow or per hour. Pricing ensures reliable systems, predictable costs, and long-term ROI.
+                AGIX Technologies does not price chatbots per flow or per hour. Pricing ensures reliable systems, predictable costs, and long-term ROI.
               </p>
             </CardContent>
           </Card>
@@ -1904,7 +1904,7 @@ export default function ConversationalAIChatbots() {
             </h2>
             
             <p className="text-gray-300 mb-8 max-w-2xl mx-auto">
-              If your business handles high conversation volume, repetitive support questions, sales inquiries, or internal knowledge requests — AGIX can help you deploy conversational AI without guesswork.
+              If your business handles high conversation volume, repetitive support questions, sales inquiries, or internal knowledge requests — AGIX Technologies can help you deploy conversational AI without guesswork.
             </p>
 
             <div className="flex flex-wrap gap-4 justify-center mb-8">

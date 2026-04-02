@@ -137,7 +137,7 @@ const coreCapabilities = [
     title: "Multi-Agent Collaboration",
     subtitle: "When One AI Is Not Enough",
     icon: Users,
-    description: "Instead of one 'do-everything' model, AGIX designs specialized agents, each responsible for a role — similar to a real team.",
+    description: "Instead of one 'do-everything' model, AGIX Technologies designs specialized agents, each responsible for a role — similar to a real team.",
     agentRoles: [
       { name: "Planner Agent", role: "breaks goals into steps" },
       { name: "Executor Agent", role: "performs actions" },
@@ -396,7 +396,7 @@ const faqItems = [
   },
   {
     question: "Is Agentic AI safe to use in real businesses?",
-    answer: "Yes — when designed with boundaries, governance, and human-in-the-loop controls. AGIX builds agentic systems with defined responsibility limits, escalation rules, audit logs, kill switches, and human approval gates. Unsafe agentic AI is a design failure, not a technology limitation."
+    answer: "Yes — when designed with boundaries, governance, and human-in-the-loop controls. AGIX Technologies builds agentic systems with defined responsibility limits, escalation rules, audit logs, kill switches, and human approval gates. Unsafe agentic AI is a design failure, not a technology limitation."
   },
   {
     question: "Can Agentic AI replace employees?",
@@ -424,7 +424,7 @@ const faqItems = [
   },
   {
     question: "Do Agentic AI systems require constant monitoring?",
-    answer: "They require observability, not micromanagement. AGIX systems include monitoring dashboards, decision logs, and alerts on anomalies. Humans are involved only when confidence is low or risk is high."
+    answer: "They require observability, not micromanagement. AGIX Technologies systems include monitoring dashboards, decision logs, and alerts on anomalies. Humans are involved only when confidence is low or risk is high."
   },
   {
     question: "Should startups use Agentic AI early?",
@@ -1407,7 +1407,7 @@ export default function AgenticAISystems() {
               </p>
               
               <p className="text-gray-400 mb-6">
-                AGIX designs Agentic AI Systems — AI architectures where multiple intelligent agents collaborate, reason, make decisions, use tools, and execute long-running objectives with minimal human intervention.
+                AGIX Technologies designs Agentic AI Systems — AI architectures where multiple intelligent agents collaborate, reason, make decisions, use tools, and execute long-running objectives with minimal human intervention.
               </p>
 
               <div className="bg-white/5 backdrop-blur-sm rounded-lg p-4 border border-white/10 mb-8">
@@ -1823,7 +1823,7 @@ export default function AgenticAISystems() {
             className="text-center mb-12"
           >
             <Badge className="mb-4 bg-primary/20 text-primary border-primary/30">
-              AGIX Agentic Systems Framework
+              AGIX Technologies Agentic Systems Framework
             </Badge>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               A 6-Layer Architecture for Controlled Autonomy
@@ -1898,7 +1898,7 @@ export default function AgenticAISystems() {
 
               <div className="mt-6 p-4 bg-background rounded-lg border border-border">
                 <p className="text-sm text-muted-foreground text-center">
-                  AGIX treats Agentic AI Systems as distributed software systems with intelligence, not experiments.
+                  AGIX Technologies treats Agentic AI Systems as distributed software systems with intelligence, not experiments.
                 </p>
               </div>
             </div>
@@ -2094,13 +2094,13 @@ export default function AgenticAISystems() {
                   ))}
                 </div>
                 <p className="text-center mt-6 text-lg font-semibold text-primary">
-                  AGIX prices responsibility, not novelty.
+                  AGIX Technologies prices responsibility, not novelty.
                 </p>
               </CardContent>
             </Card>
           </motion.div>
 
-          {/* How AGIX Helps */}
+          {/* How AGIX Technologies Helps */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -2109,7 +2109,7 @@ export default function AgenticAISystems() {
           >
             <Card className="bg-primary/5 border-primary/20">
               <CardContent className="pt-8 pb-8">
-                <h3 className="text-xl font-bold mb-4 text-center">How AGIX Helps You Choose the Right Tier</h3>
+                <h3 className="text-xl font-bold mb-4 text-center">How AGIX Technologies Helps You Choose the Right Tier</h3>
                 <p className="text-center text-muted-foreground mb-6">We don't upsell agentic AI. Instead, we:</p>
                 <div className="flex flex-wrap justify-center gap-3">
                   {["Assess your problem", "Recommend automation, conversational AI, or agents", "Define the minimum viable autonomy", "Design a system that can evolve safely"].map((item, i) => (
@@ -2296,7 +2296,7 @@ export default function AgenticAISystems() {
 
           <div className="mt-8 p-6 bg-primary/10 rounded-lg border border-primary/20 text-center">
             <p className="text-lg font-semibold text-primary">
-              AGIX builds controlled autonomy, not chaos.
+              AGIX Technologies builds controlled autonomy, not chaos.
             </p>
           </div>
         </div>
@@ -2379,7 +2379,7 @@ export default function AgenticAISystems() {
           <div className="flex items-start gap-3 p-4 bg-muted/30 rounded-lg">
             <Shield className="w-5 h-5 text-muted-foreground shrink-0 mt-0.5" />
             <p className="text-sm text-muted-foreground">
-              Agentic AI involves delegating responsibility to software. AGIX designs systems with bounded autonomy, auditability, and human oversight to ensure safety and reliability.
+              Agentic AI involves delegating responsibility to software. AGIX Technologies designs systems with bounded autonomy, auditability, and human oversight to ensure safety and reliability.
             </p>
           </div>
         </div>

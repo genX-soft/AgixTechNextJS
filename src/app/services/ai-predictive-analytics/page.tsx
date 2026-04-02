@@ -144,7 +144,7 @@ const architectureLayers = [
     number: 1,
     title: "Business Objective & Decision Mapping",
     subtitle: "Where Most Predictive Projects Fail",
-    description: "Before touching data or models, AGIX defines what decision this prediction influences, who acts on it, what options exist, consequences of error, and acceptable confidence levels.",
+    description: "Before touching data or models, AGIX Technologies defines what decision this prediction influences, who acts on it, what options exist, consequences of error, and acceptable confidence levels.",
     outputs: ["Decision map", "Prediction purpose definition", "Acceptable risk thresholds", "Human override rules"],
     color: "from-blue-500 to-blue-600"
   },
@@ -152,7 +152,7 @@ const architectureLayers = [
     number: 2,
     title: "Data Architecture & Signal Engineering",
     subtitle: "Predictive Accuracy Starts Here",
-    description: "Enterprise data is distributed, inconsistent, delayed, and owned by multiple teams. AGIX focuses on signal relevance (not volume), leading indicators, feature stability, and data freshness.",
+    description: "Enterprise data is distributed, inconsistent, delayed, and owned by multiple teams. AGIX Technologies focuses on signal relevance (not volume), leading indicators, feature stability, and data freshness.",
     outputs: ["Behavioral patterns", "Temporal trends", "Cross-system correlations", "External drivers"],
     color: "from-cyan-500 to-cyan-600"
   },
@@ -176,7 +176,7 @@ const architectureLayers = [
     number: 5,
     title: "Governance, Risk Controls & Compliance",
     subtitle: "Critical for Enterprises",
-    description: "Enterprises need accountability, auditability, control, and transparency. AGIX builds role-based access, audit logs, approval workflows, kill switches, and versioned models with rollback.",
+    description: "Enterprises need accountability, auditability, control, and transparency. AGIX Technologies builds role-based access, audit logs, approval workflows, kill switches, and versioned models with rollback.",
     outputs: ["Role-based access", "Audit logs", "Approval workflows", "Version control"],
     color: "from-amber-500 to-amber-600"
   },
@@ -184,7 +184,7 @@ const architectureLayers = [
     number: 6,
     title: "Decision Integration & Action Enablement",
     subtitle: "Where Value Is Realized",
-    description: "Predictions sitting in dashboards create zero ROI. AGIX integrates predictive intelligence into planning systems, CRM workflows, risk engines, operations dashboards, and decision processes.",
+    description: "Predictions sitting in dashboards create zero ROI. AGIX Technologies integrates predictive intelligence into planning systems, CRM workflows, risk engines, operations dashboards, and decision processes.",
     outputs: ["System integrations", "Workflow triggers", "Action recommendations", "Business outputs"],
     color: "from-orange-500 to-orange-600"
   }
@@ -196,7 +196,7 @@ const useCases = [
     title: "AI Forecasting",
     subtitle: "Demand, Revenue, Capacity & Operational Forecasting",
     icon: TrendingUp,
-    description: "AGIX forecasting systems learn from multi-year historical data, incorporate real-time signals, adjust continuously, provide confidence intervals, and explain why forecasts change.",
+    description: "AGIX Technologies forecasting systems learn from multi-year historical data, incorporate real-time signals, adjust continuously, provide confidence intervals, and explain why forecasts change.",
     problems: [
       "Historical averages fail when markets shift",
       "Excel-based forecasting breaks under volatility",
@@ -218,7 +218,7 @@ const useCases = [
     title: "Customer Insights & Behavior Prediction",
     subtitle: "Churn, Lifetime Value & Engagement Intelligence",
     icon: Users,
-    description: "AGIX systems predict churn probabilities, identify disengagement indicators, estimate customer lifetime value, surface high-risk segments, and trigger proactive interventions.",
+    description: "AGIX Technologies systems predict churn probabilities, identify disengagement indicators, estimate customer lifetime value, surface high-risk segments, and trigger proactive interventions.",
     problems: [
       "Know churn after it happens",
       "Segment customers manually",
@@ -240,7 +240,7 @@ const useCases = [
     title: "Risk & Fraud Detection AI",
     subtitle: "Detecting Anomalies Before Damage Occurs",
     icon: Shield,
-    description: "AGIX risk systems learn normal vs abnormal behavior, detect anomalies in real time, assign risk probabilities, adapt as patterns change, and reduce false positives.",
+    description: "AGIX Technologies risk systems learn normal vs abnormal behavior, detect anomalies in real time, assign risk probabilities, adapt as patterns change, and reduce false positives.",
     problems: [
       "Static rules can't adapt to evolving fraud",
       "High false positive rates",
@@ -262,7 +262,7 @@ const useCases = [
     title: "Recommendation Engines",
     subtitle: "Personalization That Drives Measurable Outcomes",
     icon: Sparkles,
-    description: "AGIX builds recommendation systems that learn from real-time behavior, balance relevance with business rules, optimize for business objectives (not just clicks), and improve through feedback loops.",
+    description: "AGIX Technologies builds recommendation systems that learn from real-time behavior, balance relevance with business rules, optimize for business objectives (not just clicks), and improve through feedback loops.",
     problems: [
       "Static recommendation rules",
       "Simple similarity matching fails",
@@ -362,7 +362,7 @@ const buyVsBuild = [
   { option: "DIY data science", reality: "Fragile, hard to scale" },
   { option: "BI extensions", reality: "Descriptive, not predictive" },
   { option: "Point AI tools", reality: "Narrow, siloed" },
-  { option: "AGIX systems", reality: "Governed, scalable, trusted", highlight: true }
+  { option: "AGIX Technologies systems", reality: "Governed, scalable, trusted", highlight: true }
 ];
 
 const faqItems = [
@@ -380,7 +380,7 @@ const faqItems = [
   },
   {
     question: "Is Predictive AI reliable for enterprise decisions?",
-    answer: "Yes — when designed with governance, explainability, and monitoring. AGIX systems provide confidence intervals, driver explanations, drift detection, and human override controls. This makes predictions trustworthy and decision-safe."
+    answer: "Yes — when designed with governance, explainability, and monitoring. AGIX Technologies systems provide confidence intervals, driver explanations, drift detection, and human override controls. This makes predictions trustworthy and decision-safe."
   },
   {
     question: "How accurate are Predictive AI models in practice?",
@@ -388,7 +388,7 @@ const faqItems = [
   },
   {
     question: "What data is required to build Predictive AI systems?",
-    answer: "Typically required: historical transaction or behavior data, time-based signals, outcome labels (e.g., churn, fraud, demand), and contextual business data. AGIX focuses on signal quality, not data volume."
+    answer: "Typically required: historical transaction or behavior data, time-based signals, outcome labels (e.g., churn, fraud, demand), and contextual business data. AGIX Technologies focuses on signal quality, not data volume."
   },
   {
     question: "How long does it take to implement Predictive AI?",
@@ -408,23 +408,23 @@ const faqItems = [
   },
   {
     question: "Are Predictive AI systems explainable to executives?",
-    answer: "They must be. AGIX designs explainability into every system: key drivers of predictions, scenario impact summaries, and confidence scoring. Executives should understand why a prediction exists, not just the number."
+    answer: "They must be. AGIX Technologies designs explainability into every system: key drivers of predictions, scenario impact summaries, and confidence scoring. Executives should understand why a prediction exists, not just the number."
   },
   {
     question: "What happens when predictions are wrong?",
-    answer: "AGIX systems track prediction error, monitor drift, trigger review or retraining, and allow human override. Predictive AI is designed to reduce uncertainty, not eliminate it entirely."
+    answer: "AGIX Technologies systems track prediction error, monitor drift, trigger review or retraining, and allow human override. Predictive AI is designed to reduce uncertainty, not eliminate it entirely."
   },
   {
     question: "Can Predictive AI integrate with existing enterprise systems?",
-    answer: "Yes. AGIX integrates predictive intelligence into CRMs, ERP systems, planning tools, risk engines, and operational workflows. Predictions influence actions, not just reports."
+    answer: "Yes. AGIX Technologies integrates predictive intelligence into CRMs, ERP systems, planning tools, risk engines, and operational workflows. Predictions influence actions, not just reports."
   },
   {
     question: "Is Predictive AI suitable for regulated industries?",
-    answer: "Yes — when governance is built in. AGIX supports audit logs, role-based access, approval workflows, and compliance-aligned controls. This makes systems suitable for finance, insurance, healthcare, and regulated enterprises."
+    answer: "Yes — when governance is built in. AGIX Technologies supports audit logs, role-based access, approval workflows, and compliance-aligned controls. This makes systems suitable for finance, insurance, healthcare, and regulated enterprises."
   },
   {
     question: "How do we know if Predictive AI is the right next step?",
-    answer: "You're a strong candidate if decisions repeat at scale, forecast errors are costly, risks are detected too late, and leadership wants foresight, not hindsight. If not, AGIX will recommend analytics maturity first."
+    answer: "You're a strong candidate if decisions repeat at scale, forecast errors are costly, risks are detected too late, and leadership wants foresight, not hindsight. If not, AGIX Technologies will recommend analytics maturity first."
   }
 ];
 
@@ -821,7 +821,7 @@ export default function PredictiveAnalyticsAIPage() {
                 Enterprise-grade AI for Forecasting, Risk, Customer Intelligence & Decision Optimization
               </p>
               <p className="text-muted-foreground mb-6 max-w-xl">
-                AGIX builds Predictive & Analytics AI systems that help large organizations anticipate outcomes, detect risks early, and optimize decisions across revenue, operations, customers, and finance.
+                AGIX Technologies builds Predictive & Analytics AI systems that help large organizations anticipate outcomes, detect risks early, and optimize decisions across revenue, operations, customers, and finance.
               </p>
               <p className="text-sm text-primary font-medium mb-4">
                 This is not BI or dashboards.
@@ -1083,7 +1083,7 @@ export default function PredictiveAnalyticsAIPage() {
               A Simple Mental Model
             </h2>
             <p className="text-muted-foreground">
-              Most enterprises stop at step two. AGIX helps you move into steps three and four.
+              Most enterprises stop at step two. AGIX Technologies helps you move into steps three and four.
             </p>
           </motion.div>
 
@@ -1176,7 +1176,7 @@ export default function PredictiveAnalyticsAIPage() {
             className="text-center mb-12"
           >
             <Badge className="mb-4 bg-primary/10 text-primary border-primary/20">
-              The AGIX Predictive Intelligence Architecture
+              The AGIX Technologies Predictive Intelligence Architecture
             </Badge>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               A 6-Layer Framework Built for Enterprise Reality
@@ -1339,7 +1339,7 @@ export default function PredictiveAnalyticsAIPage() {
         </div>
       </section>
 
-      {/* Weak vs AGIX */}
+      {/* Weak vs AGIX Technologies */}
       <section className="py-20 bg-muted/30">
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <motion.div
@@ -1361,7 +1361,7 @@ export default function PredictiveAnalyticsAIPage() {
                   <p className="text-sm font-semibold text-red-600 dark:text-red-500">Weak Predictive AI</p>
                 </div>
                 <div className="text-center pb-4 border-b border-border">
-                  <p className="text-sm font-semibold text-primary">AGIX Predictive Systems</p>
+                  <p className="text-sm font-semibold text-primary">AGIX Technologies Predictive Systems</p>
                 </div>
                 {weakVsAGIX.map((row, index) => (
                   <>
@@ -1394,7 +1394,7 @@ export default function PredictiveAnalyticsAIPage() {
               Enterprise Pricing Model
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              AGIX pricing reflects system complexity, decision criticality, and governance needs — not model count.
+              AGIX Technologies pricing reflects system complexity, decision criticality, and governance needs — not model count.
             </p>
           </motion.div>
 
@@ -1482,7 +1482,7 @@ export default function PredictiveAnalyticsAIPage() {
                   ))}
                 </div>
                 <p className="text-center mt-6 text-primary font-medium">
-                  AGIX prices decision responsibility, not "AI features".
+                  AGIX Technologies prices decision responsibility, not "AI features".
                 </p>
               </CardContent>
             </Card>

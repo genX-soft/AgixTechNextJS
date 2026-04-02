@@ -13,7 +13,7 @@ const WP_API_BASE = 'https://cms.agixtech.com/wp-json/wp/v2';
 export const metadata: Metadata = {
   title: 'AI & Automation Insights | AGIX Technologies',
   description:
-    'Expert perspectives on AI automation, enterprise AI implementation, and digital transformation strategies from the AGIX team.',
+    'Expert perspectives on AI automation, enterprise AI implementation, and digital transformation strategies from the AGIX Technologies team.',
   alternates: { canonical: 'https://agixtech.com/insights/' },
 };
 
@@ -52,7 +52,7 @@ export default async function InsightsPage() {
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10 text-center">
           <Badge variant="outline" className="mb-4 bg-white/10 text-white border-white/20">
-            AGIX Insights
+            AGIX Technologies Insights
           </Badge>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
             AI &amp; Automation{' '}

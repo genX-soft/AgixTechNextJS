@@ -216,7 +216,7 @@ const useCaseCategories = [
     useCases: ["Healthtech: AI triage, diagnostics, medical docs", "Fintech: Risk, fraud, credit scoring", "Edtech: AI tutors, adaptive learning", "Real Estate: Property intelligence, valuations", "E-commerce: Personalization, pricing AI"],
     struggles: ["Domain complexity", "Data sensitivity", "Trust & compliance", "Accuracy expectations"],
     agixApproach: ["Domain-aware AI systems", "Not generic wrappers", "Industry-specific validation"],
-    outcome: "AGIX designs domain-aware AI systems, not generic wrappers."
+    outcome: "AGIX Technologies designs domain-aware AI systems, not generic wrappers."
   },
   {
     id: "ai-api",
@@ -227,7 +227,7 @@ const useCaseCategories = [
     useCases: ["AI scoring engines", "Recommendation APIs", "NLP / classification APIs", "Vision or OCR APIs", "Decision engines"],
     struggles: ["API design complexity", "Version management", "Scaling challenges"],
     agixApproach: ["Clean monetization", "Clear scope", "Easier scaling", "Infrastructure-first approach"],
-    outcome: "AGIX builds APIs that are secure, versioned, and scalable."
+    outcome: "AGIX Technologies builds APIs that are secure, versioned, and scalable."
   },
   {
     id: "ai-platform",
@@ -238,7 +238,7 @@ const useCaseCategories = [
     useCases: ["Multi-tenant architecture", "Role-based access", "Usage tracking & billing", "Model lifecycle management", "Data isolation"],
     struggles: ["Complex architecture needs", "Enterprise requirements", "Scaling complexity"],
     agixApproach: ["Enterprise-ready design", "Proper data isolation", "Built-in billing logic"],
-    outcome: "AGIX engineers AI platforms that are enterprise-ready from day one."
+    outcome: "AGIX Technologies engineers AI platforms that are enterprise-ready from day one."
   },
   {
     id: "ai-augment",
@@ -260,7 +260,7 @@ const useCaseCategories = [
     useCases: ["AI content tools", "AI social assistants", "AI design & creativity platforms", "AI productivity tools"],
     struggles: ["UX expectations are high", "Need for fast, responsive AI", "Strong personalization required"],
     agixApproach: ["Modern UX expectations", "Not enterprise rigidity", "Fast & responsive design"],
-    outcome: "AGIX designs AI products with modern UX expectations, not enterprise rigidity."
+    outcome: "AGIX Technologies designs AI products with modern UX expectations, not enterprise rigidity."
   }
 ];
 
@@ -412,7 +412,7 @@ const buildVsOptions = [
   { option: "No-code AI tools", reality: "Fast but limited" },
   { option: "DIY AI", reality: "High risk & slow" },
   { option: "Cheap freelancers", reality: "Fragile products" },
-  { option: "AGIX", reality: "Balanced, scalable, safe", highlight: true }
+  { option: "AGIX Technologies", reality: "Balanced, scalable, safe", highlight: true }
 ];
 
 const founderPath = [
@@ -425,7 +425,7 @@ const founderPath = [
 const faqItems = [
   {
     question: "Do I really need AI for my product, or am I forcing it?",
-    answer: "Not every product needs AI. AGIX helps founders identify where AI adds real value, where rules or automation are enough, and what should be built later, not now. If AI is not justified, we'll tell you upfront."
+    answer: "Not every product needs AI. AGIX Technologies helps founders identify where AI adds real value, where rules or automation are enough, and what should be built later, not now. If AI is not justified, we'll tell you upfront."
   },
   {
     question: "What's the difference between an AI MVP and a normal MVP?",
@@ -445,7 +445,7 @@ const faqItems = [
   },
   {
     question: "Will my AI product scale if users increase suddenly?",
-    answer: "Yes — if designed correctly. AGIX builds scalable backend architecture, cost controls, rate limits, and modular AI components. Scaling is planned from day one — not patched later."
+    answer: "Yes — if designed correctly. AGIX Technologies builds scalable backend architecture, cost controls, rate limits, and modular AI components. Scaling is planned from day one — not patched later."
   },
   {
     question: "What AI technologies do you use?",
@@ -465,7 +465,7 @@ const faqItems = [
   },
   {
     question: "Is it better to hire an in-house AI team or outsource?",
-    answer: "For early-stage startups: hiring is expensive, ramp-up is slow, and risk is high. Outsourcing with AGIX gives immediate expertise, lower risk, and faster validation. Many clients hire internally after validation."
+    answer: "For early-stage startups: hiring is expensive, ramp-up is slow, and risk is high. Outsourcing with AGIX Technologies gives immediate expertise, lower risk, and faster validation. Many clients hire internally after validation."
   },
   {
     question: "Can you work with non-technical founders?",
@@ -473,15 +473,15 @@ const faqItems = [
   },
   {
     question: "Will my AI product be investor-ready?",
-    answer: "Yes. We design clean architecture, scalable systems, clear product logic, and demo-ready workflows. Many clients use AGIX builds for accelerator demos, investor pitches, and early enterprise pilots."
+    answer: "Yes. We design clean architecture, scalable systems, clear product logic, and demo-ready workflows. Many clients use AGIX Technologies builds for accelerator demos, investor pitches, and early enterprise pilots."
   },
   {
     question: "What if my idea changes during development?",
-    answer: "That's normal. AGIX builds flexible architectures, modular AI components, and iteration-friendly systems. We expect pivots — we design for them."
+    answer: "That's normal. AGIX Technologies builds flexible architectures, modular AI components, and iteration-friendly systems. We expect pivots — we design for them."
   },
   {
-    question: "How do I know if AGIX is the right partner for my AI product?",
-    answer: "AGIX is a good fit if you want clarity before building, care about real users, want to avoid wasted spend, and plan to scale responsibly. If you just want a quick demo, we'll say no. If you want a real product, we'll help."
+    question: "How do I know if AGIX Technologies is the right partner for my AI product?",
+    answer: "AGIX Technologies is a good fit if you want clarity before building, care about real users, want to avoid wasted spend, and plan to scale responsibly. If you just want a quick demo, we'll say no. If you want a real product, we'll help."
   }
 ];
 
@@ -904,7 +904,7 @@ export default function CustomAIProductDevelopmentPage() {
                 We Help Startups & Growing Businesses Build AI Products That Users Actually Adopt
               </p>
               <p className="text-muted-foreground mb-6 max-w-xl">
-                AGIX partners with founders, CXOs, and startup teams to design, build, and scale custom AI products — not demos, not experiments, not half-working MVPs.
+                AGIX Technologies partners with founders, CXOs, and startup teams to design, build, and scale custom AI products — not demos, not experiments, not half-working MVPs.
               </p>
 
               <div className="mb-6 p-4 bg-muted/30 rounded-lg border border-border">
@@ -985,7 +985,7 @@ export default function CustomAIProductDevelopmentPage() {
               
               {/* Why Founders Choose */}
               <div className="space-y-2 p-4 bg-muted/30 rounded-lg border border-border">
-                <p className="text-sm text-muted-foreground font-medium">Why Founders Choose AGIX:</p>
+                <p className="text-sm text-muted-foreground font-medium">Why Founders Choose AGIX Technologies:</p>
                 <div className="flex flex-wrap gap-2">
                   {whyFoundersChoose.map((item, i) => (
                     <Badge key={i} variant="secondary" className="text-xs">
@@ -1127,8 +1127,8 @@ export default function CustomAIProductDevelopmentPage() {
                   <Badge className="w-fit mb-2 bg-primary/10 text-primary border-primary/20">
                     Different Approach
                   </Badge>
-                  <CardTitle className="text-lg">How AGIX Thinks Differently</CardTitle>
-                  <p className="text-sm text-muted-foreground">AGIX approaches AI product development with a founder + CXO mindset.</p>
+                  <CardTitle className="text-lg">How AGIX Technologies Thinks Differently</CardTitle>
+                  <p className="text-sm text-muted-foreground">AGIX Technologies approaches AI product development with a founder + CXO mindset.</p>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <p className="text-sm text-muted-foreground">Before writing code, we help you answer:</p>
@@ -1165,7 +1165,7 @@ export default function CustomAIProductDevelopmentPage() {
             className="text-center mb-12"
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              What "Custom AI Product Development" Means at AGIX
+              What "Custom AI Product Development" Means at AGIX Technologies
             </h2>
             <p className="text-muted-foreground">This flagship service includes:</p>
           </motion.div>
@@ -1257,7 +1257,7 @@ export default function CustomAIProductDevelopmentPage() {
             <br />
             <Card className="bg-primary/5 border-primary/20 inline-block">
               <CardContent className="py-4 px-6">
-                <p className="text-primary font-medium">AGIX builds all three together.</p>
+                <p className="text-primary font-medium">AGIX Technologies builds all three together.</p>
               </CardContent>
             </Card>
           </motion.div>
@@ -1293,7 +1293,7 @@ export default function CustomAIProductDevelopmentPage() {
               AI Product Use Cases by Startup Type & Industry
             </h2>
             <p className="text-muted-foreground">
-              What Founders Actually Build With AGIX
+              What Founders Actually Build With AGIX Technologies
             </p>
           </motion.div>
 
@@ -1363,7 +1363,7 @@ export default function CustomAIProductDevelopmentPage() {
                             </ul>
                           </div>
                           <div>
-                            <h4 className="font-semibold mb-3 text-sm uppercase tracking-wide text-primary">AGIX Approach</h4>
+                            <h4 className="font-semibold mb-3 text-sm uppercase tracking-wide text-primary">AGIX Technologies Approach</h4>
                             <ul className="space-y-2">
                               {cat.agixApproach.map((a, i) => (
                                 <li key={i} className="flex items-start gap-2 text-sm">
@@ -1429,7 +1429,7 @@ export default function CustomAIProductDevelopmentPage() {
             viewport={{ once: true }}
             className="text-center text-muted-foreground mt-8"
           >
-            AGIX supports every stage, without forcing unnecessary complexity early.
+            AGIX Technologies supports every stage, without forcing unnecessary complexity early.
           </motion.p>
         </div>
       </section>
@@ -1458,13 +1458,13 @@ export default function CustomAIProductDevelopmentPage() {
             className="text-center mb-12"
           >
             <Badge className="mb-4 bg-primary/10 text-primary border-primary/20">
-              The AGIX AI Product Framework
+              The AGIX Technologies AI Product Framework
             </Badge>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               A 5-Stage Path From Idea to Scalable AI Business
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              AGIX follows a product-first, risk-aware AI development approach designed specifically for startups and growing businesses.
+              AGIX Technologies follows a product-first, risk-aware AI development approach designed specifically for startups and growing businesses.
             </p>
           </motion.div>
 
@@ -1510,7 +1510,7 @@ export default function CustomAIProductDevelopmentPage() {
 
                     {stage.builds && (
                       <div className="mb-4">
-                        <p className="text-xs text-muted-foreground mb-2">AGIX builds:</p>
+                        <p className="text-xs text-muted-foreground mb-2">AGIX Technologies builds:</p>
                         <div className="flex flex-wrap gap-1">
                           {stage.builds.map((b, j) => (
                             <Badge key={j} variant="secondary" className="text-xs">{b}</Badge>
@@ -1596,7 +1596,7 @@ export default function CustomAIProductDevelopmentPage() {
                 <CardContent>
                   <div className="grid grid-cols-2 gap-4">
                     <div>
-                      <p className="text-sm font-medium text-primary mb-2">AGIX designs:</p>
+                      <p className="text-sm font-medium text-primary mb-2">AGIX Technologies designs:</p>
                       <ul className="space-y-1">
                         {mvpSafe.designs.map((d, i) => (
                           <li key={i} className="flex items-center gap-2 text-sm">
@@ -1655,7 +1655,7 @@ export default function CustomAIProductDevelopmentPage() {
         </div>
       </section>
 
-      {/* AGIX vs Typical */}
+      {/* AGIX Technologies vs Typical */}
       <section className="py-20 bg-muted/30">
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <motion.div
@@ -1665,7 +1665,7 @@ export default function CustomAIProductDevelopmentPage() {
             className="text-center mb-12"
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              What Makes AGIX Different
+              What Makes AGIX Technologies Different
             </h2>
           </motion.div>
 
@@ -1676,7 +1676,7 @@ export default function CustomAIProductDevelopmentPage() {
                   <p className="text-sm font-semibold text-red-600 dark:text-red-500">Typical AI Agency</p>
                 </div>
                 <div className="text-center pb-4 border-b border-border">
-                  <p className="text-sm font-semibold text-primary">AGIX</p>
+                  <p className="text-sm font-semibold text-primary">AGIX Technologies</p>
                 </div>
                 {agixVsTypical.map((row, i) => (
                   <>
@@ -1811,7 +1811,7 @@ export default function CustomAIProductDevelopmentPage() {
                   ))}
                 </div>
                 <p className="text-center mt-6 text-primary font-medium">
-                  AGIX avoids overbuilding AI before it earns its keep.
+                  AGIX Technologies avoids overbuilding AI before it earns its keep.
                 </p>
               </CardContent>
             </Card>
@@ -1921,7 +1921,7 @@ export default function CustomAIProductDevelopmentPage() {
             className="text-center mb-12"
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Build vs No-Code vs AGIX
+              Build vs No-Code vs AGIX Technologies
             </h2>
             <p className="text-muted-foreground">Founder Honesty</p>
           </motion.div>

@@ -51,7 +51,7 @@ const industriesItems = [
 ];
 
 const corporateItems = [
-  { title: "About Us", href: "/corporate/about/", icon: Info, description: "Learn about AGIX and our mission" },
+  { title: "About Us", href: "/corporate/about/", icon: Info, description: "Learn about AGIX Technologies and our mission" },
   { title: "Contact Us", href: "/corporate/contact/", icon: Mail, description: "Get in touch with our team" },
   { title: "Careers", href: "/corporate/careers/", icon: Briefcase, description: "Join our team and build intelligent systems" },
 ];
@@ -205,7 +205,7 @@ export function MainHeader() {
             <div className="w-8 h-8 rounded-md bg-primary flex items-center justify-center">
               <Sparkles className="w-5 h-5 text-primary-foreground" aria-hidden="true" />
             </div>
-            <span className="font-bold text-xl tracking-tight">AGIX</span>
+            <span className="font-bold text-xl tracking-tight">AGIX Technologies</span>
           </a>
 
           <NavigationMenu className="hidden lg:flex">

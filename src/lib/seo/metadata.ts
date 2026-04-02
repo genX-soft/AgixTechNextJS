@@ -3,11 +3,11 @@ import { getURLMetadata, getKeywordsArray } from './url-metadata';
 
 const SITE_URL = 'https://agixtech.com';
 const SITE_NAME = 'AGIX Technologies';
-const BRAND_SUFFIX = ' | Agix Technologies';
+const BRAND_SUFFIX = ' | AGIX Technologies';
 
 function formatTitle(title: string): string {
   if (title.endsWith(BRAND_SUFFIX)) return title;
-  const cleaned = title.replace(/ \| (Agix Technologies|Agix|AGIX)$/, '');
+  const cleaned = title.replace(/ \| (AGIX Technologies|Agix Technologies|Agix|AGIX)$/, '');
   return `${cleaned}${BRAND_SUFFIX}`;
 }
 
@@ -146,7 +146,7 @@ export function generateBlogPostMetadata(
   const canonicalUrl = `${SITE_URL}/${slug}/`;
   
   return {
-    title: { absolute: title.includes('| Agix') ? title : `${title} | Agix` },
+    title: { absolute: title.includes('| AGIX Technologies') ? title : `${title} | AGIX Technologies` },
     description,
     alternates: {
       canonical: canonicalUrl,

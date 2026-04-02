@@ -1,6 +1,6 @@
 const manifest = {
   name: "AGIX Technologies",
-  short_name: "AGIX",
+  short_name: "AGIX Technologies",
   description: "AI Systems Engineering & Agentic Intelligence Company",
   start_url: "/",
   display: "standalone",

@@ -37,7 +37,7 @@ const faqs = [
   },
   {
     question: "How long does it take to implement AI automation?",
-    answer: "Implementation timelines vary by scope: Email or document automation (3–6 weeks), Workflow automation across tools (4–8 weeks), Business process automation (8–12 weeks), Enterprise transformation programs (3–6 months phased). AGIX delivers automation in phases, so value is realized early."
+    answer: "Implementation timelines vary by scope: Email or document automation (3–6 weeks), Workflow automation across tools (4–8 weeks), Business process automation (8–12 weeks), Enterprise transformation programs (3–6 months phased). AGIX Technologies delivers automation in phases, so value is realized early."
   },
   {
     question: "Can AI automation integrate with existing software?",
@@ -45,7 +45,7 @@ const faqs = [
   },
   {
     question: "Is AI automation secure for enterprise use?",
-    answer: "Yes, when designed correctly. AGIX builds AI automation systems with role-based access control, audit logs, secure data pipelines, and compliance-ready architecture. This makes AI automation suitable for regulated industries such as healthcare, finance, and insurance."
+    answer: "Yes, when designed correctly. AGIX Technologies builds AI automation systems with role-based access control, audit logs, secure data pipelines, and compliance-ready architecture. This makes AI automation suitable for regulated industries such as healthcare, finance, and insurance."
   },
   {
     question: "Does AI automation require clean or perfect data?",
@@ -53,7 +53,7 @@ const faqs = [
   },
   {
     question: "Will AI automation replace human jobs?",
-    answer: "AI automation replaces manual effort, not human judgment. AGIX designs systems that remove repetitive work, support better decision-making, and free teams for higher-value tasks. This is why businesses search for AI automation solutions, not job-replacement AI."
+    answer: "AI automation replaces manual effort, not human judgment. AGIX Technologies designs systems that remove repetitive work, support better decision-making, and free teams for higher-value tasks. This is why businesses search for AI automation solutions, not job-replacement AI."
   },
   {
     question: "What is AI business process automation (BPA)?",
@@ -61,11 +61,11 @@ const faqs = [
   },
   {
     question: "How do we know what to automate first?",
-    answer: "AGIX starts with an Automation Opportunity Assessment, which identifies high-ROI processes, low-risk automation candidates, and quick wins vs long-term opportunities. This prevents wasted investment — a key concern for buyers searching for AI automation services."
+    answer: "AGIX Technologies starts with an Automation Opportunity Assessment, which identifies high-ROI processes, low-risk automation candidates, and quick wins vs long-term opportunities. This prevents wasted investment — a key concern for buyers searching for AI automation services."
   },
   {
     question: "What industries use AI automation the most?",
-    answer: "AI automation is actively used in healthcare operations, finance and FinTech, insurance, e-commerce, logistics and supply chain, manufacturing, and SaaS companies. Each industry has different automation triggers, which AGIX addresses through modular AI systems."
+    answer: "AI automation is actively used in healthcare operations, finance and FinTech, insurance, e-commerce, logistics and supply chain, manufacturing, and SaaS companies. Each industry has different automation triggers, which AGIX Technologies addresses through modular AI systems."
   },
   {
     question: "What results can businesses expect from AI automation?",
@@ -150,7 +150,7 @@ export default function FaqPricingSection() {
               AI Automation Pricing Framework
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              AGIX does not price AI automation per task or per hour. Pricing is based on
+              AGIX Technologies does not price AI automation per task or per hour. Pricing is based on
               business impact, process ownership, system complexity, and automation depth.
             </p>
           </motion.div>
