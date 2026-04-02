@@ -1,0 +1,285 @@
+https://agixtech.com
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "WebSite",
+  "@id": "https://agixtech.com/#website",
+  "url": "https://agixtech.com/",
+  "name": "AgixTechnologies",
+  "description": "AgixTechnologies provides AI automation, agentic AI solutions, and intelligent systems to help businesses automate workflows and enable real-time decision-making.",
+  "inLanguage": "en",
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://agixtech.com/#organization",
+    "name": "AgixTechnologies",
+    "url": "https://agixtech.com/",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://agixtech.com/wp-content/uploads/2024/01/logo.png"
+    }
+  },
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://agixtech.com/?s={search_term_string}",
+    "query-input": "required name=search_term_string"
+  },
+  "sameAs": [
+    "https://www.linkedin.com/company/agixtechnologies",
+    "https://twitter.com/agixtech",
+    "https://www.facebook.com/agixtechnologies",
+  ]
+}
+</script>
+
+
+
+
+
+
+
+https://agixtech.com/corporate/about/
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "AboutPage",
+  "@id": "https://agixtech.com/corporate/about/#webpage",
+  "url": "https://agixtech.com/corporate/about/",
+  "name": "About AgixTechnologies",
+  "description": "Learn about AgixTechnologies, a leading provider of AI automation, agentic AI, and intelligent solutions that help businesses streamline workflows and enable real-time decision-making.",
+  "inLanguage": "en",
+  "isPartOf": {
+    "@id": "https://agixtech.com/#website"
+  },
+  "primaryImageOfPage": {
+    "@type": "ImageObject",
+    "url": "https://agixtech.com/wp-content/uploads/2024/01/logo.png"
+  },
+  "about": {
+    "@type": "Organization",
+    "@id": "https://agixtech.com/#organization",
+    "name": "AgixTechnologies",
+    "url": "https://agixtech.com/",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://agixtech.com/wp-content/uploads/2024/01/logo.png"
+    },
+    "sameAs": [
+      "https://www.linkedin.com/company/agixtechnologies",
+      "https://twitter.com/agixtech",
+      "https://www.facebook.com/agixtechnologies",
+    ]
+  }
+}
+</script>
+
+
+
+
+
+
+
+https://agixtech.com/case-studies
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "CollectionPage",
+  "@id": "https://agixtech.com/case-studies/#webpage",
+  "url": "https://agixtech.com/case-studies/",
+  "name": "Case Studies - AgixTechnologies",
+  "description": "Explore real-world AI and automation case studies by AgixTechnologies showcasing agentic AI solutions, operational intelligence, and business transformation success stories.",
+  "inLanguage": "en",
+  "isPartOf": {
+    "@id": "https://agixtech.com/#website"
+  },
+  "primaryImageOfPage": {
+    "@type": "ImageObject",
+    "url": "https://agixtech.com/wp-content/uploads/2024/01/logo.png"
+  },
+  "about": {
+    "@type": "Organization",
+    "@id": "https://agixtech.com/#organization",
+    "name": "AgixTechnologies",
+    "url": "https://agixtech.com/",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://agixtech.com/wp-content/uploads/2024/01/logo.png"
+    },
+    "sameAs": [
+      "https://www.linkedin.com/company/agixtechnologies",
+      "https://twitter.com/agixtech",
+      "https://www.facebook.com/agixtechnologies",
+    ]
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+
+
+https://agixtech.com/corporate/contact
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "ContactPage",
+  "@id": "https://agixtech.com/corporate/contact/#webpage",
+  "url": "https://agixtech.com/corporate/contact/",
+  "name": "Contact AgixTechnologies",
+  "description": "Get in touch with AgixTechnologies for AI automation, agentic AI solutions, and intelligent business systems.",
+  "inLanguage": "en",
+  "isPartOf": {
+    "@id": "https://agixtech.com/#website"
+  },
+  "primaryImageOfPage": {
+    "@type": "ImageObject",
+    "url": "https://agixtech.com/wp-content/uploads/2024/01/logo.png"
+  },
+  "about": {
+    "@type": "Organization",
+    "@id": "https://agixtech.com/#organization",
+    "name": "AgixTechnologies",
+    "url": "https://agixtech.com/",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://agixtech.com/wp-content/uploads/2024/01/logo.png"
+    },
+    "sameAs": [
+      "https://www.linkedin.com/company/agixtechnologies",
+      "https://twitter.com/agixtech",
+      "https://www.facebook.com/agixtechnologies",    ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "customer support",
+      "areaServed": "Worldwide",
+      "availableLanguage": ["English"],
+      "url": "https://agixtech.com/corporate/contact/"
+    }
+  }
+}
+</script>
+
+
+https://agixtech.com/corporate/careers/
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "CollectionPage",
+  "@id": "https://agixtech.com/corporate/careers/#webpage",
+  "url": "https://agixtech.com/corporate/careers/",
+  "name": "Careers at AgixTechnologies",
+  "description": "Explore career opportunities at AgixTechnologies. Join our team to work on AI automation, agentic AI, and innovative technology solutions.",
+  "inLanguage": "en",
+  "isPartOf": {
+    "@id": "https://agixtech.com/#website"
+  },
+  "primaryImageOfPage": {
+    "@type": "ImageObject",
+    "url": "https://agixtech.com/wp-content/uploads/2024/01/logo.png"
+  },
+  "about": {
+    "@type": "Organization",
+    "@id": "https://agixtech.com/#organization",
+    "name": "AgixTechnologies",
+    "url": "https://agixtech.com/",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://agixtech.com/wp-content/uploads/2024/01/logo.png"
+    },
+    "sameAs": [
+      "https://www.linkedin.com/company/agixtechnologies",
+      "https://twitter.com/agixtech",
+      "https://www.facebook.com/agixtechnologies",    ]
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+
+https://agixtech.com/insights
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "Blog",
+  "@id": "https://agixtech.com/insights/#blog",
+  "url": "https://agixtech.com/insights/",
+  "name": "Insights - AgixTechnologies",
+  "description": "Explore the latest insights, blogs, and articles on AI automation, agentic AI, and business intelligence by AgixTechnologies.",
+  "inLanguage": "en",
+  "isPartOf": {
+    "@id": "https://agixtech.com/#website"
+  },
+  "primaryImageOfPage": {
+    "@type": "ImageObject",
+    "url": "https://agixtech.com/wp-content/uploads/2024/01/logo.png"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://agixtech.com/#organization",
+    "name": "AgixTechnologies",
+    "url": "https://agixtech.com/",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://agixtech.com/wp-content/uploads/2024/01/logo.png"
+    },
+    "sameAs": [
+      "https://www.linkedin.com/company/agixtechnologies",
+      "https://twitter.com/agixtech",
+      "https://www.facebook.com/agixtechnologies",    ]
+  },
+  "mainEntity": {
+    "@type": "ItemList",
+    "name": "AgixTechnologies Insights",
+    "itemListOrder": "https://schema.org/ItemListOrderAscending",
+    "numberOfItems": 3,
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@type": "BlogPosting",
+          "name": "AgixTechnologies Home",
+          "url": "https://agixtech.com/",
+          "description": "AgixTechnologies homepage overview, showcasing AI automation and intelligent solutions."
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "item": {
+          "@type": "BlogPosting",
+          "name": "AgixTechnologies Services",
+          "url": "https://agixtech.com/services/",
+          "description": "Learn about AI automation, agentic AI solutions, and workflow intelligence offered by AgixTechnologies."
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@type": "BlogPosting",
+          "name": "Conversational AI Insights",
+          "url": "https://agixtech.com/intelligence/conversational-ai/",
+          "description": "Deep dive into Conversational Intelligence solutions and their impact on business decision-making by AgixTechnologies."
+        }
+      }
+    ]
+  }
+}
+</script>

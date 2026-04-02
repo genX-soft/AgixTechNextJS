@@ -22,8 +22,9 @@ export function generateOrganizationSchema() {
     "telephone": "+18574141353",
     "foundingDate": "2020",
     "sameAs": [
+      "https://www.linkedin.com/company/agixtech",
       "https://twitter.com/agixtech",
-      "https://linkedin.com/company/agixtech"
+      "https://www.facebook.com/agixtechnologies"
     ]
   };
 }

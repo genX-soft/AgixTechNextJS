@@ -6,12 +6,16 @@ export const homepageOrganizationSchema = {
   "@id": `${SITE_URL}/#organization`,
   "name": "AGIX Technologies",
   "url": `${SITE_URL}/`,
-  "logo": `${SITE_URL}/logo.png`,
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://cms.agixtech.com/wp-content/uploads/2026/01/AGIX-Technologies-logo-scaled.png"
+  },
   "telephone": "+18574141353",
   "description": "AGIX Technologies builds governed, enterprise-grade AI systems including operational AI, conversational AI, decision intelligence, autonomous agentic systems, and industry-specific AI solutions.",
   "sameAs": [
     "https://www.linkedin.com/company/agixtech",
-    "https://twitter.com/agixtech"
+    "https://twitter.com/agixtech",
+    "https://www.facebook.com/agixtechnologies"
   ],
   "knowsAbout": [
     "Operational AI",
