@@ -90,9 +90,9 @@ function HeroSection() {
           </Badge>
 
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-            <span className="text-foreground">Engineering Intelligence Systems </span>
+            <span className="text-foreground">AGIX Technologies: AI Systems Engineering Company </span>
             <span className="bg-gradient-to-r from-primary via-blue-400 to-cyan-400 bg-clip-text text-transparent">
-              Businesses Can Actually Trust
+              You Can Trust
             </span>
           </h1>
 

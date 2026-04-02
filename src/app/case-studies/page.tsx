@@ -595,9 +595,9 @@ export default function CaseStudiesPage() {
             </Badge>
 
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-              Real-World AI Systems.{" "}
+              AI Systems Engineering Case Studies{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-primary">
-                Proven at Enterprise Scale.
+                | Enterprise-Deployed Solutions
               </span>
             </h1>
 

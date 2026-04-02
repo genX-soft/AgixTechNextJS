@@ -325,8 +325,8 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
   '/case-studies': {
     focusKeyword: 'Real-World AI Case Studies',
     keywords: 'AI case studies, enterprise AI implementation, AI success stories, AI ROI examples',
-    mainHeading: 'Real-World AI Systems. Proven at Enterprise Scale.',
-    metaTitle: 'AI Case Studies & Success Stories',
+    mainHeading: 'AI Systems Engineering Case Studies | Enterprise-Deployed Solutions',
+    metaTitle: 'Enterprise AI Case Studies: Agentic, Automation & RAG Systems',
     metaDescription: 'Discover our AI case studies, which showcase real-world results across various industries, including healthcare, finance, retail, and education.',
     ogTitle: 'Artificial Intelligence Case Studies',
     ogDescription: 'Explore AI case studies by AGIX Technologies delivering real-world impact across healthcare, finance, retail, education, and more.',
@@ -730,9 +730,9 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
 
   '/corporate/about/': {
     focusKeyword: 'About AGIX Technologies',
-    keywords: 'About AGIX Technologies, AI systems engineering, agentic intelligence company',
-    mainHeading: 'Engineering Intelligence Systems Businesses Can Actually Trust',
-    metaTitle: 'About AGIX Technologies | AI Systems Engineering',
+    keywords: 'About AGIX Technologies, US AI systems engineering, agentic intelligence company',
+    mainHeading: 'AGIX Technologies: AI Systems Engineering Company You Can Trust',
+    metaTitle: 'About AGIX Technologies | US AI Systems Engineering Company',
     metaDescription: 'AGIX Technologies is an AI-First System Engineering Company building intelligent automation for global enterprises. 200+ AI implementations delivered.',
     ogTitle: 'About AGIX Technologies | An Agentic Intelligence Company for the Enterprise',
     ogDescription: 'Shift focus from what AI can do to how it must behave. As an agentic intelligence company, AGIX Technologies develops interconnected layers designed for operational grounding and accountability.',
@@ -774,7 +774,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     focusKeyword: 'AGIX Technologies Innovation Blog',
     keywords: 'AI insights, AI articles, enterprise AI trends, AI automation blog',
     mainHeading: 'Insights & Innovation Blog | AGIX Technologies',
-    metaTitle: 'Insights & Innovation Blog',
+    metaTitle: 'Agentic AI & Automation Insights',
     metaDescription: 'Explore expert blogs featuring insights, experiences, and predictions on emerging systems and innovation trends.',
     ogTitle: 'Tech & Intelligence Blog',
     ogDescription: 'Access clear guides and perspectives on scaling intelligence and optimizing business workflows through smart system design.',
