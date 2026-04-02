@@ -19,6 +19,7 @@ export function generateOrganizationSchema() {
       "@id": `${SITE_URL}/#logo`
     },
     "description": "AI Systems Engineering and Agentic Intelligence company helping enterprises design, deploy, and scale autonomous AI systems.",
+    "telephone": "+18574141353",
     "foundingDate": "2020",
     "sameAs": [
       "https://twitter.com/agixtech",

@@ -7,6 +7,7 @@ export const homepageOrganizationSchema = {
   "name": "AGIX Technologies",
   "url": `${SITE_URL}/`,
   "logo": `${SITE_URL}/logo.png`,
+  "telephone": "+18574141353",
   "description": "AGIX Technologies builds governed, enterprise-grade AI systems including operational AI, conversational AI, decision intelligence, autonomous agentic systems, and industry-specific AI solutions.",
   "sameAs": [
     "https://www.linkedin.com/company/agixtech",
