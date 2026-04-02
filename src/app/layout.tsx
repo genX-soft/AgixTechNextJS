@@ -51,7 +51,7 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata: Metadata = {
   metadataBase: new URL('https://agixtech.com/'),
   title: {
-    default: 'AI Systems Engineering & Agentic Intelligence Company | AGIX Technologies',
+    default: 'AGIX Technologies | AI Systems Engineering & AI Agents',
     template: '%s | AGIX Technologies',
   },
   description: 'We are an AI Systems Engineering & Agentic Intelligence company helping enterprises design, deploy, and scale autonomous AI systems that deliver measurable ROI.',
@@ -78,7 +78,7 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: 'https://agixtech.com/',
     siteName: 'AGIX Technologies',
-    title: 'AI Systems Engineering & Agentic Intelligence Company',
+    title: 'AGIX Technologies | AI Systems Engineering & AI Agents',
     description: 'Enterprise-grade AI Systems Engineering and Agentic Intelligence solutions strategy, architecture, and deployment that drive real business outcomes.',
     images: [
       {
@@ -91,7 +91,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'AI Systems Engineering & Agentic Intelligence Company',
+    title: 'AGIX Technologies | AI Systems Engineering & AI Agents',
     description: 'We build enterprise AI systems and agentic intelligence solutions that move from strategy to scalable, ROI-driven deployment.',
     images: ['https://cms.agixtech.com/wp-content/uploads/2026/01/AI-Systems-Engineering-Company-page-banner.png'],
     creator: '@agixtech',

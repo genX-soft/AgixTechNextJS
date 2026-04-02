@@ -51,8 +51,11 @@ export async function generateMetadata({
     post._embedded?.['wp:featuredmedia']?.[0]?.source_url ||
     `${SITE_URL}/og-image.png`;
 
+    const hasAgix = /agix\s*technologies/i.test(title);
+    const finalTitle = hasAgix ? title : `${title} | AGIX Technologies`;
+
   return {
-    title: { absolute: title.includes('| AGIX Technologies') ? title : `${title} | AGIX Technologies` },
+    title: { absolute: finalTitle },
     description,
     alternates: { canonical: canonicalUrl },
     openGraph: {

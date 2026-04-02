@@ -11,7 +11,7 @@ import { WPPost } from '@/lib/insights/wordpress';
 const WP_API_BASE = 'https://cms.agixtech.com/wp-json/wp/v2';
 
 export const metadata: Metadata = {
-  title: 'AI & Automation Insights | AGIX Technologies',
+  title: { absolute: 'Agentic AI & Automation Insights | AGIX Technologies' },
   description:
     'Expert perspectives on AI automation, enterprise AI implementation, and digital transformation strategies from the AGIX Technologies team.',
   alternates: { canonical: 'https://agixtech.com/insights/' },

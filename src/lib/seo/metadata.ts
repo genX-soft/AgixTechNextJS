@@ -46,7 +46,7 @@ export function generatePageMetadata({
   const twitterTitleFinal = formatTitle(twitterTitle || title);
 
   return {
-    title: absoluteTitle ? { absolute: formatTitle(title) } : title,
+    title: absoluteTitle ? { absolute: title } : title,
     description,
     keywords: [
       'AI automation', 'enterprise AI', 'agentic AI', 'AI systems engineering',

@@ -6,7 +6,7 @@ const base = generateMetadataFromURL('/case-studies')
 export const metadata: Metadata = {
   ...base,
   title: {
-    default: base.title as string,
+    absolute: 'Enterprise AI Case Studies: Agentic, Automation & RAG | AGIX',
     template: '%s | AGIX Technologies',
   },
 }
