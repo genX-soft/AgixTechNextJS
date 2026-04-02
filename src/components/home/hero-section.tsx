@@ -139,8 +139,8 @@ export function HeroSection() {
                 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-bold tracking-tight text-white leading-tight"
                 data-testid="heading-hero"
               >
-                Not Sure Where to Start{" "}
-                <span className="text-primary">With AI?</span>
+                Enterprise AI Systems Engineering &amp;{" "}
+                <span className="text-primary">Agentic Intelligence Company</span>
               </h1>
               <p className="text-lg text-slate-300 max-w-xl">
                 You&apos;re not alone. Most businesses know AI matters but struggle with where to
