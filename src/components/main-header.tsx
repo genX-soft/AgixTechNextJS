@@ -201,14 +201,14 @@ export function MainHeader() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 gap-4">
-          <a href="/" className="flex items-center gap-2" data-testid="link-logo">
+          <a href="/" className="flex items-center gap-2 shrink-0" data-testid="link-logo">
             <div className="w-8 h-8 rounded-md bg-primary flex items-center justify-center">
               <Sparkles className="w-5 h-5 text-primary-foreground" aria-hidden="true" />
             </div>
             <span className="font-bold text-xl tracking-tight">AGIX Technologies</span>
           </a>
 
-          <NavigationMenu className="hidden lg:flex">
+          <NavigationMenu className="hidden xl:flex">
             <NavigationMenuList>
               <NavigationMenuItem>
                 <NavigationMenuTrigger className="bg-transparent" data-testid="button-nav-intelligence">
@@ -338,13 +338,13 @@ export function MainHeader() {
           <div className="flex items-center gap-4">
             <a
               href="tel:+18574141353"
-              className="hidden lg:flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+              className="hidden xl:flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors whitespace-nowrap shrink-0"
               data-testid="link-phone"
             >
               <Phone className="w-4 h-4" aria-hidden="true" />
               <span>+1 857 4141 353</span>
             </a>
-            <Button asChild className="hidden md:inline-flex">
+            <Button asChild className="hidden md:inline-flex shrink-0">
               <a 
                 href="/corporate/contact/" 
                 onClick={handleConsultationClick}
@@ -356,7 +356,7 @@ export function MainHeader() {
             <Button
               variant="ghost"
               size="icon"
-              className="lg:hidden"
+              className="xl:hidden shrink-0"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               data-testid="button-mobile-menu"
               aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
@@ -369,7 +369,7 @@ export function MainHeader() {
 
       <div
         className={cn(
-          "lg:hidden bg-background/95 backdrop-blur-md border-b border-border overflow-hidden transition-all duration-150 ease-in-out",
+          "xl:hidden bg-background/95 backdrop-blur-md border-b border-border overflow-hidden transition-all duration-150 ease-in-out",
           mobileMenuOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0 pointer-events-none"
         )}
       >
