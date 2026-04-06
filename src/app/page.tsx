@@ -2,6 +2,7 @@ import dynamic from "next/dynamic";
 import { MainHeader } from "@/components/main-header";
 import { LazyMount } from "@/components/lazy-mount";
 import { HeroSection } from "@/components/home/hero-section";
+import ValuePropositionSection from "@/components/home/ValuePropositionSection";
 
 const DynamicGuidedAssessment = dynamic(
   () => import("@/components/home/GuidedAssessment")
@@ -41,6 +42,7 @@ export default function Home() {
       <MainHeader />
       <main>
         <HeroSection />
+        <ValuePropositionSection />
         <LazyMount fallbackHeight="700px">
           <DynamicGuidedAssessment />
         </LazyMount>
