@@ -101,7 +101,7 @@ export function HeroSection() {
   return (
     <section
       data-home-hero
-      className="min-h-[80vh] pt-24 lg:pt-28 flex flex-col justify-center bg-slate-950 relative overflow-hidden"
+      className="min-h-[80vh] pt-[5.5rem] lg:pt-[6.5rem] flex flex-col justify-center bg-slate-950 relative overflow-hidden"
     >
       <div
         ref={grad1Ref}
@@ -126,27 +126,27 @@ export function HeroSection() {
         className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent"
       />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative z-10 w-full">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-12 relative z-10 w-full">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          <div className="space-y-8">
-            <div className="space-y-6">
-              <div>
-                <Badge variant="outline" className="border-primary/30 text-primary mb-4">
-                  AI Systems Engineering &amp; Agentic Intelligence Company
-                </Badge>
-              </div>
-              <h1
-                className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-bold tracking-tight text-white leading-tight"
-                data-testid="heading-hero"
-              >
-                Enterprise AI Systems Engineering &amp;{" "}
-                <span className="text-primary">Agentic Intelligence Company</span>
-              </h1>
-              <p className="text-lg text-slate-300 max-w-xl">
-                You&apos;re not alone. Most businesses know AI matters but struggle with where to
-                begin. We help you find the right starting point for your situation.
-              </p>
+          <div className="space-y-5">
+            <div>
+              <Badge variant="outline" className="border-primary/30 text-primary mb-2">
+                AI Systems Engineering &amp; Agentic Intelligence Company
+              </Badge>
             </div>
+            <h1
+              className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-white leading-tight max-w-4xl"
+              data-testid="heading-hero"
+            >
+              <span className="sm:whitespace-nowrap">Enterprise AI Systems Engineering</span> Company for{" "}
+              <span className="text-primary">Automation, AI Agents &amp; Decision Intelligence</span>
+            </h1>
+            <h2 className="text-base sm:text-lg text-slate-300 max-w-2xl font-medium leading-relaxed">
+              We design, build, and deploy production-grade AI systems that automate operations and scale business workflows.
+            </h2>
+            <h3 className="text-sm sm:text-base text-slate-400 max-w-2xl leading-relaxed">
+              From AI agents to enterprise knowledge systems — we help businesses move from experimentation to real outcomes.
+            </h3>
 
             <div className="flex flex-col sm:flex-row gap-4">
               <Button

@@ -22,14 +22,14 @@ const criticalHomeStyles = `
     min-height: 80vh;
     flex-direction: column;
     justify-content: center;
-    padding-top: 6rem;
+    padding-top: 5.5rem;
     background: rgb(2 8 23);
     color: rgb(248 250 252);
   }
 
   @media (min-width: 1024px) {
     [data-home-hero] {
-      padding-top: 7rem;
+      padding-top: 6.5rem;
     }
   }
 `;
