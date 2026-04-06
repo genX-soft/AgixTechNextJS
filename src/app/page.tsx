@@ -26,7 +26,7 @@ const DynamicIntelligenceSection = dynamic(
 );
 
 const DynamicServicesSection = dynamic(
-  () => import("@/components/home/ServicesSection")
+  () => import("@/components/home/SolutionsSection")
 );
 
 const DynamicIndustriesSection = dynamic(

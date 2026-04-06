@@ -149,7 +149,7 @@ export default function ServicesSection() {
     <section className="py-24 bg-gradient-to-b from-slate-900 to-slate-950 overflow-hidden" ref={ref}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.5 }} className="text-center mb-12">
-          <Badge variant="outline" className="mb-4 border-emerald-500/30 text-emerald-400">Our Services</Badge>
+          <Badge variant="outline" className="mb-4 border-emerald-500/30 text-emerald-400">Our Solutions</Badge>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-white" data-testid="heading-services">AI Solutions Built for Results</h2>
           <p className="text-slate-300 max-w-2xl mx-auto">Each service is a modular capability within a governed AI system, deployable independently or as part of an enterprise-wide intelligence architecture.</p>
         </motion.div>
