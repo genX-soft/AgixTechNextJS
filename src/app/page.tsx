@@ -44,7 +44,7 @@ export default function Home() {
       <main>
         <HeroSection />
         <ValuePropositionSection />
-        <OurServicesSection />
+        {/* <OurServicesSection /> */}
         <LazyMount fallbackHeight="700px">
           <DynamicGuidedAssessment />
         </LazyMount>
