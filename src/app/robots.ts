@@ -6,7 +6,13 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/admin/', '/internal/', '/private/'],
+        disallow: [
+          '/admin/leads/',
+          '/wp-admin/',
+          '/wp-login.php/',
+          '/internal/',
+          '/private/',
+        ],
       },
       {
         userAgent: [
@@ -27,6 +33,6 @@ export default function robots(): MetadataRoute.Robots {
         disallow: '/',
       },
     ],
-    sitemap: 'https://agixtech.com/sitemap.xml',
+    sitemap: 'https://blog.agixtech.com/sitemap_index.xml',
   };
 }
