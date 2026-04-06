@@ -6,13 +6,25 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: '/',
-        disallow: [
-          '/admin/',
-          '/api/',
-          '/tools/',
-          '/_next/',
-          '/404/',
+        disallow: ['/admin/', '/internal/', '/private/'],
+      },
+      {
+        userAgent: [
+          'Googlebot',
+          'Bingbot',
+          'Applebot',
+          'OAI-SearchBot',
+          'ChatGPT-User',
+          'PerplexityBot',
+          'Perplexity-User',
+          'Claude-SearchBot',
+          'Claude-User',
         ],
+        allow: '/',
+      },
+      {
+        userAgent: ['GPTBot', 'ClaudeBot', 'Google-Extended'],
+        disallow: '/',
       },
     ],
     sitemap: 'https://agixtech.com/sitemap.xml',
