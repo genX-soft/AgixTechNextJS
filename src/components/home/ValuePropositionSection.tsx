@@ -1,3 +1,5 @@
+import { Badge } from "@/components/ui/badge";
+
 const metrics = [
   { value: "100+", label: "AI systems deployed" },
   { value: "24/7", label: "Autonomous workflows" },
@@ -16,6 +18,9 @@ export default function ValuePropositionSection() {
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
         <div className="max-w-3xl mx-auto text-center space-y-6">
+          <Badge variant="outline" className="border-primary/30 text-primary">
+            About AGIX Technologies
+          </Badge>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-white leading-tight">
             We don&apos;t build AI tools.{" "}
             <span className="text-primary">We engineer AI systems.</span>
