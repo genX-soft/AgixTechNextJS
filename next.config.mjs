@@ -3,10 +3,17 @@ import path from 'path';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
+const isDev = process.env.NODE_ENV === 'development';
+// In dev mode, use a unique asset prefix per server restart so the browser
+// cannot serve stale immutably-cached chunks (app/page.js etc.) from a
+// previous session. The rewrite below maps /dev-assets/_next/* → /_next/*.
+const DEV_ASSET_PREFIX = isDev ? '/dev-assets' : '';
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
   trailingSlash: true,
+  assetPrefix: DEV_ASSET_PREFIX,
   serverExternalPackages: ['bcryptjs', 'pg'],
   allowedDevOrigins: ['*.replit.dev', '*.sisko.replit.dev', '127.0.0.1', '192.168.0.101'],
   images: {
@@ -35,7 +42,6 @@ const nextConfig = {
     inlineCss: true,
     optimizePackageImports: [
       'lucide-react',
-      'framer-motion',
       '@radix-ui/react-icons',
       'react-icons',
       'date-fns',
@@ -214,8 +220,17 @@ const nextConfig = {
     
     return expandedRedirects;
   },
+  async rewrites() {
+    const rewrites = [];
+    if (isDev) {
+      rewrites.push({
+        source: '/dev-assets/_next/:path*',
+        destination: '/_next/:path*',
+      });
+    }
+    return rewrites;
+  },
   async headers() {
-    const isDev = process.env.NODE_ENV === 'development';
     const securityHeaders = [
       { key: 'X-Content-Type-Options', value: 'nosniff' },
       { key: 'X-Frame-Options', value: 'SAMEORIGIN' },
@@ -266,12 +281,14 @@ const nextConfig = {
           { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
         ],
       },
-      {
+      // In dev, Next.js reuses the same chunk filenames across restarts (no content hash),
+      // so immutable caching would permanently serve stale JS. Only use immutable in prod.
+      ...(isDev ? [] : [{
         source: '/_next/static/:path*',
         headers: [
           { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
         ],
-      },
+      }]),
     ];
   },
 }

@@ -1,12 +1,11 @@
 'use client'
 
-import { useState, useEffect, Suspense } from 'react'
+import { useState, useEffect } from 'react'
 import dynamic from 'next/dynamic'
-import { LazyMotion, domAnimation } from 'framer-motion'
 import { QueryClientProvider } from '@tanstack/react-query'
 import { queryClient } from '@/lib/queryClient'
 import { TooltipProvider } from '@/components/ui/tooltip'
-import { ExplorationProvider } from '@/components/exploration'
+import { ExplorationProvider } from '@/components/exploration/ExplorationContext'
 import { CelebrationProvider } from '@/components/success-celebration'
 import { useJourneyTracker } from '@/hooks/use-journey-tracker'
 import { useBehaviorTracker } from '@/hooks/use-behavior-tracker'
@@ -70,18 +69,16 @@ function DeferredComponents() {
 
 export function Providers({ children }: { children: React.ReactNode }) {
   return (
-    <LazyMotion features={domAnimation} strict>
-      <QueryClientProvider client={queryClient}>
-        <TooltipProvider>
-          <CelebrationProvider>
-            <ExplorationProvider>
-              {children}
-              <ScrollToHash />
-              <DeferredComponents />
-            </ExplorationProvider>
-          </CelebrationProvider>
-        </TooltipProvider>
-      </QueryClientProvider>
-    </LazyMotion>
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <CelebrationProvider>
+          <ExplorationProvider>
+            {children}
+            <ScrollToHash />
+            <DeferredComponents />
+          </ExplorationProvider>
+        </CelebrationProvider>
+      </TooltipProvider>
+    </QueryClientProvider>
   )
 }

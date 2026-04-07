@@ -1,9 +1,7 @@
-import dynamic from "next/dynamic";
-import { Badge } from "@/components/ui/badge";
+"use client";
 
-const AgixNetworkAnimation = dynamic(() => import("./AgixNetworkAnimation"), {
-  ssr: false,
-});
+import { Badge } from "@/components/ui/badge";
+import AgixNetworkAnimation from "./AgixNetworkAnimation";
 
 const metrics = [
   { value: "100+",        label: "AI systems deployed" },
@@ -20,10 +18,8 @@ export default function ValuePropositionSection() {
       className="relative overflow-hidden"
       style={{ background: "linear-gradient(135deg, #04091a 0%, #060f20 50%, #04091a 100%)" }}
     >
-      {/* Top separator — orange glow line */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
 
-      {/* Subtle grid texture */}
       <div
         className="absolute inset-0 opacity-[0.03] pointer-events-none"
         style={{
@@ -33,21 +29,17 @@ export default function ValuePropositionSection() {
         }}
       />
 
-      {/* Bottom separator */}
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-slate-700/60 to-transparent" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
-          {/* LEFT — animation */}
           <div className="relative h-[340px] sm:h-[400px] lg:h-[480px] flex items-center justify-center order-2 lg:order-1">
-            {/* Corner accent */}
             <div className="absolute top-0 left-0 w-24 h-24 border-l-2 border-t-2 border-primary/20 rounded-tl-xl pointer-events-none" />
             <div className="absolute bottom-0 right-0 w-24 h-24 border-r-2 border-b-2 border-primary/20 rounded-br-xl pointer-events-none" />
             <AgixNetworkAnimation />
           </div>
 
-          {/* RIGHT — text + metrics */}
           <div className="flex flex-col gap-7 order-1 lg:order-2">
 
             <div className="flex justify-center lg:justify-start">
@@ -77,7 +69,6 @@ export default function ValuePropositionSection() {
               </p>
             </div>
 
-            {/* Metrics grid */}
             <div className="grid grid-cols-2 gap-3 mt-2">
               {metrics.map(({ value, label }, i) => (
                 <div
