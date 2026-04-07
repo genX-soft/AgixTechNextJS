@@ -1446,30 +1446,14 @@ function ClosingValueSection() {
 
 function FinalCTASection() {
   return (
-    <section id="cta-form" className="py-20 bg-gradient-to-b from-slate-900 to-slate-950 scroll-mt-20">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-        >
-          <Card className="border-indigo-500/20 shadow-2xl shadow-indigo-500/5">
-            <CardHeader className="text-center pb-2">
-              <CardTitle className="text-2xl">Schedule a Knowledge Intelligence Consultation</CardTitle>
-              <CardDescription className="text-base">
-                Learn how trusted knowledge can power accurate, explainable AI in your organization.
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <CtaForm 
-                headline="Ready to Build Trusted Knowledge AI?"
-                subheadline="Talk to our Knowledge Intelligence architects about your specific challenges."
-                badgeText="Enterprise Knowledge Intelligence"
-                submitLabel="Schedule Consultation"
-              />
-            </CardContent>
-          </Card>
-        </motion.div>
+    <section id="cta-form" className="py-10 lg:py-14 bg-gradient-to-br from-primary/10 via-background to-cyan-500/10 scroll-mt-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <CtaForm 
+          headline="Ready to Build Trusted Knowledge AI?"
+          subheadline="Talk to our Knowledge Intelligence architects about your specific challenges."
+          badgeText="Enterprise Knowledge Intelligence"
+          submitLabel="Schedule Consultation"
+        />
       </div>
     </section>
   );

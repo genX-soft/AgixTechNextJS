@@ -1473,8 +1473,8 @@ export default function ConversationalIntelligencePage() {
         <InteractiveToolsSection />
         <ResultsMetrics />
         <FAQSection />
-        <section id="cta-form" className="py-20 scroll-mt-20">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6">
+        <section id="cta-form" className="py-10 lg:py-14 bg-gradient-to-br from-primary/10 via-background to-cyan-500/10 scroll-mt-20">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <CtaForm 
               headline="Build Conversations That Actually Understand"
               subheadline="Your conversations don't need more scripts. They need intelligence. Let's discuss how Conversational Intelligence can transform your customer interactions."

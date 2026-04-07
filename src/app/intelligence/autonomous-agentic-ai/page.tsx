@@ -2437,30 +2437,14 @@ function ClosingValueSection() {
 
 function FinalCTASection() {
   return (
-    <section id="cta-form" className="py-20 bg-gradient-to-b from-slate-900 to-slate-950 scroll-mt-20">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-        >
-          <Card className="border-cyan-500/20 shadow-2xl shadow-cyan-500/5">
-            <CardHeader className="text-center pb-2">
-              <CardTitle className="text-2xl">Schedule an Agentic Systems Consultation</CardTitle>
-              <CardDescription className="text-base">
-                Learn how governed autonomous agents can transform your execution workflows.
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <CtaForm 
-                headline="Ready to Explore Agentic Systems?"
-                subheadline="Talk to our Agentic Systems architects about your specific challenges."
-                badgeText="Autonomous Agentic Systems"
-                submitLabel="Schedule Consultation"
-              />
-            </CardContent>
-          </Card>
-        </motion.div>
+    <section id="cta-form" className="py-10 lg:py-14 bg-gradient-to-br from-primary/10 via-background to-cyan-500/10 scroll-mt-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <CtaForm 
+          headline="Ready to Explore Agentic Systems?"
+          subheadline="Talk to our Agentic Systems architects about your specific challenges."
+          badgeText="Autonomous Agentic Systems"
+          submitLabel="Schedule Consultation"
+        />
       </div>
     </section>
   );

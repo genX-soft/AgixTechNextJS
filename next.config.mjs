@@ -5,6 +5,10 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const isDev = process.env.NODE_ENV === 'development';
 
+// In dev mode, each restart generates a unique prefix so the browser never
+// serves stale immutable-cached chunk files from a previous server session.
+const devPrefix = isDev ? `/dev-${Date.now()}` : '';
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
@@ -29,6 +33,8 @@ const nextConfig = {
     formats: ['image/avif', 'image/webp'],
     unoptimized: process.env.NODE_ENV === 'development',
   },
+
+  assetPrefix: devPrefix,
 
   experimental: {
     serverActions: {
@@ -216,7 +222,13 @@ const nextConfig = {
     return expandedRedirects;
   },
   async rewrites() {
-    return [];
+    if (!isDev) return [];
+    return [
+      {
+        source: `${devPrefix}/_next/:path*`,
+        destination: '/_next/:path*',
+      },
+    ];
   },
   async headers() {
     const securityHeaders = [
