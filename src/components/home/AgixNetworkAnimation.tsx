@@ -107,7 +107,7 @@ export default function AgixNetworkAnimation() {
   const cy = 210;
 
   return (
-    <div ref={containerRef} className="relative w-full h-full flex items-center justify-center select-none">
+    <div ref={containerRef} className="relative w-full h-full flex items-center justify-center select-none overflow-hidden">
       {/* Ambient glow */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
         <div className="w-80 h-80 rounded-full bg-cyan-400/10 blur-[90px]" />
