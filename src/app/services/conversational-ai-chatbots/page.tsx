@@ -76,6 +76,8 @@ import {
 import { trackEvent } from "@/lib/analytics";
 import { submitLead } from "@/lib/lead-submission";
 import { useToast } from "@/hooks/use-toast";
+import FAQSection from "@/components/shared/FAQSection";
+import { documentFAQs } from "@/lib/seo/faq-data";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -428,44 +430,6 @@ const pricingTiers = [
   }
 ];
 
-const faqItems = [
-  {
-    question: "What is conversational AI in simple terms?",
-    answer: "Conversational AI allows users to interact with systems using natural language to ask questions, retrieve information, and perform actions through chat interfaces."
-  },
-  {
-    question: "How is conversational AI different from chatbots?",
-    answer: "Traditional chatbots are rule-based. Conversational AI uses AI reasoning, context, and knowledge grounding to handle complex conversations."
-  },
-  {
-    question: "Can conversational AI replace customer support agents?",
-    answer: "Conversational AI handles repetitive queries and escalates complex cases, reducing workload without removing human oversight."
-  },
-  {
-    question: "How accurate are conversational AI systems?",
-    answer: "Well-designed systems typically achieve 85–95% resolution accuracy for defined use cases and improve continuously."
-  },
-  {
-    question: "Is conversational AI secure?",
-    answer: "Yes — when designed with access control, data governance, and audit logging, as AGIX Technologies does."
-  },
-  {
-    question: "Can conversational AI integrate with internal systems?",
-    answer: "Yes. Integration with CRM, ticketing, ERP, and internal tools is a core capability."
-  },
-  {
-    question: "How long does it take to deploy conversational AI?",
-    answer: "Most deployments take 4–8 weeks, depending on complexity and integrations."
-  },
-  {
-    question: "How much does conversational AI cost?",
-    answer: "Typical projects range from $7,000 to $45,000+, depending on scope, knowledge depth, and scale."
-  },
-  {
-    question: "Can conversational AI work internally and externally?",
-    answer: "Yes. AGIX Technologies designs conversational AI for customers, sales teams, and internal employees using the same core engine."
-  }
-];
 
 const industries = [
   { icon: Stethoscope, name: "Healthcare" },
@@ -1860,36 +1824,6 @@ export default function ConversationalAIChatbots() {
         </div>
       </section>
 
-      {/* FAQ */}
-      <section className="py-20">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Frequently Asked{" "}
-              <span className="text-primary">Questions</span>
-            </h2>
-          </motion.div>
-
-          <Accordion type="single" collapsible className="space-y-4">
-            {faqItems.map((faq, i) => (
-              <AccordionItem key={i} value={`faq-${i}`} className="bg-muted/50 rounded-lg border">
-                <AccordionTrigger className="px-4 hover:no-underline" data-testid={`accordion-chatbot-faq-${i}`}>
-                  <span className="text-left">{faq.question}</span>
-                </AccordionTrigger>
-                <AccordionContent className="px-4 pb-4 text-muted-foreground">
-                  {faq.answer}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
-        </div>
-      </section>
-
       {/* Final CTA */}
       <section className="py-20 bg-gradient-to-b from-background to-[#0A0F1D]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
@@ -1931,10 +1865,11 @@ export default function ConversationalAIChatbots() {
         </div>
       </section>
 
-      {/* Footer spacer */}
-      <div className="h-20 bg-[#0A0F1D]" />
-
       </main>
+      <FAQSection
+        faqs={documentFAQs['conversational-ai-chatbots']}
+        title="Conversational AI Chatbot Questions Answered"
+      />
       <MainFooter />
     </div>
   );

@@ -54,6 +54,8 @@ import { submitLead } from "@/lib/lead-submission";
 import { useCelebration } from "@/components/success-celebration";
 import { trackEvent } from "@/lib/analytics";
 import { IndustryCaseStudies, IndustryServices } from "@/components/industry-sections";
+import FAQSection from "@/components/shared/FAQSection";
+import { documentFAQs } from "@/lib/seo/faq-data";
 
 const caseStudies = [
   { company: "Quizlet", description: "AI-powered study engine delivering personalized, predictive learning experiences for millions of students worldwide.", impact: ["Improved knowledge retention", "Personalized study paths", "Higher exam pass rates"], href: "/case-studies/quizlet/" },
@@ -389,68 +391,6 @@ const bottlenecks = [
   },
 ];
 
-const faqs = [
-  {
-    question: "Will AI replace teachers or mentors?",
-    answer: "No. AGIX Technologies designs AI to support educators, not replace them. AI handles repetitive doubts, basic explanations, and admin load — educators focus on teaching, mentoring, and higher-order thinking.",
-  },
-  {
-    question: "Is AI accurate for academic doubt-solving?",
-    answer: "Yes — because answers are generated only from your approved course content, notes, and faculty-validated material using RAG. No open-ended hallucinations.",
-  },
-  {
-    question: "Can this work with our existing LMS?",
-    answer: "Yes. We integrate with Moodle, Canvas, Blackboard, custom LMS platforms, and internal learning portals.",
-  },
-  {
-    question: "How do you ensure academic integrity?",
-    answer: "We implement content-restricted answers, plagiarism & anomaly checks, confidence thresholds, and faculty override & audit logs. AI assistance is transparent and controlled.",
-  },
-  {
-    question: "Is this suitable for live classes, recorded courses, or hybrid models?",
-    answer: "Yes. AI systems adapt to live, recorded, and hybrid learning environments seamlessly.",
-  },
-  {
-    question: "What about student data privacy and compliance?",
-    answer: "Data access is role-based, purpose-limited, and logged for auditability. We follow institution-defined privacy and compliance policies.",
-  },
-  {
-    question: "How long before we see results?",
-    answer: "Most institutions see measurable impact within 4-8 weeks, including faster doubt resolution, improved engagement, and early dropout reduction signals.",
-  },
-  {
-    question: "Can we start small with one course or cohort?",
-    answer: "Absolutely. Many institutions start with one course, one cohort, or one AI system — then expand gradually based on results.",
-  },
-  {
-    question: "What if faculty resist AI adoption?",
-    answer: "We design AI as an assistant, not an authority. Faculty remain in control, and AI adoption is gradual and opt-in.",
-  },
-  {
-    question: "Does AI work across different subjects and disciplines?",
-    answer: "Yes — STEM, humanities, test-prep, skills training, and corporate learning — as long as structured content is available.",
-  },
-  {
-    question: "How do you measure learning improvement?",
-    answer: "Through engagement trends, completion rates, assessment performance, dropout reduction, and skill outcome metrics (for L&D).",
-  },
-  {
-    question: "What are the ongoing costs after implementation?",
-    answer: "Ongoing costs include AI usage, cloud infrastructure, and monitoring & optimization. These are predictable, transparent, and scalable.",
-  },
-  {
-    question: "Will students know they are interacting with AI?",
-    answer: "Yes. Transparency is important. AI is clearly positioned as a learning assistant, not a human replacement.",
-  },
-  {
-    question: "Is this suitable for multilingual or international learners?",
-    answer: "Yes. AI systems can support multiple languages, regional content, and localized explanations.",
-  },
-  {
-    question: "What role does AGIX Technologies play after launch?",
-    answer: "AGIX Technologies works as a long-term AI systems partner, providing monitoring & improvement, model tuning, expansion planning, and ongoing support.",
-  },
-];
 
 const costTable = [
   { type: "Coaching / Small EdTech", scope: "≤2k learners", typical: "AI Tutor + Engagement", range: "$3K - $7K" },
@@ -1770,44 +1710,6 @@ export default function EdTechIndustryPage() {
         </div>
       </section>
 
-      {/* FAQs */}
-      <section className="py-20 bg-muted/30">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <Badge className="mb-4">FAQs</Badge>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              EdTech AI Questions,{" "}
-              <span className="text-primary">Answered</span>
-            </h2>
-            <p className="text-muted-foreground">
-              Clear answers before you commit.
-            </p>
-          </motion.div>
-
-          <Accordion type="single" collapsible className="space-y-3">
-            {faqs.map((faq, i) => (
-              <AccordionItem
-                key={i}
-                value={`faq-${i}`}
-                className="bg-background rounded-lg border px-6"
-              >
-                <AccordionTrigger className="hover:no-underline text-left">
-                  {faq.question}
-                </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground">
-                  {faq.answer}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
-        </div>
-      </section>
-
       {/* Lead Form */}
       <EdTechLeadForm />
 
@@ -1834,7 +1736,10 @@ export default function EdTechIndustryPage() {
           </div>
         </div>
       </section>
-
+      <FAQSection
+        faqs={documentFAQs['edtech-ai-solutions']}
+        title="EdTech AI Questions Answered"
+      />
       <MainFooter />
     </div>
   );

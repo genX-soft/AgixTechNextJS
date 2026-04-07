@@ -69,6 +69,8 @@ import {
 import { trackEvent } from "@/lib/analytics";
 import { submitLead } from "@/lib/lead-submission";
 import { useCelebration } from "@/components/success-celebration";
+import FAQSection from "@/components/shared/FAQSection";
+import { documentFAQs } from "@/lib/seo/faq-data";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -341,68 +343,6 @@ const buyVsBuild = [
   { option: "AGIX Technologies RAG", reality: "Reliable, secure, scalable" }
 ];
 
-const faqItems = [
-  {
-    question: "What is RAG (Retrieval-Augmented Generation) in AI?",
-    answer: "RAG is an AI architecture that allows language models to retrieve relevant information from external knowledge sources before generating a response. Instead of guessing, the AI answers using verified, up-to-date business data, making responses more accurate and trustworthy."
-  },
-  {
-    question: "How is RAG different from training an AI model on company data?",
-    answer: "RAG does not train the model on your data. It retrieves relevant information at query time and uses it as context. This means your data stays private, updates are immediate, no retraining is required, and compliance risks are reduced."
-  },
-  {
-    question: "Why do AI systems hallucinate without RAG?",
-    answer: "Hallucinations occur when an AI lacks access to correct information, is forced to guess based on patterns, or has incomplete or outdated context. RAG prevents hallucinations by restricting AI responses to retrieved factual knowledge."
-  },
-  {
-    question: "Is RAG necessary for enterprise AI applications?",
-    answer: "Yes. Any enterprise AI system that requires accuracy, privacy, or trust needs a RAG layer. Without RAG, answers are unreliable, compliance is risky, and business users lose confidence."
-  },
-  {
-    question: "What types of data can RAG systems use?",
-    answer: "RAG systems can retrieve from PDFs, Word, PowerPoint files, SOPs and policy documents, databases and records, wikis and internal portals, CRM and ERP systems, and approved customer documentation."
-  },
-  {
-    question: "Is company data safe in a RAG system?",
-    answer: "Yes — when designed correctly. AGIX Technologies RAG systems ensure data isolation, role-based access control, no training on public models, secure retrieval pipelines, and full audit logs. Your data remains private and controlled."
-  },
-  {
-    question: "What is the difference between enterprise search and RAG?",
-    answer: "Enterprise search returns documents or links. RAG retrieves information and generates direct answers with context and citations. RAG is semantic and conversational, not keyword-based."
-  },
-  {
-    question: "Can RAG be used with private or on-premise LLMs?",
-    answer: "Yes. RAG works with private cloud LLMs, VPC-hosted models, on-premise deployments, and hybrid enterprise setups. This is ideal for regulated industries."
-  },
-  {
-    question: "How long does it take to build a RAG system?",
-    answer: "Typical timelines: SMB systems: 4–6 weeks, Mid-market systems: 6–8 weeks, Enterprise platforms: 8–12 weeks. Time depends on data volume, structure, and governance needs."
-  },
-  {
-    question: "How much does a RAG system cost?",
-    answer: "Indicative costs: Starter RAG: $8,000 – $15,000, Business RAG: $15,000 – $35,000, Enterprise RAG: $35,000 – $75,000+. Cost depends on accuracy, security, and scale, not number of documents."
-  },
-  {
-    question: "What is a vector database and why is it needed for RAG?",
-    answer: "A vector database stores semantic representations of content, enabling AI to retrieve information based on meaning rather than keywords. Without vector databases, RAG systems lose relevance and accuracy."
-  },
-  {
-    question: "Can RAG systems be used for customer-facing AI?",
-    answer: "Yes — and they should be. RAG ensures customer-facing AI answers only from approved documentation, avoids hallucinations, maintains consistent messaging, and escalates when information is missing."
-  },
-  {
-    question: "How do you keep RAG knowledge up to date?",
-    answer: "AGIX Technologies implements scheduled re-indexing, version control, knowledge ownership tagging, and monitoring for outdated responses. This prevents knowledge decay over time."
-  },
-  {
-    question: "Is RAG suitable for small and mid-sized businesses?",
-    answer: "Absolutely. SMBs benefit from faster onboarding, reduced interruptions, centralized knowledge access, and secure AI without large teams. RAG is not enterprise-only anymore."
-  },
-  {
-    question: "How do I know if my business is ready for RAG?",
-    answer: "You are RAG-ready if knowledge exists but is hard to find, employees ask repetitive questions, accuracy matters, and AI answers must be trusted. If not, AGIX Technologies helps you prepare your knowledge first."
-  }
-];
 
 const readinessQuestions = [
   { id: "structured-docs", question: "Do you have structured documents (SOPs, policies, guides)?", weight: 2 },
@@ -1379,51 +1319,6 @@ export default function RAGKnowledgeAIPage() {
         </div>
       </section>
 
-      {/* FAQ Section */}
-      <section className="py-20">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Frequently Asked Questions
-            </h2>
-          </motion.div>
-
-          <Accordion type="single" collapsible className="w-full">
-            {faqItems.map((faq, index) => (
-              <AccordionItem key={index} value={`faq-${index}`}>
-                <AccordionTrigger className="text-left" data-testid={`faq-trigger-${index}`}>
-                  {faq.question}
-                </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground">
-                  {faq.answer}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="mt-12"
-          >
-            <Card className="bg-background border-border">
-              <CardContent className="py-8 text-center">
-                <Brain className="w-8 h-8 text-primary mx-auto mb-4" />
-                <p className="text-lg font-medium max-w-3xl mx-auto">
-                  RAG is the foundation that transforms AI from a generative tool into a reliable business system.
-                </p>
-              </CardContent>
-            </Card>
-          </motion.div>
-        </div>
-      </section>
-
       {/* Final CTA */}
       <section className="py-20 bg-muted/30">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
@@ -1478,6 +1373,10 @@ export default function RAGKnowledgeAIPage() {
         </div>
       </section>
 
+      <FAQSection
+        faqs={documentFAQs['rag-knowledge-ai']}
+        title="RAG & Knowledge AI Questions Answered"
+      />
       <MainFooter />
     </div>
   );

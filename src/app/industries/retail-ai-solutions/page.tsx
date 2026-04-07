@@ -51,6 +51,8 @@ import { submitLead } from "@/lib/lead-submission";
 import { useCelebration } from "@/components/success-celebration";
 import { trackEvent } from "@/lib/analytics";
 import { IndustryCaseStudies, IndustryServices } from "@/components/industry-sections";
+import FAQSection from "@/components/shared/FAQSection";
+import { documentFAQs } from "@/lib/seo/faq-data";
 
 const caseStudies = [
   { company: "Albertsons", description: "AI-driven demand forecasting system reducing perishable waste and improving on-shelf availability across stores.", impact: ["23% reduction in perishable waste", "$41M in annual savings", "18% improvement in on-shelf availability"], href: "/case-studies/albertsons/" },
@@ -335,48 +337,6 @@ const roiMetrics = [
   { metric: "Ops workload", improvement: "-25% to -40%" }
 ];
 
-const faqs = [
-  {
-    question: "Is AI useful for small D2C brands or only large stores?",
-    answer: "AI often delivers faster ROI for small and mid-sized brands because it reduces support load and recovers lost revenue immediately. You don't need enterprise scale to benefit."
-  },
-  {
-    question: "Will AI integrate with Shopify or WooCommerce?",
-    answer: "Yes. AGIX Technologies builds AI systems that integrate directly with Shopify, WooCommerce, Magento, and custom ecommerce platforms through their APIs."
-  },
-  {
-    question: "Can AI really reduce customer support tickets?",
-    answer: "Yes. Most ecommerce stores see 60-80% reduction in repetitive tickets like order status, returns, and policy questions within the first month."
-  },
-  {
-    question: "Will AI affect my brand voice or customer experience?",
-    answer: "No. AI responses are trained on your tone, policies, and guidelines, so the experience stays on-brand and consistent."
-  },
-  {
-    question: "Can AI help reduce cart abandonment?",
-    answer: "Yes. AI assists customers at checkout, answers questions, and triggers smart follow-ups — often recovering 10-25% of abandoned carts."
-  },
-  {
-    question: "Is AI safe to use with payments and refunds?",
-    answer: "Yes. AI follows strict rules and never approves outside defined policies. Humans always have override control."
-  },
-  {
-    question: "How long does it take to go live?",
-    answer: "Most ecommerce AI systems go live in 3-6 weeks, depending on scope and integrations."
-  },
-  {
-    question: "What if AI gives a wrong answer to a customer?",
-    answer: "All systems include confidence thresholds, human escalation, and full visibility. AI assists — humans remain in control."
-  },
-  {
-    question: "Can I start with just one AI use case?",
-    answer: "Absolutely. Most brands start with support automation or cart recovery, then expand gradually."
-  },
-  {
-    question: "What are the ongoing costs after setup?",
-    answer: "Ongoing costs include cloud & AI usage plus maintenance. Typically 15-25% of initial build cost annually."
-  }
-];
 
 function ECommerceSolutionFinder() {
   const [step, setStep] = useState(1);
@@ -1699,37 +1659,6 @@ export default function EcommerceIndustryPage() {
         </div>
       </section>
 
-      {/* FAQ */}
-      <section className="py-20 bg-muted/30">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              E-Commerce AI{" "}
-              <span className="text-primary">FAQs</span>
-            </h2>
-            <p className="text-muted-foreground">Clear answers before you decide</p>
-          </motion.div>
-
-          <Accordion type="single" collapsible className="space-y-3">
-            {faqs.map((faq, i) => (
-              <AccordionItem key={i} value={`faq-${i}`} className="bg-background rounded-lg border">
-                <AccordionTrigger className="px-4 hover:no-underline text-left">
-                  <span className="text-left pr-4">{faq.question}</span>
-                </AccordionTrigger>
-                <AccordionContent className="px-4 pb-4 text-muted-foreground">
-                  {faq.answer}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
-        </div>
-      </section>
-
       {/* Lead Form - Now at Bottom */}
       <RetailLeadForm />
 
@@ -1756,7 +1685,10 @@ export default function EcommerceIndustryPage() {
           </div>
         </div>
       </section>
-
+      <FAQSection
+        faqs={documentFAQs['retail-ai-solutions']}
+        title="Retail AI Questions Answered"
+      />
       <MainFooter />
     </div>
   );

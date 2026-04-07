@@ -65,6 +65,8 @@ import {
 import { trackEvent } from "@/lib/analytics";
 import { submitLead } from "@/lib/lead-submission";
 import { useCelebration } from "@/components/success-celebration";
+import FAQSection from "@/components/shared/FAQSection";
+import { documentFAQs } from "@/lib/seo/faq-data";
 
 const AutomationCalculator = dynamic(() => import("./automation-calculator"));
 const CapabilitiesSection = dynamic(() => import("./sections/capabilities-section"));
@@ -703,6 +705,10 @@ export default function AIAutomationPage() {
       </section>
 
       </main>
+      <FAQSection
+        faqs={documentFAQs['ai-automation']}
+        title="AI Automation Questions Answered"
+      />
       <MainFooter />
     </div>
   );

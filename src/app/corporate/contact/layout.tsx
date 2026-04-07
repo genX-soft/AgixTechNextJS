@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { generateMetadataFromURL } from '@/lib/seo/metadata'
+import { documentFAQs, generateFAQPageSchema } from '@/lib/seo/faq-data'
 
 export const metadata: Metadata = generateMetadataFromURL('/corporate/contact/')
 
@@ -43,12 +44,18 @@ const schema = {
   }
 }
 
+const faqSchema = generateFAQPageSchema(documentFAQs['contact'])
+
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       {children}
     </>

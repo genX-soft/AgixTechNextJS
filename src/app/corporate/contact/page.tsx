@@ -33,6 +33,8 @@ import {
 import { trackEvent } from "@/lib/analytics";
 import { submitLead } from "@/lib/lead-submission";
 import { useCelebration } from "@/components/success-celebration";
+import FAQSection from "@/components/shared/FAQSection";
+import { documentFAQs } from "@/lib/seo/faq-data";
 
 const roleOptions = [
   { value: "founder-ceo", label: "Founder / CEO" },
@@ -655,6 +657,10 @@ export default function ContactPage() {
         </div>
       </section>
 
+      <FAQSection
+        faqs={documentFAQs['contact']}
+        title="Questions About Working With AGIX Technologies"
+      />
       <MainFooter />
     </div>
   );

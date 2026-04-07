@@ -75,6 +75,8 @@ import {
 import { trackEvent } from "@/lib/analytics";
 import { submitLead } from "@/lib/lead-submission";
 import { useCelebration } from "@/components/success-celebration";
+import FAQSection from "@/components/shared/FAQSection";
+import { documentFAQs } from "@/lib/seo/faq-data";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -365,68 +367,6 @@ const buyVsBuild = [
   { option: "AGIX Technologies systems", reality: "Governed, scalable, trusted", highlight: true }
 ];
 
-const faqItems = [
-  {
-    question: "What is Predictive Analytics AI in simple terms?",
-    answer: "Predictive Analytics AI uses historical and real-time data to estimate what is likely to happen next and how confident that prediction is. Instead of explaining the past, it helps organizations anticipate outcomes and act early."
-  },
-  {
-    question: "How is Predictive AI different from traditional analytics or BI?",
-    answer: "Traditional analytics answers 'what happened'. Predictive AI answers 'what is likely to happen next — and why.' BI summarizes data; Predictive AI models future behavior, risk, and outcomes."
-  },
-  {
-    question: "What business problems benefit most from Predictive AI?",
-    answer: "Predictive AI works best when decisions repeat frequently, outcomes are measurable, delays are costly, and uncertainty impacts revenue or risk. Common areas include forecasting, churn, fraud, demand planning, and recommendations."
-  },
-  {
-    question: "Is Predictive AI reliable for enterprise decisions?",
-    answer: "Yes — when designed with governance, explainability, and monitoring. AGIX Technologies systems provide confidence intervals, driver explanations, drift detection, and human override controls. This makes predictions trustworthy and decision-safe."
-  },
-  {
-    question: "How accurate are Predictive AI models in practice?",
-    answer: "Accuracy depends on data quality, signal relevance, stability of patterns, and ongoing monitoring. In enterprise deployments, improvements of 10–25% over baseline forecasts are common when systems are well-designed."
-  },
-  {
-    question: "What data is required to build Predictive AI systems?",
-    answer: "Typically required: historical transaction or behavior data, time-based signals, outcome labels (e.g., churn, fraud, demand), and contextual business data. AGIX Technologies focuses on signal quality, not data volume."
-  },
-  {
-    question: "How long does it take to implement Predictive AI?",
-    answer: "Typical timelines: Departmental systems: 8–10 weeks, Cross-functional platforms: 10–14 weeks, Enterprise decision systems: 14–20 weeks. This includes discovery, modeling, governance, and integration."
-  },
-  {
-    question: "How much does Predictive & Analytics AI cost?",
-    answer: "Indicative ranges: Departmental predictive systems: $25K–$45K, Cross-functional platforms: $45K–$90K, Enterprise decision intelligence: $90K–$180K+. Cost depends on decision criticality and governance, not model count."
-  },
-  {
-    question: "Can Predictive AI reduce risk and fraud proactively?",
-    answer: "Yes. Predictive risk systems identify anomalies and weak signals before losses occur, allowing early intervention rather than post-incident response. This reduces false positives and adapts to evolving patterns."
-  },
-  {
-    question: "How does Predictive AI support revenue forecasting?",
-    answer: "Predictive AI incorporates real-time signals, adjusts forecasts continuously, highlights deviation risks early, and provides confidence bands. This helps leadership act before revenue misses happen."
-  },
-  {
-    question: "Are Predictive AI systems explainable to executives?",
-    answer: "They must be. AGIX Technologies designs explainability into every system: key drivers of predictions, scenario impact summaries, and confidence scoring. Executives should understand why a prediction exists, not just the number."
-  },
-  {
-    question: "What happens when predictions are wrong?",
-    answer: "AGIX Technologies systems track prediction error, monitor drift, trigger review or retraining, and allow human override. Predictive AI is designed to reduce uncertainty, not eliminate it entirely."
-  },
-  {
-    question: "Can Predictive AI integrate with existing enterprise systems?",
-    answer: "Yes. AGIX Technologies integrates predictive intelligence into CRMs, ERP systems, planning tools, risk engines, and operational workflows. Predictions influence actions, not just reports."
-  },
-  {
-    question: "Is Predictive AI suitable for regulated industries?",
-    answer: "Yes — when governance is built in. AGIX Technologies supports audit logs, role-based access, approval workflows, and compliance-aligned controls. This makes systems suitable for finance, insurance, healthcare, and regulated enterprises."
-  },
-  {
-    question: "How do we know if Predictive AI is the right next step?",
-    answer: "You're a strong candidate if decisions repeat at scale, forecast errors are costly, risks are detected too late, and leadership wants foresight, not hindsight. If not, AGIX Technologies will recommend analytics maturity first."
-  }
-];
 
 const readinessQuestions = [
   { id: "repeat-decisions", question: "Do key decisions repeat regularly?", weight: 2 },
@@ -1645,51 +1585,6 @@ export default function PredictiveAnalyticsAIPage() {
         </div>
       </section>
 
-      {/* FAQ Section */}
-      <section className="py-20">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Frequently Asked Questions
-            </h2>
-          </motion.div>
-
-          <Accordion type="single" collapsible className="w-full">
-            {faqItems.map((faq, index) => (
-              <AccordionItem key={index} value={`faq-${index}`}>
-                <AccordionTrigger className="text-left" data-testid={`faq-trigger-${index}`}>
-                  {faq.question}
-                </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground">
-                  {faq.answer}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="mt-12"
-          >
-            <Card className="bg-background border-border">
-              <CardContent className="py-8 text-center">
-                <Brain className="w-8 h-8 text-primary mx-auto mb-4" />
-                <p className="text-lg font-medium max-w-3xl mx-auto">
-                  Predictive AI is not about predicting the future perfectly — it's about reducing uncertainty in decisions that matter.
-                </p>
-              </CardContent>
-            </Card>
-          </motion.div>
-        </div>
-      </section>
-
       {/* Final CTA */}
       <section className="py-20 bg-muted/30">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
@@ -1743,6 +1638,10 @@ export default function PredictiveAnalyticsAIPage() {
         </div>
       </section>
 
+      <FAQSection
+        faqs={documentFAQs['ai-predictive-analytics']}
+        title="Predictive AI Analytics Questions Answered"
+      />
       <MainFooter />
     </div>
   );

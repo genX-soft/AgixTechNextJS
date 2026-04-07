@@ -55,6 +55,8 @@ import { useToast } from "@/hooks/use-toast";
 import { submitLead } from "@/lib/lead-submission";
 import { useCelebration } from "@/components/success-celebration";
 import { IndustryCaseStudies, IndustryServices } from "@/components/industry-sections";
+import FAQSection from "@/components/shared/FAQSection";
+import { documentFAQs } from "@/lib/seo/faq-data";
 
 const caseStudies = [
   { company: "Babylon Health", description: "AI-powered digital triage and telehealth platform improving patient accessibility and care delivery at scale.", impact: ["Faster patient symptom assessment", "Scalable telemedicine consultations", "Reduced triage workload"], href: "/case-studies/babylon-health/" },
@@ -436,68 +438,6 @@ const roleBasedStartingPoints = [
   { role: "Digital Health Platforms", systems: "Engagement → Intake → Governance Layer" },
 ];
 
-const faqs = [
-  {
-    q: "Is AI safe to use in healthcare environments?",
-    a: "Yes — when designed correctly. AGIX Technologies builds assistive AI systems with human-in-the-loop controls, explainability, and audit trails, ensuring AI supports care delivery without introducing clinical risk.",
-  },
-  {
-    q: "Will AI replace doctors, nurses, or clinicians?",
-    a: "No. AGIX Technologies does not build autonomous clinical decision systems. Our AI supports clinicians by reducing administrative burden and improving workflow efficiency, while final medical decisions always remain with humans.",
-  },
-  {
-    q: "How does AGIX Technologies ensure patient data privacy?",
-    a: "Patient data is handled with strict access controls, purpose limitation, and traceability. Data is never used to train public AI models and remains governed under healthcare data protection standards.",
-  },
-  {
-    q: "Can AI integrate with our existing HIS or EMR systems?",
-    a: "Yes. AGIX Technologies designs AI systems to integrate with existing HIS, EMR, LIS, and billing systems, avoiding costly replacements or workflow disruption.",
-  },
-  {
-    q: "What healthcare processes benefit most from AI?",
-    a: "Common high-impact areas include: Patient intake and triage, Clinical documentation support, Follow-ups and care continuity, Claims and revenue cycle workflows, and Compliance and audit readiness.",
-  },
-  {
-    q: "How long does it take to implement healthcare AI?",
-    a: "Most healthcare AI systems take 4–8 weeks to deploy, depending on integration depth, data readiness, and governance requirements.",
-  },
-  {
-    q: "Is healthcare AI compliant with regulations?",
-    a: "AGIX Technologies systems are designed with compliance, explainability, and traceability as first-class requirements, making them suitable for regulated healthcare environments.",
-  },
-  {
-    q: "What happens if AI provides an incorrect recommendation?",
-    a: "AI outputs are non-binding and reviewable. Clinicians and administrators always validate decisions before action is taken.",
-  },
-  {
-    q: "Can small clinics and diagnostic centers use AI, or is it only for large hospitals?",
-    a: "AGIX Technologies healthcare AI solutions are scalable — suitable for small clinics, diagnostic centers, specialty practices, and large hospital networks alike.",
-  },
-  {
-    q: "How does AI help reduce clinician burnout?",
-    a: "By assisting with documentation, triage support, and non-clinical tasks, AI reduces cognitive overload and allows clinicians to focus more on patient care.",
-  },
-  {
-    q: "What kind of ROI should healthcare organizations expect?",
-    a: "ROI is typically seen through: Reduced waiting times, Lower administrative load, Fewer claim rejections, Improved patient follow-up rates, and Better staff satisfaction.",
-  },
-  {
-    q: "Can we start with a pilot or small deployment?",
-    a: "Yes. Most organizations begin with one focused AI system and expand gradually once trust and value are established.",
-  },
-  {
-    q: "Does AI make clinical workflows more complex?",
-    a: "No. AGIX Technologies AI is designed to simplify workflows, not add extra steps. The goal is fewer screens, fewer manual tasks, and clearer information flow.",
-  },
-  {
-    q: "How does AGIX Technologies handle AI governance and audits?",
-    a: "Every AI action is logged, traceable, and reviewable. Governance layers ensure leadership can confidently answer 'who decided what, and why' during audits.",
-  },
-  {
-    q: "Is healthcare AI suitable for telemedicine and digital health platforms?",
-    a: "Yes. AGIX Technologies healthcare AI works well across in-person, telehealth, and hybrid care models, supporting scalable and compliant digital health operations.",
-  },
-];
 
 const principles = [
   { num: 1, title: "Human-in-the-Loop by Design", desc: "AI assists decisions — it never replaces clinical judgment" },
@@ -2254,71 +2194,6 @@ export default function HealthcareIndustryPage() {
         </div>
       </section>
 
-      {/* ==================== FAQ SECTION ==================== */}
-      <section className="py-20">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <Badge className="mb-4">
-              <HelpCircle className="w-3 h-3 mr-1" />
-              FAQs
-            </Badge>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Frequently Asked Questions
-            </h2>
-            <p className="text-muted-foreground">
-              Healthcare Leaders Ask These First
-            </p>
-          </motion.div>
-
-          <Accordion type="single" collapsible className="space-y-4">
-            {faqs.map((faq, i) => (
-              <AccordionItem key={i} value={`faq-${i}`} className="bg-card border rounded-lg px-4">
-                <AccordionTrigger className="text-left" data-testid={`accordion-faq-${i}`}>
-                  {faq.q}
-                </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground">
-                  {faq.a}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
-
-          {/* When Healthcare AI Is Right */}
-          <Card className="mt-8">
-            <CardHeader>
-              <CardTitle className="text-lg">When Healthcare AI Is the Right Choice</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-sm text-muted-foreground mb-4">
-                Healthcare AI is a strong fit when your organization wants to:
-              </p>
-              <div className="grid md:grid-cols-2 gap-2">
-                {[
-                  "Reduce clinician burnout",
-                  "Improve patient experience",
-                  "Increase operational efficiency",
-                  "Strengthen compliance posture",
-                  "Scale responsibly without increasing risk",
-                ].map((item, i) => (
-                  <div key={i} className="flex items-center gap-2 text-sm">
-                    <CheckCircle2 className="w-4 h-4 text-green-500" />
-                    {item}
-                  </div>
-                ))}
-              </div>
-              <p className="text-sm text-foreground font-medium mt-4">
-                If your priority is safe, explainable, and controlled AI adoption, this approach is built for you.
-              </p>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-
       {/* ==================== FINAL CTA SECTION ==================== */}
       <section className="py-20 bg-gradient-to-br from-cyan-500/10 via-primary/10 to-background">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
@@ -2391,6 +2266,10 @@ export default function HealthcareIndustryPage() {
           </p>
         </div>
       </section>
+      <FAQSection
+        faqs={documentFAQs['healthcare-ai-solutions']}
+        title="Healthcare AI Questions Answered"
+      />
       <MainFooter />
     </div>
   );

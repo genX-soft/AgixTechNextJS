@@ -107,11 +107,11 @@ export function MainFooter() {
         <div className="grid grid-cols-2 gap-8 md:grid-cols-3 lg:grid-cols-6">
           <div className="col-span-2 md:col-span-3 lg:col-span-1">
             <Link href="/" className="mb-4 flex items-center gap-2">
-              <div className="flex h-9 w-9 items-center justify-center rounded-md bg-gradient-to-br from-primary to-primary/70">
+              <div className="flex h-9 w-9 items-center justify-center rounded-md bg-orange-500">
                 <Sparkles className="h-4 w-4 text-white" aria-hidden="true" />
               </div>
               <span className="text-xl font-bold">
-                AGIX Technologies<span className="text-primary">.</span>
+                Agix Technologies<span className="text-primary">.</span>
               </span>
             </Link>
             <p className="mb-6 text-sm leading-relaxed text-slate-300">
@@ -217,7 +217,7 @@ export function MainFooter() {
           <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
             <div className="flex flex-wrap items-center gap-4 text-xs text-slate-300">
               <div className="text-sm text-slate-300" suppressHydrationWarning>
-                {`\u00A9 ${new Date().getFullYear()} AGIX Technologies. All rights reserved.`}
+                {`\u00A9 ${new Date().getFullYear()} Agix Technologies. All rights reserved.`}
               </div>
               <span className="hidden md:inline">|</span>
               <Link href="/privacy-policy/" className="transition-colors hover:text-white">Privacy Policy</Link>

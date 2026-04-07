@@ -53,6 +53,8 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { CtaForm } from "@/components/forms/cta-form";
+import DocumentFAQSection from "@/components/shared/FAQSection";
+import { documentFAQs } from "@/lib/seo/faq-data";
 
 function scrollToSection(id: string) {
   const element = document.getElementById(id);
@@ -1744,124 +1746,11 @@ function IndustryModelsTool() {
 }
 
 function FAQSection() {
-  const faqs = [
-    {
-      question: "What is Decision Intelligence in simple terms?",
-      answer: "Decision Intelligence uses AI to support better business decisions by evaluating options, risks, and outcomes — not just showing data."
-    },
-    {
-      question: "How is Decision Intelligence different from analytics or BI?",
-      answer: "Analytics explains what happened. Decision Intelligence helps decide what to do next."
-    },
-    {
-      question: "Can AI make business decisions on its own?",
-      answer: "AI can support decisions, but final judgment should remain with humans. AGIX Technologies builds systems that recommend, not dictate."
-    },
-    {
-      question: "Is Decision Intelligence safe for regulated industries?",
-      answer: "Yes — when designed with governance, explainability, and auditability built in."
-    },
-    {
-      question: "How does Decision Intelligence reduce bias?",
-      answer: "By using structured reasoning, consistent evaluation criteria, and tracking outcomes over time."
-    },
-    {
-      question: "Will Decision Intelligence replace managers or executives?",
-      answer: "No. It augments human judgment, reduces overload, and improves consistency."
-    },
-    {
-      question: "What's the difference between predictive AI and Decision Intelligence?",
-      answer: "Predictive AI forecasts outcomes. Decision Intelligence recommends actions based on those forecasts and constraints."
-    },
-    {
-      question: "How do you validate AI-supported decisions?",
-      answer: "By tracking outcomes, comparing expected vs actual results, and continuously refining the decision logic."
-    },
-    {
-      question: "What happens when humans disagree with AI recommendations?",
-      answer: "Human judgment always wins. Disagreements are captured and used to improve future recommendations."
-    },
-    {
-      question: "Can Decision Intelligence help speed up decision-making?",
-      answer: "Yes. It reduces analysis paralysis by structuring options and clarifying trade-offs quickly."
-    },
-    {
-      question: "Is Decision Intelligence useful for small or mid-sized businesses?",
-      answer: "Absolutely. Growing businesses often face decision complexity faster than scale, making Decision Intelligence highly valuable."
-    },
-    {
-      question: "How does Decision Intelligence improve over time?",
-      answer: "Through outcome tracking, feedback loops, bias detection, and continuous learning."
-    },
-    {
-      question: "What's the biggest mistake companies make with AI and decisions?",
-      answer: "Using AI to replace judgment instead of supporting it, or deploying black-box systems without governance."
-    },
-    {
-      question: "How do we get started with Decision Intelligence safely?",
-      answer: "Start with decision clarity, risk assessment, and assistive recommendations. Then scale gradually with governance."
-    },
-    {
-      question: "Is Decision Intelligence expensive to implement?",
-      answer: "Costs depend on scope, but starting with assistive decision intelligence is far more affordable than large automation programs."
-    },
-    {
-      question: "Can Decision Intelligence integrate with existing systems?",
-      answer: "Yes. AGIX Technologies builds decision layers that integrate with CRM, ERP, analytics, and operational platforms."
-    },
-    {
-      question: "Do humans stay in control with Decision Intelligence?",
-      answer: "Always. AGIX Technologies designs systems where humans remain the final decision makers with full override capability."
-    },
-    {
-      question: "What types of decisions benefit most from AI support?",
-      answer: "High-frequency, high-stakes decisions with complexity, uncertainty, or potential for bias benefit most."
-    },
-    {
-      question: "How do you ensure AI decisions are explainable?",
-      answer: "By designing systems that show reasoning, assumptions, confidence levels, and alternatives — not just answers."
-    },
-    {
-      question: "What industries use Decision Intelligence the most?",
-      answer: "Finance, healthcare, retail, SaaS, and enterprise organizations with complex operational or strategic decisions."
-    }
-  ];
-
   return (
-    <section className="py-20">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-12"
-        >
-          <Badge variant="outline" className="border-emerald-500/30 text-emerald-400 mb-4">
-            <HelpCircle className="w-3 h-3 mr-1" />
-            FAQs
-          </Badge>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Real Decision Intelligence Questions
-          </h2>
-          <p className="text-muted-foreground">
-            Based on Google searches and LLM queries
-          </p>
-        </motion.div>
-
-        <Accordion type="single" collapsible className="space-y-3">
-          {faqs.map((faq, i) => (
-            <AccordionItem key={i} value={`faq-${i}`} className="border border-slate-800 rounded-lg px-4 bg-slate-900/30">
-              <AccordionTrigger className="text-left hover:no-underline" data-testid={`accordion-faq-${i}`}>
-                <span className="text-sm font-medium">{faq.question}</span>
-              </AccordionTrigger>
-              <AccordionContent className="text-sm text-muted-foreground">
-                {faq.answer}
-              </AccordionContent>
-            </AccordionItem>
-          ))}
-        </Accordion>
-      </div>
-    </section>
+    <DocumentFAQSection
+      faqs={documentFAQs['decision-ai']}
+      title="Decision Intelligence Questions Answered"
+    />
   );
 }
 

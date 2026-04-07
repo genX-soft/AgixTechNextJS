@@ -75,6 +75,8 @@ import {
 import { trackEvent } from "@/lib/analytics";
 import { useToast } from "@/hooks/use-toast";
 import { submitLead } from "@/lib/lead-submission";
+import FAQSection from "@/components/shared/FAQSection";
+import { documentFAQs } from "@/lib/seo/faq-data";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -524,64 +526,6 @@ const pricingTiers = [
   }
 ];
 
-const faqItems = [
-  {
-    question: "What is an AI voice agent?",
-    answer: "An AI voice agent is an artificial intelligence system that can answer and place phone calls, understand spoken language, respond naturally, and perform actions such as booking appointments or updating systems."
-  },
-  {
-    question: "Are AI voice agents the same as IVR systems?",
-    answer: "No. IVR systems rely on menus and fixed rules. AI voice agents use conversational AI to hold natural, free-flowing conversations."
-  },
-  {
-    question: "How accurate are AI voice agents in real calls?",
-    answer: "Well-designed AI voice agents typically achieve 90–95% intent accuracy for defined use cases and improve with continuous learning."
-  },
-  {
-    question: "Can AI voice agents handle complex conversations?",
-    answer: "Yes, within defined boundaries. AGIX Technologies designs human-fallback logic for edge cases and compliance-sensitive situations."
-  },
-  {
-    question: "Can AI voice agents work 24/7?",
-    answer: "Yes. AI voice agents operate continuously without fatigue, delays, or shift limitations."
-  },
-  {
-    question: "Do customers know they are talking to AI?",
-    answer: "This depends on compliance and business preference. AGIX Technologies supports transparent disclosure or hybrid approaches where required."
-  },
-  {
-    question: "Can AI voice agents book appointments automatically?",
-    answer: "Yes. AI voice agents can check availability, book, reschedule, confirm, and send reminders."
-  },
-  {
-    question: "Are AI voice agents secure?",
-    answer: "AGIX Technologies implements access controls, call recording governance, data masking, and audit trails. Security is built into the system, not added later."
-  },
-  {
-    question: "Can AI voice agents integrate with CRM and internal tools?",
-    answer: "Yes. Integration is a core capability, not an add-on."
-  },
-  {
-    question: "Can AI voice agents support multiple languages?",
-    answer: "Yes. Multilingual voice agents can support multiple languages with native-quality speech."
-  },
-  {
-    question: "How long does it take to deploy an AI voice agent?",
-    answer: "Most deployments take 4–10 weeks, depending on complexity and integrations."
-  },
-  {
-    question: "Are AI voice agents legal and compliant?",
-    answer: "Yes, when designed correctly. AGIX Technologies builds voice agents aligned with regulatory and industry requirements."
-  },
-  {
-    question: "What businesses benefit most from AI voice agents?",
-    answer: "Businesses with high call volumes, appointment-based operations, sales or support teams, and multilingual customers."
-  },
-  {
-    question: "Will AI voice agents replace human agents?",
-    answer: "AI voice agents reduce repetitive workload and allow human agents to focus on complex or sensitive interactions."
-  }
-];
 
 const WAVE_HEIGHTS = [48, 56, 40, 52, 44, 60, 36, 54, 42, 58, 46, 50];
 const WAVE_DURATIONS = [0.9, 1.1, 0.85, 1.0, 0.95, 1.15, 0.88, 1.05, 0.92, 1.08, 0.98, 1.02];
@@ -2000,36 +1944,6 @@ export default function AIVoiceAgents() {
         </div>
       </section>
 
-      {/* FAQ */}
-      <section className="py-20 bg-muted/30">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Frequently Asked{" "}
-              <span className="text-primary">Questions</span>
-            </h2>
-          </motion.div>
-
-          <Accordion type="single" collapsible className="space-y-4">
-            {faqItems.map((faq, i) => (
-              <AccordionItem key={i} value={`faq-${i}`} className="bg-background rounded-lg border">
-                <AccordionTrigger className="px-4 hover:no-underline" data-testid={`accordion-faq-${i}`}>
-                  <span className="text-left">{faq.question}</span>
-                </AccordionTrigger>
-                <AccordionContent className="px-4 pb-4 text-muted-foreground">
-                  {faq.answer}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
-        </div>
-      </section>
-
       {/* Final CTA */}
       <section className="py-20 bg-gradient-to-b from-background to-[#0A0F1D]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
@@ -2069,9 +1983,10 @@ export default function AIVoiceAgents() {
         </div>
       </section>
 
-      {/* Footer spacer */}
-      <div className="h-20 bg-[#0A0F1D]" />
-
+      <FAQSection
+        faqs={documentFAQs['ai-voice-agents']}
+        title="AI Voice Agent Questions Answered"
+      />
       <MainFooter />
     </div>
   );

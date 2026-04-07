@@ -68,6 +68,8 @@ import { trackEvent } from "@/lib/analytics";
 import { submitLead } from "@/lib/lead-submission";
 import { useCelebration } from "@/components/success-celebration";
 import { IndustryCaseStudies, IndustryServices } from "@/components/industry-sections";
+import FAQSection from "@/components/shared/FAQSection";
+import { documentFAQs } from "@/lib/seo/faq-data";
 
 const caseStudies = [
   { company: "HouseCanary", description: "AI platform delivering real-time property valuation and market forecasting for real estate investors and lenders.", impact: ["Automated property valuations at scale", "More accurate market predictions", "Faster deal underwriting"], href: "/case-studies/housecanary/" },
@@ -472,68 +474,6 @@ const roiMetrics = [
   { area: "Follow-up consistency", improvement: "Near 100%" }
 ];
 
-const faqItems = [
-  {
-    question: "Is AI actually useful for individual real estate agents?",
-    answer: "Yes — individual agents often see the fastest ROI because AI ensures no inquiry or follow-up is ever missed while you're driving, showing properties, or negotiating."
-  },
-  {
-    question: "Will AI respond to leads faster than my team can?",
-    answer: "Yes. AI responds instantly, 24/7, across calls, WhatsApp, website chat, and forms — even when you're unavailable."
-  },
-  {
-    question: "Can AI qualify leads before I speak to them?",
-    answer: "Yes. AI asks structured questions (budget, timeline, intent, location) and passes you context-rich, high-intent leads instead of raw inquiries."
-  },
-  {
-    question: "Will AI replace agents or salespeople?",
-    answer: "No. AI handles repetitive communication. Humans handle relationships, negotiations, and closing."
-  },
-  {
-    question: "Can this work with my existing CRM and tools?",
-    answer: "Yes. AGIX Technologies builds AI systems that integrate with your current CRM, portals, and workflows — not replace them."
-  },
-  {
-    question: "Does AI work for rentals and commercial real estate too?",
-    answer: "Yes. AI adapts well to rentals (high volume, fast cycles) and commercial real estate (longer cycles, more stakeholders)."
-  },
-  {
-    question: "What if AI gives incorrect information to a buyer?",
-    answer: "AI systems are designed with confidence thresholds, escalation to humans, and clear rules on what AI can and cannot say. AI assists, it does not commit."
-  },
-  {
-    question: "How long does it take to go live?",
-    answer: "Most real estate AI systems go live in 3-4 weeks for core lead handling, 4-6 weeks for full automation, and 6-9 weeks for predictive intelligence."
-  },
-  {
-    question: "Can I start with just one AI use case?",
-    answer: "Yes — and that's the recommended approach. Most teams start with lead response, follow-ups, and qualification, then expand gradually."
-  },
-  {
-    question: "What is the ongoing cost after setup?",
-    answer: "Ongoing costs typically include cloud infrastructure, AI usage (messages, calls), and maintenance & monitoring. These costs are predictable and transparent."
-  },
-  {
-    question: "Will AI sound robotic to buyers?",
-    answer: "No. Modern conversational AI is designed to sound natural, polite, and professional — not scripted or spammy."
-  },
-  {
-    question: "How do I know which AI system I need first?",
-    answer: "That's why this page includes the AI Solution Finder and Lead Leakage Calculator — they help you decide before talking to anyone."
-  },
-  {
-    question: "Is this suitable for my local market or country?",
-    answer: "Yes. AI systems can be adapted for local languages, local buyer behavior, local pricing logic, and local regulations."
-  },
-  {
-    question: "How is ROI measured in real estate AI?",
-    answer: "ROI is measured through faster response times, higher lead-to-visit ratios, better follow-up consistency, and increased deal velocity. In many cases, saving one deal pays for the system."
-  },
-  {
-    question: "What happens after deployment — are we on our own?",
-    answer: "No. AGIX Technologies works as a long-term AI systems partner, providing monitoring & optimization, improvements over time, and support as your business scales."
-  }
-];
 
 function HeroLeadForm() {
   const { toast } = useToast();
@@ -2026,39 +1966,6 @@ export default function RealEstateIndustryPage() {
         </div>
       </section>
 
-      {/* FAQ Section */}
-      <section className="py-20 bg-muted/30">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Real Estate AI{" "}
-              <span className="text-primary">FAQs</span>
-            </h2>
-            <p className="text-muted-foreground">
-              Clear answers before you decide
-            </p>
-          </motion.div>
-
-          <Accordion type="single" collapsible className="space-y-3">
-            {faqItems.map((faq, i) => (
-              <AccordionItem key={i} value={`faq-${i}`} className="bg-background rounded-lg border">
-                <AccordionTrigger className="px-4 hover:no-underline text-left" data-testid={`accordion-realestate-faq-${i}`}>
-                  <span className="text-left pr-4">{faq.question}</span>
-                </AccordionTrigger>
-                <AccordionContent className="px-4 pb-4 text-muted-foreground">
-                  {faq.answer}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
-        </div>
-      </section>
-
       {/* Lead Form - Now at Bottom */}
       <RealEstateLeadForm />
 
@@ -2121,6 +2028,10 @@ export default function RealEstateIndustryPage() {
           </p>
         </div>
       </section>
+      <FAQSection
+        faqs={documentFAQs['real-estate-ai-solutions']}
+        title="Real Estate AI Questions Answered"
+      />
       <MainFooter />
     </div>
   );

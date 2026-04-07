@@ -186,26 +186,25 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
-      <head>
+      <body
+        className={`${inter.variable} ${spaceGrotesk.variable} font-sans`}
+        suppressHydrationWarning
+      >
+        {/* Organization/WebPage JSON-LD in body — Google supports body placement */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(homepageSchema) }}
         />
-        {/* next/font self-hosts font files under /_next/static/media/ — no Google Fonts preconnects needed */}
+        {/* Critical above-the-fold styles inlined to avoid FOUC */}
         <style dangerouslySetInnerHTML={{ __html: criticalHomeStyles }} />
+        <noscript dangerouslySetInnerHTML={{ __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=${GTM_ID}" height="0" width="0" style="display:none;visibility:hidden"></iframe>` }} />
+        <Providers>{children}</Providers>
         {/* Fallback for JS-disabled browsers */}
         <noscript dangerouslySetInnerHTML={{ __html: '<link rel="stylesheet" href="/deferred-styles.css" />' }} />
         {/* All analytics deferred until first user interaction — zero analytics during Lighthouse test */}
         <Script id="analytics-deferred" src="/analytics-loader.js" strategy="lazyOnload" />
         {/* Uses afterInteractive (not lazyOnload) so styles apply right after hydration, not idle */}
         <Script id="deferred-stylesheet" src="/deferred-styles-loader.js" strategy="afterInteractive" />
-      </head>
-      <body
-        className={`${inter.variable} ${spaceGrotesk.variable} font-sans`}
-        suppressHydrationWarning
-      >
-        <noscript dangerouslySetInnerHTML={{ __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=${GTM_ID}" height="0" width="0" style="display:none;visibility:hidden"></iframe>` }} />
-        <Providers>{children}</Providers>
       </body>
     </html>
   );

@@ -22,6 +22,8 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { CtaForm } from "@/components/forms/cta-form";
+import DocumentFAQSection from "@/components/shared/FAQSection";
+import { documentFAQs } from "@/lib/seo/faq-data";
 import {
   Database,
   Brain,
@@ -1410,63 +1412,11 @@ function IndustryUseCases() {
 }
 
 function FAQSection() {
-  const faqs = [
-    { q: "What is Enterprise Knowledge Intelligence in simple terms?", a: "It ensures AI answers are accurate, explainable, and based only on trusted enterprise knowledge, not guesses." },
-    { q: "Is Enterprise Knowledge Intelligence just RAG?", a: "No. RAG is a retrieval method. Knowledge Intelligence adds governance, validation, access control, and trust." },
-    { q: "Why do AI systems hallucinate even with RAG?", a: "Because the underlying knowledge is unverified, outdated, or conflicting. Hallucinations are often knowledge problems, not model problems." },
-    { q: "How does Knowledge Intelligence prevent hallucinations?", a: "By enforcing source validation, version control, role-based access, multi-source verification, and explainable answers." },
-    { q: "Can Knowledge Intelligence work with our existing documents?", a: "Yes. AGIX Technologies builds intelligence layers on top of your existing knowledge sources, not replacements." },
-    { q: "Do we need to clean all our data before using Knowledge Intelligence?", a: "No. The system helps identify what is trustworthy and what needs cleanup, instead of blocking adoption." },
-    { q: "How does it handle sensitive or confidential data?", a: "Through role-based access, data segmentation, audit logging, and compliance-aware retrieval. AI only sees what it is allowed to see." },
-    { q: "Is it safe for regulated industries?", a: "Yes — when designed with governance, auditability, and explainability, which AGIX Technologies prioritizes." },
-    { q: "How is this different from enterprise search?", a: "Search finds documents. Knowledge Intelligence answers questions with verified, governed knowledge." },
-    { q: "Can it support conversational AI and agents?", a: "Yes. It is the foundation layer that makes conversational AI and agentic systems safe and reliable." },
-    { q: "How long does it take to implement?", a: "Initial value can be achieved in 4–6 weeks, with expansion over time." },
-    { q: "Is Knowledge Intelligence expensive?", a: "It is often less costly than the risk of wrong AI answers, compliance errors, or stalled AI adoption." },
-    { q: "Who owns and approves knowledge in these systems?", a: "Ownership, approval, and validity are explicitly defined as part of the system design." },
-    { q: "Can we see where an AI answer came from?", a: "Yes. Answers include citations, sources, and reasoning context." },
-    { q: "What happens when knowledge is outdated or conflicting?", a: "The system flags uncertainty, escalates for review, or provides qualified responses — instead of guessing." },
-    { q: "Does Knowledge Intelligence replace human expertise?", a: "No. It preserves and scales institutional knowledge, reducing dependency on individuals." },
-    { q: "Is this suitable for internal AI assistants?", a: "Absolutely. Internal AI is often where Knowledge Intelligence delivers the fastest ROI." },
-    { q: "What is the biggest mistake companies make with RAG?", a: "Deploying RAG without governance, ownership, or validation." },
-    { q: "Can small or mid-sized enterprises use this?", a: "Yes. Growing organizations benefit greatly from structured, trusted knowledge early." },
-    { q: "How do we start safely?", a: "Start with a knowledge audit, trust and access mapping, and controlled scope. Then expand gradually." }
-  ];
-
   return (
-    <section className="py-20 bg-slate-900/30">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-12"
-        >
-          <Badge className="mb-4 bg-indigo-500/10 text-indigo-400 border-indigo-500/30">
-            FAQs
-          </Badge>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Real Enterprise Knowledge Intelligence Questions
-          </h2>
-          <p className="text-muted-foreground">
-            Based on Google searches, LLM queries, and enterprise buying concerns.
-          </p>
-        </motion.div>
-
-        <Accordion type="single" collapsible className="space-y-3">
-          {faqs.map((faq, i) => (
-            <AccordionItem key={i} value={`faq-${i}`} className="border border-slate-700 rounded-lg px-4">
-              <AccordionTrigger className="text-left hover:no-underline">
-                <span className="text-sm font-medium">{faq.q}</span>
-              </AccordionTrigger>
-              <AccordionContent className="text-sm text-muted-foreground">
-                {faq.a}
-              </AccordionContent>
-            </AccordionItem>
-          ))}
-        </Accordion>
-      </div>
-    </section>
+    <DocumentFAQSection
+      faqs={documentFAQs['enterprise-knowledge-ai']}
+      title="Enterprise Knowledge AI Questions Answered"
+    />
   );
 }
 

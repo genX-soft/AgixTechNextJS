@@ -8,6 +8,8 @@ import { MainHeader } from "@/components/main-header";
 import { MainFooter } from "@/components/main-footer";
 import { CtaForm } from "@/components/forms/cta-form";
 import { FloatingChatCta } from "@/components/shared/floating-chat-cta";
+import FAQSection from "@/components/shared/FAQSection";
+import { documentFAQs } from "@/lib/seo/faq-data";
 import {
   Shield,
   Target,
@@ -1110,6 +1112,10 @@ export default function AboutPage() {
       <WhoWeWorkWithSection />
       <MissionSection />
       <FinalCTASection />
+      <FAQSection
+        faqs={documentFAQs['about']}
+        title="Questions About AGIX Technologies"
+      />
       <MainFooter />
       <FloatingChatCta />
     </div>

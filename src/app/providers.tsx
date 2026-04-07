@@ -7,12 +7,10 @@ import { queryClient } from '@/lib/queryClient'
 import { TooltipProvider } from '@/components/ui/tooltip'
 import { ExplorationProvider } from '@/components/exploration/ExplorationContext'
 import { CelebrationProvider } from '@/components/success-celebration'
-import { useJourneyTracker } from '@/hooks/use-journey-tracker'
-import { useBehaviorTracker } from '@/hooks/use-behavior-tracker'
 
 const Toaster = dynamic(
   () => import('@/components/ui/toaster').then(mod => ({ default: mod.Toaster })),
-  { ssr: false }
+  { ssr: false, loading: () => null }
 )
 
 const ExplorationLauncher = dynamic(
@@ -32,14 +30,13 @@ const FloatingButtonStack = dynamic(
 
 const ScrollToHash = dynamic(
   () => import('@/components/shared/ScrollToHash'),
-  { ssr: false }
+  { ssr: false, loading: () => null }
 )
 
-function JourneyTrackerInit() {
-  useJourneyTracker()
-  useBehaviorTracker()
-  return null
-}
+const JourneyTrackerInit = dynamic(
+  () => import('@/components/shared/JourneyTrackerInit'),
+  { ssr: false, loading: () => null }
+)
 
 function DeferredComponents() {
   const [mounted, setMounted] = useState(false)
@@ -58,6 +55,7 @@ function DeferredComponents() {
   
   return (
     <>
+      <ScrollToHash />
       <JourneyTrackerInit />
       <Toaster />
       <FloatingChatCta />
@@ -74,7 +72,6 @@ export function Providers({ children }: { children: React.ReactNode }) {
         <CelebrationProvider>
           <ExplorationProvider>
             {children}
-            <ScrollToHash />
             <DeferredComponents />
           </ExplorationProvider>
         </CelebrationProvider>

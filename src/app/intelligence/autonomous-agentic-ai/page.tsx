@@ -23,6 +23,8 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { CtaForm } from "@/components/forms/cta-form";
+import DocumentFAQSection from "@/components/shared/FAQSection";
+import { documentFAQs } from "@/lib/seo/faq-data";
 import {
   Target,
   Brain,
@@ -2373,122 +2375,14 @@ function IndustryUseCases() {
 }
 
 function FAQSection() {
-  const faqs = [
-    {
-      question: "What are Autonomous Agentic Systems in simple terms?",
-      answer: "They are AI systems that own execution of defined goals, can plan actions, act across systems, and adapt — all within clear boundaries and human control.",
-    },
-    {
-      question: "Are Autonomous Agentic Systems the same as AI agents?",
-      answer: "Not exactly. An agentic system is a governed execution architecture — often involving multiple agents — not just a single AI agent.",
-    },
-    {
-      question: "Is this the same as automation?",
-      answer: "No. Automation follows predefined steps. Agentic Systems decide which steps to take based on context and goals.",
-    },
-    {
-      question: "Can Autonomous AI agents go out of control?",
-      answer: "They can — if governance is missing. AGIX Technologies systems are built with boundaries, approvals, audit logs, and kill-switches.",
-    },
-    {
-      question: "Do Autonomous Agentic Systems replace human employees?",
-      answer: "No. They reduce coordination and execution burden, allowing humans to focus on judgment and strategy.",
-    },
-    {
-      question: "What types of tasks should never be agent-driven?",
-      answer: "Tasks involving high subjectivity, ethical judgment, legal interpretation, or unbounded risk. These should always involve humans.",
-    },
-    {
-      question: "How do you control what an agent is allowed to do?",
-      answer: "Through role-based permissions, action boundaries, approval thresholds, and confidence scoring. Autonomy is explicitly constrained.",
-    },
-    {
-      question: "How do agentic systems handle errors?",
-      answer: "They detect failures, retry or choose alternatives, escalate to humans when needed, and log every action.",
-    },
-    {
-      question: "Are Autonomous Agentic Systems safe for regulated industries?",
-      answer: "Yes — when designed with governance, auditability, and human-in-the-loop controls, which AGIX Technologies prioritizes.",
-    },
-    {
-      question: "How long does it take to deploy an agentic system?",
-      answer: "Initial assistive or supervised systems can show value in 4–8 weeks, with autonomy increasing gradually.",
-    },
-    {
-      question: "Are agentic systems expensive to build?",
-      answer: "Costs depend on scope, but starting with bounded, supervised autonomy is often more cost-effective than expanding human teams.",
-    },
-    {
-      question: "Can agentic systems integrate with existing tools?",
-      answer: "Yes. AGIX Technologies builds agentic systems that operate across existing APIs, platforms, and workflows.",
-    },
-    {
-      question: "What's the difference between single-agent and multi-agent systems?",
-      answer: "Single agents handle simple tasks. Multi-agent systems coordinate planning, execution, monitoring, and escalation — essential for real businesses.",
-    },
-    {
-      question: "How do you prevent agents from taking irreversible actions?",
-      answer: "By implementing approval gates, action simulation, human checkpoints, and restricted permissions.",
-    },
-    {
-      question: "Can agentic systems learn and improve?",
-      answer: "Yes — but learning does not automatically expand autonomy. Improvements are reviewed and governed.",
-    },
-    {
-      question: "Is this technology mature enough for real businesses?",
-      answer: "Yes — when applied thoughtfully. Problems arise when autonomy is deployed without controls.",
-    },
-    {
-      question: "What's the biggest mistake companies make with AI agents?",
-      answer: "Deploying agents without clear goals, boundaries, or accountability.",
-    },
-    {
-      question: "Can small or mid-sized businesses use agentic systems?",
-      answer: "Absolutely. SMBs often benefit the most from execution relief, when deployed carefully.",
-    },
-    {
-      question: "How do humans stay accountable when agents execute tasks?",
-      answer: "Humans define goals, boundaries, and approval rules. Agents execute. Humans remain accountable.",
-    },
-    {
-      question: "How do we start safely with Autonomous Agentic Systems?",
-      answer: "Start with assistive agents, supervised execution, and clear governance. Then expand autonomy gradually.",
-    },
-  ];
-
   return (
-    <section className="py-20 bg-slate-900">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-12"
-        >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Real Questions About Autonomous Agentic Systems
-          </h2>
-          <p className="text-muted-foreground">
-            Based on Google search behavior + LLM queries
-          </p>
-        </motion.div>
-
-        <Accordion type="single" collapsible className="space-y-3">
-          {faqs.map((faq, i) => (
-            <AccordionItem key={i} value={`faq-${i}`} className="border border-slate-800 rounded-lg px-4 bg-slate-900/30">
-              <AccordionTrigger className="text-left hover:no-underline" data-testid={`accordion-faq-${i}`}>
-                <span className="text-sm font-medium">{faq.question}</span>
-              </AccordionTrigger>
-              <AccordionContent className="text-sm text-muted-foreground">
-                {faq.answer}
-              </AccordionContent>
-            </AccordionItem>
-          ))}
-        </Accordion>
-      </div>
-    </section>
+    <DocumentFAQSection
+      faqs={documentFAQs['autonomous-agentic-ai']}
+      title="Autonomous Agentic AI Questions Answered"
+    />
   );
 }
+
 
 function ClosingValueSection() {
   return (

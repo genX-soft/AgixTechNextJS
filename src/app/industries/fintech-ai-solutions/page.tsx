@@ -27,6 +27,8 @@ import { submitLead } from "@/lib/lead-submission";
 import { useCelebration } from "@/components/success-celebration";
 import { trackEvent } from "@/lib/analytics";
 import { IndustryCaseStudies, IndustryServices } from "@/components/industry-sections";
+import FAQSection from "@/components/shared/FAQSection";
+import { documentFAQs } from "@/lib/seo/faq-data";
 import {
   Landmark,
   Users,
@@ -435,68 +437,6 @@ const roleBasedPaths = [
   { role: "Bank / Enterprise Lender", path: "D → B → H", description: "Compliance first, then risk, then visibility" },
 ];
 
-const faqItems = [
-  {
-    question: "Is AI allowed in regulated lending and credit decisioning?",
-    answer: "Yes — when designed correctly. AI is widely used in underwriting, fraud detection, and compliance as decision support or governed automation, with clear auditability.",
-  },
-  {
-    question: "How do regulators audit AI-based decisions?",
-    answer: "Through explainable model outputs, feature contribution logs, decision thresholds, human override records, and versioned model history. AGIX Technologies designs systems to be audit-ready by default.",
-  },
-  {
-    question: "Are these AI models black boxes?",
-    answer: "No. We use explainable ML and hybrid rule-based systems — not opaque models that can't justify decisions.",
-  },
-  {
-    question: "How do you handle bias and fairness in credit decisions?",
-    answer: "We implement bias monitoring across protected attributes, fairness thresholds, regular model recalibration, and manual review triggers for edge cases. Fair lending is treated as a system requirement, not an afterthought.",
-  },
-  {
-    question: "Can AI make fully automated loan approvals?",
-    answer: "Yes — but only where regulations allow and readiness is high. Most lenders start with AI-assisted decisions, then gradually automate specific segments.",
-  },
-  {
-    question: "How does AI improve underwriting speed without increasing risk?",
-    answer: "By scoring consistently, using more signals than humans can process, and flagging only risky edge cases for review. Speed improves because decision quality improves, not despite it.",
-  },
-  {
-    question: "What data sources does AI use for lending decisions?",
-    answer: "Depending on your setup: credit bureau data, transaction & bank data, application data, behavioral & repayment signals, and approved alternative data. All data usage is policy-controlled and logged.",
-  },
-  {
-    question: "Can this work for thin-file or new-to-credit customers?",
-    answer: "Yes. AI risk models can incorporate behavioral and alternative signals to improve inclusion without increasing default exposure.",
-  },
-  {
-    question: "How does AI reduce fraud without blocking genuine customers?",
-    answer: "By combining anomaly detection, identity consistency checks, and behavioral analysis. This reduces false positives, not just fraud loss.",
-  },
-  {
-    question: "What happens if AI makes a wrong recommendation?",
-    answer: "Every system includes confidence thresholds, human-in-the-loop review, escalation rules, and full traceability. AI assists decisions — humans remain accountable.",
-  },
-  {
-    question: "How long does implementation usually take?",
-    answer: "Most FinTech AI systems go live in 4-8 weeks, depending on data readiness, regulatory scope, and number of integrations.",
-  },
-  {
-    question: "What are the ongoing costs after implementation?",
-    answer: "Ongoing costs include AI usage, cloud infrastructure, and monitoring & governance. These costs are predictable, transparent, and scalable.",
-  },
-  {
-    question: "Can we start with just one use case?",
-    answer: "Absolutely. Most lenders start with underwriting assistance, fraud detection, or KYC automation — then expand safely.",
-  },
-  {
-    question: "Is this suitable across different countries and regulations?",
-    answer: "Yes. AI systems are configured to align with region-specific regulatory frameworks, not hard-coded assumptions.",
-  },
-  {
-    question: "What role does AGIX Technologies play after deployment?",
-    answer: "AGIX Technologies works as a long-term AI systems partner, providing monitoring & optimization, governance updates, model tuning, and expansion planning.",
-  },
-];
 
 function FintechSolutionFinder() {
   const [step, setStep] = useState(1);
@@ -1930,40 +1870,6 @@ export default function FintechIndustryPage() {
         </div>
       </section>
 
-      {/* FAQ Section */}
-      <section className="py-20 bg-muted/30">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <Badge className="mb-4">15 High-Intent FAQs</Badge>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              FinTech AI{" "}
-              <span className="text-primary">FAQs</span>
-            </h2>
-            <p className="text-muted-foreground">
-              Clear Answers Before You Commit Capital, Risk & Compliance
-            </p>
-          </motion.div>
-
-          <Accordion type="single" collapsible className="space-y-3">
-            {faqItems.map((faq, i) => (
-              <AccordionItem key={i} value={`faq-${i}`} className="bg-background rounded-lg border">
-                <AccordionTrigger className="px-4 hover:no-underline text-left" data-testid={`accordion-fintech-faq-${i}`}>
-                  <span className="text-left pr-4">{faq.question}</span>
-                </AccordionTrigger>
-                <AccordionContent className="px-4 pb-4 text-muted-foreground">
-                  {faq.answer}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
-        </div>
-      </section>
-
       {/* Lead Form - At Bottom */}
       <FintechLeadForm />
 
@@ -2025,6 +1931,10 @@ export default function FintechIndustryPage() {
           </p>
         </div>
       </section>
+      <FAQSection
+        faqs={documentFAQs['fintech-ai-solutions']}
+        title="Fintech AI Questions Answered"
+      />
       <MainFooter />
     </div>
   );

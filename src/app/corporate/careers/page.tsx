@@ -4,6 +4,8 @@ import { useState } from "react";
 import { motion } from "@/lib/motion";
 import { MainHeader } from "@/components/main-header";
 import { MainFooter } from "@/components/main-footer";
+import FAQSection from "@/components/shared/FAQSection";
+import { documentFAQs } from "@/lib/seo/faq-data";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -573,6 +575,10 @@ export default function CareersPage() {
         </div>
       </section>
 
+      <FAQSection
+        faqs={documentFAQs['careers']}
+        title="Questions About Careers at AGIX Technologies"
+      />
       <MainFooter />
     </div>
   );

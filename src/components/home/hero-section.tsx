@@ -20,7 +20,7 @@ import styles from "@/app/page.module.css";
 
 const DynamicOrbitAnimation = dynamic(
   () => import("@/components/home/OrbitAnimation"),
-  { ssr: false }
+  { ssr: false, loading: () => null }
 );
 
 const aiFacts = [
@@ -97,6 +97,8 @@ function useScrollBackground() {
 
 export function HeroSection() {
   const { grad1Ref, grad2Ref } = useScrollBackground();
+  const [orbitMounted, setOrbitMounted] = useState(false);
+  useEffect(() => { setOrbitMounted(true); }, []);
 
   return (
     <section
@@ -195,7 +197,7 @@ export function HeroSection() {
               <div className="absolute inset-16 rounded-full border border-slate-700/20" />
               <div className="absolute inset-24 rounded-full border border-primary/20" />
               <div className="absolute inset-0 flex items-center justify-center">
-                <DynamicOrbitAnimation />
+                {orbitMounted && <DynamicOrbitAnimation />}
               </div>
             </div>
           </div>

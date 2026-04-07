@@ -73,6 +73,8 @@ import {
 import { trackEvent } from "@/lib/analytics";
 import { submitLead } from "@/lib/lead-submission";
 import { useCelebration } from "@/components/success-celebration";
+import FAQSection from "@/components/shared/FAQSection";
+import { documentFAQs } from "@/lib/seo/faq-data";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -357,68 +359,6 @@ const buildVsBuy = [
   { option: "AGIX Technologies systems", reality: "Research-backed, production-safe", highlight: true }
 ];
 
-const faqItems = [
-  {
-    question: "What is Computer Vision in enterprise and industrial use cases?",
-    answer: "Computer Vision is the use of AI systems to interpret visual data (images or video) and convert it into structured, actionable information that can drive decisions, automation, or safety controls. In enterprise settings, it must operate reliably under uncontrolled, real-world conditions, not just lab environments."
-  },
-  {
-    question: "Why do many Computer Vision projects fail after deployment?",
-    answer: "Most failures occur because training data does not represent real environments, accuracy is measured only in controlled tests, edge cases are ignored, and systems are not monitored after deployment. Vision AI fails when treated as a one-time model, not a living system."
-  },
-  {
-    question: "How is production-grade Computer Vision different from demos or APIs?",
-    answer: "Production systems require robust data strategy, evaluation beyond accuracy, drift monitoring, fail-safe behavior, and continuous improvement pipelines. APIs and demos rarely account for these factors."
-  },
-  {
-    question: "What industries benefit most from Computer Vision AI?",
-    answer: "High-impact adoption occurs in manufacturing & industrial automation, healthcare & medical imaging, retail & logistics, smart infrastructure & cities, energy, utilities & inspection, and R&D-driven organizations. Any industry interacting with the physical world can benefit."
-  },
-  {
-    question: "How accurate can Computer Vision systems realistically be?",
-    answer: "Accuracy depends on data quality and diversity, environmental variability, and definition of failure vs success. In real deployments, consistent and explainable performance matters more than peak accuracy numbers. AGIX Technologies focuses on reliable accuracy under changing conditions."
-  },
-  {
-    question: "What data is required to build a Computer Vision system?",
-    answer: "Typically required: real-world images or video, representative edge cases, domain-specific labels, and metadata (lighting, camera type, environment). AGIX Technologies often begins with data feasibility audits before committing to models."
-  },
-  {
-    question: "How long does it take to build a Computer Vision system?",
-    answer: "Typical timelines: Focused vision systems: 8–12 weeks, Production systems: 10–16 weeks, Research-grade platforms: 14–24 weeks. Time is driven more by data and evaluation rigor than model training."
-  },
-  {
-    question: "How much does a Computer Vision solution cost?",
-    answer: "Indicative ranges: Focused systems: $30K–$55K, Production systems: $55K–$110K, Enterprise / research platforms: $110K–$220K+. Cost reflects risk, reliability, and system scope, not number of models."
-  },
-  {
-    question: "Can Computer Vision run on edge devices?",
-    answer: "Yes. AGIX Technologies designs systems for edge inference, hybrid edge + cloud, and latency-sensitive environments. Model selection and optimization are tailored to hardware constraints."
-  },
-  {
-    question: "How do you handle bias and edge cases in vision systems?",
-    answer: "AGIX Technologies addresses this through data diversity analysis, targeted data collection, hard-example mining, synthetic data (where appropriate), and continuous feedback loops. Bias control is treated as an engineering requirement, not a research afterthought."
-  },
-  {
-    question: "How do Computer Vision systems handle uncertainty or low confidence?",
-    answer: "Production systems must assign confidence scores, escalate uncertain cases, and avoid forced predictions. AGIX Technologies systems are designed to fail safely, not silently."
-  },
-  {
-    question: "Is Computer Vision suitable for safety-critical or regulated environments?",
-    answer: "Yes — when designed correctly. AGIX Technologies supports audit trails, explainable outcomes, human-in-the-loop workflows, versioned models, and compliance-aligned deployment. This is critical for healthcare, infrastructure, and industrial safety."
-  },
-  {
-    question: "How do Computer Vision systems improve over time?",
-    answer: "Through performance monitoring, drift detection, dataset expansion, scheduled retraining, and environment-aware tuning. Vision systems must evolve with the environment to remain reliable."
-  },
-  {
-    question: "Can Computer Vision integrate with existing enterprise systems?",
-    answer: "Yes. AGIX Technologies integrates vision outputs into ERP systems, manufacturing execution systems, safety platforms, analytics dashboards, and decision workflows. Vision is most valuable when it drives action, not just insight."
-  },
-  {
-    question: "How do we know if our use case is feasible for Computer Vision?",
-    answer: "A use case is viable if visual signals are meaningful, errors can be tolerated or managed, data can be collected reliably, and ROI outweighs complexity. AGIX Technologies conducts vision feasibility assessments before full builds."
-  }
-];
 
 const readinessQuestions = [
   { id: "env-stability", question: "Environment stability", options: ["Controlled", "Semi-controlled", "Dynamic"], weight: 2 },
@@ -739,7 +679,7 @@ function VisionROICalculator() {
           <div>
             <Label className="flex justify-between mb-2">
               <span>Monthly processing volume</span>
-              <span className="text-primary font-semibold">{volume[0].toLocaleString()} items</span>
+              <span className="text-primary font-semibold">{volume[0].toLocaleString('en-US')} items</span>
             </Label>
             <Slider aria-label="Monthly processing volume" value={volume} onValueChange={setVolume} min={100} max={10000} step={100} />
           </div>
@@ -769,11 +709,11 @@ function VisionROICalculator() {
         <div className="grid grid-cols-2 gap-4 pt-4 border-t border-border">
           <div className="text-center p-3 bg-muted/50 rounded-lg">
             <p className="text-sm text-muted-foreground">Current Manual Cost/Year</p>
-            <p className="text-2xl font-bold text-muted-foreground">${calculations.annualManualCost.toLocaleString()}</p>
+            <p className="text-2xl font-bold text-muted-foreground">${calculations.annualManualCost.toLocaleString('en-US')}</p>
           </div>
           <div className="text-center p-3 bg-green-500/10 rounded-lg">
             <p className="text-sm text-muted-foreground">Estimated Annual Savings</p>
-            <p className="text-2xl font-bold text-green-400">${calculations.totalAnnualSavings.toLocaleString()}</p>
+            <p className="text-2xl font-bold text-green-400">${calculations.totalAnnualSavings.toLocaleString('en-US')}</p>
           </div>
         </div>
 
@@ -1741,51 +1681,6 @@ export default function ComputerVisionSolutionsPage() {
         </div>
       </section>
 
-      {/* FAQ Section */}
-      <section className="py-20">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Frequently Asked Questions
-            </h2>
-          </motion.div>
-
-          <Accordion type="single" collapsible className="w-full">
-            {faqItems.map((faq, index) => (
-              <AccordionItem key={index} value={`faq-${index}`}>
-                <AccordionTrigger className="text-left" data-testid={`faq-trigger-${index}`}>
-                  {faq.question}
-                </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground">
-                  {faq.answer}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="mt-12"
-          >
-            <Card className="bg-background border-border">
-              <CardContent className="py-8 text-center">
-                <Eye className="w-8 h-8 text-violet-400 mx-auto mb-4" />
-                <p className="text-lg font-medium max-w-3xl mx-auto">
-                  Computer Vision systems succeed in production when data strategy, evaluation rigor, and deployment discipline are prioritized over model complexity.
-                </p>
-              </CardContent>
-            </Card>
-          </motion.div>
-        </div>
-      </section>
-
       {/* Final CTA */}
       <section className="py-20 bg-muted/30">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
@@ -1835,6 +1730,10 @@ export default function ComputerVisionSolutionsPage() {
         </div>
       </section>
 
+      <FAQSection
+        faqs={documentFAQs['ai-computer-vision']}
+        title="Computer Vision AI Questions Answered"
+      />
       <MainFooter />
     </div>
   );

@@ -65,6 +65,8 @@ import {
 import { trackEvent } from "@/lib/analytics";
 import { submitLead } from "@/lib/lead-submission";
 import { useCelebration } from "@/components/success-celebration";
+import FAQSection from "@/components/shared/FAQSection";
+import { documentFAQs } from "@/lib/seo/faq-data";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -377,64 +379,6 @@ const comparisonTable = [
   { problem: "High exception rate", bestFit: "Agentic AI", icon: AlertCircle }
 ];
 
-const faqItems = [
-  {
-    question: "What is an Agentic AI system?",
-    answer: "An Agentic AI system is an AI architecture where one or more autonomous agents can understand goals, make decisions, use tools, coordinate tasks, and operate continuously with limited human supervision. Unlike chatbots or automation, agentic AI systems are goal-driven, not response-driven."
-  },
-  {
-    question: "How is Agentic AI different from automation?",
-    answer: "Automation follows predefined rules and workflows. Agentic AI decides what to do next based on context, outcomes, and changing conditions. If a system breaks when conditions change, it is automation — not agentic AI."
-  },
-  {
-    question: "How is Agentic AI different from chatbots or conversational AI?",
-    answer: "Chatbots respond to questions. Agentic AI systems plan, act, monitor, and adapt over time. Chatbots assist conversations. Agentic AI systems own responsibilities."
-  },
-  {
-    question: "What problems are best solved using Agentic AI?",
-    answer: "Agentic AI is best suited for problems that involve multi-step decision making, multiple systems and tools, frequent exceptions, long-running processes, and human coordination overhead. If humans are constantly deciding 'what happens next,' the problem is likely agentic."
-  },
-  {
-    question: "Is Agentic AI safe to use in real businesses?",
-    answer: "Yes — when designed with boundaries, governance, and human-in-the-loop controls. AGIX Technologies builds agentic systems with defined responsibility limits, escalation rules, audit logs, kill switches, and human approval gates. Unsafe agentic AI is a design failure, not a technology limitation."
-  },
-  {
-    question: "Can Agentic AI replace employees?",
-    answer: "Agentic AI does not replace roles outright. It replaces coordination overhead, repetitive decision-making, and operational follow-ups. In most cases, agentic AI allows smaller teams to operate at much higher scale."
-  },
-  {
-    question: "How long does it take to build an Agentic AI system?",
-    answer: "A realistic timeline is 10–16 weeks for production-ready systems. This includes use-case design, agent orchestration, tool integrations, memory & governance, and pilot rollout. Anything promised faster usually lacks safety or depth."
-  },
-  {
-    question: "How much does an Agentic AI system cost?",
-    answer: "Typical costs range from $20K–$35K for limited agentic systems, $40K–$75K for multi-agent operational systems, and $75K+ for core business agentic platforms. Cost depends on autonomy level, number of agents, tools, and governance."
-  },
-  {
-    question: "What is a multi-agent AI system?",
-    answer: "A multi-agent AI system consists of multiple specialized agents, each with a defined role (planning, execution, monitoring, validation), working together to achieve goals. This mirrors real teams and avoids fragile 'one-AI-does-everything' designs."
-  },
-  {
-    question: "What are tool-using agents?",
-    answer: "Tool-using agents are AI agents that can call APIs, query databases, trigger workflows, and update systems. Crucially, they decide which tool to use and when, instead of following fixed scripts."
-  },
-  {
-    question: "What are long-running agents?",
-    answer: "Long-running agents maintain memory and state over days, weeks, or months. They are used for onboarding lifecycles, renewals, compliance tracking, and multi-stage operations. This is a key differentiator between demos and real agentic systems."
-  },
-  {
-    question: "Do Agentic AI systems require constant monitoring?",
-    answer: "They require observability, not micromanagement. AGIX Technologies systems include monitoring dashboards, decision logs, and alerts on anomalies. Humans are involved only when confidence is low or risk is high."
-  },
-  {
-    question: "Should startups use Agentic AI early?",
-    answer: "Yes — AI-native startups gain the most advantage. Agentic AI allows startups to operate with smaller teams, move faster, embed intelligence into the product itself, and build defensible systems competitors can't easily copy. However, scope must be carefully chosen."
-  },
-  {
-    question: "How do I know if my problem really needs Agentic AI?",
-    answer: "If your problem involves multiple tools, frequent exceptions, manual follow-ups, ongoing decisions, and human coordination, then Agentic AI is likely the right approach. If not, automation or conversational AI may be sufficient — and cheaper."
-  }
-];
 
 const explorerIndustries = [
   "SaaS / Technology",
@@ -857,7 +801,7 @@ function AgenticCostCalculator() {
                 <div>
                   <p className="text-sm text-muted-foreground mb-2">Estimated Build Cost</p>
                   <p className="text-3xl font-bold text-primary">
-                    ${developmentCost.low.toLocaleString()} – ${developmentCost.high.toLocaleString()}
+                    ${developmentCost.low.toLocaleString('en-US')} – ${developmentCost.high.toLocaleString('en-US')}
                   </p>
                 </div>
                 <div>
@@ -876,7 +820,7 @@ function AgenticCostCalculator() {
                     <Brain className="w-5 h-5 text-primary" />
                     <span className="text-sm text-muted-foreground">AI Reasoning & Tokens</span>
                   </div>
-                  <p className="text-2xl font-bold">${monthlyCost.tokens.toLocaleString()}/mo</p>
+                  <p className="text-2xl font-bold">${monthlyCost.tokens.toLocaleString('en-US')}/mo</p>
                 </CardContent>
               </Card>
 
@@ -886,7 +830,7 @@ function AgenticCostCalculator() {
                     <Database className="w-5 h-5 text-cyan-400" />
                     <span className="text-sm text-muted-foreground">Memory, State & Storage</span>
                   </div>
-                  <p className="text-2xl font-bold">${monthlyCost.storage.toLocaleString()}/mo</p>
+                  <p className="text-2xl font-bold">${monthlyCost.storage.toLocaleString('en-US')}/mo</p>
                 </CardContent>
               </Card>
 
@@ -896,7 +840,7 @@ function AgenticCostCalculator() {
                     <Server className="w-5 h-5 text-green-400" />
                     <span className="text-sm text-muted-foreground">Infrastructure & Monitoring</span>
                   </div>
-                  <p className="text-2xl font-bold">${monthlyCost.infra.toLocaleString()}/mo</p>
+                  <p className="text-2xl font-bold">${monthlyCost.infra.toLocaleString('en-US')}/mo</p>
                 </CardContent>
               </Card>
             </div>
@@ -904,7 +848,7 @@ function AgenticCostCalculator() {
             <div className="p-6 bg-background rounded-lg border border-border">
               <div className="flex items-center justify-between">
                 <span className="text-lg font-medium">Total Monthly Operating Cost</span>
-                <span className="text-3xl font-bold text-primary">${monthlyCost.total.toLocaleString()}/mo</span>
+                <span className="text-3xl font-bold text-primary">${monthlyCost.total.toLocaleString('en-US')}/mo</span>
               </div>
               <p className="text-sm text-muted-foreground mt-2">
                 This is why agentic AI replaces roles, not tools.
@@ -928,7 +872,7 @@ function AgenticCostCalculator() {
                 </div>
 
                 <div className="space-y-2">
-                  <p className="text-sm font-medium">Avg Cost per Role: ${avgRoleCost[0].toLocaleString()}/mo</p>
+                  <p className="text-sm font-medium">Avg Cost per Role: ${avgRoleCost[0].toLocaleString('en-US')}/mo</p>
                   <Slider aria-label="Average Cost per Role"
                     value={avgRoleCost}
                     onValueChange={setAvgRoleCost}
@@ -957,21 +901,21 @@ function AgenticCostCalculator() {
                   <CardContent className="pt-6 space-y-4">
                     <div className="flex justify-between items-center">
                       <span className="text-muted-foreground">Current Human Cost</span>
-                      <span className="font-semibold">${roiMetrics.humanCost.toLocaleString()}/mo</span>
+                      <span className="font-semibold">${roiMetrics.humanCost.toLocaleString('en-US')}/mo</span>
                     </div>
                     <div className="flex justify-between items-center">
                       <span className="text-muted-foreground">Monthly Savings</span>
-                      <span className="font-semibold text-green-400">${roiMetrics.monthlySavings.toLocaleString()}/mo</span>
+                      <span className="font-semibold text-green-400">${roiMetrics.monthlySavings.toLocaleString('en-US')}/mo</span>
                     </div>
                     <div className="flex justify-between items-center">
                       <span className="text-muted-foreground">AI System Cost</span>
-                      <span className="font-semibold text-red-400">-${monthlyCost.total.toLocaleString()}/mo</span>
+                      <span className="font-semibold text-red-400">-${monthlyCost.total.toLocaleString('en-US')}/mo</span>
                     </div>
                     <div className="border-t border-border pt-4">
                       <div className="flex justify-between items-center">
                         <span className="font-medium">Net Monthly Gain</span>
                         <span className={`text-xl font-bold ${roiMetrics.netMonthlyGain > 0 ? 'text-green-400' : 'text-red-400'}`}>
-                          ${roiMetrics.netMonthlyGain.toLocaleString()}/mo
+                          ${roiMetrics.netMonthlyGain.toLocaleString('en-US')}/mo
                         </span>
                       </div>
                     </div>
@@ -2316,39 +2260,6 @@ export default function AgenticAISystems() {
         </div>
       </section>
 
-      {/* FAQ Section */}
-      <section className="py-20">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Frequently Asked Questions
-            </h2>
-          </motion.div>
-
-          <Accordion type="single" collapsible className="space-y-4">
-            {faqItems.map((item, index) => (
-              <AccordionItem
-                key={index}
-                value={`faq-${index}`}
-                className="bg-muted/30 rounded-lg border border-border px-6"
-              >
-                <AccordionTrigger className="text-left hover:no-underline" data-testid={`accordion-faq-${index}`}>
-                  <span className="font-medium">{item.question}</span>
-                </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground pb-6">
-                  {item.answer}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
-        </div>
-      </section>
-
       {/* Final CTA */}
       <section className="py-20 bg-gradient-to-b from-background to-muted/50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
@@ -2386,6 +2297,10 @@ export default function AgenticAISystems() {
       </section>
 
       </main>
+      <FAQSection
+        faqs={documentFAQs['agentic-ai-systems']}
+        title="Agentic AI System Questions Answered"
+      />
       <MainFooter />
     </div>
   );

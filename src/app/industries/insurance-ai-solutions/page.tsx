@@ -69,6 +69,8 @@ import { useToast } from "@/hooks/use-toast";
 import { submitLead } from "@/lib/lead-submission";
 import { useCelebration } from "@/components/success-celebration";
 import { IndustryCaseStudies, IndustryServices } from "@/components/industry-sections";
+import FAQSection from "@/components/shared/FAQSection";
+import { documentFAQs } from "@/lib/seo/faq-data";
 
 const caseStudies = [
   { company: "Enova", description: "AI-driven risk assessment and credit decisioning platform reducing manual underwriting and improving precision.", impact: ["Faster risk decisioning", "Reduced underwriting costs", "Improved risk model accuracy"], href: "/case-studies/enova/" },
@@ -435,68 +437,6 @@ const roleBasedPaths = [
   { role: "Health Insurer", path: "B → A → E", description: "Fraud detection, claims, then compliance" },
 ];
 
-const faqItems = [
-  {
-    question: "Can AI approve claims automatically?",
-    answer: "Yes — for straightforward claims that meet defined criteria. AI handles triage and auto-adjudication for simple claims while routing complex cases to human adjusters with full context and recommendations.",
-  },
-  {
-    question: "How is fraud explained to auditors and regulators?",
-    answer: "Through explainable model outputs, feature contribution scores, decision thresholds, and complete audit trails. AGIX Technologies designs systems to be audit-ready and regulator-friendly by default.",
-  },
-  {
-    question: "Is AI compliant with insurance regulations?",
-    answer: "Yes — when designed correctly. We build governance, explainability, and human oversight into every system. AI decisions include confidence scores, reasoning, and escalation paths.",
-  },
-  {
-    question: "Can we start with just one line of business?",
-    answer: "Absolutely. Most insurers start with one product line (e.g., auto claims or property underwriting) to prove value, then expand systematically.",
-  },
-  {
-    question: "How do we avoid false claim denials?",
-    answer: "By using AI as decision support, not autonomous rejection. All denial recommendations include confidence scores and require human review for anything below threshold.",
-  },
-  {
-    question: "What data does AI need for claims and underwriting?",
-    answer: "Depends on use case: claims history, policy data, application information, external data sources. All data usage is policy-controlled, logged, and auditable.",
-  },
-  {
-    question: "How long does implementation take?",
-    answer: "Most insurance AI systems go live in 6-12 weeks, depending on data readiness, regulatory scope, and integration complexity.",
-  },
-  {
-    question: "What happens if AI makes a wrong recommendation?",
-    answer: "Every system includes confidence thresholds, human-in-the-loop review, escalation rules, and full traceability. AI assists decisions — humans remain accountable.",
-  },
-  {
-    question: "Can AI handle different insurance products?",
-    answer: "Yes. Systems are configured per product line with appropriate rules, thresholds, and workflows. A single platform can serve multiple products with product-specific logic.",
-  },
-  {
-    question: "How does AI improve underwriting without increasing risk?",
-    answer: "By processing more signals than humans can review, maintaining consistency, and flagging only edge cases for human review. Speed improves because decision quality improves.",
-  },
-  {
-    question: "What are the ongoing costs after implementation?",
-    answer: "Ongoing costs include AI usage, cloud infrastructure, and monitoring/governance. These costs are predictable, transparent, and typically 10-15% of initial build cost per year.",
-  },
-  {
-    question: "Is this suitable across different countries and regulations?",
-    answer: "Yes. AI systems are configured to align with region-specific regulatory frameworks, not hard-coded assumptions. Multi-jurisdiction deployment is common.",
-  },
-  {
-    question: "How does AGIX Technologies handle data security?",
-    answer: "Enterprise-grade security including encryption, access controls, audit logging, and compliance with SOC 2, HIPAA (for health), and other relevant standards.",
-  },
-  {
-    question: "Can AI reduce our loss ratio?",
-    answer: "Yes — through better risk selection in underwriting, earlier fraud detection, and more consistent claims handling. Most clients see 10-20% loss ratio improvement within 12 months.",
-  },
-  {
-    question: "What role does AGIX Technologies play after deployment?",
-    answer: "AGIX Technologies works as a long-term AI systems partner, providing monitoring, optimization, governance updates, model tuning, and expansion planning.",
-  },
-];
 
 const costTable = [
   { role: "Small Insurer / MGA", scope: "Single use case, 1 product", cost: "$8K - $20K" },
@@ -1886,42 +1826,6 @@ export default function InsuranceIndustryPage() {
         </div>
       </section>
 
-      {/* FAQs */}
-      <section className="py-20 bg-muted/30">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Insurance AI{" "}
-              <span className="text-primary">FAQs</span>
-            </h2>
-            <p className="text-muted-foreground">
-              Answers to common questions from claims, underwriting, and compliance leaders.
-            </p>
-          </motion.div>
-
-          <Accordion type="single" collapsible className="space-y-2">
-            {faqItems.map((faq, i) => (
-              <AccordionItem key={i} value={`faq-${i}`} className="border rounded-lg bg-card px-4">
-                <AccordionTrigger className="hover:no-underline" data-testid={`accordion-faq-${i}`}>
-                  <div className="flex items-center gap-3 text-left">
-                    <HelpCircle className="w-4 h-4 text-primary shrink-0" />
-                    <span className="font-medium">{faq.question}</span>
-                  </div>
-                </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground pl-7">
-                  {faq.answer}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
-        </div>
-      </section>
-
       {/* Lead Form & CTA */}
       <section className="py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
@@ -1971,6 +1875,10 @@ export default function InsuranceIndustryPage() {
         </div>
       </section>
 
+      <FAQSection
+        faqs={documentFAQs['insurance-ai-solutions']}
+        title="Insurance AI Questions Answered"
+      />
       {/* Footer */}
       <footer className="py-12 border-t border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 text-center">

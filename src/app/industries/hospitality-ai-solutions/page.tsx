@@ -73,6 +73,8 @@ import { useToast } from "@/hooks/use-toast";
 import { submitLead } from "@/lib/lead-submission";
 import { useCelebration } from "@/components/success-celebration";
 import { IndustryCaseStudies, IndustryServices } from "@/components/industry-sections";
+import FAQSection from "@/components/shared/FAQSection";
+import { documentFAQs } from "@/lib/seo/faq-data";
 
 const caseStudies = [
   { company: "Hilton Hotels", description: "Enterprise AI platform enabling end-to-end guest personalization across reservations, services, and communications.", impact: ["Higher guest satisfaction scores", "Increased upsell revenue", "Reduced front desk workload"], href: "/case-studies/hilton-hotels/" },
@@ -2122,6 +2124,10 @@ export default function HospitalityIndustryPage() {
           </p>
         </div>
       </section>
+      <FAQSection
+        faqs={documentFAQs['hospitality-ai-solutions']}
+        title="Hospitality AI Questions Answered"
+      />
       <MainFooter />
     </div>
   );

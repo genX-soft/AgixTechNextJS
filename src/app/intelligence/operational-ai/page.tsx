@@ -39,10 +39,11 @@ import {
   CheckCheck,
   RotateCcw,
 } from "lucide-react";
+import FAQSection from "@/components/shared/FAQSection";
+import { documentFAQs } from "@/lib/seo/faq-data";
 
-const StickyCTA = dynamic(() => import("./sticky-cta"), { ssr: false });
-const InteractiveToolsSection = dynamic(() => import("./interactive-tools-section"), { ssr: false });
-const FAQSection = dynamic(() => import("./faq-section"), { ssr: false });
+const StickyCTA = dynamic(() => import("./sticky-cta"), { ssr: false, loading: () => null });
+const InteractiveToolsSection = dynamic(() => import("./interactive-tools-section"), { ssr: false, loading: () => null });
 
 
 function scrollToSection(id: string) {
@@ -729,7 +730,10 @@ export default function OperationalIntelligencePage() {
         <AgixMethodology />
         <InteractiveToolsSection />
         <ResultsMetrics />
-        <FAQSection />
+        <FAQSection
+          faqs={documentFAQs['operational-ai']}
+          title="Operational Intelligence Questions Answered"
+        />
         <section id="cta-form" className="py-20 scroll-mt-20">
           <div className="max-w-4xl mx-auto px-4 sm:px-6">
             <CtaForm 

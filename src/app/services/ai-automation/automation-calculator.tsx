@@ -432,7 +432,7 @@ export default function AutomationCalculator() {
               <div>
                 <Label className="flex justify-between mb-2">
                   <span>Monthly Task Volume</span>
-                  <span className="text-primary font-semibold">{monthlyVolume[0].toLocaleString()}</span>
+                  <span className="text-primary font-semibold">{monthlyVolume[0].toLocaleString('en-US')}</span>
                 </Label>
                 <Slider value={monthlyVolume} onValueChange={setMonthlyVolume} min={100} max={50000} step={100} aria-label="Monthly task volume" data-testid="slider-roi-volume" />
               </div>

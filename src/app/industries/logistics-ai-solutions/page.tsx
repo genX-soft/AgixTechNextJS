@@ -69,6 +69,8 @@ import { useToast } from "@/hooks/use-toast";
 import { submitLead } from "@/lib/lead-submission";
 import { useCelebration } from "@/components/success-celebration";
 import { IndustryCaseStudies, IndustryServices } from "@/components/industry-sections";
+import FAQSection from "@/components/shared/FAQSection";
+import { documentFAQs } from "@/lib/seo/faq-data";
 
 const caseStudies = [
   { company: "Navan", description: "AI assistant for seamless business travel management and smart expense automation across enterprise teams.", impact: ["Automated expense reporting", "Optimized travel bookings", "Reduced policy violations"], href: "/case-studies/navan/" },
@@ -2116,6 +2118,10 @@ export default function LogisticsIndustryPage() {
           </motion.div>
         </div>
       </section>
+      <FAQSection
+        faqs={documentFAQs['logistics-ai-solutions']}
+        title="Logistics AI Questions Answered"
+      />
       <MainFooter />
     </div>
   );

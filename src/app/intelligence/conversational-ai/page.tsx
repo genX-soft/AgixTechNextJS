@@ -4,6 +4,8 @@ import { motion, AnimatePresence } from "@/lib/motion";
 import { MainHeader } from "@/components/main-header";
 import { MainFooter } from "@/components/main-footer";
 import { CtaForm } from "@/components/forms/cta-form";
+import DocumentFAQSection from "@/components/shared/FAQSection";
+import { documentFAQs } from "@/lib/seo/faq-data";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -1446,90 +1448,11 @@ function ResultsMetrics() {
 }
 
 function FAQSection() {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
-
-  const faqs = [
-    { question: "What is Conversational Intelligence in simple terms?", answer: "Conversational Intelligence allows AI to understand intent and context in conversations and take the right action, not just reply with text or voice." },
-    { question: "Is Conversational Intelligence the same as chatbots?", answer: "No. Chatbots respond to questions. Conversational Intelligence understands conversations, reasons safely, and connects to real business actions." },
-    { question: "How is Conversational Intelligence different from Conversational AI?", answer: "Conversational AI often focuses on language generation. Conversational Intelligence focuses on understanding, decision-making, and outcomes, with governance and control." },
-    { question: "Are AI chatbots and voice agents safe for real customers?", answer: "They are safe only when designed with controls. AGIX Technologies systems include human-in-the-loop, confidence thresholds, and auditability." },
-    { question: "How do you prevent AI hallucinations in conversations?", answer: "By combining restricted knowledge sources, confidence scoring, decision rules, and human fallback mechanisms." },
-    { question: "Can Conversational Intelligence work across chat, voice, and WhatsApp?", answer: "Yes. Conversational Intelligence is channel-agnostic and can operate across chat, voice, and messaging platforms." },
-    { question: "Do I need a large dataset to start?", answer: "No. Conversational Intelligence systems can start with existing conversations and improve over time." },
-    { question: "Will Conversational Intelligence replace human agents?", answer: "No. It reduces repetitive work and supports humans, allowing agents to focus on complex cases." },
-    { question: "How long does it take to implement Conversational Intelligence?", answer: "Early value can be seen in 4-6 weeks, with more advanced capabilities rolling out gradually." },
-    { question: "Is Conversational Intelligence expensive?", answer: "Cost depends on complexity, but starting with assistive intelligence is affordable compared to large automation projects." },
-    { question: "Can Conversational Intelligence integrate with CRM and internal systems?", answer: "Yes. AGIX Technologies builds systems that integrate with CRM, ticketing, scheduling, and backend platforms." },
-    { question: "How does Conversational Intelligence handle sensitive data?", answer: "Through access controls, data masking, role-based permissions, and compliance-aware design." },
-    { question: "What is the biggest mistake companies make with conversational AI?", answer: "Deploying LLMs without governance, intent control, or escalation logic." },
-    { question: "Can Conversational Intelligence handle multilingual users?", answer: "Yes. It can understand and respond in multiple languages while maintaining context." },
-    { question: "How does Conversational Intelligence improve over time?", answer: "It learns from successful resolutions, human corrections, feedback loops, and new conversation patterns." },
-    { question: "Is Conversational Intelligence suitable for internal operations?", answer: "Absolutely. Many companies use it for IT, HR, and internal support to reduce ticket volume." },
-    { question: "What types of conversations should not be automated?", answer: "High-risk, highly subjective, or legally sensitive conversations should always involve human oversight." },
-    { question: "How do we decide where to start with Conversational Intelligence?", answer: "That's why AGIX Technologies provides Solution Finder and Risk Assessment tools — to guide safe starting points." },
-    { question: "Can Conversational Intelligence help increase sales?", answer: "Yes, by qualifying leads, answering product questions, reducing response time, and guiding users to the right next step." },
-    { question: "Is Conversational Intelligence a one-time setup?", answer: "No. It's a living system that evolves as conversations, products, and customers change." },
-  ];
-
   return (
-    <section className="py-20 bg-slate-900/30">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-12"
-        >
-          <Badge variant="outline" className="border-purple-500/30 text-purple-400 mb-4" data-testid="badge-faq">
-            <HelpCircle className="w-3 h-3 mr-1" />
-            Frequently Asked Questions
-          </Badge>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4" data-testid="heading-faq">
-            Real Questions About Conversational Intelligence
-          </h2>
-        </motion.div>
-
-        <div className="space-y-3">
-          {faqs.map((faq, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.03 }}
-            >
-              <Card className="overflow-visible" data-testid={`card-faq-${i}`}>
-                <button
-                  onClick={() => setOpenIndex(openIndex === i ? null : i)}
-                  className="w-full text-left p-4 flex items-center justify-between gap-4"
-                  aria-expanded={openIndex === i}
-                  data-testid={`button-faq-toggle-${i}`}
-                >
-                  <span className="font-medium" data-testid={`text-faq-question-${i}`}>{faq.question}</span>
-                  <div className={`shrink-0 w-6 h-6 rounded-full flex items-center justify-center transition-colors ${openIndex === i ? 'bg-purple-500 text-white' : 'bg-slate-700'}`}>
-                    {openIndex === i ? <Minus className="w-3 h-3" /> : <Plus className="w-3 h-3" />}
-                  </div>
-                </button>
-                <AnimatePresence>
-                  {openIndex === i && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      <div className="px-4 pb-4 text-muted-foreground text-sm" data-testid={`text-faq-answer-${i}`}>
-                        {faq.answer}
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </Card>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
+    <DocumentFAQSection
+      faqs={documentFAQs['conversational-ai']}
+      title="Conversational Intelligence Questions Answered"
+    />
   );
 }
 

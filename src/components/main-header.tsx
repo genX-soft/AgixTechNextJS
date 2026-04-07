@@ -202,10 +202,10 @@ export function MainHeader() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20 gap-4">
           <a href="/" className="flex items-center gap-2 shrink-0" data-testid="link-logo">
-            <div className="w-8 h-8 rounded-md bg-primary flex items-center justify-center">
-              <Sparkles className="w-5 h-5 text-primary-foreground" aria-hidden="true" />
+            <div className="w-8 h-8 rounded-md bg-orange-500 flex items-center justify-center">
+              <Sparkles className="w-5 h-5 text-white" aria-hidden="true" />
             </div>
-            <span className="font-bold text-xl tracking-tight">AGIX Technologies</span>
+            <span className="font-bold text-xl tracking-tight">Agix Technologies</span>
           </a>
 
           <NavigationMenu className="hidden xl:flex">

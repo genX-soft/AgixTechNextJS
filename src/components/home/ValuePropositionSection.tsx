@@ -8,7 +8,6 @@ const metrics = [
   { value: "24/7",        label: "Autonomous workflows" },
   { value: "Up to 40%",  label: "Cost reduction" },
   { value: "8",           label: "Industries served" },
-  { value: "3 Continents", label: "1 engineering standard" },
 ];
 
 export default function ValuePropositionSection() {
@@ -16,15 +15,15 @@ export default function ValuePropositionSection() {
     <section
       aria-label="Value proposition"
       className="relative overflow-hidden"
-      style={{ background: "linear-gradient(135deg, #04091a 0%, #060f20 50%, #04091a 100%)" }}
+      style={{ background: "linear-gradient(135deg, #1a1f2e 0%, #1e2435 50%, #1a1f2e 100%)" }}
     >
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-cyan-400/50 to-transparent" />
 
       <div
         className="absolute inset-0 opacity-[0.03] pointer-events-none"
         style={{
           backgroundImage:
-            "linear-gradient(#f97316 1px, transparent 1px), linear-gradient(90deg, #f97316 1px, transparent 1px)",
+            "linear-gradient(#22d3ee 1px, transparent 1px), linear-gradient(90deg, #22d3ee 1px, transparent 1px)",
           backgroundSize: "60px 60px",
         }}
       />
@@ -34,16 +33,16 @@ export default function ValuePropositionSection() {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
-          <div className="relative h-[340px] sm:h-[400px] lg:h-[480px] flex items-center justify-center order-2 lg:order-1">
-            <div className="absolute top-0 left-0 w-24 h-24 border-l-2 border-t-2 border-primary/20 rounded-tl-xl pointer-events-none" />
-            <div className="absolute bottom-0 right-0 w-24 h-24 border-r-2 border-b-2 border-primary/20 rounded-br-xl pointer-events-none" />
+          <div className="relative h-[420px] sm:h-[520px] lg:h-[600px] flex items-center justify-center order-2 lg:order-1">
+            <div className="absolute top-0 left-0 w-24 h-24 border-l-2 border-t-2 border-cyan-400/20 rounded-tl-xl pointer-events-none" />
+            <div className="absolute bottom-0 right-0 w-24 h-24 border-r-2 border-b-2 border-cyan-400/20 rounded-br-xl pointer-events-none" />
             <AgixNetworkAnimation />
           </div>
 
           <div className="flex flex-col gap-7 order-1 lg:order-2">
 
             <div className="flex justify-center lg:justify-start">
-              <Badge variant="outline" className="border-primary/30 text-primary">
+              <Badge variant="outline" className="border-cyan-400/30 text-cyan-400">
                 About AGIX Technologies
               </Badge>
             </div>
@@ -51,7 +50,7 @@ export default function ValuePropositionSection() {
             <div className="text-center lg:text-left space-y-2">
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-white leading-tight">
                 We don&apos;t build AI tools.{" "}
-                <span className="text-primary">We engineer AI systems.</span>
+                <span className="text-cyan-400">We engineer AI systems.</span>
               </h2>
             </div>
 
@@ -73,13 +72,13 @@ export default function ValuePropositionSection() {
               {metrics.map(({ value, label }, i) => (
                 <div
                   key={label}
-                  className={`rounded-xl border border-slate-700/50 bg-slate-900/50 px-5 py-5 flex flex-col gap-1 hover:border-primary/30 hover:bg-slate-800/40 transition-colors duration-200${
+                  className={`rounded-xl border border-slate-700/50 bg-slate-900/50 px-5 py-5 flex flex-col gap-1 hover:border-cyan-400/30 hover:bg-slate-800/40 transition-colors duration-200${
                     i === metrics.length - 1 && metrics.length % 2 !== 0
                       ? " col-span-2"
                       : ""
                   }`}
                 >
-                  <span className="text-xl sm:text-2xl font-bold text-primary leading-none tracking-tight">
+                  <span className="text-xl sm:text-2xl font-bold text-cyan-400 leading-none tracking-tight">
                     {value}
                   </span>
                   <span className="text-xs text-slate-400 leading-snug">

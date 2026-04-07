@@ -83,6 +83,8 @@ import {
 import { trackEvent } from "@/lib/analytics";
 import { submitLead } from "@/lib/lead-submission";
 import { useCelebration } from "@/components/success-celebration";
+import FAQSection from "@/components/shared/FAQSection";
+import { documentFAQs } from "@/lib/seo/faq-data";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -422,68 +424,6 @@ const founderPath = [
   { step: 4, label: "Scale + fundraising" }
 ];
 
-const faqItems = [
-  {
-    question: "Do I really need AI for my product, or am I forcing it?",
-    answer: "Not every product needs AI. AGIX Technologies helps founders identify where AI adds real value, where rules or automation are enough, and what should be built later, not now. If AI is not justified, we'll tell you upfront."
-  },
-  {
-    question: "What's the difference between an AI MVP and a normal MVP?",
-    answer: "A normal MVP tests features. An AI MVP tests intelligence + usability + cost together. AI MVPs must account for data readiness, model behavior, latency, cloud costs, and user trust. That's why AI MVPs require a different approach."
-  },
-  {
-    question: "Can you build an AI product if I don't have data yet?",
-    answer: "Yes — in many cases. Options include using public or synthetic data, designing workflows that generate data, starting with rule-based logic, and hybrid approaches (AI + logic). We design products that don't stall at 'no data'."
-  },
-  {
-    question: "How much does it actually cost to build an AI product?",
-    answer: "Typical ranges: AI MVP / POC: $12K–$20K, Market-ready AI MVP: $20K–$35K, Scalable AI product/platform: $35K–$60K+. Cost depends on scope and intelligence depth, not buzzwords."
-  },
-  {
-    question: "How long does it take to launch an AI MVP?",
-    answer: "Most AI MVPs launch in 4–6 weeks (validation MVP) or 6–8 weeks (market-ready MVP). We prioritize speed without technical debt."
-  },
-  {
-    question: "Will my AI product scale if users increase suddenly?",
-    answer: "Yes — if designed correctly. AGIX Technologies builds scalable backend architecture, cost controls, rate limits, and modular AI components. Scaling is planned from day one — not patched later."
-  },
-  {
-    question: "What AI technologies do you use?",
-    answer: "We select tech based on product needs, cost efficiency, and long-term maintainability. This may include OpenAI / Anthropic / open-source models, vector databases, cloud infrastructure, and custom APIs. There is no one-size-fits-all stack."
-  },
-  {
-    question: "Will my AI product be secure and compliant?",
-    answer: "Yes. We implement secure APIs, data access controls, basic compliance best practices, and privacy-aware architecture. For regulated industries, we design compliance-ready systems."
-  },
-  {
-    question: "Can you build AI SaaS products with subscriptions and billing?",
-    answer: "Absolutely. We support multi-tenant SaaS architecture, usage tracking, subscription logic, and role-based access. Many of our startup clients build AI SaaS businesses."
-  },
-  {
-    question: "What happens after the MVP is launched?",
-    answer: "After launch, we help with model tuning, feature iteration, cost optimization, scaling strategy, and investor demo support. AI products evolve — we plan for that."
-  },
-  {
-    question: "Is it better to hire an in-house AI team or outsource?",
-    answer: "For early-stage startups: hiring is expensive, ramp-up is slow, and risk is high. Outsourcing with AGIX Technologies gives immediate expertise, lower risk, and faster validation. Many clients hire internally after validation."
-  },
-  {
-    question: "Can you work with non-technical founders?",
-    answer: "Yes — many of our clients are non-technical. We explain trade-offs clearly, avoid jargon, help with decision-making, and act as your technical partner. You don't need to 'sound technical' to work with us."
-  },
-  {
-    question: "Will my AI product be investor-ready?",
-    answer: "Yes. We design clean architecture, scalable systems, clear product logic, and demo-ready workflows. Many clients use AGIX Technologies builds for accelerator demos, investor pitches, and early enterprise pilots."
-  },
-  {
-    question: "What if my idea changes during development?",
-    answer: "That's normal. AGIX Technologies builds flexible architectures, modular AI components, and iteration-friendly systems. We expect pivots — we design for them."
-  },
-  {
-    question: "How do I know if AGIX Technologies is the right partner for my AI product?",
-    answer: "AGIX Technologies is a good fit if you want clarity before building, care about real users, want to avoid wasted spend, and plan to scale responsibly. If you just want a quick demo, we'll say no. If you want a real product, we'll help."
-  }
-];
 
 const readinessQuestions = [
   { id: "idea-clarity", question: "Idea clarity", options: ["Low", "Medium", "High"], weight: 2 },
@@ -1963,54 +1903,6 @@ export default function CustomAIProductDevelopmentPage() {
         </div>
       </section>
 
-      {/* FAQ Section */}
-      <section className="py-20">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Frequently Asked Questions
-            </h2>
-            <p className="text-muted-foreground">
-              These questions are written the way real founders and CXOs ask them.
-            </p>
-          </motion.div>
-
-          <Accordion type="single" collapsible className="w-full">
-            {faqItems.map((faq, index) => (
-              <AccordionItem key={index} value={`faq-${index}`}>
-                <AccordionTrigger className="text-left" data-testid={`faq-trigger-${index}`}>
-                  {faq.question}
-                </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground">
-                  {faq.answer}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="mt-12"
-          >
-            <Card className="bg-background border-border">
-              <CardContent className="py-8 text-center">
-                <Rocket className="w-8 h-8 text-primary mx-auto mb-4" />
-                <p className="text-lg font-medium max-w-3xl mx-auto">
-                  The best AI products are built by validating intelligence, usability, and cost together — not by chasing the latest models.
-                </p>
-              </CardContent>
-            </Card>
-          </motion.div>
-        </div>
-      </section>
-
       {/* Final CTA */}
       <section className="py-20 bg-gradient-to-b from-muted/50 to-background">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
@@ -2046,6 +1938,10 @@ export default function CustomAIProductDevelopmentPage() {
         </div>
       </section>
 
+      <FAQSection
+        faqs={documentFAQs['custom-ai-product-development']}
+        title="Custom AI Product Development Questions Answered"
+      />
       <MainFooter />
     </div>
   );
