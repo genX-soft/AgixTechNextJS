@@ -71,7 +71,7 @@ import { documentFAQs } from "@/lib/seo/faq-data";
 const AutomationCalculator = dynamic(() => import("./automation-calculator"));
 const CapabilitiesSection = dynamic(() => import("./sections/capabilities-section"));
 const EngineSection = dynamic(() => import("./sections/engine-section"));
-const FaqPricingSection = dynamic(() => import("./sections/faq-pricing-section"));
+const PricingSection = dynamic(() => import("./sections/faq-pricing-section"));
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -665,7 +665,7 @@ export default function AIAutomationPage() {
         </div>
       </section>
 
-      <FaqPricingSection />
+      <PricingSection />
       {/* Final CTA */}
       <section className="py-20 bg-gradient-to-br from-primary/10 via-background to-cyan-500/10">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">

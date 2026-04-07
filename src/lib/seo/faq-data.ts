@@ -196,6 +196,46 @@ export const documentFAQs: Record<string, FAQItem[]> = {
       answer:
         "Yes. Agix Technologies AI automation systems are built with enterprise-grade reliability, including error handling, fallback logic, audit logging, and automated alerting. All systems are GDPR and SOC 2 compatible, with role-based access controls and encrypted data handling. Uptime SLAs and post-deployment support are included in all enterprise engagements.",
     },
+    {
+      question: "What is the difference between AI automation and traditional automation?",
+      answer:
+        "Traditional automation relies on fixed rules and scripts — it works only when inputs are predictable and breaks the moment conditions change. AI automation uses intelligence to interpret inputs, make contextual decisions, and operate across unstructured data like emails, documents, and images. AI automation is designed for real-world operational complexity where traditional automation fails.",
+    },
+    {
+      question: "Is AI automation suitable for small or mid-sized businesses?",
+      answer:
+        "Yes. Many small and mid-sized businesses adopt AI automation to reduce hiring needs, eliminate manual errors, and scale operations without proportional headcount increases. Agix Technologies offers modular, project-based automation starting at $6,000 — making enterprise-grade automation accessible to growing businesses that cannot afford large internal engineering teams.",
+    },
+    {
+      question: "Does AI automation require clean or perfect data?",
+      answer:
+        "No. AI automation is specifically designed for real operational data, which is often incomplete, inconsistent, or unstructured. Agix Technologies builds systems that handle missing fields, interpret ambiguous inputs, and flag exceptions for human review. Data quality typically improves after automation is deployed — not before.",
+    },
+    {
+      question: "Will AI automation replace human jobs?",
+      answer:
+        "AI automation replaces manual, repetitive effort — not human judgment or strategic thinking. Agix Technologies designs automation systems that remove the burden of high-volume, low-complexity tasks, freeing teams to focus on higher-value work. Most clients see AI automation as a force multiplier for their existing team rather than a replacement.",
+    },
+    {
+      question: "What is AI business process automation (BPA)?",
+      answer:
+        "AI Business Process Automation (BPA) automates entire end-to-end business processes — not just individual tasks. It manages multi-step workflows, handles decision logic, routes exceptions, and tracks outcomes across systems. Common BPA use cases include order-to-cash, procure-to-pay, claims processing, and employee onboarding — all areas where Agix Technologies delivers measurable operational impact.",
+    },
+    {
+      question: "How do we identify which processes to automate first?",
+      answer:
+        "Agix Technologies begins every engagement with an Automation Opportunity Assessment — a structured analysis of your current workflows to identify high-ROI candidates, low-risk starting points, and quick wins vs long-term opportunities. This prevents wasted investment and ensures automation is deployed where business impact is fastest and most measurable.",
+    },
+    {
+      question: "What industries use AI automation most actively?",
+      answer:
+        "AI automation delivers the strongest ROI in industries with high transaction volumes, document-heavy processes, and regulatory complexity — including healthcare operations, financial services and FinTech, insurance, e-commerce, logistics and supply chain, and SaaS companies. Agix Technologies has built automation systems across all of these verticals with industry-specific logic.",
+    },
+    {
+      question: "What measurable results do businesses typically see from AI automation?",
+      answer:
+        "Agix Technologies clients consistently report 40–70% reduction in process execution time, 30–50% reduction in operational costs, near-zero error rates on automated workflows, and significant team capacity freed for higher-value work. Most clients achieve full ROI within 6–12 months. AI automation at scale enables reliable operations without proportional headcount growth.",
+    },
   ],
 
   "ai-voice-agents": [
