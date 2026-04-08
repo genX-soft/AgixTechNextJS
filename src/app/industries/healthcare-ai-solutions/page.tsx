@@ -747,10 +747,10 @@ function LeadForm() {
       },
       {
         formType: "healthcare-roadmap",
-        source: "/industries/healthcare",
+        source: "/industries/healthcare-ai-solutions/",
         ctaId: "healthcare-form-submit",
         ctaText: "Get My Healthcare AI Roadmap",
-        ctaLocation: "/industries/healthcare",
+        ctaLocation: "/industries/healthcare-ai-solutions/",
         additionalMetadata: {
           orgType: formData.orgType,
           country: formData.country,
