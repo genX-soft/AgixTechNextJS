@@ -1,6 +1,6 @@
 'use client'
 import { useState, useRef } from "react";
-import { motion, AnimatePresence, useInView } from "@/lib/motion";
+import { motion, useInView } from "@/lib/motion";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { HelpCircle, Minus, Plus } from "lucide-react";
@@ -56,60 +56,63 @@ export default function FAQSection({
         </motion.div>
 
         <div className="space-y-3">
-          {faqs.map((faq, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 10 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.4, delay: i * 0.04 }}
-            >
-              <Card className="overflow-visible" data-testid={`card-faq-${i}`}>
-                <button
-                  onClick={() => setOpenIndex(openIndex === i ? null : i)}
-                  className="w-full text-left p-4 flex items-center justify-between gap-4"
-                  aria-expanded={openIndex === i}
-                  data-testid={`button-faq-toggle-${i}`}
-                >
-                  <span
-                    className="font-medium"
-                    data-testid={`text-faq-question-${i}`}
+          {faqs.map((faq, i) => {
+            const isOpen = openIndex === i;
+            return (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 10 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.4, delay: i * 0.04 }}
+              >
+                <Card className="overflow-hidden" data-testid={`card-faq-${i}`}>
+                  <button
+                    onClick={() => setOpenIndex(isOpen ? null : i)}
+                    className="w-full text-left p-4 flex items-center justify-between gap-4"
+                    aria-expanded={isOpen}
+                    aria-controls={`faq-answer-${i}`}
+                    data-testid={`button-faq-toggle-${i}`}
                   >
-                    {faq.question}
-                  </span>
-                  <div
-                    className={`shrink-0 w-6 h-6 rounded-full flex items-center justify-center transition-colors ${
-                      openIndex === i
-                        ? "bg-primary text-white"
-                        : "bg-slate-700 text-slate-300"
-                    }`}
-                  >
-                    {openIndex === i ? (
-                      <Minus className="w-3 h-3" />
-                    ) : (
-                      <Plus className="w-3 h-3" />
-                    )}
-                  </div>
-                </button>
-                <AnimatePresence>
-                  {openIndex === i && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.2 }}
+                    <span
+                      className="font-medium"
+                      data-testid={`text-faq-question-${i}`}
                     >
-                      <div
-                        className="px-4 pb-4 text-muted-foreground text-sm leading-relaxed"
-                        data-testid={`text-faq-answer-${i}`}
-                      >
-                        {faq.answer}
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </Card>
-            </motion.div>
-          ))}
+                      {faq.question}
+                    </span>
+                    <div
+                      className={`shrink-0 w-6 h-6 rounded-full flex items-center justify-center transition-colors ${
+                        isOpen
+                          ? "bg-primary text-white"
+                          : "bg-slate-700 text-slate-300"
+                      }`}
+                    >
+                      {isOpen ? (
+                        <Minus className="w-3 h-3" />
+                      ) : (
+                        <Plus className="w-3 h-3" />
+                      )}
+                    </div>
+                  </button>
+
+                  {/* Answer always in DOM — hidden via CSS only, not conditional rendering */}
+                  <div
+                    id={`faq-answer-${i}`}
+                    className={`overflow-hidden transition-all duration-200 ease-in-out ${
+                      isOpen ? "max-h-[1200px] opacity-100" : "max-h-0 opacity-0"
+                    }`}
+                    aria-hidden={!isOpen}
+                  >
+                    <div
+                      className="px-4 pb-4 text-muted-foreground text-sm leading-relaxed"
+                      data-testid={`text-faq-answer-${i}`}
+                    >
+                      {faq.answer}
+                    </div>
+                  </div>
+                </Card>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>
