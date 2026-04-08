@@ -139,6 +139,7 @@ export default async function BlogDetailPage({
               date: post.date,
               modified: post.modified,
               slug: post.slug,
+              content: post.content?.rendered,
             }}
           />
           <Schema
