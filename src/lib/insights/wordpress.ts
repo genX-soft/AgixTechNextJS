@@ -189,7 +189,13 @@ export function getFeaturedImageUrl(post: WPPost): string | null {
 }
 
 export function getAuthorName(post: WPPost): string {
-  return post._embedded?.author?.[0]?.name || "AGIX Team";
+  return post._embedded?.author?.[0]?.name || "Santosh S.";
+}
+
+export function getAuthorSlug(post: WPPost): string {
+  const name = getAuthorName(post);
+  if (name === "Santosh S." || name.toLowerCase().includes("santosh")) return "santosh";
+  return "santosh";
 }
 
 export function formatDate(dateString: string): string {

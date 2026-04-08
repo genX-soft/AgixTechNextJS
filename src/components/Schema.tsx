@@ -116,6 +116,7 @@ function buildBlogPostingSchema(data: BlogSchemaData) {
     author: {
       '@type': 'Person',
       name: 'Santosh S.',
+      url: `${SITE_URL}/author/santosh/`,
     },
     publisher: {
       '@id': `${SITE_URL}/#organization`,

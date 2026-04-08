@@ -30,6 +30,7 @@ import {
   WPPost,
   getFeaturedImageUrl,
   getAuthorName,
+  getAuthorSlug,
   formatDate,
   estimateReadTime,
   getExcerpt,
@@ -161,6 +162,7 @@ export default function BlogArticlePage({ initialPost, initialFaqData }: Props) 
 
   const featuredImage = getFeaturedImageUrl(post);
   const author = getAuthorName(post);
+  const authorSlug = getAuthorSlug(post);
   const readTime = estimateReadTime(post.content?.rendered || "");
   const categories = post._embedded?.["wp:term"]?.[0] || [];
 
@@ -196,10 +198,16 @@ export default function BlogArticlePage({ initialPost, initialFaqData }: Props) 
             />
 
             <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground mb-8">
-              <span className="flex items-center gap-2">
+              <Link
+                href={`/author/${authorSlug}/`}
+                className="flex items-center gap-2 hover:text-foreground transition-colors"
+                data-testid="link-blog-author"
+              >
                 <User className="w-4 h-4" />
-                {author}
-              </span>
+                <span className="font-medium text-foreground/80 hover:text-primary transition-colors">
+                  {author}
+                </span>
+              </Link>
               <span className="flex items-center gap-2">
                 <Calendar className="w-4 h-4" />
                 {formatDate(post.date)}

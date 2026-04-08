@@ -5,16 +5,37 @@ import { MainFooter } from '@/components/main-footer';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
-import { Linkedin, ArrowRight, BookOpen, Cpu, Zap, Network, BarChart3 } from 'lucide-react';
+import {
+  Linkedin,
+  ArrowRight,
+  BookOpen,
+  Cpu,
+  Zap,
+  Network,
+  BarChart3,
+  Calendar,
+  Clock,
+  ExternalLink,
+} from 'lucide-react';
+import {
+  getPosts,
+  getExcerpt,
+  formatDate,
+  estimateReadTime,
+  getFeaturedImageUrl,
+} from '@/lib/insights/wordpress';
+
+export const revalidate = 86400;
 
 export const metadata: Metadata = {
-  title: { absolute: 'Santosh S. — Founder & CEO | AGIX Technologies' },
+  title: { absolute: 'Santosh S. – AI Systems Expert | AGIX Technologies' },
   description:
-    'Santosh S. is the Founder & CEO of AGIX Technologies, a leading AI systems engineering company. He writes on agentic AI, enterprise automation, and responsible AI deployment.',
+    'Learn about Santosh S., Founder & CEO of AGIX Technologies, specializing in AI systems, automation, and agentic AI.',
   alternates: { canonical: 'https://agixtech.com/author/santosh/' },
   openGraph: {
-    title: 'Santosh S. — Founder & CEO | AGIX Technologies',
-    description: 'Author of AGIX Technologies Insights. AI systems engineer and enterprise automation strategist.',
+    title: 'Santosh S. – AI Systems Expert | AGIX Technologies',
+    description:
+      'Author of AGIX Technologies Insights. AI systems engineer and enterprise automation strategist specializing in agentic AI and automation.',
     url: 'https://agixtech.com/author/santosh/',
     type: 'profile',
   },
@@ -49,7 +70,7 @@ const authorSchema = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE_URL}/` },
-        { '@type': 'ListItem', position: 2, name: 'Author', item: `${SITE_URL}/author/` },
+        { '@type': 'ListItem', position: 2, name: 'Insights', item: `${SITE_URL}/insights/` },
         { '@type': 'ListItem', position: 3, name: 'Santosh S.', item: `${SITE_URL}/author/santosh/` },
       ],
     },
@@ -57,14 +78,41 @@ const authorSchema = {
 };
 
 const expertiseAreas = [
-  { icon: Network, label: 'Agentic AI Systems', description: 'Multi-agent orchestration, autonomous workflows, and self-correcting AI pipelines for enterprise.' },
-  { icon: Zap, label: 'Enterprise Automation', description: 'End-to-end workflow automation spanning document processing, RPA augmentation, and decision intelligence.' },
-  { icon: BookOpen, label: 'RAG & Knowledge AI', description: 'Retrieval-augmented generation architectures that scale to millions of documents with production-grade accuracy.' },
-  { icon: Cpu, label: 'AI Product Development', description: 'Custom AI product strategy, architecture, and build for SaaS platforms and enterprise systems.' },
-  { icon: BarChart3, label: 'AI Strategy & Governance', description: 'AI readiness assessment, ROI modeling, and responsible AI frameworks for regulated industries.' },
+  {
+    icon: Network,
+    label: 'Agentic AI Systems',
+    description:
+      'Multi-agent orchestration, autonomous workflows, and self-correcting AI pipelines for enterprise.',
+  },
+  {
+    icon: Zap,
+    label: 'Enterprise Automation',
+    description:
+      'End-to-end workflow automation spanning document processing, RPA augmentation, and decision intelligence.',
+  },
+  {
+    icon: BookOpen,
+    label: 'RAG & Knowledge AI',
+    description:
+      'Retrieval-augmented generation architectures that scale to millions of documents with production-grade accuracy.',
+  },
+  {
+    icon: Cpu,
+    label: 'AI Product Development',
+    description:
+      'Custom AI product strategy, architecture, and build for SaaS platforms and enterprise systems.',
+  },
+  {
+    icon: BarChart3,
+    label: 'AI Strategy & Governance',
+    description:
+      'AI readiness assessment, ROI modeling, and responsible AI frameworks for regulated industries.',
+  },
 ];
 
-export default function AuthorSantoshPage() {
+export default async function AuthorSantoshPage() {
+  const posts = await getPosts({ per_page: 6 }).catch(() => []);
+
   return (
     <>
       <script
@@ -97,12 +145,27 @@ export default function AuthorSantoshPage() {
                 <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2">
                   Santosh S.
                 </h1>
-                <p className="text-xl text-primary font-semibold mb-4">Founder &amp; CEO</p>
+                <p className="text-xl text-primary font-semibold mb-1">Founder &amp; CEO</p>
+                <p className="text-sm text-gray-400 mb-4">AI Systems Engineer &amp; Automation Strategist</p>
                 <p className="text-gray-300 text-base md:text-lg leading-relaxed max-w-2xl mb-6">
-                  AI systems engineer and enterprise automation strategist. Santosh leads architecture and delivery at AGIX Technologies,
-                  helping enterprises across fintech, healthcare, logistics, and retail deploy production-grade AI that generates
+                  Santosh leads architecture and delivery at AGIX Technologies, helping enterprises across
+                  fintech, healthcare, logistics, and retail deploy production-grade AI systems that generate
                   measurable ROI. He writes on practical AI implementation, agentic systems, and responsible AI governance.
                 </p>
+
+                {/* Expertise tags */}
+                <div className="flex flex-wrap gap-2 mb-6 justify-center md:justify-start">
+                  {['AI Systems Engineering', 'Agentic AI', 'AI Automation', 'Voice AI', 'RAG Systems'].map((tag) => (
+                    <Badge
+                      key={tag}
+                      variant="outline"
+                      className="bg-primary/10 text-primary border-primary/30 text-xs"
+                    >
+                      {tag}
+                    </Badge>
+                  ))}
+                </div>
+
                 <div className="flex flex-wrap gap-3 justify-center md:justify-start">
                   <a
                     href="https://www.linkedin.com/in/santosh-agixtech/"
@@ -110,14 +173,19 @@ export default function AuthorSantoshPage() {
                     rel="noopener noreferrer"
                     data-testid="link-author-linkedin"
                   >
-                    <Button variant="outline" size="sm" className="border-white/30 text-white hover:bg-white/10 gap-2">
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="border-white/30 text-white hover:bg-white/10 gap-2"
+                    >
                       <Linkedin className="w-4 h-4" />
                       LinkedIn Profile
+                      <ExternalLink className="w-3 h-3 opacity-60" />
                     </Button>
                   </a>
                   <Button size="sm" asChild data-testid="button-author-insights">
                     <Link href="/insights/">
-                      Read Articles <ArrowRight className="w-4 h-4 ml-1" />
+                      Read All Articles <ArrowRight className="w-4 h-4 ml-1" />
                     </Link>
                   </Button>
                 </div>
@@ -158,23 +226,95 @@ export default function AuthorSantoshPage() {
           </div>
         </section>
 
+        {/* ── RECENT ARTICLES ────────────────────────────────────────── */}
+        {posts.length > 0 && (
+          <section className="py-16 bg-muted/20 border-y border-border/30">
+            <div className="max-w-5xl mx-auto px-4 sm:px-6">
+              <div className="flex items-center justify-between mb-10">
+                <div>
+                  <h2 className="text-2xl md:text-3xl font-bold mb-1">Recent Articles</h2>
+                  <p className="text-muted-foreground text-sm">Latest insights from Santosh S.</p>
+                </div>
+                <Button variant="outline" size="sm" asChild data-testid="button-author-all-articles">
+                  <Link href="/insights/">
+                    All Articles <ArrowRight className="w-3.5 h-3.5 ml-1" />
+                  </Link>
+                </Button>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {posts.map((post) => {
+                  const readTime = estimateReadTime(post.content?.rendered || '');
+                  return (
+                    <Link
+                      key={post.id}
+                      href={`/insights/${post.slug}/`}
+                      className="group block"
+                      data-testid={`link-author-post-${post.id}`}
+                    >
+                      <Card className="h-full border-border/50 group-hover:border-primary/30 group-hover:bg-card/80 transition-all duration-300">
+                        <CardContent className="p-5 space-y-3">
+                          <div className="flex flex-wrap gap-1.5 mb-2">
+                            {post._embedded?.['wp:term']?.[0]?.slice(0, 2).map((cat) => (
+                              <Badge
+                                key={cat.id}
+                                variant="secondary"
+                                className="text-xs px-2 py-0.5"
+                              >
+                                {cat.name}
+                              </Badge>
+                            ))}
+                          </div>
+                          <h3
+                            className="font-semibold text-sm leading-snug group-hover:text-primary transition-colors line-clamp-3"
+                            dangerouslySetInnerHTML={{ __html: post.title.rendered }}
+                          />
+                          <p className="text-xs text-muted-foreground line-clamp-2">
+                            {getExcerpt(post, 100)}
+                          </p>
+                          <div className="flex items-center gap-3 text-xs text-muted-foreground/70 pt-1">
+                            <span className="flex items-center gap-1">
+                              <Calendar className="w-3 h-3" />
+                              {formatDate(post.date)}
+                            </span>
+                            <span className="flex items-center gap-1">
+                              <Clock className="w-3 h-3" />
+                              {readTime} min read
+                            </span>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    </Link>
+                  );
+                })}
+              </div>
+            </div>
+          </section>
+        )}
+
         {/* ── CTA ────────────────────────────────────────────────────── */}
-        <section className="py-16 bg-muted/20 border-t border-border/30">
+        <section className="py-16 bg-gradient-to-b from-background to-[#0A0F1D]">
           <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">
-              Read the Latest AI Insights
+            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
+              Work Directly with Santosh&rsquo;s Team
             </h2>
-            <p className="text-muted-foreground mb-6">
-              Practical perspectives on enterprise AI implementation, agentic systems, and business automation.
+            <p className="text-gray-400 mb-6 leading-relaxed">
+              AGIX Technologies builds production AI systems that generate measurable ROI. Book a strategy
+              session to explore what&rsquo;s possible for your business.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <Button size="lg" asChild data-testid="button-author-cta-insights">
-                <Link href="/insights/">
-                  Browse All Articles <ArrowRight className="w-4 h-4 ml-2" />
+              <Button size="lg" asChild data-testid="button-author-cta-contact">
+                <Link href="/corporate/contact/">
+                  Book a Consultation <ArrowRight className="w-4 h-4 ml-2" />
                 </Link>
               </Button>
-              <Button size="lg" variant="outline" asChild data-testid="button-author-cta-contact">
-                <Link href="/corporate/contact/">Work with AGIX</Link>
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-white/30 text-white hover:bg-white/10"
+                asChild
+                data-testid="button-author-cta-insights"
+              >
+                <Link href="/insights/">Browse All Articles</Link>
               </Button>
             </div>
           </div>
