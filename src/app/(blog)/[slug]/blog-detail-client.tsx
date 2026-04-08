@@ -33,14 +33,7 @@ import {
   formatDate,
   estimateReadTime,
   getExcerpt,
-  stripHtmlTags,
 } from "@/lib/insights/wordpress";
-import {
-  generateOrganizationSchema,
-  generateBlogPostingSchema,
-  generateBreadcrumbSchema,
-  generateFullSchema,
-} from "@/lib/seo/structured-data";
 import Image from "next/image";
 import { FAQData, FAQItem } from "@/lib/insights/faq-utils";
 
@@ -115,76 +108,6 @@ function RelatedPostCard({ post }: { post: WPPost }) {
   );
 }
 
-function useSEO(post: WPPost | null, slug: string) {
-  useEffect(() => {
-    if (!post) return;
-
-    const yoast = post.yoast_head_json;
-    const featuredImage = getFeaturedImageUrl(post);
-    const title = yoast?.title || stripHtmlTags(post.title.rendered);
-    const description = yoast?.description || getExcerpt(post, 160);
-
-    document.title = title;
-
-    const updateMeta = (name: string, content: string, isProperty = false) => {
-      const attr = isProperty ? 'property' : 'name';
-      let meta = document.querySelector(`meta[${attr}="${name}"]`);
-      if (!meta) {
-        meta = document.createElement('meta');
-        meta.setAttribute(attr, name);
-        document.head.appendChild(meta);
-      }
-      meta.setAttribute('content', content);
-    };
-
-    updateMeta('description', description);
-    updateMeta('og:title', title, true);
-    updateMeta('og:description', description, true);
-    updateMeta('og:type', 'article', true);
-    if (featuredImage) updateMeta('og:image', featuredImage, true);
-    updateMeta('twitter:card', 'summary_large_image');
-    updateMeta('twitter:title', title);
-    updateMeta('twitter:description', description);
-    if (featuredImage) updateMeta('twitter:image', featuredImage);
-
-    const canonicalUrl = `https://agixtech.com/${slug}/`;
-    let canonical = document.querySelector('link[rel="canonical"]');
-    if (!canonical) {
-      canonical = document.createElement('link');
-      canonical.setAttribute('rel', 'canonical');
-      document.head.appendChild(canonical);
-    }
-    canonical.setAttribute('href', canonicalUrl);
-    updateMeta('og:url', canonicalUrl, true);
-
-    const blogSchema = generateFullSchema([
-      generateOrganizationSchema(),
-      generateBlogPostingSchema({
-        title: stripHtmlTags(post.title.rendered),
-        description,
-        url: canonicalUrl,
-        datePublished: post.date,
-        author: getAuthorName(post),
-        image: featuredImage || undefined,
-      }),
-      generateBreadcrumbSchema([
-        { name: 'Home', url: 'https://agixtech.com/' },
-        { name: 'Insights', url: 'https://agixtech.com/insights/' },
-        { name: stripHtmlTags(post.title.rendered), url: canonicalUrl },
-      ]),
-    ]);
-
-    let script = document.querySelector('script[type="application/ld+json"][data-blog]');
-    if (!script) {
-      script = document.createElement('script');
-      script.setAttribute('type', 'application/ld+json');
-      script.setAttribute('data-blog', 'true');
-      document.head.appendChild(script);
-    }
-    script.textContent = JSON.stringify(blogSchema);
-  }, [post, slug]);
-}
-
 export default function BlogArticlePage({ initialPost, initialFaqData }: Props) {
   const params = useParams();
   const slug = params?.slug as string;
@@ -192,8 +115,6 @@ export default function BlogArticlePage({ initialPost, initialFaqData }: Props) 
   const post = initialPost;
   const faqData = initialFaqData;
   const [relatedPosts, setRelatedPosts] = useState<WPPost[]>([]);
-
-  useSEO(post, slug);
 
   useEffect(() => {
     if (!slug) return;

@@ -7,11 +7,13 @@ import { extractFAQsFromContent, FAQData } from '@/lib/insights/faq-utils';
 const WP_API_BASE = 'https://cms.agixtech.com/wp-json/wp/v2';
 const SITE_URL = 'https://agixtech.com';
 
+export const revalidate = 86400;
+
 const getFullPost = cache(async (slug: string): Promise<WPPost | null> => {
   try {
     const response = await fetch(
       `${WP_API_BASE}/posts?slug=${encodeURIComponent(slug)}&_embed=true`,
-      { next: { revalidate: 3600 } }
+      { next: { revalidate: 86400 } }
     );
     if (!response.ok) return null;
     const posts = await response.json();
@@ -20,6 +22,39 @@ const getFullPost = cache(async (slug: string): Promise<WPPost | null> => {
     return null;
   }
 });
+
+export async function generateStaticParams(): Promise<{ slug: string }[]> {
+  try {
+    const slugs: string[] = [];
+    let page = 1;
+
+    while (true) {
+      const response = await fetch(
+        `${WP_API_BASE}/posts?per_page=100&page=${page}&status=publish&_fields=slug,type`,
+        { next: { revalidate: 86400 } }
+      );
+      if (!response.ok) break;
+
+      const posts: Array<{ slug: string; type: string }> = await response.json();
+      if (!posts.length) break;
+
+      const insightPosts = posts.filter((p) => p.type === 'insight');
+      const batch = insightPosts.length > 0 ? insightPosts : posts;
+      slugs.push(...batch.map((p) => p.slug));
+
+      const totalPages = parseInt(
+        response.headers.get('X-WP-TotalPages') || '1',
+        10
+      );
+      if (page >= totalPages) break;
+      page++;
+    }
+
+    return slugs.map((slug) => ({ slug }));
+  } catch {
+    return [];
+  }
+}
 
 function stripHtml(html: string): string {
   return html.replace(/<[^>]*>/g, '').replace(/&[^;]+;/g, ' ').trim();
@@ -51,8 +86,8 @@ export async function generateMetadata({
     post._embedded?.['wp:featuredmedia']?.[0]?.source_url ||
     `${SITE_URL}/og-image.png`;
 
-    const hasAgix = /agix\s*technologies/i.test(title);
-    const finalTitle = hasAgix ? title : `${title} | AGIX Technologies`;
+  const hasAgix = /agix\s*technologies/i.test(title);
+  const finalTitle = hasAgix ? title : `${title} | AGIX Technologies`;
 
   return {
     title: { absolute: finalTitle },
