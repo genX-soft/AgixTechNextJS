@@ -3,7 +3,6 @@ import { Inter, Space_Grotesk } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import { Providers } from "./providers";
-import { homepageOrganizationSchema } from "@/lib/seo/page-schemas";
 
 const GTM_ID = "GTM-5V96B388";
 
@@ -121,64 +120,6 @@ export const metadata: Metadata = {
   classification: 'AI Systems Engineering',
 };
 
-const homepageSchema = {
-  "@context": "https://schema.org",
-  "@graph": [
-    homepageOrganizationSchema,
-    {
-      "@type": "WebSite",
-      "@id": "https://agixtech.com/#website",
-      "url": "https://agixtech.com/",
-      "name": "AGIX Technologies",
-      "description": "AGIX Technologies provides AI automation, agentic AI solutions, and intelligent systems to help businesses automate workflows and enable real-time decision-making.",
-      "inLanguage": "en",
-      "publisher": { "@id": "https://agixtech.com/#organization" },
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": "https://agixtech.com/?s={search_term_string}",
-        "query-input": "required name=search_term_string"
-      },
-      "sameAs": [
-        "https://www.linkedin.com/company/agixtech",
-        "https://twitter.com/agixtech",
-        "https://www.facebook.com/agixtechnologies"
-      ]
-    },
-    {
-      "@type": "WebPage",
-      "@id": "https://agixtech.com/#webpage",
-      "url": "https://agixtech.com/",
-      "name": "AGIX Technologies",
-      "isPartOf": { "@id": "https://agixtech.com/#website" },
-      "about": { "@id": "https://agixtech.com/#organization" },
-      "description": "AGIX Technologies delivers enterprise AI systems engineering and autonomous agent development, helping Fortune 500 companies achieve 40% operational efficiency gains.",
-      "breadcrumb": { "@id": "https://agixtech.com/#breadcrumb" },
-      "inLanguage": "en-US",
-      "potentialAction": [{ "@type": "ReadAction", "target": ["https://agixtech.com/"] }]
-    },
-    {
-      "@type": "BreadcrumbList",
-      "@id": "https://agixtech.com/#breadcrumb",
-      "itemListElement": [{ "@type": "ListItem", "position": 1, "name": "Home", "item": "https://agixtech.com/" }]
-    },
-    {
-      "@type": "ItemList",
-      "@id": "https://agixtech.com/#services",
-      "name": "AGIX Technologies AI Services",
-      "itemListElement": [
-        "AI Automation Services", "AI Voice Agents", "Conversational AI Chatbots",
-        "Agentic AI Systems", "RAG Services", "Predictive Analytics AI",
-        "Computer Vision Solutions", "Custom AI Product Development Services"
-      ].map((name, i) => ({
-        "@type": "Service",
-        name,
-        provider: { "@type": "Organization", "@id": "https://agixtech.com/#organization" },
-        position: i + 1
-      }))
-    }
-  ]
-};
-
 export default function RootLayout({
   children,
 }: {
@@ -190,11 +131,6 @@ export default function RootLayout({
         className={`${inter.variable} ${spaceGrotesk.variable} font-sans`}
         suppressHydrationWarning
       >
-        {/* Organization/WebPage JSON-LD in body — Google supports body placement */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(homepageSchema) }}
-        />
         {/* Critical above-the-fold styles inlined to avoid FOUC */}
         <style dangerouslySetInnerHTML={{ __html: criticalHomeStyles }} />
         <noscript dangerouslySetInnerHTML={{ __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=${GTM_ID}" height="0" width="0" style="display:none;visibility:hidden"></iframe>` }} />
