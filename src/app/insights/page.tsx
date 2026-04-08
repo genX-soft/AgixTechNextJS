@@ -8,6 +8,25 @@ import { ArrowRight } from 'lucide-react';
 import InsightsListClient from './insights-list-client';
 import { WPPost } from '@/lib/insights/wordpress';
 
+const SITE_URL = 'https://agixtech.com';
+
+function stripHtml(html: string): string {
+  return html.replace(/<[^>]*>/g, '').replace(/&[^;]+;/g, ' ').trim();
+}
+
+function buildInsightsSchema(posts: WPPost[]) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    itemListElement: posts.map((post, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      url: `${SITE_URL}/${post.slug}/`,
+      name: stripHtml(post.title.rendered),
+    })),
+  };
+}
+
 const WP_API_BASE = 'https://cms.agixtech.com/wp-json/wp/v2';
 
 export const metadata: Metadata = {
@@ -40,9 +59,16 @@ async function getInitialPosts(): Promise<{
 
 export default async function InsightsPage() {
   const { posts, totalPages } = await getInitialPosts();
+  const insightsSchema = buildInsightsSchema(posts);
 
   return (
     <div className="min-h-screen bg-background">
+      {posts.length > 0 && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(insightsSchema) }}
+        />
+      )}
       <MainHeader />
 
       <section className="relative overflow-hidden bg-gradient-to-b from-[#0A0F1D] via-[#1E2A4F] to-background pt-24 lg:pt-28 pb-16">

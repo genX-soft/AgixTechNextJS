@@ -128,18 +128,30 @@ export default async function BlogDetailPage({
   return (
     <>
       {post && (
-        <Schema
-          type="blog"
-          data={{
-            title: stripHtml(post.title.rendered),
-            excerpt: stripHtml(post.excerpt.rendered).slice(0, 200),
-            featured_image:
-              post._embedded?.['wp:featuredmedia']?.[0]?.source_url,
-            date: post.date,
-            modified: post.modified,
-            slug: post.slug,
-          }}
-        />
+        <>
+          <Schema
+            type="blog"
+            data={{
+              title: stripHtml(post.title.rendered),
+              excerpt: stripHtml(post.excerpt.rendered).slice(0, 200),
+              featured_image:
+                post._embedded?.['wp:featuredmedia']?.[0]?.source_url,
+              date: post.date,
+              modified: post.modified,
+              slug: post.slug,
+            }}
+          />
+          <Schema
+            type="breadcrumb"
+            data={{
+              items: [
+                { name: 'Home', url: `${SITE_URL}/` },
+                { name: 'Insights', url: `${SITE_URL}/insights/` },
+                { name: stripHtml(post.title.rendered), url: `${SITE_URL}/${post.slug}/` },
+              ],
+            }}
+          />
+        </>
       )}
       <BlogDetailClient initialPost={post} initialFaqData={faqData} />
     </>

@@ -19,10 +19,15 @@ interface ServiceSchemaData {
   url: string;
 }
 
+interface BreadcrumbSchemaData {
+  items: Array<{ name: string; url: string }>;
+}
+
 type SchemaProps =
   | { type: 'home'; data?: never }
   | { type: 'blog'; data: BlogSchemaData }
-  | { type: 'service'; data: ServiceSchemaData };
+  | { type: 'service'; data: ServiceSchemaData }
+  | { type: 'breadcrumb'; data: BreadcrumbSchemaData };
 
 function buildHomeSchema() {
   const { '@context': _orgCtx, ...organization } = homepageOrganizationSchema;
@@ -70,6 +75,19 @@ function buildServiceSchema(data: ServiceSchemaData) {
   };
 }
 
+function buildBreadcrumbSchema(data: BreadcrumbSchemaData) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: data.items.map((item, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: item.name,
+      item: item.url,
+    })),
+  };
+}
+
 export default function Schema(props: SchemaProps) {
   if (props.type === 'home') {
     const schema = buildHomeSchema();
@@ -98,6 +116,17 @@ export default function Schema(props: SchemaProps) {
     return (
       <script
         id="schema-service"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      />
+    );
+  }
+
+  if (props.type === 'breadcrumb') {
+    const schema = buildBreadcrumbSchema(props.data);
+    return (
+      <script
+        id="schema-breadcrumb"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
