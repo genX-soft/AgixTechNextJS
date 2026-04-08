@@ -3,12 +3,7 @@ import { cache } from 'react';
 import BlogDetailClient from './blog-detail-client';
 import { WPPost } from '@/lib/insights/wordpress';
 import { extractFAQsFromContent, FAQData } from '@/lib/insights/faq-utils';
-import {
-  generateBlogPostingSchema,
-  generateOrganizationSchema,
-  generateBreadcrumbSchema,
-  generateFullSchema,
-} from '@/lib/seo/structured-data';
+import Schema from '@/components/Schema';
 
 const WP_API_BASE = 'https://cms.agixtech.com/wp-json/wp/v2';
 const SITE_URL = 'https://agixtech.com';
@@ -64,38 +59,6 @@ export async function generateStaticParams(): Promise<{ slug: string }[]> {
 
 function stripHtml(html: string): string {
   return html.replace(/<[^>]*>/g, '').replace(/&[^;]+;/g, ' ').trim();
-}
-
-function buildBlogSchema(post: WPPost, slug: string): string {
-  const yoast = post.yoast_head_json;
-  const title = yoast?.title || stripHtml(post.title.rendered);
-  const description =
-    yoast?.description || stripHtml(post.excerpt.rendered).slice(0, 160);
-  const canonicalUrl = `${SITE_URL}/${slug}/`;
-  const image =
-    yoast?.og_image?.[0]?.url ||
-    post._embedded?.['wp:featuredmedia']?.[0]?.source_url;
-  const author = post._embedded?.author?.[0]?.name || 'AGIX Team';
-
-  const schema = generateFullSchema([
-    generateOrganizationSchema(),
-    generateBlogPostingSchema({
-      title: stripHtml(title),
-      description,
-      url: canonicalUrl,
-      datePublished: post.date,
-      dateModified: post.modified || post.date,
-      author,
-      image,
-    }),
-    generateBreadcrumbSchema([
-      { name: 'Home', url: `${SITE_URL}/` },
-      { name: 'Insights', url: `${SITE_URL}/insights/` },
-      { name: stripHtml(post.title.rendered), url: canonicalUrl },
-    ]),
-  ]);
-
-  return JSON.stringify(schema);
 }
 
 export async function generateMetadata({
@@ -165,9 +128,17 @@ export default async function BlogDetailPage({
   return (
     <>
       {post && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: buildBlogSchema(post, slug) }}
+        <Schema
+          type="blog"
+          data={{
+            title: stripHtml(post.title.rendered),
+            excerpt: stripHtml(post.excerpt.rendered).slice(0, 200),
+            featured_image:
+              post._embedded?.['wp:featuredmedia']?.[0]?.source_url,
+            date: post.date,
+            modified: post.modified,
+            slug: post.slug,
+          }}
         />
       )}
       <BlogDetailClient initialPost={post} initialFaqData={faqData} />

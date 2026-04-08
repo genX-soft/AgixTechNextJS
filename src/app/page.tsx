@@ -9,31 +9,13 @@ import CaseStudiesSection from "@/components/home/CaseStudiesSection";
 import { ContactSection } from "@/components/home/contact-section";
 import { MainFooter } from "@/components/main-footer";
 import FAQSection from "@/components/shared/FAQSection";
-import { documentFAQs, generateFAQPageSchema } from "@/lib/seo/faq-data";
-import { homepageOrganizationSchema } from "@/lib/seo/page-schemas";
-import { generateWebSiteSchema } from "@/lib/seo/structured-data";
-
-const { "@context": _orgCtx, ...organizationSchema } = homepageOrganizationSchema;
-
-const homepageSchema = {
-  "@context": "https://schema.org",
-  "@graph": [
-    organizationSchema,
-    generateWebSiteSchema(),
-    (() => {
-      const { "@context": _faqCtx, ...faqSchema } = generateFAQPageSchema(documentFAQs['home']);
-      return faqSchema;
-    })(),
-  ],
-};
+import { documentFAQs } from "@/lib/seo/faq-data";
+import Schema from "@/components/Schema";
 
 export default function Home() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(homepageSchema) }}
-      />
+      <Schema type="home" />
       <MainHeader />
       <HeroSection />
       <ValuePropositionSection />
