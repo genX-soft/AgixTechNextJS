@@ -107,11 +107,11 @@ export function MainFooter() {
         <div className="grid grid-cols-2 gap-8 md:grid-cols-3 lg:grid-cols-6">
           <div className="col-span-2 md:col-span-3 lg:col-span-1">
             <Link href="/" className="mb-4 flex items-center gap-2">
-              <div className="flex h-9 w-9 items-center justify-center rounded-md bg-orange-500">
-                <Sparkles className="h-4 w-4 text-white" aria-hidden="true" />
+              <div className="flex h-8 w-8 items-center justify-center rounded-md bg-orange-500">
+                <Sparkles className="h-5 w-5 text-white" aria-hidden="true" />
               </div>
               <span className="text-xl font-bold">
-                Agix Technologies<span className="text-primary">.</span>
+                AGIX Technologies
               </span>
             </Link>
             <p className="mb-6 text-sm leading-relaxed text-slate-300">
@@ -145,7 +145,7 @@ export function MainFooter() {
 
           <div>
             <p className="mb-4 text-sm font-semibold uppercase tracking-wider text-white" role="heading" aria-level={3}>Services</p>
-            <ul className="space-y-2.5">
+            <ul className="m-0 list-none p-0 space-y-2.5">
               {services.map((link) => (
                 <li key={link.href}>
                   <Link href={link.href} className={footerLinkClass}>
@@ -158,7 +158,7 @@ export function MainFooter() {
 
           <div>
             <p className="mb-4 text-sm font-semibold uppercase tracking-wider text-white" role="heading" aria-level={3}>Industries</p>
-            <ul className="space-y-2.5">
+            <ul className="m-0 list-none p-0 space-y-2.5">
               {industries.map((link) => (
                 <li key={link.href}>
                   <Link href={link.href} className={footerLinkClass}>
@@ -171,7 +171,7 @@ export function MainFooter() {
 
           <div>
             <p className="mb-4 text-sm font-semibold uppercase tracking-wider text-white" role="heading" aria-level={3}>Intelligence</p>
-            <ul className="space-y-2.5">
+            <ul className="m-0 list-none p-0 space-y-2.5">
               {intelligence.map((link) => (
                 <li key={link.href}>
                   <Link href={link.href} className={footerLinkClass}>
@@ -184,7 +184,7 @@ export function MainFooter() {
 
           <div>
             <p className="mb-4 text-sm font-semibold uppercase tracking-wider text-white" role="heading" aria-level={3}>Company</p>
-            <ul className="space-y-2.5">
+            <ul className="m-0 list-none p-0 space-y-2.5">
               {corporate.map((link) => (
                 <li key={link.href}>
                   <Link href={link.href} className={footerLinkClass}>
