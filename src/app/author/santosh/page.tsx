@@ -111,7 +111,8 @@ const expertiseAreas = [
 ];
 
 export default async function AuthorSantoshPage() {
-  const posts = await getPosts({ perPage: 6 }).catch(() => []);
+  const postsResponse = await getPosts({ perPage: 6 }).catch(() => null);
+  const posts = postsResponse?.posts || [];
 
   return (
     <>
