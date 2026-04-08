@@ -222,7 +222,6 @@ export function MainFooter() {
               <span className="hidden md:inline">|</span>
               <Link href="/privacy-policy/" className="transition-colors hover:text-white">Privacy Policy</Link>
               <Link href="/terms-of-service/" className="transition-colors hover:text-white">Terms of Service</Link>
-              <Link href="/admin/leads/" className="transition-colors hover:text-white" data-testid="link-footer-admin">Admin</Link>
             </div>
             <div className="flex items-center gap-2 text-xs text-slate-300">
               <div className="h-2 w-2 rounded-full bg-green-500 animate-pulse" />
