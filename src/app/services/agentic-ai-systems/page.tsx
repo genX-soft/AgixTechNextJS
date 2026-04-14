@@ -24,6 +24,7 @@ import {
 } from "@/components/ui/accordion";
 import { MainHeader } from "@/components/main-header";
 import { MainFooter } from "@/components/main-footer";
+import { ServiceInsightsTeaser } from "@/components/service-insights-teaser";
 import { useToast } from "@/hooks/use-toast";
 import { 
   Bot,
@@ -2301,6 +2302,7 @@ export default function AgenticAISystems() {
         faqs={documentFAQs['agentic-ai-systems']}
         title="Agentic AI System Questions Answered"
       />
+      <ServiceInsightsTeaser />
       <MainFooter />
     </div>
   );

@@ -24,6 +24,7 @@ import {
 } from "@/components/ui/accordion";
 import { MainHeader } from "@/components/main-header";
 import { MainFooter } from "@/components/main-footer";
+import { ServiceInsightsTeaser } from "@/components/service-insights-teaser";
 import { useToast } from "@/hooks/use-toast";
 import { 
   Database,
@@ -1377,6 +1378,7 @@ export default function RAGKnowledgeAIPage() {
         faqs={documentFAQs['rag-knowledge-ai']}
         title="RAG & Knowledge AI Questions Answered"
       />
+      <ServiceInsightsTeaser />
       <MainFooter />
     </div>
   );

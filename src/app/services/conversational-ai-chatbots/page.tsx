@@ -23,6 +23,7 @@ import {
 } from "@/components/ui/accordion";
 import { MainHeader } from "@/components/main-header";
 import { MainFooter } from "@/components/main-footer";
+import { ServiceInsightsTeaser } from "@/components/service-insights-teaser";
 import { 
   MessageSquare,
   Bot,
@@ -1870,6 +1871,7 @@ export default function ConversationalAIChatbots() {
         faqs={documentFAQs['conversational-ai-chatbots']}
         title="Conversational AI Chatbot Questions Answered"
       />
+      <ServiceInsightsTeaser />
       <MainFooter />
     </div>
   );

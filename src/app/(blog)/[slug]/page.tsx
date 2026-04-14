@@ -3,6 +3,7 @@ import { cache } from 'react';
 import BlogDetailClient from './blog-detail-client';
 import { WPPost } from '@/lib/insights/wordpress';
 import { extractFAQsFromContent, FAQData } from '@/lib/insights/faq-utils';
+import { getRelatedServices, ServiceLink } from '@/lib/insights/service-mapping';
 import Schema from '@/components/Schema';
 
 const WP_API_BASE = 'https://cms.agixtech.com/wp-json/wp/v2';
@@ -125,6 +126,14 @@ export default async function BlogDetailPage({
       ? extractFAQsFromContent(post.content.rendered)
       : { faqs: [], cleanedContent: '' };
 
+  const relatedServices: ServiceLink[] = post
+    ? getRelatedServices(
+        stripHtml(post.title.rendered),
+        post.content?.rendered || '',
+        (post._embedded?.['wp:term']?.[0] || []).map((t: { name: string }) => t.name)
+      )
+    : [];
+
   return (
     <>
       {post && (
@@ -154,7 +163,7 @@ export default async function BlogDetailPage({
           />
         </>
       )}
-      <BlogDetailClient initialPost={post} initialFaqData={faqData} />
+      <BlogDetailClient initialPost={post} initialFaqData={faqData} relatedServices={relatedServices} />
     </>
   );
 }

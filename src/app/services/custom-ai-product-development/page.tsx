@@ -23,6 +23,7 @@ import {
 } from "@/components/ui/accordion";
 import { MainHeader } from "@/components/main-header";
 import { MainFooter } from "@/components/main-footer";
+import { ServiceInsightsTeaser } from "@/components/service-insights-teaser";
 import { useToast } from "@/hooks/use-toast";
 import { 
   Rocket,
@@ -1942,6 +1943,7 @@ export default function CustomAIProductDevelopmentPage() {
         faqs={documentFAQs['custom-ai-product-development']}
         title="Custom AI Product Development Questions Answered"
       />
+      <ServiceInsightsTeaser />
       <MainFooter />
     </div>
   );

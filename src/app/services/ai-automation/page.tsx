@@ -18,6 +18,7 @@ import {
 
 import { MainHeader } from "@/components/main-header";
 import { MainFooter } from "@/components/main-footer";
+import { ServiceInsightsTeaser } from "@/components/service-insights-teaser";
 import { useToast } from "@/hooks/use-toast";
 import { useMutation } from "@tanstack/react-query";
 import { 
@@ -709,6 +710,7 @@ export default function AIAutomationPage() {
         faqs={documentFAQs['ai-automation']}
         title="AI Automation Questions Answered"
       />
+      <ServiceInsightsTeaser />
       <MainFooter />
     </div>
   );

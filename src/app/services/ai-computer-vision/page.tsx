@@ -23,6 +23,7 @@ import {
 } from "@/components/ui/accordion";
 import { MainHeader } from "@/components/main-header";
 import { MainFooter } from "@/components/main-footer";
+import { ServiceInsightsTeaser } from "@/components/service-insights-teaser";
 import { useToast } from "@/hooks/use-toast";
 import { 
   Eye,
@@ -1734,6 +1735,7 @@ export default function ComputerVisionSolutionsPage() {
         faqs={documentFAQs['ai-computer-vision']}
         title="Computer Vision AI Questions Answered"
       />
+      <ServiceInsightsTeaser />
       <MainFooter />
     </div>
   );

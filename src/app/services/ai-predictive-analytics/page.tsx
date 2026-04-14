@@ -24,6 +24,7 @@ import {
 } from "@/components/ui/accordion";
 import { MainHeader } from "@/components/main-header";
 import { MainFooter } from "@/components/main-footer";
+import { ServiceInsightsTeaser } from "@/components/service-insights-teaser";
 import { useToast } from "@/hooks/use-toast";
 import { 
   LineChart,
@@ -1642,6 +1643,7 @@ export default function PredictiveAnalyticsAIPage() {
         faqs={documentFAQs['ai-predictive-analytics']}
         title="Predictive AI Analytics Questions Answered"
       />
+      <ServiceInsightsTeaser />
       <MainFooter />
     </div>
   );

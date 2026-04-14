@@ -24,7 +24,9 @@ import {
   Linkedin,
   Twitter,
   HelpCircle,
+  Cpu,
 } from "lucide-react";
+import type { ServiceLink } from "@/lib/insights/service-mapping";
 import {
   getPosts,
   WPPost,
@@ -41,6 +43,7 @@ import { FAQData, FAQItem } from "@/lib/insights/faq-utils";
 interface Props {
   initialPost: WPPost | null;
   initialFaqData: FAQData;
+  relatedServices?: ServiceLink[];
 }
 
 function FAQAccordion({ faqs }: { faqs: FAQItem[] }) {
@@ -109,7 +112,34 @@ function RelatedPostCard({ post }: { post: WPPost }) {
   );
 }
 
-export default function BlogArticlePage({ initialPost, initialFaqData }: Props) {
+function RelatedServicesSection({ services }: { services: ServiceLink[] }) {
+  if (!services || services.length === 0) return null;
+  return (
+    <section className="bg-muted/20 border border-border rounded-xl p-6 mb-12">
+      <h2 className="text-lg font-bold flex items-center gap-2 mb-4">
+        <Cpu className="w-5 h-5 text-primary" aria-hidden="true" />
+        Related AGIX Technologies Services
+      </h2>
+      <ul className="space-y-3">
+        {services.map((service) => (
+          <li key={service.href} className="flex flex-col sm:flex-row sm:items-start gap-1">
+            <Link
+              href={service.href}
+              className="font-medium text-primary hover:underline text-sm shrink-0"
+              data-testid={`link-related-service-${service.href.replace(/\//g, "-")}`}
+            >
+              {service.title}
+            </Link>
+            <span className="hidden sm:inline text-muted-foreground text-sm">—</span>
+            <span className="text-sm text-muted-foreground">{service.description}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}
+
+export default function BlogArticlePage({ initialPost, initialFaqData, relatedServices = [] }: Props) {
   const params = useParams();
   const slug = params?.slug as string;
 
@@ -239,6 +269,8 @@ export default function BlogArticlePage({ initialPost, initialFaqData }: Props) 
           {faqData.faqs.length > 0 && (
             <FAQAccordion faqs={faqData.faqs} />
           )}
+
+          <RelatedServicesSection services={relatedServices} />
 
           <div className="border-t border-border pt-8 mb-12">
             <div className="flex flex-wrap items-center justify-between gap-4">

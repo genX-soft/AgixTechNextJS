@@ -23,6 +23,7 @@ import {
 } from "@/components/ui/accordion";
 import { MainHeader } from "@/components/main-header";
 import { MainFooter } from "@/components/main-footer";
+import { ServiceInsightsTeaser } from "@/components/service-insights-teaser";
 import { 
   Phone,
   PhoneCall,
@@ -1987,6 +1988,7 @@ export default function AIVoiceAgents() {
         faqs={documentFAQs['ai-voice-agents']}
         title="AI Voice Agent Questions Answered"
       />
+      <ServiceInsightsTeaser />
       <MainFooter />
     </div>
   );
