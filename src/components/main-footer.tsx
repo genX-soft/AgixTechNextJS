@@ -217,7 +217,7 @@ export function MainFooter() {
           <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
             <div className="flex flex-wrap items-center gap-4 text-xs text-slate-300">
               <div className="text-sm text-slate-300" suppressHydrationWarning>
-                {`\u00A9 ${new Date().getFullYear()} Agix Technologies. All rights reserved.`}
+                {`\u00A9 ${new Date().getFullYear()} AGIX Technologies. All rights reserved.`}
               </div>
               <span className="hidden md:inline">|</span>
               <Link href="/privacy-policy/" className="transition-colors hover:text-white">Privacy Policy</Link>

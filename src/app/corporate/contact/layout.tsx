@@ -86,7 +86,46 @@ const localBusinessSchema = {
     "contactType": "customer support",
     "areaServed": "Worldwide",
     "availableLanguage": ["English"]
-  }
+  },
+  "department": [
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://agixtech.com/#office-london",
+      "name": "AGIX Technologies — London",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "London",
+        "addressCountry": "GB"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "51.5074",
+        "longitude": "-0.1278"
+      },
+      "telephone": "+18574141353",
+      "email": "hello@agixtech.com",
+      "url": "https://agixtech.com/corporate/contact/"
+    },
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://agixtech.com/#office-jaipur",
+      "name": "AGIX Technologies — Jaipur",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Jaipur",
+        "addressRegion": "Rajasthan",
+        "addressCountry": "IN"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "26.9124",
+        "longitude": "75.7873"
+      },
+      "telephone": "+18574141353",
+      "email": "hello@agixtech.com",
+      "url": "https://agixtech.com/corporate/contact/"
+    }
+  ]
 }
 
 const breadcrumbSchema = {

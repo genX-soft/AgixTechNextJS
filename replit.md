@@ -142,6 +142,9 @@ Blog posts automatically receive 1–2 contextual service links injected after t
 - Author page (`/author/santosh/`) has full E-E-A-T schema: Person, jobTitle, LinkedIn sameAs, bio description
 - `client_legacy_backup/` directory contains a prior Vite/Wouter SPA (do not modify)
 - Duplicate blog post `/best-top-ai-agent-development-companies-usa/` 301 redirects to `/top-ai-agent-development-companies-in-the-usa/`
-- Contact page (`/corporate/contact/`) has full LocalBusiness schema with address, geo, phone, email, hours
+- Contact page (`/corporate/contact/`) has full LocalBusiness schema with all 3 offices — Boston (HQ), London, Jaipur — declared via `department[]` sub-entities
 - Case studies index layout includes Crunchbase in Organization sameAs
 - Enterprise Knowledge AI meta title: "Enterprise Knowledge AI | RAG & Knowledge Management Systems"
+- Footer copyright and header brand text both read "AGIX Technologies" (not "Agix Technologies")
+- All FAQ answer text (153 entries in `src/lib/seo/faq-data.ts`) uses "AGIX Technologies" canonical brand casing
+- robots.txt disallows `/admin/` broadly (not just `/admin/leads/`) to prevent crawler exposure

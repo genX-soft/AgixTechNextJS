@@ -6,29 +6,29 @@ export interface FAQItem {
 export const documentFAQs: Record<string, FAQItem[]> = {
   home: [
     {
-      question: "What does Agix Technologies do?",
+      question: "What does AGIX Technologies do?",
       answer:
-        "Agix Technologies is an AI systems engineering company that designs, deploys, and stewards production-ready agentic AI systems, workflow automation, and enterprise intelligence infrastructure. We serve startups, SMBs, and enterprises across the USA, Europe, and Australia — replacing manual operations with scalable, ROI-driven AI systems.",
+        "AGIX Technologies is an AI systems engineering company that designs, deploys, and stewards production-ready agentic AI systems, workflow automation, and enterprise intelligence infrastructure. We serve startups, SMBs, and enterprises across the USA, Europe, and Australia — replacing manual operations with scalable, ROI-driven AI systems.",
     },
     {
-      question: "What services does Agix Technologies offer?",
+      question: "What services does AGIX Technologies offer?",
       answer:
-        "Agix Technologies offers eight core AI services: AI Automation, AI Voice Agents, Conversational AI Chatbots, Agentic AI Systems, RAG & Knowledge AI, Predictive & Analytics AI, Computer Vision Solutions, and Custom AI Product Development. Every service is engineered as a production-ready system, not a prototype or plug-in.",
+        "AGIX Technologies offers eight core AI services: AI Automation, AI Voice Agents, Conversational AI Chatbots, Agentic AI Systems, RAG & Knowledge AI, Predictive & Analytics AI, Computer Vision Solutions, and Custom AI Product Development. Every service is engineered as a production-ready system, not a prototype or plug-in.",
     },
     {
-      question: "Which industries does Agix Technologies serve?",
+      question: "Which industries does AGIX Technologies serve?",
       answer:
-        "Agix Technologies serves Healthcare, Real Estate, Fintech & Lending, Insurance, Retail & eCommerce, Logistics & Supply Chain, Hospitality & Wellness, and EdTech & E-Learning. Each industry has dedicated AI solutions built around sector-specific compliance, workflows, and ROI targets.",
+        "AGIX Technologies serves Healthcare, Real Estate, Fintech & Lending, Insurance, Retail & eCommerce, Logistics & Supply Chain, Hospitality & Wellness, and EdTech & E-Learning. Each industry has dedicated AI solutions built around sector-specific compliance, workflows, and ROI targets.",
     },
     {
-      question: "How much do Agix Technologies AI systems cost?",
+      question: "How much do AGIX Technologies AI systems cost?",
       answer:
-        "Agix Technologies AI system costs vary by scope. Focused automation projects typically start at $8,000–$20,000. Enterprise-grade agentic systems and multi-system intelligence platforms range from $30,000–$150,000+. Most clients achieve 40% operational cost reduction, making deployment ROI-positive within 6–12 months.",
+        "AGIX Technologies AI system costs vary by scope. Focused automation projects typically start at $8,000–$20,000. Enterprise-grade agentic systems and multi-system intelligence platforms range from $30,000–$150,000+. Most clients achieve 40% operational cost reduction, making deployment ROI-positive within 6–12 months.",
     },
     {
-      question: "Where is Agix Technologies based and where does it operate?",
+      question: "Where is AGIX Technologies based and where does it operate?",
       answer:
-        "Agix Technologies is headquartered in Newark, Delaware, USA (EIN: 38-4376497). The company operates globally with offices in Boston (USA), London (UK), and Jaipur (India), serving enterprise clients across North America, Europe, and Australia.",
+        "AGIX Technologies is headquartered in Newark, Delaware, USA (EIN: 38-4376497). The company operates globally with offices in Boston (USA), London (UK), and Jaipur (India), serving enterprise clients across North America, Europe, and Australia.",
     },
   ],
 
@@ -36,24 +36,24 @@ export const documentFAQs: Record<string, FAQItem[]> = {
     {
       question: "What is Operational Intelligence in AI?",
       answer:
-        "Operational Intelligence is an AI discipline that gives businesses real-time visibility and control over their operations. Agix Technologies Operational Intelligence systems use machine learning and process automation to monitor workflows, detect bottlenecks, adapt to changing conditions, and optimise execution — reducing cycle times by up to 72% and cutting operational costs significantly.",
+        "Operational Intelligence is an AI discipline that gives businesses real-time visibility and control over their operations. AGIX Technologies Operational Intelligence systems use machine learning and process automation to monitor workflows, detect bottlenecks, adapt to changing conditions, and optimise execution — reducing cycle times by up to 72% and cutting operational costs significantly.",
     },
     {
       question:
         "How does Operational Intelligence differ from traditional business intelligence?",
       answer:
-        "Traditional business intelligence analyses historical data to produce reports. Operational Intelligence acts on data in real time — detecting issues as they occur, triggering automated responses, and optimising workflows continuously without human intervention. Agix Technologies Operational Intelligence systems are built to run operations, not just describe them.",
+        "Traditional business intelligence analyses historical data to produce reports. Operational Intelligence acts on data in real time — detecting issues as they occur, triggering automated responses, and optimising workflows continuously without human intervention. AGIX Technologies Operational Intelligence systems are built to run operations, not just describe them.",
     },
     {
       question: "What business outcomes does Operational Intelligence deliver?",
       answer:
-        "Agix Technologies clients using Operational Intelligence consistently achieve 72% cycle time reduction, 98% SLA adherence, and $1.4M+ in annual savings within 12 months. Outcomes include elimination of manual process bottlenecks, real-time exception handling, automated reporting, and intelligent workload distribution across teams and systems.",
+        "AGIX Technologies clients using Operational Intelligence consistently achieve 72% cycle time reduction, 98% SLA adherence, and $1.4M+ in annual savings within 12 months. Outcomes include elimination of manual process bottlenecks, real-time exception handling, automated reporting, and intelligent workload distribution across teams and systems.",
     },
     {
       question:
         "Which industries benefit most from Operational Intelligence AI?",
       answer:
-        "Healthcare, fintech, logistics, and retail operations see the highest ROI from Operational Intelligence — particularly where high transaction volumes, tight SLAs, and manual coordination currently create bottlenecks. Agix Technologies has deployed Operational Intelligence systems for regional hospital networks, credit unions, logistics operators, and enterprise SaaS companies.",
+        "Healthcare, fintech, logistics, and retail operations see the highest ROI from Operational Intelligence — particularly where high transaction volumes, tight SLAs, and manual coordination currently create bottlenecks. AGIX Technologies has deployed Operational Intelligence systems for regional hospital networks, credit unions, logistics operators, and enterprise SaaS companies.",
     },
   ],
 
@@ -61,25 +61,25 @@ export const documentFAQs: Record<string, FAQItem[]> = {
     {
       question: "What is Conversational Intelligence?",
       answer:
-        "Conversational Intelligence is AI that can understand intent, remember conversation history, and take meaningful action — not just respond to keywords. Agix Technologies Conversational Intelligence systems handle complex, multi-turn interactions across text and voice channels, integrating directly with CRMs, databases, and internal platforms to provide contextually accurate, actionable responses at scale.",
+        "Conversational Intelligence is AI that can understand intent, remember conversation history, and take meaningful action — not just respond to keywords. AGIX Technologies Conversational Intelligence systems handle complex, multi-turn interactions across text and voice channels, integrating directly with CRMs, databases, and internal platforms to provide contextually accurate, actionable responses at scale.",
     },
     {
       question:
         "How is Conversational Intelligence different from a standard chatbot?",
       answer:
-        "Standard chatbots follow scripted decision trees and break on unexpected inputs. Conversational Intelligence systems understand natural language intent, maintain conversation context across multiple exchanges, access live business data, and know when to escalate to a human. Agix Technologies builds production-grade conversational intelligence — not FAQ bots.",
+        "Standard chatbots follow scripted decision trees and break on unexpected inputs. Conversational Intelligence systems understand natural language intent, maintain conversation context across multiple exchanges, access live business data, and know when to escalate to a human. AGIX Technologies builds production-grade conversational intelligence — not FAQ bots.",
     },
     {
       question:
-        "What channels can Agix Technologies Conversational Intelligence be deployed on?",
+        "What channels can AGIX Technologies Conversational Intelligence be deployed on?",
       answer:
-        "Agix Technologies Conversational Intelligence systems deploy across web chat, mobile apps, WhatsApp Business, Slack, Microsoft Teams, SMS, and voice interfaces. Each deployment integrates with your existing CRM, helpdesk, or ERP — so conversations are logged, routed, and actioned within your current operational stack.",
+        "AGIX Technologies Conversational Intelligence systems deploy across web chat, mobile apps, WhatsApp Business, Slack, Microsoft Teams, SMS, and voice interfaces. Each deployment integrates with your existing CRM, helpdesk, or ERP — so conversations are logged, routed, and actioned within your current operational stack.",
     },
     {
       question:
         "Can Conversational Intelligence handle human handoff when needed?",
       answer:
-        "Yes. Agix Technologies Conversational Intelligence systems include intelligent escalation logic — detecting when a conversation requires human intervention based on sentiment, complexity, or explicit customer request. Handoffs include full conversation history transfer, priority routing, and CRM record updates, ensuring no context is lost in the transition.",
+        "Yes. AGIX Technologies Conversational Intelligence systems include intelligent escalation logic — detecting when a conversation requires human intervention based on sentiment, complexity, or explicit customer request. Handoffs include full conversation history transfer, priority routing, and CRM record updates, ensuring no context is lost in the transition.",
     },
   ],
 
@@ -87,23 +87,23 @@ export const documentFAQs: Record<string, FAQItem[]> = {
     {
       question: "What is Decision Intelligence?",
       answer:
-        "Decision Intelligence is an AI framework that combines data analysis, predictive modelling, and machine reasoning to support and automate business decisions. Agix Technologies Decision Intelligence systems surface the right information at the right moment — replacing slow, manual analysis with real-time dashboards, risk signals, and AI-generated recommendations that improve decision speed and accuracy.",
+        "Decision Intelligence is an AI framework that combines data analysis, predictive modelling, and machine reasoning to support and automate business decisions. AGIX Technologies Decision Intelligence systems surface the right information at the right moment — replacing slow, manual analysis with real-time dashboards, risk signals, and AI-generated recommendations that improve decision speed and accuracy.",
     },
     {
       question: "How does Decision Intelligence improve business outcomes?",
       answer:
-        "Agix Technologies Decision Intelligence removes the bottleneck between data and action. Instead of waiting for weekly reports, executives and operations teams get real-time alerts, anomaly detection, and scenario-based recommendations — enabling 3x faster decisions, measurable reduction in costly errors, and consistent decision quality across teams and geographies.",
+        "AGIX Technologies Decision Intelligence removes the bottleneck between data and action. Instead of waiting for weekly reports, executives and operations teams get real-time alerts, anomaly detection, and scenario-based recommendations — enabling 3x faster decisions, measurable reduction in costly errors, and consistent decision quality across teams and geographies.",
     },
     {
       question: "What data sources can Decision Intelligence connect to?",
       answer:
-        "Agix Technologies Decision Intelligence systems connect to CRMs, ERPs, financial platforms, operational databases, third-party APIs, and real-time data streams. We support Salesforce, HubSpot, SAP, Oracle, Google Analytics, and custom databases. Data from all sources is unified into a single intelligence layer that powers dashboards and automated alerts.",
+        "AGIX Technologies Decision Intelligence systems connect to CRMs, ERPs, financial platforms, operational databases, third-party APIs, and real-time data streams. We support Salesforce, HubSpot, SAP, Oracle, Google Analytics, and custom databases. Data from all sources is unified into a single intelligence layer that powers dashboards and automated alerts.",
     },
     {
       question:
         "Is Decision Intelligence explainable — can we see why the AI made a recommendation?",
       answer:
-        "Yes. Explainability is a core architectural requirement in all Agix Technologies Decision Intelligence systems. Every recommendation includes the data inputs, weighting factors, and confidence scores that produced it. This satisfies both internal governance requirements and external compliance needs, including SOC 2, GDPR, and HIPAA audit standards.",
+        "Yes. Explainability is a core architectural requirement in all AGIX Technologies Decision Intelligence systems. Every recommendation includes the data inputs, weighting factors, and confidence scores that produced it. This satisfies both internal governance requirements and external compliance needs, including SOC 2, GDPR, and HIPAA audit standards.",
     },
   ],
 
@@ -111,18 +111,18 @@ export const documentFAQs: Record<string, FAQItem[]> = {
     {
       question: "What is an autonomous agentic AI system?",
       answer:
-        "An autonomous agentic AI system is an AI that can set goals, plan a sequence of actions, execute across multiple tools and systems, evaluate its own output, and self-correct — without requiring human prompts at each step. Agix Technologies agentic systems are production-grade: they operate within defined boundaries, maintain audit logs, and escalate when they encounter situations outside their authorisation.",
+        "An autonomous agentic AI system is an AI that can set goals, plan a sequence of actions, execute across multiple tools and systems, evaluate its own output, and self-correct — without requiring human prompts at each step. AGIX Technologies agentic systems are production-grade: they operate within defined boundaries, maintain audit logs, and escalate when they encounter situations outside their authorisation.",
     },
     {
       question: "How do agentic AI systems differ from standard automation?",
       answer:
-        "Standard automation follows fixed rules and breaks on edge cases. Agentic AI systems reason through novel situations, adapt their plan based on intermediate results, and use multiple tools to achieve goals — similar to how a skilled human operator would tackle a complex task. Agix Technologies agentic systems handle ambiguity that traditional automation cannot.",
+        "Standard automation follows fixed rules and breaks on edge cases. Agentic AI systems reason through novel situations, adapt their plan based on intermediate results, and use multiple tools to achieve goals — similar to how a skilled human operator would tackle a complex task. AGIX Technologies agentic systems handle ambiguity that traditional automation cannot.",
     },
     {
       question:
         "What safeguards exist to prevent agentic AI from making harmful decisions?",
       answer:
-        "Agix Technologies agentic systems are built with bounded autonomy — every agent operates within a defined permission set and cannot take actions outside its authorised scope. All actions are logged, reversible actions are preferred over irreversible ones, and human-in-the-loop checkpoints are built into high-stakes workflows. Governance is an architectural decision, not an afterthought.",
+        "AGIX Technologies agentic systems are built with bounded autonomy — every agent operates within a defined permission set and cannot take actions outside its authorised scope. All actions are logged, reversible actions are preferred over irreversible ones, and human-in-the-loop checkpoints are built into high-stakes workflows. Governance is an architectural decision, not an afterthought.",
     },
     {
       question: "What enterprise workflows are best suited for agentic AI?",
@@ -135,25 +135,25 @@ export const documentFAQs: Record<string, FAQItem[]> = {
     {
       question: "What is Enterprise Knowledge Intelligence?",
       answer:
-        "Enterprise Knowledge Intelligence is an AI architecture that connects your internal documents, databases, wikis, and platforms into a unified knowledge layer that AI systems can query accurately. Built on Retrieval-Augmented Generation (RAG), Agix Technologies Knowledge Intelligence systems retrieve relevant information before generating responses — eliminating hallucinations and ensuring every AI answer is grounded in your actual business data.",
+        "Enterprise Knowledge Intelligence is an AI architecture that connects your internal documents, databases, wikis, and platforms into a unified knowledge layer that AI systems can query accurately. Built on Retrieval-Augmented Generation (RAG), AGIX Technologies Knowledge Intelligence systems retrieve relevant information before generating responses — eliminating hallucinations and ensuring every AI answer is grounded in your actual business data.",
     },
     {
       question:
         "How does RAG prevent AI hallucinations in enterprise systems?",
       answer:
-        "RAG (Retrieval-Augmented Generation) prevents hallucinations by requiring the AI to retrieve verified source documents before generating any response. Rather than relying on model memory, Agix Technologies RAG systems query your actual knowledge base in real time and cite their sources. If the answer is not in your data, the system says so — it does not fabricate.",
+        "RAG (Retrieval-Augmented Generation) prevents hallucinations by requiring the AI to retrieve verified source documents before generating any response. Rather than relying on model memory, AGIX Technologies RAG systems query your actual knowledge base in real time and cite their sources. If the answer is not in your data, the system says so — it does not fabricate.",
     },
     {
       question:
         "What types of documents and data sources can Enterprise Knowledge AI connect to?",
       answer:
-        "Agix Technologies Enterprise Knowledge Intelligence systems connect to PDFs, Word documents, SharePoint, Confluence, Notion, Google Drive, SQL databases, CRMs, internal APIs, and email archives. Documents are indexed, chunked, and embedded into a vector database that the AI queries in milliseconds — regardless of document volume or complexity.",
+        "AGIX Technologies Enterprise Knowledge Intelligence systems connect to PDFs, Word documents, SharePoint, Confluence, Notion, Google Drive, SQL databases, CRMs, internal APIs, and email archives. Documents are indexed, chunked, and embedded into a vector database that the AI queries in milliseconds — regardless of document volume or complexity.",
     },
     {
       question:
         "Is Enterprise Knowledge AI secure — does data leave our environment?",
       answer:
-        "No. Agix Technologies Enterprise Knowledge Intelligence deployments are architectured to keep all data within your controlled environment. Documents are indexed and stored in your own cloud infrastructure or on-premise. The AI model queries your data — your data does not travel to or train external models. All deployments meet GDPR, HIPAA, and SOC 2 requirements.",
+        "No. AGIX Technologies Enterprise Knowledge Intelligence deployments are architectured to keep all data within your controlled environment. Documents are indexed and stored in your own cloud infrastructure or on-premise. The AI model queries your data — your data does not travel to or train external models. All deployments meet GDPR, HIPAA, and SOC 2 requirements.",
     },
   ],
 
@@ -161,17 +161,17 @@ export const documentFAQs: Record<string, FAQItem[]> = {
     {
       question: "What is AI automation for businesses?",
       answer:
-        "AI automation uses machine learning and intelligent workflow systems to replace manual, repetitive business tasks — including document processing, lead qualification, data entry, approval routing, and customer communication. Unlike basic RPA, Agix Technologies AI automation understands context, handles exceptions intelligently, and adapts as your business scales — without requiring constant human oversight or rule updates.",
+        "AI automation uses machine learning and intelligent workflow systems to replace manual, repetitive business tasks — including document processing, lead qualification, data entry, approval routing, and customer communication. Unlike basic RPA, AGIX Technologies AI automation understands context, handles exceptions intelligently, and adapts as your business scales — without requiring constant human oversight or rule updates.",
     },
     {
       question: "How does AI automation differ from traditional RPA?",
       answer:
-        "RPA (Robotic Process Automation) follows rigid rules and fails when processes change or exceptions occur. AI automation understands intent, handles unstructured data, and adapts to variation — making it suitable for complex, real-world workflows that RPA cannot reliably automate. Agix Technologies AI automation is built for operational complexity, not controlled test environments.",
+        "RPA (Robotic Process Automation) follows rigid rules and fails when processes change or exceptions occur. AI automation understands intent, handles unstructured data, and adapts to variation — making it suitable for complex, real-world workflows that RPA cannot reliably automate. AGIX Technologies AI automation is built for operational complexity, not controlled test environments.",
     },
     {
       question: "How much does AI automation cost for a business?",
       answer:
-        "AI automation implementation at Agix Technologies typically ranges from $8,000–$25,000 for focused workflow automation and $30,000–$100,000+ for enterprise-grade multi-system deployments. Most clients achieve 40% operational cost reduction within 12 months, generating positive ROI before the end of year one. Free consultation and scoping included before any commitment.",
+        "AI automation implementation at AGIX Technologies typically ranges from $8,000–$25,000 for focused workflow automation and $30,000–$100,000+ for enterprise-grade multi-system deployments. Most clients achieve 40% operational cost reduction within 12 months, generating positive ROI before the end of year one. Free consultation and scoping included before any commitment.",
     },
     {
       question:
@@ -183,18 +183,18 @@ export const documentFAQs: Record<string, FAQItem[]> = {
       question:
         "Can AI automation integrate with our existing CRM and business tools?",
       answer:
-        "Yes. Agix Technologies AI automation systems are designed to integrate directly with your existing stack — Salesforce, HubSpot, GoHighLevel, Microsoft 365, Google Workspace, Slack, Zapier, Make, n8n, and most enterprise platforms via API. No system replacement is required. Our automation layer works on top of your current tools, not instead of them.",
+        "Yes. AGIX Technologies AI automation systems are designed to integrate directly with your existing stack — Salesforce, HubSpot, GoHighLevel, Microsoft 365, Google Workspace, Slack, Zapier, Make, n8n, and most enterprise platforms via API. No system replacement is required. Our automation layer works on top of your current tools, not instead of them.",
     },
     {
       question: "How long does AI automation implementation take?",
       answer:
-        "Agix Technologies deploys focused workflow automation in 2–4 weeks. Multi-system enterprise automation projects typically take 6–12 weeks from kick-off to live deployment. We follow a phased approach — starting with a pilot system that proves ROI before scaling — so you see results early and expand with confidence.",
+        "AGIX Technologies deploys focused workflow automation in 2–4 weeks. Multi-system enterprise automation projects typically take 6–12 weeks from kick-off to live deployment. We follow a phased approach — starting with a pilot system that proves ROI before scaling — so you see results early and expand with confidence.",
     },
     {
       question:
         "Is AI automation reliable and secure for enterprise operations?",
       answer:
-        "Yes. Agix Technologies AI automation systems are built with enterprise-grade reliability, including error handling, fallback logic, audit logging, and automated alerting. All systems are GDPR and SOC 2 compatible, with role-based access controls and encrypted data handling. Uptime SLAs and post-deployment support are included in all enterprise engagements.",
+        "Yes. AGIX Technologies AI automation systems are built with enterprise-grade reliability, including error handling, fallback logic, audit logging, and automated alerting. All systems are GDPR and SOC 2 compatible, with role-based access controls and encrypted data handling. Uptime SLAs and post-deployment support are included in all enterprise engagements.",
     },
     {
       question: "What is the difference between AI automation and traditional automation?",
@@ -204,37 +204,37 @@ export const documentFAQs: Record<string, FAQItem[]> = {
     {
       question: "Is AI automation suitable for small or mid-sized businesses?",
       answer:
-        "Yes. Many small and mid-sized businesses adopt AI automation to reduce hiring needs, eliminate manual errors, and scale operations without proportional headcount increases. Agix Technologies offers modular, project-based automation starting at $6,000 — making enterprise-grade automation accessible to growing businesses that cannot afford large internal engineering teams.",
+        "Yes. Many small and mid-sized businesses adopt AI automation to reduce hiring needs, eliminate manual errors, and scale operations without proportional headcount increases. AGIX Technologies offers modular, project-based automation starting at $6,000 — making enterprise-grade automation accessible to growing businesses that cannot afford large internal engineering teams.",
     },
     {
       question: "Does AI automation require clean or perfect data?",
       answer:
-        "No. AI automation is specifically designed for real operational data, which is often incomplete, inconsistent, or unstructured. Agix Technologies builds systems that handle missing fields, interpret ambiguous inputs, and flag exceptions for human review. Data quality typically improves after automation is deployed — not before.",
+        "No. AI automation is specifically designed for real operational data, which is often incomplete, inconsistent, or unstructured. AGIX Technologies builds systems that handle missing fields, interpret ambiguous inputs, and flag exceptions for human review. Data quality typically improves after automation is deployed — not before.",
     },
     {
       question: "Will AI automation replace human jobs?",
       answer:
-        "AI automation replaces manual, repetitive effort — not human judgment or strategic thinking. Agix Technologies designs automation systems that remove the burden of high-volume, low-complexity tasks, freeing teams to focus on higher-value work. Most clients see AI automation as a force multiplier for their existing team rather than a replacement.",
+        "AI automation replaces manual, repetitive effort — not human judgment or strategic thinking. AGIX Technologies designs automation systems that remove the burden of high-volume, low-complexity tasks, freeing teams to focus on higher-value work. Most clients see AI automation as a force multiplier for their existing team rather than a replacement.",
     },
     {
       question: "What is AI business process automation (BPA)?",
       answer:
-        "AI Business Process Automation (BPA) automates entire end-to-end business processes — not just individual tasks. It manages multi-step workflows, handles decision logic, routes exceptions, and tracks outcomes across systems. Common BPA use cases include order-to-cash, procure-to-pay, claims processing, and employee onboarding — all areas where Agix Technologies delivers measurable operational impact.",
+        "AI Business Process Automation (BPA) automates entire end-to-end business processes — not just individual tasks. It manages multi-step workflows, handles decision logic, routes exceptions, and tracks outcomes across systems. Common BPA use cases include order-to-cash, procure-to-pay, claims processing, and employee onboarding — all areas where AGIX Technologies delivers measurable operational impact.",
     },
     {
       question: "How do we identify which processes to automate first?",
       answer:
-        "Agix Technologies begins every engagement with an Automation Opportunity Assessment — a structured analysis of your current workflows to identify high-ROI candidates, low-risk starting points, and quick wins vs long-term opportunities. This prevents wasted investment and ensures automation is deployed where business impact is fastest and most measurable.",
+        "AGIX Technologies begins every engagement with an Automation Opportunity Assessment — a structured analysis of your current workflows to identify high-ROI candidates, low-risk starting points, and quick wins vs long-term opportunities. This prevents wasted investment and ensures automation is deployed where business impact is fastest and most measurable.",
     },
     {
       question: "What industries use AI automation most actively?",
       answer:
-        "AI automation delivers the strongest ROI in industries with high transaction volumes, document-heavy processes, and regulatory complexity — including healthcare operations, financial services and FinTech, insurance, e-commerce, logistics and supply chain, and SaaS companies. Agix Technologies has built automation systems across all of these verticals with industry-specific logic.",
+        "AI automation delivers the strongest ROI in industries with high transaction volumes, document-heavy processes, and regulatory complexity — including healthcare operations, financial services and FinTech, insurance, e-commerce, logistics and supply chain, and SaaS companies. AGIX Technologies has built automation systems across all of these verticals with industry-specific logic.",
     },
     {
       question: "What measurable results do businesses typically see from AI automation?",
       answer:
-        "Agix Technologies clients consistently report 40–70% reduction in process execution time, 30–50% reduction in operational costs, near-zero error rates on automated workflows, and significant team capacity freed for higher-value work. Most clients achieve full ROI within 6–12 months. AI automation at scale enables reliable operations without proportional headcount growth.",
+        "AGIX Technologies clients consistently report 40–70% reduction in process execution time, 30–50% reduction in operational costs, near-zero error rates on automated workflows, and significant team capacity freed for higher-value work. Most clients achieve full ROI within 6–12 months. AI automation at scale enables reliable operations without proportional headcount growth.",
     },
   ],
 
@@ -242,40 +242,40 @@ export const documentFAQs: Record<string, FAQItem[]> = {
     {
       question: "What is an AI voice agent?",
       answer:
-        "An AI voice agent is an intelligent system that conducts real phone conversations using natural language processing and voice synthesis — handling inbound calls, making outbound calls, qualifying leads, booking appointments, answering queries, and executing workflows automatically. Agix Technologies AI voice agents are not IVR systems or scripted bots — they understand natural speech, handle interruptions, and adapt to what the caller actually says.",
+        "An AI voice agent is an intelligent system that conducts real phone conversations using natural language processing and voice synthesis — handling inbound calls, making outbound calls, qualifying leads, booking appointments, answering queries, and executing workflows automatically. AGIX Technologies AI voice agents are not IVR systems or scripted bots — they understand natural speech, handle interruptions, and adapt to what the caller actually says.",
     },
     {
       question:
-        "How do Agix Technologies AI voice agents handle calls differently from traditional IVR?",
+        "How do AGIX Technologies AI voice agents handle calls differently from traditional IVR?",
       answer:
-        "Traditional IVR follows a rigid menu structure and fails when callers go off-script. Agix Technologies AI voice agents understand natural language, maintain conversation context, handle complex queries, and complete multi-step transactions — such as qualifying a lead, checking CRM records, and booking a calendar slot — all within a single call. Average call handling quality consistently outperforms scripted IVR in customer satisfaction surveys.",
+        "Traditional IVR follows a rigid menu structure and fails when callers go off-script. AGIX Technologies AI voice agents understand natural language, maintain conversation context, handle complex queries, and complete multi-step transactions — such as qualifying a lead, checking CRM records, and booking a calendar slot — all within a single call. Average call handling quality consistently outperforms scripted IVR in customer satisfaction surveys.",
     },
     {
       question: "How much does AI voice agent development cost?",
       answer:
-        "Agix Technologies AI voice agent development typically ranges from $12,000–$35,000 for a production-ready deployment covering one use case (inbound support, lead qualification, or appointment booking). Multi-use case enterprise deployments range from $40,000–$120,000. Monthly operational costs are a fraction of equivalent human agent costs — most clients see 60–70% call handling cost reduction within 90 days.",
+        "AGIX Technologies AI voice agent development typically ranges from $12,000–$35,000 for a production-ready deployment covering one use case (inbound support, lead qualification, or appointment booking). Multi-use case enterprise deployments range from $40,000–$120,000. Monthly operational costs are a fraction of equivalent human agent costs — most clients see 60–70% call handling cost reduction within 90 days.",
     },
     {
       question:
         "What telephony platforms and CRMs can AI voice agents integrate with?",
       answer:
-        "Agix Technologies AI voice agents integrate with Twilio, Retell AI, Vonage, GoHighLevel, Salesforce, HubSpot, Zoho, and most major CRM and telephony platforms. Calendar integrations include Google Calendar, Calendly, and Microsoft Outlook. The agent reads from and writes to your CRM in real time during the call — no manual follow-up required.",
+        "AGIX Technologies AI voice agents integrate with Twilio, Retell AI, Vonage, GoHighLevel, Salesforce, HubSpot, Zoho, and most major CRM and telephony platforms. Calendar integrations include Google Calendar, Calendly, and Microsoft Outlook. The agent reads from and writes to your CRM in real time during the call — no manual follow-up required.",
     },
     {
       question:
         "Can AI voice agents operate 24/7 and handle multiple calls simultaneously?",
       answer:
-        "Yes. Agix Technologies AI voice agents operate 24 hours a day, 7 days a week, with no capacity limits — handling hundreds of concurrent calls without degradation in quality. This eliminates missed calls, after-hours lead loss, and wait time frustration. Clients typically see 35–50% increase in lead capture within the first month of deployment.",
+        "Yes. AGIX Technologies AI voice agents operate 24 hours a day, 7 days a week, with no capacity limits — handling hundreds of concurrent calls without degradation in quality. This eliminates missed calls, after-hours lead loss, and wait time frustration. Clients typically see 35–50% increase in lead capture within the first month of deployment.",
     },
     {
-      question: "What languages do Agix Technologies AI voice agents support?",
+      question: "What languages do AGIX Technologies AI voice agents support?",
       answer:
-        "Agix Technologies AI voice agents support over 30 languages including English (US, UK, Australian accents), Spanish, French, German, Arabic, Hindi, Mandarin, and Portuguese. Multilingual deployments can detect caller language automatically and switch mid-conversation — supporting global operations from a single AI voice infrastructure.",
+        "AGIX Technologies AI voice agents support over 30 languages including English (US, UK, Australian accents), Spanish, French, German, Arabic, Hindi, Mandarin, and Portuguese. Multilingual deployments can detect caller language automatically and switch mid-conversation — supporting global operations from a single AI voice infrastructure.",
     },
     {
       question: "Will callers know they are talking to an AI voice agent?",
       answer:
-        "Agix Technologies AI voice agents use high-quality, natural-sounding voice synthesis that is indistinguishable from human speech in most interactions. We recommend transparent disclosure — informing callers they are speaking with an AI — as this builds trust and is increasingly required by consumer protection regulations in the USA, UK, and EU. Disclosure does not negatively impact call completion rates when the agent performs well.",
+        "AGIX Technologies AI voice agents use high-quality, natural-sounding voice synthesis that is indistinguishable from human speech in most interactions. We recommend transparent disclosure — informing callers they are speaking with an AI — as this builds trust and is increasingly required by consumer protection regulations in the USA, UK, and EU. Disclosure does not negatively impact call completion rates when the agent performs well.",
     },
   ],
 
@@ -284,37 +284,37 @@ export const documentFAQs: Record<string, FAQItem[]> = {
       question:
         "What is conversational AI and how does it differ from a standard chatbot?",
       answer:
-        'Standard chatbots follow scripted decision trees and fail on unexpected inputs. Conversational AI uses natural language understanding to interpret intent, maintain multi-turn context, access live business data, and respond dynamically. Agix Technologies builds conversational AI systems that handle real customer interactions — not FAQ bots that frustrate users with "I did not understand that."',
+        'Standard chatbots follow scripted decision trees and fail on unexpected inputs. Conversational AI uses natural language understanding to interpret intent, maintain multi-turn context, access live business data, and respond dynamically. AGIX Technologies builds conversational AI systems that handle real customer interactions — not FAQ bots that frustrate users with "I did not understand that."',
     },
     {
       question:
-        "How does an Agix Technologies conversational AI chatbot handle complex queries?",
+        "How does an AGIX Technologies conversational AI chatbot handle complex queries?",
       answer:
-        "Agix Technologies conversational AI chatbots are connected to your business data — CRM records, product databases, order systems, and internal knowledge bases — enabling them to retrieve specific, accurate information and take actions within a conversation. Complex queries trigger multi-step reasoning: the AI retrieves relevant data, applies business logic, and delivers a precise, contextual response rather than a generic reply.",
+        "AGIX Technologies conversational AI chatbots are connected to your business data — CRM records, product databases, order systems, and internal knowledge bases — enabling them to retrieve specific, accurate information and take actions within a conversation. Complex queries trigger multi-step reasoning: the AI retrieves relevant data, applies business logic, and delivers a precise, contextual response rather than a generic reply.",
     },
     {
       question:
-        "Which platforms can Agix Technologies conversational AI chatbots be deployed on?",
+        "Which platforms can AGIX Technologies conversational AI chatbots be deployed on?",
       answer:
-        "Agix Technologies conversational AI chatbots deploy across website chat, mobile apps, WhatsApp Business, Facebook Messenger, Instagram DMs, Slack, Microsoft Teams, and SMS. Each channel is managed from a single backend — ensuring conversation history, CRM updates, and routing logic are consistent regardless of where the customer initiates contact.",
+        "AGIX Technologies conversational AI chatbots deploy across website chat, mobile apps, WhatsApp Business, Facebook Messenger, Instagram DMs, Slack, Microsoft Teams, and SMS. Each channel is managed from a single backend — ensuring conversation history, CRM updates, and routing logic are consistent regardless of where the customer initiates contact.",
     },
     {
       question:
         "How much does enterprise conversational AI chatbot development cost?",
       answer:
-        "Agix Technologies conversational AI chatbot development ranges from $10,000–$30,000 for single-channel deployments and $35,000–$90,000 for enterprise multi-channel systems with CRM integration, custom NLU training, and analytics dashboards. Ongoing maintenance and model improvement are available as monthly retainer packages from $1,500/month.",
+        "AGIX Technologies conversational AI chatbot development ranges from $10,000–$30,000 for single-channel deployments and $35,000–$90,000 for enterprise multi-channel systems with CRM integration, custom NLU training, and analytics dashboards. Ongoing maintenance and model improvement are available as monthly retainer packages from $1,500/month.",
     },
     {
       question:
         "Can conversational AI chatbots qualify leads and hand off to human sales agents?",
       answer:
-        "Yes. Agix Technologies conversational AI chatbots include lead qualification logic — asking the right questions, scoring responses, and routing high-quality leads directly to your sales team via CRM assignment, Slack notification, or calendar booking. Handoffs include full conversation history so sales agents have complete context before engaging.",
+        "Yes. AGIX Technologies conversational AI chatbots include lead qualification logic — asking the right questions, scoring responses, and routing high-quality leads directly to your sales team via CRM assignment, Slack notification, or calendar booking. Handoffs include full conversation history so sales agents have complete context before engaging.",
     },
     {
       question:
         "Is the conversational AI chatbot trained on our specific business data?",
       answer:
-        "Yes. Agix Technologies chatbots are trained and configured using your specific product information, policies, FAQs, CRM data, and operational workflows. We do not deploy generic models — every system is tailored to your business language, tone, and processes. Ongoing retraining is included to keep the AI accurate as your business evolves.",
+        "Yes. AGIX Technologies chatbots are trained and configured using your specific product information, policies, FAQs, CRM data, and operational workflows. We do not deploy generic models — every system is tailored to your business language, tone, and processes. Ongoing retraining is included to keep the AI accurate as your business evolves.",
     },
   ],
 
@@ -322,13 +322,13 @@ export const documentFAQs: Record<string, FAQItem[]> = {
     {
       question: "What is an agentic AI system?",
       answer:
-        "An agentic AI system is an AI that can independently set sub-goals, plan a sequence of actions, use multiple tools and APIs, evaluate intermediate results, and self-correct to achieve a defined objective — without step-by-step human instruction. Agix Technologies agentic systems are production-ready: they operate within governance boundaries, maintain full audit logs, and escalate appropriately when they encounter ambiguity.",
+        "An agentic AI system is an AI that can independently set sub-goals, plan a sequence of actions, use multiple tools and APIs, evaluate intermediate results, and self-correct to achieve a defined objective — without step-by-step human instruction. AGIX Technologies agentic systems are production-ready: they operate within governance boundaries, maintain full audit logs, and escalate appropriately when they encounter ambiguity.",
     },
     {
       question:
-        "How does Agix Technologies build and deploy agentic AI systems?",
+        "How does AGIX Technologies build and deploy agentic AI systems?",
       answer:
-        "Agix Technologies designs agentic systems using frameworks including LangGraph, CrewAI, and custom orchestration architectures depending on the use case. Each agent is given a defined tool set, permission boundary, and success criteria. We build in observability from day one — every action the agent takes is logged, monitored, and auditable. Deployment follows a phased approach: lab testing, shadow deployment, and live rollout.",
+        "AGIX Technologies designs agentic systems using frameworks including LangGraph, CrewAI, and custom orchestration architectures depending on the use case. Each agent is given a defined tool set, permission boundary, and success criteria. We build in observability from day one — every action the agent takes is logged, monitored, and auditable. Deployment follows a phased approach: lab testing, shadow deployment, and live rollout.",
     },
     {
       question:
@@ -339,24 +339,24 @@ export const documentFAQs: Record<string, FAQItem[]> = {
     {
       question: "How much does agentic AI development cost?",
       answer:
-        "Agix Technologies agentic AI system development ranges from $20,000–$60,000 for single-agent deployments with defined scope, and $60,000–$200,000 for multi-agent enterprise systems with complex orchestration, compliance requirements, and ongoing governance infrastructure. ROI timelines are typically 6–18 months depending on the process being automated and its current cost.",
+        "AGIX Technologies agentic AI system development ranges from $20,000–$60,000 for single-agent deployments with defined scope, and $60,000–$200,000 for multi-agent enterprise systems with complex orchestration, compliance requirements, and ongoing governance infrastructure. ROI timelines are typically 6–18 months depending on the process being automated and its current cost.",
     },
     {
       question: "How is agentic AI kept safe and under human control?",
       answer:
-        "Agix Technologies builds bounded autonomy into every agentic system. Each agent has a clearly defined permission set — it cannot take actions outside its authorised scope. High-stakes decisions (financial transactions above thresholds, irreversible actions, compliance-sensitive steps) require human approval before execution. All actions are logged in real time and anomaly alerts are triggered automatically.",
+        "AGIX Technologies builds bounded autonomy into every agentic system. Each agent has a clearly defined permission set — it cannot take actions outside its authorised scope. High-stakes decisions (financial transactions above thresholds, irreversible actions, compliance-sensitive steps) require human approval before execution. All actions are logged in real time and anomaly alerts are triggered automatically.",
     },
     {
       question:
         "Can agentic AI systems work with our existing tools and APIs?",
       answer:
-        "Yes. Agix Technologies agentic systems are designed to operate across your existing technology stack — integrating with Salesforce, HubSpot, Slack, Microsoft 365, Google Workspace, custom databases, and third-party APIs. Agents use your tools as their action layer, meaning no system replacement is required and integration happens at the API level without disrupting current workflows.",
+        "Yes. AGIX Technologies agentic systems are designed to operate across your existing technology stack — integrating with Salesforce, HubSpot, Slack, Microsoft 365, Google Workspace, custom databases, and third-party APIs. Agents use your tools as their action layer, meaning no system replacement is required and integration happens at the API level without disrupting current workflows.",
     },
     {
       question:
-        "Does Agix Technologies provide AI agents for businesses in the USA, UK, and Australia?",
+        "Does AGIX Technologies provide AI agents for businesses in the USA, UK, and Australia?",
       answer:
-        "Yes. Agix Technologies deploys agentic AI systems for enterprise clients across the USA, United Kingdom, Europe, and Australia. Our Newark, Delaware headquarters serves North American clients, our London office covers European engagements, and our engineering team in Jaipur, India supports global delivery with 24/7 operational coverage.",
+        "Yes. AGIX Technologies deploys agentic AI systems for enterprise clients across the USA, United Kingdom, Europe, and Australia. Our Newark, Delaware headquarters serves North American clients, our London office covers European engagements, and our engineering team in Jaipur, India supports global delivery with 24/7 operational coverage.",
     },
   ],
 
@@ -369,23 +369,23 @@ export const documentFAQs: Record<string, FAQItem[]> = {
     {
       question: "How does a RAG system prevent AI hallucinations?",
       answer:
-        'RAG prevents hallucinations by grounding every response in retrieved source documents. The AI cannot generate a claim it cannot support with a retrieved passage. Agix Technologies RAG systems include citation tracking — showing which source document each part of the answer came from — so users and auditors can verify accuracy. If no relevant document exists, the system responds with "I don\'t have that information" rather than fabricating an answer.',
+        'RAG prevents hallucinations by grounding every response in retrieved source documents. The AI cannot generate a claim it cannot support with a retrieved passage. AGIX Technologies RAG systems include citation tracking — showing which source document each part of the answer came from — so users and auditors can verify accuracy. If no relevant document exists, the system responds with "I don\'t have that information" rather than fabricating an answer.',
     },
     {
       question:
-        "What documents and data sources can Agix Technologies RAG systems connect to?",
+        "What documents and data sources can AGIX Technologies RAG systems connect to?",
       answer:
-        "Agix Technologies RAG systems support PDFs, Word documents, Excel files, PowerPoint presentations, SharePoint, Confluence, Notion, Google Drive, internal wikis, SQL and NoSQL databases, CRM records, email archives, and REST APIs. Documents are ingested, chunked, embedded into a vector database, and made queryable in minutes — regardless of volume or format.",
+        "AGIX Technologies RAG systems support PDFs, Word documents, Excel files, PowerPoint presentations, SharePoint, Confluence, Notion, Google Drive, internal wikis, SQL and NoSQL databases, CRM records, email archives, and REST APIs. Documents are ingested, chunked, embedded into a vector database, and made queryable in minutes — regardless of volume or format.",
     },
     {
       question: "How much does RAG and Knowledge AI system development cost?",
       answer:
-        "Agix Technologies RAG system development ranges from $15,000–$40,000 for single-domain knowledge bases (e.g. HR policy, product catalogue, or support documentation) and $50,000–$150,000 for enterprise-grade multi-domain systems with custom retrieval logic, security controls, and analytics. Ongoing vector database maintenance and model updates are available from $2,000/month.",
+        "AGIX Technologies RAG system development ranges from $15,000–$40,000 for single-domain knowledge bases (e.g. HR policy, product catalogue, or support documentation) and $50,000–$150,000 for enterprise-grade multi-domain systems with custom retrieval logic, security controls, and analytics. Ongoing vector database maintenance and model updates are available from $2,000/month.",
     },
     {
       question: "Is our company data secure when using a RAG system?",
       answer:
-        "Yes. Agix Technologies RAG systems are deployed within your own cloud infrastructure (AWS, Azure, or GCP) or on-premise — your documents never leave your environment. The vector embeddings used for retrieval are stored in your controlled database. We do not use your data to train or fine-tune any external models. All deployments are architected for GDPR, HIPAA, and SOC 2 compliance.",
+        "Yes. AGIX Technologies RAG systems are deployed within your own cloud infrastructure (AWS, Azure, or GCP) or on-premise — your documents never leave your environment. The vector embeddings used for retrieval are stored in your controlled database. We do not use your data to train or fine-tune any external models. All deployments are architected for GDPR, HIPAA, and SOC 2 compliance.",
     },
     {
       question:
@@ -399,30 +399,30 @@ export const documentFAQs: Record<string, FAQItem[]> = {
     {
       question: "What is predictive AI analytics for business?",
       answer:
-        "Predictive AI analytics uses machine learning models trained on historical business data to forecast future outcomes — demand levels, customer churn, revenue trends, risk events, and operational bottlenecks. Agix Technologies predictive AI systems move businesses from reactive decision-making (responding to what happened) to proactive decision-making (acting on what is about to happen) — typically improving forecast accuracy by 30–60%.",
+        "Predictive AI analytics uses machine learning models trained on historical business data to forecast future outcomes — demand levels, customer churn, revenue trends, risk events, and operational bottlenecks. AGIX Technologies predictive AI systems move businesses from reactive decision-making (responding to what happened) to proactive decision-making (acting on what is about to happen) — typically improving forecast accuracy by 30–60%.",
     },
     {
       question:
-        "How does Agix Technologies build predictive AI models for enterprise use?",
+        "How does AGIX Technologies build predictive AI models for enterprise use?",
       answer:
-        "Agix Technologies builds predictive models through a four-stage process: data assessment and preparation, model selection and training using your historical data, validation against held-out test periods, and deployment into your operational stack with a monitoring layer. Models are retrained automatically on a scheduled basis to maintain accuracy as business conditions change.",
+        "AGIX Technologies builds predictive models through a four-stage process: data assessment and preparation, model selection and training using your historical data, validation against held-out test periods, and deployment into your operational stack with a monitoring layer. Models are retrained automatically on a scheduled basis to maintain accuracy as business conditions change.",
     },
     {
       question:
         "What data does a business need to build predictive AI models?",
       answer:
-        "Most businesses already have sufficient data for effective predictive AI — typically 12–24 months of historical transaction, operational, or customer data. Agix Technologies conducts a data readiness assessment before scoping any predictive AI project. We work with structured data in CRMs, ERPs, spreadsheets, databases, and point-of-sale systems — no pre-cleaned data warehouse is required to start.",
+        "Most businesses already have sufficient data for effective predictive AI — typically 12–24 months of historical transaction, operational, or customer data. AGIX Technologies conducts a data readiness assessment before scoping any predictive AI project. We work with structured data in CRMs, ERPs, spreadsheets, databases, and point-of-sale systems — no pre-cleaned data warehouse is required to start.",
     },
     {
       question: "How much does predictive AI analytics development cost?",
       answer:
-        "Agix Technologies predictive AI model development ranges from $15,000–$45,000 for single-use-case models (e.g. demand forecasting or churn prediction) and $50,000–$150,000 for enterprise analytics platforms with multiple models, dashboards, and automated alerting. Most clients see measurable forecast improvement within 60 days of deployment.",
+        "AGIX Technologies predictive AI model development ranges from $15,000–$45,000 for single-use-case models (e.g. demand forecasting or churn prediction) and $50,000–$150,000 for enterprise analytics platforms with multiple models, dashboards, and automated alerting. Most clients see measurable forecast improvement within 60 days of deployment.",
     },
     {
       question:
         "How accurate are AI predictive models compared to traditional forecasting?",
       answer:
-        "Agix Technologies predictive AI models consistently outperform traditional statistical forecasting methods by 25–55% in accuracy, particularly for non-linear patterns and demand volatility. Accuracy depends on data quality and volume — we provide accuracy benchmarks and confidence intervals for every model before full deployment, so you know exactly what to expect before going live.",
+        "AGIX Technologies predictive AI models consistently outperform traditional statistical forecasting methods by 25–55% in accuracy, particularly for non-linear patterns and demand volatility. Accuracy depends on data quality and volume — we provide accuracy benchmarks and confidence intervals for every model before full deployment, so you know exactly what to expect before going live.",
     },
     {
       question:
@@ -437,13 +437,13 @@ export const documentFAQs: Record<string, FAQItem[]> = {
       question:
         "What is computer vision AI and what can it do for businesses?",
       answer:
-        "Computer vision AI enables machines to interpret and act on visual information — images, video, and documents — in real time. Agix Technologies computer vision systems can read and extract data from documents, detect objects and defects in manufacturing or retail environments, analyse video feeds for security or operational insight, and verify identity through facial recognition — automating visual tasks that currently require human attention.",
+        "Computer vision AI enables machines to interpret and act on visual information — images, video, and documents — in real time. AGIX Technologies computer vision systems can read and extract data from documents, detect objects and defects in manufacturing or retail environments, analyse video feeds for security or operational insight, and verify identity through facial recognition — automating visual tasks that currently require human attention.",
     },
     {
       question:
-        "How does Agix Technologies implement computer vision systems for enterprise use?",
+        "How does AGIX Technologies implement computer vision systems for enterprise use?",
       answer:
-        "Agix Technologies builds computer vision systems through a structured pipeline: data collection and annotation, model training on your specific visual domain, accuracy validation, and integration with your existing operational systems via API. Models are deployed on-premise, in your cloud environment, or at the edge — depending on latency requirements and data sensitivity constraints.",
+        "AGIX Technologies builds computer vision systems through a structured pipeline: data collection and annotation, model training on your specific visual domain, accuracy validation, and integration with your existing operational systems via API. Models are deployed on-premise, in your cloud environment, or at the edge — depending on latency requirements and data sensitivity constraints.",
     },
     {
       question:
@@ -452,14 +452,14 @@ export const documentFAQs: Record<string, FAQItem[]> = {
         "Top enterprise computer vision use cases include: automated document data extraction (invoices, contracts, medical records), manufacturing quality control and defect detection, retail shelf monitoring and inventory tracking, security and access control via facial verification, vehicle and licence plate recognition for logistics, and medical imaging analysis for healthcare diagnostics support.",
     },
     {
-      question: "How accurate are Agix Technologies computer vision models?",
+      question: "How accurate are AGIX Technologies computer vision models?",
       answer:
-        "Agix Technologies computer vision models achieve 95–99% accuracy on well-defined visual tasks with sufficient training data. Document extraction accuracy typically exceeds 97% for structured documents and 92% for semi-structured documents. Object detection accuracy depends on environmental conditions, lighting, and training data quality — we provide accuracy benchmarks for your specific use case before full deployment.",
+        "AGIX Technologies computer vision models achieve 95–99% accuracy on well-defined visual tasks with sufficient training data. Document extraction accuracy typically exceeds 97% for structured documents and 92% for semi-structured documents. Object detection accuracy depends on environmental conditions, lighting, and training data quality — we provide accuracy benchmarks for your specific use case before full deployment.",
     },
     {
       question: "How much does custom computer vision AI development cost?",
       answer:
-        "Computer vision development at Agix Technologies ranges from $20,000–$60,000 for single-use-case models (document extraction or object detection) and $70,000–$200,000 for enterprise multi-modal systems with real-time video processing, edge deployment, and custom integration. Document automation solutions at the lower end typically deliver ROI within 3–6 months through labour cost savings.",
+        "Computer vision development at AGIX Technologies ranges from $20,000–$60,000 for single-use-case models (document extraction or object detection) and $70,000–$200,000 for enterprise multi-modal systems with real-time video processing, edge deployment, and custom integration. Document automation solutions at the lower end typically deliver ROI within 3–6 months through labour cost savings.",
     },
   ],
 
@@ -467,7 +467,7 @@ export const documentFAQs: Record<string, FAQItem[]> = {
     {
       question: "What is custom AI product development?",
       answer:
-        "Custom AI product development is the end-to-end process of designing, engineering, and launching an AI-powered product built specifically for your use case, data, and business model — rather than adapting an off-the-shelf solution. Agix Technologies builds custom AI products including internal enterprise tools, client-facing AI platforms, AI-powered SaaS products, and intelligent APIs — from architecture through deployment and ongoing improvement.",
+        "Custom AI product development is the end-to-end process of designing, engineering, and launching an AI-powered product built specifically for your use case, data, and business model — rather than adapting an off-the-shelf solution. AGIX Technologies builds custom AI products including internal enterprise tools, client-facing AI platforms, AI-powered SaaS products, and intelligent APIs — from architecture through deployment and ongoing improvement.",
     },
     {
       question:
@@ -478,25 +478,25 @@ export const documentFAQs: Record<string, FAQItem[]> = {
     {
       question: "How much does custom AI product development cost?",
       answer:
-        "Custom AI product development at Agix Technologies ranges from $30,000–$80,000 for focused internal tools or single-feature AI products, and $80,000–$500,000+ for full AI-powered SaaS platforms with multi-tenant architecture, custom model training, and enterprise security. Timelines range from 8 weeks for MVPs to 6–12 months for production-grade SaaS platforms.",
+        "Custom AI product development at AGIX Technologies ranges from $30,000–$80,000 for focused internal tools or single-feature AI products, and $80,000–$500,000+ for full AI-powered SaaS platforms with multi-tenant architecture, custom model training, and enterprise security. Timelines range from 8 weeks for MVPs to 6–12 months for production-grade SaaS platforms.",
     },
     {
       question:
-        "What does the custom AI development process at Agix Technologies look like?",
+        "What does the custom AI development process at AGIX Technologies look like?",
       answer:
-        "Agix Technologies follows a six-phase process: Discovery (defining requirements and success criteria), Architecture (system design and technology selection), Data preparation and model development, Integration and API development, User acceptance testing and security review, and Deployment with monitoring infrastructure. Post-launch, we provide ongoing model improvement, feature development, and technical support.",
+        "AGIX Technologies follows a six-phase process: Discovery (defining requirements and success criteria), Architecture (system design and technology selection), Data preparation and model development, Integration and API development, User acceptance testing and security review, and Deployment with monitoring infrastructure. Post-launch, we provide ongoing model improvement, feature development, and technical support.",
     },
     {
       question:
         "Who owns the AI models and intellectual property after development?",
       answer:
-        "You do. Agix Technologies transfers full IP ownership of all custom-developed models, code, and system architecture to the client upon project completion and final payment. We do not retain rights to use your data, your models, or your product for any purpose. IP ownership, data rights, and confidentiality terms are defined explicitly in the engagement contract before work begins.",
+        "You do. AGIX Technologies transfers full IP ownership of all custom-developed models, code, and system architecture to the client upon project completion and final payment. We do not retain rights to use your data, your models, or your product for any purpose. IP ownership, data rights, and confidentiality terms are defined explicitly in the engagement contract before work begins.",
     },
     {
       question:
-        "Can Agix Technologies develop AI products for startups as well as enterprises?",
+        "Can AGIX Technologies develop AI products for startups as well as enterprises?",
       answer:
-        "Yes. Agix Technologies works with startups from seed stage through to Series B, as well as established enterprises. For startups, we offer lean MVP development frameworks — building a working AI product in 8–12 weeks to validate the concept before full investment. Startup engagements are structured to protect runway while delivering genuine technical capability, not just a demo.",
+        "Yes. AGIX Technologies works with startups from seed stage through to Series B, as well as established enterprises. For startups, we offer lean MVP development frameworks — building a working AI product in 8–12 weeks to validate the concept before full investment. Startup engagements are structured to protect runway while delivering genuine technical capability, not just a demo.",
     },
   ],
 
@@ -504,31 +504,31 @@ export const documentFAQs: Record<string, FAQItem[]> = {
     {
       question: "How is AI being used in healthcare operations today?",
       answer:
-        "AI is transforming healthcare operations across patient intake automation, clinical documentation, insurance verification, appointment scheduling, diagnostic support, medical imaging analysis, and supply chain management. Agix Technologies healthcare AI systems have reduced patient intake processing from 3 days to 3 hours and achieved 95% accuracy in medical document processing — while maintaining full HIPAA compliance.",
+        "AI is transforming healthcare operations across patient intake automation, clinical documentation, insurance verification, appointment scheduling, diagnostic support, medical imaging analysis, and supply chain management. AGIX Technologies healthcare AI systems have reduced patient intake processing from 3 days to 3 hours and achieved 95% accuracy in medical document processing — while maintaining full HIPAA compliance.",
     },
     {
       question:
         "Is healthcare AI compliant with HIPAA and patient data regulations?",
       answer:
-        "Yes. Agix Technologies healthcare AI systems are architected for HIPAA compliance from the ground up — with end-to-end data encryption, role-based access controls, audit logging, Business Associate Agreements (BAA), and data residency options. Patient data never leaves your controlled environment, and all AI processing meets OCR (Office for Civil Rights) requirements for protected health information (PHI).",
+        "Yes. AGIX Technologies healthcare AI systems are architected for HIPAA compliance from the ground up — with end-to-end data encryption, role-based access controls, audit logging, Business Associate Agreements (BAA), and data residency options. Patient data never leaves your controlled environment, and all AI processing meets OCR (Office for Civil Rights) requirements for protected health information (PHI).",
     },
     {
       question:
         "What ROI can healthcare organisations expect from AI implementation?",
       answer:
-        "Agix Technologies healthcare clients consistently achieve 85% faster document processing, 40% reduction in administrative staff time on manual tasks, 95% accuracy in data extraction from medical records, and $2.4M+ in annual operational savings for regional hospital networks. Insurance verification automation alone typically saves 2–3 hours per patient admission.",
+        "AGIX Technologies healthcare clients consistently achieve 85% faster document processing, 40% reduction in administrative staff time on manual tasks, 95% accuracy in data extraction from medical records, and $2.4M+ in annual operational savings for regional hospital networks. Insurance verification automation alone typically saves 2–3 hours per patient admission.",
     },
     {
       question:
-        "What healthcare AI use cases does Agix Technologies specialise in?",
+        "What healthcare AI use cases does AGIX Technologies specialise in?",
       answer:
-        "Agix Technologies healthcare AI specialisations include: automated patient intake and registration, insurance eligibility verification in real time, clinical document processing and ICD coding support, appointment scheduling and no-show reduction, medical imaging AI for radiology support, lab result interpretation assistance, and clinical decision support dashboards for care teams.",
+        "AGIX Technologies healthcare AI specialisations include: automated patient intake and registration, insurance eligibility verification in real time, clinical document processing and ICD coding support, appointment scheduling and no-show reduction, medical imaging AI for radiology support, lab result interpretation assistance, and clinical decision support dashboards for care teams.",
     },
     {
       question:
-        "Does Agix Technologies provide healthcare AI solutions in the USA, UK, and Australia?",
+        "Does AGIX Technologies provide healthcare AI solutions in the USA, UK, and Australia?",
       answer:
-        "Yes. Agix Technologies deploys healthcare AI for providers across the USA, United Kingdom, and Australia. US deployments are HIPAA-compliant. UK and European deployments meet NHS Digital standards and GDPR requirements. Australian deployments align with the Australian Privacy Act and My Health Records Act. Regional compliance expertise is built into every healthcare engagement.",
+        "Yes. AGIX Technologies deploys healthcare AI for providers across the USA, United Kingdom, and Australia. US deployments are HIPAA-compliant. UK and European deployments meet NHS Digital standards and GDPR requirements. Australian deployments align with the Australian Privacy Act and My Health Records Act. Regional compliance expertise is built into every healthcare engagement.",
     },
   ],
 
@@ -536,12 +536,12 @@ export const documentFAQs: Record<string, FAQItem[]> = {
     {
       question: "How can AI improve real estate operations?",
       answer:
-        "AI transforms real estate operations by automating lead qualification, CRM enrichment, document processing, appointment booking, follow-up sequences, and market analysis. Agix Technologies real estate AI systems reclaim 15–20 hours of operations work per week per agent, enable 24/7 lead engagement without additional headcount, and reduce time-to-first-contact for new leads from hours to seconds.",
+        "AI transforms real estate operations by automating lead qualification, CRM enrichment, document processing, appointment booking, follow-up sequences, and market analysis. AGIX Technologies real estate AI systems reclaim 15–20 hours of operations work per week per agent, enable 24/7 lead engagement without additional headcount, and reduce time-to-first-contact for new leads from hours to seconds.",
     },
     {
       question: "How does AI lead qualification work for real estate teams?",
       answer:
-        "Agix Technologies AI lead qualification systems automatically engage every new lead via voice, chat, or SMS — asking qualifying questions, assessing purchase intent and timeline, checking budget range, and routing high-quality prospects directly to agents with a full qualification summary in their CRM. Low-intent leads are nurtured automatically without agent involvement.",
+        "AGIX Technologies AI lead qualification systems automatically engage every new lead via voice, chat, or SMS — asking qualifying questions, assessing purchase intent and timeline, checking budget range, and routing high-quality prospects directly to agents with a full qualification summary in their CRM. Low-intent leads are nurtured automatically without agent involvement.",
     },
     {
       question: "What real estate AI use cases deliver the highest ROI?",
@@ -550,14 +550,14 @@ export const documentFAQs: Record<string, FAQItem[]> = {
     },
     {
       question:
-        "Can Agix Technologies AI integrate with GoHighLevel, Salesforce, or real estate CRMs?",
+        "Can AGIX Technologies AI integrate with GoHighLevel, Salesforce, or real estate CRMs?",
       answer:
-        "Yes. Agix Technologies real estate AI systems integrate natively with GoHighLevel, Salesforce, HubSpot, Follow Up Boss, kvCORE, LionDesk, BoomTown, and most major real estate CRM platforms. Lead data, conversation history, and qualification scores are written directly into your CRM in real time — no manual data entry required.",
+        "Yes. AGIX Technologies real estate AI systems integrate natively with GoHighLevel, Salesforce, HubSpot, Follow Up Boss, kvCORE, LionDesk, BoomTown, and most major real estate CRM platforms. Lead data, conversation history, and qualification scores are written directly into your CRM in real time — no manual data entry required.",
     },
     {
       question: "What is the cost of AI implementation for a real estate business?",
       answer:
-        "Real estate AI implementation at Agix Technologies ranges from $8,000–$25,000 for focused solutions (AI lead qualification or AI voice agents) and $30,000–$75,000 for comprehensive AI-driven operations platforms. Typical payback period is 3–6 months for teams with consistent lead volume. A free scoping consultation is available before any commitment.",
+        "Real estate AI implementation at AGIX Technologies ranges from $8,000–$25,000 for focused solutions (AI lead qualification or AI voice agents) and $30,000–$75,000 for comprehensive AI-driven operations platforms. Typical payback period is 3–6 months for teams with consistent lead volume. A free scoping consultation is available before any commitment.",
     },
   ],
 
@@ -565,28 +565,28 @@ export const documentFAQs: Record<string, FAQItem[]> = {
     {
       question: "How is AI transforming fintech and lending operations?",
       answer:
-        "AI is reshaping fintech and lending through automated loan processing, AI-powered credit analysis, real-time fraud detection, regulatory compliance monitoring, and intelligent customer communication. Agix Technologies fintech AI clients have achieved 4x faster loan approval timelines, 60% reduction in processing costs, and 35% increase in application volume — by replacing manual underwriting stages with intelligent automation.",
+        "AI is reshaping fintech and lending through automated loan processing, AI-powered credit analysis, real-time fraud detection, regulatory compliance monitoring, and intelligent customer communication. AGIX Technologies fintech AI clients have achieved 4x faster loan approval timelines, 60% reduction in processing costs, and 35% increase in application volume — by replacing manual underwriting stages with intelligent automation.",
     },
     {
       question: "How does AI automate loan processing and underwriting?",
       answer:
-        "Agix Technologies loan processing AI extracts and validates data from application documents automatically, cross-references credit bureau data and income verification sources, applies configurable underwriting rules and risk scoring models, flags exceptions for human review, and generates decision-ready summaries — reducing underwriter time per application from hours to minutes while improving consistency.",
+        "AGIX Technologies loan processing AI extracts and validates data from application documents automatically, cross-references credit bureau data and income verification sources, applies configurable underwriting rules and risk scoring models, flags exceptions for human review, and generates decision-ready summaries — reducing underwriter time per application from hours to minutes while improving consistency.",
     },
     {
       question:
         "Is fintech AI compliant with financial regulations and data protection laws?",
       answer:
-        "Yes. Agix Technologies fintech AI systems are built for regulatory compliance including GDPR (Europe), CCPA (California), Fair Credit Reporting Act (USA), FCA Consumer Duty (UK), and Anti-Money Laundering (AML) requirements. All decision-making AI includes explainability logging to satisfy adverse action notice requirements. Compliance documentation is provided as part of every fintech AI deployment.",
+        "Yes. AGIX Technologies fintech AI systems are built for regulatory compliance including GDPR (Europe), CCPA (California), Fair Credit Reporting Act (USA), FCA Consumer Duty (UK), and Anti-Money Laundering (AML) requirements. All decision-making AI includes explainability logging to satisfy adverse action notice requirements. Compliance documentation is provided as part of every fintech AI deployment.",
     },
     {
       question: "What ROI can fintech companies expect from AI automation?",
       answer:
-        "Agix Technologies fintech clients consistently report 4x faster loan approval timelines, 60% reduction in per-application processing costs, 35% increase in application throughput without additional headcount, and significant reduction in loan fraud through AI anomaly detection. Credit unions and mid-size lenders typically see full ROI within 6–9 months of deployment.",
+        "AGIX Technologies fintech clients consistently report 4x faster loan approval timelines, 60% reduction in per-application processing costs, 35% increase in application throughput without additional headcount, and significant reduction in loan fraud through AI anomaly detection. Credit unions and mid-size lenders typically see full ROI within 6–9 months of deployment.",
     },
     {
       question: "Can AI detect and prevent financial fraud in real time?",
       answer:
-        "Yes. Agix Technologies fraud detection AI analyses transaction patterns, behavioural signals, and network connections in real time — flagging anomalies within milliseconds and blocking suspicious transactions before they complete. Models are continuously updated with new fraud patterns and can be tuned to balance fraud prevention against false positive rates for your specific customer base.",
+        "Yes. AGIX Technologies fraud detection AI analyses transaction patterns, behavioural signals, and network connections in real time — flagging anomalies within milliseconds and blocking suspicious transactions before they complete. Models are continuously updated with new fraud patterns and can be tuned to balance fraud prevention against false positive rates for your specific customer base.",
     },
   ],
 
@@ -594,28 +594,28 @@ export const documentFAQs: Record<string, FAQItem[]> = {
     {
       question: "How is AI being applied in the insurance industry?",
       answer:
-        "AI is transforming insurance through automated claims processing and assessment, AI-powered underwriting and risk scoring, real-time fraud detection, policy document processing and compliance checking, customer query automation via AI chatbots, and predictive modelling for loss ratios and pricing. Agix Technologies insurance AI systems reduce claims processing time from days to hours while improving accuracy and reducing fraudulent payouts.",
+        "AI is transforming insurance through automated claims processing and assessment, AI-powered underwriting and risk scoring, real-time fraud detection, policy document processing and compliance checking, customer query automation via AI chatbots, and predictive modelling for loss ratios and pricing. AGIX Technologies insurance AI systems reduce claims processing time from days to hours while improving accuracy and reducing fraudulent payouts.",
     },
     {
       question: "How does AI automate insurance claims processing?",
       answer:
-        "Agix Technologies claims automation AI receives first notice of loss (FNOL) submissions, extracts and validates all claim data automatically, cross-references policy terms and coverage limits, applies fraud scoring, triggers automated payments for straightforward claims, and routes complex or flagged claims to human adjusters with a pre-populated assessment. End-to-end claim cycle time is reduced by 60–80% for eligible claims.",
+        "AGIX Technologies claims automation AI receives first notice of loss (FNOL) submissions, extracts and validates all claim data automatically, cross-references policy terms and coverage limits, applies fraud scoring, triggers automated payments for straightforward claims, and routes complex or flagged claims to human adjusters with a pre-populated assessment. End-to-end claim cycle time is reduced by 60–80% for eligible claims.",
     },
     {
       question: "Can AI improve underwriting accuracy and speed?",
       answer:
-        "Yes. Agix Technologies underwriting AI processes application data, pulls relevant external data sources, applies risk models trained on your claims history, and generates risk scores with confidence intervals — enabling underwriters to process 3–5x more applications per day. AI-assisted underwriting reduces pricing inconsistency across underwriters and improves loss ratio predictability.",
+        "Yes. AGIX Technologies underwriting AI processes application data, pulls relevant external data sources, applies risk models trained on your claims history, and generates risk scores with confidence intervals — enabling underwriters to process 3–5x more applications per day. AI-assisted underwriting reduces pricing inconsistency across underwriters and improves loss ratio predictability.",
     },
     {
       question: "How does AI detect fraudulent insurance claims?",
       answer:
-        "Agix Technologies insurance fraud detection AI cross-references claim data against known fraud patterns, claimant history, provider billing anomalies, social network connections between claimants, and geospatial data. Machine learning models trained on your historical claims data identify suspicious patterns that human reviewers consistently miss — typically reducing fraudulent payouts by 15–30%.",
+        "AGIX Technologies insurance fraud detection AI cross-references claim data against known fraud patterns, claimant history, provider billing anomalies, social network connections between claimants, and geospatial data. Machine learning models trained on your historical claims data identify suspicious patterns that human reviewers consistently miss — typically reducing fraudulent payouts by 15–30%.",
     },
     {
       question:
         "Is insurance AI compliant with FCA, GDPR, and state insurance regulations?",
       answer:
-        "Yes. Agix Technologies insurance AI systems are built with explainability, fairness, and auditability as core requirements. All AI decision-making includes documentation that satisfies FCA Consumer Duty (UK), GDPR Article 22 (automated decision-making rights), and US state insurance regulatory requirements. We provide compliance documentation and model cards for every deployed insurance AI system.",
+        "Yes. AGIX Technologies insurance AI systems are built with explainability, fairness, and auditability as core requirements. All AI decision-making includes documentation that satisfies FCA Consumer Duty (UK), GDPR Article 22 (automated decision-making rights), and US state insurance regulatory requirements. We provide compliance documentation and model cards for every deployed insurance AI system.",
     },
   ],
 
@@ -623,29 +623,29 @@ export const documentFAQs: Record<string, FAQItem[]> = {
     {
       question: "How is AI used in retail and eCommerce businesses?",
       answer:
-        "AI is deployed across retail and eCommerce for demand forecasting, inventory optimisation, personalised product recommendations, dynamic pricing, customer segmentation, returns prediction, supply chain automation, and AI-powered customer service. Agix Technologies retail AI clients have reduced stockouts by 40%, cut overstock inventory costs by $1.8M annually, and increased basket size by 18% through AI personalisation.",
+        "AI is deployed across retail and eCommerce for demand forecasting, inventory optimisation, personalised product recommendations, dynamic pricing, customer segmentation, returns prediction, supply chain automation, and AI-powered customer service. AGIX Technologies retail AI clients have reduced stockouts by 40%, cut overstock inventory costs by $1.8M annually, and increased basket size by 18% through AI personalisation.",
     },
     {
       question: "How does AI demand forecasting work for retail?",
       answer:
-        "Agix Technologies demand forecasting AI analyses historical sales data, seasonal patterns, promotional calendars, competitor pricing, weather data, and real-time inventory levels to predict demand at the SKU and location level — typically 4–8 weeks ahead. Models retrain weekly on new sales data, improving accuracy over time. Retailers using AI forecasting reduce overstock by 30–45% and stockouts by 35–50%.",
+        "AGIX Technologies demand forecasting AI analyses historical sales data, seasonal patterns, promotional calendars, competitor pricing, weather data, and real-time inventory levels to predict demand at the SKU and location level — typically 4–8 weeks ahead. Models retrain weekly on new sales data, improving accuracy over time. Retailers using AI forecasting reduce overstock by 30–45% and stockouts by 35–50%.",
     },
     {
       question:
         "Can AI personalise the shopping experience for eCommerce customers?",
       answer:
-        "Yes. Agix Technologies personalisation AI analyses each customer's browsing behaviour, purchase history, search queries, and real-time session signals to deliver personalised product recommendations, dynamic homepage layouts, personalised email content, and targeted promotions. Average order value increases of 15–25% are typical within 90 days of deploying AI personalisation on eCommerce platforms.",
+        "Yes. AGIX Technologies personalisation AI analyses each customer's browsing behaviour, purchase history, search queries, and real-time session signals to deliver personalised product recommendations, dynamic homepage layouts, personalised email content, and targeted promotions. Average order value increases of 15–25% are typical within 90 days of deploying AI personalisation on eCommerce platforms.",
     },
     {
       question: "What ROI can retailers expect from AI implementation?",
       answer:
-        "Agix Technologies retail AI clients report 3x faster inventory decisions, 40% reduction in stockouts, $1.8M in annual inventory savings for mid-size eCommerce platforms, and 15–25% increase in average order value from personalisation. Customer service automation through AI chatbots typically reduces support costs by 50–65% while maintaining or improving customer satisfaction scores.",
+        "AGIX Technologies retail AI clients report 3x faster inventory decisions, 40% reduction in stockouts, $1.8M in annual inventory savings for mid-size eCommerce platforms, and 15–25% increase in average order value from personalisation. Customer service automation through AI chatbots typically reduces support costs by 50–65% while maintaining or improving customer satisfaction scores.",
     },
     {
       question:
         "Can retail AI integrate with Shopify, Magento, or existing eCommerce platforms?",
       answer:
-        "Yes. Agix Technologies retail AI systems integrate with Shopify, Magento, WooCommerce, BigCommerce, Salesforce Commerce Cloud, SAP, and custom eCommerce platforms. Integration is handled at the API level — connecting to your product catalogue, inventory management, order management, and customer data platforms without disrupting your existing operations or requiring platform migration.",
+        "Yes. AGIX Technologies retail AI systems integrate with Shopify, Magento, WooCommerce, BigCommerce, Salesforce Commerce Cloud, SAP, and custom eCommerce platforms. Integration is handled at the API level — connecting to your product catalogue, inventory management, order management, and customer data platforms without disrupting your existing operations or requiring platform migration.",
     },
   ],
 
@@ -653,28 +653,28 @@ export const documentFAQs: Record<string, FAQItem[]> = {
     {
       question: "How is AI transforming logistics and supply chain management?",
       answer:
-        "AI is reshaping logistics through intelligent route optimisation, real-time demand planning, automated carrier selection, predictive maintenance, warehouse automation, customs documentation processing, and supply chain risk monitoring. Agix Technologies logistics AI clients achieve 3x faster operational decisions, 25% reduction in freight costs, and significant improvement in on-time delivery rates through AI-driven coordination.",
+        "AI is reshaping logistics through intelligent route optimisation, real-time demand planning, automated carrier selection, predictive maintenance, warehouse automation, customs documentation processing, and supply chain risk monitoring. AGIX Technologies logistics AI clients achieve 3x faster operational decisions, 25% reduction in freight costs, and significant improvement in on-time delivery rates through AI-driven coordination.",
     },
     {
       question: "How does AI route optimisation work for logistics operations?",
       answer:
-        "Agix Technologies route optimisation AI analyses delivery locations, vehicle capacity, driver hours, traffic patterns, fuel costs, time windows, and real-time conditions to generate optimal routes dynamically — updating when conditions change. AI routing consistently outperforms manual planning by 20–35% in efficiency and typically reduces fuel costs by 15–25% for fleets operating 10+ vehicles.",
+        "AGIX Technologies route optimisation AI analyses delivery locations, vehicle capacity, driver hours, traffic patterns, fuel costs, time windows, and real-time conditions to generate optimal routes dynamically — updating when conditions change. AI routing consistently outperforms manual planning by 20–35% in efficiency and typically reduces fuel costs by 15–25% for fleets operating 10+ vehicles.",
     },
     {
       question:
         "Can AI predict supply chain disruptions before they occur?",
       answer:
-        "Yes. Agix Technologies supply chain risk AI monitors supplier performance data, geopolitical events, weather patterns, port congestion data, and commodity price signals to identify potential disruptions 2–6 weeks ahead of impact. Early warning signals allow procurement and logistics teams to activate contingency plans proactively — rather than reacting to disruptions after stock or delivery commitments are compromised.",
+        "Yes. AGIX Technologies supply chain risk AI monitors supplier performance data, geopolitical events, weather patterns, port congestion data, and commodity price signals to identify potential disruptions 2–6 weeks ahead of impact. Early warning signals allow procurement and logistics teams to activate contingency plans proactively — rather than reacting to disruptions after stock or delivery commitments are compromised.",
     },
     {
       question: "What ROI does logistics AI deliver?",
       answer:
-        "Agix Technologies logistics AI clients typically see 25–35% reduction in freight costs, 15–20% improvement in on-time delivery performance, 40–60% reduction in manual planning time, and significant decrease in penalty charges from missed SLAs. For enterprise logistics operations, AI-driven decision intelligence typically delivers $500K–$3M in annual savings depending on fleet size and shipment volume.",
+        "AGIX Technologies logistics AI clients typically see 25–35% reduction in freight costs, 15–20% improvement in on-time delivery performance, 40–60% reduction in manual planning time, and significant decrease in penalty charges from missed SLAs. For enterprise logistics operations, AI-driven decision intelligence typically delivers $500K–$3M in annual savings depending on fleet size and shipment volume.",
     },
     {
       question: "Can logistics AI integrate with existing TMS and WMS systems?",
       answer:
-        "Yes. Agix Technologies logistics AI integrates with major Transportation Management Systems (TMS) including SAP TM, Oracle Transportation Management, and JDA, as well as Warehouse Management Systems (WMS) and ERP platforms. Integration is delivered via API without requiring system replacement — Agix Technologies AI adds an intelligence layer on top of your current logistics technology stack.",
+        "Yes. AGIX Technologies logistics AI integrates with major Transportation Management Systems (TMS) including SAP TM, Oracle Transportation Management, and JDA, as well as Warehouse Management Systems (WMS) and ERP platforms. Integration is delivered via API without requiring system replacement — AGIX Technologies AI adds an intelligence layer on top of your current logistics technology stack.",
     },
   ],
 
@@ -682,29 +682,29 @@ export const documentFAQs: Record<string, FAQItem[]> = {
     {
       question: "How is AI being used in hospitality and wellness businesses?",
       answer:
-        "AI is transforming hospitality and wellness through automated guest communication and booking, AI concierge services, personalised recommendations, dynamic pricing optimisation, housekeeping and maintenance scheduling, revenue management, and customer sentiment analysis. Agix Technologies hospitality AI systems improve guest satisfaction scores, increase direct booking rates, and reduce staff workload on repetitive communication tasks by 60–70%.",
+        "AI is transforming hospitality and wellness through automated guest communication and booking, AI concierge services, personalised recommendations, dynamic pricing optimisation, housekeeping and maintenance scheduling, revenue management, and customer sentiment analysis. AGIX Technologies hospitality AI systems improve guest satisfaction scores, increase direct booking rates, and reduce staff workload on repetitive communication tasks by 60–70%.",
     },
     {
       question:
         "How does AI personalise the guest experience in hotels and wellness centres?",
       answer:
-        "Agix Technologies personalisation AI builds individual guest profiles from booking history, preferences, feedback, and real-time behaviour — enabling personalised room assignments, amenity recommendations, dining suggestions, and targeted upsell offers. Personalised pre-arrival communication increases ancillary revenue by 12–22%, and personalised post-stay follow-up improves review scores and repeat booking rates.",
+        "AGIX Technologies personalisation AI builds individual guest profiles from booking history, preferences, feedback, and real-time behaviour — enabling personalised room assignments, amenity recommendations, dining suggestions, and targeted upsell offers. Personalised pre-arrival communication increases ancillary revenue by 12–22%, and personalised post-stay follow-up improves review scores and repeat booking rates.",
     },
     {
       question: "Can AI automate booking management and guest communication?",
       answer:
-        "Yes. Agix Technologies hospitality AI automates the complete booking journey — handling enquiries via AI chatbot or voice agent, processing reservations, sending confirmations and pre-arrival information, managing modifications and cancellations, and collecting post-stay feedback. AI handles 70–85% of routine guest communication without human involvement, freeing staff for high-value guest interactions.",
+        "Yes. AGIX Technologies hospitality AI automates the complete booking journey — handling enquiries via AI chatbot or voice agent, processing reservations, sending confirmations and pre-arrival information, managing modifications and cancellations, and collecting post-stay feedback. AI handles 70–85% of routine guest communication without human involvement, freeing staff for high-value guest interactions.",
     },
     {
       question:
         "What ROI can hospitality businesses expect from AI implementation?",
       answer:
-        "Agix Technologies hospitality AI clients report 15–25% increase in direct booking revenue, 20–30% reduction in staff time on administrative tasks, 12–22% increase in ancillary revenue from AI-powered upselling, and measurable improvement in guest review scores. Wellness businesses using AI appointment and communication automation see 30–40% reduction in no-show rates.",
+        "AGIX Technologies hospitality AI clients report 15–25% increase in direct booking revenue, 20–30% reduction in staff time on administrative tasks, 12–22% increase in ancillary revenue from AI-powered upselling, and measurable improvement in guest review scores. Wellness businesses using AI appointment and communication automation see 30–40% reduction in no-show rates.",
     },
     {
       question: "Does hospitality AI integrate with PMS and booking platforms?",
       answer:
-        "Yes. Agix Technologies hospitality AI integrates with major Property Management Systems including Opera, Mews, Cloudbeds, and RoomKey, as well as booking platforms such as Booking.com, Expedia, and direct booking engines. All guest data flows bidirectionally — ensuring the AI works with your existing property management infrastructure, not around it.",
+        "Yes. AGIX Technologies hospitality AI integrates with major Property Management Systems including Opera, Mews, Cloudbeds, and RoomKey, as well as booking platforms such as Booking.com, Expedia, and direct booking engines. All guest data flows bidirectionally — ensuring the AI works with your existing property management infrastructure, not around it.",
     },
   ],
 
@@ -712,87 +712,87 @@ export const documentFAQs: Record<string, FAQItem[]> = {
     {
       question: "How is AI being used in EdTech and e-learning platforms?",
       answer:
-        "AI is transforming EdTech through adaptive learning systems that personalise content to each learner, automated assessment and feedback, intelligent tutoring systems, learner engagement prediction, dropout risk detection, content recommendation engines, and administrative automation. Agix Technologies EdTech AI systems improve course completion rates by 25–40% and reduce manual educator workload on assessment and administrative tasks significantly.",
+        "AI is transforming EdTech through adaptive learning systems that personalise content to each learner, automated assessment and feedback, intelligent tutoring systems, learner engagement prediction, dropout risk detection, content recommendation engines, and administrative automation. AGIX Technologies EdTech AI systems improve course completion rates by 25–40% and reduce manual educator workload on assessment and administrative tasks significantly.",
     },
     {
       question: "What is adaptive learning AI and how does it work?",
       answer:
-        "Adaptive learning AI analyses each learner's performance, pace, error patterns, and engagement in real time — then dynamically adjusts the content, difficulty, and format presented to that learner. Agix Technologies adaptive learning systems use mastery-based progression, meaning learners advance when they demonstrate competency rather than after a fixed time period — improving both learning outcomes and platform engagement metrics.",
+        "Adaptive learning AI analyses each learner's performance, pace, error patterns, and engagement in real time — then dynamically adjusts the content, difficulty, and format presented to that learner. AGIX Technologies adaptive learning systems use mastery-based progression, meaning learners advance when they demonstrate competency rather than after a fixed time period — improving both learning outcomes and platform engagement metrics.",
     },
     {
       question:
         "Can AI detect at-risk learners and predict dropout before it happens?",
       answer:
-        "Yes. Agix Technologies learner analytics AI monitors engagement signals — login frequency, time-on-task, assessment scores, forum participation, and video completion rates — to identify learners showing dropout risk patterns 2–4 weeks before they disengage. Automated intervention workflows can trigger personalised outreach, offer support resources, or alert instructors for human follow-up.",
+        "Yes. AGIX Technologies learner analytics AI monitors engagement signals — login frequency, time-on-task, assessment scores, forum participation, and video completion rates — to identify learners showing dropout risk patterns 2–4 weeks before they disengage. Automated intervention workflows can trigger personalised outreach, offer support resources, or alert instructors for human follow-up.",
     },
     {
       question: "What ROI can EdTech companies expect from AI implementation?",
       answer:
-        "Agix Technologies EdTech AI clients report 25–40% improvement in course completion rates, 30–50% reduction in instructor time on routine assessment and administrative tasks, 20–35% increase in learner engagement metrics, and measurable improvement in knowledge retention scores. For EdTech platforms, improved completion rates directly reduce churn and increase subscription renewal rates.",
+        "AGIX Technologies EdTech AI clients report 25–40% improvement in course completion rates, 30–50% reduction in instructor time on routine assessment and administrative tasks, 20–35% increase in learner engagement metrics, and measurable improvement in knowledge retention scores. For EdTech platforms, improved completion rates directly reduce churn and increase subscription renewal rates.",
     },
     {
       question:
-        "Does Agix Technologies build AI for corporate learning and development as well as academic EdTech?",
+        "Does AGIX Technologies build AI for corporate learning and development as well as academic EdTech?",
       answer:
-        "Yes. Agix Technologies builds AI for both academic EdTech platforms and corporate learning and development (L&D) programmes. Corporate L&D AI use cases include skills gap analysis, personalised training path recommendation, compliance training automation, performance-linked learning triggers, and AI-powered coaching tools. Corporate L&D engagements are scoped separately with enterprise procurement and LMS integration requirements.",
+        "Yes. AGIX Technologies builds AI for both academic EdTech platforms and corporate learning and development (L&D) programmes. Corporate L&D AI use cases include skills gap analysis, personalised training path recommendation, compliance training automation, performance-linked learning triggers, and AI-powered coaching tools. Corporate L&D engagements are scoped separately with enterprise procurement and LMS integration requirements.",
     },
   ],
 
   about: [
     {
-      question: "What is Agix Technologies and what does the company do?",
+      question: "What is AGIX Technologies and what does the company do?",
       answer:
-        "Agix Technologies is an AI systems engineering company founded to solve a specific problem: most AI deployments fail not because AI models are weak, but because systems are designed without operational grounding, governance, or accountability. Agix Technologies designs, deploys, and stewards production-ready agentic AI systems, workflow automation, and enterprise intelligence infrastructure — serving businesses across the USA, Europe, and Australia.",
+        "AGIX Technologies is an AI systems engineering company founded to solve a specific problem: most AI deployments fail not because AI models are weak, but because systems are designed without operational grounding, governance, or accountability. AGIX Technologies designs, deploys, and stewards production-ready agentic AI systems, workflow automation, and enterprise intelligence infrastructure — serving businesses across the USA, Europe, and Australia.",
     },
     {
       question:
-        "What makes Agix Technologies different from other AI companies?",
+        "What makes AGIX Technologies different from other AI companies?",
       answer:
-        "Agix Technologies does not sell tools, products, or demos. We engineer intelligence systems — designed with operational constraints, governance frameworks, and accountability built in from day one. Our five-pillar intelligence framework (Operational, Conversational, Decision, Agentic, and Knowledge Intelligence) provides a structured approach that most AI vendors lack entirely, enabling Agix Technologies to deploy AI that businesses can rely on for years, not just weeks.",
+        "AGIX Technologies does not sell tools, products, or demos. We engineer intelligence systems — designed with operational constraints, governance frameworks, and accountability built in from day one. Our five-pillar intelligence framework (Operational, Conversational, Decision, Agentic, and Knowledge Intelligence) provides a structured approach that most AI vendors lack entirely, enabling AGIX Technologies to deploy AI that businesses can rely on for years, not just weeks.",
     },
     {
       question:
-        "Where is Agix Technologies headquartered and where does it operate?",
+        "Where is AGIX Technologies headquartered and where does it operate?",
       answer:
-        "Agix Technologies is headquartered in Newark, Delaware, USA (EIN: 38-4376497). The company has offices in Boston (USA), London (UK), and Jaipur (India), enabling 24/7 engineering support and serving enterprise clients across North America, Europe, and Australia from regional offices in each geography.",
+        "AGIX Technologies is headquartered in Newark, Delaware, USA (EIN: 38-4376497). The company has offices in Boston (USA), London (UK), and Jaipur (India), enabling 24/7 engineering support and serving enterprise clients across North America, Europe, and Australia from regional offices in each geography.",
     },
   ],
 
   contact: [
     {
-      question: "How do I schedule a consultation with Agix Technologies?",
+      question: "How do I schedule a consultation with AGIX Technologies?",
       answer:
-        "You can schedule a free 30-minute consultation with an Agix Technologies AI systems architect directly via the contact form at agixtech.com/corporate/contact/ or by calling +1 857 414 1353. Consultations are available for businesses across the USA, UK, Europe, and Australia. The session covers your specific use case, recommended starting point, and a high-level ROI projection — with no commitment required.",
+        "You can schedule a free 30-minute consultation with an AGIX Technologies AI systems architect directly via the contact form at agixtech.com/corporate/contact/ or by calling +1 857 414 1353. Consultations are available for businesses across the USA, UK, Europe, and Australia. The session covers your specific use case, recommended starting point, and a high-level ROI projection — with no commitment required.",
     },
     {
       question:
-        "What happens during a free Agix Technologies AI consultation?",
+        "What happens during a free AGIX Technologies AI consultation?",
       answer:
-        "A free Agix Technologies consultation is a structured 30-minute discovery call with an AI systems architect. We cover: your current operational challenges, where AI could deliver the highest ROI for your business, which Agix Technologies services are most relevant to your situation, a realistic implementation timeline, and a ballpark investment range. You leave with clear next steps — not a sales pitch.",
+        "A free AGIX Technologies consultation is a structured 30-minute discovery call with an AI systems architect. We cover: your current operational challenges, where AI could deliver the highest ROI for your business, which AGIX Technologies services are most relevant to your situation, a realistic implementation timeline, and a ballpark investment range. You leave with clear next steps — not a sales pitch.",
     },
     {
       question:
-        "How can I contact Agix Technologies for enterprise AI projects?",
+        "How can I contact AGIX Technologies for enterprise AI projects?",
       answer:
-        "Enterprise enquiries can be directed to hello@agixtech.com or +1 857 414 1353. Agix Technologies is headquartered at 54 Chapman Rd, Ste 208, Newark, Delaware 19702, USA. UK and European clients can contact our London office. All enterprise enquiries receive a response within one business day with a dedicated engagement lead assigned.",
+        "Enterprise enquiries can be directed to hello@agixtech.com or +1 857 414 1353. AGIX Technologies is headquartered at 54 Chapman Rd, Ste 208, Newark, Delaware 19702, USA. UK and European clients can contact our London office. All enterprise enquiries receive a response within one business day with a dedicated engagement lead assigned.",
     },
   ],
 
   careers: [
     {
-      question: "What roles is Agix Technologies hiring for?",
+      question: "What roles is AGIX Technologies hiring for?",
       answer:
-        "Agix Technologies is actively hiring across AI Engineering (LLMs, agentic systems, RAG), Backend Engineering (AI systems), Workflow Automation Engineering (n8n, Make, Zapier), Conversational AI Engineering, Voice AI Engineering, Data Engineering, and Technical Product Management. Entry-level AI Intern and Trainee Engineer positions are also available for recent graduates.",
+        "AGIX Technologies is actively hiring across AI Engineering (LLMs, agentic systems, RAG), Backend Engineering (AI systems), Workflow Automation Engineering (n8n, Make, Zapier), Conversational AI Engineering, Voice AI Engineering, Data Engineering, and Technical Product Management. Entry-level AI Intern and Trainee Engineer positions are also available for recent graduates.",
     },
     {
-      question: "What is it like to work at Agix Technologies?",
+      question: "What is it like to work at AGIX Technologies?",
       answer:
-        "Agix Technologies is a systems-first AI engineering company — we build production AI that runs real businesses, not demos or prototypes. Engineers work on live deployments across healthcare, fintech, real estate, logistics, and SaaS for clients in the USA, UK, Europe, and Australia. The culture values deep technical thinking, ownership of outcomes, and continuous improvement. Remote and hybrid working arrangements are available.",
+        "AGIX Technologies is a systems-first AI engineering company — we build production AI that runs real businesses, not demos or prototypes. Engineers work on live deployments across healthcare, fintech, real estate, logistics, and SaaS for clients in the USA, UK, Europe, and Australia. The culture values deep technical thinking, ownership of outcomes, and continuous improvement. Remote and hybrid working arrangements are available.",
     },
     {
-      question: "How do I apply to work at Agix Technologies?",
+      question: "How do I apply to work at AGIX Technologies?",
       answer:
-        'Applications for all open roles at Agix Technologies are accepted via the careers page at agixtech.com/corporate/careers/. You can also send your CV and a brief note on your area of expertise directly to hello@agixtech.com with the subject line "Career Enquiry — [Role Name]". Agix Technologies reviews applications on a rolling basis and responds to all qualified applications within 5 business days.',
+        'Applications for all open roles at AGIX Technologies are accepted via the careers page at agixtech.com/corporate/careers/. You can also send your CV and a brief note on your area of expertise directly to hello@agixtech.com with the subject line "Career Enquiry — [Role Name]". AGIX Technologies reviews applications on a rolling basis and responds to all qualified applications within 5 business days.',
     },
   ],
 };
