@@ -44,6 +44,7 @@ interface Props {
   initialPost: WPPost | null;
   initialFaqData: FAQData;
   relatedServices?: ServiceLink[];
+  enhancedContent?: string;
 }
 
 function FAQAccordion({ faqs }: { faqs: FAQItem[] }) {
@@ -139,7 +140,7 @@ function RelatedServicesSection({ services }: { services: ServiceLink[] }) {
   );
 }
 
-export default function BlogArticlePage({ initialPost, initialFaqData, relatedServices = [] }: Props) {
+export default function BlogArticlePage({ initialPost, initialFaqData, relatedServices = [], enhancedContent }: Props) {
   const params = useParams();
   const slug = params?.slug as string;
 
@@ -262,7 +263,7 @@ export default function BlogArticlePage({ initialPost, initialFaqData, relatedSe
           <div
             className="wp-content max-w-none mb-12"
             dangerouslySetInnerHTML={{
-              __html: faqData.cleanedContent || post.content?.rendered || "",
+              __html: enhancedContent || faqData.cleanedContent || post.content?.rendered || "",
             }}
           />
 

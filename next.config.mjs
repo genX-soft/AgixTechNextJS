@@ -145,6 +145,8 @@ const nextConfig = {
 
       // ===== BLOG POST URL REDIRECTS =====
       { source: '/retell-vs-twilio-voice-vs-vonage-ai-best-voice-api-for-gpt4', destination: '/retell-vs-twilio-voice-vs-vonage-ai-gpt-4-call-agents/', permanent: true },
+      { source: '/best-top-ai-agent-development-companies-usa', destination: '/top-ai-agent-development-companies-in-the-usa/', permanent: true },
+      { source: '/best-top-ai-agent-development-companies-usa/', destination: '/top-ai-agent-development-companies-in-the-usa/', permanent: true },
 
       // ===== BLOG URL REDIRECTS =====
       { source: '/blog/comparing-voice-ai-models-for-real-time-transcription', destination: '/', permanent: true },

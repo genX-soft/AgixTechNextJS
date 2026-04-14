@@ -88,7 +88,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     focusKeyword: 'Enterprise Knowledge AI',
     keywords: 'Enterprise Knowledge AI, Knowledge Intelligence, Enterprise Knowledge Intelligence, Knowledge Intelligence Systems, AI-powered Knowledge Intelligence, Knowledge Intelligence for AI Systems',
     mainHeading: 'Enterprise Knowledge Intelligence You Can Trust — Not Just Retrieve',
-    metaTitle: 'Enterprise Knowledge AI & Intelligence',
+    metaTitle: 'Enterprise Knowledge AI | RAG & Knowledge Management Systems',
     metaDescription: 'Enterprise Knowledge AI and Knowledge Intelligence systems that deliver trusted, governed, AI-powered knowledge for intelligent decision-making and autonomous AI systems.',
     ogTitle: 'Enterprise Knowledge & Knowledge Management Systems',
     ogDescription: 'Build trusted Enterprise Knowledge AI using Knowledge Intelligence systems designed for governed, reliable AI decision-making and autonomous systems.',

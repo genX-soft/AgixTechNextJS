@@ -101,9 +101,21 @@ Passcode-protected internal tool for pre-generated authority blog content. Locat
 - **WordPress CMS**: `https://cms.agixtech.com/wp-json/wp/v2` for blog posts
 - **Google Tag Manager / GA4 / Microsoft Clarity**: Analytics
 
+## Blog Internal Linking
+
+Blog posts automatically receive 1–2 contextual service links injected after the first paragraph:
+- **Injector**: `src/lib/insights/inject-links.ts` → `injectInlineServiceLinks(content, services)`
+- Computed server-side in `src/app/(blog)/[slug]/page.tsx` using `getRelatedServices()` from service-mapping
+- Passed as `enhancedContent` prop to `BlogDetailClient`
+- Rendered as a styled `blog-inline-note` callout with primary-colored underline links
+
 ## Key Notes
 
 - All service pages and industry pages use `'use client'` for interactive forms — SSR still works in Next.js App Router
 - Blog posts are fetched from WordPress with ISR (`revalidate: 3600`)
 - Author page (`/author/santosh/`) has full E-E-A-T schema: Person, jobTitle, LinkedIn sameAs, bio description
 - `client_legacy_backup/` directory contains a prior Vite/Wouter SPA (do not modify)
+- Duplicate blog post `/best-top-ai-agent-development-companies-usa/` 301 redirects to `/top-ai-agent-development-companies-in-the-usa/`
+- Contact page (`/corporate/contact/`) has full LocalBusiness schema with address, geo, phone, email, hours
+- Case studies index layout includes Crunchbase in Organization sameAs
+- Enterprise Knowledge AI meta title: "Enterprise Knowledge AI | RAG & Knowledge Management Systems"
