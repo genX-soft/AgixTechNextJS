@@ -39,12 +39,14 @@ import {
 } from "@/lib/insights/wordpress";
 import Image from "next/image";
 import { FAQData, FAQItem } from "@/lib/insights/faq-utils";
+import { BlogQuickAnswer } from "@/components/blog-quick-answer";
 
 interface Props {
   initialPost: WPPost | null;
   initialFaqData: FAQData;
   relatedServices?: ServiceLink[];
   enhancedContent?: string;
+  quickAnswer?: string;
 }
 
 function FAQAccordion({ faqs }: { faqs: FAQItem[] }) {
@@ -140,7 +142,7 @@ function RelatedServicesSection({ services }: { services: ServiceLink[] }) {
   );
 }
 
-export default function BlogArticlePage({ initialPost, initialFaqData, relatedServices = [], enhancedContent }: Props) {
+export default function BlogArticlePage({ initialPost, initialFaqData, relatedServices = [], enhancedContent, quickAnswer }: Props) {
   const params = useParams();
   const slug = params?.slug as string;
 
@@ -259,6 +261,13 @@ export default function BlogArticlePage({ initialPost, initialFaqData, relatedSe
               </div>
             )}
           </div>
+
+          {quickAnswer && (
+            <BlogQuickAnswer
+              title={post.title?.rendered?.replace(/<[^>]*>/g, '') || ''}
+              answer={quickAnswer}
+            />
+          )}
 
           <div
             className="wp-content max-w-none mb-12"

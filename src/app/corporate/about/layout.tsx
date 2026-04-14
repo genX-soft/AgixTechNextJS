@@ -36,7 +36,8 @@ const schema = {
     "sameAs": [
       "https://www.linkedin.com/company/agixtech",
       "https://twitter.com/agixtech",
-      "https://www.facebook.com/agixtechnologies"
+      "https://www.facebook.com/agixtechnologies",
+      "https://www.crunchbase.com/organization/agix-technologies"
     ]
   }
 }

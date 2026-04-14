@@ -5,6 +5,7 @@ import { WPPost } from '@/lib/insights/wordpress';
 import { extractFAQsFromContent, FAQData } from '@/lib/insights/faq-utils';
 import { getRelatedServices, ServiceLink } from '@/lib/insights/service-mapping';
 import { injectInlineServiceLinks } from '@/lib/insights/inject-links';
+import { extractQuickAnswer } from '@/components/blog-quick-answer';
 import Schema from '@/components/Schema';
 
 const WP_API_BASE = 'https://cms.agixtech.com/wp-json/wp/v2';
@@ -140,6 +141,14 @@ export default async function BlogDetailPage({
     ? injectInlineServiceLinks(baseContent, relatedServices)
     : baseContent;
 
+  const quickAnswer = post
+    ? extractQuickAnswer(
+        stripHtml(post.title.rendered),
+        post.excerpt?.rendered || '',
+        baseContent
+      )
+    : '';
+
   return (
     <>
       {post && (
@@ -169,7 +178,7 @@ export default async function BlogDetailPage({
           />
         </>
       )}
-      <BlogDetailClient initialPost={post} initialFaqData={faqData} relatedServices={relatedServices} enhancedContent={enhancedContent} />
+      <BlogDetailClient initialPost={post} initialFaqData={faqData} relatedServices={relatedServices} enhancedContent={enhancedContent} quickAnswer={quickAnswer} />
     </>
   );
 }

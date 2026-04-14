@@ -101,7 +101,33 @@ Passcode-protected internal tool for pre-generated authority blog content. Locat
 - **WordPress CMS**: `https://cms.agixtech.com/wp-json/wp/v2` for blog posts
 - **Google Tag Manager / GA4 / Microsoft Clarity**: Analytics
 
-## Blog Internal Linking
+## Company Config (Entity Consistency)
+
+All entity URLs are centralized in `src/config/company.ts`:
+- `COMPANY.name` = "AGIX Technologies"
+- `COMPANY.sameAs` = [LinkedIn, Twitter, Facebook, Crunchbase] (canonical array)
+- `COMPANY.linkedin/twitter/facebook/crunchbase` = individual URL strings
+- All layout files (about, careers, contact, case-studies) reference consistent Crunchbase URL
+
+## Service Outcome Metrics (LLMO Boost)
+
+Hardcoded outcome metrics for all 8 service pages live in `src/config/service-metrics.ts`:
+- Keyed by service slug (e.g., `"ai-automation"`, `"ai-voice-agents"`)
+- Each entry has a headline + 3 metrics in format: `{value, label, timeframe}`
+- `getServiceOutcome(pathname)` helper extracts correct metrics from current URL path
+- Rendered in `src/components/service-insights-teaser.tsx` via `usePathname()` — appears automatically on all 8 service pages with no per-page changes needed
+
+## Blog AEO Enhancements
+
+Blog posts receive two automatic enhancements injected server-side in `page.tsx`:
+
+### Quick Answer Block
+- Component: `src/components/blog-quick-answer.tsx`
+- `extractQuickAnswer(title, excerpt, content)` generates 80–280 char answer from WP excerpt / first paragraph
+- Renders as a styled callout with `schema.org/Question` + `schema.org/Answer` microdata
+- Appears above the main article content (before the WP HTML)
+
+### Blog Internal Linking
 
 Blog posts automatically receive 1–2 contextual service links injected after the first paragraph:
 - **Injector**: `src/lib/insights/inject-links.ts` → `injectInlineServiceLinks(content, services)`
