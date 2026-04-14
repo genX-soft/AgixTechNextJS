@@ -1,0 +1,243 @@
+You are a Principal Next.js Engineer + Technical SEO Architect.
+
+Your task is to FULLY AUDIT and FIX this production codebase to eliminate ALL critical SEO, rendering, security, and entity issues.
+
+This is NOT a partial fix. You must ensure ZERO gaps.
+
+--------------------------------------------------
+CORE OBJECTIVE
+--------------------------------------------------
+Achieve:
+- 100% crawlable HTML (no JS-only pages)
+- 0 security leaks
+- 0 inconsistent contact/brand data
+- 0 missing meta descriptions
+- Proper structured data per page
+- Clean sitemap + indexing
+- Strong E-E-A-T + entity signals
+
+--------------------------------------------------
+GLOBAL RULES
+--------------------------------------------------
+- DO NOT break UI or styling
+- DO NOT introduce client-side SEO issues
+- ALWAYS search entire repo before changing anything
+- Use centralized config for repeated values
+- Prefer server-side rendering over client-only rendering
+- All fixes must be production-safe and scalable
+
+--------------------------------------------------
+PHASE 1 — SECURITY (CRITICAL)
+--------------------------------------------------
+1. Search entire repo for "/admin/leads"
+2. Remove ALL public references (footer, components, links)
+3. Implement middleware protection:
+   - Protect /admin/*
+   - Redirect unauthenticated users or return 401
+4. Ensure:
+   - Not in sitemap
+   - Not in HTML output
+
+--------------------------------------------------
+PHASE 2 — CONTACT STANDARDIZATION
+--------------------------------------------------
+Create:
+src/config/contact.ts
+
+export const CONTACT = {
+  phone: "+1 857 414 1353",
+  email: "hello@agixtech.com"
+}
+
+Actions:
+- Replace ALL phone numbers with CONTACT.phone
+- Replace ALL santosh@ emails with CONTACT.email
+- Remove incorrect number: +1 857-365-6167
+- Ensure consistency across ALL templates:
+  header, footer, pages, calculators
+
+--------------------------------------------------
+PHASE 3 — BRAND CONSISTENCY
+--------------------------------------------------
+- Replace ALL "AgixTech" occurrences
+- Standardize meta titles:
+  "[Page Title] | AGIX Technologies"
+
+--------------------------------------------------
+PHASE 4 — SSR / RENDERING (CRITICAL)
+--------------------------------------------------
+Audit ALL page types:
+- Blogs
+- Services
+- Case studies
+- Calculators
+
+Fix:
+- Remove full-page "use client"
+- Use:
+  - Server Components OR
+  - getStaticProps / getServerSideProps
+
+Verification:
+- "View Page Source" must contain full HTML content
+- No empty <body> allowed
+
+--------------------------------------------------
+PHASE 5 — STRUCTURED DATA (ADVANCED)
+--------------------------------------------------
+Create:
+src/lib/schema.ts
+
+Implement dynamic JSON-LD per page type:
+
+Homepage → Organization
+Blog → Article
+Service → Service
+FAQ → FAQPage
+Author → Person
+All pages → BreadcrumbList
+
+CRITICAL:
+- Do NOT inject generic schema globally
+- Schema must match page context
+
+Add Organization entity signals:
+- sameAs:
+  - LinkedIn
+  - Crunchbase
+  - (future-ready for Wikidata)
+
+Ensure:
+- Valid JSON-LD
+- No duplicates
+- Dynamically generated
+
+--------------------------------------------------
+PHASE 6 — META SYSTEM (FULL COVERAGE)
+--------------------------------------------------
+Audit ALL URLs (~entire sitemap)
+
+Ensure:
+- EVERY page has:
+  - unique meta title
+  - unique meta description
+
+Fix:
+- Missing meta descriptions
+- Duplicate metas
+- SSR-related meta rendering issues
+
+--------------------------------------------------
+PHASE 7 — DUPLICATE CONTENT
+--------------------------------------------------
+Pages:
+- /best-top-ai-agent-development-companies-usa/
+- /top-ai-agent-development-companies-in-the-usa/
+
+Actions:
+- Select primary page
+- Apply ONE:
+  - 301 redirect (preferred)
+  OR
+  - canonical tag
+
+Ensure:
+- Only one page is indexable
+
+--------------------------------------------------
+PHASE 8 — LLMS.TXT
+--------------------------------------------------
+- Ensure file exists at /public/llms.txt
+- Update all URLs:
+  /service/* → /services/*
+
+- Ensure accessible in browser
+
+--------------------------------------------------
+PHASE 9 — SITEMAP (CRITICAL)
+--------------------------------------------------
+Audit /sitemap.xml
+
+Ensure:
+- Only canonical URLs
+- No /admin/ routes
+- No duplicates
+- Matches live routing
+
+--------------------------------------------------
+PHASE 10 — AUTHOR PAGE (E-E-A-T)
+--------------------------------------------------
+Update /author/santosh/:
+- Add bio
+- Add job title
+- Add LinkedIn
+
+Add Person schema:
+- name
+- jobTitle
+- sameAs
+- worksFor
+
+--------------------------------------------------
+PHASE 11 — NEWSROOM
+--------------------------------------------------
+Check /newsroom/
+
+IF empty:
+- Remove from footer
+
+ELSE:
+- Add 2–3 real articles
+
+--------------------------------------------------
+PHASE 12 — INTERNAL LINKING
+--------------------------------------------------
+For EACH blog:
+- Add 2–3 contextual links to service pages
+
+Rules:
+- Inside content only
+- Natural anchor text
+- Relevant linking only
+
+--------------------------------------------------
+PHASE 13 — TEMPLATE CONSOLIDATION
+--------------------------------------------------
+- Ensure ONE footer component
+- Ensure ONE header component
+- Remove duplicate variants
+
+--------------------------------------------------
+PHASE 14 — FINAL QA
+--------------------------------------------------
+Run full audit:
+
+1. Build:
+   - npm run build → must pass
+
+2. Crawl validation:
+   - No missing meta
+   - No duplicates
+   - No broken links
+
+3. Manual:
+   - View Source → full HTML
+   - Admin route protected
+   - Contact info consistent
+
+4. Schema:
+   - Validate via Rich Results Test
+
+--------------------------------------------------
+OUTPUT FORMAT
+--------------------------------------------------
+Return:
+1. Files modified (grouped by feature)
+2. Summary of fixes
+3. Any remaining risks
+4. Suggestions for further improvement
+
+DO NOT:
+- Skip any phase
+- Leave TODOs
+- Apply partial fixes
