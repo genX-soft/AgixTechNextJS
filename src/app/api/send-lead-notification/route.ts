@@ -74,7 +74,7 @@ Follow up within 24 hours for best conversion.
         },
         body: JSON.stringify({
           from: 'AGIX Technologies Leads <leads@agixtech.com>',
-          to: ['santosh@agixtech.com'],
+          to: ['hello@agixtech.com'],
           subject: emailSubject,
           text: emailBody,
           reply_to: data.email,
@@ -89,7 +89,7 @@ Follow up within 24 hours for best conversion.
     } else {
       // Log to console if no email service is configured
       console.log('=== LEAD NOTIFICATION (No email service configured) ===');
-      console.log('To: santosh@agixtech.com');
+      console.log('To: hello@agixtech.com');
       console.log('Subject:', emailSubject);
       console.log('Body:', emailBody);
       console.log('=== END LEAD NOTIFICATION ===');

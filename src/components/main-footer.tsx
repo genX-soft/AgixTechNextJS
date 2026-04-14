@@ -120,11 +120,11 @@ export function MainFooter() {
             <div className="space-y-4">
               <a href="tel:+18574141353" className="flex items-center gap-2 text-sm text-slate-300 transition-colors hover:text-white">
                 <Phone className="h-4 w-4 text-primary" aria-hidden="true" />
-                +1 857 4141 353
+                +1 857 414 1353
               </a>
-              <a href="mailto:santosh@agixtech.com" className="flex items-center gap-2 text-sm text-slate-300 transition-colors hover:text-white">
+              <a href="mailto:hello@agixtech.com" className="flex items-center gap-2 text-sm text-slate-300 transition-colors hover:text-white">
                 <Mail className="h-4 w-4 text-primary" aria-hidden="true" />
-                santosh@agixtech.com
+                hello@agixtech.com
               </a>
             </div>
             <div className="mt-6 flex items-center gap-2">

@@ -606,7 +606,7 @@ export default function ContactPage() {
                     className="text-lg font-semibold text-primary hover:underline"
                     data-testid="link-phone-number"
                   >
-                    +1 857 4141 353
+                    +1 857 414 1353
                   </a>
                 </CardContent>
               </Card>

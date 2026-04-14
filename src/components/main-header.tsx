@@ -343,7 +343,7 @@ export function MainHeader() {
               data-testid="link-phone"
             >
               <Phone className="w-4 h-4" aria-hidden="true" />
-              <span>+1 857 4141 353</span>
+              <span>+1 857 414 1353</span>
             </a>
             <Button asChild className="hidden md:inline-flex shrink-0">
               <a 
@@ -412,7 +412,7 @@ export function MainHeader() {
                   data-testid="link-mobile-phone"
                 >
                   <Phone className="w-4 h-4" aria-hidden="true" />
-                  +1 857 4141 353
+                  +1 857 414 1353
                 </a>
                 <div className="px-4">
                   <Button asChild className="w-full h-14 text-base font-semibold">

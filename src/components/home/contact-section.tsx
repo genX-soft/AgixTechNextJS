@@ -141,17 +141,17 @@ export function ContactSection() {
                     className="text-muted-foreground hover:text-foreground text-xms transition-colors"
                     data-testid="link-phone"
                   >
-                    +1 857 4141 353
+                    +1 857 414 1353
                   </a>
                 </div>
                 <div className="flex items-center gap-3">
                   <Mail className="h-5 w-5 text-primary" />
                   <a
-                    href="mailto:santosh@agixtech.com"
+                    href="mailto:hello@agixtech.com"
                     className="text-muted-foreground hover:text-foreground transition-colors"
                     data-testid="link-email"
                   >
-                    santosh@agixtech.com
+                    hello@agixtech.com
                   </a>
                 </div>
               </div>

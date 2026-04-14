@@ -1,10 +1,8 @@
-# AGIX AI Automation Services
+# AGIX Technologies — Enterprise AI Systems Website
 
 ## Overview
 
-This is a lead generation landing page for AGIX, an AI automation services company. The application is a single-page marketing website built to capture leads from businesses interested in AI workflow automation, document processing, and business process automation services.
-
-The site features a conversion-focused design with a hero section, lead capture form, service comparisons, and trust indicators. It follows enterprise SaaS design patterns inspired by Linear, Stripe, and Webflow.
+Production website for AGIX Technologies (agixtech.com), an enterprise AI systems engineering company. The site serves as a lead generation and authority-building platform with service pages, industry verticals, case studies, blog integration, and an interactive AI readiness assessment wizard.
 
 ## User Preferences
 
@@ -12,149 +10,100 @@ Preferred communication style: Simple, everyday language.
 
 ## System Architecture
 
-### Frontend Architecture
-- **Framework**: React 18 with TypeScript
-- **Routing**: Wouter for lightweight client-side routing
-- **Styling**: Tailwind CSS with custom design tokens defined in CSS variables
-- **UI Components**: shadcn/ui component library built on Radix UI primitives
-- **Animations**: Framer Motion for scroll-triggered animations and micro-interactions
+### Frontend & Rendering
+- **Framework**: Next.js 16.1.0 (App Router) with TypeScript
+- **Styling**: Tailwind CSS with dark-mode-first enterprise aesthetic
+- **UI Components**: shadcn/ui on Radix UI primitives
+- **Animations**: Framer Motion
 - **Forms**: React Hook Form with Zod validation
-- **State Management**: TanStack Query for server state and API calls
+- **State Management**: TanStack Query v5 (object-form only)
+- **Icons**: lucide-react (UI), react-icons/si (brand logos)
 
 ### Backend Architecture
 - **Runtime**: Node.js with Express
 - **Language**: TypeScript with ESM modules
-- **Build Tool**: Vite for frontend, esbuild for server bundling
 - **API Pattern**: RESTful JSON API with `/api` prefix
 
 ### Data Layer
 - **ORM**: Drizzle ORM with PostgreSQL dialect
-- **Schema Location**: `shared/schema.ts` contains all database table definitions
-- **Validation**: Zod schemas generated from Drizzle schemas using drizzle-zod
-- **Storage Abstraction**: `IStorage` interface in `server/storage.ts` allows swapping between in-memory and database implementations
+- **Schema Location**: `shared/schema.ts`
+- **Validation**: Zod schemas via drizzle-zod
+- **Storage Abstraction**: `IStorage` interface in `server/storage.ts`
 
-### Key Design Patterns
-- **Shared Types**: The `shared/` directory contains schemas and types used by both frontend and backend
-- **Path Aliases**: `@/` maps to client source, `@shared/` maps to shared code
-- **Dark Mode First**: UI defaults to dark theme matching the brand's navy color palette
-- **Mobile Responsive**: Uses Tailwind breakpoints with mobile-first approach
-- **Device-Specific UX**: Bottom dock on mobile, slide-up panels, 48px touch targets, safe-area support
-- **Performance Optimized**: Font preloading, dynamic imports, deferred component loading via requestIdleCallback
-
-### Project Structure
+### Key Project Structure
 ```
-client/src/          # React frontend application
-  components/ui/     # shadcn/ui components
-  pages/             # Route page components
-  hooks/             # Custom React hooks
-  lib/               # Utilities and API client
-server/              # Express backend
-  routes.ts          # API route definitions
-  storage.ts         # Data access layer
-shared/              # Shared types and schemas
-  schema.ts          # Drizzle database schema
+src/app/               # Next.js App Router pages & layouts
+  services/            # 8 service landing pages
+  industries/          # 8 industry landing pages
+  intelligence/        # 5 intelligence category pages
+  case-studies/        # 28+ case study pages
+  (blog)/[slug]/       # WordPress-integrated blog posts
+  admin/               # Passcode-protected lead dashboard
+  corporate/           # About, Contact, Careers pages
+  author/santosh/      # Author E-E-A-T page
+src/components/        # React components
+  main-header.tsx      # Single shared header
+  main-footer.tsx      # Single shared footer
+  home/                # Homepage section components
+src/lib/               # Core utilities
+  seo/                 # SEO: metadata, structured-data, url-metadata
+  schema.ts            # Centralized schema re-exports
+src/config/            # App-wide config
+  contact.ts           # Centralized phone/email constants
+middleware.ts          # Next.js middleware (admin route protection)
 ```
 
-## External Dependencies
+## Contact Constants
 
-### Database
-- **PostgreSQL**: Primary database configured via `DATABASE_URL` environment variable
-- **Drizzle Kit**: Database migrations stored in `migrations/` directory
+All contact info is centralized in `src/config/contact.ts`:
+```typescript
+export const CONTACT = {
+  phone: "+1 857 414 1353",
+  phoneHref: "tel:+18574141353",
+  email: "hello@agixtech.com",
+  emailHref: "mailto:hello@agixtech.com",
+};
+```
 
-### UI Framework
-- **Radix UI**: Accessible primitive components (dialogs, dropdowns, forms, etc.)
-- **Tailwind CSS**: Utility-first CSS framework with custom theme configuration
-- **Lucide React**: Icon library
+## SEO Architecture
 
-### Analytics
-- **Google Analytics 4**: Configured in `client/index.html` with placeholder measurement ID
-- **Custom Analytics Module**: `client/src/lib/analytics.ts` provides typed event tracking
+### URL-Specific Metadata System
+- **Config**: `src/lib/seo/url-metadata.ts` — per-URL focus keywords, headings, meta title/description, OG tags
+- **Generator**: `src/lib/seo/metadata.ts` → `generateMetadataFromURL(path)`
+- **Usage in layouts**: `export const metadata = generateMetadataFromURL('/path/')`
 
-### Build & Development
-- **Vite**: Frontend dev server with HMR and production builds
-- **Replit Plugins**: Development banner and cartographer for Replit environment
-- **TSX**: TypeScript execution for server during development
+### Structured Data (JSON-LD)
+- **Utilities**: `src/lib/seo/structured-data.ts` — Organization, WebPage, BreadcrumbList, BlogPosting, Service, FAQPage, CaseStudy schemas
+- **Page schemas**: `src/lib/seo/page-schemas.ts` — static schema objects for each page type
+- **Centralized export**: `src/lib/schema.ts` — re-exports all schema utilities
+- Organization `sameAs`: LinkedIn, Twitter, Facebook, Crunchbase
+
+### Admin Route Protection
+- `middleware.ts` sets `X-Robots-Tag: noindex, nofollow` and `Cache-Control: no-store` on all `/admin/*` routes
+- Admin layout also sets `noIndex: true` via metadata
+- Admin routes excluded from sitemap and robots.txt disallows `/admin/leads/`
+
+### Sitemap & Robots
+- `src/app/sitemap.ts` — dynamic sitemap including all services, industries, case studies, blog posts
+- `src/app/robots.ts` — allows crawlers, disallows `/admin/leads/`, `/wp-admin/`, etc.
+
+### llms.txt
+- Route: `src/app/llms.txt/route.ts` — dynamically generates LLM-friendly content
+- Template: `src/data/llmsTemplate.ts` — structured Q&A format for LLM citation
 
 ## Content Engine (Internal Tool)
 
-### Overview
-The Content Engine is a passcode-protected internal tool (9636962228) for displaying pre-generated authority-building blog content. Located at `/tools/content-engine`.
+Passcode-protected internal tool for pre-generated authority blog content. Located at `/tools/content-engine`.
 
-### Architecture
-- **Content Source**: Pre-generated articles stored in `src/lib/tools/blogContent.ts`
-- **Listing Page**: `src/app/tools/content-engine/page.tsx` - displays all articles with rich metadata
-- **Detail Page**: `src/app/tools/content-engine/blog/[slug]/page.tsx` - renders full article with all section types
-- **No Database Required**: Content is static/pre-generated, no API calls needed
+## External Dependencies
 
-### Blog Content Types
-The blog system supports rich content sections defined in `src/lib/tools/blogContent.ts`:
-- **Standard**: heading, paragraph, list, quote, callout
-- **Data Visualization**: table, stats, infographic
-- **Technical**: code, architecture, flowchart
-- **Advanced**:
-  - `faq`: SEO-optimized Q&A sections
-  - `benchmark`: Industry vs Top Performers vs AGIX Clients comparisons
-  - `decision-tree`: Interactive diagnostic frameworks
-  - `checklist`: Readiness assessments with critical/non-critical items
-  - `formula`: ROI calculators with variable explanations
-  - `comparison`: Multi-option comparison matrices
+- **PostgreSQL**: `DATABASE_URL` environment variable
+- **WordPress CMS**: `https://cms.agixtech.com/wp-json/wp/v2` for blog posts
+- **Google Tag Manager / GA4 / Microsoft Clarity**: Analytics
 
-### Current Blog Articles (5 topics, 3000+ words each)
-1. **Agentic AI for Enterprise Decision Automation** - How to reduce decision latency by 80%
-2. **RAG Production Implementation Guide** - Architecture patterns scaling to 10M documents
-3. **CFO's Guide to AI ROI** - Calculating true cost of ownership for enterprise AI
-4. **Voice AI for Contact Centers** - 90% call handling without human escalation
-5. **Enterprise Data Architecture for AI** - From data chaos to AI-ready infrastructure
+## Key Notes
 
-### Article Metadata Displayed
-Each article card shows:
-- Category, target audience, read time, word count
-- Pain areas addressed (rose-colored tags)
-- AGIX solution positioning (emerald-colored)
-- Keywords with search volume, difficulty, and type
-- Tags for SEO
-- Search volume and SEO difficulty metrics
-
-### AGIX Positioning
-AGIX is positioned as the leading AI solution/development/service company in the USA, specializing in custom AI solutions (not ready-made products). Key solution areas:
-- Agentic AI Platform with multi-agent orchestration
-- Enterprise RAG Platform with hybrid retrieval
-- AI Value Realization Framework with ROI modeling
-- Voice AI Platform with NLU and CRM integration
-- Data Readiness Assessment and AI-Ready Data Platform
-
-## SEO Optimization
-
-### URL-Specific Metadata System
-Comprehensive SEO metadata system with per-URL configuration for all pages.
-
-**Configuration Location**: `src/lib/seo/url-metadata.ts`
-
-**Metadata Fields Per URL**:
-- Focus Keyword & Keywords (comma-separated)
-- Main Heading
-- Meta Title & Meta Description
-- OG Title & OG Description (Open Graph for social sharing)
-- Twitter Title & Twitter Description (Twitter Cards)
-- Featured Image (optional)
-- Schema types (Organization, WebPage, BreadcrumbList, Service, FAQPage, Article, etc.)
-
-**Usage in Layouts**:
-```typescript
-import { generateMetadataFromURL } from '@/lib/seo/metadata'
-export const metadata: Metadata = generateMetadataFromURL('/path/to/page')
-```
-
-**Pages with URL-Specific Metadata**:
-- Homepage (/)
-- Intelligence pages (5): operational-ai, conversational-ai, decision-ai, autonomous-agentic-ai, enterprise-knowledge-ai
-- Services pages (8): ai-automation, ai-voice-agents, conversational-ai-chatbots, agentic-ai-systems, rag-knowledge-ai, ai-predictive-analytics, ai-computer-vision, custom-ai-product-development
-- Industries pages (8): healthcare, real-estate, fintech, insurance, retail, logistics, hospitality, edtech
-- Case studies index and 28 individual case study pages (including alphasense)
-
-### Other SEO Features
-- 301 redirects for URL normalization (next.config.mjs)
-- Structured data/JSON-LD schemas (src/lib/seo/structured-data.ts)
-- Dynamic sitemap generation (src/app/sitemap.ts)
-- Canonical URLs with trailing slash normalization
-- WordPress blog integration with Yoast SEO metadata
+- All service pages and industry pages use `'use client'` for interactive forms — SSR still works in Next.js App Router
+- Blog posts are fetched from WordPress with ISR (`revalidate: 3600`)
+- Author page (`/author/santosh/`) has full E-E-A-T schema: Person, jobTitle, LinkedIn sameAs, bio description
+- `client_legacy_backup/` directory contains a prior Vite/Wouter SPA (do not modify)
