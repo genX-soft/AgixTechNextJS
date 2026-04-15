@@ -9,6 +9,7 @@ export default function robots(): MetadataRoute.Robots {
         disallow: [
           '/admin/',
           '/wp-admin/',
+          '/service/',
           '/wp-login.php/',
           '/internal/',
           '/private/',
