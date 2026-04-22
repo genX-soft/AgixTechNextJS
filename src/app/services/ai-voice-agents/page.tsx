@@ -341,7 +341,7 @@ const voiceEngineLayers = [
   },
   {
     number: 2,
-    title: "Conversational Intelligence Architecture",
+    title: "Conversational AI Architecture",
     subtitle: "This Is the Brain of the Voice Agent",
     icon: Brain,
     color: "from-purple-500 to-indigo-500",

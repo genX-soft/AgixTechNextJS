@@ -1023,7 +1023,7 @@ export const caseStudyPageSchemas: Record<string, CaseStudySchemaData> = {
   },
   'properti-ai': {
     webPage: {
-      name: 'Properti AI Real Estate Matching Case Study',
+      name: 'Properti AI Real Estate Case Study',
       description: 'How AGIX Technologies engineered a property matching engine for Properti AI to boost lead conversion by 156%.',
     },
     breadcrumbs: [
@@ -1041,7 +1041,7 @@ export const caseStudyPageSchemas: Record<string, CaseStudySchemaData> = {
   },
   'dartmouth-college': {
     webPage: {
-      name: 'Dartmouth College IT Support AI Case Study',
+      name: 'Dartmouth College IT Support Case Study',
       description: 'How AGIX Technologies built a 24/7 helpdesk for Dartmouth College to deflect 74% of tickets and achieve 2-minute resolution.',
     },
     breadcrumbs: [
@@ -1131,7 +1131,7 @@ export const caseStudyPageSchemas: Record<string, CaseStudySchemaData> = {
   },
   'alphasense': {
     webPage: {
-      name: 'AlphaSense Financial Research AI Case Study',
+      name: 'AlphaSense Research AI Case Study',
       description: 'How AGIX Technologies helped AlphaSense achieve 97% faster research with 500% analyst productivity gains using NLP analytics.',
     },
     breadcrumbs: [

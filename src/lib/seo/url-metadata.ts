@@ -88,7 +88,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     focusKeyword: 'Enterprise Knowledge AI',
     keywords: 'Enterprise Knowledge AI, Knowledge Intelligence, Enterprise Knowledge Intelligence, Knowledge Intelligence Systems, AI-powered Knowledge Intelligence, Knowledge Intelligence for AI Systems',
     mainHeading: 'Enterprise Knowledge Intelligence You Can Trust — Not Just Retrieve',
-    metaTitle: 'Enterprise Knowledge AI | RAG & Knowledge Management Systems',
+    metaTitle: 'Enterprise Knowledge AI | RAG & Knowledge Systems',
     metaDescription: 'Enterprise Knowledge AI and Knowledge Intelligence systems that deliver trusted, governed, AI-powered knowledge for intelligent decision-making and autonomous AI systems.',
     ogTitle: 'Enterprise Knowledge & Knowledge Management Systems',
     ogDescription: 'Build trusted Enterprise Knowledge AI using Knowledge Intelligence systems designed for governed, reliable AI decision-making and autonomous systems.',
@@ -463,10 +463,10 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
   },
 
   '/case-studies/ulta-beauty/': {
-    focusKeyword: 'Ulta Beauty Personalization AI Case Study',
+    focusKeyword: 'Ulta Beauty AI Case Study',
     keywords: 'Ulta Beauty case study, retail personalization, loyalty AI, beauty AI',
     mainHeading: 'Ulta Beauty',
-    metaTitle: 'Ulta Beauty Personalization AI Case Study',
+    metaTitle: 'Ulta Beauty AI Case Study',
     metaDescription: 'Find out how we built a personalization engine for Ulta Beauty to skyrocket conversions by 172% and drop churn by 57%.',
     ogTitle: 'Ulta Beauty Case Study: Personalization AI Case Study',
     ogDescription: 'Explore how AGIX Technologies engineered predictive marketing and dynamic rewards for 37M Ulta Beauty members.',
@@ -589,10 +589,10 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
   },
 
   '/case-studies/properti-ai/': {
-    focusKeyword: 'Properti AI Real Estate Matching Case Study',
+    focusKeyword: 'Properti AI Real Estate Case Study',
     keywords: 'Properti AI case study, real estate matching, property AI, lead conversion',
     mainHeading: 'Properti AI',
-    metaTitle: 'Properti AI Real Estate Matching Case Study',
+    metaTitle: 'Properti AI Real Estate Case Study',
     metaDescription: 'Discover how we engineered a property matching engine for Properti AI to boost lead conversion by 156% and achieve 89% match accuracy. Read more.',
     ogTitle: 'Properti AI Case Study: AI Solution',
     ogDescription: 'Analyze how AGIX Technologies optimized lifestyle-aware search capabilities to refine property discovery and slash agent qualification time.',
@@ -603,10 +603,10 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
   },
 
   '/case-studies/dartmouth-college/': {
-    focusKeyword: 'Dartmouth College IT Support AI Case Study',
+    focusKeyword: 'Dartmouth College IT Support Case Study',
     keywords: 'Dartmouth case study, university AI, IT support AI, helpdesk AI',
     mainHeading: 'Dartmouth College',
-    metaTitle: 'Dartmouth College IT Support AI Case Study',
+    metaTitle: 'Dartmouth College IT Support Case Study',
     metaDescription: 'AGIX Technologies built a 24/7 helpdesk for Dartmouth College to deflect 74% of tickets and achieve 2-minute resolution times. Read more.',
     ogTitle: 'Dartmouth College Case Study: AI Solution',
     ogDescription: 'Enable round-the-clock student assistance! Explore how AGIX Technologies developed a support engine to handle routine IT queries with elite efficiency. Read more.',
@@ -715,10 +715,10 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
   },
 
   '/case-studies/alphasense/': {
-    focusKeyword: 'AlphaSense Financial Research AI Case Study',
+    focusKeyword: 'AlphaSense Research AI Case Study',
     keywords: 'AlphaSense case study, financial research AI, NLP analytics, market intelligence AI, analyst productivity AI',
     mainHeading: 'AlphaSense',
-    metaTitle: 'AlphaSense Financial Research AI Case Study',
+    metaTitle: 'AlphaSense Research AI Case Study',
     metaDescription: 'Discover how AGIX Technologies helped AlphaSense achieve 97% faster research with 500% analyst productivity gains using advanced NLP analytics across earnings transcripts, SEC filings, and research reports.',
     ogTitle: 'AlphaSense Case Study: AI Solution',
     ogDescription: 'AGIX Technologies engineered NLP-powered research systems for AlphaSense that surface signals from earnings calls, filings, and research in seconds—boosting analyst productivity by 500%.',
