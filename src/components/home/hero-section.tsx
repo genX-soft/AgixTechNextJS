@@ -4,65 +4,13 @@ import { useState, useEffect, useRef } from "react";
 import dynamic from "next/dynamic";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import {
-  ArrowRight,
-  Brain,
-  MessageSquare,
-  Lightbulb,
-  Zap,
-  TrendingUp,
-  Clock,
-  Eye,
-  Database,
-  Users,
-} from "lucide-react";
-import styles from "@/app/page.module.css";
+import { ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
 
 const DynamicOrbitAnimation = dynamic(
   () => import("@/components/home/OrbitAnimation"),
   { ssr: false, loading: () => null }
 );
-
-const aiFacts = [
-  { fact: "AI can process documents 100x faster than humans while maintaining 99% accuracy", icon: Zap },
-  { fact: "Companies using AI chatbots reduce customer service costs by up to 30%", icon: MessageSquare },
-  { fact: "Predictive AI can forecast demand with 95% accuracy, reducing inventory waste", icon: TrendingUp },
-  { fact: "Voice AI agents can handle 10,000+ calls simultaneously without fatigue", icon: Users },
-  { fact: "AI-powered automation can save businesses 20+ hours per week on repetitive tasks", icon: Clock },
-  { fact: "Machine learning models improve by 15-25% every year through continuous learning", icon: Brain },
-  { fact: "Computer vision AI can detect manufacturing defects invisible to the human eye", icon: Eye },
-  { fact: "RAG systems can search through millions of documents in under 3 seconds", icon: Database },
-];
-
-function DidYouKnowSection() {
-  const [currentFact, setCurrentFact] = useState(0);
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentFact((prev) => (prev + 1) % aiFacts.length);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, []);
-
-  const CurrentIcon = aiFacts[currentFact].icon;
-
-  return (
-    <div className={`mt-8 pt-6 border-t border-slate-800/50 ${styles.factReveal}`}>
-      <div className="flex items-center gap-3 text-slate-300">
-        <div className="flex items-center gap-2 text-primary text-sm font-medium whitespace-nowrap">
-          <Lightbulb className="w-4 h-4" />
-          <span>Did you know?</span>
-        </div>
-        <div 
-          key={currentFact} 
-          className="flex items-center gap-2 text-sm animate-in fade-in slide-in-from-left-4 duration-500"
-        >
-          <CurrentIcon className="w-4 h-4 text-primary/70 flex-shrink-0 hidden sm:block" />
-          <span className="text-slate-300">{aiFacts[currentFact].fact}</span>
-        </div>
-      </div>
-    </div>
-  );
-}
 
 function useScrollBackground() {
   const grad1Ref = useRef<HTMLDivElement>(null);
@@ -103,107 +51,128 @@ export function HeroSection() {
   return (
     <section
       data-home-hero
-      className="min-h-[80vh] pt-[5.5rem] lg:pt-[6.5rem] flex flex-col justify-center bg-slate-950 relative overflow-hidden"
+      className="bg-slate-950 relative pt-20 lg:pt-20"
     >
-      <div
-        ref={grad1Ref}
-        aria-hidden="true"
-        className="absolute inset-0"
-        style={{
-          backgroundImage:
-            "radial-gradient(ellipse 80% 50% at 50% -20%, rgba(249,115,22,0.15), transparent)",
-        }}
-      />
-      <div
-        ref={grad2Ref}
-        aria-hidden="true"
-        className="absolute inset-0"
-        style={{
-          backgroundImage:
-            "radial-gradient(ellipse 50% 80% at 80% 50%, rgba(249,115,22,0.08), transparent)",
-        }}
-      />
-      <div
-        aria-hidden="true"
-        className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent"
-      />
+      {/* Inner wrapper: overflow-hidden clips the gradient blobs only */}
+      <div className="relative overflow-hidden">
+        <div
+          ref={grad1Ref}
+          aria-hidden="true"
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            backgroundImage:
+              "radial-gradient(ellipse 80% 50% at 50% -20%, rgba(249,115,22,0.15), transparent)",
+          }}
+        />
+        <div
+          ref={grad2Ref}
+          aria-hidden="true"
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            backgroundImage:
+              "radial-gradient(ellipse 50% 80% at 80% 50%, rgba(249,115,22,0.08), transparent)",
+          }}
+        />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-12 relative z-10 w-full">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          <div className="space-y-5">
-            <div>
-              <Badge variant="outline" className="border-primary/30 text-primary mb-2">
-                AI Systems Engineering &amp; Agentic Intelligence Company
-              </Badge>
-            </div>
-            <h1
-              className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-white leading-tight max-w-4xl"
-              data-testid="heading-hero"
-            >
-              <span className="sm:whitespace-nowrap">Enterprise AI Systems Engineering</span> Company for{" "}
-              <span className="text-primary">Automation, AI Agents &amp; Decision Intelligence</span>
-            </h1>
-            <h2 className="text-base sm:text-lg text-slate-300 max-w-2xl font-medium leading-relaxed">
-              We design, build, and deploy production-grade AI systems that automate operations and scale business workflows.
-            </h2>
-            <h3 className="text-sm sm:text-base text-slate-400 max-w-2xl leading-relaxed">
-              From AI agents to enterprise knowledge systems — we help businesses move from experimentation to real outcomes.
-            </h3>
+        {/* Main content */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 lg:pt-8 pb-20 lg:pb-28 relative z-10 w-full">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-stretch">
 
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Button
-                size="lg"
-                className="bg-primary hover:bg-primary/90 text-slate-900 font-semibold shadow-lg shadow-primary/25"
-                asChild
-                data-testid="button-hero-discover"
+            {/* Left: text content */}
+            <div className="flex flex-col justify-between h-full py-2">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
               >
-                <a href="#discovery">
-                  Find Your Starting Point
-                  <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
-                </a>
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-slate-700 text-slate-300 hover:bg-slate-800"
-                asChild
-                data-testid="button-hero-contact"
-              >
-                <a href="#contact">Talk to Us</a>
-              </Button>
-            </div>
+                <Badge variant="outline" className="border-primary/30 text-primary bg-primary/5 px-3 py-1 mb-6">
+                  AI Systems Engineering &amp; Agentic Intelligence Company
+                </Badge>
+              </motion.div>
 
-            <div className="flex flex-wrap gap-3 pt-4">
-              {[
-                { value: "100+", label: "Projects" },
-                { value: "24/7", label: "Support" },
-                { value: "40%", label: "Cost Savings" },
-              ].map((stat) => (
-                <div
-                  key={stat.label}
-                  className="flex items-center gap-2 px-4 py-2 rounded-full bg-slate-800/50 border border-slate-700/50"
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                className="space-y-6"
+              >
+                <h1
+                  className="text-3xl sm:text-4xl lg:text-[2.75rem] font-bold tracking-tight text-white leading-[1.1]"
+                  data-testid="heading-hero"
                 >
-                  <span className="text-primary font-bold">{stat.value}</span>
-                  <span className="text-slate-300 text-sm">{stat.label}</span>
-                </div>
-              ))}
-            </div>
-          </div>
+                  <span className="block mb-2">Enterprise AI Systems</span>
+                  <span className="text-primary lg:whitespace-nowrap">Engineering &amp; Automation</span>
+                </h1>
 
-          <div className="relative hidden lg:block">
-            <div className="relative w-full aspect-square max-w-lg mx-auto">
-              <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/20 via-primary/5 to-transparent blur-3xl" />
-              <div className="absolute inset-8 rounded-full border border-slate-700/30" />
-              <div className="absolute inset-16 rounded-full border border-slate-700/20" />
-              <div className="absolute inset-24 rounded-full border border-primary/20" />
-              <div className="absolute inset-0 flex items-center justify-center">
-                {orbitMounted && <DynamicOrbitAnimation />}
+                <h2 className="text-lg sm:text-xl text-slate-200 max-w-2xl font-medium leading-relaxed">
+                  We design, build, and deploy production-grade AI systems that automate operations and scale business workflows.
+                </h2>
+
+                <p className="text-base text-slate-400 max-w-2xl leading-relaxed">
+                  From intelligent agents to deep enterprise knowledge systems — we help businesses move from experimentation to real, measurable outcomes.
+                </p>
+
+                <div className="flex flex-col sm:flex-row gap-4 pt-4">
+                  <Button
+                    size="lg"
+                    className="h-14 px-8 bg-primary hover:bg-primary/90 text-slate-900 font-bold shadow-xl shadow-primary/20 transition-all hover:scale-105"
+                    asChild
+                    data-testid="button-hero-discover"
+                  >
+                    <a href="#discovery">
+                      Find Your Starting Point
+                      <ArrowRight className="ml-2 h-5 w-5" aria-hidden="true" />
+                    </a>
+                  </Button>
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="h-14 px-8 border-slate-700 text-slate-300 hover:bg-slate-800 hover:text-white transition-all"
+                    asChild
+                    data-testid="button-hero-contact"
+                  >
+                    <a href="#contact">Talk to Us</a>
+                  </Button>
+                </div>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="flex flex-wrap gap-4 mt-8"
+              >
+                {[
+                  { value: "100+", label: "Success Projects" },
+                  { value: "24/7", label: "Autonomous Support" },
+                  { value: "40%", label: "Avg. Cost Savings" },
+                ].map((stat) => (
+                  <div
+                    key={stat.label}
+                    className="flex flex-col gap-1 px-5 py-3 rounded-2xl bg-slate-800/30 border border-slate-700/50 backdrop-blur-sm hover:border-primary/30 transition-colors"
+                  >
+                    <span className="text-xl font-bold text-primary">{stat.value}</span>
+                    <span className="text-slate-400 text-xs font-medium uppercase tracking-wider">{stat.label}</span>
+                  </div>
+                ))}
+              </motion.div>
+            </div>
+
+            {/* Right: orbit animation */}
+            <div className="relative hidden lg:flex items-center justify-center h-[380px] sm:h-[420px] lg:h-[500px]">
+              <div className="relative w-full h-full max-w-md mx-auto flex items-center justify-center">
+                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/20 via-primary/5 to-transparent blur-3xl" />
+                <div className="absolute inset-8 rounded-full border border-slate-700/30" />
+                <div className="absolute inset-16 rounded-full border border-slate-700/20" />
+                <div className="absolute inset-24 rounded-full border border-primary/20" />
+                <div className="absolute inset-0 flex items-center justify-center">
+                  {orbitMounted && <DynamicOrbitAnimation />}
+                </div>
               </div>
             </div>
+
           </div>
         </div>
-
-        <DidYouKnowSection />
       </div>
     </section>
   );

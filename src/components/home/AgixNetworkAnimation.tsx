@@ -150,7 +150,7 @@ export default function AgixNetworkAnimation() {
 
         {/* Decorative rings */}
         <circle cx={cx} cy={cy} r="185" fill="none" stroke="#1e3a5f" strokeWidth="0.5" strokeDasharray="4 8"
-          className="animate-[spin_60s_linear_infinite]" style={{ transformOrigin: `${cx}px ${cy}px` }} />
+          className="animate-[spin_20s_linear_infinite]" style={{ transformOrigin: `${cx}px ${cy}px` }} />
         <circle cx={cx} cy={cy} r="160" fill="none" stroke="#22d3ee" strokeWidth="0.4" strokeOpacity="0.15" />
 
         {/* Connection paths + flowing dots */}
