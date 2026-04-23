@@ -1,6 +1,13 @@
 import { MetadataRoute } from 'next';
+import { headers } from 'next/headers';
 
-export default function robots(): MetadataRoute.Robots {
+
+export default async function robots(): Promise<MetadataRoute.Robots> {
+  const headersList = await headers();
+  const host = headersList.get('host') || 'agixtech.com';
+  const protocol = headersList.get('x-forwarded-proto') || 'https';
+  const SITE_URL = `${protocol}://${host}`;
+
   return {
     rules: [
       {
@@ -9,11 +16,14 @@ export default function robots(): MetadataRoute.Robots {
         disallow: [
           '/admin/',
           '/wp-admin/',
-          '/service/',
           '/wp-login.php/',
           '/internal/',
           '/private/',
         ],
+      },
+      {
+        userAgent: ['CCBot', 'Bytespider'],
+        disallow: '/',
       },
       {
         userAgent: [
@@ -33,13 +43,12 @@ export default function robots(): MetadataRoute.Robots {
           'meta-externalagent',
           'cohere-ai',
           'YouBot',
-          'CCBot',
           'DuckAssistBot',
-          'Bytespider',
+          'YouBot',
         ],
         allow: '/',
       },
     ],
-    sitemap: 'https://agixtech.com/sitemap.xml',
+    sitemap: `${SITE_URL}/sitemap.xml`,
   };
 }

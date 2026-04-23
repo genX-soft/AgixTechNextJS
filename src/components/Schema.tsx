@@ -184,9 +184,46 @@ function buildBreadcrumbSchema(data: BreadcrumbSchemaData) {
   };
 }
 
+function buildPricingSchema() {
+  const tiers = [
+    { name: "AI Automation (Focused Workflows)", price: 8000, maxPrice: 25000 },
+    { name: "AI Automation (Enterprise Systems)", price: 30000, maxPrice: 100000 },
+    { name: "AI Voice Agents (Single Use Case)", price: 12000, maxPrice: 35000 },
+    { name: "AI Voice Agents (Enterprise Multi-Use)", price: 40000, maxPrice: 120000 },
+    { name: "Agentic AI Systems (Single Agent)", price: 20000, maxPrice: 60000 },
+    { name: "Agentic AI Systems (Multi-Agent)", price: 60000, maxPrice: 200000 },
+    { name: "RAG & Knowledge AI", price: 15000, maxPrice: 150000 },
+  ];
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    'name': 'Pricing — AGIX Technologies',
+    'description': 'Transparent pricing for enterprise AI automation, agentic systems, voice agents, and custom AI development.',
+    'mainEntity': {
+      '@type': 'OfferCatalog',
+      'name': 'AI Engineering Services',
+      'itemListElement': tiers.map(tier => ({
+        '@type': 'Offer',
+        'itemOffered': {
+          '@type': 'Service',
+          'name': tier.name,
+        },
+        'priceSpecification': {
+          '@type': 'PriceSpecification',
+          'price': tier.price,
+          'maxPrice': tier.maxPrice,
+          'priceCurrency': 'USD',
+          'valueAddedTaxIncluded': 'false'
+        }
+      }))
+    }
+  };
+}
+
 // ─── Component ────────────────────────────────────────────────────────────────
 
-export default function Schema(props: SchemaProps) {
+export default function Schema(props: SchemaProps | { type: 'pricing'; data?: never }) {
   if (props.type === 'home') {
     return (
       <script
@@ -252,6 +289,16 @@ export default function Schema(props: SchemaProps) {
         id="schema-breadcrumb"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(buildBreadcrumbSchema(props.data)) }}
+      />
+    );
+  }
+
+  if (props.type === 'pricing') {
+    return (
+      <script
+        id="schema-pricing"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(buildPricingSchema()) }}
       />
     );
   }
