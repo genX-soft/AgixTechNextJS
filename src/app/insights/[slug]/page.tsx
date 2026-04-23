@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { cache } from 'react';
 import BlogDetailClient from './blog-detail-client';
-import { WPPost } from '@/lib/insights/wordpress';
+import { WPPost, getAuthorName } from '@/lib/insights/wordpress';
 import { extractFAQsFromContent, FAQData } from '@/lib/insights/faq-utils';
 import { getRelatedServices, ServiceLink } from '@/lib/insights/service-mapping';
 import { injectInlineServiceLinks } from '@/lib/insights/inject-links';
@@ -103,6 +103,11 @@ export async function generateMetadata({
       url: canonicalUrl,
       siteName: 'AGIX Technologies',
       type: 'article',
+      publishedTime: post.date,
+      modifiedTime: post.modified,
+      authors: [getAuthorName(post)],
+      section: post._embedded?.['wp:term']?.[0]?.[0]?.name || 'Insights',
+      tags: post._embedded?.['wp:term']?.[1]?.map((t: any) => t.name) || [],
       images: [{ url: ogImage, width: 1200, height: 630 }],
     },
     twitter: {
@@ -110,6 +115,8 @@ export async function generateMetadata({
       title: yoast?.twitter_title || title,
       description: yoast?.twitter_description || description,
       images: [yoast?.twitter_image || ogImage],
+      site: '@agixtech',
+      creator: '@agixtech',
     },
     robots: { index: true, follow: true },
   };
