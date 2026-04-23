@@ -50,7 +50,7 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata: Metadata = {
   metadataBase: new URL('https://agixtech.com/'),
   title: {
-    default: 'AGIX Technologies | AI Systems Engineering & AI Agents',
+    default: 'Agentic AI Systems That Cut Ops Cost 40% | AGIX Technologies',
     template: '%s | AGIX Technologies',
   },
   description: 'We are an AI Systems Engineering & Agentic Intelligence company helping enterprises design, deploy, and scale autonomous AI systems that deliver measurable ROI.',
