@@ -21,7 +21,7 @@ function buildInsightsSchema(posts: WPPost[]) {
     itemListElement: posts.map((post, i) => ({
       '@type': 'ListItem',
       position: i + 1,
-      url: `${SITE_URL}/${post.slug}/`,
+      url: `${SITE_URL}/insights/${post.slug}/`,
       name: stripHtml(post.title.rendered),
     })),
   };
@@ -43,7 +43,7 @@ async function getInitialPosts(): Promise<{
   try {
     const response = await fetch(
       `${WP_API_BASE}/posts?per_page=9&page=1&_embed=true`,
-      { next: { revalidate: 1800 } }
+      { next: { tags: ['wordpress-posts'] } }
     );
     if (!response.ok) return { posts: [], totalPages: 1 };
     const posts: WPPost[] = await response.json();

@@ -9,7 +9,7 @@ export async function GET(request: NextRequest) {
   try {
     const response = await fetch(`${WP_API_BASE}/categories?${params}`, {
       headers: { 'Accept': 'application/json' },
-      next: { revalidate: 3600 },
+      next: { tags: ['wordpress-categories'] },
     });
 
     if (!response.ok) {
@@ -22,7 +22,7 @@ export async function GET(request: NextRequest) {
     const data = await response.json();
     return NextResponse.json(data, {
       headers: {
-        'Cache-Control': 'public, max-age=3600, stale-while-revalidate=7200',
+        'Cache-Control': 'public, max-age=0, s-maxage=31536000, stale-while-revalidate',
       },
     });
   } catch (error) {

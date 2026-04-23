@@ -9,7 +9,7 @@ export async function GET(request: NextRequest) {
   try {
     const response = await fetch(`${WP_API_BASE}/posts?${params}`, {
       headers: { 'Accept': 'application/json' },
-      next: { revalidate: 1800 },
+      next: { tags: ['wordpress-posts'] },
     });
 
     if (!response.ok) {
@@ -25,7 +25,7 @@ export async function GET(request: NextRequest) {
       headers: {
         'X-WP-Total': response.headers.get('X-WP-Total') || '0',
         'X-WP-TotalPages': response.headers.get('X-WP-TotalPages') || '1',
-        'Cache-Control': 'public, max-age=1800, stale-while-revalidate=3600',
+        'Cache-Control': 'public, max-age=0, s-maxage=31536000, stale-while-revalidate',
       },
     });
   } catch (error) {
