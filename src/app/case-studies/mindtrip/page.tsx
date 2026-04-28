@@ -118,10 +118,10 @@ export default function MindtripCaseStudyPage() {
           <h2 className="text-3xl font-bold mb-8">Case Study Overview</h2>
           <div className="space-y-4 text-lg text-muted-foreground">
             <p>
-              <strong className="text-foreground">The Challenge:</strong> Mindtrip's travel discovery platform relied on traditional search filters—dates, destination, budget—that forced travelers to express nuanced preferences in rigid, categorical terms. The result was high bounce rates as users struggled to find what they were looking for, and low conversion because the gap between what search returned and what travelers actually wanted was too wide to bridge with additional filters.
+              <strong className="text-foreground">The Challenge:</strong> Mindtrip's travel discovery platform relied on traditional search filters--dates, destination, budget--that forced travelers to express nuanced preferences in rigid, categorical terms. The result was high bounce rates as users struggled to find what they were looking for, and low conversion because the gap between what search returned and what travelers actually wanted was too wide to bridge with additional filters.
             </p>
             <p>
-              <strong className="text-foreground">The Solution:</strong> AGIX Technologies built a conversational travel planning AI that engages users in open-ended natural dialogue to explore destinations, activities, travel styles, and constraints. The system builds a dynamic understanding of traveler intent through conversation, generates ranked destination matches with curated itineraries, and refines recommendations in real time based on follow-up responses—effectively replicating the experience of talking to a knowledgeable travel friend.
+              <strong className="text-foreground">The Solution:</strong> AGIX Technologies built a conversational travel planning AI that engages users in open-ended natural dialogue to explore destinations, activities, travel styles, and constraints. The system builds a dynamic understanding of traveler intent through conversation, generates ranked destination matches with curated itineraries, and refines recommendations in real time based on follow-up responses--effectively replicating the experience of talking to a knowledgeable travel friend.
             </p>
             <p>
               <strong className="text-foreground">The Impact:</strong> Average session duration increased 4x compared to the traditional search interface as users found the conversational format genuinely engaging for trip planning. Trip planning completion rates improved 58%, indicating users were reaching decisions rather than abandoning sessions. Users generated an average of 3.2 complete itineraries per session versus 0.4 with the legacy interface, dramatically increasing the number of actionable travel plans entering the booking funnel.
@@ -148,7 +148,7 @@ export default function MindtripCaseStudyPage() {
             <h2 className="text-3xl font-bold">Generic Travel Recommendations That Miss the Mark</h2>
             
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Travelers were drowning in overwhelming options—sifting through hundreds of generic 
+              Travelers were drowning in overwhelming options--sifting through hundreds of generic 
               recommendations that didn't match their preferences. Traditional travel sites showed 
               the same "Top 10" lists to everyone, ignoring personal tastes, travel styles, and 
               nuanced requirements. The result? Hours wasted on research and trips that felt 
@@ -306,7 +306,7 @@ export default function MindtripCaseStudyPage() {
             <CardContent className="p-8 md:p-12">
               <Quote className="w-10 h-10 text-sky-500/30 mb-4" />
               <blockquote className="text-xl md:text-2xl font-medium leading-relaxed mb-6">
-                "Traditional travel planning is broken—hours of research across dozens 
+                "Traditional travel planning is broken--hours of research across dozens 
                 of tabs, only to end up with generic recommendations. Our AI has a 
                 real conversation, understands nuance, and creates trips that feel 
                 like they were planned by a friend who knows you deeply."

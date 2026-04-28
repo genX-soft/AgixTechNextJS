@@ -73,7 +73,7 @@ export default function StitchFixCaseStudyPage() {
                 
                 <p className="text-xl text-muted-foreground">
                   Where algorithms meet artistry: building AI that amplifies human stylists, 
-                  not replaces them—serving millions of unique style preferences at scale.
+                  not replaces them--serving millions of unique style preferences at scale.
                 </p>
 
                 <div className="flex flex-wrap gap-6 pt-4">
@@ -143,13 +143,13 @@ export default function StitchFixCaseStudyPage() {
           <h2 className="text-3xl font-bold mb-8">Case Study Overview</h2>
           <div className="space-y-4 text-lg text-muted-foreground">
             <p>
-              <strong className="text-foreground">The Challenge:</strong> Stitch Fix's human stylists were exceptionally skilled but fundamentally constrained by time: each could realistically manage a limited number of active client profiles, making individualized styling difficult to scale. Algorithmic recommendation systems alone couldn't capture the nuanced interplay of body proportions, personal style identity, lifestyle context, and evolving fashion preferences that good styling requires—producing recommendations that felt generic compared to what expert human stylists could achieve.
+              <strong className="text-foreground">The Challenge:</strong> Stitch Fix's human stylists were exceptionally skilled but fundamentally constrained by time: each could realistically manage a limited number of active client profiles, making individualized styling difficult to scale. Algorithmic recommendation systems alone couldn't capture the nuanced interplay of body proportions, personal style identity, lifestyle context, and evolving fashion preferences that good styling requires--producing recommendations that felt generic compared to what expert human stylists could achieve.
             </p>
             <p>
               <strong className="text-foreground">The Solution:</strong> AGIX Technologies built a hybrid AI system where collaborative filtering and multi-modal deep learning models analyze purchase history, style ratings, body measurements, lifestyle questionnaire responses, and even external fashion trend signals to pre-select high-probability candidates for each client. Human stylists review and refine the AI's shortlist using their expert judgment, and their selection patterns become training signal that continuously improves future candidate sets.
             </p>
             <p>
-              <strong className="text-foreground">The Impact:</strong> Stylist capacity increased 4x as AI pre-selection reduced the manual review time required per client from hours to minutes. Keep rates—the percentage of shipped items retained by clients—improved 31%, indicating that the AI-human collaboration was achieving better personalization than either could independently. This combination of efficiency and quality enabled Stitch Fix to serve over 4 million active clients while maintaining the individualized experience central to their brand promise.
+              <strong className="text-foreground">The Impact:</strong> Stylist capacity increased 4x as AI pre-selection reduced the manual review time required per client from hours to minutes. Keep rates--the percentage of shipped items retained by clients--improved 31%, indicating that the AI-human collaboration was achieving better personalization than either could independently. This combination of efficiency and quality enabled Stitch Fix to serve over 4 million active clients while maintaining the individualized experience central to their brand promise.
             </p>
           </div>
         </div>
@@ -173,7 +173,7 @@ export default function StitchFixCaseStudyPage() {
             <h2 className="text-3xl font-bold">Capturing Taste You Can't Describe</h2>
             
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Fashion is deeply personal—and often unconscious. Clients can't articulate why 
+              Fashion is deeply personal--and often unconscious. Clients can't articulate why 
               they love one dress and hate another that looks similar. The AI needed to learn 
               preferences that clients themselves couldn't explain.
             </p>
@@ -184,7 +184,7 @@ export default function StitchFixCaseStudyPage() {
                   <h4 className="font-semibold text-red-400">The Cold Start Problem</h4>
                   <p className="text-sm text-muted-foreground">
                     New clients have no purchase history. First box recommendations were 
-                    essentially random—with only 42% keep rate and massive return costs.
+                    essentially random--with only 42% keep rate and massive return costs.
                   </p>
                 </CardContent>
               </Card>
@@ -194,7 +194,7 @@ export default function StitchFixCaseStudyPage() {
                   <h4 className="font-semibold text-amber-400">The Fit Nightmare</h4>
                   <p className="text-sm text-muted-foreground">
                     Same size fits differently across brands. "Medium" from one brand is 
-                    another's "Large." 34% of returns were fit-related—pure waste.
+                    another's "Large." 34% of returns were fit-related--pure waste.
                   </p>
                 </CardContent>
               </Card>
@@ -203,11 +203,11 @@ export default function StitchFixCaseStudyPage() {
             <div className="p-6 rounded-lg bg-muted/50 border border-border">
               <p className="text-muted-foreground italic">
                 "Our stylists are artists, but they were spending 80% of their time on data 
-                entry—looking up inventory, checking sizes, reading past notes. We needed 
+                entry--looking up inventory, checking sizes, reading past notes. We needed 
                 AI to handle the data work so they could focus on creative styling."
               </p>
               <p className="text-sm text-muted-foreground mt-3">
-                — Michelle Wong, Director of Styling Operations
+                -- Michelle Wong, Director of Styling Operations
               </p>
             </div>
           </motion.div>
@@ -405,7 +405,7 @@ export default function StitchFixCaseStudyPage() {
               <CardContent className="p-8 md:p-12">
                 <Quote className="w-12 h-12 text-pink-500/30 mb-6" />
                 <blockquote className="text-xl md:text-2xl font-medium leading-relaxed mb-8">
-                  "What we built isn't AI replacing stylists—it's AI giving stylists superpowers. 
+                  "What we built isn't AI replacing stylists--it's AI giving stylists superpowers. 
                   They now understand each client's preferences instantly, see size predictions 
                   they can trust, and spend their time on what humans do best: creative styling 
                   that makes clients feel amazing."
@@ -439,7 +439,7 @@ export default function StitchFixCaseStudyPage() {
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               We help companies build recommendation systems that learn what users 
-              want—even when they can't articulate it.
+              want--even when they can't articulate it.
             </p>
             <CtaForm />
           </motion.div>

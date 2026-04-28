@@ -70,7 +70,7 @@ export default function HelloDrivenCaseStudyPage() {
                 </h1>
                 
                 <p className="text-xl text-muted-foreground">
-                  AI voice agents that patients actually answer—handling appointment 
+                  AI voice agents that patients actually answer--handling appointment 
                   scheduling, reminders, and outreach for thousands of healthcare practices.
                 </p>
 
@@ -132,7 +132,7 @@ export default function HelloDrivenCaseStudyPage() {
           <h2 className="text-3xl font-bold mb-8">Case Study Overview</h2>
           <div className="space-y-4 text-lg text-muted-foreground">
             <p>
-              <strong className="text-foreground">The Challenge:</strong> Hello Driven's healthcare network faced appointment no-show rates exceeding 35%—a significant problem given that missed appointments represent both lost revenue and missed care opportunities for patients. The primary driver was poor patient outreach: manual phone call campaigns reached fewer than 40% of patients and offered no flexible rescheduling pathway for those who needed to adjust their appointments.
+              <strong className="text-foreground">The Challenge:</strong> Hello Driven's healthcare network faced appointment no-show rates exceeding 35%--a significant problem given that missed appointments represent both lost revenue and missed care opportunities for patients. The primary driver was poor patient outreach: manual phone call campaigns reached fewer than 40% of patients and offered no flexible rescheduling pathway for those who needed to adjust their appointments.
             </p>
             <p>
               <strong className="text-foreground">The Solution:</strong> AGIX Technologies deployed AI voice agents that conduct natural, empathetic outreach calls for appointment confirmations, reminders, pre-visit instructions, and health check-ins. The system detects hesitation patterns in patient responses and proactively offers rescheduling options in real time, completing rebooking without any human coordinator involvement. Complex cases and patients who request it escalate seamlessly to care staff.
@@ -163,7 +163,7 @@ export default function HelloDrivenCaseStudyPage() {
             
             <p className="text-lg text-muted-foreground leading-relaxed">
               Healthcare practices lose millions to no-shows and scheduling inefficiency. 
-              But patients have learned to ignore automated calls—67% hung up within 10 
+              But patients have learned to ignore automated calls--67% hung up within 10 
               seconds of realizing it was a robot. Hello Driven needed voice AI that 
               sounded human enough to earn patient trust.
             </p>
@@ -298,7 +298,7 @@ export default function HelloDrivenCaseStudyPage() {
                 <Quote className="w-12 h-12 text-cyan-500/30 mb-6" />
                 <blockquote className="text-xl md:text-2xl font-medium leading-relaxed mb-8">
                   "Our practices were drowning in scheduling calls. Now patients actually 
-                  engage with our AI—they tell us they didn't realize it wasn't a real person 
+                  engage with our AI--they tell us they didn't realize it wasn't a real person 
                   until we told them. No-shows are down 61%, and our staff can focus on 
                   patients in the office instead of being on the phone all day."
                 </blockquote>
@@ -331,7 +331,7 @@ export default function HelloDrivenCaseStudyPage() {
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               We help healthcare companies build voice systems that patients trust and 
-              engage with—improving outcomes while reducing operational burden.
+              engage with--improving outcomes while reducing operational burden.
             </p>
             <CtaForm />
           </motion.div>

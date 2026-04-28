@@ -39,16 +39,16 @@ export default function InnitCaseStudyPage() {
 
   const cookingSteps = [
     { step: "Prep", instruction: "Dice onions and mince garlic", duration: "5 min", temp: null, aiTip: "Rock the knife using your knuckles as a guide" },
-    { step: "Sear", instruction: "Heat oil and sear chicken pieces", duration: "4 min", temp: "400°F", aiTip: "Don't move the chicken until it releases naturally" },
-    { step: "Sauté", instruction: "Add aromatics and cook until fragrant", duration: "2 min", temp: "350°F", aiTip: "Stirring continuously prevents burning" },
-    { step: "Simmer", instruction: "Add sauce and reduce heat", duration: "15 min", temp: "275°F", aiTip: "Cover partially for best reduction" },
+    { step: "Sear", instruction: "Heat oil and sear chicken pieces", duration: "4 min", temp: "400 degF", aiTip: "Don't move the chicken until it releases naturally" },
+    { step: "Saute", instruction: "Add aromatics and cook until fragrant", duration: "2 min", temp: "350 degF", aiTip: "Stirring continuously prevents burning" },
+    { step: "Simmer", instruction: "Add sauce and reduce heat", duration: "15 min", temp: "275 degF", aiTip: "Cover partially for best reduction" },
     { step: "Rest", instruction: "Remove from heat and let rest", duration: "3 min", temp: null, aiTip: "This redistributes juices for tender meat" },
   ];
 
   const applianceStatus = [
-    { device: "Smart Oven", status: "Preheating to 400°F", progress: 78, connected: true },
+    { device: "Smart Oven", status: "Preheating to 400 degF", progress: 78, connected: true },
     { device: "Induction Cooktop", status: "Zone 1: Medium-High", progress: 100, connected: true },
-    { device: "Meat Thermometer", status: "165°F target - currently 142°F", progress: 86, connected: true },
+    { device: "Meat Thermometer", status: "165 degF target - currently 142 degF", progress: 86, connected: true },
     { device: "Range Hood", status: "Auto-adjusted to level 3", progress: 60, connected: true },
   ];
 
@@ -189,7 +189,7 @@ export default function InnitCaseStudyPage() {
             <h2 className="text-3xl font-bold">Home Cooks Failing at Recipes They Should Master</h2>
             
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Smart kitchen appliances promised to revolutionize home cooking—but without intelligent guidance, 
+              Smart kitchen appliances promised to revolutionize home cooking--but without intelligent guidance, 
               users faced the same frustrations. Recipes were confusing, timing was off, temperatures were wrong, 
               and meals ended up ruined. The disconnect between smart devices and actual cooking success 
               meant expensive kitchen tech sat unused while food waste piled up.

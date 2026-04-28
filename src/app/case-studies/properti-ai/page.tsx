@@ -119,10 +119,10 @@ export default function PropertiAICaseStudyPage() {
           <h2 className="text-3xl font-bold mb-8">Case Study Overview</h2>
           <div className="space-y-4 text-lg text-muted-foreground">
             <p>
-              <strong className="text-foreground">The Challenge:</strong> Properti AI's real estate platform was generating significant lead volume, but conversion from initial inquiry to qualified viewing was poor. Agents spent 60–70% of their qualification time on prospects whose stated preferences and actual property needs were misaligned—a mismatch that only became apparent after multiple property tours. Buyers navigated listings using basic filters that couldn't capture the nuanced combination of factors that actually drove purchase decisions.
+              <strong className="text-foreground">The Challenge:</strong> Properti AI's real estate platform was generating significant lead volume, but conversion from initial inquiry to qualified viewing was poor. Agents spent 60-70% of their qualification time on prospects whose stated preferences and actual property needs were misaligned--a mismatch that only became apparent after multiple property tours. Buyers navigated listings using basic filters that couldn't capture the nuanced combination of factors that actually drove purchase decisions.
             </p>
             <p>
-              <strong className="text-foreground">The Solution:</strong> AGIX Technologies built a conversational property discovery AI that engages buyers in structured natural language dialogue to surface both explicit requirements and implicit preferences—commute priorities, neighborhood character preferences, renovation appetite, lifestyle fit—and cross-references the resulting intent profile against live listing data, school district ratings, walkability scores, and historical price trend data to generate ranked, personalized property recommendations.
+              <strong className="text-foreground">The Solution:</strong> AGIX Technologies built a conversational property discovery AI that engages buyers in structured natural language dialogue to surface both explicit requirements and implicit preferences--commute priorities, neighborhood character preferences, renovation appetite, lifestyle fit--and cross-references the resulting intent profile against live listing data, school district ratings, walkability scores, and historical price trend data to generate ranked, personalized property recommendations.
             </p>
             <p>
               <strong className="text-foreground">The Impact:</strong> Lead-to-qualified-viewing conversion improved +156% as the AI pre-qualification layer ensured that buyers entering the viewing process had genuine fit with the properties they were considering. Buyers found properties matching their actual preferences after viewing an average of 4.2 listings, compared to 23.7 with the traditional search interface. Agent time spent on initial qualification dropped 68%, allowing them to concentrate on high-intent buyers where relationship and negotiation skills drive outcomes.
@@ -151,7 +151,7 @@ export default function PropertiAICaseStudyPage() {
             <p className="text-lg text-muted-foreground leading-relaxed">
               Buyers were wading through hundreds of mismatched listings, while agents spent hours 
               qualifying leads who weren't ready to buy. Traditional search filters couldn't understand 
-              lifestyle needs—like "good for remote work" or "family-friendly neighborhood"—leading to 
+              lifestyle needs--like "good for remote work" or "family-friendly neighborhood"--leading to 
               endless property tours that went nowhere. Both sides were frustrated, and deals were falling through.
             </p>
 
@@ -346,8 +346,8 @@ export default function PropertiAICaseStudyPage() {
               <Quote className="w-10 h-10 text-teal-500/30 mb-4" />
               <blockquote className="text-xl md:text-2xl font-medium leading-relaxed mb-6">
                 "Buyers used to waste weeks looking at properties that didn't fit. 
-                Our AI asks the right questions, understands lifestyle needs—not just 
-                square footage—and surfaces matches that feel like magic. Agents now 
+                Our AI asks the right questions, understands lifestyle needs--not just 
+                square footage--and surfaces matches that feel like magic. Agents now 
                 spend time closing deals, not qualifying tire-kickers."
               </blockquote>
               <div className="flex items-center gap-4">

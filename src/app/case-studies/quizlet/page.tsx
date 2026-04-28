@@ -83,7 +83,7 @@ export default function QuizletCaseStudyPage() {
                 </h1>
                 
                 <p className="text-xl text-muted-foreground">
-                  Building Q-Chat: an AI tutor that teaches through questions, not answers—
+                  Building Q-Chat: an AI tutor that teaches through questions, not answers--
                   serving 60M+ students with personalized Socratic learning.
                 </p>
 
@@ -148,7 +148,7 @@ export default function QuizletCaseStudyPage() {
               <strong className="text-foreground">The Challenge:</strong> Quizlet served hundreds of millions of students with a flashcard and quiz platform that, despite its scale, remained fundamentally passive: students reviewed content without any AI assessment of whether they actually understood it. Surface-level memorization of flashcard patterns produced poor long-term retention, and the platform had no mechanism to identify conceptual gaps, adjust difficulty dynamically, or guide students toward the specific review that would most improve their performance.
             </p>
             <p>
-              <strong className="text-foreground">The Solution:</strong> AGIX Technologies helped build Q-Chat, a Socratic AI tutor that teaches through targeted questions rather than direct information delivery. The system models individual knowledge states across concept hierarchies, identifies specific gaps in understanding through diagnostic question sequences, and crafts follow-up questions at calibrated difficulty levels that build toward genuine mastery—guiding students to construct understanding rather than passively recognizing correct answers.
+              <strong className="text-foreground">The Solution:</strong> AGIX Technologies helped build Q-Chat, a Socratic AI tutor that teaches through targeted questions rather than direct information delivery. The system models individual knowledge states across concept hierarchies, identifies specific gaps in understanding through diagnostic question sequences, and crafts follow-up questions at calibrated difficulty levels that build toward genuine mastery--guiding students to construct understanding rather than passively recognizing correct answers.
             </p>
             <p>
               <strong className="text-foreground">The Impact:</strong> Students using Q-Chat demonstrated 68% better long-term retention on delayed recall assessments compared to students using traditional flashcard study. Average study session engagement increased 3x as the interactive dialogue format proved more compelling than passive review. Performance on curriculum-aligned assessments improved significantly across subject areas, validating that Q-Chat was building transferable understanding rather than narrow test-taking familiarity.
@@ -351,7 +351,7 @@ export default function QuizletCaseStudyPage() {
 
             <div className="p-6 rounded-lg bg-green-500/10 border border-green-500/20 text-center">
               <p className="text-green-400 font-medium">
-                4 sessions to mastery—with all misconceptions identified and resolved
+                4 sessions to mastery--with all misconceptions identified and resolved
               </p>
             </div>
           </motion.div>
@@ -426,7 +426,7 @@ export default function QuizletCaseStudyPage() {
                 <Quote className="w-12 h-12 text-indigo-500/30 mb-6" />
                 <blockquote className="text-xl md:text-2xl font-medium leading-relaxed mb-8">
                   "Q-Chat represents what AI in education should be. It's not about giving 
-                  students answers faster—it's about helping them think better. The misconception 
+                  students answers faster--it's about helping them think better. The misconception 
                   detection alone is worth it. Teachers can now see exactly where students 
                   struggle and intervene at the right moment."
                 </blockquote>
@@ -458,7 +458,7 @@ export default function QuizletCaseStudyPage() {
               Building AI for Education?
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              We help EdTech companies build AI that actually improves learning outcomes—
+              We help EdTech companies build AI that actually improves learning outcomes--
               not just engagement metrics.
             </p>
             <CtaForm />
@@ -466,7 +466,7 @@ export default function QuizletCaseStudyPage() {
         </div>
       </section>
       <FAQPageSchema faqs={documentFAQs['cs-quizlet']} />
-      <FAQSection faqs={documentFAQs['cs-quizlet']} title="Quizlet Q-Chat AI Tutor � Questions Answered" />
+      <FAQSection faqs={documentFAQs['cs-quizlet']} title="Quizlet Q-Chat AI Tutor  Questions Answered" />
 
 
       

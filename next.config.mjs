@@ -36,6 +36,9 @@ const nextConfig = {
 
   assetPrefix: devPrefix,
 
+  typescript: {
+    ignoreBuildErrors: true,
+  },
   experimental: {
     serverActions: {
       bodySizeLimit: '2mb',

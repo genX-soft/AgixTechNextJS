@@ -151,7 +151,7 @@ export default function BrainfishCaseStudyPage() {
 
                 <p className="text-xl text-muted-foreground">
                   83% of support tickets resolved without human intervention. Brainfish's AI 
-                  doesn't just answer questions—it resolves issues, escalates intelligently, 
+                  doesn't just answer questions--it resolves issues, escalates intelligently, 
                   and makes agents more productive.
                 </p>
 
@@ -204,7 +204,7 @@ export default function BrainfishCaseStudyPage() {
           <h2 className="text-3xl font-bold mb-8">Case Study Overview</h2>
           <div className="space-y-4 text-lg text-muted-foreground">
             <p>
-              <strong className="text-foreground">The Challenge:</strong> Brainfish's support team was overwhelmed by high-volume, repetitive customer inquiries—with analysis showing 78% of incoming tickets were answerable directly from existing product documentation. Average response times had stretched to 48 hours during peak periods, increasing churn among new users who needed immediate help. Support costs were scaling linearly with user growth, threatening unit economics.
+              <strong className="text-foreground">The Challenge:</strong> Brainfish's support team was overwhelmed by high-volume, repetitive customer inquiries--with analysis showing 78% of incoming tickets were answerable directly from existing product documentation. Average response times had stretched to 48 hours during peak periods, increasing churn among new users who needed immediate help. Support costs were scaling linearly with user growth, threatening unit economics.
             </p>
             <p>
               <strong className="text-foreground">The Solution:</strong> AGIX Technologies built an AI knowledge engine that ingests Brainfish's full documentation library, product update history, and resolved ticket archives. A conversational interface delivers instant, context-accurate answers using semantic search and retrieval-augmented generation. The system automatically identifies gaps in documentation based on unanswered queries and routes genuinely complex or sensitive cases to human agents with full context.
@@ -234,7 +234,7 @@ export default function BrainfishCaseStudyPage() {
             <h2 className="text-3xl font-bold">Support Teams Drowning in Repetitive Tickets</h2>
             
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Knowledge bases became content graveyards—outdated articles that customers couldn't find, 
+              Knowledge bases became content graveyards--outdated articles that customers couldn't find, 
               and when they did find them, the information was often wrong. Support teams answered the 
               same questions thousands of times per month while ticket queues grew faster than headcount. 
               Customers waited days for responses to simple questions, tanking NPS scores and driving churn.
@@ -478,7 +478,7 @@ export default function BrainfishCaseStudyPage() {
             <CardContent className="p-8 md:p-12">
               <Quote className="w-10 h-10 text-orange-500/30 mb-4" />
               <blockquote className="text-xl md:text-2xl font-medium leading-relaxed mb-6">
-                "We went from drowning in tickets to actually getting ahead. The AI handles the repetitive stuff instantly, and when it hands off to our team, agents already have full context. Our CSAT went up while our team size stayed flat—that's the dream scenario for any support leader."
+                "We went from drowning in tickets to actually getting ahead. The AI handles the repetitive stuff instantly, and when it hands off to our team, agents already have full context. Our CSAT went up while our team size stayed flat--that's the dream scenario for any support leader."
               </blockquote>
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 rounded-full bg-gradient-to-br from-orange-500 to-amber-500 flex items-center justify-center text-white font-bold">

@@ -119,10 +119,10 @@ export default function DartmouthCollegeCaseStudyPage() {
           <h2 className="text-3xl font-bold mb-8">Case Study Overview</h2>
           <div className="space-y-4 text-lg text-muted-foreground">
             <p>
-              <strong className="text-foreground">The Challenge:</strong> Dartmouth's IT department handled over 40,000 support tickets annually, with 68% of those tickets covering a known set of roughly 200 recurring issues—password resets, software installation, network access, and account management. Students and faculty waited an average of six hours for responses during peak periods, and IT staff were consumed by low-complexity work rather than infrastructure improvements and strategic initiatives.
+              <strong className="text-foreground">The Challenge:</strong> Dartmouth's IT department handled over 40,000 support tickets annually, with 68% of those tickets covering a known set of roughly 200 recurring issues--password resets, software installation, network access, and account management. Students and faculty waited an average of six hours for responses during peak periods, and IT staff were consumed by low-complexity work rather than infrastructure improvements and strategic initiatives.
             </p>
             <p>
-              <strong className="text-foreground">The Solution:</strong> AGIX Technologies deployed an AI helpdesk agent trained on Dartmouth's IT knowledge base, documented procedures, historical ticket data, and system integration documentation. The agent handles the full lifecycle of common requests 24/7—guiding users through password resets, diagnosing connectivity issues, provisioning software access, and completing account changes—without any human involvement for routine cases.
+              <strong className="text-foreground">The Solution:</strong> AGIX Technologies deployed an AI helpdesk agent trained on Dartmouth's IT knowledge base, documented procedures, historical ticket data, and system integration documentation. The agent handles the full lifecycle of common requests 24/7--guiding users through password resets, diagnosing connectivity issues, provisioning software access, and completing account changes--without any human involvement for routine cases.
             </p>
             <p>
               <strong className="text-foreground">The Impact:</strong> 74% of IT tickets now resolve automatically, freeing the IT team from thousands of hours of routine support annually. Average resolution time dropped from six hours to under four minutes for automated cases. With low-value tasks handled by AI, IT staff redirected over 60% of their capacity to infrastructure improvements, security initiatives, and faculty technology projects, producing compounding value beyond direct cost savings.
@@ -149,7 +149,7 @@ export default function DartmouthCollegeCaseStudyPage() {
             <h2 className="text-3xl font-bold">Overwhelmed Help Desk Couldn't Keep Up With Student Demand</h2>
             
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Campus IT support was drowning in routine tickets—password resets, WiFi troubleshooting, 
+              Campus IT support was drowning in routine tickets--password resets, WiFi troubleshooting, 
               and software questions piled up faster than staff could respond. Students faced long wait 
               times, especially during peak hours and exam periods. After-hours support was non-existent, 
               leaving students stranded when they needed help most.
@@ -369,7 +369,7 @@ export default function DartmouthCollegeCaseStudyPage() {
               <Quote className="w-10 h-10 text-green-500/30 mb-4" />
               <blockquote className="text-xl md:text-2xl font-medium leading-relaxed mb-6">
                 "Students expect instant answers at 2 AM before a deadline. Our AI 
-                helpdesk handles 74% of tickets without human intervention—password 
+                helpdesk handles 74% of tickets without human intervention--password 
                 resets, WiFi troubleshooting, software installs. Our IT staff now 
                 focuses on complex issues that actually need expertise."
               </blockquote>

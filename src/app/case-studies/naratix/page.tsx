@@ -95,7 +95,7 @@ export default function NaratixCaseStudyPage() {
 
                 <p className="text-xl text-muted-foreground">
                   From weeks of translation work to minutes. Naratix uses AI to generate 
-                  culturally-adapted product content for 28 markets—driving +129% conversion uplift.
+                  culturally-adapted product content for 28 markets--driving +129% conversion uplift.
                 </p>
 
                 <div className="flex flex-wrap gap-6 pt-4">
@@ -147,7 +147,7 @@ export default function NaratixCaseStudyPage() {
           <h2 className="text-3xl font-bold mb-8">Case Study Overview</h2>
           <div className="space-y-4 text-lg text-muted-foreground">
             <p>
-              <strong className="text-foreground">The Challenge:</strong> Naratix needed to help e-commerce clients localize product content across 40+ languages and regional markets—a requirement that traditional localization workflows addressed with weeks of agency work and significant cost per market. As clients' product catalogs grew to tens of thousands of SKUs requiring frequent content updates, manual localization became a strategic bottleneck that prevented timely market expansion.
+              <strong className="text-foreground">The Challenge:</strong> Naratix needed to help e-commerce clients localize product content across 40+ languages and regional markets--a requirement that traditional localization workflows addressed with weeks of agency work and significant cost per market. As clients' product catalogs grew to tens of thousands of SKUs requiring frequent content updates, manual localization became a strategic bottleneck that prevented timely market expansion.
             </p>
             <p>
               <strong className="text-foreground">The Solution:</strong> AGIX Technologies built an AI localization engine combining large language models fine-tuned on e-commerce conversion data with a proprietary quality layer that enforces brand voice consistency while adapting tone, cultural references, and product positioning for each target market. The system handles regulatory terminology requirements, generates market-specific SEO metadata, and integrates directly into product information management systems for automated content pipelines.
@@ -335,7 +335,7 @@ export default function NaratixCaseStudyPage() {
                   <div className="flex items-center justify-between">
                     <div>
                       <p className="text-sm text-green-400 font-medium">Conversion Impact</p>
-                      <p className="text-xs text-slate-400">{currentMarket.conversion.before} → {currentMarket.conversion.after}</p>
+                      <p className="text-xs text-slate-400 flex items-center gap-1">{currentMarket.conversion.before} <ArrowRight className="w-3 h-3 inline" /> {currentMarket.conversion.after}</p>
                     </div>
                     <Badge className="bg-green-500 text-white text-lg">
                       {currentMarket.conversion.lift}
@@ -447,7 +447,7 @@ export default function NaratixCaseStudyPage() {
             <CardContent className="p-8 md:p-12">
               <Quote className="w-10 h-10 text-fuchsia-500/30 mb-4" />
               <blockquote className="text-xl md:text-2xl font-medium leading-relaxed mb-6">
-                "Going global used to mean hiring armies of copywriters and translators, then waiting weeks for content. Our AI generates localized product content for 28 markets in minutes—and it actually converts better because it understands each market's buying psychology, not just their language."
+                "Going global used to mean hiring armies of copywriters and translators, then waiting weeks for content. Our AI generates localized product content for 28 markets in minutes--and it actually converts better because it understands each market's buying psychology, not just their language."
               </blockquote>
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 rounded-full bg-gradient-to-br from-fuchsia-500 to-purple-500 flex items-center justify-center text-white font-bold">

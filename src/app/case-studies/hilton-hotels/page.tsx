@@ -479,7 +479,7 @@ export default function HiltonHotelsCaseStudyPage() {
             <CardContent className="p-8 md:p-12">
               <Quote className="w-10 h-10 text-blue-500/30 mb-4" />
               <blockquote className="text-xl md:text-2xl font-medium leading-relaxed mb-6">
-                "We're not just pricing roomsâ€”we're pricing experiences. The AI understands that a Diamond member booking for their anniversary is a different value proposition than a corporate traveler on per diem. That nuance drives incremental revenue we never captured before."
+                "We're not just pricing rooms--we're pricing experiences. The AI understands that a Diamond member booking for their anniversary is a different value proposition than a corporate traveler on per diem. That nuance drives incremental revenue we never captured before."
               </blockquote>
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-amber-500 flex items-center justify-center text-white font-bold">
@@ -506,7 +506,7 @@ export default function HiltonHotelsCaseStudyPage() {
         </div>
       </section>
       <FAQPageSchema faqs={documentFAQs['cs-hilton-hotels']} />
-      <FAQSection faqs={documentFAQs['cs-hilton-hotels']} title="Hilton Hotels AI — Questions Answered" />
+      <FAQSection faqs={documentFAQs['cs-hilton-hotels']} title="Hilton Hotels AI  Questions Answered" />
 
 
       
