@@ -1,4 +1,7 @@
 'use client'
+import FAQSection from "@/components/shared/FAQSection";
+import FAQPageSchema from "@/components/shared/FAQPageSchema";
+import { documentFAQs } from "@/lib/seo/faq-data";
 
 import { CaseStudyTemplate } from "@/components/shared/case-study-template";
 
@@ -430,6 +433,9 @@ export default function OcrolusCaseStudyPage() {
           </motion.div>
         </div>
       </section>
+      <FAQPageSchema faqs={documentFAQs['cs-ocrolus']} />
+      <FAQSection faqs={documentFAQs['cs-ocrolus']} title="Ocrolus Document AI — Questions Answered" />
+
 
       
       </CaseStudyTemplate>

@@ -69,6 +69,7 @@ import { submitLead } from "@/lib/lead-submission";
 import { useCelebration } from "@/components/success-celebration";
 import { IndustryCaseStudies, IndustryServices } from "@/components/industry-sections";
 import FAQSection from "@/components/shared/FAQSection";
+import FAQPageSchema from "@/components/shared/FAQPageSchema";
 import { documentFAQs } from "@/lib/seo/faq-data";
 
 const caseStudies = [
@@ -2028,6 +2029,7 @@ export default function RealEstateIndustryPage() {
           </p>
         </div>
       </section>
+      <FAQPageSchema faqs={documentFAQs['real-estate-ai-solutions']} />
       <FAQSection
         faqs={documentFAQs['real-estate-ai-solutions']}
         title="Real Estate AI Questions Answered"

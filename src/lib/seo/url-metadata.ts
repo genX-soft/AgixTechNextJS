@@ -109,7 +109,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     twitterTitle: 'AI Automation Company for Intelligent Business Workflows & Process Automation',
     twitterDescription: 'Build intelligent workflows with AI automation services that integrate with CRMs, ERPs & enterprise tools. Automate decisions, routing, and operations at scale.',
     featuredImage: 'https://cms.agixtech.com/wp-content/uploads/2026/01/AI-Automation-Service-page-banner.png',
-    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Service'],
+    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Service', 'FAQPage'],
   },
 
   '/services/ai-voice-agents': {
@@ -123,7 +123,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     twitterTitle: 'AI Voice Agent Services & AI Phone Agents for Businesses',
     twitterDescription: 'AI voice agent services for businesses looking to automate calls, improve customer experience, and reduce costs with intelligent voice AI solutions.',
     featuredImage: 'https://cms.agixtech.com/wp-content/uploads/2026/01/Intelligent-Voice-Agents-Service-page-banner.png',
-    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Service'],
+    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Service', 'FAQPage'],
   },
 
   '/services/conversational-ai-chatbots': {
@@ -137,7 +137,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     twitterTitle: 'Conversational AI Chatbots for Support, Sales & Operations',
     twitterDescription: 'Enterprise-grade conversational AI chatbots that automate conversations, improve customer experience, and scale business operations.',
     featuredImage: 'https://cms.agixtech.com/wp-content/uploads/2026/01/Conversations-Intelligence-Service-page-banner.png',
-    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Service'],
+    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Service', 'FAQPage'],
   },
 
   '/services/agentic-ai-systems': {
@@ -151,7 +151,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     twitterTitle: 'Agentic AI Systems That Plan, Decide & Operate Autonomously',
     twitterDescription: 'Deploy enterprise-grade agentic AI systems with intelligent autonomous agents built to handle complex workflows, decisions, and execution at scale.',
     featuredImage: 'https://cms.agixtech.com/wp-content/uploads/2026/01/Agentic-AI-Service-page-banner.png',
-    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Service'],
+    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Service', 'FAQPage'],
   },
 
   '/services/rag-knowledge-ai': {
@@ -165,7 +165,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     twitterTitle: 'RAG Knowledge AI Solutions for Accurate, Trusted Enterprise AI',
     twitterDescription: 'Deploy RAG Knowledge AI systems that answer from your data—not the internet. Enterprise Retrieval Augmented Generation services built for trust and scale.',
     featuredImage: 'https://cms.agixtech.com/wp-content/uploads/2026/01/RAG-Service-page-banner.png',
-    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Service'],
+    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Service', 'FAQPage'],
   },
 
   '/services/ai-predictive-analytics': {
@@ -179,7 +179,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     twitterTitle: 'AI Predictive Analytics for Enterprise Decision Intelligence',
     twitterDescription: 'Forecast outcomes, reduce risk, and optimize decisions with AI predictive analytics and enterprise-grade forecasting systems.',
     featuredImage: 'https://cms.agixtech.com/wp-content/uploads/2026/01/Predictive-Analytics-Service-page-banner.png',
-    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Service'],
+    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Service', 'FAQPage'],
   },
 
   '/services/ai-computer-vision': {
@@ -193,7 +193,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     twitterTitle: 'Computer Vision Services & AI Visual Automation',
     twitterDescription: 'Custom computer vision solutions for image and video analytics, OCR, defect detection, and automation. Scalable AI built for enterprise operations.',
     featuredImage: 'https://cms.agixtech.com/wp-content/uploads/2026/01/Computer-Vision-Solutions-page-banner.png',
-    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Service'],
+    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Service', 'FAQPage'],
   },
 
   '/services/custom-ai-product-development': {
@@ -207,7 +207,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     twitterTitle: 'Custom AI Product Development & MVP Services for AI Startups',
     twitterDescription: 'From idea to market-ready AI product. We help startups build AI MVPs, validate ideas, deploy models, and scale with production-grade engineering and ROI.',
     featuredImage: 'https://cms.agixtech.com/wp-content/uploads/2026/01/AI-Product-Development-Service-page-banner.png',
-    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Service'],
+    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Service', 'FAQPage'],
   },
 
   '/industries/healthcare-ai-solutions': {
@@ -221,7 +221,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     twitterTitle: 'AI Solutions for Smarter Healthcare',
     twitterDescription: 'Enhance healthcare efficiency and clinician support with reliable, explainable AI designed for real-world clinical environments.',
     featuredImage: 'https://cms.agixtech.com/wp-content/uploads/2026/01/AI-Solutions-in-Healthcare-page-banner.png',
-    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Service'],
+    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Service', 'FAQPage'],
   },
 
   '/industries/real-estate-ai-solutions': {
@@ -235,7 +235,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     twitterTitle: 'Get Custom AI Solutions for Real Estate',
     twitterDescription: 'Purpose-built AI solutions for real estate teams struggling with slow responses, missed follow-ups, and stalled deals.',
     featuredImage: 'https://cms.agixtech.com/wp-content/uploads/2026/01/AI-Solutions-in-Real-Estate-page-banner.png',
-    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Service'],
+    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Service', 'FAQPage'],
   },
 
   '/industries/fintech-ai-solutions': {
@@ -249,7 +249,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     twitterTitle: 'Secure AI FinTech Solutions for Smart Lending',
     twitterDescription: 'Modernize your financial services with reliable AI fintech solutions. Get custom roadmaps for fraud detection, credit scoring, and scale.',
     featuredImage: 'https://cms.agixtech.com/wp-content/uploads/2026/01/AI-solutions-for-FinTech-Industry-Image.png',
-    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Service'],
+    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Service', 'FAQPage'],
   },
 
   '/industries/insurance-ai-solutions': {
@@ -263,7 +263,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     twitterTitle: 'Advanced AI-Driven Insurance Solutions for Insurers',
     twitterDescription: 'Secure your competitive edge with reliable AI insurance solutions. Get custom roadmaps for claims automation and underwriting accuracy today.',
     featuredImage: 'https://cms.agixtech.com/wp-content/uploads/2026/01/AI-Solutions-in-Insurance-page-banner.png',
-    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Service'],
+    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Service', 'FAQPage'],
   },
 
   '/industries/retail-ai-solutions': {
@@ -277,7 +277,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     twitterTitle: 'Advanced AI-Driven E-Commerce Solutions for Retailers',
     twitterDescription: 'Scale your D2C and retail operations with AI e-commerce solutions. Reduce support load, recover abandoned revenue, and streamline workflows.',
     featuredImage: 'https://cms.agixtech.com/wp-content/uploads/2026/01/AI-Solutions-in-E-Commerce-page-banner.png',
-    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Service'],
+    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Service', 'FAQPage'],
   },
 
   '/industries/logistics-ai-solutions': {
@@ -291,7 +291,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     twitterTitle: 'Advanced AI-Driven Logistics Solutions for Logistics Companies',
     twitterDescription: 'Streamline operations with AI logistics solutions that fix bottlenecks, optimize routes, balance inventory, and deliver real results.',
     featuredImage: 'https://cms.agixtech.com/wp-content/uploads/2026/01/AI-Solutions-in-Logistics-Supply-Chain-page-banner.png',
-    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Service'],
+    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Service', 'FAQPage'],
   },
 
   '/industries/hospitality-ai-solutions': {
@@ -305,7 +305,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     twitterTitle: 'AI Solutions for Hospitality & Wellness Operations',
     twitterDescription: 'Modernize your guest journey with AI in hospitality. Reduce friction, automate workflows, and deliver real results.',
     featuredImage: 'https://cms.agixtech.com/wp-content/uploads/2026/01/AI-Solutions-in-Hospitality-page-banner.png',
-    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Service'],
+    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Service', 'FAQPage'],
   },
 
   '/industries/edtech-ai-solutions': {
@@ -319,7 +319,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     twitterTitle: 'AI EdTech Solutions for Smarter Learning',
     twitterDescription: 'Modernize your institution with AI in EdTech. Enhance engagement, personalize learning, and deliver real results.',
     featuredImage: 'https://cms.agixtech.com/wp-content/uploads/2026/01/AI-Solutions-in-EdTech-page-banner.png',
-    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Service'],
+    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Service', 'FAQPage'],
   },
 
   '/case-studies': {
@@ -347,7 +347,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     twitterTitle: 'Scale Fintech with Trustworthy AI | Enova Case Study',
     twitterDescription: 'Boost accuracy and trust! See how AGIX Technologies slashed Enova audit time by 67% with transparent, regulator-ready AI models. Learn more.',
     featuredImage: 'https://cms.agixtech.com/wp-content/uploads/2026/01/Enova-International-Case-Study-Image.png',
-    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article'],
+    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article', 'FAQPage'],
   },
 
   '/case-studies/dave/': {
@@ -361,7 +361,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     twitterTitle: 'Dave Case Study: Fintech AI Assistant Case Study',
     twitterDescription: 'Boost satisfaction and speed! See how AGIX Technologies helped Dave achieve a 93 CSAT score while reducing resolution time by 79%.',
     featuredImage: 'https://cms.agixtech.com/wp-content/uploads/2026/01/Dave-Case-Study-Image.png',
-    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article'],
+    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article', 'FAQPage'],
   },
 
   '/case-studies/ocrolus/': {
@@ -375,7 +375,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     twitterTitle: 'Ocrolus Case Study: Document AI Case Study',
     twitterDescription: 'Accelerate speed and precision! See how AGIX Technologies supported Ocrolus reach 99.2% accuracy and save $1.8M in annual labor costs. Learn more.',
     featuredImage: 'https://cms.agixtech.com/wp-content/uploads/2026/01/Ocrolus-Case-Study-Image.png',
-    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article'],
+    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article', 'FAQPage'],
   },
 
   '/case-studies/babylon-health/': {
@@ -389,7 +389,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     twitterTitle: 'Babylon Health Case Study: care AI Case Study',
     twitterDescription: 'Global healthcare meets AI safety. Discover how we helped Babylon Health reach millions with faster, smarter triage. Learn more.',
     featuredImage: 'https://cms.agixtech.com/wp-content/uploads/2026/01/Babylon-Health-Case-Study-Image.png',
-    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article'],
+    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article', 'FAQPage'],
   },
 
   '/case-studies/kite-therapy/': {
@@ -403,7 +403,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     twitterTitle: 'Kite Therapy Case Study: AI Solution',
     twitterDescription: 'Transform the patient journey! See how AGIX Technologies streamlined Kite Therapy reach a 4.8/5 user rating through calibrated AI support.',
     featuredImage: 'https://cms.agixtech.com/wp-content/uploads/2026/01/Kite-Therapy-Case-Study-Image.png',
-    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article'],
+    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article', 'FAQPage'],
   },
 
   '/case-studies/hello-driven/': {
@@ -417,7 +417,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     twitterTitle: 'Hello Driven Case Study: AI Coach Case Study',
     twitterDescription: 'Revolutionize patient outreach! See how AGIX Technologies helped Hello Driven achieve sub-300ms response times and 50+ EHR integrations.',
     featuredImage: 'https://cms.agixtech.com/wp-content/uploads/2026/01/Hello-Driven-Case-Study-Image.png',
-    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article'],
+    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article', 'FAQPage'],
   },
 
   '/case-studies/albertsons/': {
@@ -431,7 +431,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     twitterTitle: 'Albertsons Case Study: Albertson AI Analytics Case Study',
     twitterDescription: 'Crush inventory spoilage! See how AGIX Technologies collaborated with Albertsons to achieve a 97.2% in-stock rate with advanced demand analytics.',
     featuredImage: 'https://cms.agixtech.com/wp-content/uploads/2026/01/Albertsons-Case-Study-Image.png',
-    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article'],
+    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article', 'FAQPage'],
   },
 
   '/case-studies/kroger/': {
@@ -445,7 +445,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     twitterTitle: 'Kroger Case Study: AI Solution',
     twitterDescription: 'Master in-store efficiency! See how AGIX Technologies enabled Kroger to reach 94% on-time delivery by optimizing walking paths and inventory logic. Learn more.',
     featuredImage: 'https://cms.agixtech.com/wp-content/uploads/2026/01/Kroger-Case-Study-Image.png',
-    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article'],
+    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article', 'FAQPage'],
   },
 
   '/case-studies/stitch-fix/': {
@@ -459,7 +459,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     twitterTitle: 'Stitch Fix Case Study: AI Solution',
     twitterDescription: 'Modernize retail recommendations! See how AGIX Technologies empowered Stitch Fix lower fit-related returns by 32% using advanced style embeddings.',
     featuredImage: 'https://cms.agixtech.com/wp-content/uploads/2026/01/Stitch-Fix-Case-Study-Image.png',
-    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article'],
+    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article', 'FAQPage'],
   },
 
   '/case-studies/ulta-beauty/': {
@@ -473,7 +473,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     twitterTitle: 'Ulta Beauty Case Study: Personalization AI Case Study',
     twitterDescription: 'Minimize customer churn! See how AGIX Technologies helped Ulta Beauty transform generic offers into tailored experiences using affinity modeling.',
     featuredImage: 'https://cms.agixtech.com/wp-content/uploads/2026/01/Ulta-Beauty-Case-Study-Image.png',
-    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article'],
+    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article', 'FAQPage'],
   },
 
   '/case-studies/quizlet/': {
@@ -487,7 +487,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     twitterTitle: 'Quizlet Case Study: AI Learning Case Study',
     twitterDescription: 'Strengthen student thinking! See how AGIX Technologies streamlined Quizlet transform homework help into a guided discovery experience for millions.',
     featuredImage: 'https://cms.agixtech.com/wp-content/uploads/2026/01/Quizlet-Case-Study-Image.png',
-    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article'],
+    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article', 'FAQPage'],
   },
 
   '/case-studies/knewton/': {
@@ -501,7 +501,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     twitterTitle: 'Knewton Case Study: AI Solution',
     twitterDescription: 'Secure higher completion rates! See how AGIX Technologies empowered Knewton identify learning gaps and optimize study paths with 96% accuracy. Learn more.',
     featuredImage: 'https://cms.agixtech.com/wp-content/uploads/2026/01/Knewton-Case-Study-Image.png',
-    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article'],
+    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article', 'FAQPage'],
   },
 
   '/case-studies/riiid-labs/': {
@@ -515,7 +515,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     twitterTitle: 'Riiid Labs Case Study: Riid Labs Case Study',
     twitterDescription: 'Achieve higher pass rates! See how AGIX Technologies helped Riiid Labs deliver personalized remediation paths that address root learning causes.',
     featuredImage: 'https://cms.agixtech.com/wp-content/uploads/2026/01/Riiid-Labs-Case-Study-Image.png',
-    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article'],
+    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article', 'FAQPage'],
   },
 
   '/case-studies/hilton-hotels/': {
@@ -529,7 +529,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     twitterTitle: 'Hilton Hotels Case Study: AI Solution',
     twitterDescription: 'Secure higher repeat bookings! See how AGIX Technologies enabled Hilton to transform stay patterns into personalized experiences for Diamond members. Learn more.',
     featuredImage: 'https://cms.agixtech.com/wp-content/uploads/2026/01/Hilton-Hotels-Case-Study-Image.png',
-    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article'],
+    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article', 'FAQPage'],
   },
 
   '/case-studies/housecanary/': {
@@ -543,7 +543,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     twitterTitle: 'HouseCanary Case Study: AI Solution',
     twitterDescription: 'Evolve property assessment! See how we assisted HouseCanary deliver digital-speed valuations with 9.2% higher accuracy than industry standards.',
     featuredImage: 'https://cms.agixtech.com/wp-content/uploads/2026/01/HouseCanary-Case-Study-Image.png',
-    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article'],
+    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article', 'FAQPage'],
   },
 
   '/case-studies/mindtrip/': {
@@ -557,7 +557,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     twitterTitle: 'Mindtrip Case Study: AI Solution',
     twitterDescription: 'Enhance the traveler journey! See how AGIX Technologies supported Mindtrip deliver 91% personalization accuracy through interactive, AI-led planning. Learn more.',
     featuredImage: 'https://cms.agixtech.com/wp-content/uploads/2026/01/Mindtrip-Case-Study-Image.png',
-    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article'],
+    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article', 'FAQPage'],
   },
 
   '/case-studies/polyai/': {
@@ -571,7 +571,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     twitterTitle: 'PolyAI Case Study: Voice AI',
     twitterDescription: 'Lower cost per call! See how AGIX Technologies helped PolyAI achieve 81% first-call resolution across 8+ languages with low-latency voice AI. Learn more.',
     featuredImage: 'https://cms.agixtech.com/wp-content/uploads/2026/01/PolyAI-Case-Study-Image.png',
-    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article'],
+    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article', 'FAQPage'],
   },
 
   '/case-studies/brainfish/': {
@@ -585,7 +585,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     twitterTitle: 'Brainfish Case Study: AI Solution',
     twitterDescription: 'Lower operational overhead! See how AGIX Technologies propelled Brainfish to a monthly deflection of 83,000 tickets while securing a 4.8/5 CSAT score.',
     featuredImage: 'https://cms.agixtech.com/wp-content/uploads/2026/01/Brainfish-Case-Study-Image.png',
-    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article'],
+    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article', 'FAQPage'],
   },
 
   '/case-studies/properti-ai/': {
@@ -599,7 +599,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     twitterTitle: 'Properti AI Case Study: AI Solution',
     twitterDescription: 'Drive higher lead conversion! See how we helped Properti AI deliver 89% match accuracy by understanding buyer lifestyle needs and neighborhood context.',
     featuredImage: 'https://cms.agixtech.com/wp-content/uploads/2026/01/Properti-AI-Case-Study-Image.png',
-    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article'],
+    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article', 'FAQPage'],
   },
 
   '/case-studies/dartmouth-college/': {
@@ -613,7 +613,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     twitterTitle: 'Dartmouth College Case Study: AI Solution',
     twitterDescription: 'Reduce support backlogs! See how AGIX Technologies enabled Dartmouth College to maintain 96% satisfaction through effective ticket clearing. Learn more.',
     featuredImage: 'https://cms.agixtech.com/wp-content/uploads/2026/01/Dartmouth-Case-Study-Image.png',
-    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article'],
+    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article', 'FAQPage'],
   },
 
   '/case-studies/suno/': {
@@ -627,7 +627,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     twitterTitle: 'Suno Case Study: Sonu Case Study',
     twitterDescription: 'Boost session engagement! See how AGIX Technologies helped Suno achieve 3x more songs per session by removing cold start penalties and latency bottlenecks.',
     featuredImage: 'https://cms.agixtech.com/wp-content/uploads/2026/01/Suno-Case-Study-Image.png',
-    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article'],
+    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article', 'FAQPage'],
   },
 
   '/case-studies/innit/': {
@@ -641,7 +641,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     twitterTitle: 'Innit Case Study: AI Solution',
     twitterDescription: "Achieve 98% device sync accuracy using the monitoring logic AGIX Technologies deployed for Innit's connected ecosystem. Examine the technicals.",
     featuredImage: 'https://cms.agixtech.com/wp-content/uploads/2026/01/Innit-Case-Study-Image.png',
-    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article'],
+    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article', 'FAQPage'],
   },
 
   '/case-studies/hungryroot/': {
@@ -655,7 +655,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     twitterTitle: 'Hungryroot Case Study: AI Solution',
     twitterDescription: 'AGIX Technologies synchronized taste profiling with waste-reduction logic to deliver elite precision in every box and drive long-term user loyalty.',
     featuredImage: 'https://cms.agixtech.com/wp-content/uploads/2026/01/Hungryroot-Case-Study-Image.png',
-    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article'],
+    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article', 'FAQPage'],
   },
 
   '/case-studies/navan/': {
@@ -669,7 +669,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     twitterTitle: 'Navan Case Study: AI Travel Assistant Case Study',
     twitterDescription: 'We eliminated manual reporting bottlenecks by deploying category detection logic that truncated booking cycles by 67%. Review the implementation.',
     featuredImage: 'https://cms.agixtech.com/wp-content/uploads/2026/01/Navan-Case-Study-Image.png',
-    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article'],
+    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article', 'FAQPage'],
   },
 
   '/case-studies/geovea/': {
@@ -683,7 +683,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     twitterTitle: 'Geovea Case Study: Geivea Case Study',
     twitterDescription: 'AGIX Technologies bypassed static route limitations by deploying crowd-avoidance profiling that optimized journey flows and raised user ratings to 4.9/5. Learn more.',
     featuredImage: 'https://cms.agixtech.com/wp-content/uploads/2026/01/Luxury-Escapes-Case-Study-Image.png',
-    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article'],
+    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article', 'FAQPage'],
   },
 
   '/case-studies/luxury-escapes/': {
@@ -697,7 +697,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     twitterTitle: 'Luxury Escapes Case Study: AI Solution',
     twitterDescription: 'AGIX Technologies boosted booking value by 71% by deploying scenario planning logic that handles personalized requests for 4,500 guests daily. See the breakdown.',
     featuredImage: 'https://cms.agixtech.com/wp-content/uploads/2026/01/AlphaSense-Case-Study-Image.png',
-    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article'],
+    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article', 'FAQPage'],
   },
 
   '/case-studies/naratix/': {
@@ -711,7 +711,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     twitterTitle: 'Naratix Case Study: Nartix Case Study',
     twitterDescription: 'We eliminate localization bottlenecks using the brand voice consistency and legal compliance logic AGIX Technologies deployed to accelerate content creation by 96%. Learn more.',
     featuredImage: 'https://cms.agixtech.com/wp-content/uploads/2026/01/AlphaSense-Case-Study-Image.png',
-    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article'],
+    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article', 'FAQPage'],
   },
 
   '/case-studies/alphasense/': {
@@ -725,7 +725,7 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
     twitterTitle: 'AlphaSense Case Study: AI Solution',
     twitterDescription: 'How AGIX Technologies transformed AlphaSense research workflows with NLP analytics, delivering 97% faster research and 500% analyst productivity improvement.',
     featuredImage: 'https://cms.agixtech.com/wp-content/uploads/2026/01/AlphaSense-Case-Study-Image.png',
-    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article'],
+    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article', 'FAQPage'],
   },
 
   '/corporate/about/': {

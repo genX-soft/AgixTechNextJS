@@ -21,8 +21,9 @@ export async function POST(request: NextRequest) {
     // @ts-expect-error - Next.js 15+ type definitions might require a 2nd argument
     revalidateTag('wordpress-posts');
     
-    // Specifically revalidate the insights list page
-    revalidatePath('/insights');
+    // Specifically revalidate the insights list page (trailing slash must match trailingSlash:true)
+    revalidatePath('/insights/', 'page');
+    revalidatePath('/insights/', 'layout');
 
     // Optionally extract the post slug from the webhook payload if needed
     // const body = await request.json();

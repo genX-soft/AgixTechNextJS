@@ -1,4 +1,7 @@
 'use client'
+import FAQSection from "@/components/shared/FAQSection";
+import FAQPageSchema from "@/components/shared/FAQPageSchema";
+import { documentFAQs } from "@/lib/seo/faq-data";
 import { useState } from "react";import { CaseStudyTemplate } from "@/components/shared/case-study-template";
 
 import { motion, AnimatePresence } from "@/lib/motion";
@@ -535,6 +538,9 @@ export default function DaveCaseStudyPage() {
           <CtaForm />
         </div>
       </section>
+      <FAQPageSchema faqs={documentFAQs['cs-dave']} />
+      <FAQSection faqs={documentFAQs['cs-dave']} title="Dave AI Financial Assistant — Questions Answered" />
+
 
       
 

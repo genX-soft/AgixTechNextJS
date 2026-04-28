@@ -1,4 +1,7 @@
 'use client'
+import FAQSection from "@/components/shared/FAQSection";
+import FAQPageSchema from "@/components/shared/FAQPageSchema";
+import { documentFAQs } from "@/lib/seo/faq-data";
 import { useState } from "react";import { CaseStudyTemplate } from "@/components/shared/case-study-template";
 
 import { motion, AnimatePresence } from "@/lib/motion";
@@ -502,6 +505,9 @@ export default function HiltonHotelsCaseStudyPage() {
           <CtaForm />
         </div>
       </section>
+      <FAQPageSchema faqs={documentFAQs['cs-hilton-hotels']} />
+      <FAQSection faqs={documentFAQs['cs-hilton-hotels']} title="Hilton Hotels AI — Questions Answered" />
+
 
       
 

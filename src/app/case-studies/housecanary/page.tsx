@@ -1,4 +1,7 @@
 'use client'
+import FAQSection from "@/components/shared/FAQSection";
+import FAQPageSchema from "@/components/shared/FAQPageSchema";
+import { documentFAQs } from "@/lib/seo/faq-data";
 import { useState } from "react";import { CaseStudyTemplate } from "@/components/shared/case-study-template";
 
 import { motion, AnimatePresence } from "@/lib/motion";
@@ -451,6 +454,9 @@ export default function HouseCanaryCaseStudyPage() {
           </Link>
         </div>
       </section>
+      <FAQPageSchema faqs={documentFAQs['cs-housecanary']} />
+      <FAQSection faqs={documentFAQs['cs-housecanary']} title="HouseCanary AI Valuation — Questions Answered" />
+
 
       </CaseStudyTemplate>
   );

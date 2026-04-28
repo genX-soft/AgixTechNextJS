@@ -56,6 +56,7 @@ import { submitLead } from "@/lib/lead-submission";
 import { useCelebration } from "@/components/success-celebration";
 import { IndustryCaseStudies, IndustryServices } from "@/components/industry-sections";
 import FAQSection from "@/components/shared/FAQSection";
+import FAQPageSchema from "@/components/shared/FAQPageSchema";
 import { documentFAQs } from "@/lib/seo/faq-data";
 
 const caseStudies = [
@@ -2266,6 +2267,7 @@ export default function HealthcareIndustryPage() {
           </p>
         </div>
       </section>
+      <FAQPageSchema faqs={documentFAQs['healthcare-ai-solutions']} />
       <FAQSection
         faqs={documentFAQs['healthcare-ai-solutions']}
         title="Healthcare AI Questions Answered"

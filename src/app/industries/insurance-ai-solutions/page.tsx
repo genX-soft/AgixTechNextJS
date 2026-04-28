@@ -70,6 +70,7 @@ import { submitLead } from "@/lib/lead-submission";
 import { useCelebration } from "@/components/success-celebration";
 import { IndustryCaseStudies, IndustryServices } from "@/components/industry-sections";
 import FAQSection from "@/components/shared/FAQSection";
+import FAQPageSchema from "@/components/shared/FAQPageSchema";
 import { documentFAQs } from "@/lib/seo/faq-data";
 
 const caseStudies = [
@@ -1875,6 +1876,7 @@ export default function InsuranceIndustryPage() {
         </div>
       </section>
 
+      <FAQPageSchema faqs={documentFAQs['insurance-ai-solutions']} />
       <FAQSection
         faqs={documentFAQs['insurance-ai-solutions']}
         title="Insurance AI Questions Answered"

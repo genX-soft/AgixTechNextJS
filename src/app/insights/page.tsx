@@ -43,7 +43,7 @@ async function getInitialPosts(): Promise<{
   try {
     const response = await fetch(
       `${WP_API_BASE}/posts?per_page=9&page=1&_embed=true`,
-      { next: { tags: ['wordpress-posts'] } }
+      { next: { tags: ['wordpress-posts'], revalidate: 300 } }
     );
     if (!response.ok) return { posts: [], totalPages: 1 };
     const posts: WPPost[] = await response.json();

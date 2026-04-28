@@ -70,6 +70,7 @@ import { submitLead } from "@/lib/lead-submission";
 import { useCelebration } from "@/components/success-celebration";
 import { IndustryCaseStudies, IndustryServices } from "@/components/industry-sections";
 import FAQSection from "@/components/shared/FAQSection";
+import FAQPageSchema from "@/components/shared/FAQPageSchema";
 import { documentFAQs } from "@/lib/seo/faq-data";
 
 const caseStudies = [
@@ -2118,6 +2119,7 @@ export default function LogisticsIndustryPage() {
           </motion.div>
         </div>
       </section>
+      <FAQPageSchema faqs={documentFAQs['logistics-ai-solutions']} />
       <FAQSection
         faqs={documentFAQs['logistics-ai-solutions']}
         title="Logistics AI Questions Answered"

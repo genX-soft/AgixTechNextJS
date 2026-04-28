@@ -25,7 +25,7 @@ export async function GET(request: NextRequest) {
       headers: {
         'X-WP-Total': response.headers.get('X-WP-Total') || '0',
         'X-WP-TotalPages': response.headers.get('X-WP-TotalPages') || '1',
-        'Cache-Control': 'public, max-age=0, s-maxage=31536000, stale-while-revalidate',
+        'Cache-Control': 'public, max-age=0, s-maxage=300, stale-while-revalidate=60',
       },
     });
   } catch (error) {

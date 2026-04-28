@@ -1,4 +1,7 @@
 'use client'
+import FAQSection from "@/components/shared/FAQSection";
+import FAQPageSchema from "@/components/shared/FAQPageSchema";
+import { documentFAQs } from "@/lib/seo/faq-data";
 
 import { CaseStudyTemplate } from "@/components/shared/case-study-template";
 
@@ -462,6 +465,9 @@ export default function QuizletCaseStudyPage() {
           </motion.div>
         </div>
       </section>
+      <FAQPageSchema faqs={documentFAQs['cs-quizlet']} />
+      <FAQSection faqs={documentFAQs['cs-quizlet']} title="Quizlet Q-Chat AI Tutor — Questions Answered" />
+
 
       
       </CaseStudyTemplate>

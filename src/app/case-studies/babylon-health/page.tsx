@@ -1,4 +1,7 @@
 'use client'
+import FAQSection from "@/components/shared/FAQSection";
+import FAQPageSchema from "@/components/shared/FAQPageSchema";
+import { documentFAQs } from "@/lib/seo/faq-data";
 import { motion } from "@/lib/motion";import { CaseStudyTemplate } from "@/components/shared/case-study-template";
 
 
@@ -345,6 +348,9 @@ export default function BabylonHealthCaseStudyPage() {
           </motion.div>
         </div>
       </section>
+      <FAQPageSchema faqs={documentFAQs['cs-babylon-health']} />
+      <FAQSection faqs={documentFAQs['cs-babylon-health']} title="Babylon Health AI Triage — Questions Answered" />
+
 
       
 
