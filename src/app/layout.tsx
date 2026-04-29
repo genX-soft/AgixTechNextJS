@@ -115,6 +115,9 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: 'https://agixtech.com/',
+    types: {
+      'text/plain': '/llms.txt',
+    },
   },
   category: 'Technology',
   classification: 'AI Systems Engineering',
