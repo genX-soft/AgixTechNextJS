@@ -52,7 +52,7 @@ const industriesItems = [
 
 const corporateItems = [
   { title: "About Us", href: "/corporate/about/", icon: Info, description: "Learn about AGIX Technologies and our mission" },
-  { title: "Customer Testimonials", href: "/customer-testimonials/", icon: Star, description: "Read verified client reviews and success stories" },
+  { title: "Customer Testimonials", href: "/corporate/testimonials/", icon: Star, description: "Read verified client reviews and success stories" },
   { title: "Contact Us", href: "/corporate/contact/", icon: Mail, description: "Get in touch with our team" },
   { title: "Careers", href: "/corporate/careers/", icon: Briefcase, description: "Join our team and build intelligent systems" },
 ];

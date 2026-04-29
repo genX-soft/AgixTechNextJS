@@ -164,6 +164,7 @@ const nextConfig = {
       
       // ===== CORPORATE PAGE REDIRECTS =====
       { source: '/portfolio', destination: '/case-studies/', permanent: true },
+      { source: '/customer-testimonials', destination: '/corporate/testimonials/', permanent: true },
       { source: '/terms-and-condition', destination: '/terms-of-service/', permanent: true },
       { source: '/terms', destination: '/terms-of-service/', permanent: true },
       { source: '/privacy', destination: '/privacy-policy/', permanent: true },

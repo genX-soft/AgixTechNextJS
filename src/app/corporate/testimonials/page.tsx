@@ -29,12 +29,12 @@ export const metadata: Metadata = {
   title: { absolute: 'AGIX Technologies Reviews & Customer Testimonials' },
   description:
     'Read verified client reviews and testimonials for AGIX Technologies, a leading AI systems engineering and automation company. Rated 5.0 on Clutch, Sortlist, and TechBehemoths.',
-  alternates: { canonical: 'https://agixtech.com/customer-testimonials/' },
+  alternates: { canonical: 'https://agixtech.com/corporate/testimonials/' },
   openGraph: {
     title: 'AGIX Technologies Reviews & Customer Testimonials',
     description:
       'Verified reviews from enterprise clients across fintech, healthcare, insurance, retail, and more. See why businesses trust AGIX for production AI systems.',
-    url: 'https://agixtech.com/customer-testimonials/',
+    url: 'https://agixtech.com/corporate/testimonials/',
     siteName: 'AGIX Technologies',
     type: 'website',
   },
@@ -60,8 +60,8 @@ const pageSchema = {
   '@graph': [
     {
       '@type': 'WebPage',
-      '@id': `${SITE_URL}/customer-testimonials/#webpage`,
-      url: `${SITE_URL}/customer-testimonials/`,
+      '@id': `${SITE_URL}/corporate/testimonials/#webpage`,
+      url: `${SITE_URL}/corporate/testimonials/`,
       name: 'AGIX Technologies Reviews & Customer Testimonials',
       description:
         'Read verified client reviews and testimonials for AGIX Technologies, a leading AI systems engineering and automation company.',
@@ -73,7 +73,7 @@ const pageSchema = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE_URL}/` },
-        { '@type': 'ListItem', position: 2, name: 'Customer Testimonials', item: `${SITE_URL}/customer-testimonials/` },
+        { '@type': 'ListItem', position: 2, name: 'Customer Testimonials', item: `${SITE_URL}/corporate/testimonials/` },
       ],
     },
     {
