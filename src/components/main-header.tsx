@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu, X, Phone, ChevronDown, Sparkles, Brain, Bot, MessageSquare, Workflow, Database, LineChart, Eye, Code, Building2, Briefcase, BookOpen, Users, Lightbulb, HeartPulse, Home, Landmark, ShoppingCart, Layers, Truck, GraduationCap, Info, Mail, Rocket, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -159,6 +160,7 @@ function MobileMenuItem({ title, items, href, onItemClick }: MobileMenuItemProps
 }
 
 export function MainHeader() {
+  const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [corporateOpen, setCorporateOpen] = useState(false);
@@ -189,6 +191,9 @@ export function MainHeader() {
       closeMobileMenu();
     }
   }, []);
+
+  const pageSlug = pathname === '/' ? 'home' : pathname?.replace(/^\/|\/$/g, '').replace(/\//g, '-') || 'unknown';
+  const utmString = `?utm_source=agixtech&utm_medium=cta&utm_campaign=consult&utm_content=${pageSlug}`;
 
   return (
     <header
@@ -347,7 +352,7 @@ export function MainHeader() {
             </a>
             <Button asChild className="hidden md:inline-flex shrink-0">
               <a 
-                href="/corporate/contact/" 
+                href={`/corporate/contact/${utmString}`} 
                 onClick={handleConsultationClick}
                 data-testid="button-schedule-consultation"
               >
@@ -417,7 +422,7 @@ export function MainHeader() {
                 <div className="px-4">
                   <Button asChild className="w-full h-14 text-base font-semibold">
                     <a 
-                      href="/corporate/contact/" 
+                      href={`/corporate/contact/${utmString}`} 
                       onClick={handleConsultationClick}
                       data-testid="button-mobile-schedule-consultation"
                     >
