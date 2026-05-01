@@ -42,6 +42,8 @@ export interface IndustryLeadFormProps {
 }
 
 export function IndustryLeadForm({
+  headline,
+  subheadline,
   challengeOptions,
   ctaLabel = "Get a Custom AI Strategy",
   challengeLabel = "What are you looking to solve?",
@@ -114,6 +116,20 @@ export function IndustryLeadForm({
 
   return (
     <div className="max-w-2xl mx-auto">
+      {(headline || subheadline) && (
+        <div className="mb-6 text-center">
+          {headline && (
+            <h3 className="text-xl font-bold mb-1" data-testid={`${testIdPrefix}-form-headline`}>
+              {headline}
+            </h3>
+          )}
+          {subheadline && (
+            <p className="text-sm text-muted-foreground" data-testid={`${testIdPrefix}-form-subheadline`}>
+              {subheadline}
+            </p>
+          )}
+        </div>
+      )}
       <form onSubmit={handleSubmit} className="space-y-4">
         <div className="grid sm:grid-cols-2 gap-4">
           <div>
