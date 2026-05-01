@@ -67,6 +67,7 @@ import { useToast } from "@/hooks/use-toast";
 import { submitLead } from "@/lib/lead-submission";
 import { useCelebration } from "@/components/success-celebration";
 import { IndustryCaseStudies, IndustryServices } from "@/components/industry-sections";
+import { IndustryLeadForm } from "@/components/industries/IndustryLeadForm";
 import FAQSection from "@/components/shared/FAQSection";
 import { documentFAQs } from "@/lib/seo/faq-data";
 
@@ -1562,161 +1563,16 @@ function DecisionToolsSection() {
   );
 }
 
-function ContextualLeadForm() {
-  const { toast } = useToast();
-  const { triggerCelebration } = useCelebration();
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [formData, setFormData] = useState({ name: "", email: "", organization: "", challenge: "" });
-  const [submitted, setSubmitted] = useState(false);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    const result = await submitLead(
-      { name: formData.name, email: formData.email, company: formData.organization, industry: "healthcare", challenges: [formData.challenge] },
-      { formType: "healthcare-midpage-cta", source: "/industries/healthcare-ai-solutions", ctaId: "healthcare-contextual-form", ctaText: "Get a Custom AI Strategy", ctaLocation: "mid-page-use-cases" }
-    );
-    setIsSubmitting(false);
-    if (result.success) {
-      triggerCelebration();
-      setSubmitted(true);
-      toast({ title: "You're in!", description: "Our team will reach out within one business day." });
-    } else {
-      toast({ title: "Something went wrong", description: "Please try again or contact us directly.", variant: "destructive" });
-    }
-  };
-
-  if (submitted) {
-    return (
-      <div className="text-center py-12">
-        <div className="w-16 h-16 bg-green-500/10 rounded-full flex items-center justify-center mx-auto mb-4">
-          <CheckCircle2 className="w-8 h-8 text-green-500" />
-        </div>
-        <h3 className="text-xl font-bold mb-2">Request Received</h3>
-        <p className="text-muted-foreground">Our healthcare AI team will reach out within one business day with a tailored strategy.</p>
-      </div>
-    );
-  }
-
-  return (
-    <div className="max-w-2xl mx-auto">
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <div className="grid sm:grid-cols-2 gap-4">
-          <div>
-            <Label htmlFor="ctx-name">Your Name</Label>
-            <Input id="ctx-name" name="name" autoComplete="name" value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} placeholder="Dr. / Mr. / Ms. Your Name" data-testid="input-ctx-name" />
-          </div>
-          <div>
-            <Label htmlFor="ctx-email">Work Email *</Label>
-            <Input id="ctx-email" name="email" type="email" autoComplete="email" required value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} placeholder="you@organization.com" data-testid="input-ctx-email" />
-          </div>
-          <div>
-            <Label htmlFor="ctx-org">Organization Name</Label>
-            <Input id="ctx-org" name="organization" autoComplete="organization" value={formData.organization} onChange={(e) => setFormData({ ...formData, organization: e.target.value })} placeholder="Hospital / Clinic / Platform" data-testid="input-ctx-org" />
-          </div>
-          <div>
-            <Label htmlFor="ctx-challenge">What are you looking to solve?</Label>
-            <Select value={formData.challenge} onValueChange={(v) => setFormData({ ...formData, challenge: v })}>
-              <SelectTrigger id="ctx-challenge" data-testid="select-ctx-challenge"><SelectValue placeholder="Select a use case" /></SelectTrigger>
-              <SelectContent>
-                <SelectItem value="intake">Patient Intake & Triage Automation</SelectItem>
-                <SelectItem value="documentation">Clinical Documentation AI</SelectItem>
-                <SelectItem value="care-coordination">Patient Flow & Care Coordination</SelectItem>
-                <SelectItem value="clinical-decision">Clinical Decision Support</SelectItem>
-                <SelectItem value="revenue-cycle">Revenue Cycle & Claims Intelligence</SelectItem>
-                <SelectItem value="engagement">Patient Engagement & Follow-Up</SelectItem>
-                <SelectItem value="imaging">Medical Imaging AI</SelectItem>
-                <SelectItem value="mental-health">Mental Health & Patient Support AI</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-        </div>
-        <Button type="submit" className="w-full" disabled={isSubmitting} data-testid="button-ctx-submit">
-          {isSubmitting ? (<><Loader2 className="w-4 h-4 mr-2 animate-spin" />Sending...</>) : (<>Get a Custom AI Strategy <ArrowRight className="w-4 h-4 ml-2" /></>)}
-        </Button>
-        <p className="text-xs text-center text-muted-foreground">No commitment. Our healthcare AI team will respond within one business day.</p>
-      </form>
-    </div>
-  );
-}
-
-function BottomLeadForm() {
-  const { toast } = useToast();
-  const { triggerCelebration } = useCelebration();
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [formData, setFormData] = useState({ name: "", email: "", organization: "", useCase: "" });
-  const [submitted, setSubmitted] = useState(false);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    const result = await submitLead(
-      { name: formData.name, email: formData.email, company: formData.organization, industry: "healthcare", challenges: [formData.useCase] },
-      { formType: "healthcare-bottom-cta", source: "/industries/healthcare-ai-solutions", ctaId: "healthcare-bottom-form", ctaText: "Book Free Strategy Session", ctaLocation: "bottom-page-post-faq" }
-    );
-    setIsSubmitting(false);
-    if (result.success) {
-      triggerCelebration();
-      setSubmitted(true);
-      toast({ title: "You're in!", description: "Our healthcare AI team will reach out within one business day." });
-    } else {
-      toast({ title: "Something went wrong", description: "Please try again or contact us directly.", variant: "destructive" });
-    }
-  };
-
-  if (submitted) {
-    return (
-      <div className="text-center py-12">
-        <div className="w-16 h-16 bg-green-500/10 rounded-full flex items-center justify-center mx-auto mb-4">
-          <CheckCircle2 className="w-8 h-8 text-green-500" />
-        </div>
-        <h3 className="text-xl font-bold mb-2">Request Received</h3>
-        <p className="text-muted-foreground">Our healthcare AI team will reach out within one business day with a tailored strategy roadmap.</p>
-      </div>
-    );
-  }
-
-  return (
-    <div className="max-w-2xl mx-auto">
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <div className="grid sm:grid-cols-2 gap-4">
-          <div>
-            <Label htmlFor="btm-name">Your Name</Label>
-            <Input id="btm-name" name="name" autoComplete="name" value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} placeholder="Dr. / Mr. / Ms. Your Name" data-testid="input-bottom-name" />
-          </div>
-          <div>
-            <Label htmlFor="btm-email">Work Email *</Label>
-            <Input id="btm-email" name="email" type="email" autoComplete="email" required value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} placeholder="you@organization.com" data-testid="input-bottom-email" />
-          </div>
-          <div>
-            <Label htmlFor="btm-org">Organization</Label>
-            <Input id="btm-org" name="organization" autoComplete="organization" value={formData.organization} onChange={(e) => setFormData({ ...formData, organization: e.target.value })} placeholder="Hospital / Clinic / Platform" data-testid="input-bottom-org" />
-          </div>
-          <div>
-            <Label htmlFor="btm-usecase">Primary Use Case</Label>
-            <Select value={formData.useCase} onValueChange={(v) => setFormData({ ...formData, useCase: v })}>
-              <SelectTrigger id="btm-usecase" data-testid="select-bottom-usecase"><SelectValue placeholder="What do you want to solve?" /></SelectTrigger>
-              <SelectContent>
-                <SelectItem value="intake">Patient Intake & Triage Automation</SelectItem>
-                <SelectItem value="documentation">Clinical Documentation AI</SelectItem>
-                <SelectItem value="care-coordination">Patient Flow & Care Coordination</SelectItem>
-                <SelectItem value="clinical-decision">Clinical Decision Support</SelectItem>
-                <SelectItem value="revenue-cycle">Revenue Cycle & Claims Intelligence</SelectItem>
-                <SelectItem value="engagement">Patient Engagement & Follow-Up</SelectItem>
-                <SelectItem value="imaging">Medical Imaging AI</SelectItem>
-                <SelectItem value="mental-health">Mental Health & Patient Support AI</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-        </div>
-        <Button type="submit" className="w-full" disabled={isSubmitting} data-testid="button-bottom-submit">
-          {isSubmitting ? (<><Loader2 className="w-4 h-4 mr-2 animate-spin" />Sending...</>) : (<>Book Free Strategy Session <ArrowRight className="w-4 h-4 ml-2" /></>)}
-        </Button>
-        <p className="text-xs text-center text-muted-foreground">No commitment. HIPAA-compliant. Our healthcare AI team responds within one business day.</p>
-      </form>
-    </div>
-  );
-}
+const healthcareChallengeOptions = [
+  { value: "intake", label: "Patient Intake & Triage Automation" },
+  { value: "documentation", label: "Clinical Documentation AI" },
+  { value: "care-coordination", label: "Patient Flow & Care Coordination" },
+  { value: "clinical-decision", label: "Clinical Decision Support" },
+  { value: "revenue-cycle", label: "Revenue Cycle & Claims Intelligence" },
+  { value: "engagement", label: "Patient Engagement & Follow-Up" },
+  { value: "imaging", label: "Medical Imaging AI" },
+  { value: "mental-health", label: "Mental Health & Patient Support AI" },
+];
 
 const statsData = [
   { value: "$36.7B", label: "Healthcare AI market in 2025", sub: "→ $505.59B by 2033 · 38.9% CAGR (Grand View Research)", icon: TrendingUp, color: "text-primary" },
@@ -2024,7 +1880,20 @@ export default function HealthcareIndustryPage() {
             <h2 className="text-2xl md:text-3xl font-bold mb-3">Not Sure Where to Start with Healthcare AI?</h2>
             <p className="text-muted-foreground max-w-xl mx-auto">Tell us your biggest challenge. Our healthcare AI team will map the right solution — with a clear timeline and zero fluff.</p>
           </motion.div>
-          <ContextualLeadForm />
+          <IndustryLeadForm
+            challengeOptions={healthcareChallengeOptions}
+            ctaLabel="Get a Custom AI Strategy"
+            namePlaceholder="Dr. / Mr. / Ms. Your Name"
+            orgPlaceholder="Hospital / Clinic / Platform"
+            disclaimer="No commitment. Our healthcare AI team will respond within one business day."
+            successMessage="Our healthcare AI team will reach out within one business day with a tailored strategy."
+            industry="healthcare"
+            formType="healthcare-midpage-cta"
+            source="/industries/healthcare-ai-solutions"
+            ctaId="healthcare-contextual-form"
+            ctaLocation="mid-page-use-cases"
+            testIdPrefix="ctx"
+          />
         </div>
       </section>
 
@@ -3107,7 +2976,22 @@ export default function HealthcareIndustryPage() {
               Book a free 30-minute strategy session. Tell us your biggest challenge — we&apos;ll map the right AI starting point, with a clear timeline and zero fluff.
             </p>
           </motion.div>
-          <BottomLeadForm />
+          <IndustryLeadForm
+            challengeOptions={healthcareChallengeOptions}
+            ctaLabel="Book Free Strategy Session"
+            challengeLabel="Primary Use Case"
+            challengePlaceholder="What do you want to solve?"
+            namePlaceholder="Dr. / Mr. / Ms. Your Name"
+            orgPlaceholder="Hospital / Clinic / Platform"
+            disclaimer="No commitment. HIPAA-compliant. Our healthcare AI team responds within one business day."
+            successMessage="Our healthcare AI team will reach out within one business day with a tailored strategy roadmap."
+            industry="healthcare"
+            formType="healthcare-bottom-cta"
+            source="/industries/healthcare-ai-solutions"
+            ctaId="healthcare-bottom-form"
+            ctaLocation="bottom-page-post-faq"
+            testIdPrefix="bottom"
+          />
           <div className="mt-6 flex flex-wrap gap-4 justify-center text-xs text-muted-foreground">
             <span className="flex items-center gap-1"><ShieldCheck className="w-3 h-3 text-primary" />HIPAA-compliant</span>
             <span className="flex items-center gap-1"><CheckCircle2 className="w-3 h-3 text-primary" />Human-in-the-loop governance</span>
