@@ -87,75 +87,160 @@ export const documentFAQs: Record<string, FAQItem[]> = {
 
   "conversational-ai": [
     {
-      question: "What is Conversational Intelligence?",
+      question: "What is conversational intelligence?",
       answer:
-        "Conversational Intelligence is AI that can understand intent, remember conversation history, and take meaningful action — not just respond to keywords. AGIX Technologies Conversational Intelligence systems handle complex, multi-turn interactions across text and voice channels, integrating directly with CRMs, databases, and internal platforms to provide contextually accurate, actionable responses at scale.",
+        "Conversational Intelligence is the ability of an AI system to understand human intent, maintain context across interactions, reason through complexity, and trigger the correct response or action — not just generate a response. It transforms conversations from simple question-answer exchanges into meaningful business decisions, actions, and outcomes. Where a chatbot replies, Conversational Intelligence understands WHY someone is speaking, what they need, and what should happen next.",
     },
     {
-      question:
-        "How is Conversational Intelligence different from a standard chatbot?",
+      question: "How is conversational intelligence different from a chatbot?",
       answer:
-        "Standard chatbots follow scripted decision trees and break on unexpected inputs. Conversational Intelligence systems understand natural language intent, maintain conversation context across multiple exchanges, access live business data, and know when to escalate to a human. AGIX Technologies builds production-grade conversational intelligence — not FAQ bots.",
+        "A chatbot follows scripts and rules. Conversational Intelligence understands why someone is speaking, remembers context across turns, reasons through complex requests, and takes action by connecting to business systems. A chatbot answers questions. Conversational Intelligence resolves situations.",
     },
     {
-      question:
-        "What channels can AGIX Technologies Conversational Intelligence be deployed on?",
+      question: "What is the AGIX Conversational Intelligence Spectrum?",
       answer:
-        "AGIX Technologies Conversational Intelligence systems deploy across web chat, mobile apps, WhatsApp Business, Slack, Microsoft Teams, SMS, and voice interfaces. Each deployment integrates with your existing CRM, helpdesk, or ERP — so conversations are logged, routed, and actioned within your current operational stack.",
+        "A five-level maturity model: Level 1 (Scripted — rule-based), Level 2 (Intent-Aware — NLU classification), Level 3 (Context-Aware — multi-turn memory + RAG knowledge), Level 4 (Reasoning — LLM-powered dynamic logic + tool use), Level 5 (Autonomous — proactive, multi-channel, long-running conversation management). Most organizations are at Level 1–2.",
     },
     {
-      question:
-        "Can Conversational Intelligence handle human handoff when needed?",
+      question: "What is the difference between conversational AI and conversational intelligence?",
       answer:
-        "Yes. AGIX Technologies Conversational Intelligence systems include intelligent escalation logic — detecting when a conversation requires human intervention based on sentiment, complexity, or explicit customer request. Handoffs include full conversation history transfer, priority routing, and CRM record updates, ensuring no context is lost in the transition.",
+        "Conversational AI is the technology (NLP, LLMs, speech recognition). Conversational Intelligence is the capability — what the technology enables when properly architected. You can have conversational AI without intelligence (a fluent bot that doesn't understand context). Intelligence requires architecture, not just models.",
+    },
+    {
+      question: "Which industries benefit most from conversational intelligence?",
+      answer:
+        "Customer support (42.4% of chatbot market), e-commerce (4x conversion for AI-engaged shoppers), healthcare (fastest-growing at 20.1% CAGR), financial services, and enterprise operations. Any business with high-volume, repetitive conversations that require accuracy and context.",
+    },
+    {
+      question: "Can conversational intelligence work across text AND voice?",
+      answer:
+        "Yes. Conversational Intelligence is channel-agnostic — it operates across web chat, mobile apps, voice calls, WhatsApp, Slack, email, and SMS. The intelligence layer is the same regardless of channel. 80% of businesses plan to integrate AI voice technology by 2026 (Nextiva).",
+    },
+    {
+      question: "How does conversational intelligence prevent hallucinations?",
+      answer:
+        "Through grounded generation (RAG — answers based on verified documents, not model memory), confidence scoring (the system knows when it's uncertain), fallback logic (says 'I don't know' instead of guessing), and human escalation when confidence is low.",
+    },
+    {
+      question: "What does Level 5 (Autonomous) conversational intelligence look like in practice?",
+      answer:
+        "An AI system that proactively reaches out to at-risk customers, manages onboarding sequences over weeks, coordinates follow-ups across email and voice, and hands off to humans only when genuinely necessary — with full context and history.",
+    },
+    {
+      question: "How do you assess conversational intelligence maturity?",
+      answer:
+        "AGIX evaluates five dimensions: understanding (can the system parse intent and context?), reasoning (can it handle multi-step logic?), action (does it connect to business systems?), persistence (does it maintain context over time?), and autonomy (can it proactively manage conversations?).",
+    },
+    {
+      question: "Is conversational intelligence safe? What about governance?",
+      answer:
+        "Governance is essential at every level. Level 1–2 require input validation and escalation rules. Level 3–4 require RAG grounding, confidence thresholds, and audit trails. Level 5 requires bounded autonomy, kill switches, and human-in-the-loop oversight for high-stakes decisions.",
     },
   ],
 
   "decision-ai": [
     {
-      question: "What is Decision Intelligence?",
+      question: "What is decision intelligence?",
       answer:
-        "Decision Intelligence is an AI framework that combines data analysis, predictive modelling, and machine reasoning to support and automate business decisions. AGIX Technologies Decision Intelligence systems surface the right information at the right moment — replacing slow, manual analysis with real-time dashboards, risk signals, and AI-generated recommendations that improve decision speed and accuracy.",
+        "Decision Intelligence is the discipline of using AI to support, guide, and automate business decisions by explicitly engineering how decisions are made, executed, monitored, and improved. It combines data, analytics, knowledge, and AI to move from insight to action — not just from data to dashboard.",
     },
     {
-      question: "How does Decision Intelligence improve business outcomes?",
+      question: "How is decision intelligence different from analytics?",
       answer:
-        "AGIX Technologies Decision Intelligence removes the bottleneck between data and action. Instead of waiting for weekly reports, executives and operations teams get real-time alerts, anomaly detection, and scenario-based recommendations — enabling 3x faster decisions, measurable reduction in costly errors, and consistent decision quality across teams and geographies.",
+        "Analytics explains what happened. Predictive AI estimates what will happen. Decision Intelligence determines what to do about it — evaluating options, weighing trade-offs, and recommending or executing the optimal action. The difference is actionability.",
     },
     {
-      question: "What data sources can Decision Intelligence connect to?",
+      question: "How is decision intelligence different from business intelligence?",
       answer:
-        "AGIX Technologies Decision Intelligence systems connect to CRMs, ERPs, financial platforms, operational databases, third-party APIs, and real-time data streams. We support Salesforce, HubSpot, SAP, Oracle, Google Analytics, and custom databases. Data from all sources is unified into a single intelligence layer that powers dashboards and automated alerts.",
+        "Business intelligence generates reports for humans to interpret. Decision Intelligence generates recommendations — or autonomous actions — with confidence scoring, trade-off analysis, and outcome tracking. BI is backward-looking. Decision Intelligence is forward-acting.",
     },
     {
-      question:
-        "Is Decision Intelligence explainable — can we see why the AI made a recommendation?",
+      question: "What is the AGIX Decision Intelligence Pyramid?",
       answer:
-        "Yes. Explainability is a core architectural requirement in all AGIX Technologies Decision Intelligence systems. Every recommendation includes the data inputs, weighting factors, and confidence scores that produced it. This satisfies both internal governance requirements and external compliance needs, including SOC 2, GDPR, and HIPAA audit standards.",
+        "A four-level framework: Level 1 (Informed — AI provides data, human decides), Level 2 (Recommended — AI suggests, human approves), Level 3 (Automated — AI decides within rules, human monitors), Level 4 (Autonomous — AI decides and adapts, human sets objectives). The right level depends on the decision's frequency, stakes, and reversibility.",
+    },
+    {
+      question: "Which decisions should be automated?",
+      answer:
+        "Use the Decision Complexity Matrix: high-frequency, data-rich, reversible decisions belong at Level 3+. Low-frequency, high-stakes, qualitative decisions stay at Level 1–2. The most common mistake is automating decisions that need judgment — or keeping humans in loops they shouldn't be in.",
+    },
+    {
+      question: "Is decision intelligence the same as prescriptive analytics?",
+      answer:
+        "Prescriptive analytics is one component of decision intelligence. Prescriptive answers 'what should we do?' based on optimization models. Decision Intelligence adds decision modeling, execution orchestration, outcome tracking, governance, and continuous learning — the full lifecycle of a decision, not just the recommendation.",
+    },
+    {
+      question: "Has Gartner validated decision intelligence?",
+      answer:
+        "Yes. Gartner published its inaugural Magic Quadrant for Decision Intelligence Platforms in January 2026, formally recognizing DI as an enterprise software category. Gartner defines it as 'a practical discipline that advances decision making by explicitly understanding and engineering how decisions are made.'",
+    },
+    {
+      question: "What industries benefit most from decision intelligence?",
+      answer:
+        "Financial services (lending, fraud, risk), healthcare (clinical decisions, resource allocation), retail (pricing, inventory), insurance (claims, underwriting), supply chain (procurement, distribution), and government (eligibility, resource allocation).",
+    },
+    {
+      question: "How does decision intelligence handle governance?",
+      answer:
+        "Every level of the Pyramid includes governance: Level 1–2 have human review and approval. Level 3 has automated audit trails and exception escalation. Level 4 has bounded autonomy, kill switches, and continuous monitoring. Decision Intelligence without governance is recklessness.",
+    },
+    {
+      question: "Can small businesses use decision intelligence?",
+      answer:
+        "Yes. Level 1 (AI-informed dashboards) and Level 2 (AI-recommended actions) are accessible to any business with historical data. You don't need enterprise-scale infrastructure to start making better decisions with AI.",
     },
   ],
 
   "autonomous-agentic-ai": [
     {
-      question: "What is an autonomous agentic AI system?",
+      question: "What are autonomous agentic systems?",
       answer:
-        "An autonomous agentic AI system is an AI that can set goals, plan a sequence of actions, execute across multiple tools and systems, evaluate its own output, and self-correct — without requiring human prompts at each step. AGIX Technologies agentic systems are production-grade: they operate within defined boundaries, maintain audit logs, and escalate when they encounter situations outside their authorisation.",
+        "Autonomous agentic systems are AI architectures that pursue goals, make decisions, execute actions across tools and systems, and adapt over time — with bounded autonomy and governance controls. They don't follow scripts or respond to prompts. They own outcomes.",
     },
     {
-      question: "How do agentic AI systems differ from standard automation?",
+      question: "How are agentic systems different from automation?",
       answer:
-        "Standard automation follows fixed rules and breaks on edge cases. Agentic AI systems reason through novel situations, adapt their plan based on intermediate results, and use multiple tools to achieve goals — similar to how a skilled human operator would tackle a complex task. AGIX Technologies agentic systems handle ambiguity that traditional automation cannot.",
+        "Automation follows rules and breaks on exceptions. Agentic systems reason through novel situations, adapt plans based on results, and use multiple tools to achieve goals. Automation executes instructions. Agentic systems own outcomes.",
     },
     {
-      question:
-        "What safeguards exist to prevent agentic AI from making harmful decisions?",
+      question: "What is the AGIX Autonomy Maturity Model?",
       answer:
-        "AGIX Technologies agentic systems are built with bounded autonomy — every agent operates within a defined permission set and cannot take actions outside its authorised scope. All actions are logged, reversible actions are preferred over irreversible ones, and human-in-the-loop checkpoints are built into high-stakes workflows. Governance is an architectural decision, not an afterthought.",
+        "A four-level framework: L1 (Assistive — AI helps, human acts), L2 (Semi-Autonomous — AI handles routine, human approves exceptions), L3 (Autonomous — AI owns the process, human monitors), L4 (Self-Directing — AI sets sub-goals and adapts strategy, human sets objectives). Each level has distinct governance requirements.",
     },
     {
-      question: "What enterprise workflows are best suited for agentic AI?",
+      question: "What autonomy level should our organization target?",
       answer:
-        "Agentic AI delivers highest value in multi-step workflows requiring cross-system coordination — lead qualification and CRM enrichment, document processing and approval routing, customer onboarding, compliance checking, inventory management, and financial reconciliation. Any process where a skilled human currently makes multiple decisions in sequence is a strong agentic AI candidate.",
+        "Most organizations should start at L2 (Semi-Autonomous) in 2026. L2 delivers 80% of the value with 20% of the risk. L3 is appropriate for organizations with mature governance and well-understood processes. L4 is a 2028–2030 target for organizations that have proven L3 reliability.",
+    },
+    {
+      question: "Why do 40% of agentic AI projects fail?",
+      answer:
+        "Gartner predicts 40%+ will be canceled by 2027. Causes: escalating costs, unclear business value, inadequate governance, architecture debt, and 'agent-washing' (vendors relabeling chatbots as agents). Architecture and governance prevent these failures.",
+    },
+    {
+      question: "What is bounded autonomy?",
+      answer:
+        "Every agent operates within explicitly defined action boundaries set by humans. The agent cannot take actions outside its scope regardless of its reasoning. Boundaries expand only after demonstrated reliability — this is progressive trust.",
+    },
+    {
+      question: "What is progressive trust in agentic AI?",
+      answer:
+        "Agents don't start autonomous. They earn autonomy: assistive → supervised → monitored → autonomous. Each stage requires proven performance before advancing. This is how organizations build confidence in agentic systems without taking unacceptable risk.",
+    },
+    {
+      question: "Are autonomous AI agents safe?",
+      answer:
+        "With proper architecture — yes. Without governance — no. The AGIX Autonomy Safety Framework defines five principles: bounded autonomy, progressive trust, confidence-gated escalation, full audit traceability, and kill switch architecture. These are non-negotiable at every autonomy level.",
+    },
+    {
+      question: "What is a multi-agent system?",
+      answer:
+        "Multiple specialized AI agents, each with a distinct role, collaborating to achieve complex objectives. Multi-agent architectures represent 66.4% of the agentic AI market (Landbase). Organizations choose coordinated specialist teams over single agents for production complexity.",
+    },
+    {
+      question: "When will L4 autonomy be ready for enterprise deployment?",
+      answer:
+        "2028–2030 for organizations that have built the L2→L3 foundation and demonstrated sustained reliability. Any organization claiming L4 in 2026 is either redefining L4 or underestimating the governance requirement.",
     },
   ],
 
@@ -163,25 +248,52 @@ export const documentFAQs: Record<string, FAQItem[]> = {
     {
       question: "What is Enterprise Knowledge Intelligence?",
       answer:
-        "Enterprise Knowledge Intelligence is an AI architecture that connects your internal documents, databases, wikis, and platforms into a unified knowledge layer that AI systems can query accurately. Built on Retrieval-Augmented Generation (RAG), AGIX Technologies Knowledge Intelligence systems retrieve relevant information before generating responses — eliminating hallucinations and ensuring every AI answer is grounded in your actual business data.",
+        "Enterprise Knowledge Intelligence is the ability of an organization to store, govern, retrieve, and reason over its collective knowledge using AI — with accuracy, traceability, and access control. It ensures AI answers are based on what your organization actually knows, not what a model guesses.",
     },
     {
-      question:
-        "How does RAG prevent AI hallucinations in enterprise systems?",
+      question: "How is Knowledge Intelligence different from RAG?",
       answer:
-        "RAG (Retrieval-Augmented Generation) prevents hallucinations by requiring the AI to retrieve verified source documents before generating any response. Rather than relying on model memory, AGIX Technologies RAG systems query your actual knowledge base in real time and cite their sources. If the answer is not in your data, the system says so — it does not fabricate.",
+        "RAG (Retrieval-Augmented Generation) is a technology component that retrieves text and generates answers. Knowledge Intelligence is the enterprise capability — governance, access control, source validation, conflict detection, freshness monitoring, and continuous improvement. RAG is infrastructure. Knowledge Intelligence is what makes RAG trustworthy.",
     },
     {
-      question:
-        "What types of documents and data sources can Enterprise Knowledge AI connect to?",
+      question: "How is Knowledge Intelligence different from knowledge management?",
       answer:
-        "AGIX Technologies Enterprise Knowledge Intelligence systems connect to PDFs, Word documents, SharePoint, Confluence, Notion, Google Drive, SQL databases, CRMs, internal APIs, and email archives. Documents are indexed, chunked, and embedded into a vector database that the AI queries in milliseconds — regardless of document volume or complexity.",
+        "Traditional knowledge management organizes and stores documents. Knowledge Intelligence makes that knowledge AI-accessible, queryable, governed, and actively maintained. KM is about files. Knowledge Intelligence is about institutional intelligence.",
     },
     {
-      question:
-        "Is Enterprise Knowledge AI secure — does data leave our environment?",
+      question: "What is the AGIX Knowledge Intelligence Maturity Model?",
       answer:
-        "No. AGIX Technologies Enterprise Knowledge Intelligence deployments are architectured to keep all data within your controlled environment. Documents are indexed and stored in your own cloud infrastructure or on-premise. The AI model queries your data — your data does not travel to or train external models. All deployments meet GDPR, HIPAA, and SOC 2 requirements.",
+        "Five stages: Stage 1 (Scattered — in people's heads), Stage 2 (Documented — wikis and SOPs exist but are static), Stage 3 (Searchable — semantic AI search), Stage 4 (Intelligent — governed RAG with citations and access control), Stage 5 (Active — self-maintaining knowledge that feeds all AI systems). Most organizations are at Stage 1 or 2.",
+    },
+    {
+      question: "What types of knowledge does Knowledge Intelligence cover?",
+      answer:
+        "Three types: Structured (databases, CRM records), Unstructured (PDFs, emails, docs, Slack), and Tacit/Institutional (process know-how, decision rationale, 'how we do things'). True Knowledge Intelligence unifies all three.",
+    },
+    {
+      question: "Why does Knowledge Intelligence matter for other AI systems?",
+      answer:
+        "Every AI capability depends on accurate knowledge. Chatbots need it to avoid hallucination. Agents need it to act correctly. Decision systems need it to be sound. Operational systems need it for real-time context. Knowledge Intelligence is the foundation underneath all AI.",
+    },
+    {
+      question: "How do you assess Knowledge Intelligence maturity?",
+      answer:
+        "AGIX evaluates five dimensions: knowledge accessibility (can AI find it?), governance (who controls it?), freshness (is it current?), trust (is it verified and cited?), and activity (does it maintain itself?). The gap defines the investment.",
+    },
+    {
+      question: "Which industries need Knowledge Intelligence most?",
+      answer:
+        "Healthcare (clinical accuracy is life-critical), financial services (regulatory audit trails), legal (source citation mandatory), SaaS (constantly changing product docs), and any organization with high employee turnover where institutional knowledge is at risk.",
+    },
+    {
+      question: "What is 'active knowledge'?",
+      answer:
+        "Stage 5 on the maturity model. Knowledge that proactively monitors itself for staleness, detects contradictions, flags gaps, and feeds verified context to other AI systems — without waiting for someone to ask a question.",
+    },
+    {
+      question: "How long does it take to move between maturity stages?",
+      answer:
+        "Stage 1→2: 4–8 weeks (documentation and centralization). Stage 2→3: 4–6 weeks (RAG implementation). Stage 3→4: 6–10 weeks (governance, access control, validation). Stage 4→5: Ongoing — requires agentic knowledge agents and continuous optimization.",
     },
   ],
 

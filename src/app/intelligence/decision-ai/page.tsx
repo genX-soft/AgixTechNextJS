@@ -1,114 +1,73 @@
 'use client'
 import { useState } from "react";
+import Link from "next/link";
 import { motion, AnimatePresence } from "@/lib/motion";
 import { MainHeader } from "@/components/main-header";
 import { MainFooter } from "@/components/main-footer";
-import { 
-  ArrowRight, 
-  ChevronRight, 
-  ChevronDown,
-  Check,
-  X,
-  Brain,
-  Layers,
-  Network,
-  TrendingUp,
-  Target,
-  Shield,
-  Clock,
-  Users,
-  Building2,
-  Zap,
-  AlertTriangle,
-  BarChart3,
-  Scale,
-  Lightbulb,
-  ArrowUpRight,
-  HelpCircle,
-  Play,
-  Calculator,
-  Map,
-  FileText,
-  Briefcase,
-  Heart,
-  DollarSign,
-  ShoppingCart,
-  Server,
-  Building,
-  RefreshCw,
-  Eye,
-  Settings,
-  CircleDot,
-  Gauge,
-  Activity
-} from "lucide-react";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { Progress } from "@/components/ui/progress";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
 import { CtaForm } from "@/components/forms/cta-form";
-import DocumentFAQSection from "@/components/shared/FAQSection";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import {
+  ArrowRight, Brain, CheckCircle2, Shield, TrendingUp, AlertTriangle,
+  ChevronDown, ChevronRight, ArrowDown, Sparkles, CheckCheck, Bot,
+  Globe, Quote, User, RefreshCcw, Target, Layers, BarChart3,
+  LineChart, Lightbulb, Landmark, HeartPulse, ShoppingBag, Truck,
+  Factory, Umbrella, Activity, XCircle,
+} from "lucide-react";
+import FAQSection from "@/components/shared/FAQSection";
 import { documentFAQs } from "@/lib/seo/faq-data";
 
 function scrollToSection(id: string) {
-  const element = document.getElementById(id);
-  if (element) {
-    element.scrollIntoView({ behavior: "smooth", block: "start" });
-  }
+  document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
 function HeroSection() {
   return (
-    <section className="pt-24 lg:pt-28 pb-20 min-h-[80vh] flex items-center relative overflow-hidden bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-emerald-900/20 via-transparent to-transparent" />
-      
+    <section className="pt-24 lg:pt-28 pb-20 min-h-[85vh] flex items-center relative overflow-hidden bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-purple-900/20 via-transparent to-transparent" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_var(--tw-gradient-stops))] from-amber-900/10 via-transparent to-transparent" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full relative z-10">
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-          className="max-w-4xl mx-auto text-center space-y-6"
-        >
-          <Badge className="bg-emerald-500/10 text-emerald-400 border-emerald-500/30 px-4 py-1.5" data-testid="badge-intelligence-category">
-            <Scale className="w-4 h-4 mr-2" />
-            Intelligence
+        <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }} className="max-w-4xl mx-auto text-center space-y-6">
+          <nav aria-label="Breadcrumb" className="flex justify-center">
+            <ol className="flex items-center gap-1.5 text-xs text-muted-foreground">
+              <li><Link href="/" className="hover:text-white transition-colors">Home</Link></li>
+              <ChevronRight className="w-3 h-3" />
+              <li><span className="text-muted-foreground">Intelligence</span></li>
+              <ChevronRight className="w-3 h-3" />
+              <li><span className="text-purple-400">Decision Intelligence</span></li>
+            </ol>
+          </nav>
+          <Badge className="bg-purple-500/10 text-purple-400 border-purple-500/30 px-4 py-1.5" data-testid="badge-hero-category">
+            <Brain className="w-4 h-4 mr-2" />Intelligence Framework
           </Badge>
-
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight" data-testid="text-hero-headline">
-            Decision Intelligence That Helps You{" "}
-            <span className="text-emerald-400">Choose Right — Every Time</span>
+            Decision Intelligence:{" "}
+            <span className="text-purple-400">When AI Doesn&apos;t Just Inform — It Decides</span>
           </h1>
-
-          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto" data-testid="text-hero-subheadline">
-            Most businesses don't struggle because they lack data. They struggle because decisions are delayed, inconsistent, or made with incomplete context. AGIX Technologies builds Decision Intelligence systems that help organizations evaluate trade-offs, understand risk, and make better decisions — faster and with confidence.
+          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed" data-testid="text-hero-subheadline">
+            <span className="text-slate-300">Analytics</span> tells you what happened.{" "}
+            <span className="text-blue-400">Prediction</span> tells you what will happen.{" "}
+            <span className="text-purple-400">Decision Intelligence</span> tells you what to do about it — and can execute the answer.
           </p>
-
-          <div className="flex flex-col sm:flex-row gap-4 justify-center pt-8">
-            <Button 
-              size="lg" 
-              className="bg-orange-500 hover:bg-orange-600 shadow-lg shadow-orange-500/25 focus:ring-2 focus:ring-orange-500/50"
-              onClick={() => scrollToSection("interactive-tools")}
-              data-testid="button-hero-primary-cta"
-            >
-              Find the Right Decision Intelligence
-              <ArrowRight className="w-4 h-4 ml-2" />
+          <p className="text-sm text-muted-foreground/70 italic">
+            By <Link href="/author/santosh/" className="text-purple-400/80 hover:text-purple-400 transition-colors">Santosh Singh</Link>, Founder &amp; CEO, AGIX Technologies · April 2026
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+            <Button size="lg" className="bg-purple-500 hover:bg-purple-600 text-white shadow-lg shadow-purple-500/25" onClick={() => scrollToSection("di-pyramid")} data-testid="button-hero-primary">
+              Explore the Decision Pyramid <ArrowRight className="w-5 h-5 ml-2" />
             </Button>
-            <Button 
-              size="lg" 
-              variant="outline"
-              onClick={() => scrollToSection("what-is-di")}
-              data-testid="button-hero-secondary-cta"
-            >
-              Explore How Decision Intelligence Works
-              <ChevronRight className="w-4 h-4 ml-1" />
+            <Button variant="outline" size="lg" onClick={() => scrollToSection("complexity-matrix")} data-testid="button-hero-secondary">
+              Decision Complexity Matrix <ChevronDown className="w-5 h-5 ml-2" />
             </Button>
           </div>
+        </motion.div>
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1 }} className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
+          <button onClick={() => scrollToSection("definition")} aria-label="Scroll down" data-testid="button-scroll-down">
+            <motion.div animate={{ y: [0, 8, 0] }} transition={{ duration: 2, repeat: Infinity }} className="text-muted-foreground hover:text-purple-400 transition-colors">
+              <ArrowDown className="w-5 h-5" />
+            </motion.div>
+          </button>
         </motion.div>
       </div>
     </section>
@@ -116,1705 +75,496 @@ function HeroSection() {
 }
 
 function TrustStrip() {
+  return (
+    <section className="py-6 border-y border-slate-800/50 bg-slate-900/30">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <p className="text-center text-sm text-muted-foreground" data-testid="text-trust-strip">
+          Gartner published its inaugural Magic Quadrant for Decision Intelligence Platforms in <span className="text-purple-400">January 2026</span> · Market: <span className="text-blue-400">$17.41B in 2025</span> → <span className="text-green-400">$42.51B by 2030</span> at 19.7% CAGR · 33% of organizations already deployed, 17% committed within 6 months
+        </p>
+      </div>
+    </section>
+  );
+}
+
+function DefinitionBlock() {
+  return (
+    <section id="definition" className="py-20 scroll-mt-20">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 space-y-8">
+        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+          <Badge variant="outline" className="border-purple-500/30 text-purple-400 mb-4" data-testid="badge-definition">
+            <Lightbulb className="w-3 h-3 mr-1" />Definition
+          </Badge>
+          <h2 className="text-3xl md:text-4xl font-bold mb-6" data-testid="heading-definition">What Is Decision Intelligence?</h2>
+          <div className="bg-slate-900/60 border border-purple-500/20 rounded-xl p-6 md:p-8 mb-6" itemScope itemType="https://schema.org/Question">
+            <meta itemProp="name" content="What is decision intelligence?" />
+            <div itemScope itemType="https://schema.org/Answer" itemProp="acceptedAnswer">
+              <p className="text-lg md:text-xl leading-relaxed" itemProp="text" data-testid="text-definition-primary">
+                <strong>Decision Intelligence</strong> is a practical discipline that uses AI to{" "}
+                <span className="text-blue-400">support</span>,{" "}
+                <span className="text-purple-400">guide</span>, and{" "}
+                <span className="text-green-400">automate</span>{" "}
+                business decisions — by explicitly understanding and engineering how decisions are made, executed, monitored, and improved. It goes beyond analytics (which explains what happened) and beyond prediction (which estimates what will happen) to answer the question that actually matters:{" "}
+                <strong>what should we do — and how confident should we be?</strong>
+              </p>
+            </div>
+          </div>
+          <div className="bg-slate-900/40 border border-purple-500/10 rounded-xl p-5 mb-6">
+            <p className="text-sm text-muted-foreground italic">
+              Gartner defines Decision Intelligence as <span className="text-purple-300">"a practical discipline that advances decision making by explicitly understanding and engineering how decisions are made."</span> In January 2026, Gartner published its inaugural Magic Quadrant for Decision Intelligence Platforms — formally validating this as a recognized enterprise category.
+            </p>
+          </div>
+          <Card className="border-purple-500/20 bg-purple-500/5">
+            <CardContent className="p-6">
+              <div className="flex items-start gap-3">
+                <Quote className="w-5 h-5 text-purple-400 shrink-0 mt-1" />
+                <p className="text-base italic" data-testid="text-original-quote">
+                  Data doesn&apos;t make decisions. Systems do. Decision Intelligence is the discipline of engineering those systems — so the right decision happens at the right time, with the right level of confidence and governance.
+                </p>
+              </div>
+            </CardContent>
+          </Card>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+function WhyNowSection() {
+  const problems = [
+    { n: "01", title: "The decision gap is where value is lost.", body: "Data explains the past. Predictions estimate the future. But between prediction and action, there's a gap — the moment where a human or system must choose. When that gap is slow, inconsistent, or biased, value is destroyed.", color: "text-red-400", border: "border-red-500/20" },
+    { n: "02", title: "Decision complexity is outpacing human capacity.", body: "The number of variables, constraints, dependencies, and trade-offs in modern business decisions exceeds what any individual or team can consistently evaluate. Pricing decisions depend on demand, competition, inventory, margin, seasonality, and customer segment — simultaneously.", color: "text-amber-400", border: "border-amber-500/20" },
+    { n: "03", title: "The cost of wrong decisions is measurable and growing.", body: "Late pricing adjustments. Missed fraud signals. Delayed resource allocation. Over-discounted deals. Every operational, financial, and strategic decision has a cost when it's wrong or slow.", color: "text-orange-400", border: "border-orange-500/20" },
+  ];
+  const stats = [
+    { value: "$17.41B", label: "Decision Intelligence market 2025", sub: "→ $42.51B by 2030, 19.7% CAGR", source: "TBRC", color: "text-purple-400" },
+    { value: "80%", label: "of executives believe all decisions can be automated", sub: "the question is which level of automation", source: "Gartner", color: "text-blue-400" },
+    { value: "15%", label: "of work decisions will be autonomous by 2028", sub: "starting with high-frequency, low-risk choices", source: "Gartner", color: "text-green-400" },
+  ];
+  return (
+    <section className="py-20 bg-slate-900/30">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 space-y-14">
+        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center">
+          <Badge variant="outline" className="border-amber-500/30 text-amber-400 mb-4" data-testid="badge-why-now">
+            <AlertTriangle className="w-3 h-3 mr-1" />Why It Matters Now
+          </Badge>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4" data-testid="heading-why-now">Three Reasons Decision Intelligence Is Now Necessary</h2>
+        </motion.div>
+        <div className="grid md:grid-cols-3 gap-5">
+          {problems.map((p, i) => (
+            <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}>
+              <Card className={`h-full border ${p.border} bg-slate-900/40`} data-testid={`card-problem-${i}`}>
+                <CardContent className="p-6 space-y-3">
+                  <div className={`text-4xl font-black opacity-30 ${p.color}`}>{p.n}</div>
+                  <h3 className={`font-bold text-sm ${p.color}`}>{p.title}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{p.body}</p>
+                </CardContent>
+              </Card>
+            </motion.div>
+          ))}
+        </div>
+        <div className="grid md:grid-cols-3 gap-5">
+          {stats.map((s, i) => (
+            <motion.div key={i} initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}>
+              <Card className="text-center border-slate-700 bg-slate-900/50" data-testid={`card-stat-${i}`}>
+                <CardContent className="p-6 space-y-1">
+                  <div className={`text-3xl font-black ${s.color}`}>{s.value}</div>
+                  <p className="font-semibold text-sm">{s.label}</p>
+                  <p className="text-xs text-muted-foreground">{s.sub}</p>
+                  <p className="text-xs text-muted-foreground/50 italic mt-2">Source: {s.source}</p>
+                </CardContent>
+              </Card>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function ComparisonTable() {
+  const rows = [
+    { dim: "Core question", analytics: '"What happened?"', predictive: '"What will happen?"', di: '"What should we do?"' },
+    { dim: "Output", analytics: "Reports, dashboards, trends", predictive: "Forecasts, risk scores, probabilities", di: "Recommendations, automated actions, governed decisions" },
+    { dim: "Timeframe", analytics: "Past", predictive: "Future estimate", di: "Present — actionable now" },
+    { dim: "Human role", analytics: "Interprets the data", predictive: "Interprets the prediction", di: "Reviews the recommendation (or system acts autonomously)" },
+    { dim: "Learning", analytics: "None — snapshot in time", predictive: "Model retraining on new data", di: "Learns from decision outcomes — which choice worked?" },
+    { dim: "Business value", analytics: "Understanding", predictive: "Foresight", di: "Action — the decision itself" },
+  ];
+  return (
+    <section className="py-20">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6">
+        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
+          <Badge variant="outline" className="border-purple-500/30 text-purple-400 mb-4" data-testid="badge-comparison">
+            <BarChart3 className="w-3 h-3 mr-1" />Comparison
+          </Badge>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4" data-testid="heading-comparison">Decision Intelligence vs Analytics vs Predictive AI</h2>
+          <p className="text-muted-foreground max-w-2xl mx-auto">Three distinct capabilities. Only one produces the decision itself.</p>
+        </motion.div>
+        <Card className="overflow-hidden border-slate-700">
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="border-b border-slate-700 bg-slate-900/70">
+                  <th className="text-left p-4 text-muted-foreground font-medium w-32">Dimension</th>
+                  <th className="text-center p-4 text-slate-400 font-medium">Analytics / BI</th>
+                  <th className="text-center p-4 text-blue-400 font-medium">Predictive AI</th>
+                  <th className="text-center p-4 text-purple-400 font-semibold">Decision Intelligence</th>
+                </tr>
+              </thead>
+              <tbody>
+                {rows.map((row, i) => (
+                  <tr key={i} className="border-b border-slate-800/70 hover:bg-slate-900/20 transition-colors" data-testid={`row-comparison-${i}`}>
+                    <td className="p-4 font-medium text-slate-300 text-xs">{row.dim}</td>
+                    <td className="p-4 text-center text-muted-foreground text-xs leading-relaxed">{row.analytics}</td>
+                    <td className="p-4 text-center text-muted-foreground text-xs leading-relaxed">{row.predictive}</td>
+                    <td className="p-4 text-center text-purple-300 text-xs font-medium leading-relaxed">{row.di}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </Card>
+      </div>
+    </section>
+  );
+}
+
+function DecisionIntelligencePyramid() {
+  const [activeLevel, setActiveLevel] = useState(0);
+  const levels = [
+    {
+      level: "Level 1", title: "Informed Decisions", subtitle: "AI provides data. Human decides.",
+      icon: BarChart3, color: "from-blue-600 to-blue-700", textColor: "text-blue-400", borderColor: "border-blue-500", bgActive: "bg-blue-500/10 border-blue-500",
+      desc: "The AI surfaces relevant information, organizes it, and presents it at the moment of decision. The human evaluates and chooses.",
+      example: "A sales manager reviews an AI-generated pipeline risk report that highlights deals likely to slip. The manager decides which deals to intervene on and how.",
+      when: "High-stakes, low-frequency decisions. Strategic choices. Decisions requiring judgment, relationships, or ethical consideration that AI cannot evaluate.",
+    },
+    {
+      level: "Level 2", title: "Recommended Decisions", subtitle: "AI recommends. Human approves.",
+      icon: Lightbulb, color: "from-purple-500 to-purple-600", textColor: "text-purple-400", borderColor: "border-purple-500", bgActive: "bg-purple-500/10 border-purple-500",
+      desc: "The AI presents a recommendation with confidence scoring, trade-off analysis, and the reasoning behind the suggestion. The human retains final authority.",
+      example: "An AI system recommends increasing inventory for Product X by 15% based on demand prediction, supplier lead time, and margin analysis. The procurement manager reviews and approves.",
+      when: "Recurring decisions with moderate stakes. Where AI has enough data to recommend but the organization requires human oversight for accountability or compliance.",
+      stat: "Aera Technology's Decision Intelligence platform improved inventory performance by up to 20% through automated recommendations that humans review and execute.",
+    },
+    {
+      level: "Level 3", title: "Automated Decisions", subtitle: "AI decides within rules. Human monitors.",
+      icon: Shield, color: "from-amber-500 to-amber-600", textColor: "text-amber-400", borderColor: "border-amber-500", bgActive: "bg-amber-500/10 border-amber-500",
+      desc: "The AI evaluates the situation, selects the action, and executes — all within governance boundaries set by humans. Humans oversee the system and intervene on exceptions.",
+      example: "A fraud detection system analyzes every transaction, blocks high-risk transactions automatically, and routes medium-risk ones to human review. The system handles 95% of decisions; humans handle 5%.",
+      when: "High-frequency, moderate-stakes decisions. Decisions with clear rules, measurable outcomes, and reversible consequences. Fraud detection, dynamic pricing, content moderation, SLA routing.",
+    },
+    {
+      level: "Level 4", title: "Autonomous Decisions", subtitle: "AI decides and adapts. Human sets objectives.",
+      icon: Bot, color: "from-green-500 to-green-600", textColor: "text-green-400", borderColor: "border-green-500", bgActive: "bg-green-500/10 border-green-500",
+      desc: "The AI doesn't just execute within rules — it sets sub-goals, adapts its approach based on outcomes, and continuously optimizes toward the objective.",
+      example: "An autonomous supply chain system continuously adjusts procurement, inventory allocation, and distribution across regions based on real-time demand, cost, and risk signals — without human intervention on individual decisions.",
+      when: "Decisions too frequent, complex, or time-sensitive for human involvement. Operations that run 24/7. Where the cost of delay exceeds the cost of occasional AI error.",
+      stat: "15% of day-to-day work decisions will be made autonomously by AI agents by 2028 (Gartner). 80% of governments will deploy AI agents to automate routine decision-making by 2028 (Gartner).",
+    },
+  ];
+  const active = levels[activeLevel];
+  const ActiveIcon = active.icon;
+  return (
+    <section id="di-pyramid" className="py-20 bg-slate-900/30 scroll-mt-20">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-14">
+          <Badge variant="outline" className="border-purple-500/30 text-purple-400 mb-4" data-testid="badge-pyramid">
+            <Layers className="w-3 h-3 mr-1" />The AGIX Original Framework
+          </Badge>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4" data-testid="heading-pyramid">The AGIX Decision Intelligence Pyramid</h2>
+          <p className="text-muted-foreground max-w-2xl mx-auto">Four levels of decision automation. The right level depends on the decision — its complexity, stakes, reversibility, and frequency. Not every decision belongs at Level 4.</p>
+        </motion.div>
+        <div className="grid lg:grid-cols-5 gap-6 items-start">
+          <div className="lg:col-span-2 space-y-2">
+            {levels.map((lv, i) => {
+              const Icon = lv.icon;
+              const isActive = activeLevel === i;
+              return (
+                <motion.div key={i} initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}>
+                  <button onClick={() => setActiveLevel(i)} className={`w-full text-left p-4 rounded-xl border transition-all ${isActive ? `${lv.bgActive} shadow-lg` : "border-slate-700 hover:border-slate-600 bg-slate-900/30"}`} data-testid={`button-pyramid-${i}`} aria-pressed={isActive}>
+                    <div className="flex items-center gap-3">
+                      <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${lv.color} flex items-center justify-center shrink-0 shadow-md`}>
+                        <Icon className="w-5 h-5 text-white" />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <p className={`text-xs font-medium mb-0.5 ${isActive ? lv.textColor : "text-muted-foreground"}`}>{lv.level}</p>
+                        <p className={`font-bold text-sm ${isActive ? "text-white" : "text-slate-300"}`}>{lv.title}</p>
+                        <p className="text-xs text-muted-foreground truncate">{lv.subtitle}</p>
+                      </div>
+                    </div>
+                  </button>
+                </motion.div>
+              );
+            })}
+            <Card className="border-purple-500/20 bg-purple-500/5 mt-4">
+              <CardContent className="p-4">
+                <div className="flex items-start gap-2">
+                  <Quote className="w-4 h-4 text-purple-400 shrink-0 mt-0.5" />
+                  <p className="text-xs italic text-muted-foreground leading-relaxed">The Pyramid is not a roadmap where every organization reaches Level 4. It is a framework for determining which decisions belong at which level. The art of Decision Intelligence is knowing the difference.</p>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+          <div className="lg:col-span-3 lg:sticky lg:top-24">
+            <AnimatePresence mode="wait">
+              <motion.div key={activeLevel} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.2 }}>
+                <Card className="border-slate-700" data-testid="card-pyramid-details">
+                  <CardContent className="p-7 space-y-5">
+                    <div className="flex items-center gap-4">
+                      <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${active.color} flex items-center justify-center shadow-lg`}>
+                        <ActiveIcon className="w-7 h-7 text-white" />
+                      </div>
+                      <div>
+                        <p className={`text-xs font-medium ${active.textColor}`}>{active.level}</p>
+                        <h3 className="text-xl font-bold" data-testid="text-pyramid-title">{active.title}</h3>
+                        <p className="text-sm text-muted-foreground">{active.subtitle}</p>
+                      </div>
+                    </div>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{active.desc}</p>
+                    <div className="bg-slate-900/50 rounded-lg p-4 space-y-3 border border-slate-700">
+                      <div>
+                        <p className="text-xs font-semibold text-blue-400 uppercase tracking-wider mb-1">Example</p>
+                        <p className="text-sm text-muted-foreground italic">{active.example}</p>
+                      </div>
+                      <div>
+                        <p className="text-xs font-semibold text-green-400 uppercase tracking-wider mb-1">When this is right</p>
+                        <p className="text-sm text-muted-foreground">{active.when}</p>
+                      </div>
+                      {active.stat && (
+                        <div>
+                          <p className="text-xs font-semibold text-amber-400 uppercase tracking-wider mb-1">Market evidence</p>
+                          <p className="text-xs text-muted-foreground italic">{active.stat}</p>
+                        </div>
+                      )}
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function DecisionComplexityMatrix() {
+  const rows = [
+    { char: "Frequency", l1: "Quarterly / annual", l2: "Weekly / monthly", l3: "Daily / hourly", l4: "Continuous" },
+    { char: "Stakes", l1: "Strategic / high-impact", l2: "Moderate / operational", l3: "Moderate / reversible", l4: "Variable — system-managed" },
+    { char: "Data availability", l1: "Incomplete, qualitative", l2: "Structured, quantitative", l3: "Rich, real-time", l4: "Multi-source, streaming" },
+    { char: "Reversibility", l1: "Difficult to reverse", l2: "Somewhat reversible", l3: "Easily reversible", l4: "System self-corrects" },
+    { char: "Regulatory", l1: "Human sign-off required", l2: "Human audit trail needed", l3: "Automated with audit logging", l4: "Governed autonomous action" },
+    { char: "Examples", l1: "Market entry, M&A, hiring leaders", l2: "Inventory planning, pricing adjustments", l3: "Fraud detection, dynamic pricing, ticket routing", l4: "Supply chain optimization, real-time resource allocation" },
+  ];
+  return (
+    <section id="complexity-matrix" className="py-20 scroll-mt-20">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
+          <Badge variant="outline" className="border-amber-500/30 text-amber-400 mb-4" data-testid="badge-matrix">
+            <Target className="w-3 h-3 mr-1" />The AGIX Original Framework
+          </Badge>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4" data-testid="heading-matrix">The Decision Complexity Matrix: Which Decisions Belong Where?</h2>
+          <p className="text-muted-foreground max-w-2xl mx-auto">A decision tool for leaders. Match your decisions to the right automation level.</p>
+        </motion.div>
+        <Card className="overflow-hidden border-slate-700">
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="border-b border-slate-700 bg-slate-900/70">
+                  <th className="text-left p-4 text-muted-foreground font-medium w-32">Characteristic</th>
+                  <th className="text-center p-3 text-blue-400 font-medium text-xs">Level 1<br /><span className="font-normal text-muted-foreground">Informed</span></th>
+                  <th className="text-center p-3 text-purple-400 font-medium text-xs">Level 2<br /><span className="font-normal text-muted-foreground">Recommended</span></th>
+                  <th className="text-center p-3 text-amber-400 font-medium text-xs">Level 3<br /><span className="font-normal text-muted-foreground">Automated</span></th>
+                  <th className="text-center p-3 text-green-400 font-semibold text-xs">Level 4<br /><span className="font-normal text-muted-foreground">Autonomous</span></th>
+                </tr>
+              </thead>
+              <tbody>
+                {rows.map((row, i) => (
+                  <tr key={i} className="border-b border-slate-800/70 hover:bg-slate-900/20 transition-colors" data-testid={`row-matrix-${i}`}>
+                    <td className="p-4 font-medium text-slate-300 text-xs">{row.char}</td>
+                    <td className="p-3 text-center text-muted-foreground text-xs leading-relaxed">{row.l1}</td>
+                    <td className="p-3 text-center text-muted-foreground text-xs leading-relaxed">{row.l2}</td>
+                    <td className="p-3 text-center text-muted-foreground text-xs leading-relaxed">{row.l3}</td>
+                    <td className="p-3 text-center text-green-300 text-xs font-medium leading-relaxed">{row.l4}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </Card>
+        <Card className="border-purple-500/20 bg-purple-500/5 mt-6">
+          <CardContent className="p-5">
+            <div className="flex items-start gap-3">
+              <Quote className="w-4 h-4 text-purple-400 shrink-0 mt-1" />
+              <p className="text-sm italic" data-testid="text-matrix-quote">If a decision is high-frequency, data-rich, and easily reversible — it should be automated (Level 3+). If a decision is low-frequency, high-stakes, and qualitative — it should remain at Level 1 or 2. The Decision Complexity Matrix prevents the two most common mistakes: automating decisions that need human judgment, and keeping humans in loops they shouldn't be in.</p>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    </section>
+  );
+}
+
+function IndustryApplications() {
   const industries = [
-    "Finance",
-    "Healthcare",
-    "Retail",
-    "SaaS",
-    "Complex Operations"
+    { icon: Landmark, name: "Financial Services", challenge: "Loan approvals, fraud detection, portfolio allocation", app: "Level 2 recommendations for lending; Level 3 automation for fraud", color: "text-blue-400", border: "border-blue-500/20" },
+    { icon: Activity, name: "Healthcare", challenge: "Treatment selection, resource allocation, triage prioritization", app: "Level 1–2 clinical decision support; Level 3 operational routing", color: "text-red-400", border: "border-red-500/20" },
+    { icon: ShoppingBag, name: "Retail", challenge: "Pricing, inventory, promotions, assortment", app: "Level 3 dynamic pricing; Level 2 assortment recommendations", color: "text-purple-400", border: "border-purple-500/20" },
+    { icon: Umbrella, name: "Insurance", challenge: "Claims adjudication, underwriting, risk assessment", app: "Level 2–3 claims automation; Level 1 complex underwriting", color: "text-teal-400", border: "border-teal-500/20" },
+    { icon: Brain, name: "SaaS", challenge: "Churn intervention, pricing, feature prioritization", app: "Level 2 retention recommendations; Level 3 usage-triggered actions", color: "text-amber-400", border: "border-amber-500/20" },
+    { icon: Truck, name: "Supply Chain", challenge: "Procurement, distribution, demand allocation", app: "Level 3–4 autonomous optimization across nodes", color: "text-green-400", border: "border-green-500/20" },
+    { icon: Globe, name: "Government", challenge: "Benefit eligibility, resource allocation, fraud prevention", app: "Level 2–3 eligibility processing; Level 1 policy decisions", color: "text-orange-400", border: "border-orange-500/20" },
   ];
-
   return (
-    <section className="py-6 border-y border-border/50 bg-slate-900/30">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-muted-foreground">
-          <span className="font-medium">Trusted by startups and enterprises to design AI-driven decision systems across:</span>
-          {industries.map((industry, i) => (
-            <Badge key={i} variant="outline" className="border-slate-700" data-testid={`badge-industry-${i}`}>
-              {industry}
-            </Badge>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function WhatIsDecisionIntelligence() {
-  const capabilities = [
-    { icon: Target, text: "Evaluates multiple options" },
-    { icon: Shield, text: "Considers risk, constraints, and trade-offs" },
-    { icon: Lightbulb, text: "Recommends actions with confidence levels" },
-    { icon: RefreshCw, text: "Learns from outcomes over time" },
-  ];
-
-  return (
-    <section id="what-is-di" className="py-20 scroll-mt-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="max-w-4xl mx-auto"
-        >
-          <div className="text-center mb-12">
-            <Badge variant="outline" className="border-emerald-500/30 text-emerald-400 mb-4" data-testid="badge-what-is">
-              <HelpCircle className="w-3 h-3 mr-1" />
-              Definition
-            </Badge>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4" data-testid="heading-what-is">
-              What Is Decision Intelligence?
-            </h2>
-            <p className="text-lg text-muted-foreground">
-              Decision Intelligence is the capability of a business to use AI to support, guide, and improve decision-making — consistently and at scale.
-            </p>
-          </div>
-
-          <Card className="mb-8 bg-gradient-to-br from-emerald-500/10 to-transparent border-emerald-500/20" data-testid="card-definition">
-            <CardContent className="p-6">
-              <p className="text-xl font-semibold text-center">
-                Decision Intelligence helps businesses decide what to do next, not just see what happened.
-              </p>
-            </CardContent>
-          </Card>
-
-          <div className="grid md:grid-cols-2 gap-4 mb-8">
-            {capabilities.map((cap, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, x: -10 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-              >
-                <Card className="h-full" data-testid={`card-capability-${i}`}>
-                  <CardContent className="p-4 flex items-center gap-4">
-                    <div className="w-10 h-10 rounded-lg bg-emerald-500/10 flex items-center justify-center shrink-0">
-                      <cap.icon className="w-5 h-5 text-emerald-400" />
+    <section className="py-20 bg-slate-900/30">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 space-y-12">
+        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center">
+          <Badge variant="outline" className="border-teal-500/30 text-teal-400 mb-4" data-testid="badge-industries">
+            <Globe className="w-3 h-3 mr-1" />Industry Applications
+          </Badge>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4" data-testid="heading-industries">How Decision Intelligence Applies Across Industries</h2>
+          <p className="text-muted-foreground max-w-xl mx-auto text-sm">Decision Intelligence shifts governance from managing models and data to governing decisions themselves — how they are designed, executed, monitored, and audited (Gartner).</p>
+        </motion.div>
+        <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-4">
+          {industries.slice(0, 6).map((ind, i) => {
+            const Icon = ind.icon;
+            return (
+              <motion.div key={i} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}>
+                <Card className={`h-full border ${ind.border} hover-elevate`} data-testid={`card-industry-${i}`}>
+                  <CardContent className="p-5 space-y-3">
+                    <div className="flex items-center gap-2">
+                      <Icon className={`w-5 h-5 ${ind.color}`} />
+                      <h3 className={`font-bold text-sm ${ind.color}`}>{ind.name}</h3>
                     </div>
-                    <p className="text-sm">{cap.text}</p>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-
-          <Card className="border-slate-700/50" data-testid="card-search-intent">
-            <CardContent className="p-6">
-              <p className="text-sm text-muted-foreground mb-4">
-                This is why searches like these are increasing rapidly:
-              </p>
-              <div className="flex flex-wrap gap-2">
-                <Badge variant="outline" className="border-emerald-500/30 text-emerald-400">Decision intelligence vs analytics</Badge>
-                <Badge variant="outline" className="border-emerald-500/30 text-emerald-400">AI for business decision making</Badge>
-                <Badge variant="outline" className="border-emerald-500/30 text-emerald-400">Decision intelligence systems</Badge>
-              </div>
-            </CardContent>
-          </Card>
-        </motion.div>
-      </div>
-    </section>
-  );
-}
-
-function WhyMoreDataDoesntHelp() {
-  const leaderQuestions = [
-    "Why are decisions so slow?",
-    "Why do different teams decide differently?",
-    "Why do data-driven decisions still fail?"
-  ];
-
-  return (
-    <section className="py-20 bg-slate-900/50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="max-w-4xl mx-auto"
-        >
-          <div className="text-center mb-12">
-            <Badge variant="outline" className="border-amber-500/30 text-amber-400 mb-4">
-              <AlertTriangle className="w-3 h-3 mr-1" />
-              The Real Problem
-            </Badge>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Why "More Data" Has Not Solved Decision Problems
-            </h2>
-            <p className="text-muted-foreground">
-              Most organizations already have dashboards, reports, KPIs, and predictive models.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-6 mb-8">
-            {leaderQuestions.map((question, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-              >
-                <Card className="h-full border-amber-500/20 bg-amber-500/5">
-                  <CardContent className="p-6 flex items-center gap-3">
-                    <HelpCircle className="w-5 h-5 text-amber-400 shrink-0" />
-                    <p className="text-sm font-medium">"{question}"</p>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-
-          <Card className="bg-gradient-to-r from-slate-800 to-slate-900 border-slate-700">
-            <CardContent className="p-8 text-center">
-              <p className="text-lg text-muted-foreground mb-4">
-                The problem is not data availability.
-              </p>
-              <p className="text-lg font-semibold text-foreground mb-4">
-                The problem is decision complexity.
-              </p>
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-sm">
-                <span className="text-muted-foreground">Data explains the past.</span>
-                <ArrowRight className="w-4 h-4 text-emerald-400 hidden sm:block" />
-                <span className="text-emerald-400 font-medium">Decision Intelligence helps choose the future.</span>
-              </div>
-            </CardContent>
-          </Card>
-        </motion.div>
-      </div>
-    </section>
-  );
-}
-
-function DecisionTypesSection() {
-  const decisionTypes = [
-    {
-      title: "Operational Decisions",
-      icon: Settings,
-      color: "text-blue-400",
-      bgColor: "bg-blue-500/10",
-      items: [
-        "Prioritization of work",
-        "Resource allocation",
-        "Escalations and approvals",
-        "Exception handling"
-      ]
-    },
-    {
-      title: "Financial Decisions",
-      icon: DollarSign,
-      color: "text-green-400",
-      bgColor: "bg-green-500/10",
-      items: [
-        "Pricing and discounting",
-        "Budget allocation",
-        "Cost vs growth trade-offs",
-        "Investment timing"
-      ]
-    },
-    {
-      title: "Risk & Compliance Decisions",
-      icon: Shield,
-      color: "text-amber-400",
-      bgColor: "bg-amber-500/10",
-      items: [
-        "Credit and eligibility",
-        "Policy enforcement",
-        "Fraud detection",
-        "Regulatory thresholds"
-      ]
-    },
-    {
-      title: "Strategic & Growth Decisions",
-      icon: TrendingUp,
-      color: "text-purple-400",
-      bgColor: "bg-purple-500/10",
-      items: [
-        "Market entry",
-        "Product roadmap",
-        "Customer segmentation",
-        "Retention vs acquisition focus"
-      ]
-    }
-  ];
-
-  const challenges = [
-    "Made under uncertainty",
-    "Influenced by bias",
-    "Delayed due to lack of confidence",
-    "Inconsistent across teams"
-  ];
-
-  return (
-    <section className="py-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-12"
-        >
-          <Badge variant="outline" className="border-emerald-500/30 text-emerald-400 mb-4">
-            <Briefcase className="w-3 h-3 mr-1" />
-            Decision Categories
-          </Badge>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            What Types of Decisions Do Businesses Struggle With?
-          </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            Decision Intelligence applies wherever choices have consequences.
-          </p>
-        </motion.div>
-
-        <div className="grid md:grid-cols-2 gap-6 mb-12">
-          {decisionTypes.map((type, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-            >
-              <Card className="h-full" data-testid={`card-decision-type-${i}`}>
-                <CardHeader className="pb-3">
-                  <div className="flex items-center gap-3">
-                    <div className={`w-10 h-10 rounded-lg ${type.bgColor} flex items-center justify-center`}>
-                      <type.icon className={`w-5 h-5 ${type.color}`} />
-                    </div>
-                    <CardTitle className="text-lg">{type.title}</CardTitle>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-2">
-                    {type.items.map((item, j) => (
-                      <li key={j} className="flex items-center gap-2 text-sm text-muted-foreground">
-                        <CircleDot className="w-3 h-3 text-emerald-400" />
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
-        </div>
-
-        <Card className="border-amber-500/20 bg-amber-500/5">
-          <CardContent className="p-6">
-            <p className="text-sm text-muted-foreground mb-4 text-center">
-              These decisions are often:
-            </p>
-            <div className="flex flex-wrap justify-center gap-3">
-              {challenges.map((challenge, i) => (
-                <Badge key={i} variant="outline" className="border-amber-500/30 text-amber-400">
-                  {challenge}
-                </Badge>
-              ))}
-            </div>
-            <p className="text-sm text-center mt-4 font-medium text-emerald-400">
-              Decision Intelligence exists to stabilize and improve this process.
-            </p>
-          </CardContent>
-        </Card>
-      </div>
-    </section>
-  );
-}
-
-function ComparisonSection() {
-  const comparisons = [
-    {
-      title: "Analytics",
-      description: "Explains what happened",
-      focus: "Past performance",
-      color: "border-slate-500/30",
-      textColor: "text-slate-400"
-    },
-    {
-      title: "Predictive AI",
-      description: "Estimates what might happen",
-      focus: "Often stops at prediction",
-      color: "border-blue-500/30",
-      textColor: "text-blue-400"
-    },
-    {
-      title: "Decision Intelligence",
-      description: "Evaluates options, considers constraints and risk",
-      focus: "Recommends the best action & tracks outcomes",
-      color: "border-emerald-500/30",
-      textColor: "text-emerald-400",
-      highlighted: true
-    }
-  ];
-
-  return (
-    <section className="py-20 bg-slate-900/50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-12"
-        >
-          <Badge variant="outline" className="border-emerald-500/30 text-emerald-400 mb-4">
-            <Scale className="w-3 h-3 mr-1" />
-            Common Comparison
-          </Badge>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Decision Intelligence vs Analytics vs Predictive AI
-          </h2>
-          <p className="text-muted-foreground">
-            A very common search comparison explained clearly
-          </p>
-        </motion.div>
-
-        <div className="grid md:grid-cols-3 gap-6 mb-8">
-          {comparisons.map((item, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-            >
-              <Card className={`h-full ${item.color} ${item.highlighted ? 'bg-emerald-500/5 ring-1 ring-emerald-500/20' : ''}`}>
-                <CardHeader>
-                  <CardTitle className={`text-xl ${item.textColor}`}>{item.title}</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <p className="text-sm">{item.description}</p>
-                  <p className="text-sm text-muted-foreground">{item.focus}</p>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
-        </div>
-
-        <Card className="bg-gradient-to-r from-emerald-500/10 to-transparent border-emerald-500/20">
-          <CardContent className="p-6 text-center">
-            <p className="text-lg font-medium">
-              Decision Intelligence does not replace humans.
-            </p>
-            <p className="text-muted-foreground">
-              It supports humans with structured, unbiased reasoning.
-            </p>
-          </CardContent>
-        </Card>
-      </div>
-    </section>
-  );
-}
-
-function WhyBusinessesNeedIt() {
-  const challenges = [
-    { icon: Clock, text: "Decisions take too long" },
-    { icon: Users, text: "Different teams reach different conclusions" },
-    { icon: Brain, text: "Bias influences outcomes" },
-    { icon: AlertTriangle, text: "Risk is poorly quantified" },
-    { icon: RefreshCw, text: "No feedback loop exists to improve decisions" }
-  ];
-
-  const consequences = [
-    "Missed opportunities",
-    "Avoidable losses",
-    "Inconsistent execution",
-    "Reduced confidence at leadership levels"
-  ];
-
-  const benefits = [
-    "Make faster, more consistent decisions",
-    "Reduce human bias",
-    "Quantify risk and uncertainty",
-    "Learn from past outcomes",
-    "Scale decision quality as the business grows"
-  ];
-
-  return (
-    <section className="py-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-12"
-        >
-          <Badge variant="outline" className="border-emerald-500/30 text-emerald-400 mb-4">
-            <TrendingUp className="w-3 h-3 mr-1" />
-            Business Impact
-          </Badge>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Why Businesses Are Actively Adopting Decision Intelligence
-          </h2>
-          <p className="text-muted-foreground">
-            Across industries, leaders face the same hidden challenges
-          </p>
-        </motion.div>
-
-        <div className="grid lg:grid-cols-2 gap-8">
-          <div className="space-y-6">
-            <Card className="border-amber-500/20">
-              <CardHeader>
-                <CardTitle className="text-lg text-amber-400">Hidden Challenges</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-3">
-                {challenges.map((item, i) => (
-                  <div key={i} className="flex items-center gap-3">
-                    <item.icon className="w-5 h-5 text-amber-400" />
-                    <span className="text-sm">{item.text}</span>
-                  </div>
-                ))}
-              </CardContent>
-            </Card>
-
-            <Card className="border-red-500/20 bg-red-500/5">
-              <CardHeader className="pb-2">
-                <CardTitle className="text-lg text-red-400">This leads to:</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="flex flex-wrap gap-2">
-                  {consequences.map((item, i) => (
-                    <Badge key={i} variant="outline" className="border-red-500/30 text-red-400">
-                      {item}
-                    </Badge>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-
-          <Card className="border-emerald-500/20 bg-emerald-500/5">
-            <CardHeader>
-              <CardTitle className="text-lg text-emerald-400">Decision Intelligence helps organizations:</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-3">
-              {benefits.map((item, i) => (
-                <div key={i} className="flex items-center gap-3">
-                  <Check className="w-5 h-5 text-emerald-400" />
-                  <span className="text-sm">{item}</span>
-                </div>
-              ))}
-            </CardContent>
-          </Card>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function ArchitectureSection() {
-  const [activeLayer, setActiveLayer] = useState(0);
-  
-  const layers = [
-    {
-      title: "Input & Signal Layer",
-      subtitle: "Understanding the Situation",
-      icon: Activity,
-      color: "from-blue-500 to-blue-600",
-      items: [
-        "Operational data",
-        "Financial metrics",
-        "Market signals",
-        "Customer behavior",
-        "Historical outcomes",
-        "Constraints (budget, policy, risk limits)"
-      ],
-      note: "This is not just raw data — it's decision-relevant signals."
-    },
-    {
-      title: "Situation Awareness Layer",
-      subtitle: "Framing the Decision Correctly",
-      icon: Eye,
-      color: "from-purple-500 to-purple-600",
-      items: [
-        "What decision is actually being made?",
-        "What constraints apply?",
-        "What trade-offs exist?",
-        "What uncertainties are present?"
-      ],
-      note: "Bad decisions often happen because the problem is framed incorrectly."
-    },
-    {
-      title: "Reasoning & Evaluation Layer",
-      subtitle: "Comparing Options Intelligently",
-      icon: Brain,
-      color: "from-amber-500 to-amber-600",
-      items: [
-        "Evaluates multiple options",
-        "Simulates possible outcomes",
-        "Weighs trade-offs",
-        "Quantifies risk and uncertainty",
-        "Detects bias or overconfidence"
-      ],
-      note: "This is the core of Decision Intelligence."
-    },
-    {
-      title: "Recommendation & Confidence Layer",
-      subtitle: "Supporting Human Choice",
-      icon: Lightbulb,
-      color: "from-emerald-500 to-emerald-600",
-      items: [
-        "Recommended option",
-        "Confidence level",
-        "Key assumptions",
-        "Risk indicators",
-        "\"What could go wrong\" scenarios"
-      ],
-      note: "Human judgment remains central."
-    },
-    {
-      title: "Outcome Tracking & Learning Layer",
-      subtitle: "Improving Decisions Over Time",
-      icon: RefreshCw,
-      color: "from-cyan-500 to-cyan-600",
-      items: [
-        "Tracks actual outcomes",
-        "Compares expected vs real results",
-        "Identifies decision patterns",
-        "Detects systematic bias",
-        "Refines future recommendations"
-      ],
-      note: "Decision Intelligence improves with use."
-    }
-  ];
-
-  return (
-    <section id="architecture" className="py-20 bg-slate-900/50 scroll-mt-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-12"
-        >
-          <Badge variant="outline" className="border-emerald-500/30 text-emerald-400 mb-4">
-            <Layers className="w-3 h-3 mr-1" />
-            System Architecture
-          </Badge>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            How Decision Intelligence Works
-          </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            Every Decision Intelligence system we design follows a five-layer architecture. Each layer plays a specific role in turning uncertainty into confidence.
-          </p>
-        </motion.div>
-
-        <div className="grid lg:grid-cols-5 gap-2 mb-8">
-          {layers.map((layer, i) => (
-            <motion.button
-              key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              onClick={() => setActiveLayer(i)}
-              className={`p-4 rounded-lg text-left transition-all ${
-                activeLayer === i 
-                  ? 'bg-gradient-to-br ' + layer.color + ' text-white shadow-lg' 
-                  : 'bg-slate-800/50 hover:bg-slate-800'
-              }`}
-              data-testid={`button-layer-${i}`}
-            >
-              <layer.icon className={`w-6 h-6 mb-2 ${activeLayer === i ? 'text-white' : 'text-emerald-400'}`} />
-              <p className="font-medium text-sm">{layer.title}</p>
-            </motion.button>
-          ))}
-        </div>
-
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={activeLayer}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.2 }}
-          >
-            <Card className="border-emerald-500/20">
-              <CardHeader>
-                <div className="flex items-center gap-4">
-                  <div className={`w-12 h-12 rounded-lg bg-gradient-to-br ${layers[activeLayer].color} flex items-center justify-center`}>
-                    {(() => {
-                      const IconComponent = layers[activeLayer].icon;
-                      return <IconComponent className="w-6 h-6 text-white" />;
-                    })()}
-                  </div>
-                  <div>
-                    <CardTitle>{layers[activeLayer].title}</CardTitle>
-                    <CardDescription>{layers[activeLayer].subtitle}</CardDescription>
-                  </div>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <ul className="grid md:grid-cols-2 gap-3 mb-4">
-                  {layers[activeLayer].items.map((item, i) => (
-                    <li key={i} className="flex items-center gap-2 text-sm">
-                      <Check className="w-4 h-4 text-emerald-400 shrink-0" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-                <p className="text-sm text-emerald-400 font-medium italic">
-                  {layers[activeLayer].note}
-                </p>
-              </CardContent>
-            </Card>
-          </motion.div>
-        </AnimatePresence>
-      </div>
-    </section>
-  );
-}
-
-function AgixMethodology() {
-  const steps = [
-    { title: "Decision Mapping", description: "Identify which decisions matter most and how they're made today." },
-    { title: "Constraint & Risk Identification", description: "Understand what limits decisions and where mistakes are costly." },
-    { title: "Reasoning Design", description: "Define how options are evaluated and compared." },
-    { title: "Human-in-the-Loop Design", description: "Ensure transparency, explainability, and control." },
-    { title: "Learning Integration", description: "Build feedback loops that improve decisions over time." }
-  ];
-
-  const governance = [
-    "Explainable recommendations",
-    "Confidence scoring",
-    "Audit trails",
-    "Human override capability",
-    "Clear accountability"
-  ];
-
-  return (
-    <section className="py-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-12"
-        >
-          <Badge variant="outline" className="border-emerald-500/30 text-emerald-400 mb-4">
-            <Zap className="w-3 h-3 mr-1" />
-            Our Approach
-          </Badge>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            How AGIX Technologies Builds Decision Intelligence
-          </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            AGIX Technologies does not start with models. We follow a disciplined approach.
-          </p>
-        </motion.div>
-
-        <div className="grid lg:grid-cols-2 gap-8">
-          <div className="space-y-4">
-            {steps.map((step, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-              >
-                <Card className="border-slate-700">
-                  <CardContent className="p-4 flex items-start gap-4">
-                    <div className="w-8 h-8 rounded-full bg-emerald-500/10 flex items-center justify-center shrink-0 text-emerald-400 font-bold text-sm">
-                      {i + 1}
-                    </div>
-                    <div>
-                      <p className="font-medium mb-1">{step.title}</p>
-                      <p className="text-sm text-muted-foreground">{step.description}</p>
+                    <p className="text-xs text-muted-foreground leading-relaxed"><span className="text-slate-300 font-medium">Challenge: </span>{ind.challenge}</p>
+                    <div className="pt-2 border-t border-slate-700/50">
+                      <p className="text-xs text-muted-foreground/70"><span className="text-purple-400 font-medium">DI Application: </span>{ind.app}</p>
                     </div>
                   </CardContent>
                 </Card>
               </motion.div>
-            ))}
-          </div>
-
-          <Card className="border-emerald-500/20 bg-emerald-500/5">
-            <CardHeader>
-              <CardTitle className="text-lg">Governance Is Built In — Not Added Later</CardTitle>
-              <CardDescription>
-                A top concern: "Can AI be trusted for business decisions?"
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <p className="text-sm text-muted-foreground mb-4">
-                AGIX Technologies Decision Intelligence systems include:
-              </p>
-              <ul className="space-y-3">
-                {governance.map((item, i) => (
-                  <li key={i} className="flex items-center gap-3">
-                    <Shield className="w-4 h-4 text-emerald-400" />
-                    <span className="text-sm">{item}</span>
-                  </li>
-                ))}
-              </ul>
-              <p className="text-sm text-muted-foreground mt-6 pt-4 border-t border-emerald-500/20">
-                Decision Intelligence without governance creates risk.<br />
-                <span className="text-emerald-400 font-medium">AGIX Technologies designs responsible decision systems.</span>
-              </p>
-            </CardContent>
-          </Card>
+            );
+          })}
         </div>
-      </div>
-    </section>
-  );
-}
-
-function InteractiveToolsSection() {
-  const [activeTool, setActiveTool] = useState(0);
-  
-  const tools = [
-    { id: "solution-finder", title: "Solution Finder", icon: Target },
-    { id: "risk-assessment", title: "Risk & Bias Assessment", icon: Shield },
-    { id: "cost-estimator", title: "Delay Cost Estimator", icon: Calculator },
-    { id: "maturity-map", title: "Maturity Map", icon: Map },
-    { id: "industry-models", title: "Industry Models", icon: Building2 }
-  ];
-
-  return (
-    <section id="interactive-tools" className="py-20 bg-slate-900/50 scroll-mt-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-12"
-        >
-          <Badge variant="outline" className="border-emerald-500/30 text-emerald-400 mb-4">
-            <Play className="w-3 h-3 mr-1" />
-            Interactive Tools
-          </Badge>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Experience Decision Intelligence Thinking
-          </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            Helping leaders make better decisions — before AI is deployed.
-          </p>
-        </motion.div>
-
-        <div className="flex flex-wrap justify-center gap-2 mb-8">
-          {tools.map((tool, i) => (
-            <Button
-              key={tool.id}
-              variant={activeTool === i ? "default" : "outline"}
-              className={activeTool === i ? "bg-emerald-600 hover:bg-emerald-700" : ""}
-              onClick={() => setActiveTool(i)}
-              data-testid={`button-tool-${tool.id}`}
-            >
-              <tool.icon className="w-4 h-4 mr-2" />
-              {tool.title}
-            </Button>
-          ))}
-        </div>
-
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={activeTool}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3 }}
-          >
-            {activeTool === 0 && <SolutionFinderTool />}
-            {activeTool === 1 && <RiskAssessmentTool />}
-            {activeTool === 2 && <DelayCostEstimator />}
-            {activeTool === 3 && <MaturityMapTool />}
-            {activeTool === 4 && <IndustryModelsTool />}
-          </motion.div>
-        </AnimatePresence>
-      </div>
-    </section>
-  );
-}
-
-function SolutionFinderTool() {
-  const [step, setStep] = useState(1);
-  const [answers, setAnswers] = useState({
-    industry: "",
-    businessSize: "",
-    decisionDomain: "",
-    frequency: "",
-    timeSensitive: "",
-    costOfWrong: "",
-    repeated: "",
-    multipleTeams: "",
-    currentlyDataDriven: "",
-    regulatoryExposure: "",
-    stakeholderImpact: "",
-    toleranceForUncertainty: "",
-    needForAuditability: ""
-  });
-  const [showResults, setShowResults] = useState(false);
-
-  const handleSelect = (field: string, value: string) => {
-    setAnswers(prev => ({ ...prev, [field]: value }));
-  };
-
-  const canProceed = () => {
-    if (step === 1) return answers.industry && answers.businessSize && answers.decisionDomain && answers.frequency;
-    if (step === 2) return answers.timeSensitive && answers.costOfWrong && answers.repeated && answers.multipleTeams && answers.currentlyDataDriven;
-    if (step === 3) return answers.regulatoryExposure && answers.stakeholderImpact && answers.toleranceForUncertainty && answers.needForAuditability;
-    return false;
-  };
-
-  const resetTool = () => {
-    setStep(1);
-    setShowResults(false);
-    setAnswers({
-      industry: "",
-      businessSize: "",
-      decisionDomain: "",
-      frequency: "",
-      timeSensitive: "",
-      costOfWrong: "",
-      repeated: "",
-      multipleTeams: "",
-      currentlyDataDriven: "",
-      regulatoryExposure: "",
-      stakeholderImpact: "",
-      toleranceForUncertainty: "",
-      needForAuditability: ""
-    });
-  };
-
-  if (showResults) {
-    return (
-      <Card className="border-emerald-500/20">
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Check className="w-5 h-5 text-emerald-400" />
-            Your Decision Intelligence Assessment
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-6">
-          <div className="grid md:grid-cols-2 gap-4">
-            <Card className="bg-emerald-500/10 border-emerald-500/20">
-              <CardContent className="p-4">
-                <p className="text-sm text-muted-foreground mb-1">Decision Category</p>
-                <p className="font-semibold text-emerald-400">{answers.decisionDomain}</p>
-              </CardContent>
-            </Card>
-            <Card className="bg-blue-500/10 border-blue-500/20">
-              <CardContent className="p-4">
-                <p className="text-sm text-muted-foreground mb-1">Recommended Intelligence Role</p>
-                <p className="font-semibold text-blue-400">Risk-weighted recommendation</p>
-              </CardContent>
-            </Card>
-            <Card className="bg-purple-500/10 border-purple-500/20">
-              <CardContent className="p-4">
-                <p className="text-sm text-muted-foreground mb-1">Human vs AI Balance</p>
-                <p className="font-semibold text-purple-400">Guided with human control</p>
-              </CardContent>
-            </Card>
-            <Card className="bg-amber-500/10 border-amber-500/20">
-              <CardContent className="p-4">
-                <p className="text-sm text-muted-foreground mb-1">Implementation Timeline</p>
-                <p className="font-semibold text-amber-400">4-8 weeks for initial deployment</p>
-              </CardContent>
-            </Card>
-          </div>
-          <Button onClick={resetTool} variant="outline" className="w-full">
-            Start Over
-          </Button>
-        </CardContent>
-      </Card>
-    );
-  }
-
-  return (
-    <Card className="border-emerald-500/20">
-      <CardHeader>
-        <div className="flex items-center justify-between gap-4 flex-wrap">
-          <CardTitle>Decision Intelligence Solution Finder</CardTitle>
-          <Badge variant="outline" className="border-emerald-500/30">Step {step} of 3</Badge>
-        </div>
-        <Progress value={step * 33.33} className="h-2" aria-label={`Step ${step} of 3`} />
-      </CardHeader>
-      <CardContent className="space-y-6">
-        {step === 1 && (
-          <div className="space-y-4">
-            <p className="text-sm text-muted-foreground">Step 1 — Decision Context</p>
-            
-            <div>
-              <p className="text-sm font-medium mb-2">Industry</p>
-              <div className="flex flex-wrap gap-2">
-                {["Healthcare", "Finance", "Retail", "SaaS", "Enterprise"].map(opt => (
-                  <Button
-                    key={opt}
-                    variant={answers.industry === opt ? "default" : "outline"}
-                    size="sm"
-                    onClick={() => handleSelect("industry", opt)}
-                    className={answers.industry === opt ? "bg-emerald-600" : ""}
-                  >
-                    {opt}
-                  </Button>
-                ))}
-              </div>
-            </div>
-
-            <div>
-              <p className="text-sm font-medium mb-2">Business Size</p>
-              <div className="flex flex-wrap gap-2">
-                {["Startup", "SMB", "Mid-Market", "Enterprise"].map(opt => (
-                  <Button
-                    key={opt}
-                    variant={answers.businessSize === opt ? "default" : "outline"}
-                    size="sm"
-                    onClick={() => handleSelect("businessSize", opt)}
-                    className={answers.businessSize === opt ? "bg-emerald-600" : ""}
-                  >
-                    {opt}
-                  </Button>
-                ))}
-              </div>
-            </div>
-
-            <div>
-              <p className="text-sm font-medium mb-2">Primary Decision Domain</p>
-              <div className="flex flex-wrap gap-2">
-                {["Operational", "Financial", "Risk", "Strategic"].map(opt => (
-                  <Button
-                    key={opt}
-                    variant={answers.decisionDomain === opt ? "default" : "outline"}
-                    size="sm"
-                    onClick={() => handleSelect("decisionDomain", opt)}
-                    className={answers.decisionDomain === opt ? "bg-emerald-600" : ""}
-                  >
-                    {opt}
-                  </Button>
-                ))}
-              </div>
-            </div>
-
-            <div>
-              <p className="text-sm font-medium mb-2">Frequency of Decisions</p>
-              <div className="flex flex-wrap gap-2">
-                {["Daily", "Weekly", "Monthly", "Quarterly"].map(opt => (
-                  <Button
-                    key={opt}
-                    variant={answers.frequency === opt ? "default" : "outline"}
-                    size="sm"
-                    onClick={() => handleSelect("frequency", opt)}
-                    className={answers.frequency === opt ? "bg-emerald-600" : ""}
-                  >
-                    {opt}
-                  </Button>
-                ))}
-              </div>
-            </div>
-          </div>
-        )}
-
-        {step === 2 && (
-          <div className="space-y-4">
-            <p className="text-sm text-muted-foreground">Step 2 — Decision Characteristics</p>
-            
-            {[
-              { field: "timeSensitive", label: "Are decisions time-sensitive?" },
-              { field: "costOfWrong", label: "Is the cost of a wrong decision high?" },
-              { field: "repeated", label: "Are decisions repeated frequently?" },
-              { field: "multipleTeams", label: "Do multiple teams influence the outcome?" },
-              { field: "currentlyDataDriven", label: "Is the decision currently data-driven or intuition-driven?" }
-            ].map(q => (
-              <div key={q.field}>
-                <p className="text-sm font-medium mb-2">{q.label}</p>
-                <div className="flex flex-wrap gap-2">
-                  {q.field === "currentlyDataDriven" ? (
-                    ["Data-driven", "Intuition-driven", "Mixed"].map(opt => (
-                      <Button
-                        key={opt}
-                        variant={answers[q.field as keyof typeof answers] === opt ? "default" : "outline"}
-                        size="sm"
-                        onClick={() => handleSelect(q.field, opt)}
-                        className={answers[q.field as keyof typeof answers] === opt ? "bg-emerald-600" : ""}
-                      >
-                        {opt}
-                      </Button>
-                    ))
-                  ) : (
-                    ["Yes", "No", "Sometimes"].map(opt => (
-                      <Button
-                        key={opt}
-                        variant={answers[q.field as keyof typeof answers] === opt ? "default" : "outline"}
-                        size="sm"
-                        onClick={() => handleSelect(q.field, opt)}
-                        className={answers[q.field as keyof typeof answers] === opt ? "bg-emerald-600" : ""}
-                      >
-                        {opt}
-                      </Button>
-                    ))
-                  )}
-                </div>
-              </div>
-            ))}
-          </div>
-        )}
-
-        {step === 3 && (
-          <div className="space-y-4">
-            <p className="text-sm text-muted-foreground">Step 3 — Risk & Accountability Signals</p>
-            
-            {[
-              { field: "regulatoryExposure", label: "Regulatory Exposure", options: ["High", "Medium", "Low"] },
-              { field: "stakeholderImpact", label: "Stakeholder Impact", options: ["High", "Medium", "Low"] },
-              { field: "toleranceForUncertainty", label: "Tolerance for Uncertainty", options: ["High", "Medium", "Low"] },
-              { field: "needForAuditability", label: "Need for Auditability", options: ["Critical", "Important", "Nice to have"] }
-            ].map(q => (
-              <div key={q.field}>
-                <p className="text-sm font-medium mb-2">{q.label}</p>
-                <div className="flex flex-wrap gap-2">
-                  {q.options.map(opt => (
-                    <Button
-                      key={opt}
-                      variant={answers[q.field as keyof typeof answers] === opt ? "default" : "outline"}
-                      size="sm"
-                      onClick={() => handleSelect(q.field, opt)}
-                      className={answers[q.field as keyof typeof answers] === opt ? "bg-emerald-600" : ""}
-                    >
-                      {opt}
-                    </Button>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        )}
-
-        <div className="flex justify-between gap-4 pt-4">
-          {step > 1 && (
-            <Button variant="outline" onClick={() => setStep(s => s - 1)}>
-              Back
-            </Button>
-          )}
-          {step < 3 ? (
-            <Button 
-              onClick={() => setStep(s => s + 1)} 
-              disabled={!canProceed()}
-              className="ml-auto bg-emerald-600 hover:bg-emerald-700"
-            >
-              Continue
-              <ChevronRight className="w-4 h-4 ml-1" />
-            </Button>
-          ) : (
-            <Button 
-              onClick={() => setShowResults(true)} 
-              disabled={!canProceed()}
-              className="ml-auto bg-emerald-600 hover:bg-emerald-700"
-            >
-              Get Results
-              <ArrowRight className="w-4 h-4 ml-1" />
-            </Button>
-          )}
-        </div>
-      </CardContent>
-    </Card>
-  );
-}
-
-function RiskAssessmentTool() {
-  const [answers, setAnswers] = useState({
-    financialExposure: 0,
-    customerImpact: 0,
-    strategicImportance: 0,
-    humanVariability: 0,
-    emotionalInfluence: 0,
-    historicalInconsistency: 0,
-    dataCompleteness: 0,
-    dataReliability: 0,
-    signalVolatility: 0
-  });
-  const [showResults, setShowResults] = useState(false);
-
-  const handleSlider = (field: string, value: number) => {
-    setAnswers(prev => ({ ...prev, [field]: value }));
-  };
-
-  const calculateScore = () => {
-    const values = Object.values(answers);
-    return Math.round(values.reduce((a, b) => a + b, 0) / values.length);
-  };
-
-  if (showResults) {
-    const score = calculateScore();
-    return (
-      <Card className="border-emerald-500/20">
-        <CardHeader>
-          <CardTitle>Decision Risk & Bias Assessment Results</CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-6">
-          <div className="grid md:grid-cols-2 gap-4">
-            <Card className={`${score > 60 ? 'bg-red-500/10 border-red-500/20' : score > 40 ? 'bg-amber-500/10 border-amber-500/20' : 'bg-emerald-500/10 border-emerald-500/20'}`}>
-              <CardContent className="p-4 text-center">
-                <p className="text-sm text-muted-foreground mb-2">Decision Risk Score</p>
-                <p className={`text-4xl font-bold ${score > 60 ? 'text-red-400' : score > 40 ? 'text-amber-400' : 'text-emerald-400'}`}>
-                  {score}%
-                </p>
-              </CardContent>
-            </Card>
-            <Card className="bg-purple-500/10 border-purple-500/20">
-              <CardContent className="p-4 text-center">
-                <p className="text-sm text-muted-foreground mb-2">Bias Exposure</p>
-                <p className="text-lg font-semibold text-purple-400">
-                  {answers.humanVariability + answers.emotionalInfluence > 120 ? "High" : answers.humanVariability + answers.emotionalInfluence > 80 ? "Medium" : "Low"}
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-          <Card className="bg-blue-500/10 border-blue-500/20">
-            <CardContent className="p-4">
-              <p className="text-sm text-muted-foreground mb-2">Recommended AI Involvement</p>
-              <p className="font-semibold text-blue-400">
-                {score > 60 ? "Full Decision Intelligence with governance" : score > 40 ? "Guided recommendations with human oversight" : "Assistive analytics with optional AI"}
-              </p>
-            </CardContent>
-          </Card>
-          <Button onClick={() => setShowResults(false)} variant="outline" className="w-full">
-            Reassess
-          </Button>
-        </CardContent>
-      </Card>
-    );
-  }
-
-  return (
-    <Card className="border-emerald-500/20">
-      <CardHeader>
-        <CardTitle>Decision Risk & Bias Assessment</CardTitle>
-        <CardDescription>Evaluate where your decisions are vulnerable</CardDescription>
-      </CardHeader>
-      <CardContent className="space-y-6">
-        <div className="space-y-4">
-          <p className="text-sm font-medium text-emerald-400">Decision Impact</p>
-          {[
-            { field: "financialExposure", label: "Financial Exposure" },
-            { field: "customerImpact", label: "Customer/Employee Impact" },
-            { field: "strategicImportance", label: "Strategic Importance" }
-          ].map(item => (
-            <div key={item.field}>
-              <div className="flex justify-between text-sm mb-2">
-                <span>{item.label}</span>
-                <span className="text-muted-foreground">{answers[item.field as keyof typeof answers]}%</span>
-              </div>
-              <input
-                type="range"
-                min="0"
-                max="100"
-                value={answers[item.field as keyof typeof answers]}
-                onChange={(e) => handleSlider(item.field, parseInt(e.target.value))}
-                className="w-full accent-emerald-500"
-              />
-            </div>
-          ))}
-        </div>
-
-        <div className="space-y-4">
-          <p className="text-sm font-medium text-amber-400">Bias Exposure</p>
-          {[
-            { field: "humanVariability", label: "Human Judgment Variability" },
-            { field: "emotionalInfluence", label: "Political/Emotional Influence" },
-            { field: "historicalInconsistency", label: "Historical Inconsistencies" }
-          ].map(item => (
-            <div key={item.field}>
-              <div className="flex justify-between text-sm mb-2">
-                <span>{item.label}</span>
-                <span className="text-muted-foreground">{answers[item.field as keyof typeof answers]}%</span>
-              </div>
-              <input
-                type="range"
-                min="0"
-                max="100"
-                value={answers[item.field as keyof typeof answers]}
-                onChange={(e) => handleSlider(item.field, parseInt(e.target.value))}
-                className="w-full accent-amber-500"
-              />
-            </div>
-          ))}
-        </div>
-
-        <div className="space-y-4">
-          <p className="text-sm font-medium text-blue-400">Data Uncertainty</p>
-          {[
-            { field: "dataCompleteness", label: "Data Completeness Issues" },
-            { field: "dataReliability", label: "Data Reliability Issues" },
-            { field: "signalVolatility", label: "Signal Volatility" }
-          ].map(item => (
-            <div key={item.field}>
-              <div className="flex justify-between text-sm mb-2">
-                <span>{item.label}</span>
-                <span className="text-muted-foreground">{answers[item.field as keyof typeof answers]}%</span>
-              </div>
-              <input
-                type="range"
-                min="0"
-                max="100"
-                value={answers[item.field as keyof typeof answers]}
-                onChange={(e) => handleSlider(item.field, parseInt(e.target.value))}
-                className="w-full accent-blue-500"
-              />
-            </div>
-          ))}
-        </div>
-
-        <Button onClick={() => setShowResults(true)} className="w-full bg-emerald-600 hover:bg-emerald-700">
-          Calculate Risk Score
-          <ArrowRight className="w-4 h-4 ml-2" />
-        </Button>
-      </CardContent>
-    </Card>
-  );
-}
-
-function DelayCostEstimator() {
-  const [inputs, setInputs] = useState({
-    avgDecisionTime: 5,
-    delayedDecisions: 10,
-    revenueImpact: 50000,
-    opportunityCost: 25000
-  });
-  const [showResults, setShowResults] = useState(false);
-
-  const calculateResults = () => {
-    const annualCost = (inputs.delayedDecisions * 12) * (inputs.revenueImpact + inputs.opportunityCost);
-    const timeSaved = Math.round(inputs.avgDecisionTime * 0.6);
-    const recoveredOpportunity = Math.round(annualCost * 0.4);
-    return { annualCost, timeSaved, recoveredOpportunity };
-  };
-
-  if (showResults) {
-    const results = calculateResults();
-    return (
-      <Card className="border-emerald-500/20">
-        <CardHeader>
-          <CardTitle>Decision Delay Cost Analysis</CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-6">
-          <div className="grid md:grid-cols-2 gap-4">
-            <Card className="bg-red-500/10 border-red-500/20">
-              <CardContent className="p-4 text-center">
-                <p className="text-sm text-muted-foreground mb-2">Annual Cost of Decision Delays</p>
-                <p className="text-3xl font-bold text-red-400">
-                  ${results.annualCost.toLocaleString()}
-                </p>
-              </CardContent>
-            </Card>
-            <Card className="bg-emerald-500/10 border-emerald-500/20">
-              <CardContent className="p-4 text-center">
-                <p className="text-sm text-muted-foreground mb-2">Time Saved with Decision Intelligence</p>
-                <p className="text-3xl font-bold text-emerald-400">
-                  {results.timeSaved} days
-                </p>
-                <p className="text-sm text-muted-foreground">per decision</p>
-              </CardContent>
-            </Card>
-            <Card className="bg-blue-500/10 border-blue-500/20">
-              <CardContent className="p-4 text-center">
-                <p className="text-sm text-muted-foreground mb-2">Opportunity Recovery Estimate</p>
-                <p className="text-3xl font-bold text-blue-400">
-                  ${results.recoveredOpportunity.toLocaleString()}
-                </p>
-              </CardContent>
-            </Card>
-            <Card className="bg-purple-500/10 border-purple-500/20">
-              <CardContent className="p-4 text-center">
-                <p className="text-sm text-muted-foreground mb-2">High-Impact Bottlenecks</p>
-                <p className="text-lg font-semibold text-purple-400">
-                  {inputs.delayedDecisions * 12} decisions/year
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-          <Button onClick={() => setShowResults(false)} variant="outline" className="w-full">
-            Recalculate
-          </Button>
-        </CardContent>
-      </Card>
-    );
-  }
-
-  return (
-    <Card className="border-emerald-500/20">
-      <CardHeader>
-        <CardTitle>Decision Delay Cost Estimator</CardTitle>
-        <CardDescription>Quantify the real cost of slow or deferred decisions</CardDescription>
-      </CardHeader>
-      <CardContent className="space-y-6">
-        <div className="grid md:grid-cols-2 gap-6">
-          <div>
-            <p className="text-sm font-medium mb-2 block">
-              Average Time to Make Key Decisions (days)
-            </p>
-            <input
-              type="number"
-              value={inputs.avgDecisionTime}
-              onChange={(e) => setInputs(prev => ({ ...prev, avgDecisionTime: parseInt(e.target.value) || 0 }))}
-              className="w-full p-3 rounded-lg bg-slate-800 border border-slate-700 focus:border-emerald-500 outline-none"
-            />
-          </div>
-          <div>
-            <p className="text-sm font-medium mb-2 block">
-              Delayed Decisions per Month
-            </p>
-            <input
-              type="number"
-              value={inputs.delayedDecisions}
-              onChange={(e) => setInputs(prev => ({ ...prev, delayedDecisions: parseInt(e.target.value) || 0 }))}
-              className="w-full p-3 rounded-lg bg-slate-800 border border-slate-700 focus:border-emerald-500 outline-none"
-            />
-          </div>
-          <div>
-            <p className="text-sm font-medium mb-2 block">
-              Revenue/Cost Impact per Delay ($)
-            </p>
-            <input
-              type="number"
-              value={inputs.revenueImpact}
-              onChange={(e) => setInputs(prev => ({ ...prev, revenueImpact: parseInt(e.target.value) || 0 }))}
-              className="w-full p-3 rounded-lg bg-slate-800 border border-slate-700 focus:border-emerald-500 outline-none"
-            />
-          </div>
-          <div>
-            <p className="text-sm font-medium mb-2 block">
-              Opportunity Loss per Delay ($)
-            </p>
-            <input
-              type="number"
-              value={inputs.opportunityCost}
-              onChange={(e) => setInputs(prev => ({ ...prev, opportunityCost: parseInt(e.target.value) || 0 }))}
-              className="w-full p-3 rounded-lg bg-slate-800 border border-slate-700 focus:border-emerald-500 outline-none"
-            />
-          </div>
-        </div>
-        <Button onClick={() => setShowResults(true)} className="w-full bg-emerald-600 hover:bg-emerald-700">
-          Calculate Delay Cost
-          <Calculator className="w-4 h-4 ml-2" />
-        </Button>
-      </CardContent>
-    </Card>
-  );
-}
-
-function MaturityMapTool() {
-  const [selectedStage, setSelectedStage] = useState<number | null>(null);
-
-  const stages = [
-    {
-      level: 1,
-      title: "Gut-Driven Decisions",
-      color: "from-red-500 to-red-600",
-      characteristics: ["Intuition-based", "High variability", "Low transparency"],
-      strengths: ["Fast in simple situations", "Works for small teams"],
-      limitations: ["Inconsistent outcomes", "Not scalable", "No learning loop"],
-      whenToEvolve: "When decisions start affecting multiple teams or customers"
-    },
-    {
-      level: 2,
-      title: "Data-Informed Decisions",
-      color: "from-amber-500 to-amber-600",
-      characteristics: ["Dashboards and reports", "Still slow and subjective"],
-      strengths: ["Better visibility", "Some evidence basis"],
-      limitations: ["Analysis paralysis", "Insight without action"],
-      whenToEvolve: "When data exists but decisions still vary by person"
-    },
-    {
-      level: 3,
-      title: "AI-Assisted Decisions",
-      color: "from-blue-500 to-blue-600",
-      characteristics: ["Scenario evaluation", "Risk-aware recommendations"],
-      strengths: ["Faster evaluation", "Reduced bias", "Better consistency"],
-      limitations: ["Requires governance", "Needs human oversight"],
-      whenToEvolve: "When scaling decision quality across the organization"
-    },
-    {
-      level: 4,
-      title: "Governed Decision Systems",
-      color: "from-emerald-500 to-emerald-600",
-      characteristics: ["Explainable reasoning", "Consistent outcomes", "Continuous learning"],
-      strengths: ["Full transparency", "Audit-ready", "Self-improving"],
-      limitations: ["Requires investment", "Needs organizational change"],
-      whenToEvolve: "This is the target state for most enterprises"
-    }
-  ];
-
-  return (
-    <Card className="border-emerald-500/20">
-      <CardHeader>
-        <CardTitle>Decision Intelligence Maturity Map</CardTitle>
-        <CardDescription>See how your organization makes decisions today</CardDescription>
-      </CardHeader>
-      <CardContent className="space-y-6">
-        <div className="grid grid-cols-4 gap-2">
-          {stages.map((stage, i) => (
-            <button
-              key={i}
-              onClick={() => setSelectedStage(selectedStage === i ? null : i)}
-              className={`p-4 rounded-lg text-center transition-all ${
-                selectedStage === i 
-                  ? `bg-gradient-to-br ${stage.color} text-white shadow-lg` 
-                  : 'bg-slate-800/50 hover:bg-slate-800'
-              }`}
-            >
-              <p className="text-2xl font-bold mb-1">{stage.level}</p>
-              <p className="text-xs">{stage.title}</p>
-            </button>
-          ))}
-        </div>
-
-        {selectedStage !== null && (
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-          >
-            <Card className="border-slate-700">
-              <CardHeader>
-                <CardTitle className="text-lg">{stages[selectedStage].title}</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
+        <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+          <Card className={`border ${industries[6].border} hover-elevate`}>
+            <CardContent className="p-5">
+              <div className="flex items-start gap-4">
+                <Globe className={`w-5 h-5 ${industries[6].color} shrink-0 mt-0.5`} />
                 <div>
-                  <p className="text-sm font-medium text-muted-foreground mb-2">Characteristics</p>
-                  <div className="flex flex-wrap gap-2">
-                    {stages[selectedStage].characteristics.map((c, i) => (
-                      <Badge key={i} variant="outline">{c}</Badge>
-                    ))}
-                  </div>
+                  <h3 className={`font-bold ${industries[6].color} mb-1`}>{industries[6].name}</h3>
+                  <p className="text-sm text-muted-foreground"><span className="text-slate-300 font-medium">Challenge: </span>{industries[6].challenge}</p>
+                  <p className="text-xs text-muted-foreground/70 mt-1"><span className="text-purple-400 font-medium">DI Application: </span>{industries[6].app}</p>
                 </div>
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div>
-                    <p className="text-sm font-medium text-emerald-400 mb-2">Strengths</p>
-                    <ul className="space-y-1">
-                      {stages[selectedStage].strengths.map((s, i) => (
-                        <li key={i} className="text-sm flex items-center gap-2">
-                          <Check className="w-3 h-3 text-emerald-400" />
-                          {s}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div>
-                    <p className="text-sm font-medium text-amber-400 mb-2">Limitations</p>
-                    <ul className="space-y-1">
-                      {stages[selectedStage].limitations.map((l, i) => (
-                        <li key={i} className="text-sm flex items-center gap-2">
-                          <AlertTriangle className="w-3 h-3 text-amber-400" />
-                          {l}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-                <div className="pt-2 border-t border-slate-700">
-                  <p className="text-sm">
-                    <span className="text-muted-foreground">When to evolve: </span>
-                    <span className="text-emerald-400">{stages[selectedStage].whenToEvolve}</span>
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
-          </motion.div>
-        )}
-      </CardContent>
-    </Card>
-  );
-}
-
-function IndustryModelsTool() {
-  const [selectedIndustry, setSelectedIndustry] = useState(0);
-
-  const industries = [
-    {
-      name: "Healthcare & Life Sciences",
-      icon: Heart,
-      color: "text-red-400",
-      bgColor: "bg-red-500/10",
-      decisionTypes: ["Capacity planning", "Patient prioritization", "Resource allocation", "Risk and compliance decisions"],
-      whyMatters: ["High cost of wrong decisions", "Regulatory oversight", "Need for explainability"],
-      outcome: ["Safer decisions", "Reduced operational stress", "Human-led, AI-supported judgment"]
-    },
-    {
-      name: "Finance, Lending & Insurance",
-      icon: DollarSign,
-      color: "text-green-400",
-      bgColor: "bg-green-500/10",
-      decisionTypes: ["Credit eligibility", "Risk assessment", "Pricing and underwriting", "Fraud and exception handling"],
-      whyMatters: ["Bias and fairness concerns", "Regulatory requirements", "High financial exposure"],
-      outcome: ["Consistent decisions", "Lower risk", "Audit-ready reasoning"]
-    },
-    {
-      name: "Retail, E-commerce & D2C",
-      icon: ShoppingCart,
-      color: "text-blue-400",
-      bgColor: "bg-blue-500/10",
-      decisionTypes: ["Pricing and discounting", "Inventory allocation", "Demand response", "Promotion effectiveness"],
-      whyMatters: ["Fast-changing conditions", "Thin margins", "High opportunity cost of delay"],
-      outcome: ["Faster, smarter decisions", "Reduced overstock and loss", "Improved profitability"]
-    },
-    {
-      name: "SaaS & Technology",
-      icon: Server,
-      color: "text-purple-400",
-      bgColor: "bg-purple-500/10",
-      decisionTypes: ["Product prioritization", "Customer segmentation", "Churn intervention", "Growth investment choices"],
-      whyMatters: ["Complex trade-offs", "Long-term impact of short-term decisions"],
-      outcome: ["Better roadmap clarity", "Reduced churn", "More confident growth bets"]
-    },
-    {
-      name: "Enterprise & Strategy-Led",
-      icon: Building,
-      color: "text-amber-400",
-      bgColor: "bg-amber-500/10",
-      decisionTypes: ["Capital allocation", "Market expansion", "Policy enforcement", "Compliance and governance"],
-      whyMatters: ["Cross-functional impact", "High accountability", "Long-term consequences"],
-      outcome: ["Structured decision-making", "Reduced internal friction", "Stronger executive alignment"]
-    }
-  ];
-
-  return (
-    <Card className="border-emerald-500/20">
-      <CardHeader>
-        <CardTitle>Industry-Specific Decision Intelligence Models</CardTitle>
-        <CardDescription>See how Decision Intelligence works in your industry</CardDescription>
-      </CardHeader>
-      <CardContent className="space-y-6">
-        <div className="flex flex-wrap gap-2">
-          {industries.map((ind, i) => (
-            <Button
-              key={i}
-              variant={selectedIndustry === i ? "default" : "outline"}
-              size="sm"
-              onClick={() => setSelectedIndustry(i)}
-              className={selectedIndustry === i ? "bg-emerald-600" : ""}
-            >
-              <ind.icon className="w-4 h-4 mr-2" />
-              {ind.name.split(" ")[0]}
-            </Button>
-          ))}
-        </div>
-
-        <motion.div
-          key={selectedIndustry}
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-        >
-          <div className="grid md:grid-cols-3 gap-4">
-            <Card className="border-slate-700">
-              <CardHeader className="pb-2">
-                <CardTitle className="text-sm text-muted-foreground">Decision Types</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-2">
-                  {industries[selectedIndustry].decisionTypes.map((d, i) => (
-                    <li key={i} className="text-sm flex items-center gap-2">
-                      <CircleDot className="w-3 h-3 text-emerald-400" />
-                      {d}
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
-            <Card className="border-slate-700">
-              <CardHeader className="pb-2">
-                <CardTitle className="text-sm text-muted-foreground">Why Decision Intelligence Matters</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-2">
-                  {industries[selectedIndustry].whyMatters.map((w, i) => (
-                    <li key={i} className="text-sm flex items-center gap-2">
-                      <AlertTriangle className="w-3 h-3 text-amber-400" />
-                      {w}
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
-            <Card className="border-emerald-500/20 bg-emerald-500/5">
-              <CardHeader className="pb-2">
-                <CardTitle className="text-sm text-emerald-400">Outcome</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-2">
-                  {industries[selectedIndustry].outcome.map((o, i) => (
-                    <li key={i} className="text-sm flex items-center gap-2">
-                      <Check className="w-3 h-3 text-emerald-400" />
-                      {o}
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
-          </div>
-        </motion.div>
-      </CardContent>
-    </Card>
-  );
-}
-
-function FAQSection() {
-  return (
-    <DocumentFAQSection
-      faqs={documentFAQs['decision-ai']}
-      title="Decision Intelligence Questions Answered"
-    />
-  );
-}
-
-function MakeBetterDecisionsSection() {
-  return (
-    <section className="py-20 bg-slate-900">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="space-y-6"
-        >
-          <h2 className="text-3xl md:text-4xl font-bold">
-            Make Better Decisions, Consistently
-          </h2>
-          <p className="text-xl text-muted-foreground">
-            Your Data Doesn't Make Decisions.<br />
-            <span className="text-emerald-400 font-medium">Your Systems Do.</span>
-          </p>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            AGIX Technologies helps organizations design Decision Intelligence systems that support clarity, confidence, and accountability.
-          </p>
-          
-          <div className="grid sm:grid-cols-3 gap-6 pt-8">
-            <div className="flex flex-col items-center gap-3 p-4">
-              <div className="w-12 h-12 rounded-full bg-emerald-500/10 flex items-center justify-center">
-                <Target className="w-6 h-6 text-emerald-400" />
               </div>
-              <span className="text-sm text-center">Find the right Decision Intelligence approach for your business</span>
-            </div>
-            <div className="flex flex-col items-center gap-3 p-4">
-              <div className="w-12 h-12 rounded-full bg-emerald-500/10 flex items-center justify-center">
-                <Shield className="w-6 h-6 text-emerald-400" />
-              </div>
-              <span className="text-sm text-center">Assess decision readiness, risk, and bias</span>
-            </div>
-            <div className="flex flex-col items-center gap-3 p-4">
-              <div className="w-12 h-12 rounded-full bg-emerald-500/10 flex items-center justify-center">
-                <RefreshCw className="w-6 h-6 text-emerald-400" />
-              </div>
-              <span className="text-sm text-center">Build decision systems that improve over time</span>
-            </div>
-          </div>
-          
-          <p className="text-sm text-muted-foreground italic pt-4">
-            AGIX Technologies builds AI systems that don't replace judgment — they strengthen it.
-          </p>
+            </CardContent>
+          </Card>
         </motion.div>
       </div>
     </section>
   );
 }
 
-function FinalCTASection() {
+function ImplementationBridge() {
+  const bridges = [
+    { level: "Level 1: Informed", service: "AI Predictive Analytics", href: "/services/ai-predictive-analytics/", builds: "Dashboards, forecasts, risk signals to inform human decisions", color: "text-blue-400" },
+    { level: "Level 2: Recommended", service: "AI Predictive Analytics + AI Automation", href: "/services/ai-automation/", builds: "Recommendation engines, trade-off analysis, approval workflows", color: "text-purple-400" },
+    { level: "Level 3: Automated", service: "AI Automation + Agentic AI", href: "/services/agentic-ai-systems/", builds: "Rule-governed autonomous decisions with exception handling", color: "text-amber-400" },
+    { level: "Level 4: Autonomous", service: "Agentic AI Systems", href: "/services/agentic-ai-systems/", builds: "Multi-agent decision systems that adapt and optimize continuously", color: "text-green-400" },
+  ];
   return (
-    <section id="cta-form" className="py-10 lg:py-14 bg-gradient-to-br from-primary/10 via-background to-cyan-500/10 scroll-mt-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <CtaForm 
-          headline="Ready to Make Better Decisions?"
-          subheadline="Talk to our Decision Intelligence architects about your specific challenges."
-          badgeText="Decision Intelligence"
-          submitLabel="Schedule Consultation"
-        />
+    <section className="py-20">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 space-y-10">
+        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center">
+          <Badge variant="outline" className="border-purple-500/30 text-purple-400 mb-4" data-testid="badge-bridge">
+            <ArrowRight className="w-3 h-3 mr-1" />Framework → Implementation
+          </Badge>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4" data-testid="heading-bridge">How Decision Intelligence Connects to Implementation</h2>
+        </motion.div>
+        <div className="space-y-3">
+          {bridges.map((b, i) => (
+            <motion.div key={i} initial={{ opacity: 0, x: -10 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}>
+              <Card className="border-slate-700 hover-elevate" data-testid={`card-bridge-${i}`}>
+                <CardContent className="p-5">
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-4">
+                    <div className={`text-sm font-semibold ${b.color} sm:w-44 shrink-0`}>{b.level}</div>
+                    <div className="hidden sm:block text-muted-foreground/50">→</div>
+                    <div className="flex-1 min-w-0">
+                      <Link href={b.href} className="font-bold text-sm text-white hover:text-purple-400 transition-colors hover:underline underline-offset-2" data-testid={`link-service-${i}`}>{b.service}</Link>
+                      <p className="text-xs text-muted-foreground mt-0.5">{b.builds}</p>
+                    </div>
+                    <Link href={b.href} data-testid={`link-bridge-arrow-${i}`}><ChevronRight className="w-5 h-5 text-muted-foreground hover:text-purple-400 transition-colors" /></Link>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function FutureTrajectory() {
+  const points = [
+    { n: "01", title: "Decision Intelligence becomes a standard enterprise discipline.", body: "Gartner's inaugural Magic Quadrant for Decision Intelligence Platforms (Jan 2026) signals that DI is no longer experimental — it's a category with established vendors, evaluation criteria, and enterprise adoption. By 2028, every enterprise AI strategy will include a Decision Intelligence layer.", color: "text-purple-400" },
+    { n: "02", title: "Autonomous decisions scale from edge cases to core operations.", body: "By 2028, 15% of work decisions will be made autonomously by AI agents (Gartner). This starts with high-frequency, low-risk decisions (ticket routing, dynamic pricing) and expands to more complex operational decisions as trust and governance mature.", color: "text-blue-400" },
+    { n: "03", title: "Decision governance becomes the new compliance frontier.", body: "As AI makes more decisions, the question shifts from 'is our data governed?' to 'are our decisions governed?' Organizations will need audit trails, explainability, and accountability at the decision level — not just the model level.", color: "text-amber-400" },
+    { n: "04", title: "Decision-as-a-Service emerges.", body: "AI agents will offer decision capabilities as APIs — other systems and agents query them for recommendations or actions. Decision logic becomes modular, composable, and reusable across the organization.", color: "text-orange-400" },
+    { n: "05", title: "Human-AI decision collaboration becomes the norm.", body: "Level 2 (Recommended) becomes the standard operating model for most knowledge work. AI drafts the decision; human reviews and approves. This is not replacement — it is augmentation at the decision layer.", color: "text-green-400" },
+  ];
+  return (
+    <section className="py-20 bg-slate-900/30">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 space-y-12">
+        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center">
+          <Badge variant="outline" className="border-purple-500/30 text-purple-400 mb-4" data-testid="badge-future">
+            <RefreshCcw className="w-3 h-3 mr-1" />2028 Trajectory
+          </Badge>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4" data-testid="heading-future">Where Decision Intelligence Is Heading</h2>
+        </motion.div>
+        <div className="space-y-4">
+          {points.map((p, i) => (
+            <motion.div key={i} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}>
+              <Card className="border-slate-700 hover-elevate" data-testid={`card-future-${i}`}>
+                <CardContent className="p-5 flex gap-5">
+                  <div className={`text-2xl font-black opacity-40 ${p.color} shrink-0 w-8`}>{p.n}</div>
+                  <div>
+                    <h3 className={`font-bold ${p.color} mb-1`}>{p.title}</h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{p.body}</p>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+          ))}
+        </div>
+        <Card className="border-purple-500/20 bg-purple-500/5">
+          <CardContent className="p-6">
+            <div className="flex items-start gap-3">
+              <Quote className="w-5 h-5 text-purple-400 shrink-0 mt-1" />
+              <p className="text-base italic" data-testid="text-future-quote">By 2028, the competitive question won't be "do you have AI?" — it will be "at what level of your Decision Intelligence Pyramid are your critical decisions operating?" The organizations at Level 3 and 4 will execute faster, fail less, and adapt more quickly than those still debating reports.</p>
+            </div>
+          </CardContent>
+        </Card>
+        <Card className="border-slate-700">
+          <CardContent className="p-6 flex items-start gap-5">
+            <div className="w-12 h-12 rounded-full bg-slate-800 border border-slate-600 flex items-center justify-center shrink-0">
+              <User className="w-6 h-6 text-purple-400" />
+            </div>
+            <div className="space-y-1">
+              <div className="flex items-center gap-2">
+                <h3 className="font-bold">Santosh Singh</h3>
+                <Badge variant="outline" className="text-xs border-purple-500/30 text-purple-400">Author</Badge>
+              </div>
+              <p className="text-sm text-muted-foreground">Founder &amp; CEO, AGIX Technologies</p>
+              <p className="text-sm text-muted-foreground leading-relaxed">Santosh developed the Decision Intelligence Pyramid and Decision Complexity Matrix as frameworks for helping organizations determine which decisions to automate, to what degree, and with what governance. AGIX builds the AI infrastructure — predictive analytics, automation, and agentic systems — that powers decisions from Level 1 (informed) to Level 4 (autonomous).</p>
+              <Link href="/author/santosh/" className="text-xs text-purple-400 hover:text-purple-300 transition-colors inline-flex items-center gap-1 mt-1" data-testid="link-author-bio">
+                Read full bio <ChevronRight className="w-3 h-3" />
+              </Link>
+            </div>
+          </CardContent>
+        </Card>
       </div>
     </section>
   );
@@ -1827,17 +577,20 @@ export default function DecisionIntelligencePage() {
       <main id="main-content">
         <HeroSection />
         <TrustStrip />
-        <WhatIsDecisionIntelligence />
-        <WhyMoreDataDoesntHelp />
-        <DecisionTypesSection />
-        <ComparisonSection />
-        <WhyBusinessesNeedIt />
-        <ArchitectureSection />
-        <AgixMethodology />
-        <InteractiveToolsSection />
-        <FAQSection />
-        <MakeBetterDecisionsSection />
-        <FinalCTASection />
+        <DefinitionBlock />
+        <WhyNowSection />
+        <ComparisonTable />
+        <DecisionIntelligencePyramid />
+        <DecisionComplexityMatrix />
+        <IndustryApplications />
+        <ImplementationBridge />
+        <FutureTrajectory />
+        <FAQSection faqs={documentFAQs['decision-ai']} title="Decision Intelligence: Questions Answered" />
+        <section id="cta-form" className="py-10 lg:py-14 bg-gradient-to-br from-primary/10 via-background to-purple-500/10 scroll-mt-20">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <CtaForm headline="Ready to Move from Insights to Decisions?" subheadline="Tell us which decisions are costing you the most time or risk. We'll show you which level of the Decision Intelligence Pyramid applies — and how to get there." />
+          </div>
+        </section>
       </main>
       <MainFooter />
     </div>

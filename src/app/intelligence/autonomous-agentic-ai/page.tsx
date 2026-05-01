@@ -1,127 +1,73 @@
 'use client'
 import { useState } from "react";
-import { motion } from "@/lib/motion";
 import Link from "next/link";
+import { motion, AnimatePresence } from "@/lib/motion";
 import { MainHeader } from "@/components/main-header";
 import { MainFooter } from "@/components/main-footer";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Progress } from "@/components/ui/progress";
-import { Slider } from "@/components/ui/slider";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
 import { CtaForm } from "@/components/forms/cta-form";
-import DocumentFAQSection from "@/components/shared/FAQSection";
-import { documentFAQs } from "@/lib/seo/faq-data";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import {
-  Target,
-  Brain,
-  Zap,
-  Shield,
-  RefreshCw,
-  ArrowRight,
-  CheckCircle2,
-  XCircle,
-  AlertTriangle,
-  Cpu,
-  Settings,
-  Eye,
-  TrendingUp,
-  Users,
-  Building2,
-  ShoppingCart,
-  Stethoscope,
-  Landmark,
-  Layers,
-  GitBranch,
-  Activity,
-  Lock,
-  RotateCcw,
-  Play,
-  ChevronRight,
-  Workflow,
-  Bot,
-  MessageSquare,
-  Cog,
-  ClipboardCheck,
-  Scale,
-  DollarSign,
-  Clock,
-  BarChart3,
-  Factory,
-  HeartPulse,
-  CreditCard,
-  Package,
-  Server,
+  ArrowRight, Brain, CheckCircle2, Shield, TrendingUp, AlertTriangle,
+  ChevronDown, ChevronRight, ArrowDown, CheckCheck, Bot, Globe, Quote,
+  User, RefreshCcw, Target, Layers, BarChart3, LineChart, Zap,
+  XCircle, Activity, Landmark, ShoppingBag, Truck, Factory, Umbrella,
+  HeartPulse, Building2, Eye,
 } from "lucide-react";
+import FAQSection from "@/components/shared/FAQSection";
+import { documentFAQs } from "@/lib/seo/faq-data";
 
 function scrollToSection(id: string) {
-  const element = document.getElementById(id);
-  if (element) {
-    element.scrollIntoView({ behavior: "smooth" });
-  }
+  document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
 function HeroSection() {
   return (
-    <section className="relative pt-24 lg:pt-28 min-h-[90vh] flex items-center justify-center overflow-hidden bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
-      <div className="absolute inset-0">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
-      </div>
-
-      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          <Badge variant="outline" className="mb-6 border-cyan-500/50 text-cyan-400">
-            Autonomous Agentic Systems
+    <section className="pt-24 lg:pt-28 pb-20 min-h-[85vh] flex items-center relative overflow-hidden bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-green-900/20 via-transparent to-transparent" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_var(--tw-gradient-stops))] from-orange-900/10 via-transparent to-transparent" />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full relative z-10">
+        <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }} className="max-w-4xl mx-auto text-center space-y-6">
+          <nav aria-label="Breadcrumb" className="flex justify-center">
+            <ol className="flex items-center gap-1.5 text-xs text-muted-foreground">
+              <li><Link href="/" className="hover:text-white transition-colors">Home</Link></li>
+              <ChevronRight className="w-3 h-3" />
+              <li><span className="text-muted-foreground">Intelligence</span></li>
+              <ChevronRight className="w-3 h-3" />
+              <li><span className="text-green-400">Autonomous Agentic Systems</span></li>
+            </ol>
+          </nav>
+          <Badge className="bg-green-500/10 text-green-400 border-green-500/30 px-4 py-1.5" data-testid="badge-hero-category">
+            <Bot className="w-4 h-4 mr-2" />Intelligence Framework
           </Badge>
-
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-            Autonomous Agentic Systems That Act With{" "}
-            <span className="text-cyan-400">Purpose</span> — Not Chaos
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight" data-testid="text-hero-headline">
+            Autonomous Agentic Systems:{" "}
+            <span className="text-green-400">AI That Plans, Decides, Executes &amp; Adapts — Independently</span>
           </h1>
-
-          <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
-            AI systems that plan, decide, execute, and learn — independently, but within clear governance. AGIX Technologies builds Autonomous Agentic Systems that take ownership of goals, execute across systems, and adapt over time — without losing human control.
+          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed" data-testid="text-hero-subheadline">
+            Autonomous agentic systems are AI architectures designed to pursue goals, make decisions, take actions across tools and systems, and adapt over time — with{" "}
+            <span className="text-green-400">minimal human intervention</span> and{" "}
+            <span className="text-amber-400">strong governance controls</span>.
           </p>
-
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button
-              size="lg"
-              className="bg-cyan-500 hover:bg-cyan-600 text-slate-900"
-              onClick={() => scrollToSection("cta-form")}
-              data-testid="button-hero-primary"
-            >
-              Find the Right Agentic System for Your Business
-              <ArrowRight className="ml-2 w-4 h-4" />
+          <p className="text-sm text-muted-foreground/70 italic">
+            By <Link href="/author/santosh/" className="text-green-400/80 hover:text-green-400 transition-colors">Santosh Singh</Link>, Founder &amp; CEO, AGIX Technologies · April 2026
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+            <Button size="lg" className="bg-green-600 hover:bg-green-700 text-white shadow-lg shadow-green-500/25" onClick={() => scrollToSection("autonomy-model")} data-testid="button-hero-primary">
+              Explore the L1→L4 Model <ArrowRight className="w-5 h-5 ml-2" />
             </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="border-slate-700"
-              onClick={() => scrollToSection("how-it-works")}
-              data-testid="button-hero-secondary"
-            >
-              Explore How Agentic Systems Work
-              <ChevronRight className="ml-2 w-4 h-4" />
+            <Button variant="outline" size="lg" onClick={() => scrollToSection("safety-framework")} data-testid="button-hero-secondary">
+              Safety Framework <ChevronDown className="w-5 h-5 ml-2" />
             </Button>
           </div>
+        </motion.div>
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1 }} className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
+          <button onClick={() => scrollToSection("definition")} aria-label="Scroll down" data-testid="button-scroll-down">
+            <motion.div animate={{ y: [0, 8, 0] }} transition={{ duration: 2, repeat: Infinity }} className="text-muted-foreground hover:text-green-400 transition-colors">
+              <ArrowDown className="w-5 h-5" />
+            </motion.div>
+          </button>
         </motion.div>
       </div>
     </section>
@@ -130,2349 +76,627 @@ function HeroSection() {
 
 function TrustStrip() {
   return (
-    <section className="py-6 bg-slate-900/50 border-y border-slate-800">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 text-center">
-        <p className="text-sm text-muted-foreground">
-          Trusted to engineer autonomous AI systems for operations, decision execution, and complex workflows across regulated and high-impact environments.
+    <section className="py-6 border-y border-slate-800/50 bg-slate-900/30">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <p className="text-center text-sm text-muted-foreground" data-testid="text-trust-strip">
+          Gartner: <span className="text-green-400">40% of enterprise apps embed agents by 2026</span> (up from &lt;5% in 2025) · Market: <span className="text-blue-400">$5.25B → $199B by 2034</span> at 43.84% CAGR · Only <span className="text-red-400">21% of companies have mature governance</span> for autonomous agents (Deloitte)
         </p>
       </div>
     </section>
   );
 }
 
-function WhatAreAgenticSystems() {
-  const searchQueries = [
-    "Autonomous AI agents",
-    "Agentic AI systems",
-    "AI agents for business automation",
-  ];
-
-  const capabilities = [
-    { icon: Target, text: "Understand goals, not just tasks" },
-    { icon: Brain, text: "Decide what to do next based on context" },
-    { icon: Zap, text: "Execute actions across multiple systems" },
-    { icon: Activity, text: "Monitor results and adjust behavior" },
-    { icon: Users, text: "Escalate to humans when needed" },
-  ];
-
+function DefinitionBlock() {
   return (
-    <section className="py-20 bg-slate-950">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-12"
-        >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            What Are Autonomous Agentic Systems?
-          </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">Simple & Precise</p>
-        </motion.div>
-
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="space-y-6"
-          >
-            <Card className="border-cyan-500/20 bg-slate-900/50">
-              <CardContent className="pt-6">
-                <p className="text-lg leading-relaxed">
-                  Autonomous Agentic Systems are AI systems designed to{" "}
-                  <span className="text-cyan-400 font-medium">pursue goals</span>,{" "}
-                  <span className="text-cyan-400 font-medium">make decisions</span>,{" "}
-                  <span className="text-cyan-400 font-medium">take actions</span>, and{" "}
-                  <span className="text-cyan-400 font-medium">adapt over time</span> — with minimal human intervention and strong governance controls.
-                </p>
-              </CardContent>
-            </Card>
-
-            <div className="p-6 rounded-lg bg-slate-900/30 border border-slate-800">
-              <p className="text-sm text-muted-foreground mb-3">In simple terms:</p>
-              <p className="text-lg font-medium">
-                Agentic systems don't just respond.<br />
-                <span className="text-cyan-400">They plan, act, and learn in pursuit of outcomes.</span>
+    <section id="definition" className="py-20 scroll-mt-20">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 space-y-8">
+        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+          <Badge variant="outline" className="border-green-500/30 text-green-400 mb-4" data-testid="badge-definition">
+            <Eye className="w-3 h-3 mr-1" />Definition
+          </Badge>
+          <h2 className="text-3xl md:text-4xl font-bold mb-6" data-testid="heading-definition">What Are Autonomous Agentic Systems?</h2>
+          <div className="bg-slate-900/60 border border-green-500/20 rounded-xl p-6 md:p-8 mb-6" itemScope itemType="https://schema.org/Question">
+            <meta itemProp="name" content="What are autonomous agentic systems?" />
+            <div itemScope itemType="https://schema.org/Answer" itemProp="acceptedAnswer">
+              <p className="text-lg md:text-xl leading-relaxed" itemProp="text" data-testid="text-definition-primary">
+                <strong>Autonomous agentic systems</strong> are AI architectures designed to{" "}
+                <span className="text-blue-400">pursue goals</span>,{" "}
+                <span className="text-purple-400">make decisions</span>,{" "}
+                <span className="text-amber-400">take actions across tools and systems</span>, and{" "}
+                <span className="text-green-400">adapt over time</span>{" "}
+                — with minimal human intervention and strong governance controls. Unlike traditional automation that follows predefined rules, or chatbots that respond to prompts, agentic systems understand goals (not just tasks), decide what to do next based on context, execute actions across multiple systems, and monitor their own results.
               </p>
             </div>
+          </div>
+          <Card className="border-green-500/20 bg-green-500/5">
+            <CardContent className="p-6">
+              <div className="flex items-start gap-3">
+                <Quote className="w-5 h-5 text-green-400 shrink-0 mt-1" />
+                <p className="text-base italic" data-testid="text-original-quote">
+                  Agentic AI is the transition from AI that answers questions to AI that owns outcomes. This is the most consequential shift in enterprise technology since cloud computing — and the organizations that get the architecture right will define the next decade.
+                </p>
+              </div>
+            </CardContent>
+          </Card>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
 
-            <div className="flex flex-wrap gap-2">
-              <span className="text-xs text-muted-foreground">Searches growing rapidly:</span>
-              {searchQueries.map((query, i) => (
-                <Badge key={i} variant="secondary" className="text-xs">
-                  "{query}"
-                </Badge>
-              ))}
+function MarketContextSection() {
+  const adoptionStats = [
+    { value: "40%", label: "of enterprise apps embed agents by 2026", sub: "up from <5% in 2025 — 8x jump in one year", source: "Gartner", color: "text-green-400" },
+    { value: "40%+", label: "of agentic AI projects will be canceled by 2027", sub: "costs, unclear value, inadequate risk controls", source: "Gartner", color: "text-red-400" },
+    { value: "21%", label: "of companies have mature governance", sub: "for autonomous AI agents — the governance gap", source: "Deloitte", color: "text-amber-400" },
+    { value: "$199B", label: "agentic AI market by 2034", sub: "from $5.25B in 2024 — 43.84% CAGR", source: "Market.us/Landbase", color: "text-blue-400" },
+  ];
+  return (
+    <section className="py-20 bg-slate-900/30">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 space-y-12">
+        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center">
+          <Badge variant="outline" className="border-green-500/30 text-green-400 mb-4" data-testid="badge-market">
+            <TrendingUp className="w-3 h-3 mr-1" />Market Context
+          </Badge>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4" data-testid="heading-market">Why Autonomous Agentic AI Is the Defining Technology of 2026–2030</h2>
+          <p className="text-muted-foreground max-w-2xl mx-auto">This is not a prediction. This is what the data shows — and why the gap between ambition and execution is where most organizations fail.</p>
+        </motion.div>
+        <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-5">
+          {adoptionStats.map((s, i) => (
+            <motion.div key={i} initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}>
+              <Card className="text-center border-slate-700 bg-slate-900/50" data-testid={`card-stat-${i}`}>
+                <CardContent className="p-6 space-y-1">
+                  <div className={`text-3xl font-black ${s.color}`}>{s.value}</div>
+                  <p className="font-semibold text-xs">{s.label}</p>
+                  <p className="text-xs text-muted-foreground">{s.sub}</p>
+                  <p className="text-xs text-muted-foreground/50 italic mt-2">Source: {s.source}</p>
+                </CardContent>
+              </Card>
+            </motion.div>
+          ))}
+        </div>
+        <Card className="border-amber-500/20 bg-amber-500/5">
+          <CardContent className="p-6">
+            <div className="flex items-start gap-3">
+              <Quote className="w-5 h-5 text-amber-400 shrink-0 mt-1" />
+              <p className="text-base italic" data-testid="text-market-quote">
+                The gap between agentic AI ambition and agentic AI execution is where most organizations will fail. Architecture — not enthusiasm — determines whether you're in the 25% that succeeds or the 40% that gets canceled.
+              </p>
             </div>
-          </motion.div>
+          </CardContent>
+        </Card>
+      </div>
+    </section>
+  );
+}
 
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-          >
-            <Card className="border-slate-800">
-              <CardHeader>
-                <CardTitle className="text-lg">Unlike traditional automation or chatbots, agentic systems:</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                {capabilities.map((cap, i) => (
-                  <div key={i} className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-lg bg-cyan-500/10 flex items-center justify-center shrink-0">
-                      <cap.icon className="w-5 h-5 text-cyan-400" />
-                    </div>
-                    <span className="text-sm">{cap.text}</span>
-                  </div>
+function ComparisonTable() {
+  const rows = [
+    { dim: "Operates on", auto: "Rules and triggers", assist: "User prompts and requests", agent: "Goals and objectives" },
+    { dim: "Decision-making", auto: "None — follows instructions", assist: "Suggests — human acts", agent: "Decides and acts — human oversees" },
+    { dim: "Adaptability", auto: "Breaks on exceptions", assist: "Limited to conversation context", agent: "Adapts strategy based on outcomes" },
+    { dim: "Duration", auto: "Single execution per trigger", assist: "Single session", agent: "Long-running — hours, days, weeks" },
+    { dim: "Tool usage", auto: "Hardcoded integrations", assist: "Limited function-calling", agent: "Dynamic multi-tool orchestration" },
+    { dim: "Failure handling", auto: "Stops and escalates", assist: '"I don\'t know"', agent: "Self-recovery, replanning, or intelligent escalation" },
+    { dim: "Memory", auto: "None", assist: "Session-level", agent: "Persistent across interactions" },
+    { dim: "Multi-agent", auto: "None", assist: "None", agent: "Multiple specialist agents collaborating" },
+    { dim: "Governance", auto: "Low — deterministic behavior", assist: "Medium — output review", agent: "High — bounded autonomy, audit trails, kill switches" },
+  ];
+  return (
+    <section className="py-20">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6">
+        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
+          <Badge variant="outline" className="border-green-500/30 text-green-400 mb-4" data-testid="badge-comparison">
+            <BarChart3 className="w-3 h-3 mr-1" />Comparison
+          </Badge>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4" data-testid="heading-comparison">Agentic AI vs Automation vs AI Assistants</h2>
+          <p className="text-muted-foreground max-w-xl mx-auto">Three distinct capabilities. Only one owns outcomes.</p>
+        </motion.div>
+        <Card className="overflow-hidden border-slate-700">
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="border-b border-slate-700 bg-slate-900/70">
+                  <th className="text-left p-4 text-muted-foreground font-medium w-32">Dimension</th>
+                  <th className="text-center p-4 text-slate-400 font-medium">Automation</th>
+                  <th className="text-center p-4 text-blue-400 font-medium">AI Assistants</th>
+                  <th className="text-center p-4 text-green-400 font-semibold">Autonomous Agentic</th>
+                </tr>
+              </thead>
+              <tbody>
+                {rows.map((row, i) => (
+                  <tr key={i} className="border-b border-slate-800/70 hover:bg-slate-900/20 transition-colors" data-testid={`row-comparison-${i}`}>
+                    <td className="p-4 font-medium text-slate-300 text-xs">{row.dim}</td>
+                    <td className="p-4 text-center text-muted-foreground text-xs leading-relaxed">{row.auto}</td>
+                    <td className="p-4 text-center text-muted-foreground text-xs leading-relaxed">{row.assist}</td>
+                    <td className="p-4 text-center text-green-300 text-xs font-medium leading-relaxed">{row.agent}</td>
+                  </tr>
                 ))}
-              </CardContent>
-            </Card>
-          </motion.div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function WhyAutomationNotEnough() {
-  const automationLimits = [
-    "Rule-based",
-    "Linear",
-    "Fragile when conditions change",
-  ];
-
-  const modernChallenges = [
-    "Dynamic inputs",
-    "Unstructured data",
-    "Exceptions and edge cases",
-    "Cross-system dependencies",
-  ];
-
-  const agenticCapabilities = [
-    "Handle variability",
-    "Recover from failures",
-    "Decide between multiple possible actions",
-    "Coordinate across tools and teams",
-  ];
-
-  return (
-    <section className="py-20 bg-slate-900">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-12"
-        >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Why "Automation" Is No Longer Enough
-          </h2>
-        </motion.div>
-
-        <div className="grid md:grid-cols-3 gap-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-          >
-            <Card className="h-full border-red-500/20 bg-red-500/5">
-              <CardHeader>
-                <CardTitle className="text-lg flex items-center gap-2">
-                  <XCircle className="w-5 h-5 text-red-400" />
-                  Traditional Automation
-                </CardTitle>
-                <CardDescription>Works only when workflows are predictable</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-2">
-                  {automationLimits.map((item, i) => (
-                    <li key={i} className="flex items-center gap-2 text-sm text-muted-foreground">
-                      <div className="w-1.5 h-1.5 rounded-full bg-red-400" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-          >
-            <Card className="h-full border-amber-500/20 bg-amber-500/5">
-              <CardHeader>
-                <CardTitle className="text-lg flex items-center gap-2">
-                  <AlertTriangle className="w-5 h-5 text-amber-400" />
-                  Modern Business Reality
-                </CardTitle>
-                <CardDescription>Where automation breaks</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-2">
-                  {modernChallenges.map((item, i) => (
-                    <li key={i} className="flex items-center gap-2 text-sm text-muted-foreground">
-                      <div className="w-1.5 h-1.5 rounded-full bg-amber-400" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.3 }}
-          >
-            <Card className="h-full border-cyan-500/20 bg-cyan-500/5">
-              <CardHeader>
-                <CardTitle className="text-lg flex items-center gap-2">
-                  <CheckCircle2 className="w-5 h-5 text-cyan-400" />
-                  Agentic Systems Can
-                </CardTitle>
-                <CardDescription>Where agentic systems become necessary</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-2">
-                  {agenticCapabilities.map((item, i) => (
-                    <li key={i} className="flex items-center gap-2 text-sm text-muted-foreground">
-                      <div className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
-          </motion.div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function ComparisonSection() {
-  const comparisons = [
-    {
-      type: "Traditional Automation",
-      icon: Cog,
-      color: "red",
-      traits: ["Executes predefined steps", "Fails when conditions change"],
-    },
-    {
-      type: "Chatbots / AI Assistants",
-      icon: MessageSquare,
-      color: "amber",
-      traits: ["Respond to inputs", "Do not own outcomes"],
-    },
-    {
-      type: "Autonomous Agentic Systems",
-      icon: Bot,
-      color: "cyan",
-      traits: [
-        "Operate with goals",
-        "Make decisions",
-        "Execute actions",
-        "Learn from outcomes",
-        "Remain governed and auditable",
-      ],
-    },
-  ];
-
-  return (
-    <section className="py-20 bg-slate-950">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-12"
-        >
-          <Badge variant="secondary" className="mb-4">A Highly Searched Comparison</Badge>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Autonomous Agentic Systems vs Automation vs Chatbots
-          </h2>
-        </motion.div>
-
-        <div className="grid md:grid-cols-3 gap-6 mb-8">
-          {comparisons.map((comp, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-            >
-              <Card className={`h-full ${comp.color === "cyan" ? "border-cyan-500/30 bg-cyan-500/5" : "border-slate-800"}`}>
-                <CardHeader>
-                  <div className={`w-12 h-12 rounded-lg mb-3 flex items-center justify-center ${
-                    comp.color === "red" ? "bg-red-500/10" :
-                    comp.color === "amber" ? "bg-amber-500/10" : "bg-cyan-500/10"
-                  }`}>
-                    <comp.icon className={`w-6 h-6 ${
-                      comp.color === "red" ? "text-red-400" :
-                      comp.color === "amber" ? "text-amber-400" : "text-cyan-400"
-                    }`} />
-                  </div>
-                  <CardTitle className="text-lg">{comp.type}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-2">
-                    {comp.traits.map((trait, j) => (
-                      <li key={j} className="flex items-start gap-2 text-sm">
-                        {comp.color === "cyan" ? (
-                          <CheckCircle2 className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5" />
-                        ) : (
-                          <div className={`w-1.5 h-1.5 rounded-full mt-2 shrink-0 ${
-                            comp.color === "red" ? "bg-red-400" : "bg-amber-400"
-                          }`} />
-                        )}
-                        <span className={comp.color === "cyan" ? "text-foreground" : "text-muted-foreground"}>
-                          {trait}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
-        </div>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="text-center"
-        >
-          <p className="text-lg font-medium text-cyan-400">
-            Agentic systems are execution intelligence, not conversation tools.
-          </p>
-        </motion.div>
-      </div>
-    </section>
-  );
-}
-
-function WhatMakesAgentic() {
-  const pillars = [
-    {
-      title: "Goal Awareness",
-      icon: Target,
-      points: ["Knows what it is trying to achieve", "Can prioritize tasks toward that goal"],
-    },
-    {
-      title: "Decision Capability",
-      icon: Brain,
-      points: ["Chooses actions based on context", "Evaluates trade-offs and constraints"],
-    },
-    {
-      title: "Execution Authority",
-      icon: Zap,
-      points: ["Acts across systems (APIs, tools, workflows)", "Handles retries and failures"],
-    },
-    {
-      title: "Memory & Learning",
-      icon: RefreshCw,
-      points: ["Remembers past actions and outcomes", "Improves behavior over time"],
-    },
-    {
-      title: "Governance & Control",
-      icon: Shield,
-      points: ["Operates within defined boundaries", "Escalates when confidence is low", "Maintains audit trails"],
-    },
-  ];
-
-  return (
-    <section className="py-20 bg-slate-900">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-12"
-        >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            What Makes an AI System Truly "Agentic"?
-          </h2>
-          <p className="text-muted-foreground">For an AI system to be considered agentic, it must have:</p>
-        </motion.div>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-          {pillars.map((pillar, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-            >
-              <Card className="h-full border-slate-800 hover:border-cyan-500/30 transition-colors">
-                <CardHeader>
-                  <div className="w-12 h-12 rounded-lg bg-cyan-500/10 flex items-center justify-center mb-3">
-                    <pillar.icon className="w-6 h-6 text-cyan-400" />
-                  </div>
-                  <CardTitle className="text-lg">{pillar.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-2">
-                    {pillar.points.map((point, j) => (
-                      <li key={j} className="flex items-start gap-2 text-sm text-muted-foreground">
-                        <CheckCircle2 className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5" />
-                        {point}
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
-        </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center p-6 rounded-lg bg-slate-950 border border-cyan-500/20"
-        >
-          <p className="text-lg mb-2">
-            Without governance, autonomy becomes risk.
-          </p>
-          <p className="text-cyan-400 font-medium">
-            AGIX Technologies treats control as a first-class feature, not an afterthought.
-          </p>
-        </motion.div>
-      </div>
-    </section>
-  );
-}
-
-function WhyBusinessesExploring() {
-  const reasons = [
-    "Manual coordination doesn't scale",
-    "Decision delays slow execution",
-    "Complex workflows overwhelm teams",
-    "Human error increases under load",
-    "Automation alone cannot adapt",
-  ];
-
-  const benefits = [
-    "Execute faster without adding headcount",
-    "Reduce operational friction",
-    "Handle complexity intelligently",
-    "Maintain consistency across systems",
-    "Free teams from repetitive coordination",
-  ];
-
-  return (
-    <section className="py-20 bg-slate-950">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-12"
-        >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Why Businesses Are Exploring Autonomous Agentic Systems Now
-          </h2>
-        </motion.div>
-
-        <div className="grid lg:grid-cols-2 gap-8">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-          >
-            <Card className="h-full border-slate-800">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <AlertTriangle className="w-5 h-5 text-amber-400" />
-                  Organizations are searching because:
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-3">
-                  {reasons.map((reason, i) => (
-                    <li key={i} className="flex items-center gap-3 text-sm">
-                      <div className="w-6 h-6 rounded-full bg-amber-500/10 flex items-center justify-center shrink-0">
-                        <span className="text-xs text-amber-400">{i + 1}</span>
-                      </div>
-                      {reason}
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-          >
-            <Card className="h-full border-cyan-500/20 bg-cyan-500/5">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <CheckCircle2 className="w-5 h-5 text-cyan-400" />
-                  Agentic Systems help businesses:
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-3">
-                  {benefits.map((benefit, i) => (
-                    <li key={i} className="flex items-center gap-3 text-sm">
-                      <CheckCircle2 className="w-4 h-4 text-cyan-400 shrink-0" />
-                      {benefit}
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
-          </motion.div>
-        </div>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="text-center mt-8"
-        >
-          <p className="text-lg text-muted-foreground">
-            This is why Agentic AI is becoming{" "}
-            <span className="text-cyan-400 font-medium">the next execution layer after automation</span>.
-          </p>
-        </motion.div>
-      </div>
-    </section>
-  );
-}
-
-function AgixApproach() {
-  const doNot = [
-    "Uncontrolled autonomous bots",
-    '"Let the AI figure it out" systems',
-    "Black-box agents",
-  ];
-
-  const doBuild = [
-    "Clear goal definition",
-    "Bounded autonomy",
-    "Human-in-the-loop controls",
-    "Explains for every action",
-    "Safe rollout from assistive to autonomous",
-  ];
-
-  return (
-    <section className="py-20 bg-slate-900">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-12"
-        >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            How AGIX Technologies Approaches Agentic Systems Differently
-          </h2>
-        </motion.div>
-
-        <div className="grid lg:grid-cols-2 gap-8 mb-8">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-          >
-            <Card className="h-full border-red-500/20 bg-red-500/5">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <XCircle className="w-5 h-5 text-red-400" />
-                  AGIX Technologies does not build:
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-3">
-                  {doNot.map((item, i) => (
-                    <li key={i} className="flex items-center gap-3 text-sm text-muted-foreground">
-                      <XCircle className="w-4 h-4 text-red-400 shrink-0" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-          >
-            <Card className="h-full border-cyan-500/20 bg-cyan-500/5">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <CheckCircle2 className="w-5 h-5 text-cyan-400" />
-                  We build: Governed Autonomous Agentic Systems
-                </CardTitle>
-                <CardDescription>Designed to act independently, but never irresponsibly</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-3">
-                  {doBuild.map((item, i) => (
-                    <li key={i} className="flex items-center gap-3 text-sm">
-                      <CheckCircle2 className="w-4 h-4 text-cyan-400 shrink-0" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
-          </motion.div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function ExecutionBottleneck() {
-  const struggles = [
-    "Too many handoffs",
-    "Too many systems",
-    "Too many decisions happening in parallel",
-    "Too much manual coordination",
-  ];
-
-  const searchQueries = [
-    "Why automation fails at scale",
-    "How to reduce operational coordination",
-    "AI agents for workflow execution",
-  ];
-
-  return (
-    <section className="py-20 bg-slate-950">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-12"
-        >
-          <Badge variant="outline" className="mb-4 border-cyan-500/50 text-cyan-400">Part 2</Badge>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            When Execution Becomes the Real Bottleneck
-          </h2>
-          <p className="text-xl text-muted-foreground">
-            Most Businesses Don't Struggle With Strategy — They Struggle With Execution
-          </p>
-        </motion.div>
-
-        <div className="grid lg:grid-cols-2 gap-8">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="space-y-6"
-          >
-            <p className="text-muted-foreground">
-              At leadership level, most organizations already know what needs to be done, which priorities matter, and where opportunities exist. Yet execution still breaks down.
-            </p>
-            <Card className="border-slate-800">
-              <CardHeader>
-                <CardTitle className="text-lg">Teams face:</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-2">
-                  {struggles.map((item, i) => (
-                    <li key={i} className="flex items-center gap-2 text-sm text-muted-foreground">
-                      <AlertTriangle className="w-4 h-4 text-amber-400" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="space-y-6"
-          >
-            <p className="text-muted-foreground">This is why people search for:</p>
-            <div className="flex flex-wrap gap-2">
-              {searchQueries.map((query, i) => (
-                <Badge key={i} variant="secondary" className="text-sm">
-                  "{query}"
-                </Badge>
-              ))}
-            </div>
-            <Card className="border-cyan-500/20 bg-cyan-500/5">
-              <CardContent className="pt-6">
-                <p className="text-lg">
-                  The problem is not intent.<br />
-                  <span className="text-cyan-400 font-medium">The problem is execution complexity.</span>
-                </p>
-              </CardContent>
-            </Card>
-          </motion.div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function HiddenCostOfCoordination() {
-  const costs = [
-    "Slack messages chasing updates",
-    "Emails clarifying responsibility",
-    "Meetings to unblock simple tasks",
-    "Rework due to missed steps",
-    "Escalations after delays",
-  ];
-
-  const benefits = [
-    "Taking ownership of execution",
-    "Coordinating across tools",
-    "Managing retries and fallbacks",
-    "Escalating only when needed",
-  ];
-
-  return (
-    <section className="py-20 bg-slate-900">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-12"
-        >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            The Hidden Cost of Manual Coordination
-          </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            Manual coordination does not show up clearly in reports.
-          </p>
-        </motion.div>
-
-        <div className="grid lg:grid-cols-2 gap-8">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-          >
-            <Card className="h-full border-amber-500/20 bg-amber-500/5">
-              <CardHeader>
-                <CardTitle className="text-lg">It appears as:</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-3">
-                  {costs.map((cost, i) => (
-                    <li key={i} className="flex items-center gap-3 text-sm text-muted-foreground">
-                      <Clock className="w-4 h-4 text-amber-400 shrink-0" />
-                      {cost}
-                    </li>
-                  ))}
-                </ul>
-                <p className="mt-6 p-4 rounded-lg bg-slate-950/50 text-sm italic">
-                  "We're spending too much time just coordinating work."
-                </p>
-              </CardContent>
-            </Card>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-          >
-            <Card className="h-full border-cyan-500/20 bg-cyan-500/5">
-              <CardHeader>
-                <CardTitle className="text-lg">Agentic Systems reduce this invisible tax by:</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-3">
-                  {benefits.map((benefit, i) => (
-                    <li key={i} className="flex items-center gap-3 text-sm">
-                      <CheckCircle2 className="w-4 h-4 text-cyan-400 shrink-0" />
-                      {benefit}
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
-          </motion.div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function RiskOfUngoverned() {
-  const risks = [
-    "Agents take unsafe actions",
-    "Systems behave unpredictably",
-    "Trust erodes quickly",
-  ];
-
-  const safeguards = [
-    "Autonomy is bounded",
-    "Actions are explainable",
-    "Humans stay accountable",
-    "Fail-safes are built in",
-  ];
-
-  return (
-    <section className="py-20 bg-slate-950">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-12"
-        >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            The Risk of Ungoverned Autonomous Agents
-          </h2>
-          <div className="flex flex-wrap justify-center gap-2 mb-4">
-            <Badge variant="secondary">"Are AI agents dangerous?"</Badge>
-            <Badge variant="secondary">"Can autonomous AI go wrong?"</Badge>
+              </tbody>
+            </table>
           </div>
-          <p className="text-muted-foreground">These searches exist for a reason.</p>
-        </motion.div>
-
-        <div className="grid lg:grid-cols-2 gap-8">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-          >
-            <Card className="h-full border-red-500/20 bg-red-500/5">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <AlertTriangle className="w-5 h-5 text-red-400" />
-                  Without governance:
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-3">
-                  {risks.map((risk, i) => (
-                    <li key={i} className="flex items-center gap-3 text-sm text-muted-foreground">
-                      <XCircle className="w-4 h-4 text-red-400 shrink-0" />
-                      {risk}
-                    </li>
-                  ))}
-                </ul>
-                <p className="mt-6 text-lg font-medium text-red-400">
-                  Autonomy without control is not intelligence — it's risk.
-                </p>
-              </CardContent>
-            </Card>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-          >
-            <Card className="h-full border-cyan-500/20 bg-cyan-500/5">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Shield className="w-5 h-5 text-cyan-400" />
-                  AGIX Technologies builds agentic systems where:
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-3">
-                  {safeguards.map((item, i) => (
-                    <li key={i} className="flex items-center gap-3 text-sm">
-                      <CheckCircle2 className="w-4 h-4 text-cyan-400 shrink-0" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
-          </motion.div>
-        </div>
+        </Card>
+        <Card className="border-green-500/20 bg-green-500/5 mt-6">
+          <CardContent className="p-5">
+            <div className="flex items-start gap-3">
+              <Quote className="w-4 h-4 text-green-400 shrink-0 mt-1" />
+              <p className="text-sm italic" data-testid="text-comparison-quote">Automation executes instructions. Assistants help humans. Agentic systems own outcomes.</p>
+            </div>
+          </CardContent>
+        </Card>
       </div>
     </section>
   );
 }
 
-function ArchitectureSection() {
-  const layers = [
+function AutonomyMaturityModel() {
+  const [activeLevel, setActiveLevel] = useState(0);
+  const levels = [
     {
-      number: "1",
-      title: "Goal & Intent Layer",
-      subtitle: "Defining What the System Is Responsible For",
-      icon: Target,
-      description: "Agentic systems do not act randomly. They operate against explicit, bounded goals.",
-      points: [
-        "What outcome the system owns",
-        "Success and failure criteria",
-        "Constraints (budget, time, compliance)",
-        "When autonomy applies — and when it stops",
-      ],
-      examples: [
-        "Resolve customer issues within SLA",
-        "Execute onboarding tasks end-to-end",
-        "Maintain inventory availability within thresholds",
-      ],
+      code: "L1", title: "Assistive Autonomy", subtitle: "AI assists. Human decides and acts.",
+      icon: Eye, color: "from-blue-600 to-blue-700", textColor: "text-blue-400", bgActive: "bg-blue-500/10 border-blue-500",
+      desc: "The AI monitors, surfaces information, generates suggestions, and handles data processing — but every decision and action is taken by a human. The AI is a tool in the human's hands.",
+      looks: ["AI-powered dashboards that surface anomalies and trends", "Recommendation systems that suggest but don't execute", "Copilots that draft content for human review", "Search assistants that retrieve relevant information"],
+      humanRole: "Decides, acts, and is accountable for outcomes.",
+      governance: "Low. AI output is advisory only. Humans own every action.",
+      when: "New AI deployments. Unfamiliar domains. High-stakes decisions where human judgment is irreplaceable. Organizations beginning their autonomy journey.",
     },
     {
-      number: "2",
-      title: "Planning & Reasoning Layer",
-      subtitle: "Deciding How to Act",
-      icon: Brain,
-      description: "Once a goal is defined, the system must decide how to achieve it.",
-      points: [
-        "Breaks goals into executable steps",
-        "Evaluates multiple possible action paths",
-        "Considers dependencies and constraints",
-        "Adapts plans when conditions change",
-      ],
+      code: "L2", title: "Semi-Autonomous", subtitle: "AI decides within limits. Human approves exceptions.",
+      icon: Zap, color: "from-purple-500 to-purple-600", textColor: "text-purple-400", bgActive: "bg-purple-500/10 border-purple-500",
+      desc: "The AI handles routine decisions and executes actions within pre-approved parameters. When it encounters situations outside its boundaries or above its confidence threshold, it escalates to a human.",
+      looks: ["Customer support agent resolves Tier-1 issues autonomously, escalates Tier-2+", "Fraud detection blocks obvious fraud automatically, routes borderline cases to review", "Scheduling agent books appointments independently, asks human for conflicts", "Content generation within brand guidelines, human approves publication"],
+      humanRole: "Approves exceptions. Monitors performance. Sets boundaries.",
+      governance: "Medium. Clear boundary definitions. Escalation rules. Audit trails on every autonomous action. Confidence thresholds.",
+      when: "Well-understood processes with clear rules. Moderate-stakes operations where speed matters. Organizations with some AI governance experience.",
+      quote: "L2 is where most enterprise agentic deployments should start in 2026. It delivers 80% of the value with 20% of the risk.",
     },
     {
-      number: "3",
-      title: "Execution & Tooling Layer",
-      subtitle: "Acting Across Systems",
-      icon: Zap,
-      description: "This layer gives agents the ability to act, not just think.",
-      points: [
-        "Executing actions",
-        "Handling retries and failures",
-        "Verifying outcomes",
-        "Logging every step",
-      ],
-      connects: ["APIs and business systems", "Databases and services", "Workflow engines", "Internal tools"],
+      code: "L3", title: "Autonomous", subtitle: "AI owns the process. Human monitors.",
+      icon: Bot, color: "from-amber-500 to-amber-600", textColor: "text-amber-400", bgActive: "bg-amber-500/10 border-amber-500",
+      desc: "The AI operates its domain end-to-end. It plans, executes, monitors results, and self-corrects — all without human approval on individual actions.",
+      looks: ["Multi-agent revenue ops system that qualifies leads, books meetings, triggers onboarding — end to end", "Supply chain optimization adjusting procurement, allocation, and distribution continuously", "IT operations detecting incidents, diagnosing, executing remediation, and verifying resolution", "Content moderation at millions of items with human review on edge cases only"],
+      humanRole: "Sets objectives. Defines governance. Reviews performance. Handles genuine exceptions.",
+      governance: "High. Bounded autonomy. Kill switches. Progressive trust. Complete audit trails. Rollback capability. Regular reviews.",
+      when: "High-volume, cross-system processes. Operations requiring 24/7 execution. Domains where human coordination cost exceeds occasional AI error. Organizations with mature AI governance.",
     },
     {
-      number: "4",
-      title: "Oversight & Governance Layer",
-      subtitle: "Keeping Humans in Control",
-      icon: Shield,
-      description: "This is the most important layer — and the most neglected in the market.",
-      points: [
-        "Actions stay within allowed boundaries",
-        "Confidence thresholds are respected",
-        "Sensitive actions require human approval",
-        "Every decision is traceable",
-      ],
-      includes: ["Human-in-the-loop checkpoints", "Policy enforcement", "Role-based permissions", "Kill-switches and fallback logic"],
-    },
-    {
-      number: "5",
-      title: "Feedback & Learning Layer",
-      subtitle: "Improving Execution Over Time",
-      icon: RefreshCw,
-      description: "Agentic systems must improve — safely.",
-      points: [
-        "Monitors outcomes",
-        "Captures human overrides",
-        "Learns from successes and failures",
-        "Refines planning and execution",
-      ],
-      note: "Learning does not expand autonomy automatically. Improvements are reviewed and governed.",
+      code: "L4", title: "Self-Directing", subtitle: "AI sets sub-goals. Human sets objectives only.",
+      icon: Brain, color: "from-green-500 to-green-600", textColor: "text-green-400", bgActive: "bg-green-500/10 border-green-500",
+      desc: "The AI doesn't just execute within its domain — it identifies new sub-goals, adjusts its own strategy based on changing conditions, and coordinates across multiple domains.",
+      looks: ["Business ops system managing customer acquisition, retention, and expansion simultaneously", "Supply chain intelligence coordinating procurement, manufacturing, logistics, and demand as one integrated optimization", "R&D system formulating hypotheses, designing experiments, analyzing results, and refining approach iteratively"],
+      humanRole: "Sets objectives and constraints. Monitors at the strategic level. Intervenes on ethical, legal, or existential questions only.",
+      governance: "Very high. Comprehensive explainability. Multi-layer safety controls. Continuous monitoring. Ethics review for novel situations. The governance cost at L4 is a feature — it's what makes the autonomy safe.",
+      when: "2028–2030. For organizations that have proven L3 reliability over sustained periods.",
+      quote: "L4 is the horizon, not the starting point. True L4 requires years of L2→L3 trust-building.",
     },
   ];
-
+  const active = levels[activeLevel];
+  const ActiveIcon = active.icon;
   return (
-    <section id="how-it-works" className="py-20 bg-slate-900 scroll-mt-20">
+    <section id="autonomy-model" className="py-20 bg-slate-900/30 scroll-mt-20">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-12"
-        >
-          <Badge variant="outline" className="mb-4 border-cyan-500/50 text-cyan-400">Part 3</Badge>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            The AGIX Technologies Autonomous Agentic System Architecture
-          </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            Every agentic system we design follows a five-layer architecture that ensures autonomy without chaos.
-          </p>
+        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-14">
+          <Badge variant="outline" className="border-green-500/30 text-green-400 mb-4" data-testid="badge-model">
+            <Layers className="w-3 h-3 mr-1" />The AGIX Original Framework — The 2028 Crown Jewel
+          </Badge>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4" data-testid="heading-model">The AGIX Autonomy Maturity Model: L1 → L4</h2>
+          <p className="text-muted-foreground max-w-2xl mx-auto">Four levels of AI autonomy — designed to become the industry-standard framework for evaluating AI autonomy. Think of it as the equivalent of SAE J3016 autonomous driving levels (L1→L5) but for business AI.</p>
         </motion.div>
-
-        <div className="space-y-6">
-          {layers.map((layer, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-            >
-              <Card className="border-slate-800 hover:border-cyan-500/30 transition-colors">
-                <CardHeader>
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-lg bg-cyan-500/10 flex items-center justify-center shrink-0">
-                      <layer.icon className="w-6 h-6 text-cyan-400" />
+        <div className="grid lg:grid-cols-5 gap-6 items-start">
+          <div className="lg:col-span-2 space-y-2">
+            {levels.map((lv, i) => {
+              const Icon = lv.icon;
+              const isActive = activeLevel === i;
+              return (
+                <motion.div key={i} initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}>
+                  <button onClick={() => setActiveLevel(i)} className={`w-full text-left p-4 rounded-xl border transition-all ${isActive ? `${lv.bgActive} shadow-lg` : "border-slate-700 hover:border-slate-600 bg-slate-900/30"}`} data-testid={`button-model-${i}`} aria-pressed={isActive}>
+                    <div className="flex items-center gap-3">
+                      <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${lv.color} flex items-center justify-center shrink-0 shadow-md`}>
+                        <Icon className="w-5 h-5 text-white" />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <p className={`text-xs font-medium mb-0.5 ${isActive ? lv.textColor : "text-muted-foreground"}`}>{lv.code}</p>
+                        <p className={`font-bold text-sm ${isActive ? "text-white" : "text-slate-300"}`}>{lv.title}</p>
+                        <p className="text-xs text-muted-foreground truncate">{lv.subtitle}</p>
+                      </div>
                     </div>
-                    <div>
-                      <Badge variant="outline" className="mb-2 border-cyan-500/30 text-cyan-400">
-                        Layer {layer.number}
-                      </Badge>
-                      <CardTitle className="text-xl">{layer.title}</CardTitle>
-                      <CardDescription>{layer.subtitle}</CardDescription>
+                  </button>
+                </motion.div>
+              );
+            })}
+            <Card className="border-green-500/20 bg-green-500/5 mt-4">
+              <CardContent className="p-4">
+                <div className="flex items-start gap-2">
+                  <Quote className="w-4 h-4 text-green-400 shrink-0 mt-0.5" />
+                  <p className="text-xs italic text-muted-foreground leading-relaxed">Most organizations are at L1 or L2. Those at L3–L4 don't just operate more efficiently — they operate in fundamentally different ways than their competitors.</p>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+          <div className="lg:col-span-3 lg:sticky lg:top-24">
+            <AnimatePresence mode="wait">
+              <motion.div key={activeLevel} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} transition={{ duration: 0.2 }}>
+                <Card className="border-slate-700" data-testid="card-model-details">
+                  <CardContent className="p-7 space-y-5">
+                    <div className="flex items-center gap-4">
+                      <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${active.color} flex items-center justify-center shadow-lg`}>
+                        <ActiveIcon className="w-7 h-7 text-white" />
+                      </div>
+                      <div>
+                        <p className={`text-xs font-medium ${active.textColor}`}>{active.code}</p>
+                        <h3 className="text-xl font-bold" data-testid="text-model-title">{active.title}</h3>
+                        <p className="text-sm text-muted-foreground">{active.subtitle}</p>
+                      </div>
                     </div>
-                  </div>
-                </CardHeader>
-                <CardContent className="pl-20">
-                  <p className="text-muted-foreground mb-4">{layer.description}</p>
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <div>
-                      <p className="text-sm font-medium mb-2">This layer:</p>
-                      <ul className="space-y-1">
-                        {layer.points.map((point, j) => (
-                          <li key={j} className="flex items-start gap-2 text-sm text-muted-foreground">
-                            <CheckCircle2 className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5" />
-                            {point}
-                          </li>
-                        ))}
-                      </ul>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{active.desc}</p>
+                    <div className="space-y-2">
+                      <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">What this looks like</p>
+                      {active.looks.map((item, j) => (
+                        <div key={j} className="flex items-start gap-2 text-sm" data-testid={`text-model-item-${j}`}>
+                          <CheckCircle2 className={`w-4 h-4 ${active.textColor} shrink-0 mt-0.5`} />
+                          <span className="text-slate-300 text-xs">{item}</span>
+                        </div>
+                      ))}
                     </div>
-                    {layer.examples && (
+                    <div className="bg-slate-900/50 rounded-lg p-4 space-y-2 border border-slate-700">
                       <div>
-                        <p className="text-sm font-medium mb-2">Example goals:</p>
-                        <ul className="space-y-1">
-                          {layer.examples.map((ex, j) => (
-                            <li key={j} className="text-sm text-muted-foreground italic">
-                              "{ex}"
-                            </li>
-                          ))}
-                        </ul>
+                        <p className="text-xs font-semibold text-blue-400 uppercase tracking-wider mb-1">Human role</p>
+                        <p className="text-sm text-muted-foreground">{active.humanRole}</p>
                       </div>
-                    )}
-                    {layer.connects && (
                       <div>
-                        <p className="text-sm font-medium mb-2">Connects to:</p>
-                        <ul className="space-y-1">
-                          {layer.connects.map((item, j) => (
-                            <li key={j} className="flex items-center gap-2 text-sm text-muted-foreground">
-                              <div className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
-                              {item}
-                            </li>
-                          ))}
-                        </ul>
+                        <p className="text-xs font-semibold text-amber-400 uppercase tracking-wider mb-1">Governance requirement</p>
+                        <p className="text-sm text-muted-foreground">{active.governance}</p>
                       </div>
-                    )}
-                    {layer.includes && (
                       <div>
-                        <p className="text-sm font-medium mb-2">Includes:</p>
-                        <ul className="space-y-1">
-                          {layer.includes.map((item, j) => (
-                            <li key={j} className="flex items-center gap-2 text-sm text-muted-foreground">
-                              <Lock className="w-3 h-3 text-cyan-400" />
-                              {item}
-                            </li>
-                          ))}
-                        </ul>
+                        <p className="text-xs font-semibold text-green-400 uppercase tracking-wider mb-1">When this is right</p>
+                        <p className="text-sm text-muted-foreground">{active.when}</p>
                       </div>
-                    )}
-                  </div>
-                  {layer.note && (
-                    <p className="mt-4 text-sm text-amber-400 italic">
-                      {layer.note}
-                    </p>
-                  )}
-                </CardContent>
-              </Card>
+                      {active.quote && (
+                        <div className="pt-2 border-t border-slate-700/50">
+                          <p className={`text-xs italic ${active.textColor}`}>"{active.quote}"</p>
+                        </div>
+                      )}
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function MaturityAssessment() {
+  const [open, setOpen] = useState<number | null>(null);
+  const rows = [
+    { level: "Pre-L1", signal: '"We\'re thinking about using AI agents"', missing: "Everything — start with an assessment", color: "text-slate-400", border: "border-slate-500/30" },
+    { level: "L1: Assistive", signal: '"AI helps our team but doesn\'t act on its own"', missing: "Decision delegation, autonomous execution", color: "text-blue-400", border: "border-blue-500/30" },
+    { level: "L2: Semi-Autonomous", signal: '"AI handles routine tasks but escalates anything complex"', missing: "End-to-end ownership, cross-system coordination", color: "text-purple-400", border: "border-purple-500/30" },
+    { level: "L3: Autonomous", signal: '"AI runs this process end-to-end — we monitor and intervene on exceptions"', missing: "Cross-domain optimization, self-directed strategy", color: "text-amber-400", border: "border-amber-500/30" },
+    { level: "L4: Self-Directing", signal: '"AI manages entire operational domains — we set objectives and review strategy"', missing: "You've arrived — now optimize and govern", color: "text-green-400", border: "border-green-500/30" },
+  ];
+  return (
+    <section className="py-20 scroll-mt-20">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 space-y-10">
+        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center">
+          <Badge variant="outline" className="border-amber-500/30 text-amber-400 mb-4" data-testid="badge-maturity">
+            <Target className="w-3 h-3 mr-1" />Autonomy Maturity Assessment
+          </Badge>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4" data-testid="heading-maturity">Where Is Your Organization Today?</h2>
+          <p className="text-muted-foreground max-w-2xl mx-auto">The distance between your current level and where you need to be defines your agentic AI investment — and your governance requirement.</p>
+        </motion.div>
+        <div className="space-y-3">
+          {rows.map((r, i) => (
+            <motion.div key={i} initial={{ opacity: 0, x: -10 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}>
+              <button onClick={() => setOpen(open === i ? null : i)} className={`w-full text-left rounded-xl border transition-all ${open === i ? `${r.border} bg-slate-900/40` : "border-slate-700 bg-slate-900/30 hover:border-slate-600"}`} data-testid={`button-maturity-${i}`} aria-expanded={open === i}>
+                <div className="p-5 flex items-center justify-between gap-4">
+                  <span className={`font-bold text-sm ${r.color}`}>{r.level}</span>
+                  <ChevronDown className={`w-4 h-4 text-muted-foreground shrink-0 transition-transform ${open === i ? "rotate-180" : ""}`} />
+                </div>
+              </button>
+              <AnimatePresence>
+                {open === i && (
+                  <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.22 }} className="overflow-hidden">
+                    <div className={`px-5 pb-5 space-y-3 rounded-b-xl border-x border-b ${r.border} bg-slate-900/30`}>
+                      <div className="pt-2 border-t border-slate-700/50">
+                        <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-1">Typical signal</p>
+                        <p className={`text-sm italic ${r.color}`}>{r.signal}</p>
+                      </div>
+                      <div>
+                        <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-1">What&apos;s missing</p>
+                        <p className="text-sm text-muted-foreground">{r.missing}</p>
+                      </div>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </motion.div>
           ))}
         </div>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="mt-8 text-center p-6 rounded-lg bg-slate-950 border border-cyan-500/20"
-        >
-          <p className="text-lg font-medium text-cyan-400">
-            AGIX Technologies builds autonomy that is bounded by design.
-          </p>
-        </motion.div>
       </div>
     </section>
   );
 }
 
-function AgixMethodology() {
-  const steps = [
-    { title: "Execution Mapping", description: "Identify where workflows break or stall" },
-    { title: "Goal Boundary Definition", description: "Define safe, measurable ownership" },
-    { title: "Agent Role Design", description: "Separate planning, execution, monitoring, and escalation" },
-    { title: "Governance First", description: "Embed controls before autonomy" },
-    { title: "Progressive Autonomy", description: "Assist → supervise → controlled autonomy" },
+function SafetyFramework() {
+  const principles = [
+    { number: "1", title: "Bounded Autonomy", desc: "Every agent operates within explicitly defined action boundaries. The agent cannot take actions outside its scope — even if it 'reasons' that it should. Boundaries are set by humans, not learned by the agent.", color: "text-blue-400", border: "border-blue-500/20" },
+    { number: "2", title: "Progressive Trust", desc: "Agents don't start autonomous — they earn autonomy through demonstrated reliability. Deployment follows a progression: assistive → supervised → monitored → autonomous. Each stage requires proven performance before advancing.", color: "text-purple-400", border: "border-purple-500/20" },
+    { number: "3", title: "Confidence-Gated Escalation", desc: "When an agent's confidence drops below a defined threshold, it does not guess — it escalates to a human or to a higher-authority agent. The threshold is set per action type and adjusted based on outcome data.", color: "text-amber-400", border: "border-amber-500/20" },
+    { number: "4", title: "Full Audit Traceability", desc: "Every decision, every action, every escalation is logged with the reasoning, the data inputs, the confidence score, and the outcome. This is non-negotiable at every autonomy level.", color: "text-orange-400", border: "border-orange-500/20" },
+    { number: "5", title: "Kill Switch Architecture", desc: "Every agent can be immediately stopped, rolled back, or overridden — at any time, by any authorized human. There is no level of autonomy where the kill switch is removed.", color: "text-red-400", border: "border-red-500/20" },
   ];
-
   return (
-    <section className="py-20 bg-slate-950">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-12"
-        >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            How AGIX Technologies Engineers Agentic Systems
-          </h2>
-          <p className="text-muted-foreground">
-            AGIX Technologies does not deploy agents blindly. We follow a disciplined approach:
-          </p>
+    <section id="safety-framework" className="py-20 bg-slate-900/30 scroll-mt-20">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 space-y-10">
+        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center">
+          <Badge variant="outline" className="border-red-500/30 text-red-400 mb-4" data-testid="badge-safety">
+            <Shield className="w-3 h-3 mr-1" />The AGIX Original Framework
+          </Badge>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4" data-testid="heading-safety">The AGIX Autonomy Safety Framework</h2>
+          <p className="text-muted-foreground max-w-2xl mx-auto">Five safety principles that apply at every autonomy level, with increasing rigor as autonomy increases. These are non-negotiable.</p>
         </motion.div>
-
-        <div className="grid md:grid-cols-5 gap-4">
-          {steps.map((step, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              className="relative"
-            >
-              <Card className="h-full border-slate-800 hover:border-cyan-500/30 transition-colors">
-                <CardContent className="pt-6 text-center">
-                  <div className="w-10 h-10 rounded-full bg-cyan-500/10 flex items-center justify-center mx-auto mb-3">
-                    <span className="text-cyan-400 font-bold">{i + 1}</span>
-                  </div>
-                  <h3 className="font-semibold text-sm mb-2">{step.title}</h3>
-                  <p className="text-xs text-muted-foreground">{step.description}</p>
-                </CardContent>
-              </Card>
-              {i < steps.length - 1 && (
-                <ArrowRight className="hidden md:block absolute top-1/2 -right-3 w-5 h-5 text-cyan-400/50 -translate-y-1/2 z-10" />
-              )}
-            </motion.div>
-          ))}
-        </div>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="mt-8 text-center"
-        >
-          <p className="text-muted-foreground">
-            This ensures <span className="text-cyan-400">trust, reliability, and adoption</span>.
-          </p>
-        </motion.div>
-      </div>
-    </section>
-  );
-}
-
-function InteractiveToolsSection() {
-  const [activeTool, setActiveTool] = useState<number>(0);
-
-  const tools = [
-    { id: 0, title: "Readiness Finder", icon: ClipboardCheck },
-    { id: 1, title: "Risk Assessment", icon: Shield },
-    { id: 2, title: "ROI Estimator", icon: DollarSign },
-    { id: 3, title: "Maturity Map", icon: BarChart3 },
-    { id: 4, title: "Industry Blueprints", icon: Building2 },
-  ];
-
-  return (
-    <section className="py-20 bg-slate-900">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-12"
-        >
-          <Badge variant="outline" className="mb-4 border-cyan-500/50 text-cyan-400">Part 4</Badge>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Interactive Autonomous Agentic Systems Tools
-          </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            Helping You Adopt Autonomy Safely, Intentionally, and With Confidence
-          </p>
-        </motion.div>
-
-        <div className="flex flex-wrap justify-center gap-2 mb-8">
-          {tools.map((tool) => (
-            <Button
-              key={tool.id}
-              variant={activeTool === tool.id ? "default" : "outline"}
-              className={activeTool === tool.id ? "bg-cyan-500 hover:bg-cyan-600" : ""}
-              onClick={() => setActiveTool(tool.id)}
-              data-testid={`button-tool-${tool.id}`}
-            >
-              <tool.icon className="w-4 h-4 mr-2" />
-              {tool.title}
-            </Button>
-          ))}
-        </div>
-
-        <div className="min-h-[500px]">
-          {activeTool === 0 && <ReadinessFinderTool />}
-          {activeTool === 1 && <RiskAssessmentTool />}
-          {activeTool === 2 && <ROIEstimatorTool />}
-          {activeTool === 3 && <MaturityMapTool />}
-          {activeTool === 4 && <IndustryBlueprintsTool />}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function ReadinessFinderTool() {
-  const [step, setStep] = useState(1);
-  const [industry, setIndustry] = useState("");
-  const [workflowType, setWorkflowType] = useState("");
-  const [systemCount, setSystemCount] = useState("");
-  const [frequency, setFrequency] = useState("");
-  const [conditionsChange, setConditionsChange] = useState<boolean | null>(null);
-  const [exceptionsCommon, setExceptionsCommon] = useState<boolean | null>(null);
-  const [manualCoordHigh, setManualCoordHigh] = useState<boolean | null>(null);
-  const [outcomesMeasurable, setOutcomesMeasurable] = useState<boolean | null>(null);
-  const [wrongExecutionCost, setWrongExecutionCost] = useState("");
-  const [complianceSensitivity, setComplianceSensitivity] = useState("");
-  const [showResults, setShowResults] = useState(false);
-
-  const calculateScore = () => {
-    let score = 50;
-    if (conditionsChange) score += 10;
-    if (exceptionsCommon) score += 10;
-    if (manualCoordHigh) score += 15;
-    if (outcomesMeasurable) score += 10;
-    if (systemCount === "3+") score += 10;
-    if (frequency === "daily" || frequency === "hourly") score += 5;
-    if (wrongExecutionCost === "high") score -= 10;
-    if (complianceSensitivity === "high") score -= 10;
-    return Math.min(100, Math.max(0, score));
-  };
-
-  const getAutonomyLevel = (score: number) => {
-    if (score >= 80) return { level: "Controlled Autonomous", color: "text-cyan-400" };
-    if (score >= 60) return { level: "Supervised", color: "text-amber-400" };
-    return { level: "Assistive", color: "text-blue-400" };
-  };
-
-  const handleSubmit = () => {
-    setShowResults(true);
-  };
-
-  const reset = () => {
-    setStep(1);
-    setIndustry("");
-    setWorkflowType("");
-    setSystemCount("");
-    setFrequency("");
-    setConditionsChange(null);
-    setExceptionsCommon(null);
-    setManualCoordHigh(null);
-    setOutcomesMeasurable(null);
-    setWrongExecutionCost("");
-    setComplianceSensitivity("");
-    setShowResults(false);
-  };
-
-  if (showResults) {
-    const score = calculateScore();
-    const autonomy = getAutonomyLevel(score);
-    return (
-      <Card className="border-cyan-500/20">
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <CheckCircle2 className="w-5 h-5 text-cyan-400" />
-            Your Agentic Readiness Assessment
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-6">
-          <div className="text-center p-6 rounded-lg bg-slate-950">
-            <p className="text-sm text-muted-foreground mb-2">Agentic Suitability Score</p>
-            <p className="text-5xl font-bold text-cyan-400 mb-2">{score}%</p>
-            <Progress value={score} className="h-3 mb-4" aria-label="Agentic Suitability Score" />
-            <p className="text-lg">
-              Recommended Autonomy Level: <span className={`font-bold ${autonomy.color}`}>{autonomy.level}</span>
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-4">
-            <div className="p-4 rounded-lg bg-slate-900/50 border border-slate-800">
-              <h4 className="font-medium mb-2 flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-cyan-400" />
-                Workflow Types Best Suited
-              </h4>
-              <ul className="text-sm text-muted-foreground space-y-1">
-                <li>Multi-system coordination</li>
-                <li>Exception handling workflows</li>
-                <li>Repetitive decision-action loops</li>
-              </ul>
-            </div>
-            <div className="p-4 rounded-lg bg-slate-900/50 border border-slate-800">
-              <h4 className="font-medium mb-2 flex items-center gap-2">
-                <AlertTriangle className="w-4 h-4 text-amber-400" />
-                Safe Starting Scope
-              </h4>
-              <ul className="text-sm text-muted-foreground space-y-1">
-                <li>Begin with assistive mode</li>
-                <li>Clear escalation paths</li>
-                <li>Human approval for sensitive actions</li>
-              </ul>
-            </div>
-          </div>
-
-          <Button onClick={reset} variant="outline" className="w-full" data-testid="button-reset-readiness">
-            <RotateCcw className="w-4 h-4 mr-2" />
-            Start Over
-          </Button>
-        </CardContent>
-      </Card>
-    );
-  }
-
-  return (
-    <Card className="border-cyan-500/20">
-      <CardHeader>
-        <CardTitle>Agentic Readiness & Suitability Finder</CardTitle>
-        <CardDescription>
-          Determine whether agentic systems are right for your workflows
-        </CardDescription>
-        <Progress value={(step / 3) * 100} className="h-2" aria-label={`Step ${step} of 3`} />
-      </CardHeader>
-      <CardContent className="space-y-6">
-        {step === 1 && (
-          <div className="space-y-4">
-            <h3 className="font-medium">Step 1: Workflow Context</h3>
-            <div className="grid md:grid-cols-2 gap-4">
-              <div>
-                <label htmlFor="agentic-industry" className="text-sm text-muted-foreground mb-2 block">Industry</label>
-                <Select value={industry} onValueChange={setIndustry}>
-                  <SelectTrigger id="agentic-industry" data-testid="select-industry">
-                    <SelectValue placeholder="Select industry" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="healthcare">Healthcare</SelectItem>
-                    <SelectItem value="finance">Finance & Insurance</SelectItem>
-                    <SelectItem value="ecommerce">E-commerce & Retail</SelectItem>
-                    <SelectItem value="saas">SaaS & Technology</SelectItem>
-                    <SelectItem value="enterprise">Enterprise Operations</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-              <div>
-                <label htmlFor="agentic-workflow-type" className="text-sm text-muted-foreground mb-2 block">Workflow Type</label>
-                <Select value={workflowType} onValueChange={setWorkflowType}>
-                  <SelectTrigger id="agentic-workflow-type" data-testid="select-workflow-type">
-                    <SelectValue placeholder="Select type" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="ops">Operations</SelectItem>
-                    <SelectItem value="support">Support</SelectItem>
-                    <SelectItem value="finance">Finance</SelectItem>
-                    <SelectItem value="internal">Internal</SelectItem>
-                    <SelectItem value="mixed">Mixed</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-              <div>
-                <label htmlFor="agentic-system-count" className="text-sm text-muted-foreground mb-2 block">Systems Involved</label>
-                <Select value={systemCount} onValueChange={setSystemCount}>
-                  <SelectTrigger id="agentic-system-count" data-testid="select-system-count">
-                    <SelectValue placeholder="Select count" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="1">1 system</SelectItem>
-                    <SelectItem value="2">2 systems</SelectItem>
-                    <SelectItem value="3+">3+ systems</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-              <div>
-                <label htmlFor="agentic-frequency" className="text-sm text-muted-foreground mb-2 block">Execution Frequency</label>
-                <Select value={frequency} onValueChange={setFrequency}>
-                  <SelectTrigger id="agentic-frequency" data-testid="select-frequency">
-                    <SelectValue placeholder="Select frequency" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="hourly">Hourly</SelectItem>
-                    <SelectItem value="daily">Daily</SelectItem>
-                    <SelectItem value="weekly">Weekly</SelectItem>
-                    <SelectItem value="monthly">Monthly</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-            </div>
-            <Button
-              onClick={() => setStep(2)}
-              disabled={!industry || !workflowType || !systemCount || !frequency}
-              className="w-full bg-cyan-500 hover:bg-cyan-600"
-              data-testid="button-next-step-1"
-            >
-              Continue to Complexity Signals
-              <ArrowRight className="w-4 h-4 ml-2" />
-            </Button>
-          </div>
-        )}
-
-        {step === 2 && (
-          <div className="space-y-4">
-            <h3 className="font-medium">Step 2: Complexity Signals</h3>
-            <div className="space-y-4">
-              {[
-                { q: "Do conditions change mid-process?", state: conditionsChange, setState: setConditionsChange },
-                { q: "Are exceptions common?", state: exceptionsCommon, setState: setExceptionsCommon },
-                { q: "Is manual coordination high?", state: manualCoordHigh, setState: setManualCoordHigh },
-                { q: "Are outcomes clearly measurable?", state: outcomesMeasurable, setState: setOutcomesMeasurable },
-              ].map((item, i) => (
-                <div key={i} className="flex items-center justify-between p-4 rounded-lg bg-slate-900/50 border border-slate-800">
-                  <span className="text-sm">{item.q}</span>
-                  <div className="flex gap-2">
-                    <Button
-                      size="sm"
-                      variant={item.state === true ? "default" : "outline"}
-                      className={item.state === true ? "bg-cyan-500" : ""}
-                      onClick={() => item.setState(true)}
-                    >
-                      Yes
-                    </Button>
-                    <Button
-                      size="sm"
-                      variant={item.state === false ? "default" : "outline"}
-                      onClick={() => item.setState(false)}
-                    >
-                      No
-                    </Button>
-                  </div>
-                </div>
-              ))}
-            </div>
-            <div className="flex gap-4">
-              <Button variant="outline" onClick={() => setStep(1)} className="flex-1">
-                Back
-              </Button>
-              <Button
-                onClick={() => setStep(3)}
-                disabled={conditionsChange === null || exceptionsCommon === null || manualCoordHigh === null || outcomesMeasurable === null}
-                className="flex-1 bg-cyan-500 hover:bg-cyan-600"
-                data-testid="button-next-step-2"
-              >
-                Continue to Risk Signals
-                <ArrowRight className="w-4 h-4 ml-2" />
-              </Button>
-            </div>
-          </div>
-        )}
-
-        {step === 3 && (
-          <div className="space-y-4">
-            <h3 className="font-medium">Step 3: Risk Signals</h3>
-            <div className="grid md:grid-cols-2 gap-4">
-              <div>
-                <label htmlFor="agentic-wrong-cost" className="text-sm text-muted-foreground mb-2 block">Cost of Wrong Execution</label>
-                <Select value={wrongExecutionCost} onValueChange={setWrongExecutionCost}>
-                  <SelectTrigger id="agentic-wrong-cost" data-testid="select-wrong-execution-cost">
-                    <SelectValue placeholder="Select level" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="low">Low</SelectItem>
-                    <SelectItem value="medium">Medium</SelectItem>
-                    <SelectItem value="high">High</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-              <div>
-                <label htmlFor="agentic-compliance" className="text-sm text-muted-foreground mb-2 block">Compliance Sensitivity</label>
-                <Select value={complianceSensitivity} onValueChange={setComplianceSensitivity}>
-                  <SelectTrigger id="agentic-compliance" data-testid="select-compliance-sensitivity">
-                    <SelectValue placeholder="Select level" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="low">Low</SelectItem>
-                    <SelectItem value="medium">Medium</SelectItem>
-                    <SelectItem value="high">High</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-            </div>
-            <div className="flex gap-4">
-              <Button variant="outline" onClick={() => setStep(2)} className="flex-1">
-                Back
-              </Button>
-              <Button
-                onClick={handleSubmit}
-                disabled={!wrongExecutionCost || !complianceSensitivity}
-                className="flex-1 bg-cyan-500 hover:bg-cyan-600"
-                data-testid="button-get-results"
-              >
-                Get My Assessment
-                <CheckCircle2 className="w-4 h-4 ml-2" />
-              </Button>
-            </div>
-          </div>
-        )}
-      </CardContent>
-    </Card>
-  );
-}
-
-function RiskAssessmentTool() {
-  const [executionRisk, setExecutionRisk] = useState([50]);
-  const [decisionSensitivity, setDecisionSensitivity] = useState([50]);
-  const [systemExposure, setSystemExposure] = useState([50]);
-  const [oversightReadiness, setOversightReadiness] = useState([50]);
-  const [showResults, setShowResults] = useState(false);
-
-  const calculateRiskLevel = () => {
-    const avg = (executionRisk[0] + decisionSensitivity[0] + systemExposure[0] + (100 - oversightReadiness[0])) / 4;
-    if (avg >= 70) return { level: "High", color: "text-red-400", controls: "Extensive" };
-    if (avg >= 40) return { level: "Medium", color: "text-amber-400", controls: "Moderate" };
-    return { level: "Low", color: "text-cyan-400", controls: "Standard" };
-  };
-
-  const reset = () => {
-    setExecutionRisk([50]);
-    setDecisionSensitivity([50]);
-    setSystemExposure([50]);
-    setOversightReadiness([50]);
-    setShowResults(false);
-  };
-
-  if (showResults) {
-    const risk = calculateRiskLevel();
-    return (
-      <Card className="border-cyan-500/20">
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Shield className="w-5 h-5 text-cyan-400" />
-            Autonomy Risk Assessment Results
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-6">
-          <div className="text-center p-6 rounded-lg bg-slate-950">
-            <p className="text-sm text-muted-foreground mb-2">Autonomy Risk Level</p>
-            <p className={`text-4xl font-bold ${risk.color} mb-2`}>{risk.level}</p>
-            <p className="text-lg text-muted-foreground">
-              Required Governance Controls: <span className="text-foreground font-medium">{risk.controls}</span>
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-4">
-            <div className="p-4 rounded-lg bg-slate-900/50 border border-slate-800">
-              <h4 className="font-medium mb-2 flex items-center gap-2">
-                <Lock className="w-4 h-4 text-cyan-400" />
-                Human-in-the-Loop Placement
-              </h4>
-              <ul className="text-sm text-muted-foreground space-y-1">
-                {executionRisk[0] > 60 && <li>Pre-execution approval required</li>}
-                {decisionSensitivity[0] > 60 && <li>Decision review checkpoints</li>}
-                {systemExposure[0] > 60 && <li>Multi-system action monitoring</li>}
-                <li>Outcome verification gates</li>
-              </ul>
-            </div>
-            <div className="p-4 rounded-lg bg-slate-900/50 border border-slate-800">
-              <h4 className="font-medium mb-2 flex items-center gap-2">
-                <AlertTriangle className="w-4 h-4 text-amber-400" />
-                Actions Requiring Manual Approval
-              </h4>
-              <ul className="text-sm text-muted-foreground space-y-1">
-                <li>Financial transactions above threshold</li>
-                <li>Customer-facing communications</li>
-                <li>Data deletion or modification</li>
-                <li>External system integrations</li>
-              </ul>
-            </div>
-          </div>
-
-          <Button onClick={reset} variant="outline" className="w-full" data-testid="button-reset-risk">
-            <RotateCcw className="w-4 h-4 mr-2" />
-            Assess Another Workflow
-          </Button>
-        </CardContent>
-      </Card>
-    );
-  }
-
-  return (
-    <Card className="border-cyan-500/20">
-      <CardHeader>
-        <CardTitle>Agent Autonomy Risk & Governance Assessment</CardTitle>
-        <CardDescription>
-          Identify where autonomy could create risk — before it happens
-        </CardDescription>
-      </CardHeader>
-      <CardContent className="space-y-8">
-        <div className="space-y-6">
-          <div>
-            <div className="flex justify-between mb-2">
-              <p className="text-sm font-medium">Execution Risk</p>
-              <span className="text-sm text-muted-foreground">{executionRisk[0]}%</span>
-            </div>
-            <Slider
-              value={executionRisk}
-              onValueChange={setExecutionRisk}
-              max={100}
-              step={10}
-              aria-label="Execution Risk"
-              className="cursor-pointer"
-            />
-            <p className="text-xs text-muted-foreground mt-1">Financial impact of wrong action, irreversibility</p>
-          </div>
-
-          <div>
-            <div className="flex justify-between mb-2">
-              <p className="text-sm font-medium">Decision Sensitivity</p>
-              <span className="text-sm text-muted-foreground">{decisionSensitivity[0]}%</span>
-            </div>
-            <Slider
-              value={decisionSensitivity}
-              onValueChange={setDecisionSensitivity}
-              max={100}
-              step={10}
-              aria-label="Decision Sensitivity"
-              className="cursor-pointer"
-            />
-            <p className="text-xs text-muted-foreground mt-1">Subjective judgment, ethical/legal implications</p>
-          </div>
-
-          <div>
-            <div className="flex justify-between mb-2">
-              <p className="text-sm font-medium">System Exposure</p>
-              <span className="text-sm text-muted-foreground">{systemExposure[0]}%</span>
-            </div>
-            <Slider
-              value={systemExposure}
-              onValueChange={setSystemExposure}
-              max={100}
-              step={10}
-              aria-label="System Exposure"
-              className="cursor-pointer"
-            />
-            <p className="text-xs text-muted-foreground mt-1">Number of connected systems, access privileges</p>
-          </div>
-
-          <div>
-            <div className="flex justify-between mb-2">
-              <p className="text-sm font-medium">Oversight Readiness</p>
-              <span className="text-sm text-muted-foreground">{oversightReadiness[0]}%</span>
-            </div>
-            <Slider
-              value={oversightReadiness}
-              onValueChange={setOversightReadiness}
-              max={100}
-              step={10}
-              aria-label="Oversight Readiness"
-              className="cursor-pointer"
-            />
-            <p className="text-xs text-muted-foreground mt-1">Human monitoring capacity, approval latency</p>
-          </div>
-        </div>
-
-        <Button
-          onClick={() => setShowResults(true)}
-          className="w-full bg-cyan-500 hover:bg-cyan-600"
-          data-testid="button-assess-risk"
-        >
-          Assess Risk Level
-          <Shield className="w-4 h-4 ml-2" />
-        </Button>
-      </CardContent>
-    </Card>
-  );
-}
-
-function ROIEstimatorTool() {
-  const [weeklyVolume, setWeeklyVolume] = useState("");
-  const [coordHours, setCoordHours] = useState("");
-  const [errorRecoveryHours, setErrorRecoveryHours] = useState("");
-  const [slaBreachCost, setSlaBreachCost] = useState("");
-  const [showResults, setShowResults] = useState(false);
-
-  const calculateROI = () => {
-    const vol = parseInt(weeklyVolume) || 0;
-    const coord = parseInt(coordHours) || 0;
-    const error = parseInt(errorRecoveryHours) || 0;
-    const sla = parseInt(slaBreachCost) || 0;
-
-    const timeRecovered = Math.round(coord * 0.7 + error * 0.8);
-    const coordReduction = Math.round(coord * 0.65);
-    const efficiencyGain = Math.min(85, Math.round(20 + vol * 0.05 + coord * 2));
-    const monthlyROI = Math.round((coord * 50 + error * 75 + sla * 0.5) * 4);
-
-    return { timeRecovered, coordReduction, efficiencyGain, monthlyROI };
-  };
-
-  const reset = () => {
-    setWeeklyVolume("");
-    setCoordHours("");
-    setErrorRecoveryHours("");
-    setSlaBreachCost("");
-    setShowResults(false);
-  };
-
-  if (showResults) {
-    const roi = calculateROI();
-    return (
-      <Card className="border-cyan-500/20">
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <DollarSign className="w-5 h-5 text-cyan-400" />
-            Execution Load & ROI Estimate
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-6">
-          <div className="grid md:grid-cols-2 gap-4">
-            <div className="p-6 rounded-lg bg-slate-950 text-center">
-              <Clock className="w-8 h-8 text-cyan-400 mx-auto mb-2" />
-              <p className="text-3xl font-bold text-cyan-400">{roi.timeRecovered}h</p>
-              <p className="text-sm text-muted-foreground">Execution Time Recovered / Week</p>
-            </div>
-            <div className="p-6 rounded-lg bg-slate-950 text-center">
-              <Users className="w-8 h-8 text-cyan-400 mx-auto mb-2" />
-              <p className="text-3xl font-bold text-cyan-400">{roi.coordReduction}h</p>
-              <p className="text-sm text-muted-foreground">Coordination Overhead Reduced / Week</p>
-            </div>
-            <div className="p-6 rounded-lg bg-slate-950 text-center">
-              <TrendingUp className="w-8 h-8 text-cyan-400 mx-auto mb-2" />
-              <p className="text-3xl font-bold text-cyan-400">{roi.efficiencyGain}%</p>
-              <p className="text-sm text-muted-foreground">Operational Efficiency Gain</p>
-            </div>
-            <div className="p-6 rounded-lg bg-slate-950 text-center">
-              <DollarSign className="w-8 h-8 text-cyan-400 mx-auto mb-2" />
-              <p className="text-3xl font-bold text-cyan-400">${roi.monthlyROI.toLocaleString()}</p>
-              <p className="text-sm text-muted-foreground">Indicative Monthly ROI</p>
-            </div>
-          </div>
-
-          <p className="text-sm text-muted-foreground text-center italic">
-            This reframes agentic systems as execution relief, not workforce replacement.
-          </p>
-
-          <Button onClick={reset} variant="outline" className="w-full" data-testid="button-reset-roi">
-            <RotateCcw className="w-4 h-4 mr-2" />
-            Calculate Again
-          </Button>
-        </CardContent>
-      </Card>
-    );
-  }
-
-  return (
-    <Card className="border-cyan-500/20">
-      <CardHeader>
-        <CardTitle>Execution Load & ROI Estimator</CardTitle>
-        <CardDescription>
-          Quantify the execution burden agentic systems can absorb
-        </CardDescription>
-      </CardHeader>
-      <CardContent className="space-y-6">
-        <div className="grid md:grid-cols-2 gap-4">
-          <div>
-            <label htmlFor="weekly-volume" className="text-sm text-muted-foreground mb-2 block">Weekly Execution Volume</label>
-            <input
-              id="weekly-volume"
-              name="weekly-volume"
-              type="number"
-              autoComplete="off"
-              value={weeklyVolume}
-              onChange={(e) => setWeeklyVolume(e.target.value)}
-              placeholder="e.g., 500 tasks"
-              className="w-full px-3 py-2 rounded-md bg-slate-950 border border-slate-800 text-foreground"
-              data-testid="input-weekly-volume"
-            />
-          </div>
-          <div>
-            <label htmlFor="coord-hours" className="text-sm text-muted-foreground mb-2 block">Manual Coordination Hours / Week</label>
-            <input
-              id="coord-hours"
-              name="coord-hours"
-              type="number"
-              autoComplete="off"
-              value={coordHours}
-              onChange={(e) => setCoordHours(e.target.value)}
-              placeholder="e.g., 20 hours"
-              className="w-full px-3 py-2 rounded-md bg-slate-950 border border-slate-800 text-foreground"
-              data-testid="input-coord-hours"
-            />
-          </div>
-          <div>
-            <label htmlFor="error-hours" className="text-sm text-muted-foreground mb-2 block">Error Recovery Hours / Week</label>
-            <input
-              id="error-hours"
-              name="error-hours"
-              type="number"
-              autoComplete="off"
-              value={errorRecoveryHours}
-              onChange={(e) => setErrorRecoveryHours(e.target.value)}
-              placeholder="e.g., 10 hours"
-              className="w-full px-3 py-2 rounded-md bg-slate-950 border border-slate-800 text-foreground"
-              data-testid="input-error-hours"
-            />
-          </div>
-          <div>
-            <label htmlFor="sla-cost" className="text-sm text-muted-foreground mb-2 block">SLA Breach Cost / Month ($)</label>
-            <input
-              id="sla-cost"
-              name="sla-cost"
-              type="number"
-              autoComplete="off"
-              value={slaBreachCost}
-              onChange={(e) => setSlaBreachCost(e.target.value)}
-              placeholder="e.g., 5000"
-              className="w-full px-3 py-2 rounded-md bg-slate-950 border border-slate-800 text-foreground"
-              data-testid="input-sla-cost"
-            />
-          </div>
-        </div>
-
-        <Button
-          onClick={() => setShowResults(true)}
-          disabled={!weeklyVolume || !coordHours}
-          className="w-full bg-cyan-500 hover:bg-cyan-600"
-          data-testid="button-calculate-roi"
-        >
-          Calculate ROI
-          <BarChart3 className="w-4 h-4 ml-2" />
-        </Button>
-      </CardContent>
-    </Card>
-  );
-}
-
-function MaturityMapTool() {
-  const [selectedStage, setSelectedStage] = useState<number | null>(null);
-
-  const stages = [
-    {
-      level: 1,
-      title: "Manual Execution",
-      description: "Human-driven coordination, high variability",
-      benefits: ["Full human control", "Flexibility in handling exceptions"],
-      risks: ["High labor cost", "Inconsistent outcomes", "Doesn't scale"],
-      readiness: ["Basic process documentation", "Clear ownership"],
-      next: "Document workflows and identify repetitive patterns",
-    },
-    {
-      level: 2,
-      title: "Automated Execution",
-      description: "Rule-based workflows, fragile to change",
-      benefits: ["Reduced manual effort", "Consistent execution for standard cases"],
-      risks: ["Breaks on exceptions", "Requires maintenance", "Limited adaptability"],
-      readiness: ["Stable, predictable workflows", "IT support for integrations"],
-      next: "Identify exceptions and decision points for AI assistance",
-    },
-    {
-      level: 3,
-      title: "Assisted Agents",
-      description: "AI suggests actions, humans execute",
-      benefits: ["AI-powered recommendations", "Human judgment preserved", "Lower risk"],
-      risks: ["Still requires human action", "Adoption challenges"],
-      readiness: ["Trust in AI suggestions", "Clear escalation paths"],
-      next: "Build confidence through consistent AI accuracy",
-    },
-    {
-      level: 4,
-      title: "Supervised Agents",
-      description: "Agents act with approvals",
-      benefits: ["Faster execution", "Human oversight maintained", "Reduced coordination"],
-      risks: ["Approval bottlenecks", "Requires monitoring infrastructure"],
-      readiness: ["Approval workflows in place", "Real-time monitoring"],
-      next: "Identify low-risk actions that can proceed without approval",
-    },
-    {
-      level: 5,
-      title: "Governed Autonomous Agents",
-      description: "Agents execute within strict boundaries, humans oversee outcomes",
-      benefits: ["Maximum efficiency", "24/7 execution", "Scalable operations"],
-      risks: ["Requires robust governance", "Higher initial investment"],
-      readiness: ["Mature governance framework", "Clear success metrics", "Kill-switch capabilities"],
-      next: "Continuous improvement and expansion to new workflows",
-    },
-  ];
-
-  return (
-    <Card className="border-cyan-500/20">
-      <CardHeader>
-        <CardTitle>Agentic Maturity Map</CardTitle>
-        <CardDescription>
-          See where your organization stands on the autonomy spectrum
-        </CardDescription>
-      </CardHeader>
-      <CardContent>
-        <div className="flex flex-wrap gap-2 mb-6">
-          {stages.map((stage) => (
-            <Button
-              key={stage.level}
-              variant={selectedStage === stage.level ? "default" : "outline"}
-              className={selectedStage === stage.level ? "bg-cyan-500 hover:bg-cyan-600" : ""}
-              onClick={() => setSelectedStage(stage.level)}
-              data-testid={`button-stage-${stage.level}`}
-            >
-              Stage {stage.level}
-            </Button>
-          ))}
-        </div>
-
-        {selectedStage && (
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="space-y-4"
-          >
-            {stages.filter(s => s.level === selectedStage).map(stage => (
-              <div key={stage.level} className="space-y-4">
-                <div className="p-4 rounded-lg bg-slate-950 border border-cyan-500/20">
-                  <div className="flex items-center gap-3 mb-2">
-                    <Badge className="bg-cyan-500">Stage {stage.level}</Badge>
-                    <h3 className="font-semibold text-lg">{stage.title}</h3>
-                  </div>
-                  <p className="text-muted-foreground">{stage.description}</p>
-                </div>
-
-                <div className="grid md:grid-cols-3 gap-4">
-                  <div className="p-4 rounded-lg bg-slate-900/50 border border-slate-800">
-                    <h4 className="font-medium mb-2 flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-cyan-400" />
-                      Benefits
-                    </h4>
-                    <ul className="text-sm text-muted-foreground space-y-1">
-                      {stage.benefits.map((b, i) => (
-                        <li key={i}>{b}</li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div className="p-4 rounded-lg bg-slate-900/50 border border-slate-800">
-                    <h4 className="font-medium mb-2 flex items-center gap-2">
-                      <AlertTriangle className="w-4 h-4 text-amber-400" />
-                      Risks
-                    </h4>
-                    <ul className="text-sm text-muted-foreground space-y-1">
-                      {stage.risks.map((r, i) => (
-                        <li key={i}>{r}</li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div className="p-4 rounded-lg bg-slate-900/50 border border-slate-800">
-                    <h4 className="font-medium mb-2 flex items-center gap-2">
-                      <Target className="w-4 h-4 text-blue-400" />
-                      Readiness Indicators
-                    </h4>
-                    <ul className="text-sm text-muted-foreground space-y-1">
-                      {stage.readiness.map((r, i) => (
-                        <li key={i}>{r}</li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-
-                <div className="p-4 rounded-lg bg-cyan-500/5 border border-cyan-500/20">
-                  <p className="text-sm">
-                    <span className="font-medium text-cyan-400">When to move forward:</span>{" "}
-                    <span className="text-muted-foreground">{stage.next}</span>
-                  </p>
-                </div>
-              </div>
-            ))}
-          </motion.div>
-        )}
-
-        {!selectedStage && (
-          <div className="text-center p-8 text-muted-foreground">
-            Select a stage above to see details, benefits, risks, and readiness indicators
-          </div>
-        )}
-      </CardContent>
-    </Card>
-  );
-}
-
-function IndustryBlueprintsTool() {
-  const [selectedIndustry, setSelectedIndustry] = useState<string | null>(null);
-
-  const industries = [
-    {
-      id: "healthcare",
-      name: "Healthcare & Life Sciences",
-      icon: HeartPulse,
-      agentRoles: ["Intake Coordinator Agent", "Scheduling Agent", "Follow-up Agent", "Operations Agent"],
-      boundaries: ["No clinical decisions", "Patient consent required", "HIPAA compliance gates"],
-      governance: ["Human approval for patient communications", "Audit trails for all actions", "Role-based access"],
-      workflows: ["Patient intake coordination", "Appointment scheduling & follow-ups", "Internal task orchestration"],
-    },
-    {
-      id: "finance",
-      name: "Finance, Lending & Insurance",
-      icon: Landmark,
-      agentRoles: ["Document Processing Agent", "Verification Agent", "Exception Handler", "Status Agent"],
-      boundaries: ["Financial thresholds", "Compliance checkpoints", "Fraud detection gates"],
-      governance: ["Multi-level approvals", "Full auditability", "Regulatory reporting"],
-      workflows: ["Document processing orchestration", "Verification workflows", "Exception handling"],
-    },
-    {
-      id: "ecommerce",
-      name: "E-commerce, Retail & D2C",
-      icon: ShoppingCart,
-      agentRoles: ["Order Agent", "Inventory Agent", "Returns Agent", "Customer Resolution Agent"],
-      boundaries: ["Refund limits", "Brand voice guidelines", "Escalation triggers"],
-      governance: ["Real-time monitoring", "Customer satisfaction gates", "Volume-based throttling"],
-      workflows: ["Order handling and routing", "Inventory checks", "Returns and refunds coordination"],
-    },
-    {
-      id: "saas",
-      name: "SaaS & Technology",
-      icon: Server,
-      agentRoles: ["Onboarding Agent", "Support Orchestrator", "Account Agent", "Renewal Agent"],
-      boundaries: ["Data access controls", "Customer tier permissions", "Feature boundaries"],
-      governance: ["Usage monitoring", "Security checkpoints", "Customer data protection"],
-      workflows: ["Onboarding workflows", "Support ticket orchestration", "Renewal follow-ups"],
-    },
-    {
-      id: "enterprise",
-      name: "Enterprise & Internal Operations",
-      icon: Building2,
-      agentRoles: ["IT Task Agent", "HR Workflow Agent", "Approval Agent", "Coordination Agent"],
-      boundaries: ["Department permissions", "Budget thresholds", "Policy compliance"],
-      governance: ["Internal audit trails", "Manager approvals", "Compliance verification"],
-      workflows: ["IT and HR task execution", "Approval workflows", "Cross-team coordination"],
-    },
-  ];
-
-  const selected = industries.find(i => i.id === selectedIndustry);
-
-  return (
-    <Card className="border-cyan-500/20">
-      <CardHeader>
-        <CardTitle>Industry-Specific Agentic Blueprint Selector</CardTitle>
-        <CardDescription>
-          See how agentic systems operate safely in your industry
-        </CardDescription>
-      </CardHeader>
-      <CardContent>
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-2 mb-6">
-          {industries.map((industry) => (
-            <Button
-              key={industry.id}
-              variant={selectedIndustry === industry.id ? "default" : "outline"}
-              className={`flex-col h-auto py-3 ${selectedIndustry === industry.id ? "bg-cyan-500 hover:bg-cyan-600" : ""}`}
-              onClick={() => setSelectedIndustry(industry.id)}
-              data-testid={`button-industry-${industry.id}`}
-            >
-              <industry.icon className="w-5 h-5 mb-1" />
-              <span className="text-xs text-center">{industry.name.split(" ")[0]}</span>
-            </Button>
-          ))}
-        </div>
-
-        {selected && (
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="space-y-4"
-          >
-            <div className="p-4 rounded-lg bg-slate-950 border border-cyan-500/20">
-              <div className="flex items-center gap-3 mb-2">
-                <selected.icon className="w-6 h-6 text-cyan-400" />
-                <h3 className="font-semibold text-lg">{selected.name}</h3>
-              </div>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-4">
-              <div className="p-4 rounded-lg bg-slate-900/50 border border-slate-800">
-                <h4 className="font-medium mb-3 flex items-center gap-2">
-                  <Bot className="w-4 h-4 text-cyan-400" />
-                  Typical Agent Roles
-                </h4>
-                <ul className="text-sm text-muted-foreground space-y-2">
-                  {selected.agentRoles.map((role, i) => (
-                    <li key={i} className="flex items-center gap-2">
-                      <Cpu className="w-3 h-3 text-cyan-400" />
-                      {role}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="p-4 rounded-lg bg-slate-900/50 border border-slate-800">
-                <h4 className="font-medium mb-3 flex items-center gap-2">
-                  <Lock className="w-4 h-4 text-amber-400" />
-                  Execution Boundaries
-                </h4>
-                <ul className="text-sm text-muted-foreground space-y-2">
-                  {selected.boundaries.map((boundary, i) => (
-                    <li key={i} className="flex items-center gap-2">
-                      <Shield className="w-3 h-3 text-amber-400" />
-                      {boundary}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="p-4 rounded-lg bg-slate-900/50 border border-slate-800">
-                <h4 className="font-medium mb-3 flex items-center gap-2">
-                  <Eye className="w-4 h-4 text-blue-400" />
-                  Governance Layers
-                </h4>
-                <ul className="text-sm text-muted-foreground space-y-2">
-                  {selected.governance.map((gov, i) => (
-                    <li key={i} className="flex items-center gap-2">
-                      <CheckCircle2 className="w-3 h-3 text-blue-400" />
-                      {gov}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="p-4 rounded-lg bg-slate-900/50 border border-slate-800">
-                <h4 className="font-medium mb-3 flex items-center gap-2">
-                  <Workflow className="w-4 h-4 text-purple-400" />
-                  Sample Agent Workflows
-                </h4>
-                <ul className="text-sm text-muted-foreground space-y-2">
-                  {selected.workflows.map((wf, i) => (
-                    <li key={i} className="flex items-center gap-2">
-                      <GitBranch className="w-3 h-3 text-purple-400" />
-                      {wf}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </motion.div>
-        )}
-
-        {!selectedIndustry && (
-          <div className="text-center p-8 text-muted-foreground">
-            Select your industry above to see tailored agentic blueprints
-          </div>
-        )}
-      </CardContent>
-    </Card>
-  );
-}
-
-function IndustryUseCases() {
-  const industries = [
-    {
-      name: "Healthcare & Life Sciences",
-      icon: HeartPulse,
-      useCases: ["Patient intake coordination", "Appointment scheduling & follow-ups", "Internal task orchestration", "Operational workflow execution"],
-      governance: ["Patient safety", "Regulatory compliance", "Human override requirements"],
-      outcome: ["Reduced coordination load", "Faster operations", "Safe, supervised autonomy"],
-    },
-    {
-      name: "Finance, Lending & Insurance",
-      icon: CreditCard,
-      useCases: ["Document processing orchestration", "Verification workflows", "Exception handling", "Status tracking and follow-ups"],
-      governance: ["Financial risk", "Auditability", "Bias and compliance"],
-      outcome: ["Faster execution", "Controlled autonomy", "Full traceability"],
-    },
-    {
-      name: "E-commerce, Retail & D2C",
-      icon: Package,
-      useCases: ["Order handling and routing", "Inventory checks", "Returns and refunds coordination", "Customer issue resolution"],
-      governance: ["Brand trust", "High volume", "Seasonal spikes"],
-      outcome: ["Fewer manual handoffs", "Faster resolution", "Scalable execution"],
-    },
-    {
-      name: "SaaS & Technology",
-      icon: Server,
-      useCases: ["Onboarding workflows", "Support ticket orchestration", "Account management tasks", "Renewal follow-ups"],
-      governance: ["Customer experience", "Data access controls"],
-      outcome: ["Reduced operational friction", "Consistent execution", "Better customer retention"],
-    },
-    {
-      name: "Enterprise & Internal Operations",
-      icon: Factory,
-      useCases: ["IT and HR task execution", "Approval workflows", "Policy enforcement", "Cross-team coordination"],
-      governance: ["Accountability", "Internal risk"],
-      outcome: ["Faster internal execution", "Lower coordination overhead", "Improved operational clarity"],
-    },
-  ];
-
-  return (
-    <section className="py-20 bg-slate-950">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-12"
-        >
-          <Badge variant="outline" className="mb-4 border-cyan-500/50 text-cyan-400">Part 5</Badge>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Autonomous Agentic Systems by Industry
-          </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            One Execution Model. Designed for Very Different Risk Profiles.
-          </p>
-        </motion.div>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {industries.map((industry, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-            >
-              <Card className="h-full border-slate-800 hover:border-cyan-500/30 transition-colors">
-                <CardHeader>
-                  <div className="w-12 h-12 rounded-lg bg-cyan-500/10 flex items-center justify-center mb-3">
-                    <industry.icon className="w-6 h-6 text-cyan-400" />
-                  </div>
-                  <CardTitle className="text-lg">{industry.name}</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4">
+        <div className="space-y-4">
+          {principles.map((p, i) => (
+            <motion.div key={i} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}>
+              <Card className={`border ${p.border} hover-elevate`} data-testid={`card-safety-${i}`}>
+                <CardContent className="p-5 flex gap-4">
+                  <div className={`w-8 h-8 rounded-full border-2 ${p.border} flex items-center justify-center shrink-0 font-bold text-sm ${p.color}`}>{p.number}</div>
                   <div>
-                    <p className="text-xs font-medium text-muted-foreground mb-2">Agentic Use Cases</p>
-                    <ul className="space-y-1">
-                      {industry.useCases.map((uc, j) => (
-                        <li key={j} className="flex items-start gap-2 text-sm">
-                          <CheckCircle2 className="w-3 h-3 text-cyan-400 shrink-0 mt-1" />
-                          {uc}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div>
-                    <p className="text-xs font-medium text-muted-foreground mb-2">Why Governance Matters</p>
-                    <ul className="space-y-1">
-                      {industry.governance.map((g, j) => (
-                        <li key={j} className="flex items-start gap-2 text-xs text-muted-foreground">
-                          <Shield className="w-3 h-3 text-amber-400 shrink-0 mt-0.5" />
-                          {g}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div className="p-3 rounded-lg bg-cyan-500/5 border border-cyan-500/20">
-                    <p className="text-xs font-medium text-cyan-400 mb-1">Outcome</p>
-                    <ul className="space-y-1">
-                      {industry.outcome.map((o, j) => (
-                        <li key={j} className="text-xs text-muted-foreground">{o}</li>
-                      ))}
-                    </ul>
+                    <h3 className={`font-bold ${p.color} mb-1`}>{p.title}</h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{p.desc}</p>
                   </div>
                 </CardContent>
               </Card>
             </motion.div>
           ))}
         </div>
+        <Card className="border-green-500/20 bg-green-500/5">
+          <CardContent className="p-6">
+            <div className="flex items-start gap-3">
+              <Quote className="w-5 h-5 text-green-400 shrink-0 mt-1" />
+              <p className="text-base italic" data-testid="text-safety-quote">
+                The organizations that succeed with agentic AI won't be the ones with the most autonomous agents. They'll be the ones with the most trustworthy, governed, and auditable autonomous agents. Governance is not the cost of autonomy. Governance is what makes autonomy possible.
+              </p>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    </section>
+  );
+}
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="mt-8 text-center"
-        >
-          <p className="text-muted-foreground">
-            AGIX Technologies designs <span className="text-cyan-400 font-medium">industry-aligned agentic architectures</span>, not generic agents.
-          </p>
+function WhyProjectsFail() {
+  const causes = [
+    { n: "1", title: "Escalating costs without clear ROI.", body: "Agents consume LLM tokens, API calls, and compute continuously. Without cost controls, a well-intentioned agent system becomes an uncontrolled expense.", color: "text-red-400" },
+    { n: "2", title: "Unclear business value.", body: '"We\'ll deploy an AI agent" is not a business case. Without defined outcomes and measurable success criteria, projects lose executive support.', color: "text-orange-400" },
+    { n: "3", title: "Inadequate risk controls.", body: "Agents making unintended decisions, accessing systems they shouldn't, or optimizing for the wrong outcomes. Only 21% of companies have a mature governance model (Deloitte).", color: "text-amber-400" },
+    { n: "4", title: "Architecture debt.", body: "Starting with demos and prototypes that can't scale. Fragile single-agent systems that break under real-world complexity. No orchestration, no state management, no error recovery.", color: "text-yellow-400" },
+    { n: "5", title: 'The "agent-washing" problem.', body: 'Only ~130 of thousands of agentic AI vendors are "real" (Gartner). Many vendors relabel existing chatbots or workflow tools as "agents." The result: buyer disappointment and lost credibility.', color: "text-purple-400" },
+  ];
+  return (
+    <section className="py-20">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 space-y-10">
+        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center">
+          <Badge variant="outline" className="border-red-500/30 text-red-400 mb-4" data-testid="badge-fail">
+            <AlertTriangle className="w-3 h-3 mr-1" />Project Risk
+          </Badge>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4" data-testid="heading-fail">Why 40% of Agentic AI Projects Fail</h2>
+          <p className="text-muted-foreground max-w-2xl mx-auto">Gartner predicts 40%+ of agentic AI projects will be canceled by 2027. The primary causes — and why architecture prevents them.</p>
         </motion.div>
+        <div className="space-y-3">
+          {causes.map((c, i) => (
+            <motion.div key={i} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}>
+              <Card className="border-slate-700 hover-elevate" data-testid={`card-fail-${i}`}>
+                <CardContent className="p-5 flex gap-4">
+                  <div className={`text-xl font-black opacity-50 ${c.color} shrink-0 w-6`}>{c.n}.</div>
+                  <div>
+                    <h3 className={`font-bold text-sm ${c.color} mb-1`}>{c.title}</h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{c.body}</p>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+          ))}
+        </div>
+        <Card className="border-green-500/20 bg-green-500/5">
+          <CardContent className="p-5">
+            <div className="flex items-start gap-3">
+              <Quote className="w-4 h-4 text-green-400 shrink-0 mt-1" />
+              <p className="text-sm italic" data-testid="text-fail-quote">The 40% failure rate is not a technology problem. It is an architecture, governance, and business alignment problem. The organizations that succeed start with clear goals, build governance first, deploy at L2 before attempting L3, and measure outcomes — not agent count.</p>
+            </div>
+          </CardContent>
+        </Card>
       </div>
     </section>
   );
 }
 
-function FAQSection() {
+function IndustryApplications() {
+  const industries = [
+    { icon: HeartPulse, name: "Healthcare", app: "Patient flow coordination, scheduling, documentation", level: "L1–L2", why: "Patient safety requires human oversight; governance is non-negotiable", color: "text-red-400", border: "border-red-500/20" },
+    { icon: Landmark, name: "Financial Services", app: "Fraud detection, compliance, lending decisions", level: "L2–L3", why: "High-frequency decisions with clear rules; regulatory audit required", color: "text-blue-400", border: "border-blue-500/20" },
+    { icon: ShoppingBag, name: "Retail / E-Commerce", app: "Order management, inventory, customer service", level: "L2–L3", why: "High volume, reversible actions, clear success metrics", color: "text-purple-400", border: "border-purple-500/20" },
+    { icon: Brain, name: "SaaS", app: "Onboarding, support, retention, renewal", level: "L2–L3", why: "Customer lifecycle is well-defined and measurable", color: "text-amber-400", border: "border-amber-500/20" },
+    { icon: Truck, name: "Supply Chain", app: "Procurement, allocation, routing, demand response", level: "L3 (→ L4 by 2028)", why: "Cross-system coordination is the bottleneck; real-time execution required", color: "text-green-400", border: "border-green-500/20" },
+    { icon: Building2, name: "Enterprise Operations", app: "IT ops, HR, finance workflows", level: "L2", why: "Internal processes with clear governance structures", color: "text-teal-400", border: "border-teal-500/20" },
+    { icon: Globe, name: "Government", app: "Eligibility processing, resource allocation, citizen services", level: "L2", why: "Public trust and transparency are paramount", color: "text-orange-400", border: "border-orange-500/20" },
+    { icon: Umbrella, name: "Insurance", app: "Claims processing, underwriting, fraud detection", level: "L2–L3", why: "High volume with clear decision boundaries; audit trail required", color: "text-cyan-400", border: "border-cyan-500/20" },
+  ];
   return (
-    <DocumentFAQSection
-      faqs={documentFAQs['autonomous-agentic-ai']}
-      title="Autonomous Agentic AI Questions Answered"
-    />
-  );
-}
-
-
-function ClosingValueSection() {
-  return (
-    <section className="py-20 bg-slate-950">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="space-y-6"
-        >
-          <h2 className="text-3xl md:text-4xl font-bold">
-            Autonomy Without Losing Control
-          </h2>
-          <p className="text-xl text-muted-foreground">
-            Execution Should Scale.<br />
-            <span className="text-cyan-400 font-medium">Accountability Should Not Break.</span>
-          </p>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            AGIX Technologies designs Autonomous Agentic Systems that execute reliably, adapt intelligently, and remain fully governed.
-          </p>
-          
-          <div className="grid sm:grid-cols-3 gap-6 pt-8">
-            <div className="flex flex-col items-center gap-3 p-4">
-              <div className="w-12 h-12 rounded-full bg-cyan-500/10 flex items-center justify-center">
-                <Target className="w-6 h-6 text-cyan-400" />
-              </div>
-              <span className="text-sm text-center">Find the right agentic approach for your business</span>
-            </div>
-            <div className="flex flex-col items-center gap-3 p-4">
-              <div className="w-12 h-12 rounded-full bg-cyan-500/10 flex items-center justify-center">
-                <Shield className="w-6 h-6 text-cyan-400" />
-              </div>
-              <span className="text-sm text-center">Assess agentic readiness and risk</span>
-            </div>
-            <div className="flex flex-col items-center gap-3 p-4">
-              <div className="w-12 h-12 rounded-full bg-cyan-500/10 flex items-center justify-center">
-                <CheckCircle2 className="w-6 h-6 text-cyan-400" />
-              </div>
-              <span className="text-sm text-center">Design autonomous systems you can actually trust</span>
-            </div>
-          </div>
-          
-          <p className="text-sm text-muted-foreground italic pt-4">
-            AGIX Technologies builds AI systems that don't just act — they act responsibly.
-          </p>
+    <section className="py-20 bg-slate-900/30">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 space-y-12">
+        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center">
+          <Badge variant="outline" className="border-teal-500/30 text-teal-400 mb-4" data-testid="badge-industries">
+            <Globe className="w-3 h-3 mr-1" />Industry Applications
+          </Badge>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4" data-testid="heading-industries">How Autonomy Applies Across Industries</h2>
+          <p className="text-muted-foreground max-w-2xl mx-auto">80% of governments will deploy AI agents for routine decision-making by 2028 (Gartner). 60% of brands will use agentic AI for one-to-one interactions by 2028 (Gartner).</p>
         </motion.div>
+        <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-4">
+          {industries.map((ind, i) => {
+            const Icon = ind.icon;
+            return (
+              <motion.div key={i} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.07 }}>
+                <Card className={`h-full border ${ind.border} hover-elevate`} data-testid={`card-industry-${i}`}>
+                  <CardContent className="p-4 space-y-2">
+                    <div className="flex items-center gap-2">
+                      <Icon className={`w-4 h-4 ${ind.color}`} />
+                      <h3 className={`font-bold text-xs ${ind.color}`}>{ind.name}</h3>
+                    </div>
+                    <p className="text-xs text-muted-foreground leading-relaxed">{ind.app}</p>
+                    <div className="pt-2 border-t border-slate-700/50">
+                      <p className="text-xs"><span className={`font-semibold ${ind.color}`}>Start at: </span><span className="text-slate-300">{ind.level}</span></p>
+                      <p className="text-xs text-muted-foreground/70 mt-0.5">{ind.why}</p>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            );
+          })}
+        </div>
       </div>
     </section>
   );
 }
 
-function FinalCTASection() {
+function ImplementationBridge() {
+  const bridges = [
+    { level: "L1: Assistive", service: "AI Automation + AI Predictive Analytics", href: "/services/ai-automation/", builds: "Dashboards, recommendations, copilots", color: "text-blue-400" },
+    { level: "L2: Semi-Autonomous", service: "Agentic AI Systems + Conversational AI", href: "/services/agentic-ai-systems/", builds: "Agents with boundary rules, escalation logic, human approval gates", color: "text-purple-400" },
+    { level: "L3: Autonomous", service: "Agentic AI Systems", href: "/services/agentic-ai-systems/", builds: "Multi-agent systems, end-to-end process ownership, self-recovery", color: "text-amber-400" },
+    { level: "L4: Self-Directing", service: "Agentic AI + Custom AI Product Development", href: "/services/custom-ai-product-development/", builds: "Cross-domain AI platforms with strategic optimization", color: "text-green-400" },
+  ];
   return (
-    <section id="cta-form" className="py-10 lg:py-14 bg-gradient-to-br from-primary/10 via-background to-cyan-500/10 scroll-mt-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <CtaForm 
-          headline="Ready to Explore Agentic Systems?"
-          subheadline="Talk to our Agentic Systems architects about your specific challenges."
-          badgeText="Autonomous Agentic Systems"
-          submitLabel="Schedule Consultation"
-        />
+    <section className="py-20">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 space-y-10">
+        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center">
+          <Badge variant="outline" className="border-green-500/30 text-green-400 mb-4" data-testid="badge-bridge">
+            <ArrowRight className="w-3 h-3 mr-1" />Framework → Implementation
+          </Badge>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4" data-testid="heading-bridge">How the Autonomy Model Connects to Implementation</h2>
+        </motion.div>
+        <div className="space-y-3">
+          {bridges.map((b, i) => (
+            <motion.div key={i} initial={{ opacity: 0, x: -10 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}>
+              <Card className="border-slate-700 hover-elevate" data-testid={`card-bridge-${i}`}>
+                <CardContent className="p-5">
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-4">
+                    <div className={`text-sm font-semibold ${b.color} sm:w-40 shrink-0`}>{b.level}</div>
+                    <div className="hidden sm:block text-muted-foreground/50">→</div>
+                    <div className="flex-1 min-w-0">
+                      <Link href={b.href} className="font-bold text-sm text-white hover:text-green-400 transition-colors hover:underline underline-offset-2" data-testid={`link-service-${i}`}>{b.service}</Link>
+                      <p className="text-xs text-muted-foreground mt-0.5">{b.builds}</p>
+                    </div>
+                    <Link href={b.href} data-testid={`link-bridge-arrow-${i}`}><ChevronRight className="w-5 h-5 text-muted-foreground hover:text-green-400 transition-colors" /></Link>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+          ))}
+        </div>
+        <Card className="border-green-500/20 bg-green-500/5">
+          <CardContent className="p-6">
+            <div className="flex items-start gap-3">
+              <Quote className="w-5 h-5 text-green-400 shrink-0 mt-1" />
+              <p className="text-base italic" data-testid="text-bridge-quote">The Autonomy Maturity Model tells you WHERE on the autonomy spectrum your operations should be. AGIX builds the systems that take you there — safely, governably, and measurably.</p>
+            </div>
+          </CardContent>
+        </Card>
       </div>
     </section>
   );
 }
 
-export default function AgenticSystemsPage() {
+function FutureTrajectory() {
+  const points = [
+    { year: "2026", title: "The Year of L2 (Semi-Autonomous) at Scale.", body: "40% of enterprise apps embed agents by end of 2026 (Gartner). Most will be L2: agents handling routine decisions with human oversight. This is the year the enterprise learns to trust bounded autonomy.", color: "text-blue-400" },
+    { year: "2027", title: "Governance becomes a market category.", body: "Gartner's 2026 Hype Cycle for Agentic AI places governance, security, and FinOps alongside core agentic technologies. By 2027, 'agentic AI governance' will be its own procurement category.", color: "text-purple-400" },
+    { year: "2028", title: "L3 becomes mainstream for operational processes.", body: "33% of enterprise software includes agentic AI by 2028, with 15% of work decisions made autonomously (Gartner). Supply chain, customer operations, and IT ops will be the first L3 standard domains.", color: "text-amber-400" },
+    { year: "2029–30", title: "L4 emerges for cross-domain operations.", body: "By 2029, 50% of knowledge workers will have skills to work with and govern AI agents. L4 becomes achievable — for organizations that built the L2→L3 foundation.", color: "text-orange-400" },
+    { year: "2035", title: "Agentic AI becomes the default enterprise architecture.", body: "Gartner's best-case scenario: agentic AI drives ~30% of enterprise application software revenue by 2035, surpassing $450 billion. Not a niche. The operating system of the enterprise.", color: "text-green-400" },
+  ];
+  return (
+    <section className="py-20 bg-slate-900/30">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 space-y-12">
+        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center">
+          <Badge variant="outline" className="border-green-500/30 text-green-400 mb-4" data-testid="badge-future">
+            <RefreshCcw className="w-3 h-3 mr-1" />2026–2035 Trajectory
+          </Badge>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4" data-testid="heading-future">Where Autonomous Agentic Systems Are Heading</h2>
+        </motion.div>
+        <div className="space-y-4">
+          {points.map((p, i) => (
+            <motion.div key={i} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}>
+              <Card className="border-slate-700 hover-elevate" data-testid={`card-future-${i}`}>
+                <CardContent className="p-5 flex gap-5">
+                  <div className={`text-xs font-black ${p.color} shrink-0 w-14 pt-0.5 text-right`}>{p.year}</div>
+                  <div>
+                    <h3 className={`font-bold ${p.color} mb-1`}>{p.title}</h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{p.body}</p>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+          ))}
+        </div>
+        <Card className="border-green-500/20 bg-green-500/5">
+          <CardContent className="p-6">
+            <div className="flex items-start gap-3">
+              <Quote className="w-5 h-5 text-green-400 shrink-0 mt-1" />
+              <p className="text-base italic" data-testid="text-future-quote">The autonomy timeline is not "deploy L4 tomorrow." It is a deliberate progression: L1 to build understanding. L2 to build trust. L3 to build capacity. L4 to build advantage. The organizations that skip levels are the 40% that fail. The organizations that earn each level are the ones that define the next era.</p>
+            </div>
+          </CardContent>
+        </Card>
+        <Card className="border-slate-700">
+          <CardContent className="p-6 flex items-start gap-5">
+            <div className="w-12 h-12 rounded-full bg-slate-800 border border-slate-600 flex items-center justify-center shrink-0">
+              <User className="w-6 h-6 text-green-400" />
+            </div>
+            <div className="space-y-1">
+              <div className="flex items-center gap-2">
+                <h3 className="font-bold">Santosh Singh</h3>
+                <Badge variant="outline" className="text-xs border-green-500/30 text-green-400">Author</Badge>
+              </div>
+              <p className="text-sm text-muted-foreground">Founder &amp; CEO, AGIX Technologies</p>
+              <p className="text-sm text-muted-foreground leading-relaxed">Santosh developed the Autonomy Maturity Model (L1→L4) and the Autonomy Safety Framework as practitioner frameworks for helping organizations navigate the transition from AI-assisted operations to autonomous business systems. AGIX engineers the agentic architectures — multi-agent systems, orchestration layers, safety controls, and progressive autonomy deployments — that move businesses from L1 to L3 today and toward L4 by 2028.</p>
+              <Link href="/author/santosh/" className="text-xs text-green-400 hover:text-green-300 transition-colors inline-flex items-center gap-1 mt-1" data-testid="link-author-bio">
+                Read full bio <ChevronRight className="w-3 h-3" />
+              </Link>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    </section>
+  );
+}
+
+export default function AutonomousAgenticAIPage() {
   return (
     <div className="min-h-screen bg-background">
       <MainHeader />
       <main id="main-content">
         <HeroSection />
         <TrustStrip />
-        <WhatAreAgenticSystems />
-        <WhyAutomationNotEnough />
-        <ComparisonSection />
-        <WhatMakesAgentic />
-        <WhyBusinessesExploring />
-        <AgixApproach />
-        <ExecutionBottleneck />
-        <HiddenCostOfCoordination />
-        <RiskOfUngoverned />
-        <ArchitectureSection />
-        <AgixMethodology />
-        <InteractiveToolsSection />
-        <IndustryUseCases />
-        <FAQSection />
-        <ClosingValueSection />
-        <FinalCTASection />
+        <DefinitionBlock />
+        <MarketContextSection />
+        <ComparisonTable />
+        <AutonomyMaturityModel />
+        <MaturityAssessment />
+        <SafetyFramework />
+        <WhyProjectsFail />
+        <IndustryApplications />
+        <ImplementationBridge />
+        <FutureTrajectory />
+        <FAQSection faqs={documentFAQs['autonomous-agentic-ai']} title="Autonomous Agentic Systems: Questions Answered" />
+        <section id="cta-form" className="py-10 lg:py-14 bg-gradient-to-br from-primary/10 via-background to-green-500/10 scroll-mt-20">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <CtaForm headline="Ready to Build Your Autonomy Foundation?" subheadline="Tell us where you are on the Autonomy Maturity Model. We'll design the architecture that gets you to L2 safely — and builds the foundation for L3 by 2027." />
+          </div>
+        </section>
       </main>
       <MainFooter />
     </div>
