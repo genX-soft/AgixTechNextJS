@@ -100,12 +100,12 @@ export function HeroSection() {
                   className="text-3xl sm:text-4xl lg:text-[2.75rem] font-bold tracking-tight text-white leading-[1.1]"
                   data-testid="heading-hero"
                 >
-                  <span className="block mb-2">Enterprise AI Systems</span>
-                  <span className="text-primary lg:whitespace-nowrap">Engineering &amp; Automation</span>
+                  <span className="block mb-2">Enterprise AI Agency &amp;</span>
+                  <span className="text-primary lg:whitespace-nowrap">Intelligent AI Agents</span>
                 </h1>
 
                 <h2 className="text-lg sm:text-xl text-slate-200 max-w-2xl font-medium leading-relaxed">
-                  We design, build, and deploy production-grade AI systems that automate operations and scale business workflows.
+                  AI Systems Engineering. We design, build, and deploy production-grade AI solutions that automate operations and scale business workflows.
                 </h2>
 
                 <p className="text-base text-slate-400 max-w-2xl leading-relaxed">
