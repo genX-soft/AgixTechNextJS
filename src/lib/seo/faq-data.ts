@@ -34,26 +34,54 @@ export const documentFAQs: Record<string, FAQItem[]> = {
 
   "operational-ai": [
     {
-      question: "What is Operational Intelligence in AI?",
+      question: "What is operational intelligence?",
       answer:
-        "Operational Intelligence is an AI discipline that gives businesses real-time visibility and control over their operations. AGIX Technologies Operational Intelligence systems use machine learning and process automation to monitor workflows, detect bottlenecks, adapt to changing conditions, and optimise execution — reducing cycle times by up to 72% and cutting operational costs significantly.",
+        "Operational Intelligence is the ability of an organization to continuously observe, understand, predict, and act on operational data in real time. It goes beyond dashboards and reporting by enabling systems to detect issues, anticipate risks, and either recommend or autonomously take action before problems impact the business.",
     },
     {
-      question:
-        "How does Operational Intelligence differ from traditional business intelligence?",
+      question: "How is operational intelligence different from business intelligence?",
       answer:
-        "Traditional business intelligence analyses historical data to produce reports. Operational Intelligence acts on data in real time — detecting issues as they occur, triggering automated responses, and optimising workflows continuously without human intervention. AGIX Technologies Operational Intelligence systems are built to run operations, not just describe them.",
+        "Business intelligence (BI) analyzes historical data to explain what happened — quarterly reports, trend analysis, year-over-year comparisons. Operational Intelligence analyzes real-time data to determine what is happening NOW, why, and what to do about it. BI is backward-looking. Operational Intelligence is forward-acting.",
     },
     {
-      question: "What business outcomes does Operational Intelligence deliver?",
+      question: "How is operational intelligence different from automation?",
       answer:
-        "AGIX Technologies clients using Operational Intelligence consistently achieve 72% cycle time reduction, 98% SLA adherence, and $1.4M+ in annual savings within 12 months. Outcomes include elimination of manual process bottlenecks, real-time exception handling, automated reporting, and intelligent workload distribution across teams and systems.",
+        "Automation executes predefined tasks based on fixed rules. Operational Intelligence determines WHAT should be automated, WHEN, and adapts when conditions change. Automation follows instructions. Operational Intelligence makes decisions about which instructions to follow.",
     },
     {
-      question:
-        "Which industries benefit most from Operational Intelligence AI?",
+      question: "What is the AGIX Operational Intelligence Stack?",
       answer:
-        "Healthcare, fintech, logistics, and retail operations see the highest ROI from Operational Intelligence — particularly where high transaction volumes, tight SLAs, and manual coordination currently create bottlenecks. AGIX Technologies has deployed Operational Intelligence systems for regional hospital networks, credit unions, logistics operators, and enterprise SaaS companies.",
+        "A four-layer framework defining the maturity journey from basic operational visibility to autonomous operations: Layer 1 (Visibility — see what's happening), Layer 2 (Understanding — know why), Layer 3 (Prediction — anticipate what will happen), Layer 4 (Autonomy — systems act on what they know). Most organizations sit at Layer 1 or 2.",
+    },
+    {
+      question: "What industries benefit most from operational intelligence?",
+      answer:
+        "Any industry with recurring operations, real-time decision needs, and scaling complexity benefits from Operational Intelligence: healthcare, financial services, retail, logistics, SaaS, manufacturing, and insurance. The industrial operational intelligence market alone is $18.4 billion in 2026 (Persistence Market Research).",
+    },
+    {
+      question: "How does operational intelligence relate to AIOps?",
+      answer:
+        "AIOps (Artificial Intelligence for IT Operations) is the technology platform that powers operational intelligence in IT environments. Operational Intelligence is the broader business capability — it applies across ALL operations (customer ops, supply chain, revenue ops, HR ops), not just IT. AIOps is one implementation of the broader concept.",
+    },
+    {
+      question: "Can small and mid-market companies benefit from operational intelligence?",
+      answer:
+        "Yes. Operational Intelligence doesn't require enterprise-scale infrastructure. Small and mid-market companies can start at Layer 1 (visibility via real-time dashboards) and progressively build toward Layer 3 (prediction) as their data and processes mature.",
+    },
+    {
+      question: "What role do AI agents play in operational intelligence?",
+      answer:
+        "AI agents are the execution mechanism for Layer 4 (Autonomy). They are the systems that detect operational events, make decisions, and take actions autonomously — from auto-resolving incidents to auto-scaling resources to auto-routing customer issues.",
+    },
+    {
+      question: "How do you measure operational intelligence maturity?",
+      answer:
+        "AGIX assesses maturity across four dimensions: visibility (can you see what's happening in real time?), understanding (does your system explain why?), prediction (can your system forecast what's coming?), and autonomy (can your system act without human coordination?). The gap between current state and target state defines the investment opportunity.",
+    },
+    {
+      question: "Is operational intelligence safe? What about governance?",
+      answer:
+        "Operational Intelligence at Layer 4 (autonomy) requires strict governance: human-in-the-loop oversight, kill switches, audit trails, decision traceability, confidence thresholds, and progressive trust (start supervised, earn independence). Autonomy without governance is recklessness — AGIX builds both together.",
     },
   ],
 

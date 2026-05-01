@@ -29,17 +29,17 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
   },
 
   '/intelligence/operational-ai': {
-    focusKeyword: 'Operational AI',
-    keywords: 'operational ai, operational ai intelligence, ai for operations, operational ai systems, operational intelligence ai, ai-powered operational intelligence, real-time operational ai, operational decision intelligence, operational ai services',
-    mainHeading: 'Operational Intelligence That Keeps Your Business Running smoothly',
-    metaTitle: 'Operational AI & Real-Time Systems',
-    metaDescription: 'Operational AI solutions that transform real-time operational data into intelligent, autonomous decisions. Build scalable AI systems for modern business operations.',
-    ogTitle: 'Operational AI Solutions for Real-Time Business Operations',
-    ogDescription: 'AI-powered operational intelligence systems delivering real-time insights and autonomous decision-making for complex business operations.',
-    twitterTitle: 'Operational AI | Real-Time AI for Business Operations',
-    twitterDescription: 'Operational AI systems that turn real-time operational data into intelligent, autonomous decisions for modern enterprises.',
+    focusKeyword: 'Operational Intelligence',
+    keywords: 'operational intelligence, operational ai, ai for operations, intelligent operations, aiops, operational intelligence platform, ai operations management, real time operations ai, ai driven operations, autonomous operations ai, operational intelligence framework, what is operational intelligence, operational intelligence maturity model',
+    mainHeading: 'Operational Intelligence: When Your Business Operations Learn to Think',
+    metaTitle: 'Operational Intelligence | How AI Transforms Business Operations',
+    metaDescription: 'Operational Intelligence is the ability of a business to observe, understand, predict, and act on operational data in real time. AGIX defines the 4-layer Operational Intelligence Stack — from visibility to autonomy. AIOps market: $18B+ in 2025.',
+    ogTitle: 'Operational Intelligence | The 4-Layer Framework by AGIX Technologies',
+    ogDescription: 'Discover the AGIX Operational Intelligence Stack — the 4-layer framework that moves businesses from reactive operations to autonomous systems. Visibility, Understanding, Prediction, Autonomy.',
+    twitterTitle: 'Operational Intelligence | From Visibility to Autonomy | AGIX',
+    twitterDescription: 'What is Operational Intelligence? AGIX defines the 4-layer framework — from real-time visibility to fully autonomous operations. AIOps market: $18B+ in 2025.',
     featuredImage: 'https://cms.agixtech.com/wp-content/uploads/2026/01/Operational-Intelligence-Service-page-banner.png',
-    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Service', 'SoftwareApplication', 'FAQPage'],
+    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Article', 'FAQPage'],
   },
 
   '/intelligence/conversational-ai': {

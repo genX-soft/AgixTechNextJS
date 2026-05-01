@@ -148,3 +148,24 @@ Blog posts automatically receive 1–2 contextual service links injected after t
 - Footer copyright and header brand text both read "AGIX Technologies" (not "Agix Technologies")
 - All FAQ answer text (153 entries in `src/lib/seo/faq-data.ts`) uses "AGIX Technologies" canonical brand casing
 - robots.txt disallows `/admin/` broadly (not just `/admin/leads/`) to prevent crawler exposure
+
+## Intelligence Pages — Content Upgrade
+
+### Operational Intelligence (`/intelligence/operational-ai/`)
+Fully rebuilt with new content merged from April 2026 content strategy doc. Page structure:
+1. **HeroSection** — AEO-first headline + author attribution (April 2026)
+2. **DefinitionBlock** — schema.org/Question microdata, ORIGINAL callout quote
+3. **WhyNowSection** — 3 convergent forces + 3 market stats (360iResearch, IDC, Mordor Intelligence)
+4. **ComparisonTable** — 7-row: Intelligence vs Automation vs Analytics (upgraded from 4 rows)
+5. **AGIXIntelligenceStack** — proprietary 4-layer interactive framework (Visibility→Understanding→Prediction→Autonomy), replaces generic 5-layer architecture
+6. **MaturityAssessment** — 5-level accordion self-diagnosis (Level 0 Blind → Level 4 Autonomous)
+7. **IndustryApplications** — 7-industry grid cards with application + impact
+8. **ImplementationBridge** — layer-to-service crosslinks (AI Automation, RAG, Predictive Analytics, Agentic AI)
+9. **AgixMethodology** — 5-step AGIX process (updated framing referencing 4-layer stack)
+10. **ResultsMetrics** — 4 research-backed outcome stats with citations
+11. **FutureTrajectory** — 2028 trajectory (5 points) + author bio (Santosh Singh)
+12. **FAQSection** — 10 new AEO-optimized questions
+Meta title updated to: "Operational Intelligence | How AI Transforms Business Operations"
+Layout now includes Article schema with author attribution.
+FAQ data updated with 10 new informational-intent questions.
+Keywords pivoted from "operational ai" to "operational intelligence" (higher volume primary keyword).
