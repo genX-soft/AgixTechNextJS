@@ -876,6 +876,7 @@ const statsData = [
 export default function HealthcareIndustryPage() {
   const [selectedBottleneck, setSelectedBottleneck] = useState(bottlenecks[0]);
   const [selectedSystem, setSelectedSystem] = useState(aiSystems[0]);
+  const [activeView, setActiveView] = useState<'bottlenecks' | 'systems'>('bottlenecks');
 
   return (
     <div className="min-h-screen bg-background">
@@ -994,266 +995,364 @@ export default function HealthcareIndustryPage() {
         </div>
       </section>
 
-      {/* ==================== PART 2: BOTTLENECK MAP ==================== */}
-      <section id="bottleneck-map" className="py-24 bg-muted/30">
+      {/* ==================== PART 2+3: CHALLENGES & AI SOLUTIONS ==================== */}
+      <section id="healthcare-challenges" className="py-24 bg-muted/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
+
+          {/* Section Header */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-12"
+            className="text-center mb-10"
           >
-            <Badge className="mb-4 bg-destructive/10 text-destructive border-destructive/20">
-              <AlertTriangle className="w-3 h-3 mr-1" />
-              Bottleneck Map
+            <Badge className="mb-4 bg-primary/10 text-primary border-primary/20">
+              <Brain className="w-3 h-3 mr-1" />
+              Healthcare AI
             </Badge>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Where Healthcare Systems{" "}
-              <span className="text-destructive">Break Under Daily Pressure</span>
+              Where Healthcare Breaks —{" "}
+              <span className="text-primary">and How AI Fixes It</span>
             </h2>
             <p className="text-muted-foreground max-w-3xl mx-auto">
-              Healthcare challenges don't come from one failure point. They emerge from many small breakdowns across clinical, administrative, financial, and compliance workflows. These bottlenecks exist across hospitals, clinics, diagnostic centers, and digital health platforms. The scale may differ — but the patterns are the same.
+              Healthcare bottlenecks aren&apos;t random — they follow predictable patterns across every system type.
+              AGIX Technologies maps each bottleneck to a specific, safe, explainable AI system — modular by design, human-controlled at every step.
             </p>
           </motion.div>
 
-          {/* Bottleneck Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8">
-            {bottlenecks.map((bottleneck) => (
-              <motion.div
-                key={bottleneck.id}
-                id={`bottleneck-${bottleneck.id}`}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                onClick={() => setSelectedBottleneck(bottleneck)}
-                className={`cursor-pointer p-4 rounded-lg border transition-all ${
-                  selectedBottleneck.id === bottleneck.id
-                    ? `border-2 ${bottleneck.color.replace("text-", "border-")} ${bottleneck.bgColor}`
-                    : "border-border hover-elevate bg-card"
-                }`}
-                data-testid={`button-bottleneck-${bottleneck.id}`}
-              >
-                <div className="flex items-center gap-2 mb-2">
-                  <Badge variant="outline" className={`text-xs ${bottleneck.color}`}>
-                    {bottleneck.id}
-                  </Badge>
-                  <bottleneck.icon className={`w-4 h-4 ${bottleneck.color}`} />
-                </div>
-                <p className="text-sm font-medium line-clamp-2">{bottleneck.title}</p>
-              </motion.div>
-            ))}
+          {/* Tab Switcher */}
+          <div className="flex rounded-lg border border-border overflow-hidden mb-8 max-w-xs mx-auto" data-testid="view-switcher">
+            <button
+              onClick={() => setActiveView('bottlenecks')}
+              className={`flex-1 py-2.5 px-4 text-sm font-medium transition-colors ${
+                activeView === 'bottlenecks'
+                  ? 'bg-destructive text-destructive-foreground'
+                  : 'bg-card text-muted-foreground hover:bg-muted'
+              }`}
+              data-testid="tab-bottlenecks"
+            >
+              <AlertTriangle className="w-3.5 h-3.5 inline mr-1.5" />
+              Bottlenecks
+            </button>
+            <button
+              onClick={() => setActiveView('systems')}
+              className={`flex-1 py-2.5 px-4 text-sm font-medium transition-colors ${
+                activeView === 'systems'
+                  ? 'bg-green-600 text-white'
+                  : 'bg-card text-muted-foreground hover:bg-muted'
+              }`}
+              data-testid="tab-systems"
+            >
+              <Sparkles className="w-3.5 h-3.5 inline mr-1.5" />
+              AI Solutions
+            </button>
           </div>
 
-          {/* Selected Bottleneck Detail */}
-          <motion.div
-            key={selectedBottleneck.id}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-          >
-            <Card className="border-destructive/20 mb-8">
-              <CardHeader>
-                <div className="flex items-center gap-3">
-                  <div className={`p-3 ${selectedBottleneck.bgColor} rounded-lg`}>
-                    <selectedBottleneck.icon className={`w-6 h-6 ${selectedBottleneck.color}`} />
-                  </div>
-                  <div>
-                    <Badge variant="outline" className="mb-1">Bottleneck {selectedBottleneck.id}</Badge>
-                    <CardTitle>{selectedBottleneck.title}</CardTitle>
-                  </div>
-                </div>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <h4 className="font-semibold mb-3 flex items-center gap-2">
-                      <Eye className="w-4 h-4 text-orange-500" />
-                      What This Looks Like in Reality
-                    </h4>
-                    <ul className="space-y-2">
-                      {selectedBottleneck.reality.map((item, i) => (
-                        <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
-                          <XCircle className="w-4 h-4 text-orange-500 shrink-0 mt-0.5" />
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold mb-3 flex items-center gap-2">
-                      <AlertCircle className="w-4 h-4 text-destructive" />
-                      Impact
-                    </h4>
-                    <ul className="space-y-2">
-                      {selectedBottleneck.impact.map((item, i) => (
-                        <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
-                          <AlertTriangle className="w-4 h-4 text-destructive shrink-0 mt-0.5" />
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-
-                <div className="p-4 bg-muted/50 rounded-lg">
-                  <p className="text-sm">
-                    <span className="font-semibold">Why This Happens:</span>{" "}
-                    <span className="text-muted-foreground">{selectedBottleneck.whyHappens}</span>
-                  </p>
-                </div>
-
-                {/* How AI Solves This - Enrichment */}
-                <div className="grid md:grid-cols-2 gap-6 pt-2">
-                  <div>
-                    <h4 className="font-semibold mb-3 flex items-center gap-2">
-                      <Sparkles className="w-4 h-4 text-primary" />
-                      How AI Solves This
-                    </h4>
-                    <ul className="space-y-2">
-                      {(selectedBottleneck.howAISolvesIt ?? []).map((item, i) => (
-                        <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
-                          <CheckCircle2 className="w-4 h-4 text-primary shrink-0 mt-0.5" />
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold mb-3 flex items-center gap-2">
-                      <TrendingUp className="w-4 h-4 text-green-500" />
-                      Outcome with AGIX AI
-                    </h4>
-                    <div className="p-4 bg-green-500/5 rounded-lg border border-green-500/20">
-                      <p className="text-sm font-medium text-green-500">{selectedBottleneck.outcome}</p>
+          {/* Left / Right Split Panel */}
+          {activeView === 'bottlenecks' ? (
+            <div className="grid lg:grid-cols-[280px_1fr] gap-6 mb-12">
+              {/* Left: Bottleneck List */}
+              <div className="flex flex-col gap-1.5 lg:max-h-[640px] lg:overflow-y-auto lg:pr-2">
+                {bottlenecks.map((bottleneck) => (
+                  <button
+                    key={bottleneck.id}
+                    onClick={() => setSelectedBottleneck(bottleneck)}
+                    className={`w-full text-left px-3 py-2.5 rounded-lg border transition-all flex items-center gap-3 ${
+                      selectedBottleneck.id === bottleneck.id
+                        ? `border-2 ${bottleneck.color.replace('text-', 'border-')} ${bottleneck.bgColor}`
+                        : 'border-border hover:border-muted-foreground/30 bg-card'
+                    }`}
+                    data-testid={`button-bottleneck-${bottleneck.id}`}
+                  >
+                    <div className={`p-1.5 rounded ${bottleneck.bgColor} shrink-0`}>
+                      <bottleneck.icon className={`w-3.5 h-3.5 ${bottleneck.color}`} />
                     </div>
-                    <div className="mt-3 p-3 bg-primary/5 rounded-lg border border-primary/20">
-                      <p className="text-xs text-muted-foreground mb-1">AGIX AI System for this:</p>
-                      <p className="text-sm font-semibold text-primary">{selectedBottleneck.agixSystem}</p>
+                    <div className="min-w-0">
+                      <p className="text-xs text-muted-foreground">BN-{bottleneck.id}</p>
+                      <p className="text-sm font-medium leading-tight line-clamp-2">{bottleneck.title}</p>
                     </div>
-                  </div>
-                </div>
+                  </button>
+                ))}
+              </div>
 
-                {/* Services, Framework, Case Study, Governance — per bottleneck */}
-                {bottleneckMeta[selectedBottleneck.id] && (
-                  <div className="grid sm:grid-cols-2 gap-4 pt-4 border-t border-border">
-                    {/* AGIX Services */}
-                    <div>
-                      <h5 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2">AGIX Services Used</h5>
-                      <div className="flex flex-wrap gap-2">
-                        {bottleneckMeta[selectedBottleneck.id].services.map((svc, i) => (
-                          <Link key={i} href={svc.href} className="text-xs px-2.5 py-1 rounded-full border border-primary/30 text-primary hover:bg-primary/10 transition-colors" data-testid={`service-link-${i}`}>
-                            {svc.name}
-                          </Link>
-                        ))}
+              {/* Right: Selected Bottleneck Detail */}
+              <div className="lg:sticky lg:top-24 lg:self-start">
+                <motion.div
+                  key={selectedBottleneck.id}
+                  initial={{ opacity: 0, x: 10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <Card className="border-destructive/20">
+                    <CardHeader>
+                      <div className="flex items-center gap-3">
+                        <div className={`p-3 ${selectedBottleneck.bgColor} rounded-lg`}>
+                          <selectedBottleneck.icon className={`w-6 h-6 ${selectedBottleneck.color}`} />
+                        </div>
+                        <div>
+                          <Badge variant="outline" className="mb-1 text-xs">Bottleneck {selectedBottleneck.id}</Badge>
+                          <CardTitle className="text-lg">{selectedBottleneck.title}</CardTitle>
+                        </div>
                       </div>
-                    </div>
-                    {/* Intelligence Framework */}
-                    <div>
-                      <h5 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2">Intelligence Framework</h5>
-                      <Link href={bottleneckMeta[selectedBottleneck.id].framework.href} className="text-xs font-medium text-primary hover:underline" data-testid="framework-link">
-                        {bottleneckMeta[selectedBottleneck.id].framework.name} →
-                      </Link>
-                      <p className="text-xs text-muted-foreground mt-1">{bottleneckMeta[selectedBottleneck.id].framework.context}</p>
-                    </div>
-                    {/* Case Study */}
-                    {bottleneckMeta[selectedBottleneck.id].caseStudy && (
-                      <div className="sm:col-span-2">
-                        <h5 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2">Case Study</h5>
-                        <div className="flex items-start gap-2 p-3 bg-muted/30 rounded-lg border border-border">
-                          <BookOpen className="w-4 h-4 text-primary shrink-0 mt-0.5" />
-                          <div>
-                            <Link href={bottleneckMeta[selectedBottleneck.id].caseStudy!.href} className="text-sm font-medium text-primary hover:underline" data-testid="case-study-link">
-                              {bottleneckMeta[selectedBottleneck.id].caseStudy!.name}
-                            </Link>
-                            <p className="text-xs text-muted-foreground mt-0.5">{bottleneckMeta[selectedBottleneck.id].caseStudy!.description}</p>
+                    </CardHeader>
+                    <CardContent className="space-y-5">
+                      <div className="grid md:grid-cols-2 gap-4">
+                        <div>
+                          <h4 className="font-semibold text-sm mb-2 flex items-center gap-2">
+                            <Eye className="w-4 h-4 text-orange-500" />
+                            Reality
+                          </h4>
+                          <ul className="space-y-1.5">
+                            {selectedBottleneck.reality.map((item, i) => (
+                              <li key={i} className="flex items-start gap-2 text-xs text-muted-foreground">
+                                <XCircle className="w-3.5 h-3.5 text-orange-500 shrink-0 mt-0.5" />
+                                {item}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                        <div>
+                          <h4 className="font-semibold text-sm mb-2 flex items-center gap-2">
+                            <AlertCircle className="w-4 h-4 text-destructive" />
+                            Impact
+                          </h4>
+                          <ul className="space-y-1.5">
+                            {selectedBottleneck.impact.map((item, i) => (
+                              <li key={i} className="flex items-start gap-2 text-xs text-muted-foreground">
+                                <AlertTriangle className="w-3.5 h-3.5 text-destructive shrink-0 mt-0.5" />
+                                {item}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
+
+                      <div className="p-3 bg-muted/40 rounded-lg text-xs text-muted-foreground">
+                        <span className="font-semibold text-foreground">Why it happens: </span>
+                        {selectedBottleneck.whyHappens}
+                      </div>
+
+                      <div className="grid md:grid-cols-2 gap-4">
+                        <div>
+                          <h4 className="font-semibold text-sm mb-2 flex items-center gap-2">
+                            <Sparkles className="w-4 h-4 text-primary" />
+                            How AI Solves This
+                          </h4>
+                          <ul className="space-y-1.5">
+                            {(selectedBottleneck.howAISolvesIt ?? []).map((item, i) => (
+                              <li key={i} className="flex items-start gap-2 text-xs text-muted-foreground">
+                                <CheckCircle2 className="w-3.5 h-3.5 text-primary shrink-0 mt-0.5" />
+                                {item}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                        <div>
+                          <h4 className="font-semibold text-sm mb-2 flex items-center gap-2">
+                            <TrendingUp className="w-4 h-4 text-green-500" />
+                            Outcome
+                          </h4>
+                          <div className="p-3 bg-green-500/5 rounded-lg border border-green-500/20 text-xs font-medium text-green-600 mb-2">
+                            {selectedBottleneck.outcome}
+                          </div>
+                          <div className="p-2.5 bg-primary/5 rounded-lg border border-primary/20">
+                            <p className="text-xs text-muted-foreground mb-0.5">AGIX System:</p>
+                            <p className="text-xs font-semibold text-primary">{selectedBottleneck.agixSystem}</p>
                           </div>
                         </div>
                       </div>
-                    )}
-                    {/* Governance Note */}
-                    {bottleneckMeta[selectedBottleneck.id].governanceNote && (
-                      <div className="sm:col-span-2">
-                        <h5 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2">Governance Note</h5>
-                        <div className="flex items-start gap-2 p-3 bg-orange-500/5 rounded-lg border border-orange-500/20">
-                          <ShieldCheck className="w-4 h-4 text-orange-500 shrink-0 mt-0.5" />
-                          <p className="text-xs text-muted-foreground">{bottleneckMeta[selectedBottleneck.id].governanceNote}</p>
+
+                      {bottleneckMeta[selectedBottleneck.id] && (
+                        <div className="grid sm:grid-cols-2 gap-3 pt-3 border-t border-border">
+                          <div>
+                            <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-1.5">Services Used</p>
+                            <div className="flex flex-wrap gap-1.5">
+                              {bottleneckMeta[selectedBottleneck.id].services.map((svc, i) => (
+                                <Link key={i} href={svc.href} className="text-xs px-2 py-0.5 rounded-full border border-primary/30 text-primary hover:bg-primary/10 transition-colors" data-testid={`service-link-${i}`}>
+                                  {svc.name}
+                                </Link>
+                              ))}
+                            </div>
+                          </div>
+                          {bottleneckMeta[selectedBottleneck.id].caseStudy && (
+                            <div>
+                              <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-1.5">Case Study</p>
+                              <div className="flex items-start gap-1.5 p-2.5 bg-muted/30 rounded-lg">
+                                <BookOpen className="w-3.5 h-3.5 text-primary shrink-0 mt-0.5" />
+                                <div>
+                                  <Link href={bottleneckMeta[selectedBottleneck.id].caseStudy!.href} className="text-xs font-medium text-primary hover:underline" data-testid="case-study-link">
+                                    {bottleneckMeta[selectedBottleneck.id].caseStudy!.name}
+                                  </Link>
+                                  <p className="text-xs text-muted-foreground mt-0.5">{bottleneckMeta[selectedBottleneck.id].caseStudy!.description}</p>
+                                </div>
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                      )}
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              </div>
+            </div>
+          ) : (
+            <div className="grid lg:grid-cols-[280px_1fr] gap-6 mb-12">
+              {/* Left: AI Systems List */}
+              <div className="flex flex-col gap-1.5 lg:max-h-[640px] lg:overflow-y-auto lg:pr-2">
+                {aiSystems.map((system) => (
+                  <button
+                    key={system.id}
+                    onClick={() => setSelectedSystem(system)}
+                    className={`w-full text-left px-3 py-2.5 rounded-lg border transition-all ${
+                      selectedSystem.id === system.id
+                        ? 'border-2 border-green-500 bg-green-500/10'
+                        : 'border-border hover:border-muted-foreground/30 bg-card'
+                    }`}
+                    data-testid={`button-system-${system.id}`}
+                  >
+                    <p className="text-xs text-green-500 font-medium mb-0.5">System {system.id}</p>
+                    <p className="text-sm font-medium leading-tight">{system.name}</p>
+                    <p className="text-xs text-muted-foreground mt-0.5">{system.timeline}</p>
+                  </button>
+                ))}
+              </div>
+
+              {/* Right: Selected System Detail */}
+              <div className="lg:sticky lg:top-24 lg:self-start">
+                <motion.div
+                  key={selectedSystem.id}
+                  initial={{ opacity: 0, x: 10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <Card className="border-green-500/20">
+                    <CardHeader>
+                      <div className="flex items-start justify-between flex-wrap gap-3">
+                        <div>
+                          <Badge className={`${selectedSystem.bgColor} ${selectedSystem.color} border-current mb-2 text-xs`}>
+                            AI System {selectedSystem.id} · {selectedSystem.timeline}
+                          </Badge>
+                          <CardTitle>{selectedSystem.name}</CardTitle>
                         </div>
                       </div>
-                    )}
-                  </div>
-                )}
-              </CardContent>
-            </Card>
-          </motion.div>
+                      <div className="flex flex-wrap gap-1.5 mt-2">
+                        <span className="text-xs font-medium text-muted-foreground">Resolves:</span>
+                        {bottlenecks
+                          .filter(b => selectedSystem.resolvesBottleneckIds.includes(b.id))
+                          .map(b => (
+                            <Badge key={b.id} variant="outline" className={`text-xs ${b.color}`}>{b.title}</Badge>
+                          ))}
+                      </div>
+                    </CardHeader>
+                    <CardContent className="space-y-5">
+                      <div className="grid md:grid-cols-2 gap-4">
+                        <div>
+                          <h4 className="font-semibold text-sm mb-2 flex items-center gap-2">
+                            <CheckCircle2 className="w-4 h-4 text-green-500" />
+                            What This System Does
+                          </h4>
+                          <ul className="space-y-1.5">
+                            {selectedSystem.whatItDoes.map((item, i) => (
+                              <li key={i} className="flex items-start gap-2 text-xs text-muted-foreground">
+                                <CheckCircle2 className="w-3.5 h-3.5 text-green-500 shrink-0 mt-0.5" />
+                                {item}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                        {selectedSystem.whatItDoesNot.length > 0 && (
+                          <div>
+                            <h4 className="font-semibold text-sm mb-2 flex items-center gap-2">
+                              <XCircle className="w-4 h-4 text-muted-foreground" />
+                              What It Does Not Do
+                            </h4>
+                            <ul className="space-y-1.5">
+                              {selectedSystem.whatItDoesNot.map((item, i) => (
+                                <li key={i} className="flex items-start gap-2 text-xs text-muted-foreground">
+                                  <XCircle className="w-3.5 h-3.5 text-muted-foreground shrink-0 mt-0.5" />
+                                  {item}
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
+                      </div>
 
-          {/* Role-Based Reality Check - Synchronized View */}
-          <div className="mb-8">
-            <div className="text-center mb-8">
-              <h3 className="text-2xl font-bold mb-2">Role-Based Reality Check</h3>
-              <p className="text-muted-foreground">
-                Select your organization type to see relevant bottlenecks and recommended AI solutions.
-              </p>
+                      <div className="p-3 bg-green-500/5 rounded-lg border border-green-500/20">
+                        <p className="text-xs font-semibold text-green-600 mb-1">Why It Works in Healthcare</p>
+                        <p className="text-xs text-muted-foreground">{selectedSystem.whyItWorks}</p>
+                      </div>
+
+                      <div className="grid sm:grid-cols-2 gap-3 pt-3 border-t border-border">
+                        <div>
+                          <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-1.5">Integration</p>
+                          <p className="text-xs text-muted-foreground">{selectedSystem.integration}</p>
+                        </div>
+                        <div>
+                          <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-1.5">Expected Impact</p>
+                          <ul className="space-y-1">
+                            {selectedSystem.impact.map((item, i) => (
+                              <li key={i} className="text-xs text-muted-foreground flex items-center gap-1.5">
+                                <CheckCircle2 className="w-3 h-3 text-green-500 shrink-0" />
+                                {item}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              </div>
             </div>
-            
-            <div className="grid md:grid-cols-2 gap-6">
+          )}
+
+          {/* ===================== MERGED ROLE CARDS ===================== */}
+          <div className="mt-4">
+            <div className="text-center mb-6">
+              <h3 className="text-xl font-bold mb-1">Where Should You Start?</h3>
+              <p className="text-sm text-muted-foreground">Your organization type determines the right bottlenecks to address and the recommended AI system sequence.</p>
+            </div>
+            <div className="grid md:grid-cols-2 gap-5">
               {roleBasedBottlenecks.map((roleItem) => {
                 const roleBottlenecks = bottlenecks.filter(b => roleItem.bottleneckIds.includes(b.id));
                 const roleSystems = aiSystems.filter(s => roleItem.recommendedSystemIds.includes(s.id));
-                
+                const startingPoint = roleBasedStartingPoints.find(r => r.role === roleItem.role || r.role.includes(roleItem.role.split(' ')[0]));
                 return (
-                  <Card key={roleItem.id} className={`${roleItem.borderColor} border-2`}>
+                  <Card key={roleItem.id} className={`${roleItem.borderColor} border-2`} data-testid={`card-role-${roleItem.id}`}>
                     <CardHeader className="pb-3">
-                      <div className="flex items-center gap-3 mb-2">
-                        <div className={`p-2.5 ${roleItem.bgColor} rounded-lg`}>
+                      <div className="flex items-center gap-3">
+                        <div className={`p-2.5 ${roleItem.bgColor} rounded-lg shrink-0`}>
                           <roleItem.icon className={`w-5 h-5 ${roleItem.color}`} />
                         </div>
                         <div>
-                          <CardTitle className="text-lg">{roleItem.role}</CardTitle>
+                          <CardTitle className="text-base">{roleItem.role}</CardTitle>
                           <p className="text-xs text-muted-foreground">{roleItem.description}</p>
                         </div>
                       </div>
                     </CardHeader>
-                    <CardContent className="space-y-4">
-                      {/* Bottlenecks for this role */}
+                    <CardContent className="space-y-3 pt-0">
                       <div>
-                        <p className="text-xs font-medium text-muted-foreground mb-2 uppercase tracking-wide">
-                          Key Bottlenecks:
-                        </p>
+                        <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2">Key Bottlenecks</p>
                         <div className="flex flex-wrap gap-1.5">
                           {roleBottlenecks.map((b) => (
-                            <Badge key={b.id} variant="outline" className={`text-xs ${b.color}`}>
-                              {b.title}
-                            </Badge>
+                            <Badge key={b.id} variant="outline" className={`text-xs ${b.color}`}>{b.title}</Badge>
                           ))}
                         </div>
                       </div>
-                      
-                      {/* Recommended AI Systems for this role */}
                       <div>
-                        <p className="text-xs font-medium text-muted-foreground mb-2 uppercase tracking-wide">
-                          Recommended AI Solutions:
-                        </p>
-                        <div className="space-y-2">
-                          {roleSystems.map((sys) => (
-                            <div key={sys.id} className={`p-2.5 ${sys.bgColor} rounded-lg border ${roleItem.borderColor}`}>
-                              <div className="flex items-center gap-2">
-                                <CheckCircle2 className={`w-4 h-4 ${sys.color} shrink-0`} />
-                                <div className="flex-1 min-w-0">
-                                  <p className="text-sm font-medium truncate">{sys.shortName}</p>
-                                  <p className="text-xs text-muted-foreground">{sys.timeline}</p>
-                                </div>
-                              </div>
-                            </div>
+                        <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2">Recommended AI Sequence</p>
+                        <div className="flex flex-wrap gap-1.5 items-center">
+                          {roleSystems.map((sys, idx) => (
+                            <span key={sys.id} className="flex items-center gap-1">
+                              <span className={`text-xs px-2 py-0.5 rounded-full ${sys.bgColor} ${sys.color} font-medium`}>{sys.shortName}</span>
+                              {idx < roleSystems.length - 1 && <ArrowRight className="w-3 h-3 text-muted-foreground shrink-0" />}
+                            </span>
                           ))}
                         </div>
-                      </div>
-                      
-                      <div className="pt-2 border-t border-border">
-                        <Button variant="outline" size="sm" className="w-full" asChild>
-                          <a href="#ai-systems" data-testid={`button-role-solutions-${roleItem.id}`}>
-                            View Detailed Solutions
-                            <ArrowRight className="w-3 h-3 ml-2" />
-                          </a>
-                        </Button>
+                        {startingPoint && (
+                          <p className="text-xs text-muted-foreground mt-1.5">{startingPoint.systems}</p>
+                        )}
                       </div>
                     </CardContent>
                   </Card>
@@ -1262,226 +1361,11 @@ export default function HealthcareIndustryPage() {
             </div>
           </div>
 
-          {/* Key Insight */}
-          <div className="p-6 bg-primary/5 rounded-lg border border-primary/20 text-center mb-8">
-            <p className="text-lg font-medium text-foreground">
-              Healthcare systems don't fail because teams don't care.
-            </p>
-            <p className="text-muted-foreground mt-2">
-              They fail because systems don't scale with human effort. AI's role is not to replace care —
-              it is to remove friction where humans struggle most.
-            </p>
-          </div>
-
-          {/* Transition CTA */}
-          <div className="text-center">
-            <Button size="lg" asChild>
-              <a href="#ai-systems" data-testid="button-bottleneck-cta">
-                See How These Bottlenecks Are Solved with Safe, Explainable Healthcare AI Systems
-                <ArrowDown className="w-4 h-4 ml-2" />
-              </a>
-            </Button>
-          </div>
         </div>
       </section>
 
-      {/* ==================== PART 3: AI SYSTEMS ==================== */}
-      <section id="ai-systems" className="py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <Badge className="mb-4 bg-green-500/10 text-green-500 border-green-500/20">
-              <Brain className="w-3 h-3 mr-1" />
-              Healthcare AI Systems
-            </Badge>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              How AGIX Technologies Solves Healthcare Bottlenecks with{" "}
-              <span className="text-green-500">Safe, Explainable AI</span>
-            </h2>
-            <p className="text-muted-foreground max-w-3xl mx-auto">
-              AGIX Technologies does not deploy one large, opaque AI platform. We design modular healthcare AI systems, each built to solve a specific bottleneck, with human-in-the-loop control, explainable outputs, audit-ready traceability, and integration with existing HIS / EMR systems. Every system is assistive by design, never autonomous in clinical decision-making.
-            </p>
-          </motion.div>
-
-          {/* AI Systems Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-8">
-            {aiSystems.map((system) => (
-              <motion.div
-                key={system.id}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                onClick={() => setSelectedSystem(system)}
-                className={`cursor-pointer p-4 rounded-lg border transition-all ${
-                  selectedSystem.id === system.id
-                    ? "border-2 border-green-500 bg-green-500/10"
-                    : "border-border hover-elevate bg-card"
-                }`}
-                data-testid={`button-system-${system.id}`}
-              >
-                <Badge variant="outline" className="text-xs mb-2 text-green-500">
-                  System {system.id}
-                </Badge>
-                <p className="text-sm font-medium">{system.name}</p>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* Selected System Detail */}
-          <motion.div
-            key={selectedSystem.id}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-          >
-            <Card className="border-green-500/20 mb-8">
-              <CardHeader>
-                <div className="flex items-center justify-between flex-wrap gap-4">
-                  <div>
-                    <Badge className={`${selectedSystem.bgColor} ${selectedSystem.color} border-current mb-2`}>
-                      AI System {selectedSystem.id}
-                    </Badge>
-                    <CardTitle>{selectedSystem.name}</CardTitle>
-                  </div>
-                  <div className="flex gap-6 text-sm">
-                    <div className="text-center">
-                      <p className="text-muted-foreground text-xs">Timeline</p>
-                      <p className="font-semibold">{selectedSystem.timeline}</p>
-                    </div>
-                  </div>
-                </div>
-                
-                {/* Synchronized: Bottlenecks this system resolves */}
-                <div className="mt-3 pt-3 border-t border-border">
-                  <div className="flex flex-wrap items-center gap-2">
-                    <span className="text-xs font-medium text-muted-foreground">Resolves:</span>
-                    {bottlenecks
-                      .filter(b => selectedSystem.resolvesBottleneckIds.includes(b.id))
-                      .map(b => (
-                        <Badge key={b.id} variant="outline" className={`text-xs ${b.color}`}>
-                          {b.title}
-                        </Badge>
-                      ))}
-                  </div>
-                </div>
-                
-                {/* Synchronized: Roles this system is for */}
-                <div className="mt-2">
-                  <div className="flex flex-wrap items-center gap-2">
-                    <span className="text-xs font-medium text-muted-foreground">Best for:</span>
-                    {roleBasedBottlenecks
-                      .filter(r => selectedSystem.relevantRoleIds.includes(r.id))
-                      .map(r => (
-                        <Badge key={r.id} variant="outline" className={`text-xs ${r.color}`}>
-                          {r.role}
-                        </Badge>
-                      ))}
-                  </div>
-                </div>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <h4 className="font-semibold mb-3 flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-green-500" />
-                      What This System Does
-                    </h4>
-                    <ul className="space-y-2">
-                      {selectedSystem.whatItDoes.map((item, i) => (
-                        <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
-                          <CheckCircle2 className="w-4 h-4 text-green-500 shrink-0 mt-0.5" />
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  {selectedSystem.whatItDoesNot.length > 0 && (
-                    <div>
-                      <h4 className="font-semibold mb-3 flex items-center gap-2">
-                        <XCircle className="w-4 h-4 text-muted-foreground" />
-                        What It Does Not Do
-                      </h4>
-                      <ul className="space-y-2">
-                        {selectedSystem.whatItDoesNot.map((item, i) => (
-                          <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
-                            <XCircle className="w-4 h-4 text-muted-foreground shrink-0 mt-0.5" />
-                            {item}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-                </div>
-
-                <div className="p-4 bg-green-500/5 rounded-lg border border-green-500/20">
-                  <h4 className="font-semibold mb-2 text-green-600">Why It Works in Healthcare</h4>
-                  <p className="text-sm text-muted-foreground">{selectedSystem.whyItWorks}</p>
-                </div>
-
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div className="p-4 bg-muted/50 rounded-lg">
-                    <p className="text-sm font-medium mb-1">Integration</p>
-                    <p className="text-sm text-muted-foreground">{selectedSystem.integration}</p>
-                  </div>
-                  <div className="p-4 bg-muted/50 rounded-lg">
-                    <p className="text-sm font-medium mb-1">Expected Impact</p>
-                    <ul className="text-sm text-muted-foreground">
-                      {selectedSystem.impact.map((item, i) => (
-                        <li key={i}>• {item}</li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </motion.div>
-
-          {/* Role-Based Starting Points */}
-          <Card className="mb-8 border-primary/20">
-            <CardHeader>
-              <CardTitle className="text-center">Role-Based Starting Points</CardTitle>
-              <p className="text-center text-sm text-muted-foreground">
-                Recommended AI system sequence based on your organization type
-              </p>
-            </CardHeader>
-            <CardContent>
-              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-                {roleBasedStartingPoints.map((item, i) => (
-                  <div key={i} className="p-4 bg-muted/50 rounded-lg">
-                    <p className="font-medium text-sm mb-2">{item.role}</p>
-                    <p className="text-xs text-muted-foreground">Start with:</p>
-                    <p className="text-sm text-primary font-medium">{item.systems}</p>
-                  </div>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Key Principle */}
-          <div className="p-6 bg-green-500/5 rounded-lg border border-green-500/20 text-center mb-8">
-            <p className="text-lg font-medium text-foreground">
-              In healthcare, AI should never replace care.
-            </p>
-            <p className="text-muted-foreground mt-2">
-              It should remove friction so care can happen better.
-            </p>
-          </div>
-
-          {/* Transition CTA */}
-          <div className="text-center">
-            <Button size="lg" variant="outline" asChild>
-              <a href="#decision-tools" data-testid="button-systems-cta">
-                Understand Cost, ROI & the Safest Way to Start with Healthcare AI
-                <ArrowDown className="w-4 h-4 ml-2" />
-              </a>
-            </Button>
-          </div>
-        </div>
-      </section>
-
+      {/* Industry Services Section */}
+      <IndustryServices services={industryServices} industryName="Healthcare" />
 
       {/* ==================== PART 5: TRUST & COMPLIANCE ==================== */}
       <section id="trust-compliance" className="py-24 bg-muted/30">
@@ -1500,28 +1384,15 @@ export default function HealthcareIndustryPage() {
               Healthcare AI That Clinicians, Leaders, and{" "}
               <span className="text-primary">Regulators Can Trust</span>
             </h2>
-            <p className="text-muted-foreground max-w-3xl mx-auto mb-4">
-              Healthcare AI adoption succeeds only when trust is stronger than fear.
-            </p>
-            <div className="flex flex-wrap justify-center gap-3 text-sm text-muted-foreground">
-              <span>Trust from:</span>
-              <Badge variant="outline">Clinicians who rely on judgment</Badge>
-              <Badge variant="outline">Administrators who manage risk</Badge>
-              <Badge variant="outline">Compliance teams who answer audits</Badge>
-              <Badge variant="outline">Patients who expect safety and privacy</Badge>
-            </div>
-            <p className="text-foreground font-medium mt-4">
-              AGIX Technologies builds healthcare AI systems that are designed for trust first — performance second.
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Every AGIX healthcare AI system is governed by six non-negotiable principles — built in from day one, not added as an afterthought.
             </p>
           </motion.div>
 
           {/* Principles */}
           <Card className="mb-8">
             <CardHeader>
-              <CardTitle className="text-center">Our Healthcare AI Principles (Non-Negotiable)</CardTitle>
-              <p className="text-center text-sm text-muted-foreground">
-                Every healthcare AI system built by AGIX Technologies follows these principles:
-              </p>
+              <CardTitle className="text-center">Our 6 Non-Negotiable Principles</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
@@ -1634,9 +1505,6 @@ export default function HealthcareIndustryPage() {
 
       {/* Industry Case Studies Section */}
       <IndustryCaseStudies caseStudies={caseStudies} industryName="Healthcare" />
-
-      {/* Industry Services Section */}
-      <IndustryServices services={industryServices} industryName="Healthcare" />
 
       <FAQSection
         faqs={documentFAQs['healthcare-ai-solutions']}
