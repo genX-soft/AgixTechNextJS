@@ -1,6 +1,7 @@
 'use client'
 import { useState } from "react";
 import { motion, AnimatePresence } from "@/lib/motion";
+import Link from "next/link";
 import { MainHeader } from "@/components/main-header";
 import { MainFooter } from "@/components/main-footer";
 import { Button } from "@/components/ui/button";
@@ -50,6 +51,17 @@ import {
   ShieldCheck,
   Sparkles,
   Calculator,
+  TrendingUp,
+  BarChart3,
+  Cpu,
+  Zap,
+  BookOpen,
+  ChevronRight,
+  Microscope,
+  MessageSquare,
+  FlaskConical,
+  Network,
+  UserCheck,
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { submitLead } from "@/lib/lead-submission";
@@ -101,6 +113,14 @@ const bottlenecks = [
       "Increased operational chaos during peaks",
     ],
     whyHappens: "Patient intake is often manual, non-standardized, dependent on staff availability, and poorly integrated with clinical workflows.",
+    howAISolvesIt: [
+      "Pre-arrival AI collects structured patient information via web or SMS before appointment",
+      "Symptom-based routing assigns patients to appropriate care pathways automatically",
+      "Smart scheduling prioritizes high-acuity patients and fills cancellation slots",
+      "Real-time triage dashboard gives clinical staff live patient flow visibility",
+    ],
+    outcome: "40–60% faster patient intake. Reduced OPD overcrowding. Fewer front-desk errors.",
+    agixSystem: "Patient Intake & Triage Intelligence",
   },
   {
     id: "2",
@@ -121,6 +141,14 @@ const bottlenecks = [
       "Slower patient throughput",
     ],
     whyHappens: "Clinical workflows are surrounded by manual data entry, repetitive non-clinical tasks, and poor information flow between systems.",
+    howAISolvesIt: [
+      "Voice capture converts clinical conversations into structured draft notes",
+      "Ambient AI listens, generates summaries, and syncs approved notes to EMR",
+      "AI pre-fills encounter templates using patient history and presenting symptoms",
+      "Post-encounter actions (follow-up orders, referrals) are auto-suggested for clinician review",
+    ],
+    outcome: "1–2 hours reclaimed per clinician per day. 35% of healthcare professionals report spending less time with patients than on admin — AI fixes this.",
+    agixSystem: "Clinical Workflow & Documentation Support",
   },
   {
     id: "3",
@@ -141,25 +169,42 @@ const bottlenecks = [
       "Revenue leakage in value-based care models",
     ],
     whyHappens: "Follow-ups depend heavily on manual reminders, disconnected patient engagement systems, and overloaded care teams.",
+    howAISolvesIt: [
+      "Automated personalized follow-up messages via SMS, WhatsApp, or email",
+      "AI monitors post-discharge indicators and flags high-risk patients for clinical review",
+      "Care coordination agents track transitions between departments and providers",
+      "Consent-based patient engagement — all outreach is transparent and opt-in",
+    ],
+    outcome: "25–40% reduction in no-shows. 20–35% reduction in 30-day readmissions. Measurable care continuity improvements.",
+    agixSystem: "Patient Engagement & Follow-Up Intelligence",
   },
   {
     id: "4",
-    title: "Diagnostic & Reporting Inefficiencies",
+    title: "Clinical Decision Support — Knowledge at the Point of Care",
     icon: FileSearch,
     color: "text-blue-500",
     bgColor: "bg-blue-500/10",
     reality: [
-      "Delayed test reports",
-      "Manual result interpretation workflows",
-      "Poor coordination between labs and clinicians",
+      "Clinicians query 5+ disconnected systems per decision",
+      "Clinical guidelines buried in 200+ page PDFs",
+      "Time-critical decisions made without latest evidence",
+      "Drug interactions and contraindications missed under pressure",
     ],
     impact: [
-      "Slower diagnosis",
-      "Treatment delays",
-      "Patient dissatisfaction",
-      "Increased clinical risk",
+      "Diagnostic errors and near-misses",
+      "Treatment delays while evidence is located",
+      "Higher clinical risk and liability",
+      "Clinician decision fatigue",
     ],
-    whyHappens: "Diagnostic workflows are often system-siloed, staff-intensive, and poorly automated in non-clinical areas.",
+    whyHappens: "Clinical knowledge is vast, distributed, and grows exponentially. No human can recall every guideline, interaction, or protocol in real-time under clinical pressure.",
+    howAISolvesIt: [
+      "RAG-powered knowledge retrieval delivers evidence-based answers in 90 seconds — vs. 12 minutes of manual search",
+      "Differential diagnosis AI surfaces the most probable diagnoses ranked by likelihood with supporting evidence",
+      "Drug interaction checking integrated into prescribing workflow flags contraindications before they cause harm",
+      "Clinical guidelines retrieved with source citations and confidence scores — clinician always reviews and decides",
+    ],
+    outcome: "Clinical queries reduced from 12 minutes to 90 seconds. Fewer near-misses. More confident clinical decisions — all with full audit trail.",
+    agixSystem: "Clinical Decision Support Intelligence",
   },
   {
     id: "5",
@@ -179,65 +224,176 @@ const bottlenecks = [
       "Financial unpredictability",
     ],
     whyHappens: "Claims processes are rule-heavy, documentation-sensitive, prone to human error, and poorly supported by intelligence.",
+    howAISolvesIt: [
+      "Pre-submission validation catches coding errors and missing documentation before submission",
+      "Denial pattern analysis identifies payer-specific rejection triggers",
+      "AI drafts appeal letters with supporting evidence for denied claims",
+      "Revenue forecasting models predict reimbursement timelines by payer",
+    ],
+    outcome: "35–50% reduction in claim rejections. Faster reimbursements. More predictable revenue. Reduced appeals workload.",
+    agixSystem: "Claims & Revenue Cycle Intelligence",
   },
   {
     id: "6",
-    title: "Compliance, Audit & Data Governance Risk",
-    icon: Shield,
-    color: "text-purple-500",
-    bgColor: "bg-purple-500/10",
+    title: "Patient Engagement & Medication Adherence",
+    icon: MessageSquare,
+    color: "text-pink-500",
+    bgColor: "bg-pink-500/10",
     reality: [
-      "Regulatory audits",
-      "Data misuse concerns",
-      "Lack of traceability",
-      "Fear of AI-related violations",
+      "Generic, non-personalized outreach",
+      "25–35% no-show rates across specialties",
+      "Poor medication adherence in chronic disease",
+      "Patients disengaging after first visit",
     ],
     impact: [
-      "Slower innovation",
-      "Over-cautious decision-making",
-      "High legal exposure",
+      "Chronic disease complications",
+      "Preventable hospital readmissions",
+      "Underperformance in value-based care models",
+      "Lower patient lifetime value",
     ],
-    whyHappens: "Most healthcare systems lack clear data access tracking, explainable decision logs, and AI governance frameworks.",
+    whyHappens: "Most patient engagement is reactive and generic. Bulk SMS campaigns and manual call lists fail to create the personalized, timely connection patients need to stay engaged with their care.",
+    howAISolvesIt: [
+      "Conversational AI conducts personalized post-visit follow-ups via SMS, WhatsApp, or voice",
+      "Medication adherence monitoring flags missed doses and prompts gentle, timely reminders",
+      "Care gap alerts identify patients overdue for screenings, labs, or specialist visits",
+      "Sentiment analysis detects patient frustration early — escalating to human care teams when needed",
+    ],
+    outcome: "25–40% improvement in medication adherence. 3× patient re-engagement rates. Measurable improvement in chronic disease management outcomes.",
+    agixSystem: "Patient Engagement & Follow-Up Intelligence",
   },
   {
     id: "7",
-    title: "Fragmented Healthcare Systems",
-    icon: Layers,
+    title: "Medical Imaging Backlog & Diagnostic Delays",
+    icon: Microscope,
     color: "text-cyan-500",
     bgColor: "bg-cyan-500/10",
     reality: [
-      "HIS, EMR, lab systems not connected",
-      "Information silos",
-      "Manual coordination",
+      "Radiologist shortage — demand outpacing supply",
+      "Growing scan backlogs with delayed reporting",
+      "Missed incidental findings under volume pressure",
+      "Manual annotation and report drafting consuming hours",
     ],
     impact: [
-      "Errors",
-      "Delays",
-      "Poor decision-making",
-      "Staff frustration",
+      "Delayed cancer diagnosis and staging",
+      "Patient anxiety from waiting",
+      "Radiologist burnout and error risk",
+      "Increased clinical liability",
     ],
-    whyHappens: "Healthcare IT systems evolved over time — they were never designed as one intelligent ecosystem.",
+    whyHappens: "Diagnostic imaging volumes grow 3–5% annually while radiologist numbers stagnate. Manual image review at scale is unsustainable.",
+    howAISolvesIt: [
+      "AI pre-screens radiology scans (CT, MRI, X-ray, ultrasound) and flags anomalies for priority review",
+      "Structured report drafts reduce radiologist annotation time — they review and approve, not start from scratch",
+      "Priority queue management routes critical findings to the front of the worklist automatically",
+      "DICOM-compatible integration works with existing PACS/RIS infrastructure",
+    ],
+    outcome: "30% reduction in radiologist workload. Faster time-to-diagnosis. Earlier detection of critical findings. AI assists — radiologists always diagnose.",
+    agixSystem: "Clinical Decision Support Intelligence",
   },
   {
     id: "8",
-    title: "Lack of Real-Time Operational Visibility",
-    icon: Eye,
-    color: "text-indigo-500",
-    bgColor: "bg-indigo-500/10",
+    title: "Mental Health Access Gaps & Clinician Overload",
+    icon: Brain,
+    color: "text-violet-500",
+    bgColor: "bg-violet-500/10",
     reality: [
-      "Static dashboards",
-      "Lagging reports",
-      "Missing early warning signs",
-      "Staff overload signals invisible",
+      "1 psychiatrist per 10,000+ patients in underserved regions",
+      "Average 11-week wait for mental health appointments",
+      "Stigma barriers preventing help-seeking",
+      "Crisis events going unreported until escalation",
     ],
     impact: [
-      "Reactive management",
-      "Firefighting culture",
-      "Missed optimization opportunities",
+      "Untreated conditions worsening over time",
+      "Costly emergency psychiatric interventions",
+      "High provider burnout from caseload pressure",
+      "Mental health treatment gaps widening globally",
     ],
-    whyHappens: "Management sees what happened, not what's happening. Real-time visibility requires integrated intelligence.",
+    whyHappens: "Mental health services were not built to scale. Clinician-to-patient ratios make widespread access impossible without intelligent support systems.",
+    howAISolvesIt: [
+      "Empathetic AI companions provide between-session support — journaling, CBT exercises, mood tracking",
+      "Risk screening conversations identify elevated PHQ-9/GAD-7 scores and flag for clinician review",
+      "Crisis detection algorithms identify language patterns indicating acute risk — with immediate human escalation",
+      "Therapist handoff protocols ensure AI never exceeds its boundary — humans manage all clinical decisions",
+    ],
+    outcome: "10× patient access expansion. Earlier crisis identification. Reduced clinician caseload burden. Safer, more scalable mental health support.",
+    agixSystem: "Patient Engagement & Follow-Up Intelligence",
   },
 ];
+
+const bottleneckMeta: Record<string, {
+  services: {name: string, href: string}[];
+  framework: {name: string, href: string, context: string};
+  caseStudy?: {name: string, href: string, description: string};
+  governanceNote?: string;
+}> = {
+  "1": {
+    services: [
+      { name: "Conversational AI Chatbots", href: "/services/conversational-ai-chatbots/" },
+      { name: "AI Voice Agents", href: "/services/ai-voice-agents/" },
+      { name: "AI Automation", href: "/services/ai-automation/" },
+    ],
+    framework: { name: "Conversational Intelligence", href: "/intelligence/conversational-ai/", context: "Level 3 (Context-Aware) for symptom collection; Level 4 (Reasoning) for triage logic" },
+    caseStudy: { name: "Babylon Health", href: "/case-studies/babylon-health/", description: "Clinical AI triage serving 24M users. 99.2% serious case detection. Time to care reduced 34%." },
+  },
+  "2": {
+    services: [
+      { name: "RAG & Knowledge AI", href: "/services/rag-knowledge-ai/" },
+      { name: "AI Automation", href: "/services/ai-automation/" },
+      { name: "Custom AI Product Development", href: "/services/custom-ai-product-development/" },
+    ],
+    framework: { name: "Enterprise Knowledge Intelligence", href: "/intelligence/enterprise-knowledge-ai/", context: "Stage 4 (Intelligent) for clinical knowledge retrieval during documentation" },
+    governanceNote: "AI-generated reports require clinician review before sign-off. AI achieves 87.3% accuracy vs 72.8% surgeon-written (DemandSage).",
+  },
+  "3": {
+    services: [
+      { name: "Agentic AI Systems", href: "/services/agentic-ai-systems/" },
+      { name: "AI Voice Agents", href: "/services/ai-voice-agents/" },
+      { name: "AI Automation", href: "/services/ai-automation/" },
+    ],
+    framework: { name: "Autonomous Agentic Systems", href: "/intelligence/autonomous-agentic-ai/", context: "L2 (Semi-Autonomous) recommended for healthcare care coordination" },
+  },
+  "4": {
+    services: [
+      { name: "RAG & Knowledge AI", href: "/services/rag-knowledge-ai/" },
+      { name: "AI Predictive Analytics", href: "/services/ai-predictive-analytics/" },
+      { name: "Custom AI Product Development", href: "/services/custom-ai-product-development/" },
+    ],
+    framework: { name: "Decision Intelligence", href: "/intelligence/decision-ai/", context: "Level 1 (Informed) — AI delivers evidence-based suggestions for clinician review. Human always decides." },
+    governanceNote: "All clinical recommendations include source citations and confidence scores. No autonomous diagnosis. No prescribing. Clinicians own every patient decision.",
+  },
+  "5": {
+    services: [
+      { name: "AI Predictive Analytics", href: "/services/ai-predictive-analytics/" },
+      { name: "AI Automation", href: "/services/ai-automation/" },
+      { name: "RAG & Knowledge AI", href: "/services/rag-knowledge-ai/" },
+    ],
+    framework: { name: "Decision Intelligence", href: "/intelligence/decision-ai/", context: "Level 2 (Recommended) for claims review; Level 3 (Automated) for routine coding validation" },
+  },
+  "6": {
+    services: [
+      { name: "AI Voice Agents", href: "/services/ai-voice-agents/" },
+      { name: "Conversational AI Chatbots", href: "/services/conversational-ai-chatbots/" },
+      { name: "AI Automation", href: "/services/ai-automation/" },
+    ],
+    framework: { name: "Conversational Intelligence", href: "/intelligence/conversational-ai/", context: "Levels 3–4: context-aware follow-up conversations, sentiment tracking, care gap alerts" },
+  },
+  "7": {
+    services: [
+      { name: "AI Computer Vision", href: "/services/ai-computer-vision/" },
+      { name: "AI Predictive Analytics", href: "/services/ai-predictive-analytics/" },
+    ],
+    framework: { name: "Decision Intelligence", href: "/intelligence/decision-ai/", context: "Level 1 (Informed) — AI flags imaging findings for clinician review. Human always diagnoses." },
+    governanceNote: "AI flags findings — clinicians diagnose. AI never replaces radiologist judgment. 340+ FDA-approved AI imaging tools in clinical use.",
+  },
+  "8": {
+    services: [
+      { name: "Custom AI Product Development", href: "/services/custom-ai-product-development/" },
+      { name: "Conversational AI Chatbots", href: "/services/conversational-ai-chatbots/" },
+    ],
+    framework: { name: "Conversational Intelligence", href: "/intelligence/conversational-ai/", context: "Level 4 (Reasoning) for empathetic conversation; strict escalation protocols at all risk levels" },
+    caseStudy: { name: "Kite Therapy", href: "/case-studies/kite-therapy/", description: "AI-assisted therapy management platform improving care coordination for pediatric patients. Better treatment planning, enhanced clinician insights." },
+    governanceNote: "AI provides between-session support only. Crisis detection always triggers immediate human clinician escalation. No autonomous mental health interventions.",
+  },
+};
 
 const roleBasedBottlenecks = [
   { 
@@ -307,7 +463,6 @@ const aiSystems = [
     whyItWorks: "Triage logic is configurable and transparent. Clinicians remain decision owners. Reduces front-desk pressure without risk.",
     integration: "HIS / EMR, Appointment & registration systems",
     timeline: "5-7 weeks",
-    costRange: "$12K - $20K",
     impact: ["Reduced waiting time", "Improved patient flow", "Less staff stress during peak hours"],
     color: "text-red-500",
     bgColor: "bg-red-500/10",
@@ -331,7 +486,6 @@ const aiSystems = [
     whyItWorks: "Outputs are always reviewable. Clinicians approve final records. Improves time spent with patients.",
     integration: "EMR, Clinical note systems",
     timeline: "6-8 weeks",
-    costRange: "$15K - $25K",
     impact: ["Reduced documentation time", "Improved clinician satisfaction", "Higher patient interaction quality"],
     color: "text-orange-500",
     bgColor: "bg-orange-500/10",
@@ -341,46 +495,47 @@ const aiSystems = [
     name: "Patient Engagement & Follow-Up Intelligence",
     shortName: "Follow-Up AI",
     bottleneckSolved: "Missed follow-ups, poor adherence, fragmented patient journeys",
-    resolvesBottleneckIds: ["3"],
-    relevantRoleIds: ["clinic", "digital"],
+    resolvesBottleneckIds: ["3", "6", "8"],
+    relevantRoleIds: ["clinic", "digital", "hospital"],
     whatItDoes: [
       "Supports appointment reminders and follow-ups",
       "Tracks adherence signals",
       "Escalates exceptions to care teams",
+      "Provides empathetic between-session mental health support",
     ],
     whatItDoesNot: [
       "No medical advice",
       "No intrusive communication",
+      "No autonomous mental health interventions",
     ],
     whyItWorks: "Consent-based engagement. Clear escalation to humans. Improves continuity without overreach.",
     integration: "CRM / Patient engagement tools, Appointment systems",
     timeline: "4-6 weeks",
-    costRange: "$8K - $15K",
     impact: ["Improved follow-up adherence", "Reduced readmissions", "Better patient experience"],
     color: "text-yellow-500",
     bgColor: "bg-yellow-500/10",
   },
   {
     id: "4",
-    name: "Diagnostic & Reporting Workflow Intelligence",
-    shortName: "Diagnostic AI",
-    bottleneckSolved: "Diagnostic delays and reporting inefficiencies",
+    name: "Clinical Decision Support Intelligence",
+    shortName: "Decision Support AI",
+    bottleneckSolved: "Clinical decision delays, knowledge retrieval bottlenecks, diagnostic near-misses",
     resolvesBottleneckIds: ["4", "7"],
-    relevantRoleIds: ["diagnostic"],
+    relevantRoleIds: ["hospital", "clinic", "diagnostic"],
     whatItDoes: [
-      "Assists in organizing diagnostic workflows",
-      "Flags delays and inconsistencies",
-      "Improves coordination between labs and clinicians",
+      "Delivers evidence-based clinical answers via RAG in seconds",
+      "Surfaces ranked differential diagnoses with supporting citations",
+      "Flags drug interactions and contraindications before prescribing",
+      "Assists radiologists with imaging pre-screening (bottleneck 7)",
     ],
     whatItDoesNot: [
-      "No automated diagnosis",
-      "No interpretation without clinician oversight",
+      "No automated diagnosis or prescribing",
+      "No autonomous clinical recommendations without review",
     ],
-    whyItWorks: "Focuses on workflow efficiency, not diagnosis. Reduces turnaround time safely.",
-    integration: "LIS, EMR",
-    timeline: "5-7 weeks",
-    costRange: "$10K - $18K",
-    impact: ["Faster report availability", "Reduced diagnostic delays", "Better clinical coordination"],
+    whyItWorks: "Human-in-the-loop at every step. Clinician always reviews, approves, or overrides. Full audit trail on every query.",
+    integration: "EMR, LIS, Clinical knowledge bases, PACS/RIS",
+    timeline: "5-8 weeks",
+    impact: ["Faster clinical queries", "Fewer near-misses", "More confident clinical decisions"],
     color: "text-blue-500",
     bgColor: "bg-blue-500/10",
   },
@@ -403,7 +558,6 @@ const aiSystems = [
     whyItWorks: "Explainable logic. Audit-ready records. Reduces revenue leakage without compliance risk.",
     integration: "Billing & claims systems, Revenue cycle platforms",
     timeline: "6-9 weeks",
-    costRange: "$18K - $35K",
     impact: ["Reduced claim rejections", "Faster reimbursements", "More predictable revenue"],
     color: "text-green-500",
     bgColor: "bg-green-500/10",
@@ -413,7 +567,7 @@ const aiSystems = [
     name: "Compliance, Audit & Governance Intelligence Layer",
     shortName: "Governance AI",
     bottleneckSolved: "Compliance anxiety, audit risk, data governance issues",
-    resolvesBottleneckIds: ["6", "8"],
+    resolvesBottleneckIds: [],
     relevantRoleIds: ["hospital", "diagnostic", "digital"],
     whatItDoes: [
       "Tracks AI usage and data access",
@@ -424,7 +578,6 @@ const aiSystems = [
     whyItWorks: "Full traceability. No hidden logic. Designed for regulators as well as clinicians.",
     integration: "All AI systems, Data access controls",
     timeline: "5-7 weeks",
-    costRange: "$12K - $22K",
     impact: ["Reduced compliance risk", "Faster audits", "Increased leadership confidence"],
     color: "text-purple-500",
     bgColor: "bg-purple-500/10",
@@ -434,17 +587,18 @@ const aiSystems = [
 const roleBasedStartingPoints = [
   { role: "Hospitals & Large Systems", systems: "Patient Intake → Clinical Workflow → Claims Intelligence" },
   { role: "Clinics & Specialty Practices", systems: "Intake → Follow-Ups → Documentation Support" },
-  { role: "Diagnostic Centers", systems: "Reporting Workflow → Integration → Compliance Layer" },
+  { role: "Diagnostic Centers", systems: "Clinical Decision Support → Medical Imaging AI → Compliance Layer" },
   { role: "Digital Health Platforms", systems: "Engagement → Intake → Governance Layer" },
 ];
 
 
 const principles = [
-  { num: 1, title: "Human-in-the-Loop by Design", desc: "AI assists decisions — it never replaces clinical judgment" },
-  { num: 2, title: "Explainability at Every Step", desc: "Every recommendation has a clear, reviewable rationale" },
-  { num: 3, title: "No Autonomous Clinical Actions", desc: "No diagnosis, treatment, or escalation happens without human approval" },
-  { num: 4, title: "Audit-Ready Architecture", desc: "Every AI action is logged, traceable, and reviewable" },
-  { num: 5, title: "Privacy & Consent First", desc: "Patient data is protected, access-controlled, and purpose-limited" },
+  { num: 1, title: "Human-in-the-Loop by Design", desc: "AI assists decisions — it never replaces clinical judgment. Every output is a recommendation, not an order." },
+  { num: 2, title: "Explainability at Every Step", desc: "Every recommendation includes source citations and confidence scores. No black-box outputs." },
+  { num: 3, title: "No Autonomous Clinical Actions", desc: "No diagnosis, treatment, prescription, or escalation happens without human review and approval." },
+  { num: 4, title: "Audit-Ready Architecture", desc: "Every AI action is logged, timestamped, traceable, and reviewable. Full accountability chain." },
+  { num: 5, title: "Privacy & Consent First", desc: "Patient data is protected, access-controlled, and purpose-limited. Never used for external model training." },
+  { num: 6, title: "Fail-safe Design", desc: "When AI is uncertain, it says so — and escalates to a human. AI fails safely, never silently." },
 ];
 
 function HealthcareSolutionFinder() {
@@ -479,13 +633,13 @@ function HealthcareSolutionFinder() {
   ];
 
   const getRecommendation = () => {
-    const recommendations: Record<string, { system: string; desc: string; timeline: string; cost: string; phase2: string }> = {
-      intake: { system: "Patient Intake & Triage Intelligence", desc: "High patient volume and intake challenges indicate this as the safest starting point.", timeline: "5-7 weeks", cost: "$14K - $18K", phase2: "Clinical Documentation Support" },
-      documentation: { system: "Clinical Workflow & Documentation Support", desc: "Reducing clinician admin burden improves satisfaction and care quality.", timeline: "6-8 weeks", cost: "$18K - $25K", phase2: "Diagnostic Workflow Intelligence" },
-      followups: { system: "Patient Engagement & Follow-Up Intelligence", desc: "Improving adherence and reducing readmissions directly impacts outcomes.", timeline: "4-6 weeks", cost: "$10K - $15K", phase2: "Care Continuity Dashboard" },
-      diagnostics: { system: "Diagnostic & Reporting Workflow Intelligence", desc: "Faster reports and better coordination reduce diagnostic delays.", timeline: "5-7 weeks", cost: "$12K - $18K", phase2: "Claims Processing Support" },
-      claims: { system: "Claims & Revenue Cycle Intelligence", desc: "Reducing rejections and faster reimbursements improve financial health.", timeline: "6-9 weeks", cost: "$20K - $35K", phase2: "Prior Authorization Automation" },
-      compliance: { system: "Compliance & Governance Intelligence Layer", desc: "Audit-ready systems with full traceability protect the organization.", timeline: "5-7 weeks", cost: "$15K - $22K", phase2: "Clinical Audit Dashboard" },
+    const recommendations: Record<string, { system: string; desc: string; timeline: string; phase2: string }> = {
+      intake: { system: "Patient Intake & Triage Intelligence", desc: "High patient volume and intake challenges indicate this as the safest starting point.", timeline: "5-7 weeks", phase2: "Clinical Documentation Support" },
+      documentation: { system: "Clinical Workflow & Documentation Support", desc: "Reducing clinician admin burden improves satisfaction and care quality.", timeline: "6-8 weeks", phase2: "Clinical Decision Support Intelligence" },
+      followups: { system: "Patient Engagement & Follow-Up Intelligence", desc: "Improving adherence and reducing readmissions directly impacts outcomes.", timeline: "4-6 weeks", phase2: "Care Continuity Dashboard" },
+      diagnostics: { system: "Clinical Decision Support Intelligence", desc: "Evidence-based clinical answers in 90 seconds, plus imaging AI to reduce radiologist workload.", timeline: "5-8 weeks", phase2: "Claims Processing Support" },
+      claims: { system: "Claims & Revenue Cycle Intelligence", desc: "Reducing rejections and faster reimbursements improve financial health.", timeline: "6-9 weeks", phase2: "Prior Authorization Automation" },
+      compliance: { system: "Compliance & Governance Intelligence Layer", desc: "Audit-ready systems with full traceability protect the organization.", timeline: "5-7 weeks", phase2: "Clinical Audit Dashboard" },
     };
     return primaryChallenge ? recommendations[primaryChallenge] : recommendations.intake;
   };
@@ -690,10 +844,6 @@ function HealthcareSolutionFinder() {
                     <p className="text-xs text-muted-foreground mb-1">Expected Timeline</p>
                     <p className="font-bold text-base">{recommendation.timeline}</p>
                   </div>
-                  <div className="p-3 bg-background/50 rounded-lg border border-border">
-                    <p className="text-xs text-muted-foreground mb-1">Cost Range</p>
-                    <p className="font-bold text-base">{recommendation.cost}</p>
-                  </div>
                 </div>
 
                 <div className="p-3 bg-background/30 rounded-lg border border-border">
@@ -726,6 +876,8 @@ function LeadForm() {
   const { triggerCelebration } = useCelebration();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
+    name: "",
+    organization: "",
     orgType: "",
     challenge: "",
     patientVolume: "",
@@ -739,8 +891,9 @@ function LeadForm() {
 
     const result = await submitLead(
       {
-        name: formData.email,
+        name: formData.name || formData.email,
         email: formData.email,
+        company: formData.organization,
         industry: "healthcare",
         companySize: formData.patientVolume,
         challenges: [formData.challenge],
@@ -768,6 +921,8 @@ function LeadForm() {
       });
 
       setFormData({
+        name: "",
+        organization: "",
         orgType: "",
         challenge: "",
         patientVolume: "",
@@ -798,6 +953,30 @@ function LeadForm() {
       <CardContent>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="grid md:grid-cols-2 gap-4">
+            <div>
+              <Label htmlFor="name">Your Name</Label>
+              <Input
+                id="name"
+                name="name"
+                autoComplete="name"
+                value={formData.name}
+                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                placeholder="Dr. / Mr. / Ms. Your Name"
+                data-testid="input-name"
+              />
+            </div>
+            <div>
+              <Label htmlFor="organization">Organization Name</Label>
+              <Input
+                id="organization"
+                name="organization"
+                autoComplete="organization"
+                value={formData.organization}
+                onChange={(e) => setFormData({ ...formData, organization: e.target.value })}
+                placeholder="Hospital / Clinic / Platform Name"
+                data-testid="input-organization"
+              />
+            </div>
             <div>
               <Label htmlFor="orgType">Organization Type</Label>
               <Select
@@ -1383,6 +1562,226 @@ function DecisionToolsSection() {
   );
 }
 
+function ContextualLeadForm() {
+  const { toast } = useToast();
+  const { triggerCelebration } = useCelebration();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState({ name: "", email: "", organization: "", challenge: "" });
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    const result = await submitLead(
+      { name: formData.name, email: formData.email, company: formData.organization, industry: "healthcare", challenges: [formData.challenge] },
+      { formType: "healthcare-midpage-cta", source: "/industries/healthcare-ai-solutions", ctaId: "healthcare-contextual-form", ctaText: "Get a Custom AI Strategy", ctaLocation: "mid-page-use-cases" }
+    );
+    setIsSubmitting(false);
+    if (result.success) {
+      triggerCelebration();
+      setSubmitted(true);
+      toast({ title: "You're in!", description: "Our team will reach out within one business day." });
+    } else {
+      toast({ title: "Something went wrong", description: "Please try again or contact us directly.", variant: "destructive" });
+    }
+  };
+
+  if (submitted) {
+    return (
+      <div className="text-center py-12">
+        <div className="w-16 h-16 bg-green-500/10 rounded-full flex items-center justify-center mx-auto mb-4">
+          <CheckCircle2 className="w-8 h-8 text-green-500" />
+        </div>
+        <h3 className="text-xl font-bold mb-2">Request Received</h3>
+        <p className="text-muted-foreground">Our healthcare AI team will reach out within one business day with a tailored strategy.</p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="max-w-2xl mx-auto">
+      <form onSubmit={handleSubmit} className="space-y-4">
+        <div className="grid sm:grid-cols-2 gap-4">
+          <div>
+            <Label htmlFor="ctx-name">Your Name</Label>
+            <Input id="ctx-name" name="name" autoComplete="name" value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} placeholder="Dr. / Mr. / Ms. Your Name" data-testid="input-ctx-name" />
+          </div>
+          <div>
+            <Label htmlFor="ctx-email">Work Email *</Label>
+            <Input id="ctx-email" name="email" type="email" autoComplete="email" required value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} placeholder="you@organization.com" data-testid="input-ctx-email" />
+          </div>
+          <div>
+            <Label htmlFor="ctx-org">Organization Name</Label>
+            <Input id="ctx-org" name="organization" autoComplete="organization" value={formData.organization} onChange={(e) => setFormData({ ...formData, organization: e.target.value })} placeholder="Hospital / Clinic / Platform" data-testid="input-ctx-org" />
+          </div>
+          <div>
+            <Label htmlFor="ctx-challenge">What are you looking to solve?</Label>
+            <Select value={formData.challenge} onValueChange={(v) => setFormData({ ...formData, challenge: v })}>
+              <SelectTrigger id="ctx-challenge" data-testid="select-ctx-challenge"><SelectValue placeholder="Select a use case" /></SelectTrigger>
+              <SelectContent>
+                <SelectItem value="intake">Patient Intake & Triage Automation</SelectItem>
+                <SelectItem value="documentation">Clinical Documentation AI</SelectItem>
+                <SelectItem value="care-coordination">Patient Flow & Care Coordination</SelectItem>
+                <SelectItem value="clinical-decision">Clinical Decision Support</SelectItem>
+                <SelectItem value="revenue-cycle">Revenue Cycle & Claims Intelligence</SelectItem>
+                <SelectItem value="engagement">Patient Engagement & Follow-Up</SelectItem>
+                <SelectItem value="imaging">Medical Imaging AI</SelectItem>
+                <SelectItem value="mental-health">Mental Health & Patient Support AI</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+        </div>
+        <Button type="submit" className="w-full" disabled={isSubmitting} data-testid="button-ctx-submit">
+          {isSubmitting ? (<><Loader2 className="w-4 h-4 mr-2 animate-spin" />Sending...</>) : (<>Get a Custom AI Strategy <ArrowRight className="w-4 h-4 ml-2" /></>)}
+        </Button>
+        <p className="text-xs text-center text-muted-foreground">No commitment. Our healthcare AI team will respond within one business day.</p>
+      </form>
+    </div>
+  );
+}
+
+function BottomLeadForm() {
+  const { toast } = useToast();
+  const { triggerCelebration } = useCelebration();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState({ name: "", email: "", organization: "", useCase: "" });
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    const result = await submitLead(
+      { name: formData.name, email: formData.email, company: formData.organization, industry: "healthcare", challenges: [formData.useCase] },
+      { formType: "healthcare-bottom-cta", source: "/industries/healthcare-ai-solutions", ctaId: "healthcare-bottom-form", ctaText: "Book Free Strategy Session", ctaLocation: "bottom-page-post-faq" }
+    );
+    setIsSubmitting(false);
+    if (result.success) {
+      triggerCelebration();
+      setSubmitted(true);
+      toast({ title: "You're in!", description: "Our healthcare AI team will reach out within one business day." });
+    } else {
+      toast({ title: "Something went wrong", description: "Please try again or contact us directly.", variant: "destructive" });
+    }
+  };
+
+  if (submitted) {
+    return (
+      <div className="text-center py-12">
+        <div className="w-16 h-16 bg-green-500/10 rounded-full flex items-center justify-center mx-auto mb-4">
+          <CheckCircle2 className="w-8 h-8 text-green-500" />
+        </div>
+        <h3 className="text-xl font-bold mb-2">Request Received</h3>
+        <p className="text-muted-foreground">Our healthcare AI team will reach out within one business day with a tailored strategy roadmap.</p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="max-w-2xl mx-auto">
+      <form onSubmit={handleSubmit} className="space-y-4">
+        <div className="grid sm:grid-cols-2 gap-4">
+          <div>
+            <Label htmlFor="btm-name">Your Name</Label>
+            <Input id="btm-name" name="name" autoComplete="name" value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} placeholder="Dr. / Mr. / Ms. Your Name" data-testid="input-bottom-name" />
+          </div>
+          <div>
+            <Label htmlFor="btm-email">Work Email *</Label>
+            <Input id="btm-email" name="email" type="email" autoComplete="email" required value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} placeholder="you@organization.com" data-testid="input-bottom-email" />
+          </div>
+          <div>
+            <Label htmlFor="btm-org">Organization</Label>
+            <Input id="btm-org" name="organization" autoComplete="organization" value={formData.organization} onChange={(e) => setFormData({ ...formData, organization: e.target.value })} placeholder="Hospital / Clinic / Platform" data-testid="input-bottom-org" />
+          </div>
+          <div>
+            <Label htmlFor="btm-usecase">Primary Use Case</Label>
+            <Select value={formData.useCase} onValueChange={(v) => setFormData({ ...formData, useCase: v })}>
+              <SelectTrigger id="btm-usecase" data-testid="select-bottom-usecase"><SelectValue placeholder="What do you want to solve?" /></SelectTrigger>
+              <SelectContent>
+                <SelectItem value="intake">Patient Intake & Triage Automation</SelectItem>
+                <SelectItem value="documentation">Clinical Documentation AI</SelectItem>
+                <SelectItem value="care-coordination">Patient Flow & Care Coordination</SelectItem>
+                <SelectItem value="clinical-decision">Clinical Decision Support</SelectItem>
+                <SelectItem value="revenue-cycle">Revenue Cycle & Claims Intelligence</SelectItem>
+                <SelectItem value="engagement">Patient Engagement & Follow-Up</SelectItem>
+                <SelectItem value="imaging">Medical Imaging AI</SelectItem>
+                <SelectItem value="mental-health">Mental Health & Patient Support AI</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+        </div>
+        <Button type="submit" className="w-full" disabled={isSubmitting} data-testid="button-bottom-submit">
+          {isSubmitting ? (<><Loader2 className="w-4 h-4 mr-2 animate-spin" />Sending...</>) : (<>Book Free Strategy Session <ArrowRight className="w-4 h-4 ml-2" /></>)}
+        </Button>
+        <p className="text-xs text-center text-muted-foreground">No commitment. HIPAA-compliant. Our healthcare AI team responds within one business day.</p>
+      </form>
+    </div>
+  );
+}
+
+const statsData = [
+  { value: "$36.7B", label: "Healthcare AI market in 2025", sub: "→ $505.59B by 2033 · 38.9% CAGR (Grand View Research)", icon: TrendingUp, color: "text-primary" },
+  { value: "73%", label: "Of patients face care delays globally", sub: "Average 70-day wait for an appointment (Vention)", icon: Clock, color: "text-orange-500" },
+  { value: "54%", label: "Physician burnout rate in 2025", sub: "35% spend more time on admin than patients (Vention)", icon: AlertTriangle, color: "text-red-500" },
+  { value: "85%", label: "Of healthcare orgs adopted generative AI", sub: "Or actively exploring it (Vention)", icon: BarChart3, color: "text-green-500" },
+  { value: "66%", label: "Of physicians used AI in 2025", sub: "Up 78% from 38% in 2023 (AMA/DemandSage)", icon: UserCheck, color: "text-blue-500" },
+  { value: "70%", label: "Of healthcare orgs use AI agents", sub: "To support clinical workflows (Azumo)", icon: Cpu, color: "text-cyan-500" },
+];
+
+const howItWorksSteps = [
+  { step: 1, title: "Input", desc: "Patient provides symptoms, questions, or documents — via chat, voice, or form. Clinician receives a request or trigger from an EHR event or workflow rule.", duration: "Real-time" },
+  { step: 2, title: "Structure", desc: "AI converts unstructured clinical input into organized, searchable, actionable data — extracting intent, entities, urgency signals, and clinical context.", duration: "< 1 second" },
+  { step: 3, title: "Retrieve", desc: "AI searches clinical guidelines, the patient's history, treatment protocols, formulary, and institutional policies — using RAG retrieval with source citations.", duration: "< 2 seconds" },
+  { step: 4, title: "Recommend", desc: "AI generates a recommendation — triage routing, clinical note, care plan, coding suggestion, or knowledge answer — with a confidence score and reasoning chain.", duration: "< 3 seconds" },
+  { step: 5, title: "Validate", desc: "The human clinician reviews, approves, modifies, or overrides the AI suggestion. No autonomous clinical action. Human always owns the outcome.", duration: "Clinician-controlled" },
+  { step: 6, title: "Learn", desc: "Every interaction feeds back into the system — improving model accuracy, updating knowledge bases, and refining clinical pathways over time.", duration: "Continuous" },
+];
+
+const comparisonRows = [
+  { area: "Patient intake", traditional: "15–25 min manual form filling, front desk bottleneck", withAI: "3–5 min pre-visit AI collection via chat/voice, zero wait" },
+  { area: "Triage decisions", traditional: "Varies by staff experience, inconsistent across shifts", withAI: "Consistent, evidence-based, 24/7, 99%+ detection rate" },
+  { area: "Clinical documentation", traditional: "2–3 hours/day per clinician, post-visit charting", withAI: "Ambient AI generates notes during encounter, clinician reviews" },
+  { area: "Follow-up coordination", traditional: "Staff-dependent, phone calls during business hours", withAI: "Automated multi-channel (voice, WhatsApp, SMS), 24/7" },
+  { area: "Claims processing", traditional: "8–15% rejection rate, manual correction cycles", withAI: "AI pre-screens, flags errors before submission, 35–50% rejection reduction" },
+  { area: "Knowledge retrieval", traditional: "Search through docs, ask colleagues, 15+ minutes", withAI: "RAG-powered instant answer with source citation, 30 seconds" },
+  { area: "Patient monitoring", traditional: "Periodic check-ins during visits only", withAI: "Continuous AI-powered monitoring between visits" },
+  { area: "Scaling capacity", traditional: "Hire more staff (linear cost increase)", withAI: "Same AI system handles 10x volume (non-linear scaling)" },
+];
+
+const useCasesRows = [
+  { num: 1, useCase: "Patient Intake & Triage", problem: "Overcrowded OPDs, inconsistent triage", aiSolution: "Collects symptoms via chat/voice, prioritizes urgency", outcome: "40–60% faster intake", bottleneckId: "1", icon: HeartPulse },
+  { num: 2, useCase: "Clinical Documentation", problem: "Clinicians spending 2–3 hrs/day on notes", aiSolution: "Ambient notes, auto-generated reports", outcome: "1–2 hours/day reclaimed per clinician", bottleneckId: "2", icon: FileText },
+  { num: 3, useCase: "Patient Flow & Coordination", problem: "Fragmented handoffs, missed follow-ups", aiSolution: "Multi-agent scheduling, routing, follow-ups", outcome: "65% admin overhead reduction", bottleneckId: "3", icon: Network },
+  { num: 4, useCase: "Clinical Decision Support", problem: "Clinicians querying 5+ disconnected systems", aiSolution: "RAG-powered guideline retrieval, evidence-based suggestions", outcome: "Clinical queries: 12 min → 90 sec", bottleneckId: "4", icon: Brain },
+  { num: 5, useCase: "Revenue Cycle & Claims", problem: "8–15% claim rejection rate, slow reimbursement", aiSolution: "Pre-submission claim review, coding error detection", outcome: "35–50% rejection reduction", bottleneckId: "5", icon: BarChart3 },
+  { num: 6, useCase: "Patient Engagement", problem: "25–35% no-show rates, poor medication adherence", aiSolution: "Voice/chat follow-ups, reminders, adherence monitoring", outcome: "25–40% no-show reduction", bottleneckId: "6", icon: MessageSquare },
+  { num: 7, useCase: "Medical Imaging", problem: "Radiologist backlog, delayed diagnoses", aiSolution: "AI pre-screens scans, flags anomalies for review", outcome: "30% radiologist workload reduction", bottleneckId: "7", icon: Microscope },
+  { num: 8, useCase: "Mental Health Support", problem: "Long wait times, limited access, stigma barriers", aiSolution: "Empathetic AI companions, crisis detection, therapist handoff", outcome: "10x patient access expansion", bottleneckId: "8", icon: Brain },
+];
+
+const predictiveRows = [
+  { prediction: "Readmission risk", dataSources: "Patient history, vitals, medications, social determinants", outcome: "25% reduction in readmission rates", link: "/services/ai-predictive-analytics/" },
+  { prediction: "Disease progression", dataSources: "Lab results, longitudinal records, genomic data", outcome: "Earlier interventions, improved outcomes", link: "/services/ai-predictive-analytics/" },
+  { prediction: "Resource demand", dataSources: "Historical patient volumes, seasonality, community health data", outcome: "Staffing optimization, reduced overtime", link: "/services/ai-predictive-analytics/" },
+  { prediction: "Equipment failure", dataSources: "IoT sensor data, maintenance logs", outcome: "50% downtime reduction through predictive maintenance", link: "/services/ai-predictive-analytics/" },
+];
+
+const frameworkRows = [
+  { framework: "Operational Intelligence", healthcareApplication: "Hospital operations monitoring → patient flow prediction → autonomous scheduling (Layers 1–4)", link: "/intelligence/operational-ai/" },
+  { framework: "Conversational Intelligence", healthcareApplication: "Patient intake → clinical Q&A → follow-up management (Levels 2–4 on the Spectrum)", link: "/intelligence/conversational-ai/" },
+  { framework: "Decision Intelligence", healthcareApplication: "Clinical decision support (Level 1) → claims automation (Level 3) → resource allocation (Level 2)", link: "/intelligence/decision-ai/" },
+  { framework: "Autonomous Agentic Systems", healthcareApplication: "Care coordination agents → L2 (Semi-Autonomous) with strict governance", link: "/intelligence/autonomous-agentic-ai/" },
+  { framework: "Enterprise Knowledge Intelligence", healthcareApplication: "Clinical knowledge retrieval → Stage 4 (Intelligent) with HIPAA-compliant access control", link: "/intelligence/enterprise-knowledge-ai/" },
+];
+
+const governanceRows = [
+  { principle: "Human-in-the-loop", requirement: "AI assists clinical decisions — never makes them. Clinicians own every patient outcome.", hipaaRelevance: "Supports §164.308 workforce training and policy requirements" },
+  { principle: "Explainability", requirement: "Every AI recommendation includes reasoning, source citation, and confidence score. No black boxes.", hipaaRelevance: "Aligns with audit control requirements §164.312" },
+  { principle: "No autonomous clinical actions", requirement: "No diagnosis. No treatment. No prescribing. No escalation without human approval.", hipaaRelevance: "Clinical liability requires human responsibility for every care decision" },
+  { principle: "HIPAA compliance", requirement: "Patient data stays in controlled environments. Never used for external model training. Role-based access control.", hipaaRelevance: "Technical and administrative safeguards §164.312 & §164.308" },
+  { principle: "Audit-ready architecture", requirement: "Every AI action logged, traceable, and reviewable. Ready for regulatory audit at any time.", hipaaRelevance: "Audit controls §164.312(b) — complete action trails" },
+  { principle: "Fail-safe design", requirement: "When AI is uncertain, it says so. When confidence is low, it escalates. When systems fail, they fail safely.", hipaaRelevance: "Supports patient safety and clinical integrity — no silent failures" },
+];
+
 export default function HealthcareIndustryPage() {
   const [selectedBottleneck, setSelectedBottleneck] = useState(bottlenecks[0]);
   const [selectedSystem, setSelectedSystem] = useState(aiSystems[0]);
@@ -1391,8 +1790,37 @@ export default function HealthcareIndustryPage() {
     <div className="min-h-screen bg-background">
       <MainHeader />
 
+      {/* ==================== BREADCRUMB + AEO DIRECT ANSWER ==================== */}
+      <div className="pt-24 lg:pt-28 pb-0 bg-gradient-to-br from-background via-cyan-500/5 to-primary/10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <nav aria-label="Breadcrumb" className="mb-4" data-testid="breadcrumb-nav">
+            <ol className="flex items-center gap-1.5 text-sm text-muted-foreground flex-wrap">
+              <li><Link href="/" className="hover:text-foreground transition-colors" data-testid="breadcrumb-home">Home</Link></li>
+              <li><ChevronRight className="w-3 h-3" /></li>
+              <li><Link href="/industries/" className="hover:text-foreground transition-colors" data-testid="breadcrumb-industries">Industries</Link></li>
+              <li><ChevronRight className="w-3 h-3" /></li>
+              <li className="text-foreground font-medium" data-testid="breadcrumb-current">Healthcare AI Solutions</li>
+            </ol>
+          </nav>
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="mb-6 p-5 bg-primary/5 border border-primary/20 rounded-xl"
+            data-testid="aeo-direct-answer"
+          >
+            <p className="text-xs font-semibold text-primary uppercase tracking-wider mb-2 flex items-center gap-1.5">
+              <Brain className="w-3.5 h-3.5" />
+              Direct Answer: How is AI Used in Healthcare?
+            </p>
+            <p className="text-sm text-foreground leading-relaxed" data-testid="text-aeo-direct-answer">
+              AI in healthcare is used to automate patient intake, assist clinical decisions, reduce administrative burden, accelerate diagnostics, manage revenue cycles, and improve patient outcomes — while maintaining human oversight and HIPAA compliance at every step. It enables healthcare organizations to do more with less, without replacing clinical judgment.
+            </p>
+          </motion.div>
+        </div>
+      </div>
+
       {/* ==================== HERO SECTION ==================== */}
-      <section className="pt-24 lg:pt-28 pb-16 bg-gradient-to-br from-background via-cyan-500/5 to-primary/10">
+      <section className="pt-4 pb-16 bg-gradient-to-br from-background via-cyan-500/5 to-primary/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             {/* Left: Hero Content */}
@@ -1443,6 +1871,160 @@ export default function HealthcareIndustryPage() {
               <HealthcareSolutionFinder />
             </motion.div>
           </div>
+        </div>
+      </section>
+
+      {/* ==================== STATS: WHY HEALTHCARE NEEDS AI NOW ==================== */}
+      <section className="py-16 border-b border-border bg-background" data-testid="section-stats">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-10">
+            <Badge className="mb-3"><TrendingUp className="w-3 h-3 mr-1" />Healthcare AI Market 2025</Badge>
+            <h2 className="text-2xl md:text-3xl font-bold mb-3">Why Healthcare Needs AI — Now</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">The healthcare AI market is exploding. Organizations that move now gain compounding advantages in efficiency, patient outcomes, and competitive positioning.</p>
+          </motion.div>
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4" data-testid="stats-grid">
+            {statsData.map((stat, i) => (
+              <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.06 }}>
+                <Card className="h-full hover-elevate" data-testid={`stat-card-${i}`}>
+                  <CardContent className="pt-6">
+                    <div className="flex items-start gap-4">
+                      <div className={`p-2.5 rounded-lg bg-primary/10 shrink-0`}><stat.icon className={`w-5 h-5 ${stat.color}`} /></div>
+                      <div>
+                        <p className={`text-2xl font-bold ${stat.color}`} data-testid={`stat-value-${i}`}>{stat.value}</p>
+                        <p className="text-sm font-medium text-foreground">{stat.label}</p>
+                        <p className="text-xs text-muted-foreground mt-0.5">{stat.sub}</p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ==================== HOW HEALTHCARE AI WORKS ==================== */}
+      <section className="py-16 bg-muted/20" data-testid="section-how-ai-works">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-10">
+            <Badge className="mb-3"><Cpu className="w-3 h-3 mr-1" />How It Works</Badge>
+            <h2 className="text-2xl md:text-3xl font-bold mb-3">How Healthcare AI Works — Simplified</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">The six-step AI loop that underpins every clinical and operational AI system AGIX builds — designed for AEO extraction and voice assistant retrieval.</p>
+          </motion.div>
+          <div className="space-y-4">
+            {howItWorksSteps.map((step, i) => (
+              <motion.div key={i} initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.07 }}>
+                <div className="flex gap-4 items-start p-5 rounded-xl border border-border bg-card hover-elevate" data-testid={`how-it-works-step-${step.step}`}>
+                  <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center shrink-0">
+                    <span className="font-bold text-primary text-sm">{step.step}</span>
+                  </div>
+                  <div className="flex-1">
+                    <div className="flex items-center justify-between flex-wrap gap-2 mb-1">
+                      <h3 className="font-semibold text-foreground">{step.title}</h3>
+                      <Badge variant="outline" className="text-xs text-muted-foreground">{step.duration}</Badge>
+                    </div>
+                    <p className="text-sm text-muted-foreground">{step.desc}</p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+          <blockquote className="mt-8 p-5 bg-primary/5 border-l-4 border-primary rounded-r-xl" data-testid="how-it-works-quote">
+            <p className="text-sm font-medium text-foreground italic">
+              &ldquo;This loop — input → structure → retrieve → recommend → validate → learn — is the foundation of every healthcare AI system AGIX builds. <strong>The human always validates. The AI always explains.</strong>&rdquo;
+            </p>
+          </blockquote>
+        </div>
+      </section>
+
+      {/* ==================== AI VS TRADITIONAL COMPARISON ==================== */}
+      <section className="py-16 bg-background" data-testid="section-comparison-table">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-10">
+            <Badge className="mb-3"><Zap className="w-3 h-3 mr-1" />The Difference AI Makes</Badge>
+            <h2 className="text-2xl md:text-3xl font-bold mb-3">AI vs. Traditional Healthcare Operations</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">Across every major operational domain, AI-powered workflows consistently outperform manual processes — with measurable, auditable outcomes.</p>
+          </motion.div>
+          <div className="overflow-x-auto rounded-xl border border-border" data-testid="comparison-table">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="bg-muted/50 border-b border-border">
+                  <th className="text-left py-3 px-4 font-semibold text-foreground w-1/4">Dimension</th>
+                  <th className="text-left py-3 px-4 font-semibold text-orange-500">Traditional (Manual)</th>
+                  <th className="text-left py-3 px-4 font-semibold text-green-500">AI-Powered (AGIX)</th>
+                </tr>
+              </thead>
+              <tbody>
+                {comparisonRows.map((row, i) => (
+                  <tr key={i} className={`border-b border-border last:border-0 ${i % 2 === 0 ? "bg-background" : "bg-muted/10"}`} data-testid={`comparison-row-${i}`}>
+                    <td className="py-3 px-4 font-medium text-foreground">{row.area}</td>
+                    <td className="py-3 px-4 text-muted-foreground">
+                      <span className="flex items-start gap-1.5"><XCircle className="w-4 h-4 text-orange-500 shrink-0 mt-0.5" />{row.traditional}</span>
+                    </td>
+                    <td className="py-3 px-4 text-muted-foreground">
+                      <span className="flex items-start gap-1.5"><CheckCircle2 className="w-4 h-4 text-green-500 shrink-0 mt-0.5" />{row.withAI}</span>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <blockquote className="mt-6 p-5 bg-muted/30 border-l-4 border-orange-500 rounded-r-xl" data-testid="comparison-quote">
+            <p className="text-sm font-medium text-foreground italic">
+              &ldquo;The choice isn&apos;t AI vs clinicians. It&apos;s: clinicians drowning in admin vs clinicians supported by AI. Healthcare AI doesn&apos;t replace care — it removes the friction that prevents care from happening.&rdquo;
+            </p>
+          </blockquote>
+        </div>
+      </section>
+
+      {/* ==================== USE CASES QUICK SUMMARY ==================== */}
+      <section className="py-16 bg-muted/20">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-10">
+            <Badge className="mb-3"><BookOpen className="w-3 h-3 mr-1" />Use Cases</Badge>
+            <h2 className="text-2xl md:text-3xl font-bold mb-3">Best Use Cases for AI in Healthcare — Quick Summary</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">Eight proven AI applications, each addressing a specific operational bottleneck. AGIX builds enterprise-grade systems for all eight.</p>
+          </motion.div>
+          <div className="overflow-x-auto rounded-xl border border-border" data-testid="use-cases-table">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="bg-muted/50 border-b border-border">
+                  <th className="text-left py-3 px-4 font-semibold w-8">#</th>
+                  <th className="text-left py-3 px-4 font-semibold">Use Case</th>
+                  <th className="text-left py-3 px-4 font-semibold hidden md:table-cell">What AI Does</th>
+                  <th className="text-left py-3 px-4 font-semibold text-green-500">Impact</th>
+                </tr>
+              </thead>
+              <tbody>
+                {useCasesRows.map((row, i) => (
+                  <tr key={i} className={`border-b border-border last:border-0 ${i % 2 === 0 ? "bg-background" : "bg-muted/10"}`} data-testid={`use-case-row-${i}`}>
+                    <td className="py-3 px-4 text-muted-foreground font-medium">{row.num}</td>
+                    <td className="py-3 px-4">
+                      <Link href={`#bottleneck-${row.bottleneckId}`} className="flex items-center gap-2 hover:text-primary transition-colors group">
+                        <row.icon className="w-4 h-4 text-primary shrink-0" />
+                        <span className="font-medium text-foreground group-hover:text-primary">{row.useCase}</span>
+                      </Link>
+                    </td>
+                    <td className="py-3 px-4 text-muted-foreground hidden md:table-cell">{row.aiSolution}</td>
+                    <td className="py-3 px-4 font-medium text-green-500">{row.outcome}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p className="text-center text-xs text-muted-foreground mt-3">Click any use case to jump to its detailed bottleneck analysis below.</p>
+        </div>
+      </section>
+
+      {/* ==================== MID-PAGE LEAD FORM ==================== */}
+      <section className="py-16 bg-gradient-to-r from-primary/10 via-cyan-500/5 to-primary/10 border-y border-border">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-8">
+            <Badge className="mb-3"><HeartPulse className="w-3 h-3 mr-1" />Get a Custom Strategy</Badge>
+            <h2 className="text-2xl md:text-3xl font-bold mb-3">Not Sure Where to Start with Healthcare AI?</h2>
+            <p className="text-muted-foreground max-w-xl mx-auto">Tell us your biggest challenge. Our healthcare AI team will map the right solution — with a clear timeline and zero fluff.</p>
+          </motion.div>
+          <ContextualLeadForm />
         </div>
       </section>
 
@@ -1687,6 +2269,7 @@ export default function HealthcareIndustryPage() {
             {bottlenecks.map((bottleneck) => (
               <motion.div
                 key={bottleneck.id}
+                id={`bottleneck-${bottleneck.id}`}
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
@@ -1765,6 +2348,87 @@ export default function HealthcareIndustryPage() {
                     <span className="text-muted-foreground">{selectedBottleneck.whyHappens}</span>
                   </p>
                 </div>
+
+                {/* How AI Solves This - Enrichment */}
+                <div className="grid md:grid-cols-2 gap-6 pt-2">
+                  <div>
+                    <h4 className="font-semibold mb-3 flex items-center gap-2">
+                      <Sparkles className="w-4 h-4 text-primary" />
+                      How AI Solves This
+                    </h4>
+                    <ul className="space-y-2">
+                      {(selectedBottleneck.howAISolvesIt ?? []).map((item, i) => (
+                        <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
+                          <CheckCircle2 className="w-4 h-4 text-primary shrink-0 mt-0.5" />
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold mb-3 flex items-center gap-2">
+                      <TrendingUp className="w-4 h-4 text-green-500" />
+                      Outcome with AGIX AI
+                    </h4>
+                    <div className="p-4 bg-green-500/5 rounded-lg border border-green-500/20">
+                      <p className="text-sm font-medium text-green-500">{selectedBottleneck.outcome}</p>
+                    </div>
+                    <div className="mt-3 p-3 bg-primary/5 rounded-lg border border-primary/20">
+                      <p className="text-xs text-muted-foreground mb-1">AGIX AI System for this:</p>
+                      <p className="text-sm font-semibold text-primary">{selectedBottleneck.agixSystem}</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Services, Framework, Case Study, Governance — per bottleneck */}
+                {bottleneckMeta[selectedBottleneck.id] && (
+                  <div className="grid sm:grid-cols-2 gap-4 pt-4 border-t border-border">
+                    {/* AGIX Services */}
+                    <div>
+                      <h5 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2">AGIX Services Used</h5>
+                      <div className="flex flex-wrap gap-2">
+                        {bottleneckMeta[selectedBottleneck.id].services.map((svc, i) => (
+                          <Link key={i} href={svc.href} className="text-xs px-2.5 py-1 rounded-full border border-primary/30 text-primary hover:bg-primary/10 transition-colors" data-testid={`service-link-${i}`}>
+                            {svc.name}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                    {/* Intelligence Framework */}
+                    <div>
+                      <h5 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2">Intelligence Framework</h5>
+                      <Link href={bottleneckMeta[selectedBottleneck.id].framework.href} className="text-xs font-medium text-primary hover:underline" data-testid="framework-link">
+                        {bottleneckMeta[selectedBottleneck.id].framework.name} →
+                      </Link>
+                      <p className="text-xs text-muted-foreground mt-1">{bottleneckMeta[selectedBottleneck.id].framework.context}</p>
+                    </div>
+                    {/* Case Study */}
+                    {bottleneckMeta[selectedBottleneck.id].caseStudy && (
+                      <div className="sm:col-span-2">
+                        <h5 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2">Case Study</h5>
+                        <div className="flex items-start gap-2 p-3 bg-muted/30 rounded-lg border border-border">
+                          <BookOpen className="w-4 h-4 text-primary shrink-0 mt-0.5" />
+                          <div>
+                            <Link href={bottleneckMeta[selectedBottleneck.id].caseStudy!.href} className="text-sm font-medium text-primary hover:underline" data-testid="case-study-link">
+                              {bottleneckMeta[selectedBottleneck.id].caseStudy!.name}
+                            </Link>
+                            <p className="text-xs text-muted-foreground mt-0.5">{bottleneckMeta[selectedBottleneck.id].caseStudy!.description}</p>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                    {/* Governance Note */}
+                    {bottleneckMeta[selectedBottleneck.id].governanceNote && (
+                      <div className="sm:col-span-2">
+                        <h5 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2">Governance Note</h5>
+                        <div className="flex items-start gap-2 p-3 bg-orange-500/5 rounded-lg border border-orange-500/20">
+                          <ShieldCheck className="w-4 h-4 text-orange-500 shrink-0 mt-0.5" />
+                          <p className="text-xs text-muted-foreground">{bottleneckMeta[selectedBottleneck.id].governanceNote}</p>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                )}
               </CardContent>
             </Card>
           </motion.div>
@@ -1823,7 +2487,7 @@ export default function HealthcareIndustryPage() {
                                 <CheckCircle2 className={`w-4 h-4 ${sys.color} shrink-0`} />
                                 <div className="flex-1 min-w-0">
                                   <p className="text-sm font-medium truncate">{sys.shortName}</p>
-                                  <p className="text-xs text-muted-foreground">{sys.timeline} | {sys.costRange}</p>
+                                  <p className="text-xs text-muted-foreground">{sys.timeline}</p>
                                 </div>
                               </div>
                             </div>
@@ -1934,10 +2598,6 @@ export default function HealthcareIndustryPage() {
                     <div className="text-center">
                       <p className="text-muted-foreground text-xs">Timeline</p>
                       <p className="font-semibold">{selectedSystem.timeline}</p>
-                    </div>
-                    <div className="text-center">
-                      <p className="text-muted-foreground text-xs">Cost Range</p>
-                      <p className="font-semibold">{selectedSystem.costRange}</p>
                     </div>
                   </div>
                 </div>
@@ -2071,6 +2731,71 @@ export default function HealthcareIndustryPage() {
       </section>
 
 
+      {/* ==================== PREDICTIVE ANALYTICS ==================== */}
+      <section className="py-16 bg-muted/20" data-testid="section-predictive-analytics">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-10">
+            <Badge className="mb-3"><BarChart3 className="w-3 h-3 mr-1" />Predictive AI</Badge>
+            <h2 className="text-2xl md:text-3xl font-bold mb-3">How Predictive Analytics Improves Healthcare Outcomes</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">Beyond reactive AI, AGIX builds predictive systems that forecast patient risk, demand, and financial outcomes — enabling proactive clinical and operational decisions.</p>
+          </motion.div>
+          <div className="overflow-x-auto rounded-xl border border-border" data-testid="predictive-analytics-table">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="bg-muted/50 border-b border-border">
+                  <th className="text-left py-3 px-4 font-semibold w-1/4">Prediction</th>
+                  <th className="text-left py-3 px-4 font-semibold">Data Sources</th>
+                  <th className="text-left py-3 px-4 font-semibold text-green-500 w-1/4">Outcome</th>
+                </tr>
+              </thead>
+              <tbody>
+                {predictiveRows.map((row, i) => (
+                  <tr key={i} className={`border-b border-border last:border-0 ${i % 2 === 0 ? "bg-background" : "bg-muted/10"}`} data-testid={`predictive-row-${i}`}>
+                    <td className="py-3 px-4 font-medium text-foreground">{row.prediction}</td>
+                    <td className="py-3 px-4 text-muted-foreground">{row.dataSources}</td>
+                    <td className="py-3 px-4 font-medium text-green-500">{row.outcome}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p className="text-center text-sm text-muted-foreground mt-4">
+            <Link href="/services/ai-predictive-analytics/" className="text-primary hover:underline">Explore AGIX AI Predictive Analytics →</Link>
+          </p>
+        </div>
+      </section>
+
+      {/* ==================== INTELLIGENCE FRAMEWORKS ==================== */}
+      <section className="py-16 bg-background" data-testid="section-intelligence-frameworks">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-10">
+            <Badge className="mb-3"><Layers className="w-3 h-3 mr-1" />AGIX Intelligence Frameworks</Badge>
+            <h2 className="text-2xl md:text-3xl font-bold mb-3">AGIX Healthcare Intelligence Frameworks</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">Five modular intelligence frameworks — each purpose-built for a specific healthcare operational domain, each deployable independently or as part of an integrated platform.</p>
+          </motion.div>
+          <div className="overflow-x-auto rounded-xl border border-border" data-testid="intelligence-frameworks-table">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="bg-muted/50 border-b border-border">
+                  <th className="text-left py-3 px-4 font-semibold w-1/3">AGIX Intelligence Framework</th>
+                  <th className="text-left py-3 px-4 font-semibold">Healthcare Application</th>
+                </tr>
+              </thead>
+              <tbody>
+                {frameworkRows.map((row, i) => (
+                  <tr key={i} className={`border-b border-border last:border-0 ${i % 2 === 0 ? "bg-background" : "bg-muted/10"}`} data-testid={`framework-row-${i}`}>
+                    <td className="py-3 px-4 font-medium text-primary">
+                      <Link href={row.link} className="hover:underline">{row.framework}</Link>
+                    </td>
+                    <td className="py-3 px-4 text-muted-foreground">{row.healthcareApplication}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
       {/* Industry Case Studies Section */}
       <IndustryCaseStudies caseStudies={caseStudies} industryName="Healthcare" />
 
@@ -2121,7 +2846,7 @@ export default function HealthcareIndustryPage() {
               </p>
             </CardHeader>
             <CardContent>
-              <div className="grid md:grid-cols-5 gap-4">
+              <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
                 {principles.map((principle, i) => (
                   <motion.div
                     key={i}
@@ -2191,6 +2916,41 @@ export default function HealthcareIndustryPage() {
               </p>
             </CardContent>
           </Card>
+
+          {/* HIPAA Governance Table */}
+          <Card className="mb-8">
+            <CardHeader>
+              <CardTitle className="text-center">Governance & HIPAA Compliance: How Each Principle Maps</CardTitle>
+              <p className="text-center text-sm text-muted-foreground">Every AGIX healthcare AI system is governed by six principles, each mapped to HIPAA requirements.</p>
+            </CardHeader>
+            <CardContent>
+              <div className="overflow-x-auto rounded-lg border border-border">
+                <table className="w-full text-sm">
+                  <thead>
+                    <tr className="bg-muted/50 border-b border-border">
+                      <th className="text-left py-3 px-4 font-semibold">Governance Principle</th>
+                      <th className="text-left py-3 px-4 font-semibold hidden md:table-cell">Requirement</th>
+                      <th className="text-left py-3 px-4 font-semibold text-primary">HIPAA Relevance</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {governanceRows.map((row, i) => (
+                      <tr key={i} className={`border-b border-border last:border-0 ${i % 2 === 0 ? "bg-background" : "bg-muted/10"}`}>
+                        <td className="py-3 px-4 font-medium text-foreground">
+                          <div className="flex items-center gap-2">
+                            <span className="w-5 h-5 bg-primary/10 rounded-full flex items-center justify-center text-xs font-bold text-primary shrink-0">{i + 1}</span>
+                            {row.principle}
+                          </div>
+                        </td>
+                        <td className="py-3 px-4 text-muted-foreground hidden md:table-cell">{row.requirement}</td>
+                        <td className="py-3 px-4 text-muted-foreground text-xs">{row.hipaaRelevance}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </section>
 
@@ -2207,8 +2967,8 @@ export default function HealthcareIndustryPage() {
               Ready to Start?
             </Badge>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Ready to Explore Healthcare AI —{" "}
-              <span className="text-primary">Safely?</span>
+              Ready to Build Healthcare AI That{" "}
+              <span className="text-primary">Clinicians Trust?</span>
             </h2>
             <p className="text-lg text-muted-foreground mb-6">
               Start with clarity, not commitment.
@@ -2221,7 +2981,7 @@ export default function HealthcareIndustryPage() {
                 {[
                   "Identify your highest-impact bottlenecks",
                   "Choose the safest AI starting point",
-                  "Understand cost, timeline, and risk",
+                  "Understand implementation timeline and clinical risk",
                   "Plan a phased, compliant rollout",
                 ].map((item, i) => (
                   <div key={i} className="flex items-center gap-2 text-sm">
@@ -2266,10 +3026,96 @@ export default function HealthcareIndustryPage() {
           </p>
         </div>
       </section>
+      {/* ==================== FUTURE OF AI: 2028 ==================== */}
+      <section className="py-16 bg-muted/20" data-testid="section-future-2028">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-10">
+            <Badge className="mb-3"><Sparkles className="w-3 h-3 mr-1" />Future Outlook</Badge>
+            <h2 className="text-2xl md:text-3xl font-bold mb-3">The Future of AI in Healthcare: What to Expect by 2028</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">The next three years will see healthcare AI shift from departmental tools to enterprise-wide intelligence platforms. Here's what's coming — and how to prepare.</p>
+          </motion.div>
+          <div className="space-y-4">
+            {[
+              { num: 1, title: "Ambient clinical intelligence will become standard", desc: "AI will passively listen, document, and flag throughout every patient encounter — reducing clinician note-taking to near zero. Early adopters building documentation AI now will have 2–3 year head starts." },
+              { num: 2, title: "Predictive AI will move from department to enterprise", desc: "Readmission, sepsis, staffing, and revenue predictions will converge into unified operational intelligence platforms. Organizations with clean data pipelines and AI infrastructure will scale fastest." },
+              { num: 3, title: "AI will coordinate full care journeys — not just individual touchpoints", desc: "End-to-end care orchestration AI will manage patient journeys from first contact through discharge and follow-up. Care coordination agents will handle the complexity of multi-provider care." },
+              { num: 4, title: "Regulatory AI will become a clinical requirement, not an option", desc: "Governments will mandate AI audit trails and explainability documentation for clinical AI systems. Organizations building governance-first AI now will be ready. Others will scramble." },
+              { num: 5, title: "Mental health AI will become a primary care tool", desc: "AI companions and mental health support systems will be embedded in primary care pathways — expanding access by 10x in underserved regions while reducing stigma barriers to care." },
+            ].map((item, i) => (
+              <motion.div key={i} initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.07 }}>
+                <div className="flex gap-4 p-5 rounded-xl border border-border bg-card hover-elevate">
+                  <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                    <span className="text-sm font-bold text-primary">{item.num}</span>
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-foreground mb-1">{item.title}</h3>
+                    <p className="text-sm text-muted-foreground">{item.desc}</p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+          <div className="mt-8 p-6 bg-primary/5 border border-primary/20 rounded-xl text-center">
+            <p className="text-foreground font-medium">Organizations that start with focused, governance-first AI today will have the infrastructure, trust, and data advantage to scale into these capabilities as they emerge.</p>
+            <p className="text-muted-foreground text-sm mt-2">AGIX Technologies designs healthcare AI systems for today's efficiency needs and tomorrow's enterprise intelligence requirements.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* ==================== ABOUT THE AUTHOR ==================== */}
+      <section className="py-12 bg-background border-t border-border" data-testid="about-author-section">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6">
+          <div className="flex flex-col sm:flex-row items-start gap-6 p-6 rounded-xl border border-border bg-card">
+            <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center shrink-0 text-2xl font-bold text-primary select-none" aria-label="Santosh Singh">
+              SS
+            </div>
+            <div>
+              <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider mb-1">About the Author</p>
+              <h3 className="font-bold text-foreground text-lg mb-1" data-testid="author-name">
+                <Link href="/author/santosh/" className="hover:text-primary transition-colors">Santosh Singh</Link>
+              </h3>
+              <p className="text-sm text-primary mb-2">Founder &amp; CEO, AGIX Technologies · April 2026</p>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                Santosh leads healthcare AI systems engineering at AGIX Technologies. His healthcare AI projects include clinical triage (Babylon Health — 24M users), mental health support (Kite Therapy — 89% retention), patient flow automation, clinical knowledge RAG systems, and revenue cycle intelligence. 90+ AI projects deployed across healthcare, fintech, real estate, SaaS, and enterprise operations.
+              </p>
+              <div className="flex flex-wrap gap-2 mt-3">
+                <Badge variant="outline" className="text-xs">Clinical AI Systems</Badge>
+                <Badge variant="outline" className="text-xs">HIPAA-Compliant Architecture</Badge>
+                <Badge variant="outline" className="text-xs">RAG Knowledge Systems</Badge>
+                <Badge variant="outline" className="text-xs">Revenue Cycle Intelligence</Badge>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <FAQSection
         faqs={documentFAQs['healthcare-ai-solutions']}
-        title="Healthcare AI Questions Answered"
+        title="Healthcare AI: 10 Questions Answered"
       />
+
+      {/* ==================== BOTTOM FINAL CTA LEAD FORM ==================== */}
+      <section className="py-16 bg-gradient-to-r from-primary/15 via-cyan-500/10 to-primary/15 border-t border-border" data-testid="section-bottom-cta">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-8">
+            <Badge className="mb-4" data-testid="badge-bottom-cta"><HeartPulse className="w-3 h-3 mr-1" />Start Your Healthcare AI Journey</Badge>
+            <h2 className="text-2xl md:text-3xl font-bold mb-4">
+              Ready to Build Healthcare AI That{" "}
+              <span className="text-primary">Clinicians Actually Trust?</span>
+            </h2>
+            <p className="text-muted-foreground max-w-xl mx-auto">
+              Book a free 30-minute strategy session. Tell us your biggest challenge — we&apos;ll map the right AI starting point, with a clear timeline and zero fluff.
+            </p>
+          </motion.div>
+          <BottomLeadForm />
+          <div className="mt-6 flex flex-wrap gap-4 justify-center text-xs text-muted-foreground">
+            <span className="flex items-center gap-1"><ShieldCheck className="w-3 h-3 text-primary" />HIPAA-compliant</span>
+            <span className="flex items-center gap-1"><CheckCircle2 className="w-3 h-3 text-primary" />Human-in-the-loop governance</span>
+            <span className="flex items-center gap-1"><CheckCircle2 className="w-3 h-3 text-primary" />No autonomous clinical actions</span>
+          </div>
+        </div>
+      </section>
+
       <MainFooter />
     </div>
   );

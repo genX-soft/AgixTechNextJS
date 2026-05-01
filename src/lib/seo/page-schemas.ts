@@ -499,29 +499,31 @@ export const servicesPageSchemas: Record<string, PageSchemaData> = {
 export const industriesPageSchemas: Record<string, PageSchemaData> = {
   'healthcare-ai-solutions': {
     webPage: {
-      name: "Healthcare AI Solutions",
-      description: "Explore AI-powered healthcare solutions that streamline workflows, empower clinicians, and boost patient outcomes at scale."
+      name: "AI in Healthcare | Clinical AI, Patient Flow & Medical Imaging Solutions",
+      description: "AGIX Technologies builds healthcare-grade AI systems — clinical decision support, patient flow automation, medical imaging AI, revenue cycle intelligence & care coordination agents. HIPAA-compliant."
     },
     breadcrumbs: [
       { name: "Home", url: `${SITE_URL}/` },
+      { name: "Industries", url: `${SITE_URL}/industries/` },
       { name: "Healthcare AI Solutions", url: `${SITE_URL}/industries/healthcare-ai-solutions/` }
     ],
     service: {
       name: "Healthcare AI Solutions",
-      description: "AI solutions for healthcare organizations designed to improve operational efficiency, decision-making, and patient experience with governance and compliance.",
-      serviceType: "Healthcare AI Solutions"
+      description: "Healthcare-grade AI systems for clinical decision support, patient flow automation, medical imaging analysis, revenue cycle intelligence, and care coordination. HIPAA-compliant with human-in-the-loop governance at every step.",
+      serviceType: "Healthcare AI Solutions",
+      audienceType: "Healthcare Organizations, Hospitals, Clinics, Diagnostic Centers, Digital Health Platforms"
     },
     faqs: [
-      { question: "Is AI safe to use in healthcare environments?", answer: "Yes, when designed correctly. AGIX Technologies builds assistive AI systems with human-in-the-loop controls, explainability, and audit trails so AI supports care delivery without introducing clinical risk." },
-      { question: "Will AI replace doctors, nurses, or clinicians?", answer: "No. AGIX Technologies does not build autonomous clinical decision systems. AI supports clinicians by reducing administrative burden and improving workflows, while final medical decisions always remain with humans." },
-      { question: "How does AGIX Technologies ensure patient data privacy?", answer: "Patient data is handled with strict access controls, purpose limitation, and full traceability. Data is not used to train public AI models and remains governed under healthcare data protection standards." },
-      { question: "Can AI integrate with our existing HIS or EMR systems?", answer: "Yes. AGIX Technologies designs AI systems to integrate with existing HIS, EMR, LIS, and billing platforms, avoiding system replacement or workflow disruption." },
-      { question: "What healthcare processes benefit most from AI?", answer: "High-impact areas include patient intake and triage, clinical documentation support, follow-ups and care continuity, claims and revenue cycle workflows, and compliance and audit readiness." },
-      { question: "How long does it take to implement healthcare AI?", answer: "Most healthcare AI systems are deployed within 4–8 weeks, depending on integration depth, data readiness, and governance requirements." },
-      { question: "Is healthcare AI compliant with regulations?", answer: "AGIX Technologies systems are designed with compliance, explainability, and traceability as first-class requirements, making them suitable for regulated healthcare environments." },
-      { question: "What happens if AI provides an incorrect recommendation?", answer: "AI outputs are non-binding and reviewable. Clinicians and administrators always validate recommendations before any action is taken." },
-      { question: "Can small clinics and diagnostic centers use AI?", answer: "Yes. AGIX Technologies healthcare AI solutions are scalable and suitable for small clinics, diagnostic centers, specialty practices, and large hospital networks." },
-      { question: "How does AI help reduce clinician burnout?", answer: "By assisting with documentation, triage support, and non-clinical tasks, AI reduces cognitive load and allows clinicians to focus more on patient care." }
+      { question: "How is AI used in healthcare?", answer: "AI in healthcare spans patient intake automation, clinical documentation, care coordination, clinical decision support, medical imaging analysis, revenue cycle management, predictive analytics (readmission, risk, demand), patient engagement, and mental health support. AGIX builds systems across all eight domains — each with HIPAA compliance and human-in-the-loop governance." },
+      { question: "Is AI safe for clinical use?", answer: "With proper architecture — yes. AGIX builds AI that assists, never decides. Every clinical recommendation includes source citations and confidence scores. No autonomous clinical actions. No diagnosis. No prescribing. Full audit trails. Over 340 FDA-approved AI tools are in diagnostic use." },
+      { question: "Will AI replace doctors?", answer: "No. AI replaces administrative burden, not clinical judgment. 35% of healthcare professionals spend less time with patients than on admin. AI handles the admin so clinicians can treat patients. AI is a tool in the clinician's hands — not a replacement." },
+      { question: "Is healthcare AI HIPAA-compliant?", answer: "All AGIX healthcare systems are architected for HIPAA compliance. Patient data stays in controlled environments (your cloud or on-premise). Data never used for external model training. Role-based access control. Full audit logging." },
+      { question: "How much does healthcare AI implementation cost?", answer: "Healthcare AI systems vary by scope and complexity. Focused systems — patient intake AI, follow-up AI, clinical documentation — are the fastest to deploy (4–7 weeks). Most clients see full ROI within 3–6 months through operational savings, reduced claim rejections, and recovered revenue." },
+      { question: "Can AI integrate with our EHR/HIS?", answer: "Yes. AGIX integrates with existing hospital information systems, EHRs, appointment systems, billing platforms, and communication tools. We work with your existing infrastructure — not replace it." },
+      { question: "What should we implement first?", answer: "Start with the lowest-risk, highest-impact system: Patient Intake AI or Clinical Documentation AI. Both deliver immediate value with minimal clinical risk. Scale to care coordination and predictive analytics after initial trust is built." },
+      { question: "How long does implementation take?", answer: "Focused systems: 4–7 weeks. Multi-system deployments: 8–14 weeks. Enterprise care coordination platforms: 10–14 weeks. Includes discovery, development, integration, testing, and monitored deployment." },
+      { question: "Can small clinics use healthcare AI?", answer: "Yes. AGIX healthcare AI starts with focused systems. Clinics benefit most from intake automation, follow-up AI, and documentation support — all deployable within 4–7 weeks." },
+      { question: "What is the ROI of healthcare AI?", answer: "AI-powered solutions reduce documentation time 40–60%, decrease claim rejections 35–50%, and improve patient throughput 30–50%. Most implementations achieve full ROI within 3–6 months through operational savings and revenue recovery." }
     ]
   },
   'real-estate-ai-solutions': {

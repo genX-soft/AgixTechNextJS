@@ -642,33 +642,54 @@ export const documentFAQs: Record<string, FAQItem[]> = {
 
   "healthcare-ai-solutions": [
     {
-      question: "How is AI being used in healthcare operations today?",
+      question: "How is AI used in healthcare?",
       answer:
-        "AI is transforming healthcare operations across patient intake automation, clinical documentation, insurance verification, appointment scheduling, diagnostic support, medical imaging analysis, and supply chain management. AGIX Technologies healthcare AI systems have reduced patient intake processing from 3 days to 3 hours and achieved 95% accuracy in medical document processing — while maintaining full HIPAA compliance.",
+        "AI in healthcare spans patient intake automation, clinical documentation, care coordination, clinical decision support, medical imaging analysis, revenue cycle management, predictive analytics (readmission, risk, demand), patient engagement, and mental health support. AGIX Technologies builds systems across all eight domains — each with HIPAA compliance and human-in-the-loop governance.",
     },
     {
-      question:
-        "Is healthcare AI compliant with HIPAA and patient data regulations?",
+      question: "Is AI safe for clinical use?",
       answer:
-        "Yes. AGIX Technologies healthcare AI systems are architected for HIPAA compliance from the ground up — with end-to-end data encryption, role-based access controls, audit logging, Business Associate Agreements (BAA), and data residency options. Patient data never leaves your controlled environment, and all AI processing meets OCR (Office for Civil Rights) requirements for protected health information (PHI).",
+        "With proper architecture — yes. AGIX Technologies builds AI that assists, never decides. Every clinical recommendation includes source citations and confidence scores. No autonomous clinical actions. No diagnosis. No prescribing. Full audit trails. Over 340 FDA-approved AI tools are in diagnostic use today.",
     },
     {
-      question:
-        "What ROI can healthcare organisations expect from AI implementation?",
+      question: "Will AI replace doctors?",
       answer:
-        "AGIX Technologies healthcare clients consistently achieve 85% faster document processing, 40% reduction in administrative staff time on manual tasks, 95% accuracy in data extraction from medical records, and $2.4M+ in annual operational savings for regional hospital networks. Insurance verification automation alone typically saves 2–3 hours per patient admission.",
+        "No. AI replaces administrative burden, not clinical judgment. 35% of healthcare professionals spend less time with patients than on administrative tasks. AI handles the admin so clinicians can treat patients. AI is a tool in the clinician's hands — not a replacement for clinical judgment.",
     },
     {
-      question:
-        "What healthcare AI use cases does AGIX Technologies specialise in?",
+      question: "Is healthcare AI HIPAA-compliant?",
       answer:
-        "AGIX Technologies healthcare AI specialisations include: automated patient intake and registration, insurance eligibility verification in real time, clinical document processing and ICD coding support, appointment scheduling and no-show reduction, medical imaging AI for radiology support, lab result interpretation assistance, and clinical decision support dashboards for care teams.",
+        "All AGIX Technologies healthcare systems are architected for HIPAA compliance. Patient data stays in controlled environments — your cloud or on-premise. Data is never used for external model training. Role-based access control and full audit logging are standard in every deployment.",
     },
     {
-      question:
-        "Does AGIX Technologies provide healthcare AI solutions in the USA, UK, and Australia?",
+      question: "How much does healthcare AI implementation cost?",
       answer:
-        "Yes. AGIX Technologies deploys healthcare AI for providers across the USA, United Kingdom, and Australia. US deployments are HIPAA-compliant. UK and European deployments meet NHS Digital standards and GDPR requirements. Australian deployments align with the Australian Privacy Act and My Health Records Act. Regional compliance expertise is built into every healthcare engagement.",
+        "Healthcare AI systems vary by scope and complexity. Focused systems — patient intake AI, follow-up AI, clinical documentation — are the fastest to deploy (4–7 weeks). Multi-system and imaging platforms take longer. Most clients see full ROI within 3–6 months through operational savings, reduced claim rejections, and recovered revenue. A free scoping consultation is available before any commitment.",
+    },
+    {
+      question: "Can AI integrate with our EHR/HIS?",
+      answer:
+        "Yes. AGIX Technologies integrates with existing hospital information systems, EHRs, appointment systems, billing platforms, and communication tools. We work with your existing infrastructure — not replace it.",
+    },
+    {
+      question: "What should we implement first?",
+      answer:
+        "Start with the lowest-risk, highest-impact system: Patient Intake AI or Clinical Documentation AI. Both deliver immediate value with minimal clinical risk. Scale to care coordination and predictive analytics after initial trust is built.",
+    },
+    {
+      question: "How long does implementation take?",
+      answer:
+        "Focused systems deploy in 4–7 weeks. Multi-system deployments take 8–14 weeks. Enterprise care coordination platforms require 10–14 weeks. Timelines include discovery, development, integration, testing, and monitored go-live.",
+    },
+    {
+      question: "Can small clinics use healthcare AI?",
+      answer:
+        "Yes. AGIX Technologies healthcare AI is built for clinics, specialty practices, diagnostic centers, and large hospital networks alike. Clinics benefit most from intake automation, follow-up AI, and documentation support — all deployable within 4–7 weeks.",
+    },
+    {
+      question: "What is the ROI of healthcare AI?",
+      answer:
+        "AI-powered solutions reduce documentation time 40–60%, decrease claim rejections 35–50%, and improve patient throughput 30–50%. Most implementations achieve full ROI within 3–6 months through operational savings and revenue recovery.",
     },
   ],
 

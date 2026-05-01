@@ -211,17 +211,18 @@ export const urlMetadataConfig: Record<string, URLMetadata> = {
   },
 
   '/industries/healthcare-ai-solutions': {
-    focusKeyword: 'Healthcare AI Solutions',
-    keywords: 'Healthcare AI, AI in Healthcare, Medical AI, Clinical AI, Healthcare automation',
-    mainHeading: 'AI Solutions for Healthcare',
-    metaTitle: 'AI-Powered Healthcare Solutions',
-    metaDescription: 'Explore AI-powered healthcare solutions that streamline workflows, empower clinicians, and boost patient outcomes at scale.',
-    ogTitle: 'AI-Powered Solutions in Healthcare',
-    ogDescription: 'Deliver better patient outcomes with AI in healthcare, advanced solutions for clinical efficiency, diagnosis support, and operational improvement.',
-    twitterTitle: 'AI Solutions for Smarter Healthcare',
-    twitterDescription: 'Enhance healthcare efficiency and clinician support with reliable, explainable AI designed for real-world clinical environments.',
+    focusKeyword: 'ai in healthcare',
+    keywords: 'healthcare ai, ai in healthcare, healthcare ai solutions, ai healthcare company, artificial intelligence healthcare, clinical ai, ai patient triage, ai medical imaging, ai patient engagement, healthcare chatbot, ai revenue cycle management, predictive analytics healthcare, ai clinical documentation, healthcare voice ai, ai for hospitals, healthcare knowledge management ai, ai care coordination',
+    mainHeading: 'How AI Is Used in Healthcare: Solutions for Clinical Trust, Operational Efficiency & Patient Outcomes',
+    metaTitle: 'AI in Healthcare | Best Use Cases, Clinical AI, Patient Flow & Medical Imaging Solutions | AGIX Technologies',
+    metaDescription: 'AGIX Technologies builds healthcare-grade AI systems — clinical decision support, patient flow automation, medical imaging AI, revenue cycle intelligence & care coordination agents. Market: $36.7B in 2025, 38.9% CAGR. 66% of physicians now use AI. HIPAA-compliant.',
+    ogTitle: 'AI in Healthcare | Clinical AI, Patient Flow & Medical Imaging Solutions',
+    ogDescription: 'AGIX Technologies builds healthcare-grade AI — clinical decision support, patient flow automation, medical imaging AI, revenue cycle intelligence & HIPAA-compliant care coordination.',
+    twitterTitle: 'AI in Healthcare | Best Use Cases & Clinical AI Solutions | AGIX Technologies',
+    twitterDescription: 'Healthcare AI market: $36.7B in 2025, 38.9% CAGR. 66% of physicians now use AI. AGIX builds clinical decision support, patient flow automation, medical imaging AI & revenue cycle intelligence.',
     featuredImage: 'https://cms.agixtech.com/wp-content/uploads/2026/01/AI-Solutions-in-Healthcare-page-banner.png',
-    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Service'],
+    schemas: ['Organization', 'WebPage', 'BreadcrumbList', 'Service', 'FAQPage'],
+    absoluteTitle: true,
   },
 
   '/industries/real-estate-ai-solutions': {
