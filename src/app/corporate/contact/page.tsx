@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "@/lib/motion";
+import Link from "next/link";
 import { MainHeader } from "@/components/main-header";
 import { MainFooter } from "@/components/main-footer";
 import { Button } from "@/components/ui/button";
@@ -219,6 +220,11 @@ export default function ContactPage() {
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center space-y-6">
+            <nav className="flex items-center justify-center gap-2 text-sm text-muted-foreground font-medium mb-2" aria-label="Breadcrumb">
+              <Link href="/" className="hover:text-foreground transition-colors">Home</Link>
+              <span className="text-muted-foreground/40">/</span>
+              <span className="text-foreground font-semibold">Contact Us</span>
+            </nav>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}

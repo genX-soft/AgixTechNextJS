@@ -21,59 +21,155 @@ function scrollToSection(id: string) {
   document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
-function HeroSection() {
+function ConversationVisual() {
+  const messages = [
+    { from: "user", text: "What's causing our support ticket backlog?", delay: 0 },
+    { from: "ai", text: "Analyzing 12,847 tickets... Top driver: billing questions (34%). Recommending automated resolution flow.", delay: 1.2 },
+    { from: "user", text: "Can AI handle those automatically?", delay: 2.6 },
+    { from: "ai", text: "Yes — Level 4 routing can resolve 78% without human touch. Estimated 60% cost reduction.", delay: 3.8 },
+  ];
   return (
-    <section className="pt-24 lg:pt-28 pb-20 min-h-[85vh] flex items-center relative overflow-hidden bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-900/20 via-transparent to-transparent" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_var(--tw-gradient-stops))] from-purple-900/10 via-transparent to-transparent" />
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full relative z-10">
-        <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }} className="max-w-4xl mx-auto text-center space-y-6">
-          <nav aria-label="Breadcrumb" className="flex justify-center">
-            <ol className="flex items-center gap-1.5 text-xs text-muted-foreground" itemScope itemType="https://schema.org/BreadcrumbList">
-              <li itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
-                <Link href="/" className="hover:text-white transition-colors" itemProp="item"><span itemProp="name">Home</span></Link>
-                <meta itemProp="position" content="1" />
-              </li>
-              <ChevronRight className="w-3 h-3" />
-              <li><span className="text-muted-foreground">Intelligence</span></li>
-              <ChevronRight className="w-3 h-3" />
-              <li><span className="text-blue-400">Conversational Intelligence</span></li>
-            </ol>
-          </nav>
-          <Badge className="bg-blue-500/10 text-blue-400 border-blue-500/30 px-4 py-1.5" data-testid="badge-hero-category">
-            <MessageSquare className="w-4 h-4 mr-2" />Intelligence Framework
-          </Badge>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight" data-testid="text-hero-headline">
-            Conversational Intelligence:{" "}
-            <span className="text-blue-400">When AI Understands, Not Just Responds</span>
-          </h1>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed" data-testid="text-hero-subheadline">
-            Conversational Intelligence is the ability of an AI system to{" "}
-            <span className="text-blue-400">understand intent</span>,{" "}
-            <span className="text-purple-400">maintain context</span>,{" "}
-            <span className="text-amber-400">reason through complexity</span>, and{" "}
-            <span className="text-green-400">trigger the correct action</span>{" "}
-            — not just generate a response.
-          </p>
-          <p className="text-sm text-muted-foreground/70 italic">
-            By <Link href="/author/santosh/" className="text-blue-400/80 hover:text-blue-400 transition-colors">Santosh Singh</Link>, Founder &amp; CEO, AGIX Technologies · April 2026
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-            <Button size="lg" className="bg-blue-500 hover:bg-blue-600 text-white shadow-lg shadow-blue-500/25" onClick={() => scrollToSection("conv-spectrum")} data-testid="button-hero-primary">
-              Explore the 5-Level Spectrum <ArrowRight className="w-5 h-5 ml-2" />
-            </Button>
-            <Button variant="outline" size="lg" onClick={() => scrollToSection("maturity-assessment")} data-testid="button-hero-secondary">
-              Assess Your Level <ChevronDown className="w-5 h-5 ml-2" />
-            </Button>
+    <div className="w-full max-w-[420px] mx-auto space-y-1">
+      {/* Header */}
+      <div className="flex items-center gap-2 bg-slate-800/60 border border-slate-700/50 rounded-2xl rounded-b-none px-4 py-3 mb-0">
+        <div className="w-8 h-8 rounded-full bg-blue-500/20 border border-blue-500/30 flex items-center justify-center">
+          <MessageSquare className="w-4 h-4 text-blue-400" />
+        </div>
+        <div>
+          <div className="text-xs font-semibold text-white">AGIX Conversational AI</div>
+          <div className="flex items-center gap-1">
+            <motion.div className="w-1.5 h-1.5 rounded-full bg-green-400" animate={{ opacity: [1, 0.4, 1] }} transition={{ duration: 1.5, repeat: Infinity }} />
+            <span className="text-[10px] text-green-400">Understanding intent · Level 4</span>
+          </div>
+        </div>
+        <div className="ml-auto flex gap-1">
+          {["bg-red-500", "bg-yellow-500", "bg-green-500"].map(c => <div key={c} className={`w-2.5 h-2.5 rounded-full ${c} opacity-60`} />)}
+        </div>
+      </div>
+
+      {/* Chat messages */}
+      <div className="bg-slate-900/80 border-x border-slate-700/50 px-4 py-3 space-y-3 min-h-[220px]">
+        {messages.map((m, i) => (
+          <motion.div
+            key={i}
+            className={`flex ${m.from === "user" ? "justify-end" : "justify-start"}`}
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: m.delay, duration: 0.4 }}
+          >
+            {m.from === "ai" && (
+              <div className="w-6 h-6 rounded-full bg-blue-500/20 border border-blue-500/30 flex items-center justify-center mr-2 flex-shrink-0 mt-1">
+                <MessageSquare className="w-3 h-3 text-blue-400" />
+              </div>
+            )}
+            <div className={`max-w-[78%] px-3 py-2 rounded-2xl text-xs leading-relaxed ${
+              m.from === "user"
+                ? "bg-blue-600/30 border border-blue-500/30 text-blue-100 rounded-tr-sm"
+                : "bg-slate-800/80 border border-slate-600/50 text-slate-200 rounded-tl-sm"
+            }`}>
+              {m.text}
+            </div>
+          </motion.div>
+        ))}
+        {/* Typing indicator */}
+        <motion.div className="flex justify-start" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 4.8 }}>
+          <div className="w-6 h-6 rounded-full bg-blue-500/20 border border-blue-500/30 flex items-center justify-center mr-2 flex-shrink-0">
+            <MessageSquare className="w-3 h-3 text-blue-400" />
+          </div>
+          <div className="bg-slate-800/80 border border-slate-600/50 px-3 py-3 rounded-2xl rounded-tl-sm flex items-center gap-1">
+            {[0, 0.2, 0.4].map(d => (
+              <motion.div key={d} className="w-1.5 h-1.5 rounded-full bg-blue-400" animate={{ y: [0, -4, 0] }} transition={{ duration: 0.7, repeat: Infinity, delay: d }} />
+            ))}
           </div>
         </motion.div>
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1 }} className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
-          <button onClick={() => scrollToSection("definition")} aria-label="Scroll down" data-testid="button-scroll-down">
-            <motion.div animate={{ y: [0, 8, 0] }} transition={{ duration: 2, repeat: Infinity }} className="text-muted-foreground hover:text-blue-400 transition-colors">
-              <ArrowDown className="w-5 h-5" />
-            </motion.div>
-          </button>
-        </motion.div>
+      </div>
+
+      {/* Footer strip */}
+      <div className="bg-slate-800/40 border border-t-0 border-slate-700/50 rounded-2xl rounded-t-none px-4 py-2.5 flex items-center gap-3">
+        <div className="flex-1 bg-slate-700/50 rounded-full h-7 flex items-center px-3">
+          <span className="text-[10px] text-muted-foreground">Intent understood · Context preserved · Action triggered</span>
+        </div>
+        <div className="w-7 h-7 rounded-full bg-blue-500/20 border border-blue-500/30 flex items-center justify-center">
+          <ArrowRight className="w-3 h-3 text-blue-400" />
+        </div>
+      </div>
+
+      {/* Capability chips */}
+      <div className="flex flex-wrap gap-2 pt-2">
+        {[["Intent", "text-blue-400 bg-blue-500/10 border-blue-500/20"], ["Context", "text-purple-400 bg-purple-500/10 border-purple-500/20"], ["Reasoning", "text-amber-400 bg-amber-500/10 border-amber-500/20"], ["Action", "text-green-400 bg-green-500/10 border-green-500/20"]].map(([l, c]) => (
+          <span key={l} className={`text-[10px] font-semibold px-2.5 py-1 rounded-full border ${c}`}>{l}</span>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function HeroSection() {
+  return (
+    <section className="pt-24 lg:pt-32 pb-16 min-h-screen flex items-center relative overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-blue-900/25 via-transparent to-transparent" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_var(--tw-gradient-stops))] from-purple-900/15 via-transparent to-transparent" />
+      <div className="absolute top-1/3 right-1/3 w-80 h-80 bg-blue-500/5 rounded-full blur-3xl" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full relative z-10">
+        <div className="grid lg:grid-cols-[1fr_460px] gap-12 xl:gap-20 items-center">
+
+          {/* LEFT: Text */}
+          <div className="space-y-6">
+            <nav aria-label="Breadcrumb">
+              <ol className="flex items-center gap-1.5 text-xs text-muted-foreground" itemScope itemType="https://schema.org/BreadcrumbList">
+                <li itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
+                  <Link href="/" className="hover:text-white transition-colors" itemProp="item"><span itemProp="name">Home</span></Link>
+                  <meta itemProp="position" content="1" />
+                </li>
+                <ChevronRight className="w-3 h-3" />
+                <li><span className="text-muted-foreground">Intelligence</span></li>
+                <ChevronRight className="w-3 h-3" />
+                <li><span className="text-blue-400">Conversational Intelligence</span></li>
+              </ol>
+            </nav>
+            <Badge className="bg-blue-500/10 text-blue-400 border-blue-500/30 px-4 py-1.5" data-testid="badge-hero-category">
+              <MessageSquare className="w-4 h-4 mr-2" />Intelligence Framework
+            </Badge>
+            <h1 className="text-4xl md:text-5xl lg:text-[3.5rem] font-black leading-[1.08] tracking-tight" data-testid="text-hero-headline">
+              Conversational Intelligence:{" "}
+              <span className="text-blue-400">When AI Understands, Not Just Responds</span>
+            </h1>
+            <p className="text-lg text-muted-foreground leading-relaxed max-w-xl" data-testid="text-hero-subheadline">
+              AI that{" "}
+              <span className="text-blue-400 font-semibold">understands intent</span>,{" "}
+              <span className="text-purple-400 font-semibold">maintains context</span>,{" "}
+              <span className="text-amber-400 font-semibold">reasons through complexity</span>, and{" "}
+              <span className="text-green-400 font-semibold">triggers action</span>{" "}
+              — not just generates a response.
+            </p>
+            <p suppressHydrationWarning className="text-sm text-muted-foreground/60 italic">
+              By <Link href="/author/santosh/" className="text-blue-400/80 hover:text-blue-400 transition-colors">Santosh Singh</Link>, Founder &amp; CEO, AGIX Technologies · {new Date().toLocaleString("en-US", { month: "long", year: "numeric" })}
+            </p>
+            <div className="flex flex-wrap gap-3">
+              {[["Level 1–5", "intelligence spectrum"], ["78%", "tickets resolved without human touch"], ["60%", "cost reduction potential"]].map(([v, l]) => (
+                <div key={v} className="flex items-center gap-2 rounded-full bg-slate-800/60 border border-slate-700/50 px-3 py-1.5">
+                  <span className="text-sm font-bold text-blue-400">{v}</span>
+                  <span className="text-xs text-muted-foreground">{l}</span>
+                </div>
+              ))}
+            </div>
+            <div className="flex flex-col sm:flex-row gap-4 pt-2">
+              <Button size="lg" className="bg-blue-500 hover:bg-blue-600 text-white shadow-lg shadow-blue-500/25 h-12 px-7" onClick={() => scrollToSection("conv-spectrum")} data-testid="button-hero-primary">
+                Explore the 5-Level Spectrum <ArrowRight className="w-5 h-5 ml-2" />
+              </Button>
+              <Button variant="outline" size="lg" className="h-12 px-7" onClick={() => scrollToSection("maturity-assessment")} data-testid="button-hero-secondary">
+                Assess Your Level <ChevronDown className="w-5 h-5 ml-2" />
+              </Button>
+            </div>
+          </div>
+
+          {/* RIGHT: Conversation Visual */}
+          <div className="hidden lg:flex items-center justify-center">
+            <ConversationVisual />
+          </div>
+
+        </div>
       </div>
     </section>
   );

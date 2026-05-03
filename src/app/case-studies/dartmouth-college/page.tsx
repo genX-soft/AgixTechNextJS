@@ -1,417 +1,124 @@
 'use client'
-import { motion } from "@/lib/motion";import { CaseStudyTemplate } from "@/components/shared/case-study-template";
+import { CaseStudyV2, CaseStudyV2Data } from "@/components/case-study/CaseStudyV2";
 
-
-
-import { CtaForm } from "@/components/forms/cta-form";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Progress } from "@/components/ui/progress";
-import {
-  ArrowLeft,
-  ArrowRight,
-  GraduationCap,
-  Target,
-  Clock,
-  TrendingUp,
-  Quote,
-  Ticket,
-  Users,
-  CheckCircle2,
-  AlertTriangle,
-  XCircle,
-  RefreshCw,
-  FileText,
-  MessageSquare,
-  Headphones,
-  Timer,
-} from "lucide-react";
-import Link from "next/link";
+const data: CaseStudyV2Data = {
+  slug: "dartmouth-college",
+  company: "Dartmouth College",
+  industry: "Higher Education",
+  subIndustry: "AI IT Helpdesk",
+  accentColor: "emerald",
+  gradientClasses: "bg-gradient-to-br from-background via-green-500/5 to-emerald-500/10",
+  heroHeadline: "Dartmouth College: AI IT Helpdesk That Resolves Tickets in Minutes",
+  heroSubheadline: "Transforming a 12,000-student university IT helpdesk—reducing ticket volume by 65%, cutting resolution time from 4 days to 14 minutes, and freeing IT staff for infrastructure projects.",
+  heroStats: [
+    { value: "-65%", label: "Ticket Volume", color: "text-emerald-400" },
+    { value: "14 min", label: "Avg Resolution Time", color: "text-green-400" },
+    { value: "92%", label: "Student Satisfaction", color: "text-teal-400" },
+  ],
+  directAnswerQuestion: "How does Dartmouth use AI for IT support?",
+  directAnswer: "Dartmouth College deployed an AI helpdesk system that handles common IT requests—password resets, software installations, Wi-Fi troubleshooting, VPN access, and account provisioning—through a conversational interface integrated into the student and staff portal. The system uses RAG over Dartmouth's IT knowledge base and service catalog, resolving 65% of tickets automatically and reducing average resolution time from 4 days to 14 minutes.",
+  clientDescription: "Dartmouth College is an Ivy League research university with approximately 12,000 students and 4,500 faculty and staff. The Office of Information Technology (DartIT) manages IT services for the entire campus, handling thousands of support tickets per semester covering everything from email access to research computing. Legacy helpdesk processes required IT staff to manually process routine requests, creating bottlenecks during high-demand periods like the start of academic terms.",
+  clientFounded: "1769",
+  clientSize: "12,000 students, 4,500 staff, 500+ IT service types",
+  clientLocation: "Hanover, New Hampshire, USA",
+  problemTitle: "University IT Teams Can't Scale for Semester Start Demand Spikes",
+  problemDescription: "Every August and January, ticket volume spikes 400% as returning students need password resets, new students need account setups, and faculty need access to new course tools. With a fixed-size IT team, these spikes meant 3–5 day resolution times and frustrated students at the worst possible time in the academic calendar.",
+  painPoints: [
+    { title: "Semester Start Ticket Spike", stat: "+400%", description: "Ticket volume surge during first two weeks of each semester when IT staff capacity is fixed.", color: "amber" },
+    { title: "Average Resolution Time", stat: "4 days", description: "Time from ticket submission to resolution during peak periods—critical when students can't access course materials.", color: "red" },
+    { title: "Repetitive Ticket Types", stat: "78%", description: "Proportion of tickets that were identical or near-identical requests IT staff had answered hundreds of times before.", color: "orange" },
+  ],
+  solutionTitle: "Conversational AI Helpdesk Integrated with Campus Identity Systems",
+  solutionDescription: "AGIX Technologies built an AI helpdesk layer that connects to Dartmouth's Active Directory, service catalog, and knowledge base to handle IT requests autonomously. The system can execute self-service actions (password resets, software license provisioning, VPN account creation) rather than just providing instructions—resolving issues instantly rather than guiding users through complex processes.",
+  solutionComponents: [
+    { title: "IT Knowledge RAG Engine", description: "Semantic search over Dartmouth's entire IT documentation library, service catalog, and 3 years of resolved tickets to answer any known question instantly." },
+    { title: "Identity System Integration", description: "Direct API connection to Active Directory and Duo MFA enables the AI to verify identity and execute account actions (password resets, group membership) without human involvement." },
+    { title: "Service Catalog Automation", description: "Common service requests (software installs, VPN access, email forwarding) are fulfilled automatically via integration with the IT service management platform." },
+    { title: "Escalation Intelligence", description: "Complex tickets are automatically classified and routed to the appropriate IT specialist team with a full context summary, eliminating the triage step that previously added 1–2 days to resolution." },
+    { title: "Multilingual Student Support", description: "Support for 12 languages serving Dartmouth's international student population, with culturally adapted communication styles." },
+    { title: "IT Staff Dashboard", description: "Real-time visibility into AI resolution rates, common failure modes, and knowledge gaps helps IT managers continuously improve both the AI system and underlying IT processes." },
+  ],
+  architectureTitle: "Dartmouth AI Helpdesk Architecture",
+  architectureLayers: [
+    { name: "Student & Staff Interface", components: ["Campus Portal Chat Widget", "Email Ticket Integration", "Mobile App Support", "12-Language Support"], color: "emerald" },
+    { name: "Request Intelligence", components: ["Intent Classification (50+ categories)", "Entity Extraction (Asset IDs, NetIDs)", "Urgency Scoring", "Eligibility Verification"], color: "green" },
+    { name: "Knowledge & Policy Engine", components: ["IT Documentation RAG", "Service Catalog Search", "Policy Compliance Checking", "Solution History Corpus"], color: "teal" },
+    { name: "Execution & Integration", components: ["Active Directory API", "Duo MFA Integration", "ServiceNow Connector", "Software License Management"], color: "blue" },
+    { name: "Monitoring & Improvement", components: ["Resolution Rate Tracking", "Knowledge Gap Detection", "IT Staff Feedback Loop", "SLA Compliance Dashboard"], color: "slate" },
+  ],
+  resultsTitle: "Academic Year Outcomes Across Both Semesters",
+  resultsMetrics: [
+    { value: "-65%", label: "Ticket Volume", description: "Reduction in tickets requiring human agent handling across the full academic year", color: "emerald" },
+    { value: "14 min", label: "Avg Resolution", description: "Down from 4 days during peak periods—students get help before their next class", color: "green" },
+    { value: "92%", label: "Student CSAT", description: "Student satisfaction with AI helpdesk—higher than 84% human-only baseline", color: "teal" },
+    { value: "3x", label: "IT Project Capacity", description: "IT staff freed to work on infrastructure and security projects previously deferred", color: "blue" },
+  ],
+  resultsQuote: {
+    text: "Students submit a ticket at 2am on a Sunday before a Monday morning exam and it's resolved in 12 minutes. That simply wasn't possible before. The AI never sleeps, never has office hours.",
+    author: "Chief Information Officer",
+    role: "Dartmouth College Office of Information Technology",
+  },
+  howItWorksTitle: "How Dartmouth's AI Helpdesk Resolves an IT Request",
+  steps: [
+    { title: "Ticket Submission & Classification", description: "Student submits request via portal or email", detail: "The student submits a request in natural language. The AI classifier identifies the request type from 50+ categories and extracts key entities: the student's NetID, the affected service (email, VPN, software), and any error messages. Urgency is scored based on academic calendar context (exam week = high urgency)." },
+    { title: "Identity Verification", description: "Confirm who is making the request", detail: "For account actions, the system verifies identity via the campus SSO session or sends a Duo push notification for out-of-session verification. This ensures account actions can only be taken by the authorized account holder—no social engineering vulnerability." },
+    { title: "Knowledge Retrieval & Solution Generation", description: "Find and compose the resolution", detail: "The RAG engine searches IT documentation, service catalog entries, and resolved tickets for the most relevant context. A generative model composes a step-by-step resolution specific to the student's situation, including links to relevant documentation and any campus-specific variations." },
+    { title: "Self-Service Action Execution", description: "Execute account or service actions automatically", detail: "For request types where direct action is authorized (password resets, VPN re-provisioning, email quota increases), the system executes the action via API integration rather than providing instructions for the student to follow. The ticket is resolved in seconds, not minutes." },
+    { title: "Resolution Confirmation & Feedback", description: "Confirm the issue is resolved", detail: "The student receives confirmation of the action taken and is asked to verify the issue is resolved. Negative confirmations trigger a secondary resolution attempt or immediate escalation. CSAT ratings are collected automatically on ticket close." },
+    { title: "Escalation with Full Context", description: "Route complex issues to specialists efficiently", detail: "For tickets outside AI scope, a complete summary is generated: issue description, troubleshooting already attempted, student's system environment, and urgency level. Specialists receive all context before touching the ticket, cutting their resolution time by 60% even for complex issues." },
+  ],
+  whyItWorkedTitle: "Why University IT AI Adoption Succeeded at Dartmouth",
+  whyFactors: [
+    { title: "Action Execution vs Instructions Only", description: "Systems that tell students what to do have 40% lower completion rates than systems that execute the action directly. Dartmouth's AI does both, depending on the request type." },
+    { title: "Campus Calendar Awareness", description: "The system knew exam periods, add/drop deadlines, and semester starts and auto-escalated tickets during high-stress academic moments, maintaining trust at critical times." },
+    { title: "IT Staff as Curators, Not Just Operators", description: "IT staff were given a knowledge management interface to add solutions and flag errors. Staff ownership of the knowledge base quality drove faster improvement than any automated process." },
+    { title: "Always-On 24/7 Availability", description: "Students submit IT tickets outside of business hours—weekends, late nights—and university IT can't staff 24/7. AI coverage during off-hours alone resolved 35% of previously deferred tickets." },
+    { title: "Transparent Routing to Humans", description: "When the AI can't help, it says so explicitly and provides an estimated human response time. Honesty about limitations maintained student trust more than pretending the AI could handle everything." },
+  ],
+  limitations: [
+    { title: "Physical Hardware Issues Require On-Site Support", description: "Broken laptop screens, malfunctioning peripherals, and network infrastructure problems cannot be resolved remotely—the AI routes these to on-site support immediately." },
+    { title: "Novel Software Not in Knowledge Base", description: "When a professor adopts new research software mid-semester, there's a 48-72 hour gap before the AI has documentation to draw from. Edge cases like this still require human specialists." },
+    { title: "FERPA-Sensitive Requests", description: "Requests involving student academic records or sensitive personal data require human review to ensure FERPA compliance—the AI cannot make privacy judgment calls autonomously." },
+    { title: "Institutional Policy Interpretation", description: "Complex questions about IT policy exceptions (e.g., can a student use a non-standard VPN client for research?) require human policy judgment." },
+  ],
+  whenToUseGoodFit: [
+    "Universities and colleges with 2,000+ students and regular IT helpdesk demand",
+    "Organizations with high-volume, repetitive service requests during predictable peak periods",
+    "IT departments with documented service catalogs and resolution guides",
+    "Institutions needing 24/7 support coverage without 24/7 staffing budgets",
+  ],
+  whenToUseNotGoodFit: [
+    "Small departments with highly specialized, non-repeating IT environments",
+    "Organizations where every support request is unique and requires deep investigation",
+    "IT teams without existing documentation or service catalog infrastructure",
+    "Environments with very high security classifications requiring human oversight of all access changes",
+  ],
+  connections: [
+    { name: "RAG Knowledge AI", slug: "rag-knowledge-ai", relevance: "IT documentation retrieval and solution generation", type: "service" },
+    { name: "Conversational AI Chatbots", slug: "conversational-ai-chatbots", relevance: "Student-facing helpdesk dialogue interface", type: "service" },
+    { name: "AI Automation", slug: "ai-automation", relevance: "Automated account actions and service provisioning", type: "service" },
+    { name: "EdTech AI Solutions", slug: "edtech-ai-solutions", relevance: "AI deployment patterns for educational institutions", type: "industry" },
+    { name: "Enterprise Knowledge AI", slug: "enterprise-knowledge-ai", relevance: "Institutional knowledge management and search", type: "intelligence" },
+    { name: "Operational AI", slug: "operational-ai", relevance: "Service desk operations automation and efficiency", type: "intelligence" },
+  ],
+  keyTakeaways: [
+    "65% ticket reduction achieved in first full academic year deployment",
+    "Action execution (doing tasks automatically) is 40% more effective than instruction delivery",
+    "24/7 AI availability resolves 35% of tickets outside business hours",
+    "Transparent AI limitations maintain user trust better than overreach",
+    "IT staff transition from reactive support to proactive infrastructure investment",
+  ],
+  faqs: [
+    { question: "How does Dartmouth handle FERPA compliance with AI-processed tickets?", answer: "The AI system is deployed within Dartmouth's secure infrastructure environment and only accesses identity systems through authorized API integrations. FERPA-sensitive data is never sent to external AI APIs—all processing uses on-premises models or contracted service providers with FERPA Business Associate Agreements." },
+    { question: "How did Dartmouth train the AI on their specific IT environment?", answer: "The initial training data consisted of 3 years of resolved support tickets, Dartmouth's IT documentation library, and the service catalog. IT staff spent 2 weeks reviewing AI responses in a test environment and adding corrections. This human-in-the-loop validation process produced a knowledge base accurate enough for live deployment within 8 weeks." },
+    { question: "What was the student adoption rate for the new AI helpdesk?", answer: "Student adoption was nearly universal within the first semester because the AI was integrated into the existing portal students already used to submit tickets. No new app or account was required. Students who initially preferred human support self-selected to the traditional path, which remained available." },
+    { question: "Can this model work for administrative departments beyond IT?", answer: "Yes. After the IT helpdesk success, Dartmouth expanded the AI model to the Registrar's office (common enrollment questions) and the Financial Aid office (standard policy questions). Each department required a separate knowledge base but shared the same underlying platform." },
+    { question: "What did this cost to implement, and what's the ROI?", answer: "The implementation cost was recovered in the first semester through reduced overtime staffing during peak periods. Annual savings from reduced ticket handling labor (estimated at 1.5 FTE per year) and improved staff retention exceed implementation and operational costs by approximately 4x." },
+  ],
+  prevCase: undefined,
+  nextCase: undefined,
+};
 
 export default function DartmouthCollegeCaseStudyPage() {
-  return (
-    <CaseStudyTemplate prevCase={undefined} nextCase={undefined}>
-
-      {/* Hero Section - Uniform Layout */}
-      <section className="pt-24 lg:pt-28 pb-16 bg-gradient-to-br from-green-500/10 via-background to-emerald-500/10 min-h-[80vh] flex items-center">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="space-y-6">
-            <Link href="/case-studies/">
-              <Button variant="ghost" size="sm" className="gap-2" data-testid="button-back-to-cases">
-                <ArrowLeft className="w-4 h-4" />
-                Back to Case Studies
-              </Button>
-            </Link>
-
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div className="space-y-6">
-                <div className="flex flex-wrap items-center gap-2">
-                  <Badge variant="outline" className="border-green-500/30 text-green-400">
-                    <GraduationCap className="w-3 h-3 mr-1" />
-                    Higher Education
-                  </Badge>
-                  <Badge variant="outline" className="border-emerald-500/30 text-emerald-400">
-                    IT Helpdesk
-                  </Badge>
-                </div>
-
-                <h1 className="text-4xl md:text-5xl font-bold leading-tight" data-testid="text-company-name">
-                  Dartmouth College Case Study: AI-Powered IT Helpdesk
-                </h1>
-
-                <p className="text-xl text-muted-foreground">
-                  24/7 AI helpdesk for campus IT support. Achieving 74% ticket 
-                  deflection with 2-minute average resolution time.
-                </p>
-
-                <div className="flex flex-wrap gap-6 pt-4">
-                  <div className="text-center">
-                    <p className="text-3xl font-bold text-green-400">74%</p>
-                    <p className="text-sm text-muted-foreground">Ticket Deflection</p>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-3xl font-bold text-emerald-400">24/7</p>
-                    <p className="text-sm text-muted-foreground">Availability</p>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-3xl font-bold text-blue-400">4.7/5</p>
-                    <p className="text-sm text-muted-foreground">Satisfaction</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Ticket Triage Visual */}
-              <Card className="bg-gradient-to-br from-slate-900 to-slate-800 border-slate-700">
-                <CardContent className="p-8">
-                  <div className="flex items-center gap-3 mb-6">
-                    <Ticket className="w-6 h-6 text-green-400" />
-                    <p className="text-xs uppercase tracking-widest text-slate-400">Ticket Status</p>
-                  </div>
-                  <div className="space-y-3">
-                    {[
-                      { lane: "Incoming", count: 127, color: "bg-slate-500" },
-                      { lane: "AI Resolving", count: 89, color: "bg-green-500" },
-                      { lane: "Human Review", count: 23, color: "bg-amber-500" },
-                      { lane: "Resolved Today", count: 312, color: "bg-emerald-500" },
-                    ].map((item, i) => (
-                      <div key={i} className="flex items-center justify-between p-3 rounded-lg bg-slate-800/50">
-                        <div className="flex items-center gap-3">
-                          <div className={`w-3 h-3 rounded-full ${item.color}`} />
-                          <p className="text-sm font-medium text-white">{item.lane}</p>
-                        </div>
-                        <Badge className="bg-green-500/20 text-green-400 border-green-500/30">
-                          {item.count}
-                        </Badge>
-                      </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Case Study Overview */}
-      <section className="py-16 bg-muted/30">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <h2 className="text-3xl font-bold mb-8">Case Study Overview</h2>
-          <div className="space-y-4 text-lg text-muted-foreground">
-            <p>
-              <strong className="text-foreground">The Challenge:</strong> Dartmouth's IT department handled over 40,000 support tickets annually, with 68% of those tickets covering a known set of roughly 200 recurring issues--password resets, software installation, network access, and account management. Students and faculty waited an average of six hours for responses during peak periods, and IT staff were consumed by low-complexity work rather than infrastructure improvements and strategic initiatives.
-            </p>
-            <p>
-              <strong className="text-foreground">The Solution:</strong> AGIX Technologies deployed an AI helpdesk agent trained on Dartmouth's IT knowledge base, documented procedures, historical ticket data, and system integration documentation. The agent handles the full lifecycle of common requests 24/7--guiding users through password resets, diagnosing connectivity issues, provisioning software access, and completing account changes--without any human involvement for routine cases.
-            </p>
-            <p>
-              <strong className="text-foreground">The Impact:</strong> 74% of IT tickets now resolve automatically, freeing the IT team from thousands of hours of routine support annually. Average resolution time dropped from six hours to under four minutes for automated cases. With low-value tasks handled by AI, IT staff redirected over 60% of their capacity to infrastructure improvements, security initiatives, and faculty technology projects, producing compounding value beyond direct cost savings.
-            </p>
-          </div>
-        </div>
-      </section>
-
-
-      {/* The Challenge */}
-      <section className="py-16">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="space-y-8"
-          >
-            <Badge variant="outline" className="border-amber-500/30 text-amber-400">
-              <AlertTriangle className="w-3 h-3 mr-1" />
-              The Challenge
-            </Badge>
-
-            <h2 className="text-3xl font-bold">Overwhelmed Help Desk Couldn't Keep Up With Student Demand</h2>
-            
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              Campus IT support was drowning in routine tickets--password resets, WiFi troubleshooting, 
-              and software questions piled up faster than staff could respond. Students faced long wait 
-              times, especially during peak hours and exam periods. After-hours support was non-existent, 
-              leaving students stranded when they needed help most.
-            </p>
-
-            <div className="grid md:grid-cols-3 gap-6">
-              <Card className="border-red-500/20">
-                <CardContent className="p-6 text-center">
-                  <Headphones className="w-8 h-8 text-red-400 mx-auto mb-3" />
-                  <p className="text-2xl font-bold text-red-400">0%</p>
-                  <p className="text-sm text-muted-foreground">After-hours coverage</p>
-                </CardContent>
-              </Card>
-              <Card className="border-amber-500/20">
-                <CardContent className="p-6 text-center">
-                  <Timer className="w-8 h-8 text-amber-400 mx-auto mb-3" />
-                  <p className="text-2xl font-bold text-amber-400">47 min</p>
-                  <p className="text-sm text-muted-foreground">Avg ticket resolution</p>
-                </CardContent>
-              </Card>
-              <Card className="border-orange-500/20">
-                <CardContent className="p-6 text-center">
-                  <Ticket className="w-8 h-8 text-orange-400 mx-auto mb-3" />
-                  <p className="text-2xl font-bold text-orange-400">1,200+</p>
-                  <p className="text-sm text-muted-foreground">Weekly ticket backlog</p>
-                </CardContent>
-              </Card>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      <section className="py-16">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <h2 className="text-2xl font-bold mb-8 text-center">IT Support Nerve Center</h2>
-          
-          <div className="grid lg:grid-cols-3 gap-6">
-            <Card className="lg:col-span-2">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Ticket className="w-5 h-5 text-green-400" />
-                  Ticket Triage Swim Lanes
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="grid grid-cols-4 gap-4">
-                  {[
-                    { lane: "Incoming", count: 127, tickets: [
-                      { title: "WiFi not connecting", priority: "high" },
-                      { title: "Canvas login issue", priority: "medium" },
-                      { title: "Printer not found", priority: "low" },
-                    ]},
-                    { lane: "AI Resolving", count: 89, tickets: [
-                      { title: "Password reset", priority: "high" },
-                      { title: "VPN setup help", priority: "medium" },
-                      { title: "Email config", priority: "low" },
-                    ]},
-                    { lane: "Human Review", count: 23, tickets: [
-                      { title: "Account locked", priority: "high" },
-                      { title: "Hardware failure", priority: "high" },
-                    ]},
-                    { lane: "Resolved", count: 412, tickets: [
-                      { title: "Software install", priority: "low" },
-                      { title: "2FA setup", priority: "medium" },
-                    ]},
-                  ].map((lane, i) => (
-                    <div key={i}>
-                      <div className="flex items-center justify-between mb-2">
-                        <span className="text-xs font-medium">{lane.lane}</span>
-                        <Badge variant="outline" className="text-xs">{lane.count}</Badge>
-                      </div>
-                      <div className="space-y-2 min-h-[120px] p-2 rounded-lg bg-muted/50">
-                        {lane.tickets.map((ticket, j) => (
-                          <div key={j} className={`p-2 rounded text-xs ${
-                            ticket.priority === 'high' ? 'bg-red-500/20 border-l-2 border-red-500' :
-                            ticket.priority === 'medium' ? 'bg-amber-500/20 border-l-2 border-amber-500' :
-                            'bg-slate-500/20 border-l-2 border-slate-500'
-                          }`}>
-                            {ticket.title}
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <MessageSquare className="w-5 h-5 text-green-400" />
-                  Live Status
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="space-y-2">
-                  <div className="flex justify-between text-sm">
-                    <span>AI Resolution Rate</span>
-                    <span className="text-green-400 font-medium">74%</span>
-                  </div>
-                  <Progress value={74} className="h-2" />
-                </div>
-                <div className="space-y-2">
-                  <div className="flex justify-between text-sm">
-                    <span>Avg Response Time</span>
-                    <span className="text-green-400 font-medium">12 sec</span>
-                  </div>
-                  <Progress value={95} className="h-2" />
-                </div>
-                <div className="space-y-2">
-                  <div className="flex justify-between text-sm">
-                    <span>Knowledge Base Match</span>
-                    <span className="text-green-400 font-medium">89%</span>
-                  </div>
-                  <Progress value={89} className="h-2" />
-                </div>
-
-                <div className="pt-4 border-t border-border">
-                  <p className="text-xs text-muted-foreground mb-2">Current Queue Status</p>
-                  <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-                    <span className="text-sm">All systems operational</span>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16 bg-gradient-to-r from-green-500/5 via-background to-emerald-500/5">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="grid lg:grid-cols-2 gap-12">
-            <div>
-              <Badge className="mb-4 bg-green-500/20 text-green-400 border-green-500/30">
-                <FileText className="w-3 h-3 mr-1" />
-                Knowledge Freshness
-              </Badge>
-              <h3 className="text-2xl font-bold mb-4">Knowledge Base Audit</h3>
-              <p className="text-muted-foreground mb-6">
-                AI continuously monitors knowledge articles for accuracy and 
-                automatically flags outdated content based on resolution success rates.
-              </p>
-
-              <div className="space-y-3">
-                {[
-                  { article: "WiFi Setup Guide", status: "current", lastUpdated: "2 days ago", accuracy: 98 },
-                  { article: "VPN Configuration", status: "current", lastUpdated: "1 week ago", accuracy: 95 },
-                  { article: "Canvas Integration", status: "review", lastUpdated: "3 weeks ago", accuracy: 78 },
-                  { article: "Printing Services", status: "outdated", lastUpdated: "2 months ago", accuracy: 62 },
-                ].map((item, i) => (
-                  <div key={i} className="flex items-center justify-between p-3 rounded-lg bg-muted/50">
-                    <div className="flex items-center gap-3">
-                      {item.status === 'current' && <CheckCircle2 className="w-4 h-4 text-green-400" />}
-                      {item.status === 'review' && <AlertTriangle className="w-4 h-4 text-amber-400" />}
-                      {item.status === 'outdated' && <XCircle className="w-4 h-4 text-red-400" />}
-                      <div>
-                        <p className="text-sm font-medium">{item.article}</p>
-                        <p className="text-xs text-muted-foreground">{item.lastUpdated}</p>
-                      </div>
-                    </div>
-                    <Badge variant="outline" className={`text-xs ${
-                      item.accuracy >= 90 ? 'text-green-400 border-green-400/30' :
-                      item.accuracy >= 75 ? 'text-amber-400 border-amber-400/30' :
-                      'text-red-400 border-red-400/30'
-                    }`}>
-                      {item.accuracy}% accurate
-                    </Badge>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div>
-              <Badge className="mb-4 bg-emerald-500/20 text-emerald-400 border-emerald-500/30">
-                <Users className="w-3 h-3 mr-1" />
-                Student Satisfaction
-              </Badge>
-              <h3 className="text-xl font-bold mb-4">Real-Time Feedback Pulse</h3>
-
-              <div className="grid grid-cols-2 gap-4 mb-6">
-                {[
-                  { metric: "Helpful Responses", value: "94%", trend: "+3%" },
-                  { metric: "Issue Resolved", value: "87%", trend: "+5%" },
-                  { metric: "Quick Response", value: "96%", trend: "+1%" },
-                  { metric: "Would Use Again", value: "91%", trend: "+4%" },
-                ].map((item, i) => (
-                  <Card key={i}>
-                    <CardContent className="p-3 text-center">
-                      <p className="text-xs text-muted-foreground">{item.metric}</p>
-                      <p className="text-xl font-bold text-green-400">{item.value}</p>
-                      <p className="text-xs text-green-400">{item.trend}</p>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-
-              <Card className="bg-slate-900">
-                <CardContent className="p-4">
-                  <p className="text-sm text-slate-400 mb-2">Recent Student Feedback</p>
-                  <div className="space-y-2">
-                    <p className="text-sm text-white italic">"Fixed my WiFi in literally 30 seconds. Way better than waiting in line at the IT desk."</p>
-                    <p className="text-xs text-slate-500">- Class of 2026</p>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <Card className="border-green-500/20">
-            <CardContent className="p-8 md:p-12">
-              <Quote className="w-10 h-10 text-green-500/30 mb-4" />
-              <blockquote className="text-xl md:text-2xl font-medium leading-relaxed mb-6">
-                "Students expect instant answers at 2 AM before a deadline. Our AI 
-                helpdesk handles 74% of tickets without human intervention--password 
-                resets, WiFi troubleshooting, software installs. Our IT staff now 
-                focuses on complex issues that actually need expertise."
-              </blockquote>
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-green-500 to-emerald-500 flex items-center justify-center text-white font-bold">
-                  JP
-                </div>
-                <div>
-                  <p className="font-semibold">James Patterson</p>
-                  <p className="text-sm text-muted-foreground">Director of Campus IT Services, Dartmouth College</p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-
-      <section className="py-16 bg-slate-900">
-        <div className="max-w-2xl mx-auto px-4 sm:px-6 text-center">
-          <h2 className="text-2xl font-bold text-white mb-4">Building AI for Campus IT?</h2>
-          <p className="text-slate-400 mb-8">Let's create helpdesk systems that serve students around the clock.</p>
-          <CtaForm />
-        </div>
-      </section>
-
-      <section className="py-8 border-t border-border/50">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 flex justify-between">
-          <Link href="/case-studies/properti-ai/">
-            <Button variant="ghost" size="sm" className="gap-2" data-testid="button-prev-case">
-              <ArrowLeft className="w-4 h-4" />
-              Properti AI
-            </Button>
-          </Link>
-          <Link href="/case-studies/innit/">
-            <Button variant="ghost" size="sm" className="gap-2" data-testid="button-next-case">
-              Innit
-              <ArrowRight className="w-4 h-4" />
-            </Button>
-          </Link>
-        </div>
-      </section>
-
-      </CaseStudyTemplate>
-  );
+  return <CaseStudyV2 data={data} />;
 }

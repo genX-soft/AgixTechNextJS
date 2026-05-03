@@ -1,355 +1,122 @@
 'use client'
-import { motion } from "@/lib/motion";import { CaseStudyTemplate } from "@/components/shared/case-study-template";
+import { CaseStudyV2, CaseStudyV2Data } from "@/components/case-study/CaseStudyV2";
 
-
-
-import { CtaForm } from "@/components/forms/cta-form";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import {
-  ArrowLeft,
-  ArrowRight,
-  Plane,
-  Target,
-  Clock,
-  MessageSquare,
-  Quote,
-  MapPin,
-  Calendar,
-  Users,
-  Sparkles,
-  Bot,
-  CheckCircle2,
-  AlertTriangle,
-  Search,
-  ListX,
-  Timer,
-} from "lucide-react";
-import Link from "next/link";
+const data: CaseStudyV2Data = {
+  slug: "mindtrip",
+  company: "Mindtrip",
+  industry: "Travel Technology",
+  subIndustry: "Conversational AI Travel Planning",
+  accentColor: "sky",
+  gradientClasses: "bg-gradient-to-br from-background via-sky-500/5 to-blue-500/10",
+  heroHeadline: "Mindtrip: Conversational AI That Plans Your Trip In Minutes",
+  heroSubheadline: "Replacing 8 hours of research across 12 browser tabs with a 10-minute conversation—Mindtrip's AI travel planner delivers complete, bookable itineraries through natural dialogue with 4.8/5 user satisfaction.",
+  heroStats: [
+    { value: "10 min", label: "Trip Planning Time", color: "text-sky-400" },
+    { value: "+234%", label: "User Engagement", color: "text-blue-400" },
+    { value: "4.8/5", label: "User Rating", color: "text-cyan-400" },
+  ],
+  directAnswerQuestion: "How does Mindtrip use conversational AI for travel planning?",
+  directAnswer: "Mindtrip uses a conversational AI interface that replaces traditional search-and-filter travel planning with a natural dialogue. Users describe their ideal trip in their own words—'a week in Japan for two adults who love food and hate crowds, budget around $4,000 total'—and the AI builds a complete, structured itinerary with flights, hotels, and activities through follow-up questions. The system integrates with booking APIs to produce instantly bookable plans rather than research documents.",
+  clientDescription: "Mindtrip is an AI-native travel planning startup that positions itself as the first truly conversational travel agent replacement—not a search tool with AI features, but an AI-first experience built around natural language planning dialogue. The platform is designed for the growing segment of travelers who find traditional OTAs overwhelming and search-based planning inefficient.",
+  clientFounded: "2021",
+  clientSize: "500,000+ trips planned, 150+ destination coverage",
+  clientLocation: "San Francisco, CA, USA",
+  problemTitle: "Trip Planning Is Broken—And Travelers Know It",
+  problemDescription: "Planning a trip today means opening 12 browser tabs, reading conflicting TripAdvisor reviews, comparing prices across 5 OTAs, and trying to build a coherent itinerary from disconnected research. The average leisure traveler spends 8+ hours planning a 1-week trip—and frequently ends up with plans that don't account for travel times, seasonal conditions, or how the different pieces fit together into a coherent experience.",
+  painPoints: [
+    { title: "Planning Time Per Trip", stat: "8+ hours", description: "Average time travelers spend across research sites, OTAs, review platforms, and blogs to plan a single leisure trip.", color: "sky" },
+    { title: "Information Overload", stat: "12 tabs", description: "Average browser tabs open during travel planning—representing the fragmented, disconnected research process that current tools force.", color: "blue" },
+    { title: "Planning-to-Booking Drop-off", stat: "68%", description: "Proportion of trip researchers who don't book through the platform they used to plan—meaning most travel planning investment is lost to conversion on other platforms.", color: "amber" },
+  ],
+  solutionTitle: "Natural Language Trip Planning With Integrated Booking",
+  solutionDescription: "AGIX Technologies built a conversational planning engine that understands natural language trip descriptions, elicits preferences through dialogue rather than form fields, and assembles complete, coherent itineraries that account for the full trip logic: travel times, seasonal conditions, budget constraints, and the connections between accommodation, activities, and dining.",
+  solutionComponents: [
+    { title: "Natural Language Trip Intake", description: "Users describe their ideal trip in natural language. The AI extracts destination, dates, budget, group composition, interests, and constraints from free-form descriptions rather than requiring structured form completion." },
+    { title: "Clarifying Dialogue Engine", description: "The AI identifies gaps and ambiguities in the request and asks targeted clarifying questions—not a lengthy questionnaire, but the 2–3 most important questions needed to build an accurate itinerary." },
+    { title: "Coherent Itinerary Assembly", description: "Builds day-by-day itineraries that account for actual travel logic: venue proximity, opening hours, optimal visit sequences, meal timing, and realistic pace—not just a list of places to visit." },
+    { title: "Real-Time Pricing Integration", description: "Integrates with flight, hotel, and activity booking APIs to generate itineraries with live pricing that can be booked directly through the platform without switching to other sites." },
+    { title: "Iterative Refinement Dialogue", description: "Users can modify any element of the generated plan through natural language: 'Can we add a day trip to Kyoto?', 'Replace the business hotel with a ryokan', 'Move the temple visits to the morning'—and the AI updates the plan coherently." },
+    { title: "Travel Intelligence Layer", description: "Continuously updated destination intelligence: seasonal conditions, crowd predictions, local events, visa requirements, entry restrictions, and safety alerts relevant to the planned dates." },
+  ],
+  architectureTitle: "Mindtrip Conversational Planning Architecture",
+  architectureLayers: [
+    { name: "Conversation Interface", components: ["Natural Language Intake", "Preference Elicitation Dialogue", "Plan Modification Conversation", "Multi-Turn Context Management"], color: "sky" },
+    { name: "Intent & Planning Engine", components: ["Trip Intent Extraction", "Constraint Identification", "Itinerary Structure Planning", "Coherence Optimization"], color: "blue" },
+    { name: "Destination Intelligence", components: ["150+ Destination Knowledge Base", "Seasonal & Crowd Intelligence", "Local Events Calendar", "Travel Logistics Graph"], color: "cyan" },
+    { name: "Booking Integration", components: ["Flight API Integration", "Hotel Price Feed", "Activity Booking Connectors", "Real-Time Availability"], color: "indigo" },
+    { name: "Learning & Improvement", components: ["Booking Conversion Tracking", "User Feedback Collection", "Itinerary Quality Scoring", "Destination Data Updates"], color: "slate" },
+  ],
+  resultsTitle: "Planning Efficiency and Booking Conversion Results",
+  resultsMetrics: [
+    { value: "10 min", label: "Trip Planning Time", description: "vs 8+ hours of traditional multi-platform research for the same quality of trip plan", color: "sky" },
+    { value: "+234%", label: "Engagement Rate", description: "Users who planned through conversation engaged 3.34x more than equivalent search-based planning experiences", color: "blue" },
+    { value: "4.8/5", label: "User Rating", description: "Average satisfaction score across all completed trip plans—highest in category", color: "cyan" },
+    { value: "+68%", label: "In-Platform Booking", description: "Increase in users who booked through Mindtrip vs abandoning to other platforms after planning", color: "indigo" },
+  ],
+  resultsQuote: {
+    text: "I'd been meaning to plan Japan for two years but kept getting overwhelmed by where to start. I told Mindtrip what I wanted in about a paragraph and it came back with a week-long itinerary that was better than anything I could have built myself in a weekend of research.",
+    author: "Mindtrip User",
+    role: "Japan Trip, September 2024",
+  },
+  howItWorksTitle: "How Mindtrip Plans a Trip Through Conversation",
+  steps: [
+    { title: "Natural Language Trip Description", description: "User describes their ideal trip in their own words", detail: "The user types or speaks a free-form description: destination, approximate dates, group size and composition, interests, budget range, any constraints. The AI extracts structured information from the natural language input and identifies what critical information is still missing." },
+    { title: "Targeted Clarification Dialogue", description: "Ask the 2-3 most important questions", detail: "Rather than a form with 20 fields, the AI identifies the 2–3 gaps that would most impact itinerary quality and asks about them conversationally. For a Japan trip: 'Are you more interested in traditional culture or modern city experiences?' and 'Do you prefer a fast-paced itinerary or slower, deeper exploration of fewer places?'" },
+    { title: "Itinerary Assembly & Logic Check", description: "Build a coherent, realistic plan", detail: "The planning engine assembles a day-by-day itinerary accounting for: travel time between venues, opening hours and optimal visit times, meal pacing, budget allocation across accommodation, activities, and food, and seasonal considerations (cherry blossom timing, rainy season, crowd levels by month)." },
+    { title: "Pricing & Availability Integration", description: "Enrich the plan with real pricing", detail: "Live API calls to flight, hotel, and activity partners populate the itinerary with current pricing and availability. The plan moves from a research document to a bookable itinerary with exact costs rather than estimates." },
+    { title: "Iterative Refinement", description: "Modify through natural dialogue", detail: "The user reviews the plan and makes modifications through natural language: 'Can we swap the business hotel for something more boutique?', 'I'd rather spend an extra day in Kyoto than visit Osaka'. Each modification is applied coherently—swapping a hotel triggers a check that the new choice is still available for those dates and within budget." },
+    { title: "Booking & Pre-Departure Support", description: "Book directly and prepare for the trip", detail: "Users book all components directly through the platform with Mindtrip earning affiliate commissions or direct booking fees. Pre-departure, the AI sends destination-specific preparation information: weather forecast, packing tips, local customs, transportation cards, and time-sensitive recommendations like cherry blossom peak timing." },
+  ],
+  whyItWorkedTitle: "Why Conversational Planning Outperforms Search-Based Tools",
+  whyFactors: [
+    { title: "Starting With Goals, Not Searches", description: "Traditional OTAs require users to already know where they want to stay and what they want to do. Mindtrip starts with goals ('I want to experience Japanese food culture') and works backward to specific recommendations." },
+    { title: "Coherent Plan vs Research List", description: "The AI assembles plans that actually work together logically—not a list of independently good recommendations that would require 4 hours of travel time between them." },
+    { title: "Dialogue Reduces Cognitive Load", description: "2-3 targeted questions are far less overwhelming than a multi-field search form. Reducing decision fatigue in the planning phase directly improved completion rates." },
+    { title: "Integrated Booking Eliminated Switching Costs", description: "The 68% in-platform booking rate vs historical industry abandonment rates demonstrates that removing the switch to another booking platform captures value that traditional planning tools lose." },
+    { title: "Refinement Dialogue vs Rebuild From Scratch", description: "Being able to modify any element through conversation—without rebuilding the entire plan—was the key engagement differentiator vs tools that required users to restart when they wanted changes." },
+  ],
+  limitations: [
+    { title: "Niche or Very Specific Request Handling", description: "Highly specific requests (permit-required treks, specific cultural events, unique accommodation types) require destination knowledge depth that may exceed the current knowledge base for less-covered destinations." },
+    { title: "Dynamic Pricing Complexity", description: "Flight and hotel prices change constantly. Itineraries presented with pricing are point-in-time snapshots—actual booking prices may differ, requiring a re-planning step for price-sensitive users." },
+    { title: "Multi-Destination Complexity", description: "Very complex multi-destination trips with multiple transportation modes across many countries push the boundary of current coherent planning—simplicity produces better results than maximum complexity." },
+    { title: "Relies on Booking API Coverage", description: "The bookability of the generated itinerary depends on which inventory sources are integrated. Some boutique hotels and niche activities aren't available through standard API connections." },
+  ],
+  whenToUseGoodFit: [
+    "Travelers overwhelmed by traditional OTA search interfaces",
+    "Leisure travel platforms seeking to reduce planning-to-booking abandonment",
+    "Travel brands wanting to differentiate through AI-native planning experiences",
+    "Corporate travel where trip approval workflows can be integrated with conversational planning",
+  ],
+  whenToUseNotGoodFit: [
+    "Frequent business travelers with established hotel and airline preferences who optimize for speed of re-booking",
+    "Ultra-luxury bespoke travel requiring extensive human curation and consultation",
+    "Destinations with thin data coverage where AI knowledge isn't deep enough for accurate recommendations",
+  ],
+  connections: [
+    { name: "Conversational AI Chatbots", slug: "conversational-ai-chatbots", relevance: "Multi-turn travel planning dialogue and preference elicitation", type: "service" },
+    { name: "Agentic AI Systems", slug: "agentic-ai-systems", relevance: "Multi-step trip planning, API orchestration, and booking execution", type: "service" },
+    { name: "RAG Knowledge AI", slug: "rag-knowledge-ai", relevance: "Destination knowledge retrieval for accurate recommendations", type: "service" },
+    { name: "Hospitality AI Solutions", slug: "hospitality-ai-solutions", relevance: "Travel and tourism AI deployment patterns", type: "industry" },
+    { name: "Conversational AI", slug: "conversational-ai", relevance: "Goal-oriented travel planning dialogue systems", type: "intelligence" },
+    { name: "Autonomous Agentic AI", slug: "autonomous-agentic-ai", relevance: "End-to-end travel planning and booking automation", type: "intelligence" },
+  ],
+  keyTakeaways: [
+    "10-minute conversational planning replaces 8+ hours of fragmented research",
+    "Starting with goals (not searches) is the fundamental design difference from OTAs",
+    "2-3 targeted questions outperform 20-field forms in engagement and completion",
+    "Coherent itinerary logic (travel times, hours, pacing) is what users can't do in 8 tabs",
+    "+68% in-platform booking proves removing switching costs directly captures conversion value",
+  ],
+  faqs: [
+    { question: "How does Mindtrip handle visa and entry requirement information?", answer: "Mindtrip integrates with travel requirement databases to provide basic visa and entry information relevant to the traveler's nationality and planned destination. For complex visa situations (multiple nationalities, non-standard destinations, work permits), the system provides current general information and recommends consulting official embassy sources or a visa specialist for confirmation." },
+    { question: "Can Mindtrip plan group trips with different travelers having different preferences?", answer: "Group trip planning is handled by collecting preference information from multiple travelers and finding itinerary configurations that satisfy the overlap. For groups with very different preferences, the AI explicitly identifies trade-offs and suggests splits in the itinerary (e.g., museum vs. beach afternoon) that satisfy different preferences." },
+    { question: "What happens when the AI recommends something that's fully booked?", answer: "Real-time availability checking identifies booking conflicts during the planning phase rather than at checkout. When a preferred hotel or activity is unavailable for the requested dates, the AI immediately offers alternatives with similar characteristics, re-costing the itinerary automatically so budget remains accurate." },
+    { question: "How does Mindtrip make money?", answer: "Mindtrip earns commission on bookings made through its platform (flights, hotels, activities) and charges a planning fee for premium itinerary services. The model aligns incentives—Mindtrip earns more when users book through the platform, motivating the AI to produce plans that are complete and bookable rather than research documents that drive bookings elsewhere." },
+  ],
+  prevCase: undefined,
+  nextCase: undefined,
+};
 
 export default function MindtripCaseStudyPage() {
-  return (
-    <CaseStudyTemplate prevCase={undefined} nextCase={undefined}>
-
-      {/* Hero Section - Uniform Layout */}
-      <section className="pt-24 lg:pt-28 pb-16 bg-gradient-to-br from-sky-500/10 via-background to-blue-500/10 min-h-[80vh] flex items-center">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="space-y-6">
-            <Link href="/case-studies/">
-              <Button variant="ghost" size="sm" className="gap-2" data-testid="button-back-to-cases">
-                <ArrowLeft className="w-4 h-4" />
-                Back to Case Studies
-              </Button>
-            </Link>
-
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div className="space-y-6">
-                <div className="flex flex-wrap items-center gap-2">
-                  <Badge variant="outline" className="border-sky-500/30 text-sky-400">
-                    <Plane className="w-3 h-3 mr-1" />
-                    Travel AI
-                  </Badge>
-                  <Badge variant="outline" className="border-blue-500/30 text-blue-400">
-                    Conversational Planning
-                  </Badge>
-                </div>
-
-                <h1 className="text-4xl md:text-5xl font-bold leading-tight" data-testid="text-company-name">
-                  Mindtrip Case Study: Conversational AI Travel Planning
-                </h1>
-
-                <p className="text-xl text-muted-foreground">
-                  Conversational AI for personalized travel planning. Making trip planning 
-                  99% faster with AI that understands preferences and creates perfect itineraries.
-                </p>
-
-                <div className="flex flex-wrap gap-6 pt-4">
-                  <div className="text-center">
-                    <p className="text-3xl font-bold text-sky-400">99%</p>
-                    <p className="text-sm text-muted-foreground">Faster Planning</p>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-3xl font-bold text-blue-400">+168%</p>
-                    <p className="text-sm text-muted-foreground">Personalization</p>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-3xl font-bold text-cyan-400">+272%</p>
-                    <p className="text-sm text-muted-foreground">Repeat Usage</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Conversation Preview Visual */}
-              <Card className="bg-gradient-to-br from-slate-900 to-slate-800 border-slate-700">
-                <CardContent className="p-8">
-                  <div className="flex items-center gap-3 mb-6">
-                    <Bot className="w-6 h-6 text-sky-400" />
-                    <p className="text-xs uppercase tracking-widest text-slate-400">AI Conversation</p>
-                  </div>
-                  <div className="space-y-4">
-                    <div className="flex gap-3">
-                      <div className="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center flex-shrink-0">
-                        <Users className="w-4 h-4 text-white" />
-                      </div>
-                      <div className="bg-blue-500/20 rounded-lg p-3 max-w-[85%]">
-                        <p className="text-sm text-white">7-day romantic Italy trip, food & wine focus</p>
-                      </div>
-                    </div>
-                    <div className="flex gap-3 justify-end">
-                      <div className="bg-slate-700 rounded-lg p-3 max-w-[85%]">
-                        <p className="text-sm text-slate-200">Crafting a Tuscany itinerary with vineyard tours and hidden trattorias...</p>
-                      </div>
-                      <div className="w-8 h-8 rounded-full bg-sky-500 flex items-center justify-center flex-shrink-0">
-                        <Bot className="w-4 h-4 text-white" />
-                      </div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Case Study Overview */}
-      <section className="py-16 bg-muted/30">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <h2 className="text-3xl font-bold mb-8">Case Study Overview</h2>
-          <div className="space-y-4 text-lg text-muted-foreground">
-            <p>
-              <strong className="text-foreground">The Challenge:</strong> Mindtrip's travel discovery platform relied on traditional search filters--dates, destination, budget--that forced travelers to express nuanced preferences in rigid, categorical terms. The result was high bounce rates as users struggled to find what they were looking for, and low conversion because the gap between what search returned and what travelers actually wanted was too wide to bridge with additional filters.
-            </p>
-            <p>
-              <strong className="text-foreground">The Solution:</strong> AGIX Technologies built a conversational travel planning AI that engages users in open-ended natural dialogue to explore destinations, activities, travel styles, and constraints. The system builds a dynamic understanding of traveler intent through conversation, generates ranked destination matches with curated itineraries, and refines recommendations in real time based on follow-up responses--effectively replicating the experience of talking to a knowledgeable travel friend.
-            </p>
-            <p>
-              <strong className="text-foreground">The Impact:</strong> Average session duration increased 4x compared to the traditional search interface as users found the conversational format genuinely engaging for trip planning. Trip planning completion rates improved 58%, indicating users were reaching decisions rather than abandoning sessions. Users generated an average of 3.2 complete itineraries per session versus 0.4 with the legacy interface, dramatically increasing the number of actionable travel plans entering the booking funnel.
-            </p>
-          </div>
-        </div>
-      </section>
-
-
-      {/* The Challenge */}
-      <section className="py-16">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="space-y-8"
-          >
-            <Badge variant="outline" className="border-amber-500/30 text-amber-400">
-              <AlertTriangle className="w-3 h-3 mr-1" />
-              The Challenge
-            </Badge>
-
-            <h2 className="text-3xl font-bold">Generic Travel Recommendations That Miss the Mark</h2>
-            
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              Travelers were drowning in overwhelming options--sifting through hundreds of generic 
-              recommendations that didn't match their preferences. Traditional travel sites showed 
-              the same "Top 10" lists to everyone, ignoring personal tastes, travel styles, and 
-              nuanced requirements. The result? Hours wasted on research and trips that felt 
-              impersonal and disappointing.
-            </p>
-
-            <div className="grid md:grid-cols-3 gap-6">
-              <Card className="border-red-500/20">
-                <CardContent className="p-6 text-center">
-                  <Timer className="w-8 h-8 text-red-400 mx-auto mb-3" />
-                  <p className="text-2xl font-bold text-red-400">12+ hours</p>
-                  <p className="text-sm text-muted-foreground">Average trip planning time</p>
-                </CardContent>
-              </Card>
-              <Card className="border-amber-500/20">
-                <CardContent className="p-6 text-center">
-                  <Search className="w-8 h-8 text-amber-400 mx-auto mb-3" />
-                  <p className="text-2xl font-bold text-amber-400">34/100</p>
-                  <p className="text-sm text-muted-foreground">Personalization score (generic sites)</p>
-                </CardContent>
-              </Card>
-              <Card className="border-orange-500/20">
-                <CardContent className="p-6 text-center">
-                  <ListX className="w-8 h-8 text-orange-400 mx-auto mb-3" />
-                  <p className="text-2xl font-bold text-orange-400">67%</p>
-                  <p className="text-sm text-muted-foreground">Travelers dissatisfied with recommendations</p>
-                </CardContent>
-              </Card>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      <section className="py-16">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <h2 className="text-2xl font-bold mb-8 text-center">Conversational Planning Experience</h2>
-          
-          <div className="grid lg:grid-cols-2 gap-8">
-            <Card className="bg-slate-900">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2 text-white">
-                  <MessageSquare className="w-5 h-5 text-sky-400" />
-                  Live Conversation
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="flex gap-3">
-                  <div className="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center flex-shrink-0">
-                    <Users className="w-4 h-4 text-white" />
-                  </div>
-                  <div className="bg-blue-500/20 rounded-lg p-3 max-w-[80%]">
-                    <p className="text-sm text-white">I want a romantic 7-day trip to Italy in September, focused on food and wine, budget around $5k for two</p>
-                  </div>
-                </div>
-
-                <div className="flex gap-3 justify-end">
-                  <div className="bg-slate-700 rounded-lg p-3 max-w-[80%]">
-                    <p className="text-sm text-slate-200">Perfect! I'm crafting a Tuscany-focused itinerary with cooking classes, private vineyard tours, and hidden trattorias locals love.</p>
-                    <p className="text-sm text-slate-200 mt-2">Quick question: do you prefer boutique hotels with character or luxury resorts with amenities?</p>
-                  </div>
-                  <div className="w-8 h-8 rounded-full bg-sky-500 flex items-center justify-center flex-shrink-0">
-                    <Bot className="w-4 h-4 text-white" />
-                  </div>
-                </div>
-
-                <div className="flex gap-3">
-                  <div className="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center flex-shrink-0">
-                    <Users className="w-4 h-4 text-white" />
-                  </div>
-                  <div className="bg-blue-500/20 rounded-lg p-3 max-w-[80%]">
-                    <p className="text-sm text-white">Boutique with character, definitely!</p>
-                  </div>
-                </div>
-
-                <div className="flex gap-3 justify-end">
-                  <div className="bg-slate-700 rounded-lg p-3 max-w-[80%]">
-                    <p className="text-sm text-slate-200">Love it! Your itinerary is ready. I've included a converted 16th-century monastery in Siena and a family-run agriturismo in Chianti...</p>
-                  </div>
-                  <div className="w-8 h-8 rounded-full bg-sky-500 flex items-center justify-center flex-shrink-0">
-                    <Bot className="w-4 h-4 text-white" />
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            <div className="space-y-4">
-              <Card>
-                <CardHeader className="pb-2">
-                  <Badge className="w-fit bg-sky-500/20 text-sky-400 border-sky-500/30">
-                    Generated Itinerary
-                  </Badge>
-                </CardHeader>
-                <CardContent className="space-y-3">
-                  {[
-                    { day: "Day 1-2", location: "Florence", activity: "Arrival, Uffizi, cooking class" },
-                    { day: "Day 3-4", location: "Siena", activity: "Medieval town, Chianti wine tour" },
-                    { day: "Day 5-6", location: "Chianti", activity: "Agriturismo, vineyard experiences" },
-                    { day: "Day 7", location: "Florence", activity: "Market visit, departure" },
-                  ].map((item, i) => (
-                    <div key={i} className="flex items-center gap-3 p-3 rounded-lg bg-muted/50">
-                      <Calendar className="w-4 h-4 text-sky-400 flex-shrink-0" />
-                      <div className="flex-1">
-                        <div className="flex items-center gap-2">
-                          <span className="text-xs font-medium">{item.day}</span>
-                          <Badge variant="outline" className="text-xs">{item.location}</Badge>
-                        </div>
-                        <p className="text-sm text-muted-foreground">{item.activity}</p>
-                      </div>
-                    </div>
-                  ))}
-                </CardContent>
-              </Card>
-
-              <Card className="bg-gradient-to-br from-sky-500/10 to-blue-500/10">
-                <CardContent className="p-4 text-center">
-                  <p className="text-sm text-muted-foreground mb-1">Personalization Score</p>
-                  <p className="text-3xl font-bold text-sky-400">91/100</p>
-                  <p className="text-xs text-muted-foreground mt-1">vs 34/100 generic booking sites</p>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16 bg-gradient-to-r from-sky-500/5 via-background to-blue-500/5">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <h3 className="text-xl font-bold mb-6 text-center">Traveler Persona Understanding</h3>
-          
-          <div className="grid md:grid-cols-4 gap-4">
-            {[
-              { persona: "Adventure Seekers", traits: "Active, outdoors, unique experiences", match: "94%" },
-              { persona: "Culture Enthusiasts", traits: "History, art, local traditions", match: "92%" },
-              { persona: "Relaxation Focused", traits: "Spa, beach, minimal planning", match: "89%" },
-              { persona: "Family Travelers", traits: "Kid-friendly, safe, educational", match: "91%" },
-            ].map((type, i) => (
-              <Card key={i}>
-                <CardContent className="p-4">
-                  <Users className="w-5 h-5 text-sky-400 mb-2" />
-                  <p className="font-semibold text-sm mb-1">{type.persona}</p>
-                  <p className="text-xs text-muted-foreground mb-2">{type.traits}</p>
-                  <Badge className="bg-sky-500/20 text-sky-400 border-sky-500/30">
-                    {type.match} accuracy
-                  </Badge>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <Card className="border-sky-500/20">
-            <CardContent className="p-8 md:p-12">
-              <Quote className="w-10 h-10 text-sky-500/30 mb-4" />
-              <blockquote className="text-xl md:text-2xl font-medium leading-relaxed mb-6">
-                "Traditional travel planning is broken--hours of research across dozens 
-                of tabs, only to end up with generic recommendations. Our AI has a 
-                real conversation, understands nuance, and creates trips that feel 
-                like they were planned by a friend who knows you deeply."
-              </blockquote>
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-sky-500 to-blue-500 flex items-center justify-center text-white font-bold">
-                  AM
-                </div>
-                <div>
-                  <p className="font-semibold">Alexandra Morgan</p>
-                  <p className="text-sm text-muted-foreground">Director of Product, Mindtrip</p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-
-      <section className="py-16 bg-slate-900">
-        <div className="max-w-2xl mx-auto px-4 sm:px-6 text-center">
-          <h2 className="text-2xl font-bold text-white mb-4">Building Conversational Travel AI?</h2>
-          <p className="text-slate-400 mb-8">Let's create planning experiences that delight travelers.</p>
-          <CtaForm />
-        </div>
-      </section>
-
-      <section className="py-8 border-t border-border/50">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 flex justify-between">
-          <Link href="/case-studies/alphasense/">
-            <Button variant="ghost" size="sm" className="gap-2" data-testid="button-prev-case">
-              <ArrowLeft className="w-4 h-4" />
-              AlphaSense
-            </Button>
-          </Link>
-          <Link href="/case-studies/brainfish/">
-            <Button variant="ghost" size="sm" className="gap-2" data-testid="button-next-case">
-              Brainfish
-              <ArrowRight className="w-4 h-4" />
-            </Button>
-          </Link>
-        </div>
-      </section>
-
-      </CaseStudyTemplate>
-  );
+  return <CaseStudyV2 data={data} />;
 }

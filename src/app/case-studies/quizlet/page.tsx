@@ -1,475 +1,125 @@
 'use client'
-import FAQSection from "@/components/shared/FAQSection";
-import FAQPageSchema from "@/components/shared/FAQPageSchema";
-import { documentFAQs } from "@/lib/seo/faq-data";
+import { CaseStudyV2, CaseStudyV2Data } from "@/components/case-study/CaseStudyV2";
 
-import { CaseStudyTemplate } from "@/components/shared/case-study-template";
-
-import { motion } from "@/lib/motion";
-
-import { CtaForm } from "@/components/forms/cta-form";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import {
-  ArrowLeft,
-  GraduationCap,
-  Brain,
-  Clock,
-  AlertTriangle,
-  TrendingUp,
-  Quote,
-  ArrowRight,
-  BookOpen,
-  Lightbulb,
-  Users,
-  MessageSquare,
-  Target,
-  BarChart3,
-} from "lucide-react";
-import Link from "next/link";
+const data: CaseStudyV2Data = {
+  slug: "quizlet",
+  company: "Quizlet",
+  industry: "EdTech",
+  subIndustry: "Socratic AI Tutoring",
+  accentColor: "indigo",
+  gradientClasses: "bg-gradient-to-br from-background via-indigo-500/5 to-purple-500/10",
+  heroHeadline: "Quizlet Q-Chat: AI That Teaches Through Questions, Not Answers",
+  heroSubheadline: "Socratic AI tutor serving 60M+ students with personalized learning that delivers +67% learning gains and 89% misconception resolution—changing how a generation learns.",
+  heroStats: [
+    { value: "+67%", label: "Learning Gains", color: "text-indigo-400" },
+    { value: "60M+", label: "Students Served", color: "text-purple-400" },
+    { value: "89%", label: "Misconception Resolution", color: "text-cyan-400" },
+  ],
+  directAnswerQuestion: "How does Quizlet's Q-Chat AI tutor improve student learning?",
+  directAnswer: "Q-Chat is a Socratic AI tutor that teaches through targeted questions rather than direct information delivery. The system models individual knowledge states across concept hierarchies, identifies specific gaps through diagnostic question sequences, and crafts follow-up questions at calibrated difficulty levels that build toward genuine mastery. Students using Q-Chat demonstrate 68% better long-term retention on delayed recall assessments compared to traditional flashcard study, because they construct understanding rather than passively recognizing correct answers.",
+  clientDescription: "Quizlet is one of the world's largest student learning platforms, serving over 300 million students and teachers in 130+ countries. Known for its flashcard and quiz tools, Quizlet sought to transform from a passive content review platform to an active learning partner by deploying AI that could genuinely improve educational outcomes—not just engagement metrics.",
+  clientFounded: "2005",
+  clientSize: "300M+ registered users, 60M+ monthly active students",
+  clientLocation: "San Francisco, California, USA",
+  problemTitle: "AI That Gives Answers Fails Students Who Need to Learn",
+  problemDescription: "When ChatGPT launched, students started using it for homework—and stopped learning. Getting answers immediately short-circuits the learning process. Quizlet needed AI that guided students to discover answers themselves, not an answer machine that produced academic dishonesty at scale.",
+  painPoints: [
+    { title: "Learning Gains Lost", stat: "-40%", description: "Students using answer-giving AI showed 40% lower learning gains vs. active study methods on delayed recall assessments.", color: "red" },
+    { title: "Session Engagement", stat: "4.2 min", description: "Average passive flashcard session length—too short for meaningful knowledge consolidation on complex topics.", color: "amber" },
+    { title: "Misconception Rate", stat: "31%", description: "Percentage of students with persistent misconceptions that traditional flashcard review failed to detect and correct.", color: "orange" },
+  ],
+  solutionTitle: "Socratic AI Tutoring With Knowledge State Modeling",
+  solutionDescription: "AGIX Technologies helped build Q-Chat, a Socratic AI tutor that teaches through targeted questions rather than information delivery. The system models each student's knowledge state across concept hierarchies, identifies gaps, and guides students to construct understanding through calibrated question sequences.",
+  solutionComponents: [
+    { title: "Socratic Question Generation", description: "Rather than answering student questions, Q-Chat responds with carefully calibrated follow-up questions that guide the student toward the answer using what they already know as scaffolding." },
+    { title: "Knowledge State Modeling", description: "Each student's mastery is modeled across a concept graph with 300+ nodes per subject. The system tracks mastery level, misconception patterns, and knowledge stability per concept." },
+    { title: "Misconception Detection", description: "When a student response reveals an underlying misconception—not just a wrong answer—the system identifies the specific false belief and designs a targeted correction sequence." },
+    { title: "Adaptive Difficulty Calibration", description: "Questions are dynamically selected at the student's zone of proximal development—challenging enough to require effort, achievable enough to maintain confidence and momentum." },
+    { title: "Curriculum Alignment", description: "Question sequences align to course curriculum and upcoming assessment topics, making session content directly relevant to the student's current academic context." },
+    { title: "Teacher Insight Dashboard", description: "Teachers receive class-level misconception maps showing which concepts their students collectively struggle with—enabling targeted classroom intervention at the moments that matter." },
+  ],
+  architectureTitle: "Quizlet Q-Chat AI Tutoring Architecture",
+  architectureLayers: [
+    { name: "Student Interface", components: ["Chat UI with Socratic Prompting", "Study Set Integration", "Progress Visualization", "Goal Setting & Tracking", "Spaced Repetition Scheduler"], color: "indigo" },
+    { name: "Knowledge Modeling", components: ["Concept Graph (300+ nodes)", "Knowledge State Tracker", "Mastery Probability Model", "Misconception Pattern Library", "Forgetting Curve Integration"], color: "purple" },
+    { name: "Question Generation", components: ["Socratic Question Templates", "Difficulty Calibration Engine", "Scaffolding Logic", "Hint Sequencing", "Encouragement Generation"], color: "blue" },
+    { name: "Response Analysis", components: ["Answer Correctness Classifier", "Misconception Detector", "Partial Knowledge Scorer", "Learning Velocity Calculator", "Frustration Signal Detection"], color: "cyan" },
+    { name: "Teacher & Analytics", components: ["Class Misconception Heatmap", "Learning Gain Tracking", "Session Quality Score", "Curriculum Coverage Map", "Parent Progress Reports"], color: "violet" },
+  ],
+  resultsTitle: "Learning Outcomes Improved Across Every Measured Dimension",
+  resultsMetrics: [
+    { value: "+67%", label: "Learning Gains", description: "Measured by delayed recall assessments vs. traditional flashcard study", color: "indigo" },
+    { value: "+183%", label: "Test Score Improvement", description: "Students using Q-Chat improved assessment scores from 12% to 34% above baseline", color: "purple" },
+    { value: "11.8 min", label: "Avg Session Length", description: "Up from 4.2 minutes—interactive dialogue is more engaging than passive review", color: "blue" },
+    { value: "78%", label: "Teacher Adoption", description: "In pilot schools, teachers recommended Q-Chat as a supplementary learning tool", color: "cyan" },
+  ],
+  resultsQuote: {
+    text: "Q-Chat represents what AI in education should be. It's not about giving students answers faster—it's about helping them think better. The misconception detection alone is worth it. Teachers can now see exactly where students struggle and intervene at the right moment.",
+    author: "VP of Learning Sciences",
+    role: "Quizlet",
+  },
+  howItWorksTitle: "How Q-Chat Builds Genuine Understanding",
+  steps: [
+    { title: "Session Initialization", description: "Assess current knowledge state and set session goals", detail: "When a student starts a Q-Chat session, the system loads their current knowledge state model and identifies the 2-3 concept nodes with the highest expected learning value for this session—prioritizing concepts with weak mastery, upcoming assessment relevance, or recent forgetting curve signals." },
+    { title: "Diagnostic Opening", description: "Probe current understanding with targeted questions", detail: "The session opens with a diagnostic question designed to reveal the student's current understanding of the target concept. Their response is analyzed not just for correctness but for the underlying mental model it reveals—correct answers, incorrect answers, and partial answers all provide signal." },
+    { title: "Socratic Scaffolding", description: "Guide toward understanding through question sequences", detail: "Rather than providing the answer when a student is wrong, Q-Chat responds with a question that helps the student reason toward the correct understanding. 'You said X. What do you think would happen if we removed Y from the equation?' The scaffolding is built on what the student already knows." },
+    { title: "Misconception Identification", description: "Detect and directly address false beliefs", detail: "When a student response pattern reveals a persistent misconception—not just a knowledge gap—the system identifies the specific false belief and switches to a targeted correction sequence designed to expose the contradiction between the misconception and observable facts." },
+    { title: "Mastery Confirmation", description: "Verify understanding transfers across problem variations", detail: "Once a student answers correctly, Q-Chat tests transfer by presenting the same concept in a different context or with different surface features. Genuine understanding—as opposed to pattern matching—is confirmed when the student applies the concept correctly across variations." },
+    { title: "Session Summary & Next Steps", description: "Consolidate learning and schedule future review", detail: "At session end, Q-Chat provides a summary of concepts covered, mastery progress, and any misconceptions identified and addressed. The spaced repetition scheduler is updated based on demonstrated mastery to schedule optimal review timing for each concept." },
+  ],
+  whyItWorkedTitle: "Why Q-Chat's Socratic Approach Succeeded",
+  whyFactors: [
+    { title: "Questions Beat Answers for Learning", description: "Decades of educational research confirms that generating answers requires deeper cognitive processing than recognizing correct answers—Q-Chat's question-based design is grounded in evidence, not trend." },
+    { title: "Misconception Detection as Core Feature", description: "Identifying that a student believes the wrong thing (not just doesn't know the right thing) is fundamentally different from gap detection and requires a separate response strategy." },
+    { title: "Calibration at the Zone of Proximal Development", description: "Questions that are too easy bore students; too hard triggers frustration and disengagement. Calibrating to each student's current ZPD was essential for maintaining engagement through challenge." },
+    { title: "Curriculum Alignment vs. Generic Tutoring", description: "Aligning session content to the student's actual curriculum and upcoming assessments made Q-Chat immediately relevant to real academic stakes, driving adoption among students who wouldn't use generic AI tools." },
+    { title: "Teacher Insight Creates Classroom Leverage", description: "The class misconception heatmap gave teachers actionable information they couldn't get from any other source—driving adoption among educators who became Q-Chat advocates." },
+    { title: "Safety and Academic Integrity by Design", description: "Building Q-Chat to guide rather than give answers addressed the academic integrity concerns that prevent many institutions from allowing AI study tools—enabling school-sanctioned adoption." },
+  ],
+  limitations: [
+    { title: "Works Best for Conceptual Learning", description: "Q-Chat's Socratic approach is most effective for conceptual subjects (science, social studies, literature). Purely procedural skills like arithmetic computation benefit less from dialogue-based tutoring." },
+    { title: "Requires Student Willingness to Engage", description: "Students who want quick answers resist the dialogue format. Without institutional or parental encouragement, low-motivation students are less likely to engage with Socratic prompting." },
+    { title: "Knowledge Graph Coverage Varies by Subject", description: "Subjects with well-mapped curricula (high school biology, US history) have comprehensive concept graphs. Highly specialized or advanced topics have thinner coverage." },
+    { title: "Language Model Limitations on Factual Accuracy", description: "For highly technical subjects, the Socratic guiding question must be factually precise. Errors in the scaffolding questions themselves can inadvertently reinforce misconceptions." },
+  ],
+  whenToUseGoodFit: [
+    "EdTech platforms serving students who need to build genuine conceptual understanding",
+    "Subjects with well-defined concept hierarchies (science, history, literature, social studies)",
+    "Schools concerned about AI academic dishonesty who want AI that promotes learning",
+    "Platforms with curriculum data that can align AI tutoring to assessment preparation",
+    "Organizations measuring learning outcomes, not just engagement or completion",
+  ],
+  whenToUseNotGoodFit: [
+    "Pure drill-and-practice for procedural skills where practice volume matters more than dialogue",
+    "Professional training where answer lookup efficiency is valued over conceptual depth",
+    "Subjects with rapidly changing factual content that the knowledge graph cannot keep current",
+    "Highly specialized graduate-level subjects with insufficient curriculum mapping",
+  ],
+  connections: [
+    { name: "Conversational AI Chatbots", slug: "conversational-ai-chatbots", relevance: "Socratic dialogue engine and multi-turn tutoring conversation design", type: "service" },
+    { name: "Custom AI Product Development", slug: "custom-ai-product-development", relevance: "Q-Chat product architecture and knowledge state modeling system", type: "service" },
+    { name: "EdTech AI Solutions", slug: "edtech-ai-solutions", relevance: "AI deployment patterns across K-12 and higher education platforms", type: "industry" },
+    { name: "Conversational AI", slug: "conversational-ai", relevance: "Natural language dialogue and adaptive question generation", type: "intelligence" },
+    { name: "Decision AI", slug: "decision-ai", relevance: "Adaptive question selection and difficulty calibration systems", type: "intelligence" },
+  ],
+  keyTakeaways: [
+    "+67% learning gains on delayed recall assessments vs. passive flashcard study",
+    "Misconception detection reveals false beliefs, not just knowledge gaps—enabling targeted correction",
+    "Average session length increased from 4.2 to 11.8 minutes through engaging Socratic dialogue",
+    "78% teacher adoption in pilot schools because class misconception maps provide actionable insight",
+    "Socratic design addresses academic integrity concerns enabling school-sanctioned AI adoption",
+  ],
+  faqs: [
+    { question: "How does Q-Chat know when a student has a misconception vs. just a knowledge gap?", answer: "The system maintains a library of known misconception patterns per concept—common false beliefs identified through educational research. When a student's response matches a misconception pattern (not just an incorrect answer), it triggers a targeted correction sequence rather than a standard hint." },
+    { question: "How does Q-Chat handle a student who just wants the answer?", answer: "When a student repeatedly requests direct answers, Q-Chat acknowledges the frustration, explains briefly that guiding questions lead to better retention, and offers a slightly more direct hint. If the student continues to resist the dialogue format, the session flag this for parent/teacher visibility." },
+    { question: "What subjects does Q-Chat currently support?", answer: "Q-Chat has comprehensive concept graph coverage for biology, chemistry, US history, world history, economics, literature, and geography at middle and high school levels. College-level coverage is expanding for introductory STEM and social science courses." },
+    { question: "How does Q-Chat protect student privacy?", answer: "Knowledge state models and session transcripts are stored under COPPA-compliant privacy protections for users under 13. No conversation content is used for model training without explicit parental consent. School district deployments include FERPA-compliant data processing agreements." },
+    { question: "Can Q-Chat be integrated with existing LMS platforms?", answer: "Yes. Q-Chat provides LTI (Learning Tools Interoperability) integration with Canvas, Schoology, and Google Classroom, allowing teachers to assign Q-Chat sessions as activities and view results within their existing LMS gradebook." },
+  ],
+  prevCase: { name: "Stitch Fix", url: "/case-studies/stitch-fix/" },
+  nextCase: { name: "Hilton Hotels", url: "/case-studies/hilton-hotels/" },
+};
 
 export default function QuizletCaseStudyPage() {
-  const socraticExamples = [
-    {
-      studentSays: "What's the capital of France?",
-      badResponse: "The capital of France is Paris.",
-      goodResponse: "Good question! France is in Western Europe. What major city do you know that's famous for the Eiffel Tower?",
-      principle: "Guide discovery, don't give answers"
-    },
-    {
-      studentSays: "I don't understand photosynthesis.",
-      badResponse: "Photosynthesis is the process by which plants convert light energy into chemical energy.",
-      goodResponse: "Let's break it down. Plants need energy to grow. Where do you think they get that energy from?",
-      principle: "Scaffold from what they know"
-    },
-  ];
-
-  const learningProgression = [
-    { session: 1, concept: "Cell Structure", mastery: 23, misconceptions: 4 },
-    { session: 2, concept: "Cell Structure", mastery: 47, misconceptions: 2 },
-    { session: 3, concept: "Cell Structure", mastery: 78, misconceptions: 1 },
-    { session: 4, concept: "Cell Structure", mastery: 92, misconceptions: 0 },
-  ];
-
-  return (
-    <CaseStudyTemplate prevCase={{ name: "Previous: Stitch Fix", url: "/case-studies/stitch-fix/" }} nextCase={{ name: "Next: Hilton Hotels", url: "/case-studies/hilton-hotels/" }}>
-
-      {/* Hero - Learning Focus */}
-      <section className="pt-24 lg:pt-28 pb-16 bg-gradient-to-br from-background via-indigo-500/5 to-purple-500/10 min-h-[80vh] flex items-center">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="space-y-6">
-            <Link href="/case-studies/">
-              <Button variant="ghost" size="sm" className="gap-2" data-testid="button-back-to-cases">
-                <ArrowLeft className="w-4 h-4" />
-                Back to Case Studies
-              </Button>
-            </Link>
-
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div className="space-y-6">
-                <div className="flex flex-wrap items-center gap-2">
-                  <Badge variant="outline" className="border-indigo-500/30 text-indigo-400">
-                    <GraduationCap className="w-3 h-3 mr-1" />
-                    EdTech
-                  </Badge>
-                  <Badge variant="outline" className="border-purple-500/30 text-purple-400">
-                    Adaptive Learning
-                  </Badge>
-                </div>
-
-                <h1 className="text-4xl md:text-5xl font-bold leading-tight">
-                  Quizlet Case Study: AI-Powered Adaptive Learning
-                </h1>
-                
-                <p className="text-xl text-muted-foreground">
-                  Building Q-Chat: an AI tutor that teaches through questions, not answers--
-                  serving 60M+ students with personalized Socratic learning.
-                </p>
-
-                <div className="flex flex-wrap gap-6 pt-4">
-                  <div className="text-center">
-                    <p className="text-3xl font-bold text-indigo-400">+67%</p>
-                    <p className="text-sm text-muted-foreground">Learning Gains</p>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-3xl font-bold text-purple-400">60M+</p>
-                    <p className="text-sm text-muted-foreground">Students Served</p>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-3xl font-bold text-cyan-400">89%</p>
-                    <p className="text-sm text-muted-foreground">Misconception Resolution</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Chat Interface Demo */}
-              <Card className="bg-gradient-to-br from-slate-900 to-slate-800 border-slate-700 rounded-2xl overflow-hidden">
-                <CardContent className="p-0">
-                  <div className="bg-indigo-600 p-4 flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
-                      <Lightbulb className="w-5 h-5 text-white" />
-                    </div>
-                    <div>
-                      <p className="font-semibold text-white">Q-Chat</p>
-                      <p className="text-xs text-white/70">Socratic AI Tutor</p>
-                    </div>
-                  </div>
-                  <div className="p-6 space-y-4">
-                    <div className="flex items-start gap-3 justify-end">
-                      <div className="p-3 rounded-2xl rounded-tr-none bg-indigo-500/30 text-sm max-w-[80%]">
-                        What causes seasons on Earth?
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <div className="w-8 h-8 rounded-full bg-indigo-500/20 flex items-center justify-center shrink-0">
-                        <Lightbulb className="w-4 h-4 text-indigo-400" />
-                      </div>
-                      <div className="p-3 rounded-2xl rounded-tl-none bg-slate-700/50 text-sm max-w-[80%]">
-                        Great question! Think about this: Earth orbits the Sun, but its axis is tilted. 
-                        When one hemisphere is tilted toward the Sun, what do you think happens to the 
-                        amount of sunlight it receives?
-                      </div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Case Study Overview */}
-      <section className="py-16 bg-muted/30">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <h2 className="text-3xl font-bold mb-8">Case Study Overview</h2>
-          <div className="space-y-4 text-lg text-muted-foreground">
-            <p>
-              <strong className="text-foreground">The Challenge:</strong> Quizlet served hundreds of millions of students with a flashcard and quiz platform that, despite its scale, remained fundamentally passive: students reviewed content without any AI assessment of whether they actually understood it. Surface-level memorization of flashcard patterns produced poor long-term retention, and the platform had no mechanism to identify conceptual gaps, adjust difficulty dynamically, or guide students toward the specific review that would most improve their performance.
-            </p>
-            <p>
-              <strong className="text-foreground">The Solution:</strong> AGIX Technologies helped build Q-Chat, a Socratic AI tutor that teaches through targeted questions rather than direct information delivery. The system models individual knowledge states across concept hierarchies, identifies specific gaps in understanding through diagnostic question sequences, and crafts follow-up questions at calibrated difficulty levels that build toward genuine mastery--guiding students to construct understanding rather than passively recognizing correct answers.
-            </p>
-            <p>
-              <strong className="text-foreground">The Impact:</strong> Students using Q-Chat demonstrated 68% better long-term retention on delayed recall assessments compared to students using traditional flashcard study. Average study session engagement increased 3x as the interactive dialogue format proved more compelling than passive review. Performance on curriculum-aligned assessments improved significantly across subject areas, validating that Q-Chat was building transferable understanding rather than narrow test-taking familiarity.
-            </p>
-          </div>
-        </div>
-      </section>
-
-
-      {/* The Challenge */}
-      <section className="py-24">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="space-y-8"
-          >
-            <Badge variant="outline" className="border-amber-500/30 text-amber-400">
-              <AlertTriangle className="w-3 h-3 mr-1" />
-              The Challenge
-            </Badge>
-
-            <h2 className="text-3xl font-bold">AI That Teaches, Not Just Answers</h2>
-            
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              When ChatGPT launched, students started using it for homework. But there was a problem: 
-              they weren't learning. Getting answers immediately short-circuits the learning process. 
-              Quizlet needed AI that would guide students to discover answers themselves.
-            </p>
-
-            <div className="grid md:grid-cols-2 gap-6">
-              <Card className="border-red-500/20">
-                <CardContent className="p-6 space-y-4">
-                  <h4 className="font-semibold text-red-400">The Problem with Direct Answers</h4>
-                  <ul className="space-y-2 text-sm text-muted-foreground">
-                    <li className="flex items-start gap-2">
-                      <span className="text-red-400 mt-1">-</span>
-                      <span>Students don't build mental models</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-red-400 mt-1">-</span>
-                      <span>Knowledge doesn't transfer to new problems</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-red-400 mt-1">-</span>
-                      <span>Misconceptions go undetected</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-red-400 mt-1">-</span>
-                      <span>Learning gains 40% lower than flashcards</span>
-                    </li>
-                  </ul>
-                </CardContent>
-              </Card>
-
-              <Card className="border-green-500/20">
-                <CardContent className="p-6 space-y-4">
-                  <h4 className="font-semibold text-green-400">The Socratic Method</h4>
-                  <ul className="space-y-2 text-sm text-muted-foreground">
-                    <li className="flex items-start gap-2">
-                      <span className="text-green-400 mt-1">+</span>
-                      <span>Guide through questions, not statements</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-green-400 mt-1">+</span>
-                      <span>Build on what students already know</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-green-400 mt-1">+</span>
-                      <span>Surface and correct misconceptions</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-green-400 mt-1">+</span>
-                      <span>Create lasting understanding</span>
-                    </li>
-                  </ul>
-                </CardContent>
-              </Card>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Socratic Method in Action */}
-      <section className="py-24 bg-gradient-to-br from-indigo-500/5 via-background to-purple-500/5">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="space-y-12"
-          >
-            <div className="text-center space-y-4">
-              <Badge variant="outline" className="border-indigo-500/30 text-indigo-400">
-                <MessageSquare className="w-3 h-3 mr-1" />
-                Socratic Design
-              </Badge>
-              <h2 className="text-3xl font-bold">The Difference in Practice</h2>
-            </div>
-
-            <div className="space-y-8">
-              {socraticExamples.map((example, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.2 }}
-                >
-                  <Card className="overflow-hidden">
-                    <CardContent className="p-0">
-                      <div className="p-4 bg-muted/50 border-b border-border">
-                        <p className="text-sm font-medium">Student asks: "{example.studentSays}"</p>
-                      </div>
-                      <div className="grid md:grid-cols-2">
-                        <div className="p-6 border-r border-border">
-                          <Badge className="mb-3 bg-red-500/20 text-red-400 border-red-500/30">
-                            Traditional AI
-                          </Badge>
-                          <p className="text-sm text-muted-foreground">{example.badResponse}</p>
-                        </div>
-                        <div className="p-6">
-                          <Badge className="mb-3 bg-green-500/20 text-green-400 border-green-500/30">
-                            Q-Chat Socratic Response
-                          </Badge>
-                          <p className="text-sm">{example.goodResponse}</p>
-                        </div>
-                      </div>
-                      <div className="p-4 bg-indigo-500/10 border-t border-indigo-500/20">
-                        <p className="text-sm text-indigo-400">
-                          <span className="font-semibold">Principle: </span>
-                          {example.principle}
-                        </p>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Learning Progression Visual */}
-      <section className="py-24">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="space-y-12"
-          >
-            <div className="text-center space-y-4">
-              <Badge variant="outline" className="border-purple-500/30 text-purple-400">
-                <BarChart3 className="w-3 h-3 mr-1" />
-                Knowledge Tracking
-              </Badge>
-              <h2 className="text-3xl font-bold">Mastery Progression Over Sessions</h2>
-              <p className="text-muted-foreground">
-                Real example: Student learning cell structure concepts
-              </p>
-            </div>
-
-            <div className="space-y-4">
-              {learningProgression.map((session, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                  className="flex items-center gap-4"
-                >
-                  <div className="w-20 text-sm text-muted-foreground">
-                    Session {session.session}
-                  </div>
-                  <div className="flex-1 relative">
-                    <div className="h-10 bg-muted rounded-lg overflow-hidden">
-                      <motion.div
-                        initial={{ width: 0 }}
-                        whileInView={{ width: `${session.mastery}%` }}
-                        viewport={{ once: true }}
-                        transition={{ delay: i * 0.1, duration: 0.5 }}
-                        className="h-full bg-gradient-to-r from-indigo-500 to-purple-500 flex items-center justify-end px-3"
-                      >
-                        <span className="text-sm font-semibold text-white">{session.mastery}%</span>
-                      </motion.div>
-                    </div>
-                  </div>
-                  <div className="w-32 text-right">
-                    <Badge variant={session.misconceptions === 0 ? "default" : "outline"} 
-                           className={session.misconceptions === 0 ? "bg-green-500" : ""}>
-                      {session.misconceptions} misconceptions
-                    </Badge>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-
-            <div className="p-6 rounded-lg bg-green-500/10 border border-green-500/20 text-center">
-              <p className="text-green-400 font-medium">
-                4 sessions to mastery--with all misconceptions identified and resolved
-              </p>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Results */}
-      <section className="py-24 bg-gradient-to-br from-slate-900 to-slate-800">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="space-y-12"
-          >
-            <div className="text-center space-y-4">
-              <Badge className="bg-green-500/20 text-green-400 border-green-500/30">
-                <TrendingUp className="w-3 h-3 mr-1" />
-                Learning Outcomes
-              </Badge>
-              <h2 className="text-3xl font-bold text-white">Measured Impact</h2>
-            </div>
-
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-              <Card className="bg-slate-800/50 border-slate-700">
-                <CardContent className="p-6 text-center">
-                  <Brain className="w-8 h-8 text-indigo-400 mx-auto mb-3" />
-                  <p className="text-3xl font-bold text-white">+67%</p>
-                  <p className="text-sm text-slate-400 mt-2">Learning Gains</p>
-                  <p className="text-xs text-slate-500">vs. flashcards</p>
-                </CardContent>
-              </Card>
-              <Card className="bg-slate-800/50 border-slate-700">
-                <CardContent className="p-6 text-center">
-                  <Target className="w-8 h-8 text-purple-400 mx-auto mb-3" />
-                  <p className="text-3xl font-bold text-white">+183%</p>
-                  <p className="text-sm text-slate-400 mt-2">Test Improvement</p>
-                  <p className="text-xs text-slate-500">12% to 34%</p>
-                </CardContent>
-              </Card>
-              <Card className="bg-slate-800/50 border-slate-700">
-                <CardContent className="p-6 text-center">
-                  <Clock className="w-8 h-8 text-cyan-400 mx-auto mb-3" />
-                  <p className="text-3xl font-bold text-white">11.8min</p>
-                  <p className="text-sm text-slate-400 mt-2">Avg Session</p>
-                  <p className="text-xs text-slate-500">up from 4.2min</p>
-                </CardContent>
-              </Card>
-              <Card className="bg-slate-800/50 border-slate-700">
-                <CardContent className="p-6 text-center">
-                  <GraduationCap className="w-8 h-8 text-amber-400 mx-auto mb-3" />
-                  <p className="text-3xl font-bold text-white">78%</p>
-                  <p className="text-sm text-slate-400 mt-2">Teacher Adoption</p>
-                  <p className="text-xs text-slate-500">in pilot schools</p>
-                </CardContent>
-              </Card>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Testimonial - VP Level */}
-      <section className="py-24">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <Card className="border-indigo-500/20">
-              <CardContent className="p-8 md:p-12">
-                <Quote className="w-12 h-12 text-indigo-500/30 mb-6" />
-                <blockquote className="text-xl md:text-2xl font-medium leading-relaxed mb-8">
-                  "Q-Chat represents what AI in education should be. It's not about giving 
-                  students answers faster--it's about helping them think better. The misconception 
-                  detection alone is worth it. Teachers can now see exactly where students 
-                  struggle and intervene at the right moment."
-                </blockquote>
-                <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 rounded-full bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center text-white font-bold text-lg">
-                    SL
-                  </div>
-                  <div>
-                    <p className="font-semibold">Sarah Liu</p>
-                    <p className="text-sm text-muted-foreground">VP of Learning Sciences, Quizlet</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="py-24 bg-gradient-to-br from-indigo-500/10 via-background to-purple-500/10">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center space-y-8"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold">
-              Building AI for Education?
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              We help EdTech companies build AI that actually improves learning outcomes--
-              not just engagement metrics.
-            </p>
-            <CtaForm />
-          </motion.div>
-        </div>
-      </section>
-      <FAQPageSchema faqs={documentFAQs['cs-quizlet']} />
-      <FAQSection faqs={documentFAQs['cs-quizlet']} title="Quizlet Q-Chat AI Tutor  Questions Answered" />
-
-
-      
-      </CaseStudyTemplate>
-  );
+  return <CaseStudyV2 data={data} />;
 }

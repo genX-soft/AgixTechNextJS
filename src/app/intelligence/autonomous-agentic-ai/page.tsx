@@ -22,53 +22,172 @@ function scrollToSection(id: string) {
   document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
+function AgentLoopVisual() {
+  const S = 380;           // strictly square canvas size
+  const CX = S / 2;        // 190
+  const CY = S / 2;        // 190
+  const R = 150;           // orbit radius (at 30°: max node edge = 190+130+43 = 363 < 380 ✓)
+
+  const nodes = [
+    { label: "PERCEIVE", sub: "Observe environment", icon: "👁", color: "border-blue-500/50 bg-blue-500/10 text-blue-400", glow: "shadow-blue-500/30", angle: 270 },
+    { label: "PLAN",     sub: "Set goals & strategy", icon: "🧠", color: "border-green-500/50 bg-green-500/10 text-green-400", glow: "shadow-green-500/30", angle: 30 },
+    { label: "ACT",      sub: "Execute across tools", icon: "⚡", color: "border-amber-500/50 bg-amber-500/10 text-amber-400", glow: "shadow-amber-500/30", angle: 150 },
+  ];
+
+  // Smooth animated dot: 60 evenly-spaced keyframe positions around the orbit
+  const N = 60;
+  const dotCx = Array.from({ length: N + 1 }, (_, i) => CX + R * Math.cos((2 * Math.PI * i) / N));
+  const dotCy = Array.from({ length: N + 1 }, (_, i) => CY + R * Math.sin((2 * Math.PI * i) / N));
+
+  return (
+    <div className="flex flex-col items-center gap-4">
+      {/* Fixed square container — everything uses the same S×S pixel space */}
+      <div className="relative" style={{ width: S, height: S }}>
+
+        {/* SVG layer: orbit circle + animated dot */}
+        <svg className="absolute inset-0" width={S} height={S}>
+          {/* Outer subtle dashed guide ring */}
+          <circle cx={CX} cy={CY} r={R + 18} fill="none" stroke="rgba(34,197,94,0.07)" strokeWidth="1" strokeDasharray="3 5" />
+          {/* Main orbit track */}
+          <circle cx={CX} cy={CY} r={R} fill="none" stroke="rgba(34,197,94,0.18)" strokeWidth="1" strokeDasharray="6 4" />
+          {/* Spoke lines from centre to each node */}
+          {nodes.map((n, i) => {
+            const rad = (n.angle * Math.PI) / 180;
+            return (
+              <motion.line
+                key={i}
+                x1={CX} y1={CY}
+                x2={CX + R * Math.cos(rad)}
+                y2={CY + R * Math.sin(rad)}
+                stroke="rgba(34,197,94,0.10)"
+                strokeWidth="1"
+                animate={{ opacity: [0.4, 0.9, 0.4] }}
+                transition={{ duration: 2.5, repeat: Infinity, delay: i * 0.8 }}
+              />
+            );
+          })}
+          {/* Animated green dot travelling the orbit */}
+          <motion.circle
+            r="5" fill="#22c55e" opacity="0.85"
+            initial={{ cx: dotCx[0], cy: dotCy[0] }}
+            animate={{ cx: dotCx, cy: dotCy }}
+            transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
+          />
+        </svg>
+
+        {/* Center hub — anchored at exact CX, CY */}
+        <div className="absolute" style={{ left: CX, top: CY, transform: "translate(-50%,-50%)" }}>
+          <motion.div
+            className="w-20 h-20 rounded-full bg-green-500/15 border-2 border-green-500/50 flex items-center justify-center shadow-lg shadow-green-500/25"
+            animate={{ scale: [1, 1.08, 1] }}
+            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <Bot className="w-9 h-9 text-green-400" />
+          </motion.div>
+          <motion.div
+            className="absolute w-20 h-20 rounded-full border border-green-400/40"
+            style={{ top: 0, left: 0 }}
+            animate={{ scale: [1, 1.75, 1], opacity: [0.5, 0, 0.5] }}
+            transition={{ duration: 2.5, repeat: Infinity, ease: "easeOut" }}
+          />
+        </div>
+
+        {/* Orbit nodes — outer div handles position, inner motion.div handles scale only */}
+        {nodes.map((n, i) => {
+          const rad = (n.angle * Math.PI) / 180;
+          const nx = CX + R * Math.cos(rad);
+          const ny = CY + R * Math.sin(rad);
+          return (
+            <div
+              key={i}
+              className="absolute"
+              style={{ left: nx, top: ny, transform: "translate(-50%,-50%)" }}
+            >
+              <motion.div
+                className={`w-[86px] rounded-xl border p-2.5 text-center ${n.color} shadow-lg ${n.glow}`}
+                animate={{ scale: [1, 1.05, 1] }}
+                transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut", delay: i * 0.8 }}
+              >
+                <div className="text-lg mb-0.5">{n.icon}</div>
+                <div className="text-[10px] font-bold leading-none">{n.label}</div>
+                <div className="text-[9px] text-muted-foreground mt-0.5 leading-tight">{n.sub}</div>
+              </motion.div>
+            </div>
+          );
+        })}
+      </div>
+
+      {/* Status strip */}
+      <div className="flex items-center gap-2">
+        <motion.div className="w-2 h-2 rounded-full bg-green-400" animate={{ opacity: [1, 0.3, 1] }} transition={{ duration: 1.2, repeat: Infinity }} />
+        <span className="text-xs text-green-400 font-semibold tracking-widest uppercase">Agent Running</span>
+        <span className="text-xs text-muted-foreground">· 3 tools active · 0 errors</span>
+      </div>
+    </div>
+  );
+}
+
 function HeroSection() {
   return (
-    <section className="pt-24 lg:pt-28 pb-20 min-h-[85vh] flex items-center relative overflow-hidden bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-green-900/20 via-transparent to-transparent" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_var(--tw-gradient-stops))] from-orange-900/10 via-transparent to-transparent" />
+    <section className="pt-24 lg:pt-32 pb-16 min-h-screen flex items-center relative overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-green-900/25 via-transparent to-transparent" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_var(--tw-gradient-stops))] from-emerald-900/15 via-transparent to-transparent" />
+      <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-green-500/5 rounded-full blur-3xl" />
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full relative z-10">
-        <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }} className="max-w-4xl mx-auto text-center space-y-6">
-          <nav aria-label="Breadcrumb" className="flex justify-center">
-            <ol className="flex items-center gap-1.5 text-xs text-muted-foreground">
-              <li><Link href="/" className="hover:text-white transition-colors">Home</Link></li>
-              <ChevronRight className="w-3 h-3" />
-              <li><span className="text-muted-foreground">Intelligence</span></li>
-              <ChevronRight className="w-3 h-3" />
-              <li><span className="text-green-400">Autonomous Agentic Systems</span></li>
-            </ol>
-          </nav>
-          <Badge className="bg-green-500/10 text-green-400 border-green-500/30 px-4 py-1.5" data-testid="badge-hero-category">
-            <Bot className="w-4 h-4 mr-2" />Intelligence Framework
-          </Badge>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight" data-testid="text-hero-headline">
-            Autonomous Agentic Systems:{" "}
-            <span className="text-green-400">AI That Plans, Decides, Executes &amp; Adapts — Independently</span>
-          </h1>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed" data-testid="text-hero-subheadline">
-            Autonomous agentic systems are AI architectures designed to pursue goals, make decisions, take actions across tools and systems, and adapt over time — with{" "}
-            <span className="text-green-400">minimal human intervention</span> and{" "}
-            <span className="text-amber-400">strong governance controls</span>.
-          </p>
-          <p className="text-sm text-muted-foreground/70 italic">
-            By <Link href="/author/santosh/" className="text-green-400/80 hover:text-green-400 transition-colors">Santosh Singh</Link>, Founder &amp; CEO, AGIX Technologies · April 2026
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-            <Button size="lg" className="bg-green-600 hover:bg-green-700 text-white shadow-lg shadow-green-500/25" onClick={() => scrollToSection("autonomy-model")} data-testid="button-hero-primary">
-              Explore the L1→L4 Model <ArrowRight className="w-5 h-5 ml-2" />
-            </Button>
-            <Button variant="outline" size="lg" onClick={() => scrollToSection("safety-framework")} data-testid="button-hero-secondary">
-              Safety Framework <ChevronDown className="w-5 h-5 ml-2" />
-            </Button>
+        <div className="grid lg:grid-cols-[1fr_480px] gap-12 xl:gap-20 items-center">
+
+          {/* LEFT: Text */}
+          <div className="space-y-6">
+            <nav aria-label="Breadcrumb">
+              <ol className="flex items-center gap-1.5 text-xs text-muted-foreground">
+                <li><Link href="/" className="hover:text-white transition-colors">Home</Link></li>
+                <ChevronRight className="w-3 h-3" />
+                <li><span className="text-muted-foreground">Intelligence</span></li>
+                <ChevronRight className="w-3 h-3" />
+                <li><span className="text-green-400">Autonomous Agentic Systems</span></li>
+              </ol>
+            </nav>
+            <Badge className="bg-green-500/10 text-green-400 border-green-500/30 px-4 py-1.5" data-testid="badge-hero-category">
+              <Bot className="w-4 h-4 mr-2" />Intelligence Framework
+            </Badge>
+            <h1 className="text-4xl md:text-5xl lg:text-[3.5rem] font-black leading-[1.08] tracking-tight" data-testid="text-hero-headline">
+              Autonomous Agentic Systems:{" "}
+              <span className="text-green-400">AI That Plans, Decides, Executes &amp; Adapts</span>
+            </h1>
+            <p className="text-lg text-muted-foreground leading-relaxed max-w-xl" data-testid="text-hero-subheadline">
+              AI architectures that pursue goals, make decisions, and take actions across tools — with{" "}
+              <span className="text-green-400 font-semibold">minimal human intervention</span> and{" "}
+              <span className="text-amber-400 font-semibold">strong governance controls</span>.
+            </p>
+            <p suppressHydrationWarning className="text-sm text-muted-foreground/60 italic">
+              By <Link href="/author/santosh/" className="text-green-400/80 hover:text-green-400 transition-colors">Santosh Singh</Link>, Founder &amp; CEO, AGIX Technologies · {new Date().toLocaleString("en-US", { month: "long", year: "numeric" })}
+            </p>
+            {/* Stat pills */}
+            <div className="flex flex-wrap gap-3">
+              {[["40%", "enterprise apps embed agents by 2026"], ["$199B", "market by 2034 at 43% CAGR"], ["L1→L4", "autonomy framework"]].map(([v, l]) => (
+                <div key={v} className="flex items-center gap-2 rounded-full bg-slate-800/60 border border-slate-700/50 px-3 py-1.5">
+                  <span className="text-sm font-bold text-green-400">{v}</span>
+                  <span className="text-xs text-muted-foreground">{l}</span>
+                </div>
+              ))}
+            </div>
+            <div className="flex flex-col sm:flex-row gap-4 pt-2">
+              <Button size="lg" className="bg-green-600 hover:bg-green-700 text-white shadow-lg shadow-green-500/25 h-12 px-7" onClick={() => scrollToSection("autonomy-model")} data-testid="button-hero-primary">
+                Explore the L1→L4 Model <ArrowRight className="w-5 h-5 ml-2" />
+              </Button>
+              <Button variant="outline" size="lg" className="h-12 px-7" onClick={() => scrollToSection("safety-framework")} data-testid="button-hero-secondary">
+                Safety Framework <ChevronDown className="w-5 h-5 ml-2" />
+              </Button>
+            </div>
           </div>
-        </motion.div>
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1 }} className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
-          <button onClick={() => scrollToSection("definition")} aria-label="Scroll down" data-testid="button-scroll-down">
-            <motion.div animate={{ y: [0, 8, 0] }} transition={{ duration: 2, repeat: Infinity }} className="text-muted-foreground hover:text-green-400 transition-colors">
-              <ArrowDown className="w-5 h-5" />
-            </motion.div>
-          </button>
-        </motion.div>
+
+          {/* RIGHT: Agent Loop Visual */}
+          <div className="hidden lg:flex items-center justify-center">
+            <AgentLoopVisual />
+          </div>
+
+        </div>
       </div>
     </section>
   );

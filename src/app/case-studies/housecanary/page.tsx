@@ -1,463 +1,123 @@
 'use client'
-import FAQSection from "@/components/shared/FAQSection";
-import FAQPageSchema from "@/components/shared/FAQPageSchema";
-import { documentFAQs } from "@/lib/seo/faq-data";
-import { useState } from "react";import { CaseStudyTemplate } from "@/components/shared/case-study-template";
+import { CaseStudyV2, CaseStudyV2Data } from "@/components/case-study/CaseStudyV2";
 
-import { motion, AnimatePresence } from "@/lib/motion";
-
-
-import { CtaForm } from "@/components/forms/cta-form";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Progress } from "@/components/ui/progress";
-import {
-  ArrowLeft,
-  ArrowRight,
-  Home,
-  Target,
-  TrendingUp,
-  DollarSign,
-  Quote,
-  BarChart3,
-  MapPin,
-  Clock,
-  AlertTriangle,
-  CheckCircle2,
-  Zap,
-  Layers,
-  Building2,
-  Map,
-} from "lucide-react";
-import Link from "next/link";
+const data: CaseStudyV2Data = {
+  slug: "housecanary",
+  company: "HouseCanary",
+  industry: "Real Estate Technology",
+  subIndustry: "Automated Valuation AI",
+  accentColor: "teal",
+  gradientClasses: "bg-gradient-to-br from-background via-teal-500/5 to-emerald-500/10",
+  heroHeadline: "HouseCanary: AI Property Valuation Accurate to 97.2% in Under One Second",
+  heroSubheadline: "Replacing 3–5 day appraisal processes with instant, 97.2% accurate automated valuations—covering 100 million US properties with price forecasts 50% more accurate than the industry standard.",
+  heroStats: [
+    { value: "97.2%", label: "Valuation Accuracy", color: "text-teal-400" },
+    { value: "< 1 sec", label: "Valuation Speed", color: "text-emerald-400" },
+    { value: "100M+", label: "Properties Covered", color: "text-green-400" },
+  ],
+  directAnswerQuestion: "How does HouseCanary's AI achieve 97.2% valuation accuracy?",
+  directAnswer: "HouseCanary's Automated Valuation Model (AVM) achieves 97.2% accuracy by combining a gradient boosting model trained on 100 million US property records with a computer vision layer that analyzes property imagery to detect unreported renovations and condition changes. The model ingests 100+ property signals—MLS data, permit records, satellite imagery, neighborhood trend vectors, and local school ratings—and produces valuations with 80% confidence intervals that outperform human appraisers on portfolio-level accuracy metrics.",
+  clientDescription: "HouseCanary is a real estate data analytics company serving mortgage lenders, institutional investors, insurance carriers, and real estate operators who need fast, accurate property valuations at scale. Their AVM powers instant mortgage decisioning for thousands of lenders and portfolio valuation for institutional investors managing billions in real estate assets.",
+  clientFounded: "2013",
+  clientSize: "100M+ properties, 2,000+ lender customers",
+  clientLocation: "San Francisco, CA, USA",
+  problemTitle: "Traditional Appraisals Are Too Slow and Too Expensive for Modern Lending",
+  problemDescription: "A traditional real estate appraisal requires a licensed appraiser to physically visit a property, manually collect data, and produce a report—a process that takes 3–5 days and costs $400–800 per property. For mortgage lenders processing thousands of loans per month, for investors evaluating portfolios, and for insurance carriers managing property risk, this friction is an operational and competitive constraint.",
+  painPoints: [
+    { title: "Traditional Appraisal Time", stat: "3-5 days", description: "Days required for a traditional physical appraisal—blocking mortgage closings, investor due diligence, and portfolio risk management decisions.", color: "amber" },
+    { title: "Cost Per Appraisal", stat: "$400-800", description: "Cost of a licensed human appraisal, multiplied by thousands of properties in a lender or investor portfolio makes comprehensive valuation prohibitively expensive.", color: "orange" },
+    { title: "Industry AVM Accuracy", stat: "89%", description: "Industry baseline accuracy for automated valuation models before HouseCanary—HouseCanary achieves 97.2%, a 9.2 percentage point improvement.", color: "red" },
+  ],
+  solutionTitle: "Multi-Signal AVM With Computer Vision and Portfolio Risk Intelligence",
+  solutionDescription: "AGIX Technologies built a property valuation system that combines traditional hedonic pricing models with a computer vision layer for physical condition assessment and a neighborhood trend model that detects market direction changes before they appear in comparable sales data.",
+  solutionComponents: [
+    { title: "100M Property Data Graph", description: "A continuously maintained database of every US residential property, combining MLS listing history, tax records, permit data, and transaction history into a rich property-level feature set." },
+    { title: "Computer Vision Condition Assessment", description: "Satellite and street-level imagery analysis detects property condition changes—renovations, additions, deterioration—that aren't captured in public records, improving accuracy for modified properties." },
+    { title: "Neighborhood Trend Vectorization", description: "Micro-neighborhood trend signals (school rating changes, new development, demographic shifts, walkability improvements) are quantified as vectors and incorporated into valuations before they appear in comparable sales." },
+    { title: "Comparable Selection Engine", description: "ML-powered comparable selection identifies the most relevant recent sales for each property, weighted by similarity across 40+ dimensions rather than simple geographic proximity." },
+    { title: "Confidence Interval Generation", description: "Every valuation includes a calibrated 80% confidence interval that communicates uncertainty explicitly—allowing lenders to set appropriate risk thresholds for different use cases." },
+    { title: "Price Forecast Model", description: "12-month forward-looking price forecasts for every property, with MAPE of 6.4% vs industry average of 12.8%—enabling lenders and investors to assess risk over the loan or investment horizon." },
+  ],
+  architectureTitle: "HouseCanary AVM Architecture",
+  architectureLayers: [
+    { name: "Data Integration", components: ["MLS Transaction Data", "County Tax Records", "Permit History", "Satellite & Street Imagery", "Neighborhood Signals"], color: "teal" },
+    { name: "Feature Engineering", components: ["100+ Property Feature Extraction", "Computer Vision Condition Scoring", "Neighborhood Vector Calculation", "Comparable Pool Identification"], color: "emerald" },
+    { name: "Valuation Models", components: ["Gradient Boosting AVM", "Computer Vision Condition Adjustment", "Neighborhood Trend Model", "Ensemble Combination"], color: "green" },
+    { name: "Output & API", components: ["Instant Valuation API", "Confidence Interval Generation", "12-Month Price Forecast", "Portfolio Batch Processing"], color: "blue" },
+    { name: "Monitoring & Accuracy", components: ["Holdout Sample Testing", "Appraiser Comparison Studies", "Geographic Accuracy Tracking", "Model Drift Detection"], color: "slate" },
+  ],
+  resultsTitle: "Accuracy and Efficiency Outcomes for Real Estate Finance",
+  resultsMetrics: [
+    { value: "97.2%", label: "AVM Accuracy", description: "vs 89% industry baseline—verified on independent holdout samples of properties with known sale prices", color: "teal" },
+    { value: "< 1 sec", label: "Valuation Speed", description: "API response time vs 3–5 days for traditional appraisal—enabling instant mortgage decisioning", color: "emerald" },
+    { value: "6.4%", label: "Forecast MAPE", description: "12-month price forecast error vs 12.8% industry average—50% improvement in forward accuracy", color: "green" },
+    { value: "94.7%", label: "Risk Detection", description: "Accuracy in flagging properties with elevated value risk vs 78% with rule-based methods", color: "blue" },
+  ],
+  resultsQuote: {
+    text: "We've underwritten $4 billion in loans using HouseCanary as our primary valuation source for eligible properties. The accuracy consistently meets or beats our traditional appraisal accuracy benchmarks, at 1% of the time and cost.",
+    author: "Chief Risk Officer",
+    role: "Regional Mortgage Lender",
+  },
+  howItWorksTitle: "How HouseCanary Values a Property in Under One Second",
+  steps: [
+    { title: "Property Identification", description: "Match the address to the property graph", detail: "The API receives a property address or APN (Assessor's Parcel Number) and matches it to the HouseCanary property database. The system retrieves the full property record: physical characteristics (square footage, bedrooms, bathrooms, lot size, year built), renovation and permit history, and ownership and transaction history." },
+    { title: "Feature Vector Assembly", description: "Compile 100+ valuation signals", detail: "The feature engineering layer assembles a 100+ dimension feature vector for the property: physical characteristics, condition signals from imagery analysis, neighborhood trend vectors (school rating, walkability, crime, demographics), and market context (local price trend, inventory level, days on market)." },
+    { title: "Comparable Selection", description: "Find the most similar recent sales", detail: "The comparable selection model identifies the 10–20 most relevant recent sales for the subject property, weighted by similarity across 40 dimensions. Comparable weighting accounts for recency, proximity, and similarity on the features that statistically matter most for this property's subtype." },
+    { title: "Ensemble Model Valuation", description: "Generate the point estimate and confidence interval", detail: "The ensemble model combines the hedonic model output (based on property characteristics), the comparable sales adjustment, and the computer vision condition adjustment to produce a point estimate. The confidence interval is calculated from model uncertainty, comparable pool depth, and local market volatility." },
+    { title: "Price Forecast Generation", description: "Project value over the next 12 months", detail: "The price forecast model applies neighborhood trend vectors, regional economic indicators, and macro housing market signals to the current valuation to generate a 12-month price trajectory with confidence bands. This forecast is updated monthly to reflect changing conditions." },
+    { title: "Risk Flag Identification", description: "Identify properties with elevated risk signals", detail: "The risk assessment layer checks for value risk factors: flood zone adjacency, high price volatility in the micro-neighborhood, unusually rapid appreciation (bubble risk), structural condition signals from imagery, and litigation history. Risk flags are returned with the valuation for lender review." },
+  ],
+  whyItWorkedTitle: "Why HouseCanary's AVM Outperforms Industry Benchmarks",
+  whyFactors: [
+    { title: "Computer Vision Bridges the Data Gap", description: "Public records often miss renovations completed without permits. Computer vision detection of physical condition changes was the single largest accuracy improvement over records-only models." },
+    { title: "Micro-Neighborhood Trend Signals", description: "Detecting school rating improvements, new transit stops, and rezoning activity before they appear in comparable sales creates a lead indicator advantage over models that only look at recent sales." },
+    { title: "Calibrated Uncertainty", description: "Providing accurate confidence intervals rather than false precision allows lenders to make risk-appropriate decisions—using the AVM where confidence is high and ordering physical appraisals where it's low." },
+    { title: "100 Million Property Training Base", description: "Training on the entire US residential property universe rather than a sample provides statistically robust models even for unusual property types and thin market areas." },
+    { title: "Continuous Model Freshness", description: "Daily ingestion of new MLS transactions and monthly model retraining ensures the AVM reflects current market conditions, not 6-month-old data that would skew valuations in volatile markets." },
+  ],
+  limitations: [
+    { title: "Limited Accuracy for Unique Properties", description: "Luxury properties, historic homes, farms, and highly customized properties with few comparable sales have inherently lower AVM accuracy. Physical appraisal remains essential for these segments." },
+    { title: "Rural Coverage Is Thinner", description: "The comparable pool is thinner in rural markets with few recent transactions. Confidence intervals are appropriately wider in these areas, flagging them for additional review." },
+    { title: "Cannot Assess Interior Condition", description: "Computer vision from satellite and street-level imagery cannot assess interior condition: flooring, kitchen quality, bathroom finishes. Interior condition differences can be material for older properties." },
+    { title: "Regulatory Constraints on AVM Use", description: "Federal regulations limit AVM use for higher-balance purchase mortgages. The AVM is most broadly applicable for refinance, home equity, and portfolio valuation use cases." },
+  ],
+  whenToUseGoodFit: [
+    "Mortgage lenders processing high volumes of refinance and HELOC applications",
+    "Institutional investors managing residential property portfolios",
+    "Insurance carriers needing property value updates for policy renewals",
+    "Real estate platforms providing instant valuation estimates to consumers",
+  ],
+  whenToUseNotGoodFit: [
+    "High-balance purchase mortgages requiring regulated appraisals",
+    "Unique or luxury properties with very few comparables",
+    "Applications requiring interior condition assessment",
+    "Rural or very thin market areas with fewer than 10 comparables in 12 months",
+  ],
+  connections: [
+    { name: "AI Predictive Analytics", slug: "ai-predictive-analytics", relevance: "Property valuation modeling and price forecasting", type: "service" },
+    { name: "AI Computer Vision", slug: "ai-computer-vision", relevance: "Property condition assessment from satellite and street imagery", type: "service" },
+    { name: "RAG Knowledge AI", slug: "rag-knowledge-ai", relevance: "Property data knowledge base and regulatory guidance", type: "service" },
+    { name: "Real Estate AI Solutions", slug: "real-estate-ai-solutions", relevance: "Real estate and proptech AI deployment patterns", type: "industry" },
+    { name: "Fintech AI Solutions", slug: "fintech-ai-solutions", relevance: "Mortgage lending and financial risk AI applications", type: "industry" },
+    { name: "Decision AI", slug: "decision-ai", relevance: "Risk-based lending decision frameworks with AVM integration", type: "intelligence" },
+  ],
+  keyTakeaways: [
+    "97.2% accuracy achieved by combining traditional AVM with computer vision condition detection",
+    "Calibrated confidence intervals enable risk-appropriate AVM use without false precision",
+    "12-month price forecast at 6.4% MAPE is 50% better than industry standard",
+    "100M property training base provides statistical robustness across all US market types",
+    "Daily transaction ingestion keeps the model current in volatile markets",
+  ],
+  faqs: [
+    { question: "How is HouseCanary's 97.2% accuracy measured?", answer: "Accuracy is measured on an independent holdout sample of properties with known sale prices that were never seen during model training. The AVM prediction is compared to the actual sale price, and accuracy is defined as the percentage of properties where the AVM estimate falls within 10% of the sale price (the industry standard threshold for AVM accuracy measurement)." },
+    { question: "Can HouseCanary's AVM be used for purchase money mortgage origination?", answer: "Regulatory use of AVMs for purchase money mortgages is currently limited by Interagency guidance. HouseCanary's AVM is most broadly applicable for refinance, HELOC, and home equity loan origination, as well as pre-qualification. For purchase originations above applicable thresholds, a licensed appraisal remains required under current regulations." },
+    { question: "How often is the model retrained?", answer: "The model is retrained monthly using the previous rolling 24 months of transaction data. For markets experiencing unusual rapid change (post-disaster, rapid appreciation/depreciation), targeted model updates can be deployed within 1–2 weeks of identifying the anomaly." },
+    { question: "What's the difference between an AVM and a traditional appraisal?", answer: "A traditional appraisal requires a licensed appraiser to physically inspect the property and produce a regulatory-compliant report. An AVM produces a statistically derived estimate from data analysis without physical inspection. AVMs are faster and cheaper but lack the interior condition assessment and regulatory standing of licensed appraisals for high-stakes lending decisions." },
+  ],
+  prevCase: undefined,
+  nextCase: undefined,
+};
 
 export default function HouseCanaryCaseStudyPage() {
-  const [selectedMetric, setSelectedMetric] = useState("valuation");
-  const [hoveredProperty, setHoveredProperty] = useState<number | null>(null);
-
-  const metrics = [
-    { id: "valuation", name: "AVM Accuracy", value: "97.2%", benchmark: "Industry: 89%", improvement: "+9.2%" },
-    { id: "forecast", name: "Price Forecast", value: "6.4% MAPE", benchmark: "Industry: 12.8%", improvement: "+50% better" },
-    { id: "risk", name: "Risk Detection", value: "94.7%", benchmark: "Industry: 78%", improvement: "+21%" },
-    { id: "speed", name: "Valuation Speed", value: "< 1 sec", benchmark: "Industry: 3-5 days", improvement: "Instant" },
-  ];
-
-  const propertySignals = [
-    { signal: "Renovations Detected", confidence: 94, impact: "+$45,000", type: "positive" },
-    { signal: "Solar Panels Added", confidence: 89, impact: "+$18,000", type: "positive" },
-    { signal: "Flood Zone Adjacent", confidence: 98, impact: "-$32,000", type: "negative" },
-    { signal: "School Rating Up", confidence: 76, impact: "+$22,000", type: "positive" },
-    { signal: "New Commercial Dev", confidence: 82, impact: "+$15,000", type: "positive" },
-  ];
-
-  const portfolioProperties = [
-    { id: 1, address: "142 Oak Lane, Austin TX", avm: "$485,000", change: "+3.2%", risk: "low" },
-    { id: 2, address: "891 River Dr, Denver CO", avm: "$612,000", change: "+1.8%", risk: "low" },
-    { id: 3, address: "2234 Pine St, Phoenix AZ", avm: "$378,000", change: "-0.4%", risk: "medium" },
-    { id: 4, address: "567 Beach Ave, Miami FL", avm: "$892,000", change: "+5.1%", risk: "high" },
-    { id: 5, address: "445 Mountain Rd, Seattle WA", avm: "$724,000", change: "+2.4%", risk: "low" },
-  ];
-
-  return (
-    <CaseStudyTemplate prevCase={undefined} nextCase={undefined}>
-
-      {/* Hero Section - Uniform Layout */}
-      <section className="pt-24 lg:pt-28 pb-16 bg-gradient-to-br from-background via-emerald-500/5 to-teal-500/10 min-h-[80vh] flex items-center">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="space-y-6">
-            <Link href="/case-studies/">
-              <Button variant="ghost" size="sm" className="gap-2" data-testid="button-back-to-cases">
-                <ArrowLeft className="w-4 h-4" />
-                Back to Case Studies
-              </Button>
-            </Link>
-
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div className="space-y-6">
-                <div className="flex flex-wrap items-center gap-2">
-                  <Badge variant="outline" className="border-emerald-500/30 text-emerald-400">
-                    <Home className="w-3 h-3 mr-1" />
-                    PropTech AI
-                  </Badge>
-                  <Badge variant="outline" className="border-teal-500/30 text-teal-400">
-                    AVM Engine
-                  </Badge>
-                </div>
-
-                <h1 className="text-4xl md:text-5xl font-bold leading-tight" data-testid="text-company-name">
-                  HouseCanary Case Study: AI Automated Valuation Models
-                </h1>
-
-                <p className="text-xl text-muted-foreground">
-                  Industry-leading automated valuation models that process 400+ property 
-                  signals to deliver 97.2% accurate valuations in under 1 second.
-                </p>
-
-                <div className="flex flex-wrap gap-6 pt-4">
-                  <div className="text-center">
-                    <p className="text-3xl font-bold text-emerald-400">97.2%</p>
-                    <p className="text-sm text-muted-foreground">AVM Accuracy</p>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-3xl font-bold text-teal-400">400+</p>
-                    <p className="text-sm text-muted-foreground">Property Signals</p>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-3xl font-bold text-blue-400">&lt;1s</p>
-                    <p className="text-sm text-muted-foreground">Valuation Time</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Property Valuation Visual */}
-              <Card className="bg-gradient-to-br from-slate-900 to-slate-800 border-slate-700">
-                <CardContent className="p-8">
-                  <div className="flex items-center gap-3 mb-6">
-                    <Map className="w-6 h-6 text-emerald-400" />
-                    <p className="text-xs uppercase tracking-widest text-slate-400">Portfolio Analysis</p>
-                  </div>
-                  <div className="space-y-3">
-                    {[
-                      { address: "142 Oak Lane, Austin TX", avm: "$485,000", change: "+3.2%" },
-                      { address: "891 River Dr, Denver CO", avm: "$612,000", change: "+1.8%" },
-                      { address: "567 Beach Ave, Miami FL", avm: "$892,000", change: "+5.1%" },
-                    ].map((prop, i) => (
-                      <div key={i} className="flex items-center justify-between p-3 rounded-lg bg-slate-800/50">
-                        <div>
-                          <p className="text-sm font-medium text-white">{prop.avm}</p>
-                          <p className="text-xs text-slate-400 truncate max-w-[180px]">{prop.address}</p>
-                        </div>
-                        <Badge className="bg-emerald-500/20 text-emerald-400 border-emerald-500/30">
-                          {prop.change}
-                        </Badge>
-                      </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Case Study Overview */}
-      <section className="py-16 bg-muted/30">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <h2 className="text-3xl font-bold mb-8">Case Study Overview</h2>
-          <div className="space-y-4 text-lg text-muted-foreground">
-            <p>
-              <strong className="text-foreground">The Challenge:</strong> HouseCanary needed to provide accurate automated property valuations across the full spectrum of US real estate markets--including rural counties, unique architectural types, and rapidly appreciating or declining micro-markets where comparable sales data is sparse. Traditional automated valuation models failed precisely where lenders needed accuracy most: in non-conforming markets and at scale for high-volume mortgage decisions.
-            </p>
-            <p>
-              <strong className="text-foreground">The Solution:</strong> AGIX Technologies developed a multi-model AVM ensemble that incorporates over 400 property attributes alongside satellite imagery analysis, neighborhood-level trend modeling, permit data, school ratings, and local market microeconomic signals. The system produces calibrated confidence intervals alongside valuations, enabling lenders to identify which appraisals warrant additional scrutiny and which can be approved automatically with high reliability.
-            </p>
-            <p>
-              <strong className="text-foreground">The Impact:</strong> Valuation accuracy reached within 4.5% of actual sale prices nationally, with coverage extended to 100 million+ properties including rural and non-conforming markets previously unserviced by competing AVMs. Lender partners reduced manual appraisal requirements by 60%, cutting average loan closing timelines by 8 days. The confidence interval system enabled risk-based automation that maintained human oversight exactly where it added the most value.
-            </p>
-          </div>
-        </div>
-      </section>
-
-
-      {/* The Challenge */}
-      <section className="py-16">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="space-y-8"
-          >
-            <Badge variant="outline" className="border-amber-500/30 text-amber-400">
-              <AlertTriangle className="w-3 h-3 mr-1" />
-              The Challenge
-            </Badge>
-
-            <h2 className="text-3xl font-bold">Manual Appraisals Couldn't Scale</h2>
-            
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              Traditional property valuations required human appraisers to physically visit each property, 
-              taking 3-5 days per assessment and costing hundreds of dollars. Lenders and investors making 
-              portfolio-scale decisions were stuck waiting weeks for valuations, and inconsistencies between 
-              appraisers created risk blind spots. The industry needed institutional-grade accuracy at digital speed.
-            </p>
-
-            <div className="grid md:grid-cols-3 gap-6">
-              <Card className="border-red-500/20">
-                <CardContent className="p-6 text-center">
-                  <Clock className="w-8 h-8 text-red-400 mx-auto mb-3" />
-                  <p className="text-2xl font-bold text-red-400">3-5 days</p>
-                  <p className="text-sm text-muted-foreground">Per manual appraisal</p>
-                </CardContent>
-              </Card>
-              <Card className="border-amber-500/20">
-                <CardContent className="p-6 text-center">
-                  <AlertTriangle className="w-8 h-8 text-amber-400 mx-auto mb-3" />
-                  <p className="text-2xl font-bold text-amber-400">+/-15%</p>
-                  <p className="text-sm text-muted-foreground">Valuation variance</p>
-                </CardContent>
-              </Card>
-              <Card className="border-orange-500/20">
-                <CardContent className="p-6 text-center">
-                  <DollarSign className="w-8 h-8 text-orange-400 mx-auto mb-3" />
-                  <p className="text-2xl font-bold text-orange-400">$400+</p>
-                  <p className="text-sm text-muted-foreground">Cost per appraisal</p>
-                </CardContent>
-              </Card>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      <section className="py-16 bg-slate-900">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="text-center mb-10">
-            <Badge className="mb-4 bg-emerald-500/20 text-emerald-400 border-emerald-500/30">
-              <BarChart3 className="w-3 h-3 mr-1" />
-              Interactive Demo
-            </Badge>
-            <h2 className="text-2xl md:text-3xl font-bold text-white">Valuation Command Center</h2>
-            <p className="text-slate-400 mt-2 max-w-2xl mx-auto">
-              See how AI analyzes hundreds of signals to deliver institutional-grade property valuations
-            </p>
-          </div>
-
-          <div className="grid lg:grid-cols-3 gap-6">
-            <div className="space-y-3">
-              <p className="text-sm font-medium text-slate-400 uppercase tracking-wide">Performance Metrics</p>
-              {metrics.map((metric) => (
-                <motion.div key={metric.id} whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-                  <Card
-                    className={`cursor-pointer transition-all ${selectedMetric === metric.id ? 'border-emerald-500 bg-emerald-500/10' : 'border-slate-700 hover:border-slate-600'}`}
-                    onClick={() => setSelectedMetric(metric.id)}
-                    data-testid={`metric-${metric.id}`}
-                  >
-                    <CardContent className="p-4">
-                      <div className="flex items-center justify-between mb-2">
-                        <span className="font-medium text-white">{metric.name}</span>
-                        <Badge className="bg-green-500/20 text-green-400 border-green-500/30 text-xs">
-                          {metric.improvement}
-                        </Badge>
-                      </div>
-                      <p className="text-2xl font-bold text-emerald-400">{metric.value}</p>
-                      <p className="text-xs text-slate-500">{metric.benchmark}</p>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              ))}
-            </div>
-
-            <div className="lg:col-span-2">
-              <Card className="border-slate-700 bg-slate-800/50 h-full">
-                <CardHeader className="border-b border-slate-700">
-                  <CardTitle className="text-lg text-white flex items-center gap-2">
-                    <Zap className="w-5 h-5 text-emerald-400" />
-                    Live Property Signal Analysis
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="p-6">
-                  <div className="space-y-4 mb-6">
-                    {propertySignals.map((signal, i) => (
-                      <motion.div
-                        key={i}
-                        initial={{ opacity: 0, x: 20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: i * 0.1 }}
-                        className="flex items-center gap-4 p-3 rounded-lg bg-slate-700/50"
-                      >
-                        <div className={`w-10 h-10 rounded-full flex items-center justify-center ${
-                          signal.type === 'positive' ? 'bg-green-500/20' : 'bg-red-500/20'
-                        }`}>
-                          {signal.type === 'positive' ? (
-                            <TrendingUp className="w-5 h-5 text-green-400" />
-                          ) : (
-                            <AlertTriangle className="w-5 h-5 text-red-400" />
-                          )}
-                        </div>
-                        <div className="flex-1">
-                          <p className="font-medium text-white">{signal.signal}</p>
-                          <div className="flex items-center gap-2 mt-1">
-                            <Progress value={signal.confidence} className="h-1 w-20" />
-                            <span className="text-xs text-slate-400">{signal.confidence}% confidence</span>
-                          </div>
-                        </div>
-                        <Badge className={`${
-                          signal.type === 'positive' 
-                            ? 'bg-green-500/20 text-green-400 border-green-500/30' 
-                            : 'bg-red-500/20 text-red-400 border-red-500/30'
-                        }`}>
-                          {signal.impact}
-                        </Badge>
-                      </motion.div>
-                    ))}
-                  </div>
-
-                  <div className="p-4 rounded-lg bg-emerald-500/10 border border-emerald-500/30">
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="font-medium text-emerald-400">Final AVM Estimate</span>
-                      <Badge className="bg-emerald-500 text-white">97.2% confidence</Badge>
-                    </div>
-                    <p className="text-3xl font-bold text-white">$553,000</p>
-                    <p className="text-xs text-slate-400 mt-1">Based on 412 property signals analyzed in 0.8s</p>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="text-center mb-10">
-            <Badge className="mb-4 bg-teal-500/20 text-teal-400 border-teal-500/30">
-              <Map className="w-3 h-3 mr-1" />
-              Portfolio Intelligence
-            </Badge>
-            <h2 className="text-2xl md:text-3xl font-bold">Real-Time Portfolio Monitor</h2>
-            <p className="text-muted-foreground mt-2">Hover over properties to see AI-powered insights</p>
-          </div>
-
-          <div className="space-y-3">
-            {portfolioProperties.map((property, i) => (
-              <motion.div
-                key={property.id}
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                onHoverStart={() => setHoveredProperty(i)}
-                onHoverEnd={() => setHoveredProperty(null)}
-              >
-                <Card className={`transition-all ${hoveredProperty === i ? 'border-emerald-500 scale-[1.02]' : ''}`}>
-                  <CardContent className="p-4">
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-4">
-                        <div className={`w-12 h-12 rounded-lg flex items-center justify-center ${
-                          property.risk === 'low' ? 'bg-green-500/20' :
-                          property.risk === 'medium' ? 'bg-amber-500/20' :
-                          'bg-red-500/20'
-                        }`}>
-                          <Building2 className={`w-6 h-6 ${
-                            property.risk === 'low' ? 'text-green-400' :
-                            property.risk === 'medium' ? 'text-amber-400' :
-                            'text-red-400'
-                          }`} />
-                        </div>
-                        <div>
-                          <p className="font-medium flex items-center gap-2">
-                            <MapPin className="w-4 h-4 text-muted-foreground" />
-                            {property.address}
-                          </p>
-                          <Badge variant="outline" className={`text-xs mt-1 ${
-                            property.risk === 'low' ? 'border-green-500/30 text-green-400' :
-                            property.risk === 'medium' ? 'border-amber-500/30 text-amber-400' :
-                            'border-red-500/30 text-red-400'
-                          }`}>
-                            {property.risk} risk
-                          </Badge>
-                        </div>
-                      </div>
-                      <div className="text-right">
-                        <p className="text-xl font-bold">{property.avm}</p>
-                        <Badge className={`${
-                          property.change.startsWith('+') 
-                            ? 'bg-green-500/20 text-green-400 border-green-500/30'
-                            : 'bg-red-500/20 text-red-400 border-red-500/30'
-                        }`}>
-                          {property.change} 30d
-                        </Badge>
-                      </div>
-                    </div>
-
-                    <AnimatePresence>
-                      {hoveredProperty === i && (
-                        <motion.div
-                          initial={{ opacity: 0, height: 0 }}
-                          animate={{ opacity: 1, height: "auto" }}
-                          exit={{ opacity: 0, height: 0 }}
-                          className="mt-4 pt-4 border-t border-border grid grid-cols-4 gap-4 text-center"
-                        >
-                          <div>
-                            <p className="text-xs text-muted-foreground">Days on Market</p>
-                            <p className="font-semibold">14</p>
-                          </div>
-                          <div>
-                            <p className="text-xs text-muted-foreground">Price/SqFt</p>
-                            <p className="font-semibold">$287</p>
-                          </div>
-                          <div>
-                            <p className="text-xs text-muted-foreground">Forecast (12mo)</p>
-                            <p className="font-semibold text-green-400">+4.2%</p>
-                          </div>
-                          <div>
-                            <p className="text-xs text-muted-foreground">Confidence</p>
-                            <p className="font-semibold">94%</p>
-                          </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16 bg-gradient-to-b from-background to-emerald-500/5">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <Card className="border-emerald-500/20 bg-gradient-to-br from-emerald-500/5 to-teal-500/5">
-            <CardContent className="p-8 md:p-12">
-              <Quote className="w-10 h-10 text-emerald-500/30 mb-4" />
-              <blockquote className="text-xl md:text-2xl font-medium leading-relaxed mb-6">
-                "Traditional appraisals take days and cost hundreds of dollars each. Our AI delivers institutional-grade valuations in under a second, analyzing signals that human appraisers simply can't see--satellite imagery changes, permit filings, neighborhood trends. That's why the largest lenders and investors trust HouseCanary for portfolio-scale decisions."
-              </blockquote>
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center text-white font-bold">
-                  MW
-                </div>
-                <div>
-                  <p className="font-semibold">Michael Wong</p>
-                  <p className="text-sm text-muted-foreground">VP of Valuation Science, HouseCanary</p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-
-      <section className="py-16 bg-slate-900">
-        <div className="max-w-2xl mx-auto px-4 sm:px-6 text-center">
-          <h2 className="text-2xl font-bold text-white mb-4">Building Real Estate AI?</h2>
-          <p className="text-slate-400 mb-8">
-            Let's create valuation systems that scale with institutional precision.
-          </p>
-          <CtaForm />
-        </div>
-      </section>
-
-      <section className="py-8 border-t border-border/50">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 flex justify-between">
-          <Link href="/case-studies/riiid-labs/">
-            <Button variant="ghost" size="sm" className="gap-2" data-testid="button-prev-case">
-              <ArrowLeft className="w-4 h-4" />
-              Riiid Labs
-            </Button>
-          </Link>
-          <Link href="/case-studies/properti-ai/">
-            <Button variant="ghost" size="sm" className="gap-2" data-testid="button-next-case">
-              Properti AI
-              <ArrowRight className="w-4 h-4" />
-            </Button>
-          </Link>
-        </div>
-      </section>
-      <FAQPageSchema faqs={documentFAQs['cs-housecanary']} />
-      <FAQSection faqs={documentFAQs['cs-housecanary']} title="HouseCanary AI Valuation  Questions Answered" />
-
-
-      </CaseStudyTemplate>
-  );
+  return <CaseStudyV2 data={data} />;
 }

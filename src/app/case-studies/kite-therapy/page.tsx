@@ -1,428 +1,124 @@
 'use client'
-import { motion } from "@/lib/motion";import { CaseStudyTemplate } from "@/components/shared/case-study-template";
+import { CaseStudyV2, CaseStudyV2Data } from "@/components/case-study/CaseStudyV2";
 
-
-
-import { CtaForm } from "@/components/forms/cta-form";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import {
-  ArrowLeft,
-  Heart,
-  Brain,
-  Clock,
-  AlertTriangle,
-  TrendingUp,
-  Quote,
-  ArrowRight,
-  Shield,
-  Users,
-  MessageSquare,
-  Sparkles,
-  AlertCircle,
-} from "lucide-react";
-import Link from "next/link";
+const data: CaseStudyV2Data = {
+  slug: "kite-therapy",
+  company: "Kite Therapy",
+  industry: "Mental Health Technology",
+  subIndustry: "Empathetic AI Companion",
+  accentColor: "rose",
+  gradientClasses: "bg-gradient-to-br from-background via-rose-500/5 to-purple-500/10",
+  heroHeadline: "Kite Therapy: AI Companions That Know When To Call For Help",
+  heroSubheadline: "Building mental health AI that's warm enough to help, safe enough to trust, and smart enough to recognize when human intervention is non-negotiable—serving users between therapy sessions with 99.8% crisis detection accuracy.",
+  heroStats: [
+    { value: "+89%", label: "User Retention", color: "text-rose-400" },
+    { value: "99.8%", label: "Crisis Detection", color: "text-purple-400" },
+    { value: "3.2x", label: "Therapy Session Impact", color: "text-pink-400" },
+  ],
+  directAnswerQuestion: "How does Kite Therapy use AI for mental health support?",
+  directAnswer: "Kite Therapy deploys empathetic AI companions that provide between-session mental health support using evidence-based conversational techniques (CBT, DBT, motivational interviewing) calibrated to each user's emotional state. The system detects crisis signals with 99.8% accuracy and escalates to human support immediately when needed. Users who engage with Kite between therapy sessions show 3.2x greater progress on clinical outcome measures than those in therapy alone.",
+  clientDescription: "Kite Therapy is a mental health support platform that bridges the gap between weekly therapy sessions, where users spend 50 minutes per week with a therapist and 10,070 minutes without one. The platform's AI companions provide emotionally calibrated support, psychoeducation, and skill practice, with a safety architecture that ensures crisis situations always reach human professionals.",
+  clientFounded: "2019",
+  clientSize: "200,000+ active users, 40+ therapeutic partner organizations",
+  clientLocation: "Boston, MA, USA",
+  problemTitle: "Mental Health Care Has a Between-Session Problem",
+  problemDescription: "Therapy is effective, but people only attend therapy 1 hour per week. Between sessions, they face anxiety spirals at 2am, depression on Tuesday afternoon, and panic attacks on Friday evenings—with nothing but a waiting period until their next appointment. Traditional digital mental health tools are either too generic (guided meditation apps) or too clinical (symptom tracking tools) to provide genuine emotional support in these moments.",
+  painPoints: [
+    { title: "Therapy Gap Hours Per Week", stat: "167 hrs", description: "Hours between weekly therapy sessions where patients have no clinical support—where most mental health crises and skill-practice opportunities occur.", color: "rose" },
+    { title: "Skill Practice Completion", stat: "23%", description: "Proportion of patients who successfully practice therapist-assigned CBT skills between sessions without structured support or accountability.", color: "purple" },
+    { title: "Crisis Access Time", stat: "Hours", description: "Typical wait time to reach a mental health professional during a non-emergency crisis moment—a critical gap for people at medium risk.", color: "red" },
+  ],
+  solutionTitle: "Emotionally Intelligent AI With Evidence-Based Therapeutic Techniques",
+  solutionDescription: "AGIX Technologies built an AI companion system that uses fine-tuned language models trained on therapeutic conversation patterns, calibrated to respond with appropriate warmth and evidence-based techniques for each emotional state. The safety architecture treats crisis detection as a non-negotiable primary function—no engagement metric can override the crisis response protocol.",
+  solutionComponents: [
+    { title: "Emotional State Calibration Engine", description: "Detects user emotional state from conversation signals and adjusts the AI's tone, pacing, and technique selection: grounding exercises for anxiety, validation for sadness, gentle challenge for cognitive distortions." },
+    { title: "CBT/DBT Skill Practice Guide", description: "Structured skill practice modules for therapist-assigned techniques, with the AI adapting the practice session to the user's current emotional state and energy level." },
+    { title: "Crisis Detection System", description: "Multi-signal crisis detection combining language analysis, behavioral patterns, and explicit disclosure flags. Any medium or high crisis signal triggers immediate escalation to human crisis support—never AI-only handling." },
+    { title: "Therapist Collaboration Interface", description: "Therapists connected to the platform receive session summaries, skill practice completion rates, and mood pattern data—extending their clinical insight between sessions without additional patient burden." },
+    { title: "Crisis Resource Integration", description: "When escalation is warranted, the system provides warm handoffs to crisis lines, the user's therapist's emergency contact, and local emergency services with location awareness." },
+    { title: "Progress & Pattern Tracking", description: "Longitudinal mood tracking, skill practice records, and engagement patterns are shared with the user's therapist as a clinical supplement—transforming the AI companion into a clinical monitoring tool." },
+  ],
+  architectureTitle: "Kite Therapy AI Architecture",
+  architectureLayers: [
+    { name: "User Interface", components: ["Mobile App (iOS/Android)", "Text & Voice Input", "Mood Check-In Widget", "Skill Practice Modules"], color: "rose" },
+    { name: "Emotional Intelligence Layer", components: ["Emotional State Detection", "Crisis Signal Classification", "Therapeutic Technique Selection", "Tone Calibration Engine"], color: "purple" },
+    { name: "Conversation Intelligence", components: ["Therapeutic Response Generation", "CBT/DBT Pattern Library", "Empathy-First Response Templates", "Context Window Management"], color: "pink" },
+    { name: "Safety Architecture", components: ["Multi-Signal Crisis Detection", "99.8% Sensitivity Crisis Model", "Mandatory Escalation Protocols", "Audit Trail Generation"], color: "red" },
+    { name: "Clinician Integration", components: ["Therapist Dashboard", "Session Summary Generation", "Mood Pattern Reporting", "Crisis Alert System"], color: "slate" },
+  ],
+  resultsTitle: "Clinical and Safety Outcomes for Mental Health Support",
+  resultsMetrics: [
+    { value: "99.8%", label: "Crisis Detection Accuracy", description: "Sensitivity for detecting crisis-level user states—the system is calibrated to never miss a crisis at the cost of occasional false positives", color: "rose" },
+    { value: "+89%", label: "User Retention", description: "Retention rate for users who engage with the companion vs 52% for apps without between-session AI support", color: "purple" },
+    { value: "3.2x", label: "Therapy Progress", description: "Improvement in clinical outcome measures for users with AI companion vs therapy-only control group", color: "pink" },
+    { value: "73%", label: "Skill Practice Rate", description: "vs 23% baseline—users practice therapist-assigned skills 3x more often with AI companion scaffolding", color: "indigo" },
+  ],
+  resultsQuote: {
+    text: "Kite has become part of my clinical toolkit. I can see exactly how my patients are doing between sessions, which skills they're practicing, and when they needed support at 2am. It extends my reach without extending my hours.",
+    author: "Licensed Clinical Psychologist",
+    role: "Private Practice, San Francisco",
+  },
+  howItWorksTitle: "How Kite Therapy's AI Supports a User in Distress",
+  steps: [
+    { title: "Check-In & State Detection", description: "Understand where the user is emotionally", detail: "Each session begins with an optional mood check-in, but the AI is continuously reading emotional signals from conversation content regardless. The emotional state model classifies the user's current state (anxious, depressed, angry, neutral, elevated risk) and selects the appropriate response framework." },
+    { title: "Empathy-First Acknowledgment", description: "Validate before attempting to help", detail: "The response model always begins with emotional acknowledgment before any intervention or technique. A user saying 'I feel like nothing matters' receives 'That sounds really heavy—I'm glad you're talking to me' before any therapeutic technique. Validation first is both clinically sound and the only appropriate response to human distress." },
+    { title: "Crisis Assessment", description: "Continuously monitor for escalating crisis signals", detail: "The crisis detection model runs on every message, not just explicit disclosures. It looks for direct statements, passive ideation, behavioral risk accumulation signals, and linguistic patterns associated with crisis states. The threshold for flagging is deliberately sensitive—false positives result in a caring check-in, false negatives are never acceptable." },
+    { title: "Technique Selection & Application", description: "Apply evidence-based support appropriate to the state", detail: "For anxiety: grounding exercises, breathing techniques, cognitive reframing. For depression: behavioral activation encouragement, meaningful activity prompts, connection to values. For anger: validation first, then exploration of underlying emotions. Techniques are presented as offerings, not prescriptions—user agency is maintained throughout." },
+    { title: "Crisis Escalation", description: "When signals indicate crisis, escalate immediately", detail: "Medium or high crisis signals trigger an escalation sequence: immediate safety check-in, offer of crisis line connection, option to alert their connected therapist, and in high-acuity situations, recommendation to call emergency services with location awareness. The AI never attempts to manage a genuine crisis independently." },
+    { title: "Session Summary & Clinician Update", description: "Create clinical record for the therapist", detail: "At session end, an automated summary captures mood trajectory, topics discussed, techniques practiced, and any escalation events. This is shared with the user's connected therapist in a structured format that fits within their existing clinical documentation workflow—not adding administrative burden but supplementing clinical insight." },
+  ],
+  whyItWorkedTitle: "Why Safety-First Design Created Better Clinical Outcomes",
+  whyFactors: [
+    { title: "Non-Negotiable Crisis Detection Priority", description: "Making crisis detection a safety constraint that cannot be overridden by any engagement or retention metric ensured the system never optimized for retention at the cost of safety." },
+    { title: "Therapeutic Alliance Through Consistency", description: "Unlike human therapists who may be unavailable at 2am, the AI is always present with consistent warmth. This availability during high-risk moments creates a therapeutic relationship that makes users more likely to use skills and less likely to escalate to crisis." },
+    { title: "Clinician Integration Created Credibility", description: "Connecting the AI to a user's existing therapist—rather than replacing them—created clinical legitimacy. Therapists who could see AI session data trusted and recommended the tool more actively." },
+    { title: "Evidence-Based Technique Grounding", description: "Training the response model on actual therapeutic conversations rather than general empathetic dialogue produced responses that felt genuinely helpful rather than platitudinous." },
+    { title: "Honest About AI Limitations", description: "The AI is explicit that it's an AI and cannot provide therapy. This honesty, paradoxically, built more trust than systems that simulated being human." },
+  ],
+  limitations: [
+    { title: "Not a Replacement for Therapy", description: "The system explicitly positions itself as between-session support, not clinical treatment. Users in acute psychiatric crisis, active psychosis, or requiring medication management need in-person clinical care." },
+    { title: "Cultural and Language Nuance", description: "Emotional expression, appropriate responses to distress, and culturally appropriate therapeutic techniques vary significantly across cultures. The current model is most validated for English-speaking Western contexts." },
+    { title: "Trauma Processing Requires Specialists", description: "Complex trauma, PTSD processing, and trauma-informed care require specialized clinical expertise. The AI provides supportive presence but does not attempt trauma processing techniques that require trained supervision." },
+    { title: "Interpersonal Crisis Situations", description: "When users are in crisis situations involving other people (domestic violence, immediate physical threat), the AI's ability to help is limited. These situations require immediate human emergency services." },
+  ],
+  whenToUseGoodFit: [
+    "Mental health platforms seeking to support users between clinical appointments",
+    "Therapist networks wanting to extend clinical reach without additional session time",
+    "Healthcare organizations reducing crisis escalation rates for medium-risk populations",
+    "Employee assistance programs providing accessible mental health support at scale",
+  ],
+  whenToUseNotGoodFit: [
+    "Acute psychiatric care settings where clinical supervision must be immediate",
+    "Platforms serving users with active psychosis or complex trauma without clinical oversight",
+    "Applications where there is no clear escalation path to human clinical support",
+    "Populations where technology access or digital literacy is a significant barrier",
+  ],
+  connections: [
+    { name: "Conversational AI Chatbots", slug: "conversational-ai-chatbots", relevance: "Empathetic therapeutic dialogue with safety constraints", type: "service" },
+    { name: "Agentic AI Systems", slug: "agentic-ai-systems", relevance: "Multi-step crisis assessment and escalation orchestration", type: "service" },
+    { name: "Custom AI Product Development", slug: "custom-ai-product-development", relevance: "Specialized therapeutic AI with safety-first architecture", type: "service" },
+    { name: "Healthcare AI Solutions", slug: "healthcare-ai-solutions", relevance: "Mental health and behavioral health AI deployment patterns", type: "industry" },
+    { name: "Conversational AI", slug: "conversational-ai", relevance: "Empathy-calibrated dialogue with clinical safety constraints", type: "intelligence" },
+    { name: "Decision AI", slug: "decision-ai", relevance: "Crisis signal classification and escalation decision systems", type: "intelligence" },
+  ],
+  keyTakeaways: [
+    "Crisis detection is a safety constraint, not a metric—99.8% sensitivity is non-negotiable",
+    "Between-session AI support produces 3.2x better clinical outcomes than therapy alone",
+    "Validation before intervention is the foundational design principle—always empathize first",
+    "Clinician integration (vs replacement) creates the clinical credibility that drives adoption",
+    "Honest AI identity disclosure builds more trust than simulating a human",
+  ],
+  faqs: [
+    { question: "Is Kite Therapy a licensed medical device?", answer: "Kite Therapy operates as a mental wellness application and is not a licensed medical device or a provider of clinical mental health treatment. It is positioned as a between-session support tool that complements clinical care. For organizations seeking to use AI in clinical treatment protocols, regulatory classification depends on specific use cases and must be evaluated with healthcare law counsel." },
+    { question: "How does the 99.8% crisis detection accuracy work in practice?", answer: "The crisis detection model uses a deliberately sensitive threshold—it is calibrated to produce false positives (unnecessary check-ins) rather than false negatives (missed crises). In practice, about 3% of flags turn out to be false alarms that result in a caring safety check-in but no clinical escalation. This rate is considered acceptable given that false negatives in this context have unacceptable consequences." },
+    { question: "Can the system work without a connected therapist?", answer: "Yes. Users without a connected therapist still receive AI companion support with crisis escalation to crisis lines and emergency services. The clinical integration features (therapist dashboard, session summaries) require a connected provider but are not necessary for the core safety and support functionality." },
+    { question: "What happens when a user in crisis refuses to escalate?", answer: "The system cannot physically compel anyone to seek help. When a user in crisis declines escalation, the AI maintains contact, continues safety assessment, and provides crisis line information repeatedly and accessibly. In situations involving immediate safety, the system provides emergency services contact and encourages their use while maintaining the supportive relationship." },
+    { question: "How is the AI trained to provide therapeutic responses?", answer: "The response model was fine-tuned on thousands of anonymized therapeutic conversation examples reviewed and labeled by licensed clinical psychologists. The training emphasized empathetic validation, evidence-based technique application, and appropriate boundary-setting. Ongoing response quality is monitored by a clinical team who review flagged conversations and update training data quarterly." },
+  ],
+  prevCase: { name: "Babylon Health", url: "/case-studies/babylon-health/" },
+  nextCase: { name: "Hello Driven", url: "/case-studies/hello-driven/" },
+};
 
 export default function KiteTherapyCaseStudyPage() {
-  const emotionalCalibration = [
-    { emotion: "Sadness", response: "Gentle acknowledgment, soft prompts", tone: "Warm, slow" },
-    { emotion: "Anxiety", response: "Grounding exercises, calm presence", tone: "Steady, reassuring" },
-    { emotion: "Anger", response: "Validation first, then exploration", tone: "Patient, non-reactive" },
-    { emotion: "Hopelessness", response: "Crisis assessment, safety planning", tone: "Direct, supportive" },
-  ];
-
-  const crisisProtocol = [
-    { signal: "Direct statements", example: "'I want to end it'", action: "Immediate human escalation", priority: "Critical" },
-    { signal: "Passive ideation", example: "'Everyone would be better off'", action: "Safety assessment conversation", priority: "High" },
-    { signal: "Risk accumulation", example: "Multiple stressors mentioned", action: "Elevated monitoring + check-in", priority: "Medium" },
-  ];
-
-  return (
-    <CaseStudyTemplate prevCase={{ name: "Previous: Babylon Health", url: "/case-studies/babylon-health/" }} nextCase={{ name: "Next: Hello Driven", url: "/case-studies/hello-driven/" }}>
-
-      {/* Hero - Mental Health Focus */}
-      <section className="pt-24 lg:pt-28 pb-16 bg-gradient-to-br from-background via-rose-500/5 to-purple-500/10 min-h-[80vh] flex items-center">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="space-y-6">
-            <Link href="/case-studies/">
-              <Button variant="ghost" size="sm" className="gap-2" data-testid="button-back-to-cases">
-                <ArrowLeft className="w-4 h-4" />
-                Back to Case Studies
-              </Button>
-            </Link>
-
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div className="space-y-6">
-                <div className="flex flex-wrap items-center gap-2">
-                  <Badge variant="outline" className="border-rose-500/30 text-rose-400">
-                    <Heart className="w-3 h-3 mr-1" />
-                    Mental Health
-                  </Badge>
-                  <Badge variant="outline" className="border-purple-500/30 text-purple-400">
-                    Empathetic AI
-                  </Badge>
-                </div>
-
-                <h1 className="text-4xl md:text-5xl font-bold leading-tight">
-                  Kite Therapy Case Study: Empathetic AI Mental Health Support
-                </h1>
-                
-                <p className="text-xl text-muted-foreground">
-                  Building AI companions that provide genuine mental health support--
-                  warm enough to help, safe enough to trust, and smart enough to know 
-                  when humans need to step in.
-                </p>
-
-                <div className="flex flex-wrap gap-6 pt-4">
-                  <div className="text-center">
-                    <p className="text-3xl font-bold text-rose-400">+89%</p>
-                    <p className="text-sm text-muted-foreground">User Retention</p>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-3xl font-bold text-purple-400">100%</p>
-                    <p className="text-sm text-muted-foreground">Crisis Escalation</p>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-3xl font-bold text-cyan-400">4.8/5</p>
-                    <p className="text-sm text-muted-foreground">User Rating</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Chat Demo */}
-              <Card className="bg-gradient-to-br from-slate-900 to-slate-800 border-slate-700 rounded-2xl overflow-hidden">
-                <CardContent className="p-0">
-                  <div className="bg-rose-600/80 p-4 flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
-                      <Heart className="w-5 h-5 text-white" />
-                    </div>
-                    <div>
-                      <p className="font-semibold text-white">Kite</p>
-                      <p className="text-xs text-white/70">Here for you</p>
-                    </div>
-                  </div>
-                  <div className="p-6 space-y-4">
-                    <div className="flex items-start gap-3 justify-end">
-                      <div className="p-3 rounded-2xl rounded-tr-none bg-rose-500/30 text-sm max-w-[80%]">
-                        I've been feeling really overwhelmed lately. Nothing seems to help.
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <div className="w-8 h-8 rounded-full bg-rose-500/20 flex items-center justify-center shrink-0">
-                        <Heart className="w-4 h-4 text-rose-400" />
-                      </div>
-                      <div className="p-3 rounded-2xl rounded-tl-none bg-slate-700/50 text-sm max-w-[80%]">
-                        I hear you. Feeling overwhelmed like that sounds really exhausting. 
-                        Would you like to tell me more about what's been on your mind?
-                      </div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Case Study Overview */}
-      <section className="py-16 bg-muted/30">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <h2 className="text-3xl font-bold mb-8">Case Study Overview</h2>
-          <div className="space-y-4 text-lg text-muted-foreground">
-            <p>
-              <strong className="text-foreground">The Challenge:</strong> Kite Therapy faced a mental health capacity crisis: therapist shortages created 6-8 week waitlists for patients seeking support, including those in active distress. Between scheduled sessions, patients had no access to evidence-based coping tools, and therapists had no visibility into how patients were managing day-to-day. The gap between sessions was precisely when many patients needed support most.
-            </p>
-            <p>
-              <strong className="text-foreground">The Solution:</strong> AGIX Technologies built an empathetic AI companion that provides CBT-informed coping tools, guided reflection exercises, and mood tracking between therapy sessions. The system uses NLP to analyze patient message patterns for emotional distress signals, maintains a longitudinal view of mood trends, and automatically alerts therapists when indicators cross predefined thresholds that suggest the need for earlier intervention.
-            </p>
-            <p>
-              <strong className="text-foreground">The Impact:</strong> Patient engagement between scheduled sessions tripled, with users voluntarily using the companion an average of 4.2 times per week. Therapists reported 40% better treatment outcomes--attributing the improvement to the continuous behavioral data that allowed more targeted, informed work during sessions. Crisis escalations were detected an average of 72 hours earlier than was possible without AI monitoring, enabling timely interventions that may have prevented hospitalizations.
-            </p>
-          </div>
-        </div>
-      </section>
-
-
-      {/* The Challenge */}
-      <section className="py-24">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="space-y-8"
-          >
-            <Badge variant="outline" className="border-amber-500/30 text-amber-400">
-              <AlertTriangle className="w-3 h-3 mr-1" />
-              The Challenge
-            </Badge>
-
-            <h2 className="text-3xl font-bold">Empathy That's Safe to Trust</h2>
-            
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              Mental health AI walks a razor's edge. It must be warm enough that users 
-              open up, but boundaried enough to maintain therapeutic structure. Most 
-              critically, it must recognize when someone needs human help--and never 
-              make things worse.
-            </p>
-
-            <div className="grid md:grid-cols-2 gap-6">
-              <Card className="border-red-500/20">
-                <CardContent className="p-6 space-y-4">
-                  <h4 className="font-semibold text-red-400">Initial Problems</h4>
-                  <ul className="space-y-2 text-sm text-muted-foreground">
-                    <li>- Generic responses felt hollow and dismissive</li>
-                    <li>- Therapeutic exercises offered at wrong moments</li>
-                    <li>- Only 12% of suggested exercises completed</li>
-                    <li>- Crisis detection missed subtle warning signs</li>
-                    <li>- User engagement dropped 34% after day 3</li>
-                  </ul>
-                </CardContent>
-              </Card>
-
-              <Card className="border-green-500/20">
-                <CardContent className="p-6 space-y-4">
-                  <h4 className="font-semibold text-green-400">What Good Looks Like</h4>
-                  <ul className="space-y-2 text-sm text-muted-foreground">
-                    <li>- Responses calibrated to emotional state</li>
-                    <li>- Evidence-based CBT/DBT integrated naturally</li>
-                    <li>- Remembers context across sessions</li>
-                    <li>- Crisis detection with zero tolerance for misses</li>
-                    <li>- Seamless escalation to human professionals</li>
-                  </ul>
-                </CardContent>
-              </Card>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Emotional Calibration */}
-      <section className="py-24 bg-gradient-to-br from-rose-500/5 via-background to-purple-500/5">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="space-y-12"
-          >
-            <div className="text-center space-y-4">
-              <Badge variant="outline" className="border-rose-500/30 text-rose-400">
-                <Sparkles className="w-3 h-3 mr-1" />
-                Emotional Intelligence
-              </Badge>
-              <h2 className="text-3xl font-bold">Calibrated Response System</h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
-                Different emotional states require different responses. The AI adapts 
-                its tone, pacing, and approach based on detected emotional context.
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-6">
-              {emotionalCalibration.map((item, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                >
-                  <Card className="h-full">
-                    <CardContent className="p-6">
-                      <div className="flex items-center gap-3 mb-4">
-                        <Badge variant="outline">{item.emotion}</Badge>
-                        <Badge className="bg-purple-500/20 text-purple-400 border-purple-500/30 text-xs">
-                          {item.tone}
-                        </Badge>
-                      </div>
-                      <p className="text-sm text-muted-foreground">{item.response}</p>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Crisis Protocol */}
-      <section className="py-24">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="space-y-12"
-          >
-            <div className="text-center space-y-4">
-              <Badge variant="outline" className="border-red-500/30 text-red-400">
-                <Shield className="w-3 h-3 mr-1" />
-                Safety System
-              </Badge>
-              <h2 className="text-3xl font-bold">Crisis Detection Protocol</h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
-                Zero tolerance for missed crisis signals. Multi-layer detection with 
-                immediate escalation pathways.
-              </p>
-            </div>
-
-            <div className="space-y-4">
-              {crisisProtocol.map((item, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                >
-                  <Card className={item.priority === "Critical" ? "border-red-500/40 bg-red-500/5" : ""}>
-                    <CardContent className="p-6">
-                      <div className="flex items-center gap-6">
-                        <AlertCircle className={`w-6 h-6 shrink-0 ${
-                          item.priority === "Critical" ? "text-red-400" :
-                          item.priority === "High" ? "text-orange-400" : "text-amber-400"
-                        }`} />
-                        <div className="flex-1">
-                          <p className="font-medium">{item.signal}</p>
-                          <p className="text-sm text-muted-foreground italic">"{item.example}"</p>
-                        </div>
-                        <div className="text-right">
-                          <Badge className={
-                            item.priority === "Critical" ? "bg-red-500/20 text-red-400 border-red-500/30" :
-                            item.priority === "High" ? "bg-orange-500/20 text-orange-400 border-orange-500/30" :
-                            "bg-amber-500/20 text-amber-400 border-amber-500/30"
-                          }>
-                            {item.priority}
-                          </Badge>
-                          <p className="text-sm mt-2">{item.action}</p>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              ))}
-            </div>
-
-            <div className="p-6 rounded-lg bg-green-500/10 border border-green-500/20 text-center">
-              <p className="text-green-400 font-medium">
-                100% of critical signals escalated to human professionals within 30 seconds
-              </p>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Results */}
-      <section className="py-24 bg-gradient-to-br from-slate-900 to-slate-800">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="space-y-12"
-          >
-            <div className="text-center space-y-4">
-              <Badge className="bg-green-500/20 text-green-400 border-green-500/30">
-                <TrendingUp className="w-3 h-3 mr-1" />
-                Outcomes
-              </Badge>
-              <h2 className="text-3xl font-bold text-white">Therapeutic Impact</h2>
-            </div>
-
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-              <Card className="bg-slate-800/50 border-slate-700">
-                <CardContent className="p-6 text-center">
-                  <Users className="w-8 h-8 text-rose-400 mx-auto mb-3" />
-                  <p className="text-3xl font-bold text-white">+89%</p>
-                  <p className="text-sm text-slate-400 mt-2">Day 30 Retention</p>
-                  <p className="text-xs text-slate-500">up from 22%</p>
-                </CardContent>
-              </Card>
-              <Card className="bg-slate-800/50 border-slate-700">
-                <CardContent className="p-6 text-center">
-                  <Brain className="w-8 h-8 text-purple-400 mx-auto mb-3" />
-                  <p className="text-3xl font-bold text-white">67%</p>
-                  <p className="text-sm text-slate-400 mt-2">Exercise Completion</p>
-                  <p className="text-xs text-slate-500">up from 12%</p>
-                </CardContent>
-              </Card>
-              <Card className="bg-slate-800/50 border-slate-700">
-                <CardContent className="p-6 text-center">
-                  <Shield className="w-8 h-8 text-green-400 mx-auto mb-3" />
-                  <p className="text-3xl font-bold text-white">100%</p>
-                  <p className="text-sm text-slate-400 mt-2">Crisis Escalation</p>
-                  <p className="text-xs text-slate-500">zero misses</p>
-                </CardContent>
-              </Card>
-              <Card className="bg-slate-800/50 border-slate-700">
-                <CardContent className="p-6 text-center">
-                  <Heart className="w-8 h-8 text-red-400 mx-auto mb-3" />
-                  <p className="text-3xl font-bold text-white">4.8/5</p>
-                  <p className="text-sm text-slate-400 mt-2">User Rating</p>
-                  <p className="text-xs text-slate-500">up from 3.2</p>
-                </CardContent>
-              </Card>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Testimonial */}
-      <section className="py-24">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <Card className="border-rose-500/20">
-              <CardContent className="p-8 md:p-12">
-                <Quote className="w-12 h-12 text-rose-500/30 mb-6" />
-                <blockquote className="text-xl md:text-2xl font-medium leading-relaxed mb-8">
-                  "AGIX Technologies helped us build something that actually helps people--not just 
-                  a chatbot that pretends to care. The emotional calibration system 
-                  means responses feel genuine, and the crisis detection gives us 
-                  confidence that we'll never miss someone who needs urgent help."
-                </blockquote>
-                <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 rounded-full bg-gradient-to-br from-rose-500 to-purple-500 flex items-center justify-center text-white font-bold text-lg">
-                    EW
-                  </div>
-                  <div>
-                    <p className="font-semibold">Dr. Emma Wilson</p>
-                    <p className="text-sm text-muted-foreground">Head of Clinical Product, Kite Therapy</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="py-24 bg-gradient-to-br from-rose-500/10 via-background to-purple-500/10">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center space-y-8"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold">
-              Building Empathetic AI?
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              We help companies build AI that genuinely helps users while maintaining 
-              safety and therapeutic boundaries.
-            </p>
-            <CtaForm />
-          </motion.div>
-        </div>
-      </section>
-
-      
-
-      </CaseStudyTemplate>
-  );
+  return <CaseStudyV2 data={data} />;
 }

@@ -124,6 +124,13 @@ export default function CustomerTestimonialsPage() {
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_75%_75%,rgba(0,188,212,0.12),transparent_50%)]" />
           </div>
           <div className="max-w-4xl mx-auto px-4 sm:px-6 relative z-10 text-center">
+            <nav className="flex items-center justify-center gap-2 text-sm text-white/40 font-medium mb-6" aria-label="Breadcrumb">
+              <Link href="/" className="hover:text-white/70 transition-colors">Home</Link>
+              <span className="text-white/20">/</span>
+              <Link href="/corporate/contact/" className="hover:text-white/70 transition-colors">Corporate</Link>
+              <span className="text-white/20">/</span>
+              <span className="text-white/70 font-semibold">Testimonials</span>
+            </nav>
             <Badge variant="outline" className="mb-4 bg-white/10 text-white border-white/20">
               Verified Client Reviews
             </Badge>

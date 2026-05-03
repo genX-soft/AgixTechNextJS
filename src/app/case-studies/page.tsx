@@ -1,6 +1,7 @@
 'use client'
 import { useState } from "react";
 import { motion, AnimatePresence } from "@/lib/motion";
+import Link from "next/link";
 import { MainHeader } from "@/components/main-header";
 import { MainFooter } from "@/components/main-footer";
 import { Button } from "@/components/ui/button";
@@ -589,6 +590,11 @@ export default function CaseStudiesPage() {
             animate={{ opacity: 1, y: 0 }}
             className="text-center space-y-6"
           >
+            <nav className="flex items-center justify-center gap-2 text-sm text-muted-foreground font-medium" aria-label="Breadcrumb">
+              <Link href="/" className="hover:text-foreground transition-colors">Home</Link>
+              <span className="text-muted-foreground/40">/</span>
+              <span className="text-foreground font-semibold">Case Studies</span>
+            </nav>
             <Badge variant="outline" className="border-primary/30 text-primary">
               <Briefcase className="w-3 h-3 mr-1" />
               Case Studies
@@ -766,7 +772,7 @@ export default function CaseStudiesPage() {
 
             <div className="pt-4">
               <Button size="lg" className="bg-primary hover:bg-primary/90" asChild>
-                <a href="/" data-testid="button-cta-build">
+                <a href="/corporate/contact/" data-testid="button-cta-build">
                   Build Your AI System with AGIX Technologies
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </a>

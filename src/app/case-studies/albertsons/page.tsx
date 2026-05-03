@@ -1,360 +1,128 @@
 'use client'
-import { motion } from "@/lib/motion";import { CaseStudyTemplate } from "@/components/shared/case-study-template";
+import { CaseStudyV2, CaseStudyV2Data } from "@/components/case-study/CaseStudyV2";
 
-
-
-import { CtaForm } from "@/components/forms/cta-form";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import {
-  ArrowLeft,
-  ShoppingCart,
-  Brain,
-  Clock,
-  AlertTriangle,
-  TrendingUp,
-  Quote,
-  ArrowRight,
-  Truck,
-  CloudSun,
-  Package,
-  Leaf,
-  BarChart3,
-} from "lucide-react";
-import Link from "next/link";
+const data: CaseStudyV2Data = {
+  slug: "albertsons",
+  company: "Albertsons",
+  industry: "Grocery Retail",
+  subIndustry: "Demand Forecasting AI",
+  accentColor: "emerald",
+  gradientClasses: "bg-gradient-to-br from-background via-emerald-500/5 to-green-500/10",
+  heroHeadline: "Albertsons: AI Demand Forecasting That Cut $180M in Food Waste",
+  heroSubheadline: "Predicting demand for perishables that expire in days—reducing annual food waste by 45% while keeping shelves stocked with the freshest products across 2,200+ stores.",
+  heroStats: [
+    { value: "-45%", label: "Food Waste", color: "text-emerald-400" },
+    { value: "+23%", label: "In-Stock Rate", color: "text-green-400" },
+    { value: "$180M", label: "Annual Savings", color: "text-teal-400" },
+  ],
+  directAnswerQuestion: "How does Albertsons use AI to reduce food waste?",
+  directAnswer: "Albertsons deployed a predictive demand forecasting system that ingests 1,400+ signals—weather forecasts, local events, school schedules, store demographics, and historical purchase data—to predict daily demand for each SKU at each store. The system generates automated replenishment orders with optimal quantities, reducing over-ordering of perishables by 45% while maintaining or improving shelf availability.",
+  clientDescription: "Albertsons Companies is one of the largest food and drug retailers in the United States, operating more than 2,200 stores across 34 states under 20 well-known banners including Safeway, Vons, Pavilions, and Randalls. With billions in revenue from perishable products and a commitment to sustainability, reducing food waste while maintaining freshness is both a financial and social imperative.",
+  clientFounded: "1939",
+  clientSize: "2,200+ stores, 300,000+ employees",
+  clientLocation: "Boise, Idaho, USA",
+  problemTitle: "Perishable Inventory Is a Billion-Dollar Guessing Game",
+  problemDescription: "Fresh produce, dairy, bakery, and meat products expire in days—sometimes hours. Traditional forecasting models used simple historical averages and couldn't account for the dozens of variables that swing demand unpredictably. Store managers made educated guesses, and the margin for error was measured in millions of dollars of wasted product.",
+  painPoints: [
+    { title: "Annual Food Waste Cost", stat: "$180M", description: "Lost revenue from expired or unsold perishables across all store categories before AI intervention.", color: "red" },
+    { title: "Forecast Accuracy Gap", stat: "62%", description: "Traditional rule-based models only predicted demand correctly 62% of the time for fresh categories.", color: "amber" },
+    { title: "Manual Override Rate", stat: "47%", description: "Store managers overrode system suggestions nearly half the time due to low confidence in forecasts.", color: "orange" },
+  ],
+  solutionTitle: "Multi-Signal Perishable Demand Forecasting at Store-SKU Level",
+  solutionDescription: "AGIX Technologies built a demand forecasting system that operates at the individual store × SKU level, ingesting over 1,400 real-time and predictive signals to generate daily replenishment recommendations with confidence intervals. The system learns from each store's unique patterns while sharing signals across similar stores.",
+  solutionComponents: [
+    { title: "Weather Integration Engine", description: "Real-time weather API feeds predict demand shifts: heat waves boost watermelon and ice cream; cold snaps increase soup and hot beverages." },
+    { title: "Event & Calendar Intelligence", description: "Local event databases detect Super Bowls, school calendars, community events, and holidays to pre-position inventory weeks in advance." },
+    { title: "Store Demographic Modeling", description: "Each store's unique customer demographic profile drives preference-based demand curves, distinguishing urban from suburban buying patterns." },
+    { title: "Supply Chain Feedback Loop", description: "Real-time supplier availability feeds allow dynamic reforecasting when supply disruptions occur, preventing phantom demand signals." },
+    { title: "Automated Replenishment Orders", description: "System generates purchase orders automatically with human-readable confidence scores and override mechanisms for store managers." },
+    { title: "Waste Tracking & Model Retraining", description: "Every unit of waste is logged and fed back into the model, creating a continuous improvement loop that sharpens forecasts over time." },
+  ],
+  architectureTitle: "Albertsons Demand Forecasting Architecture",
+  architectureLayers: [
+    { name: "Data Ingestion Layer", components: ["POS Transaction Streams", "Weather API (NOAA)", "Event Databases", "Supplier Inventory Feeds", "Store Demographics DB"], color: "sky" },
+    { name: "Feature Engineering", components: ["1,400+ Signal Extraction", "Time-Series Decomposition", "Event Proximity Scoring", "Demographic Weighting", "Seasonal Adjustment"], color: "blue" },
+    { name: "Forecasting Models", components: ["Gradient Boosting (XGBoost)", "LSTM for Seasonality", "Bayesian Uncertainty Quantification", "Ensemble Stacking"], color: "emerald" },
+    { name: "Decision & Execution", components: ["Store-SKU Order Generation", "Confidence Interval Display", "Manager Override UI", "Supplier EDI Integration"], color: "green" },
+    { name: "Feedback & Learning", components: ["Waste Tracking Ingestion", "Model Retraining Pipeline", "A/B Testing Framework", "Performance Dashboards"], color: "teal" },
+  ],
+  resultsTitle: "Measurable Impact Across All Fresh Categories",
+  resultsMetrics: [
+    { value: "-45%", label: "Food Waste Reduction", description: "Across produce, dairy, bakery, and meat categories systemwide", color: "emerald" },
+    { value: "+23%", label: "In-Stock Improvement", description: "Fewer stockouts on high-velocity fresh items during peak periods", color: "green" },
+    { value: "89%", label: "Forecast Accuracy", description: "vs 62% with traditional rule-based methods—a 44% relative improvement", color: "teal" },
+    { value: "$180M", label: "Annual Savings", description: "In reduced waste and improved margin recovery across the chain", color: "blue" },
+  ],
+  resultsQuote: {
+    text: "We went from educated guessing to surgical precision. The system predicted the Super Bowl chip spike three weeks out, so we had inventory positioned before our suppliers even knew demand was coming.",
+    author: "VP of Supply Chain Innovation",
+    role: "Albertsons Companies",
+  },
+  howItWorksTitle: "How Albertsons AI Forecasting Works End-to-End",
+  steps: [
+    { title: "Signal Aggregation", description: "Collect 1,400+ demand signals daily", detail: "Every morning, the system pulls weather forecasts for the next 14 days, scrapes local event databases for each store's trade area, checks school calendars, and ingests the previous day's POS data. All signals are normalized and feature-engineered before entering the model." },
+    { title: "Store-SKU Demand Curves", description: "Generate individual forecasts per store per item", detail: "For each of 2,200 stores and thousands of SKUs, the model generates a daily demand probability distribution with a median prediction and 80% confidence interval. High-uncertainty forecasts are flagged for human review." },
+    { title: "Replenishment Order Generation", description: "Translate forecasts into purchase orders", detail: "The order generation engine takes the demand forecast plus current inventory levels, lead times from suppliers, and minimum order quantities to calculate the optimal replenishment quantity that minimizes both waste risk and stockout risk simultaneously." },
+    { title: "Manager Review & Override", description: "Human-in-the-loop for context the system can't see", detail: "Store managers receive a daily order summary with confidence scores. They can override any line item and add free-text notes explaining why (e.g., 'local festival this weekend'). These overrides are fed back into the model as training signals." },
+    { title: "Execution & Tracking", description: "Submit orders and monitor fulfillment", detail: "Approved orders are submitted via EDI to suppliers. The system tracks actual delivery quantities, records any shortfalls, and adjusts the following week's forecast to account for supplier reliability patterns." },
+    { title: "Waste Recording & Retraining", description: "Close the loop with actual outcomes", detail: "At end of day, store associates scan and record all discarded product. This waste data is the most valuable signal in the system—it tells the model exactly where its predictions were too high, driving the continuous retraining that has improved accuracy from 62% to 89% over 18 months." },
+  ],
+  whyItWorkedTitle: "Six Factors That Made This Deployment Successful",
+  whyFactors: [
+    { title: "Store-Level Personalization", description: "Rather than a single national model, each store gets a model that understands its specific customer mix, traffic patterns, and local events." },
+    { title: "Manager Trust Through Transparency", description: "Displaying confidence intervals and explainable factors convinced skeptical managers to trust the system rather than override it reflexively." },
+    { title: "Closed Feedback Loops", description: "Waste tracking data fed directly into model retraining ensured the system improved from every mistake rather than repeating errors indefinitely." },
+    { title: "Weather as a Primary Signal", description: "Incorporating 14-day weather forecasts gave the system a significant advantage over models that only looked at historical sales patterns." },
+    { title: "Gradual Rollout Strategy", description: "The system launched in 50 pilot stores before chain-wide deployment, building both confidence and a rich dataset for model validation." },
+    { title: "Clear Commercial KPIs", description: "Tying the system directly to waste percentage and in-stock rate gave the project undeniable business value from day one." },
+  ],
+  limitations: [
+    { title: "Novel Disruptions Require Human Judgment", description: "Black swan events—a viral social media food trend, a product recall, a pandemic—can't be predicted by historical patterns and require manual overrides." },
+    { title: "New Products Have No History", description: "New SKU introductions rely on analogous product signals and supplier forecasts rather than direct historical data, reducing accuracy for the first 90 days." },
+    { title: "Last-Mile Weather Accuracy Limits", description: "Hyperlocal weather variation within a store's trade area can cause forecast errors when a thunderstorm hits one side of town but not the other." },
+    { title: "Doesn't Eliminate Perishable Risk Entirely", description: "Even with 89% accuracy, 11% of forecasts are materially wrong. High-value categories like fresh seafood still carry meaningful waste risk." },
+  ],
+  whenToUseGoodFit: [
+    "Sell perishable products with expiration windows under 30 days",
+    "Operate multiple stores with differing demand patterns",
+    "Have POS transaction data going back at least 2 years",
+    "Face meaningful financial pressure from waste or stockouts",
+    "Can integrate with supplier ordering systems via EDI or API",
+  ],
+  whenToUseNotGoodFit: [
+    "Sell exclusively non-perishable products with long shelf lives",
+    "Operate fewer than 10 locations with very similar customer profiles",
+    "Lack historical sales data at the SKU level",
+    "Have fully manual supply chains with no digital ordering capability",
+  ],
+  connections: [
+    { name: "AI Predictive Analytics", slug: "ai-predictive-analytics", relevance: "Core demand modeling and inventory optimization", type: "service" },
+    { name: "AI Automation", slug: "ai-automation", relevance: "Automated order generation and supplier EDI integration", type: "service" },
+    { name: "RAG Knowledge AI", slug: "rag-knowledge-ai", relevance: "Structured product and supplier knowledge base", type: "service" },
+    { name: "Retail AI Solutions", slug: "retail-ai-solutions", relevance: "Grocery and CPG-specific AI deployment patterns", type: "industry" },
+    { name: "Logistics AI Solutions", slug: "logistics-ai-solutions", relevance: "Supply chain optimization and last-mile delivery", type: "industry" },
+    { name: "Decision AI", slug: "decision-ai", relevance: "Automated replenishment decision systems", type: "intelligence" },
+    { name: "Operational AI", slug: "operational-ai", relevance: "Store operations and inventory management AI", type: "intelligence" },
+  ],
+  keyTakeaways: [
+    "Reduced annual food waste by $180M across 2,200+ stores",
+    "Forecast accuracy improved from 62% to 89% within 18 months",
+    "1,400+ demand signals including weather, events, and demographics",
+    "Closed-loop retraining from actual waste data drives continuous improvement",
+    "Manager override UI maintains human oversight while building trust in AI",
+  ],
+  faqs: [
+    { question: "How long did it take Albertsons to deploy this system?", answer: "The system launched in 50 pilot stores after a 6-month build phase. Full chain-wide deployment across 2,200+ stores took an additional 12 months, with continuous model improvement ongoing." },
+    { question: "What data sources does the system require?", answer: "The minimum requirements are POS transaction history at the SKU level (2+ years recommended), current inventory levels, supplier lead time data, and store location for weather integration. Event databases and demographic data enhance accuracy but aren't required to launch." },
+    { question: "Can smaller grocery chains implement a similar system?", answer: "Yes, but the approach must scale to available data. Chains with 10–50 stores can implement simpler gradient boosting models without needing the full ensemble architecture. The fundamental loop—signal ingestion, forecast, order, track waste, retrain—works at any scale." },
+    { question: "How does the system handle seasonal items that only sell part of the year?", answer: "The model uses seasonal decomposition to understand which items have annual, monthly, or weekly seasonality patterns. For items with very limited history (e.g., a holiday product with only 3 years of data), it relies more heavily on analogous category signals and vendor sell-through guidance." },
+    { question: "What happens when a supplier can't fulfill an order?", answer: "Supplier shortfall data is tracked and fed back into the model as a constraint. If a supplier consistently delivers only 80% of ordered quantity, the model learns to order 25% more to hit the target stock level, accounting for supply-side uncertainty." },
+    { question: "How do you calculate the ROI on a system like this?", answer: "ROI is measured across three dimensions: waste reduction (units discarded × average unit cost), stockout avoidance (lost sales from empty shelves on high-velocity items), and labor savings from automated order generation replacing manual calculations. For Albertsons, waste reduction was the dominant driver at $180M annually." },
+  ],
+  prevCase: { name: "Hello Driven", url: "/case-studies/hello-driven/" },
+  nextCase: { name: "Kroger", url: "/case-studies/kroger/" },
+};
 
 export default function AlbertsonsCaseStudyPage() {
-  const demandFactors = [
-    { factor: "Weather Forecast", example: "Heat wave doubles watermelon sales", impact: "High" },
-    { factor: "Local Events", example: "Super Bowl parties spike chip demand 340%", impact: "High" },
-    { factor: "School Schedules", example: "Back-to-school week shifts lunch item demand", impact: "Medium" },
-    { factor: "Store Demographics", example: "Urban vs. suburban preference patterns", impact: "Medium" },
-    { factor: "Supply Availability", example: "Strawberry shortage requires reforecast", impact: "High" },
-  ];
-
-  const wasteReduction = [
-    { category: "Produce", before: "$82M", after: "$41M", reduction: "-50%" },
-    { category: "Dairy", before: "$34M", after: "$19M", reduction: "-44%" },
-    { category: "Bakery", before: "$28M", after: "$15M", reduction: "-46%" },
-    { category: "Meat/Seafood", before: "$36M", after: "$22M", reduction: "-39%" },
-  ];
-
-  return (
-    <CaseStudyTemplate prevCase={{ name: "Previous: Hello Driven", url: "/case-studies/hello-driven/" }} nextCase={{ name: "Next: Kroger", url: "/case-studies/kroger/" }}>
-
-      {/* Hero */}
-      <section className="pt-24 lg:pt-28 pb-16 bg-gradient-to-br from-background via-green-500/5 to-emerald-500/10 min-h-[80vh] flex items-center">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="space-y-6">
-            <Link href="/case-studies/">
-              <Button variant="ghost" size="sm" className="gap-2" data-testid="button-back-to-cases">
-                <ArrowLeft className="w-4 h-4" />
-                Back to Case Studies
-              </Button>
-            </Link>
-
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div className="space-y-6">
-                <div className="flex flex-wrap items-center gap-2">
-                  <Badge variant="outline" className="border-green-500/30 text-green-400">
-                    <ShoppingCart className="w-3 h-3 mr-1" />
-                    Grocery Retail
-                  </Badge>
-                  <Badge variant="outline" className="border-emerald-500/30 text-emerald-400">
-                    Demand Forecasting
-                  </Badge>
-                </div>
-
-                <h1 className="text-4xl md:text-5xl font-bold leading-tight">
-                  Albertsons Case Study: AI-Powered Demand Forecasting
-                </h1>
-                
-                <p className="text-xl text-muted-foreground">
-                  Predicting demand for products that expire in days--reducing $180M in 
-                  annual food waste while keeping shelves stocked with the freshest products.
-                </p>
-
-                <div className="flex flex-wrap gap-6 pt-4">
-                  <div className="text-center">
-                    <p className="text-3xl font-bold text-green-400">-45%</p>
-                    <p className="text-sm text-muted-foreground">Perishable Waste</p>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-3xl font-bold text-emerald-400">97.2%</p>
-                    <p className="text-sm text-muted-foreground">In-Stock Rate</p>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-3xl font-bold text-cyan-400">$83M</p>
-                    <p className="text-sm text-muted-foreground">Annual Savings</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Forecast Visual */}
-              <Card className="bg-gradient-to-br from-slate-900 to-slate-800 border-slate-700">
-                <CardContent className="p-8">
-                  <div className="flex items-center justify-between mb-6">
-                    <p className="text-xs uppercase tracking-widest text-slate-400">Fresh Demand Forecast</p>
-                    <Badge className="bg-green-500/20 text-green-400 border-green-500/30 text-xs">Live</Badge>
-                  </div>
-                  <div className="space-y-4">
-                    <div className="p-3 rounded-lg bg-slate-800/50 flex items-center justify-between">
-                      <div className="flex items-center gap-3">
-                        <CloudSun className="w-5 h-5 text-amber-400" />
-                        <span className="text-sm text-slate-300">Heat wave forecast (3 days)</span>
-                      </div>
-                      <Badge className="bg-amber-500/20 text-amber-400 border-amber-500/30">+127% watermelon</Badge>
-                    </div>
-                    <div className="p-3 rounded-lg bg-slate-800/50 flex items-center justify-between">
-                      <div className="flex items-center gap-3">
-                        <Package className="w-5 h-5 text-red-400" />
-                        <span className="text-sm text-slate-300">Strawberry supply constraint</span>
-                      </div>
-                      <Badge className="bg-red-500/20 text-red-400 border-red-500/30">-40% availability</Badge>
-                    </div>
-                    <div className="p-3 rounded-lg bg-slate-800/50 flex items-center justify-between">
-                      <div className="flex items-center gap-3">
-                        <Leaf className="w-5 h-5 text-green-400" />
-                        <span className="text-sm text-slate-300">Adjusted order recommendation</span>
-                      </div>
-                      <Badge className="bg-green-500/20 text-green-400 border-green-500/30">Optimized</Badge>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Case Study Overview */}
-      <section className="py-16 bg-muted/30">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <h2 className="text-3xl font-bold mb-8">Case Study Overview</h2>
-          <div className="space-y-4 text-lg text-muted-foreground">
-            <p>
-              <strong className="text-foreground">The Challenge:</strong> Albertsons managed perishable inventory across hundreds of stores--products that expire in days, not weeks. Demand swings driven by weather, local events, and promotions were nearly impossible to anticipate with traditional forecasting tools, resulting in an estimated $180M in annual waste from unsold and expired goods while popular items still ran out of stock.
-            </p>
-            <p>
-              <strong className="text-foreground">The Solution:</strong> AGIX Technologies deployed a machine learning demand forecasting system that analyzed historical sales data, local demographics, seasonal patterns, weather forecasts, and promotional calendars in real time. The AI generated daily replenishment recommendations for over 50,000 SKUs per store, replacing manual ordering with exception-based management that only escalated outliers to human review.
-            </p>
-            <p>
-              <strong className="text-foreground">The Impact:</strong> Perishable waste dropped 23%, translating to over $41M in annual savings. On-shelf availability improved 18%, directly increasing customer satisfaction and basket size. Store managers shifted from reactive ordering to strategic merchandising, and the system's accuracy continued improving as it accumulated more store-level behavioral data.
-            </p>
-          </div>
-        </div>
-      </section>
-
-
-      {/* The Challenge */}
-      <section className="py-24">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="space-y-8"
-          >
-            <Badge variant="outline" className="border-amber-500/30 text-amber-400">
-              <AlertTriangle className="w-3 h-3 mr-1" />
-              The Challenge
-            </Badge>
-
-            <h2 className="text-3xl font-bold">Products That Expire in Days</h2>
-            
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              Fresh produce and perishables represent 30% of grocery revenue but 60% of 
-              waste costs. Traditional forecasting models built for shelf-stable goods fail 
-              when applied to items with 3-7 day shelf lives. Albertsons was losing $180M 
-              annually to spoilage--while simultaneously running out of popular items.
-            </p>
-
-            <div className="grid md:grid-cols-3 gap-6">
-              <Card className="border-red-500/20">
-                <CardContent className="p-6 text-center">
-                  <Clock className="w-8 h-8 text-red-400 mx-auto mb-3" />
-                  <p className="text-2xl font-bold">3-7 days</p>
-                  <p className="text-sm text-muted-foreground">Shelf life window</p>
-                </CardContent>
-              </Card>
-              <Card className="border-amber-500/20">
-                <CardContent className="p-6 text-center">
-                  <Package className="w-8 h-8 text-amber-400 mx-auto mb-3" />
-                  <p className="text-2xl font-bold">$180M</p>
-                  <p className="text-sm text-muted-foreground">Annual shrink</p>
-                </CardContent>
-              </Card>
-              <Card className="border-orange-500/20">
-                <CardContent className="p-6 text-center">
-                  <Truck className="w-8 h-8 text-orange-400 mx-auto mb-3" />
-                  <p className="text-2xl font-bold">67%</p>
-                  <p className="text-sm text-muted-foreground">Manager overrides</p>
-                </CardContent>
-              </Card>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Demand Factors */}
-      <section className="py-24 bg-gradient-to-br from-green-500/5 via-background to-emerald-500/5">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="space-y-12"
-          >
-            <div className="text-center space-y-4">
-              <Badge variant="outline" className="border-green-500/30 text-green-400">
-                <Brain className="w-3 h-3 mr-1" />
-                Demand Intelligence
-              </Badge>
-              <h2 className="text-3xl font-bold">Multi-Signal Forecasting</h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
-                Fresh demand isn't just about last year's numbers. Weather, events, and 
-                supply constraints all drive daily demand.
-              </p>
-            </div>
-
-            <div className="space-y-4">
-              {demandFactors.map((item, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                >
-                  <Card>
-                    <CardContent className="p-6">
-                      <div className="flex items-center justify-between gap-4">
-                        <div className="font-medium w-32 shrink-0">{item.factor}</div>
-                        <div className="flex-1 text-sm text-muted-foreground">{item.example}</div>
-                        <Badge className={
-                          item.impact === "High" 
-                            ? "bg-green-500/20 text-green-400 border-green-500/30"
-                            : "bg-amber-500/20 text-amber-400 border-amber-500/30"
-                        }>
-                          {item.impact} Impact
-                        </Badge>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Waste Reduction Results */}
-      <section className="py-24 bg-gradient-to-br from-slate-900 to-slate-800">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="space-y-12"
-          >
-            <div className="text-center space-y-4">
-              <Badge className="bg-green-500/20 text-green-400 border-green-500/30">
-                <BarChart3 className="w-3 h-3 mr-1" />
-                Waste Reduction
-              </Badge>
-              <h2 className="text-3xl font-bold text-white">Shrink Reduction by Category</h2>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-6">
-              {wasteReduction.map((item, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                >
-                  <Card className="bg-slate-800/50 border-slate-700">
-                    <CardContent className="p-6">
-                      <p className="font-semibold text-white mb-4">{item.category}</p>
-                      <div className="flex items-center justify-between mb-2">
-                        <span className="text-slate-500 line-through">{item.before}</span>
-                        <ArrowRight className="w-5 h-5 text-slate-600" />
-                        <span className="text-xl font-bold text-white">{item.after}</span>
-                      </div>
-                      <Badge className="bg-green-500/20 text-green-400 border-green-500/30">
-                        {item.reduction}
-                      </Badge>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              ))}
-            </div>
-
-            <div className="text-center">
-              <p className="text-4xl font-bold text-white mb-2">$83M</p>
-              <p className="text-slate-400">Total Annual Savings</p>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Testimonial */}
-      <section className="py-24">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <Card className="border-green-500/20">
-              <CardContent className="p-8 md:p-12">
-                <Quote className="w-12 h-12 text-green-500/30 mb-6" />
-                <blockquote className="text-xl md:text-2xl font-medium leading-relaxed mb-8">
-                  "Store managers used to override our forecasts 67% of the time because 
-                  they didn't trust the numbers. Now? Override rate is under 15%. The AI 
-                  factors in things they couldn't--like a concert three miles away or a 
-                  cold snap coming next Tuesday. They've learned to trust it."
-                </blockquote>
-                <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 rounded-full bg-gradient-to-br from-green-500 to-emerald-500 flex items-center justify-center text-white font-bold text-lg">
-                    RG
-                  </div>
-                  <div>
-                    <p className="font-semibold">Robert Garcia</p>
-                    <p className="text-sm text-muted-foreground">VP of Supply Chain Analytics, Albertsons</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="py-24 bg-gradient-to-br from-green-500/10 via-background to-emerald-500/10">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center space-y-8"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold">
-              Optimizing Perishable Supply Chains?
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              We help retailers build demand forecasting systems that reduce waste 
-              while keeping shelves stocked with fresh products.
-            </p>
-            <CtaForm />
-          </motion.div>
-        </div>
-      </section>
-
-      
-
-      </CaseStudyTemplate>
-  );
+  return <CaseStudyV2 data={data} />;
 }

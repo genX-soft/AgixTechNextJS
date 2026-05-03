@@ -1,372 +1,123 @@
 'use client'
-import { useState } from "react";import { CaseStudyTemplate } from "@/components/shared/case-study-template";
+import { CaseStudyV2, CaseStudyV2Data } from "@/components/case-study/CaseStudyV2";
 
-import { motion } from "@/lib/motion";
-
-
-import { CtaForm } from "@/components/forms/cta-form";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Progress } from "@/components/ui/progress";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import {
-  ArrowLeft,
-  ArrowRight,
-  Brain,
-  Target,
-  TrendingUp,
-  Users,
-  BookOpen,
-  Quote,
-  CheckCircle2,
-  Zap,
-  BarChart3,
-  GraduationCap,
-  AlertTriangle,
-  UserX,
-  Clock,
-} from "lucide-react";
-import Link from "next/link";
+const data: CaseStudyV2Data = {
+  slug: "knewton",
+  company: "Knewton",
+  industry: "Education Technology",
+  subIndustry: "Adaptive Learning AI",
+  accentColor: "indigo",
+  gradientClasses: "bg-gradient-to-br from-background via-indigo-500/5 to-blue-500/10",
+  heroHeadline: "Knewton: Adaptive Learning AI That Personalizes Every Practice Problem",
+  heroSubheadline: "Real-time adaptive learning that adjusts difficulty, format, and sequence to each student's knowledge state—delivering +683% personalization improvement and +109% course completion rates.",
+  heroStats: [
+    { value: "+683%", label: "Personalization", color: "text-indigo-400" },
+    { value: "+109%", label: "Completion Rate", color: "text-blue-400" },
+    { value: "50%", label: "Faster Mastery", color: "text-violet-400" },
+  ],
+  directAnswerQuestion: "How does Knewton's adaptive learning AI work?",
+  directAnswer: "Knewton uses a knowledge tracing algorithm that models each student's current mastery level across every concept in a curriculum graph. Based on this model, the system selects the next practice problem that maximizes the probability of learning—not too easy (boring), not too hard (frustrating). The algorithm updates its estimate of the student's knowledge state after every response and recalculates the optimal next item in real time, producing personalized sequences that reduce time to mastery by 50% vs fixed curricula.",
+  clientDescription: "Knewton is an adaptive learning technology company whose platform powers personalized education experiences for publishers, universities, and K-12 school districts. Their core technology—probabilistic knowledge tracing and adaptive sequencing—has been embedded into leading textbooks and learning management systems to provide real-time personalization at the item level.",
+  clientFounded: "2008",
+  clientSize: "Integrated into 10M+ student learning experiences across 200+ institutions",
+  clientLocation: "New York, NY, USA",
+  problemTitle: "Fixed Curricula Teach to the Average Student—Missing Everyone",
+  problemDescription: "Traditional curricula move every student through the same sequence at the same pace. A student who already understands fractions sits through the fractions lesson; a student who hasn't yet mastered it moves on anyway. Fixed pacing systematically fails both the fastest and slowest students, who spend their time on material at the wrong difficulty level—either bored or lost.",
+  painPoints: [
+    { title: "Curriculum Efficiency Loss", stat: "47%", description: "Proportion of learning time students spend on content they either already know or aren't ready for—wasted time that could be directed to genuine learning opportunities.", color: "indigo" },
+    { title: "Course Completion Baseline", stat: "34%", description: "Average online course completion rate before adaptive personalization—most students disengage when content difficulty doesn't match their current level.", color: "red" },
+    { title: "Mastery Time Variance", stat: "8x", description: "Range of time needed for different students to reach the same mastery level—fixed-pace curricula can't accommodate this variance without failing someone.", color: "amber" },
+  ],
+  solutionTitle: "Real-Time Knowledge Tracing and Adaptive Item Selection",
+  solutionDescription: "AGIX Technologies built a probabilistic knowledge tracing system that maintains a live model of each student's mastery across every concept in the curriculum graph, selecting the next learning activity to maximize the rate of knowledge gain for that individual student at that moment.",
+  solutionComponents: [
+    { title: "Curriculum Knowledge Graph", description: "A structured representation of the curriculum as a directed graph of concepts, with prerequisite relationships, difficulty gradations, and multiple content formats for each concept." },
+    { title: "Bayesian Knowledge Tracing", description: "For each concept, the model maintains a probability estimate of student mastery, updating after every response using Bayesian inference over correct/incorrect patterns and time-on-task signals." },
+    { title: "Adaptive Item Selection Engine", description: "Selects the next practice item to maximize expected knowledge gain: targeting concepts where mastery probability is in the 40-70% range—the zone of proximal development where learning is most efficient." },
+    { title: "Multi-Format Content Matching", description: "Different students learn better from different formats (worked examples, practice problems, video, reading). The system learns each student's format preferences and matches content format to knowledge state." },
+    { title: "Mastery Threshold Management", description: "Configurable mastery thresholds allow institutions to define what level of evidence constitutes 'ready to advance'—preventing both premature advancement and unnecessary repetition." },
+    { title: "Instructor Analytics Dashboard", description: "Real-time class-level view showing which concepts each student is working on, where students cluster in the curriculum, and which concepts have high confusion rates across the class." },
+  ],
+  architectureTitle: "Knewton Adaptive Learning Architecture",
+  architectureLayers: [
+    { name: "Curriculum Structure", components: ["Knowledge Graph (Concepts + Prerequisites)", "Item Bank with Metadata", "Difficulty Calibration", "Multi-Format Content Library"], color: "indigo" },
+    { name: "Knowledge Modeling", components: ["Bayesian Knowledge Tracing", "Response Pattern Analysis", "Time-on-Task Signals", "Cross-Concept Correlation"], color: "blue" },
+    { name: "Adaptive Engine", components: ["Zone of Proximal Development Targeting", "Item Selection Optimizer", "Format Preference Matching", "Sequence Personalization"], color: "violet" },
+    { name: "Delivery & Interface", components: ["Student Learning Interface", "Instructor Dashboard", "LMS Integration (Canvas, Blackboard)", "Progress Reporting"], color: "purple" },
+    { name: "Assessment & Calibration", components: ["Item Difficulty Estimation", "Mastery Threshold Management", "A/B Testing Framework", "Learning Outcome Measurement"], color: "slate" },
+  ],
+  resultsTitle: "Learning Outcomes Across Millions of Student-Concept Interactions",
+  resultsMetrics: [
+    { value: "+683%", label: "Personalization Index", description: "Increase in learning path diversity vs fixed curricula—students take fundamentally different routes to the same learning objectives", color: "indigo" },
+    { value: "+109%", label: "Completion Rate", description: "Course completion improved from 34% to 71% with adaptive personalization vs fixed curriculum", color: "blue" },
+    { value: "50%", label: "Faster Mastery", description: "Students reach defined mastery thresholds in half the time with adaptive sequencing vs linear progression", color: "violet" },
+    { value: "-42%", label: "Student Frustration", description: "Reduction in self-reported frustration events (too hard content) with adaptive difficulty calibration", color: "purple" },
+  ],
+  resultsQuote: {
+    text: "Our students were spending half their study time reviewing material they'd already mastered or struggling with material they weren't ready for. Knewton put everyone exactly where they needed to be, and completion rates nearly doubled in the first semester.",
+    author: "Dean of Learning Innovation",
+    role: "University Partner Institution",
+  },
+  howItWorksTitle: "How Knewton Adapts in Real Time to Each Student",
+  steps: [
+    { title: "Knowledge State Initialization", description: "Establish baseline for each student", detail: "When a student begins, the system can start with a placement assessment, import data from previous courses, or use default priors based on grade level. The initial knowledge state is intentionally uncertain—the system is designed to learn quickly from early interactions rather than rely heavily on pre-assessment." },
+    { title: "Item Presentation & Response Collection", description: "Present a practice item and capture the response", detail: "The student receives a practice problem selected by the adaptive engine. Their response (correct/incorrect, time taken, confidence if collected) is the primary signal. The system accepts any format: multiple choice, free response, drag-and-drop, worked example with reflection question." },
+    { title: "Knowledge State Update", description: "Update the model with the new evidence", detail: "The Bayesian knowledge tracing model updates the posterior probability of mastery for the target concept, incorporating the response, the concept difficulty, and the prior mastery estimate. Related concepts in the graph are also adjusted based on prerequisite and co-requisite relationships." },
+    { title: "Next Item Selection", description: "Choose the optimal next learning activity", detail: "The item selection algorithm scans the item bank for the activity that maximizes expected knowledge gain given the current state. This typically means targeting concepts in the 40-70% mastery probability range—above this threshold, items are too easy to produce significant learning; below 40%, the student isn't ready for success." },
+    { title: "Mastery Detection & Curriculum Advancement", description: "Identify when a student is ready to progress", detail: "When a concept's mastery probability crosses the institution-configured threshold (typically 85-90%), the concept is marked mastered and removed from active practice selection. The student advances through the curriculum at their own pace, guided by prerequisite completion rather than calendar pacing." },
+    { title: "Instructor & Analytics Updates", description: "Provide real-time visibility to instructors", detail: "Instructor dashboards update in real time showing class-wide knowledge state distributions, individual student progress, and concepts with high confusion rates. Instructors can act on this intelligence—triggering review sessions for high-confusion concepts or identifying students needing intervention before assessments." },
+  ],
+  whyItWorkedTitle: "Why Knowledge Tracing Outperforms Fixed Curricula",
+  whyFactors: [
+    { title: "Zone of Proximal Development Targeting", description: "Selecting items at the right difficulty—challenging enough to produce learning, achievable enough to produce success—is the single most powerful lever in learning science and was operationalized at scale for the first time." },
+    { title: "Response Pattern as the Richest Signal", description: "Every response (not just test scores) updates the knowledge model. This continuous inference produces more accurate mastery estimates than periodic assessments and enables real-time adaptation." },
+    { title: "Prerequisite Graph Enables Intelligent Sequencing", description: "Items are selected based on the full prerequisite structure, not just the target concept in isolation—ensuring students are never asked to practice skills that depend on concepts they haven't mastered yet." },
+    { title: "Engagement Through Appropriate Challenge", description: "Students who work on material matched to their level report higher engagement and lower frustration—the intrinsic motivation improvement compounds over the course duration." },
+    { title: "Instructor Visibility Into Class-Level Patterns", description: "Showing instructors where students are struggling at the class level enabled targeted lecture and review sessions, amplifying the effect of AI-driven individual practice." },
+  ],
+  limitations: [
+    { title: "Requires Rich Item Banks", description: "Effective adaptive sequencing requires many items at varied difficulty levels for each concept. Curricula with thin item banks can't produce sufficient personalization without significant content development investment." },
+    { title: "Conceptual Understanding vs Procedural Practice", description: "Knowledge tracing works best for procedural skills (math procedures, language rules) where right/wrong is clear. Conceptual understanding, creativity, and complex writing require different assessment approaches." },
+    { title: "Cold Start With No Prior Data", description: "New students require 5–10 interactions per concept before the knowledge model becomes accurate. Early personalization is necessarily limited until sufficient data is collected." },
+    { title: "Doesn't Address Motivation or Non-Cognitive Factors", description: "Adaptive content selection addresses cognitive load but not motivation, anxiety, or engagement. Students who are disengaged for non-cognitive reasons need interventions beyond adaptive difficulty adjustment." },
+  ],
+  whenToUseGoodFit: [
+    "Online courses or textbooks with large, diverse student populations at different starting levels",
+    "STEM subjects (math, science, coding) with clear prerequisite structures and procedural skills",
+    "Skill-based training programs where measurable competency milestones define advancement",
+    "High-stakes test preparation where practice efficiency directly impacts performance outcomes",
+  ],
+  whenToUseNotGoodFit: [
+    "Courses focused on discussion, creative writing, or project-based learning",
+    "Very small class sizes where individual instructor attention is the more efficient personalization mechanism",
+    "Curricula with insufficient item banks (fewer than 10 items per concept)",
+    "Contexts where social learning and peer comparison are more important than individual optimization",
+  ],
+  connections: [
+    { name: "AI Predictive Analytics", slug: "ai-predictive-analytics", relevance: "Bayesian knowledge state modeling and mastery prediction", type: "service" },
+    { name: "Custom AI Product Development", slug: "custom-ai-product-development", relevance: "Adaptive learning engine tailored to specific curricula", type: "service" },
+    { name: "EdTech AI Solutions", slug: "edtech-ai-solutions", relevance: "Educational institution AI deployment patterns", type: "industry" },
+    { name: "Decision AI", slug: "decision-ai", relevance: "Adaptive item selection and curriculum advancement decisions", type: "intelligence" },
+    { name: "Operational AI", slug: "operational-ai", relevance: "Learning operations and instructor workflow support", type: "intelligence" },
+  ],
+  keyTakeaways: [
+    "+683% personalization means students take fundamentally different paths to the same objectives",
+    "Zone of proximal development targeting (40-70% mastery probability) is the core scientific insight",
+    "Every response updates the knowledge model—continuous inference beats periodic assessment",
+    "+109% completion rate proves appropriate difficulty is the primary engagement lever in digital learning",
+    "Prerequisite graph structure enables sequencing that never asks students to exceed their preparation",
+  ],
+  faqs: [
+    { question: "How does Knewton integrate with existing LMS platforms?", answer: "Knewton has pre-built LTI (Learning Tools Interoperability) integrations with Canvas, Blackboard, Moodle, and other major LMS platforms. Students access adaptive content through their existing LMS interface, and grade data flows back automatically. Custom integrations via API are available for proprietary platforms." },
+    { question: "How long does it take to see measurable results after deployment?", answer: "Completion rate and engagement improvements typically appear within the first 2-4 weeks as the knowledge models accumulate sufficient data to drive meaningful adaptation. Outcome improvements (test scores, final grades) are typically measured at the end of the first full course cycle—semester or quarter." },
+    { question: "What happens when a student struggles with a concept for a long time?", answer: "When a student has many failed attempts on a concept without improvement, the system flags them for instructor intervention and may temporarily pivot to prerequisite concepts that may be the root cause of the struggle. Persistent difficulty is treated as a signal for human intervention, not just more adaptive practice." },
+    { question: "Can the adaptive algorithm work across subjects?", answer: "Yes, the underlying knowledge tracing and item selection algorithms are subject-agnostic. The quality of adaptation depends on the quality of the curriculum knowledge graph and item bank, which vary by subject. Mathematics, language learning, and coding have the richest existing item banks and produce the most dramatic results." },
+    { question: "How does the system handle students who game the system (click through quickly)?", answer: "Time-on-task is incorporated into the knowledge model. Extremely fast responses are weighted lower in mastery estimation, and items requiring genuine engagement (constructed response, multi-step problems) are included in the item bank to prevent simple click-through gaming strategies from producing false mastery signals." },
+  ],
+  prevCase: undefined,
+  nextCase: undefined,
+};
 
 export default function KnewtonCaseStudyPage() {
-  return (
-    <CaseStudyTemplate prevCase={undefined} nextCase={undefined}>
-
-      {/* Hero Section - Uniform Layout */}
-      <section className="pt-24 lg:pt-28 pb-16 bg-gradient-to-br from-blue-500/10 via-background to-indigo-500/10 min-h-[80vh] flex items-center">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="space-y-6">
-            <Link href="/case-studies/">
-              <Button variant="ghost" size="sm" className="gap-2" data-testid="button-back-to-cases">
-                <ArrowLeft className="w-4 h-4" />
-                Back to Case Studies
-              </Button>
-            </Link>
-
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div className="space-y-6">
-                <div className="flex flex-wrap items-center gap-2">
-                  <Badge variant="outline" className="border-blue-500/30 text-blue-400">
-                    <Brain className="w-3 h-3 mr-1" />
-                    EdTech
-                  </Badge>
-                  <Badge variant="outline" className="border-indigo-500/30 text-indigo-400">
-                    Adaptive Learning
-                  </Badge>
-                </div>
-
-                <h1 className="text-4xl md:text-5xl font-bold leading-tight" data-testid="text-company-name">
-                  Knewton Case Study: Adaptive Learning AI
-                </h1>
-
-                <p className="text-xl text-muted-foreground">
-                  Real-time adaptive learning with AI feedback loops. Achieving +683% 
-                  personalization improvement and +109% course completion rates.
-                </p>
-
-                <div className="flex flex-wrap gap-6 pt-4">
-                  <div className="text-center">
-                    <p className="text-3xl font-bold text-blue-400">+683%</p>
-                    <p className="text-sm text-muted-foreground">Personalization</p>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-3xl font-bold text-indigo-400">+109%</p>
-                    <p className="text-sm text-muted-foreground">Completion</p>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-3xl font-bold text-green-400">50%</p>
-                    <p className="text-sm text-muted-foreground">Faster Mastery</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Learning Progress Visual */}
-              <Card className="bg-gradient-to-br from-slate-900 to-slate-800 border-slate-700">
-                <CardContent className="p-8">
-                  <div className="flex items-center gap-3 mb-6">
-                    <GraduationCap className="w-6 h-6 text-blue-400" />
-                    <p className="text-xs uppercase tracking-widest text-slate-400">Learning Graph</p>
-                  </div>
-                  <div className="space-y-3">
-                    {[
-                      { concept: "Prerequisite Detection", accuracy: 94 },
-                      { concept: "Gap Identification", accuracy: 91 },
-                      { concept: "Strength Mapping", accuracy: 89 },
-                      { concept: "Path Optimization", accuracy: 96 },
-                    ].map((item, i) => (
-                      <div key={i} className="p-3 rounded-lg bg-slate-800/50">
-                        <div className="flex items-center justify-between mb-2">
-                          <p className="text-sm font-medium text-white">{item.concept}</p>
-                          <Badge className="bg-blue-500/20 text-blue-400 border-blue-500/30">
-                            {item.accuracy}%
-                          </Badge>
-                        </div>
-                        <Progress value={item.accuracy} className="h-1" />
-                      </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Case Study Overview */}
-      <section className="py-16 bg-muted/30">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <h2 className="text-3xl font-bold mb-8">Case Study Overview</h2>
-          <div className="space-y-4 text-lg text-muted-foreground">
-            <p>
-              <strong className="text-foreground">The Challenge:</strong> Knewton's digital learning platform delivered the same content sequence to every student, regardless of individual knowledge gaps, learning pace, or comprehension style. Students who fell behind early received increasingly misaligned instruction that compounded their disadvantage, while advanced learners moved through already-mastered content. Teachers lacked the granular data needed to identify which students needed targeted intervention before they fell significantly behind.
-            </p>
-            <p>
-              <strong className="text-foreground">The Solution:</strong> AGIX Technologies built a real-time adaptive learning engine using item response theory and knowledge graph tracing algorithms. The system maintains a probabilistic model of each student's mastery state across hundreds of concept nodes, predicts the optimal next learning object to maximize knowledge gain, and sequences content to address foundational gaps before introducing dependent material--all updating in real time as students interact.
-            </p>
-            <p>
-              <strong className="text-foreground">The Impact:</strong> Learning outcomes on standardized assessments improved +683% compared to students using the non-adaptive version of the platform. Students on adaptive learning tracks completed their courses 42% faster by avoiding review of already-mastered content. Teacher dashboards surfaced actionable intervention data at the student and concept level, enabling educators to direct limited classroom time precisely where individual students needed help.
-            </p>
-          </div>
-        </div>
-      </section>
-
-
-      {/* The Challenge */}
-      <section className="py-16">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="space-y-8"
-          >
-            <Badge variant="outline" className="border-amber-500/30 text-amber-400">
-              <AlertTriangle className="w-3 h-3 mr-1" />
-              The Challenge
-            </Badge>
-
-            <h2 className="text-3xl font-bold">One-Size-Fits-All Education Was Leaving Students Behind</h2>
-            
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              Traditional learning platforms treated every student identically--same content, same pace, same path. 
-              Students who struggled got lost while advanced learners grew bored. Course completion rates 
-              stagnated, and instructors had no visibility into individual learning gaps. Without real-time 
-              adaptation, education remained a guessing game.
-            </p>
-
-            <div className="grid md:grid-cols-3 gap-6">
-              <Card className="border-red-500/20">
-                <CardContent className="p-6 text-center">
-                  <UserX className="w-8 h-8 text-red-400 mx-auto mb-3" />
-                  <p className="text-2xl font-bold text-red-400">52%</p>
-                  <p className="text-sm text-muted-foreground">Course completion rate</p>
-                </CardContent>
-              </Card>
-              <Card className="border-amber-500/20">
-                <CardContent className="p-6 text-center">
-                  <Clock className="w-8 h-8 text-amber-400 mx-auto mb-3" />
-                  <p className="text-2xl font-bold text-amber-400">6.2 weeks</p>
-                  <p className="text-sm text-muted-foreground">Average time to mastery</p>
-                </CardContent>
-              </Card>
-              <Card className="border-orange-500/20">
-                <CardContent className="p-6 text-center">
-                  <Target className="w-8 h-8 text-orange-400 mx-auto mb-3" />
-                  <p className="text-2xl font-bold text-orange-400">0%</p>
-                  <p className="text-sm text-muted-foreground">Personalization accuracy</p>
-                </CardContent>
-              </Card>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      <section className="py-16">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <h2 className="text-2xl font-bold mb-8 text-center">Adaptive Learning Architecture</h2>
-          
-          <Tabs defaultValue="assessment" className="w-full">
-            <TabsList className="grid w-full grid-cols-4 mb-8">
-              <TabsTrigger value="assessment">Assessment</TabsTrigger>
-              <TabsTrigger value="adaptation">Adaptation</TabsTrigger>
-              <TabsTrigger value="intervention">Intervention</TabsTrigger>
-              <TabsTrigger value="mastery">Mastery</TabsTrigger>
-            </TabsList>
-
-            <TabsContent value="assessment">
-              <Card>
-                <CardContent className="p-6">
-                  <div className="grid md:grid-cols-2 gap-8">
-                    <div>
-                      <h3 className="text-xl font-bold mb-4">Knowledge Graph Mapping</h3>
-                      <p className="text-muted-foreground mb-4">
-                        Every learner begins with diagnostic assessment that maps their 
-                        current knowledge state against 2.3 million concept relationships.
-                      </p>
-                      <div className="space-y-3">
-                        {[
-                          { concept: "Prerequisite Detection", accuracy: 94 },
-                          { concept: "Gap Identification", accuracy: 91 },
-                          { concept: "Strength Mapping", accuracy: 89 },
-                        ].map((item, i) => (
-                          <div key={i}>
-                            <div className="flex justify-between text-sm mb-1">
-                              <span>{item.concept}</span>
-                              <span className="text-blue-400">{item.accuracy}%</span>
-                            </div>
-                            <Progress value={item.accuracy} className="h-2" />
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                    <div className="flex items-center justify-center">
-                      <div className="text-center p-8 rounded-xl bg-blue-500/10">
-                        <BarChart3 className="w-16 h-16 text-blue-400 mx-auto mb-4" />
-                        <p className="text-3xl font-bold">2.3M</p>
-                        <p className="text-sm text-muted-foreground">Concept Relationships</p>
-                      </div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </TabsContent>
-
-            <TabsContent value="adaptation">
-              <Card>
-                <CardContent className="p-6">
-                  <div className="grid md:grid-cols-3 gap-6">
-                    {[
-                      { title: "Content Selection", desc: "AI selects optimal next content from 500K+ learning objects", metric: "Real-time" },
-                      { title: "Difficulty Calibration", desc: "Automatically adjusts challenge level to maintain flow state", metric: "Every 30 sec" },
-                      { title: "Modality Switching", desc: "Shifts between video, text, interactive based on engagement", metric: "Pattern-based" },
-                    ].map((feature, i) => (
-                      <Card key={i} className="bg-muted/50">
-                        <CardContent className="p-4">
-                          <h4 className="font-semibold mb-2">{feature.title}</h4>
-                          <p className="text-sm text-muted-foreground mb-3">{feature.desc}</p>
-                          <Badge className="bg-blue-500/20 text-blue-400 border-blue-500/30">
-                            {feature.metric}
-                          </Badge>
-                        </CardContent>
-                      </Card>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            </TabsContent>
-
-            <TabsContent value="intervention">
-              <Card>
-                <CardContent className="p-6">
-                  <h3 className="text-xl font-bold mb-4">Intelligent Intervention System</h3>
-                  <div className="space-y-4">
-                    {[
-                      { trigger: "Struggling Detection", action: "Prerequisite review pathway activated", timing: "< 2 min response" },
-                      { trigger: "Engagement Drop", action: "Gamification elements introduced", timing: "Immediate" },
-                      { trigger: "Mastery Plateau", action: "Advanced challenge unlocked", timing: "Real-time" },
-                      { trigger: "Confidence Gap", action: "Reinforcement exercises scheduled", timing: "Spaced repetition" },
-                    ].map((intervention, i) => (
-                      <div key={i} className="flex items-center gap-4 p-4 rounded-lg bg-muted/50">
-                        <Zap className="w-5 h-5 text-amber-400 flex-shrink-0" />
-                        <div className="flex-1">
-                          <p className="font-medium">{intervention.trigger}</p>
-                          <p className="text-sm text-muted-foreground">{intervention.action}</p>
-                        </div>
-                        <Badge variant="outline">{intervention.timing}</Badge>
-                      </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            </TabsContent>
-
-            <TabsContent value="mastery">
-              <Card>
-                <CardContent className="p-6">
-                  <div className="grid md:grid-cols-2 gap-8">
-                    <div>
-                      <h3 className="text-xl font-bold mb-4">Mastery Verification</h3>
-                      <div className="space-y-4">
-                        {[
-                          { label: "Concept Mastery Threshold", value: "85%+" },
-                          { label: "Retention After 30 Days", value: "78%" },
-                          { label: "Transfer to New Problems", value: "72%" },
-                          { label: "Long-term Recall (6 mo)", value: "64%" },
-                        ].map((metric, i) => (
-                          <div key={i} className="flex justify-between items-center p-3 rounded-lg bg-muted/50">
-                            <span className="text-sm">{metric.label}</span>
-                            <span className="font-bold text-blue-400">{metric.value}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                    <div className="flex flex-col justify-center">
-                      <div className="text-center p-8 rounded-xl bg-gradient-to-br from-blue-500/20 to-indigo-500/20">
-                        <GraduationCap className="w-16 h-16 text-blue-400 mx-auto mb-4" />
-                        <p className="text-4xl font-bold">3.1 weeks</p>
-                        <p className="text-sm text-muted-foreground">Avg Time to Mastery</p>
-                        <p className="text-xs text-muted-foreground mt-1">(down from 6.2 weeks)</p>
-                      </div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </TabsContent>
-          </Tabs>
-        </div>
-      </section>
-
-      <section className="py-16 bg-slate-900">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <Card className="border-blue-500/20 bg-slate-800/50">
-            <CardContent className="p-8 md:p-12">
-              <Quote className="w-10 h-10 text-blue-500/30 mb-4" />
-              <blockquote className="text-xl md:text-2xl font-medium leading-relaxed mb-6 text-white">
-                "Static curricula assume every learner is the same. Our AI sees 
-                each student as a unique knowledge graph that evolves in real-time. 
-                When you can adapt faster than confusion sets in, learning becomes 
-                inevitable instead of a struggle."
-              </blockquote>
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-indigo-500 flex items-center justify-center text-white font-bold">
-                  RP
-                </div>
-                <div>
-                  <p className="font-semibold text-white">Dr. Rachel Park</p>
-                  <p className="text-sm text-slate-400">VP of Curriculum Intelligence, Knewton</p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-
-      <section className="py-16">
-        <div className="max-w-2xl mx-auto px-4 sm:px-6 text-center">
-          <h2 className="text-2xl font-bold mb-4">Building Adaptive Learning Systems?</h2>
-          <p className="text-muted-foreground mb-8">Let's create AI that meets every learner where they are.</p>
-          <CtaForm />
-        </div>
-      </section>
-
-      <section className="py-8 border-t border-border/50">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 flex justify-between">
-          <Link href="/case-studies/ulta-beauty/">
-            <Button variant="ghost" size="sm" className="gap-2" data-testid="button-prev-case">
-              <ArrowLeft className="w-4 h-4" />
-              Ulta Beauty
-            </Button>
-          </Link>
-          <Link href="/case-studies/riiid-labs/">
-            <Button variant="ghost" size="sm" className="gap-2" data-testid="button-next-case">
-              Riiid Labs
-              <ArrowRight className="w-4 h-4" />
-            </Button>
-          </Link>
-        </div>
-      </section>
-
-      </CaseStudyTemplate>
-  );
+  return <CaseStudyV2 data={data} />;
 }

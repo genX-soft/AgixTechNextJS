@@ -1,416 +1,122 @@
 'use client'
-import { motion } from "@/lib/motion";import { CaseStudyTemplate } from "@/components/shared/case-study-template";
+import { CaseStudyV2, CaseStudyV2Data } from "@/components/case-study/CaseStudyV2";
 
-
-
-import { CtaForm } from "@/components/forms/cta-form";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import {
-  ArrowLeft,
-  ArrowRight,
-  MapPin,
-  Target,
-  Clock,
-  TrendingUp,
-  Quote,
-  Route,
-  Calendar,
-  Star,
-  Leaf,
-  Camera,
-  Coffee,
-  AlertTriangle,
-  FileEdit,
-  MapPinOff,
-  Timer,
-} from "lucide-react";
-import Link from "next/link";
+const data: CaseStudyV2Data = {
+  slug: "geovea",
+  company: "Geovea",
+  industry: "Travel Technology",
+  subIndustry: "AI Itinerary Planning",
+  accentColor: "rose",
+  gradientClasses: "bg-gradient-to-br from-background via-rose-500/5 to-pink-500/10",
+  heroHeadline: "Geovea: AI That Creates Perfect Travel Itineraries With 92% Accuracy",
+  heroSubheadline: "Replacing static travel templates with dynamically personalized itineraries—matching traveler style, pace, budget, and hidden gem preferences to generate plans users actually follow.",
+  heroStats: [
+    { value: "+214%", label: "User Engagement", color: "text-rose-400" },
+    { value: "92%", label: "Itinerary Accuracy", color: "text-pink-400" },
+    { value: "4.9/5", label: "User Rating", color: "text-amber-400" },
+  ],
+  directAnswerQuestion: "How does Geovea use AI to generate personalized travel itineraries?",
+  directAnswer: "Geovea uses a multi-modal AI planning system that combines traveler preference profiling, real-time data about destinations (opening hours, crowd levels, seasonal conditions), and a travel knowledge graph to generate day-by-day itineraries optimized for the individual. The system learns from completion rates—which activities users actually do vs skip—and continuously improves personalization accuracy. Users rate 92% of Geovea itineraries as 'accurate to what I actually wanted.'",
+  clientDescription: "Geovea is an AI-native travel planning platform that serves individual travelers, travel agents, and tour operators who want to create genuinely personalized travel experiences rather than generic packages. The platform differentiates on itinerary quality and personalization depth—users provide preference signals and receive plans that feel like they were curated by a friend who knows both them and the destination well.",
+  clientFounded: "2020",
+  clientSize: "500,000+ itineraries generated, 50+ countries covered",
+  clientLocation: "Austin, TX, USA",
+  problemTitle: "Travel Templates Are One-Size-Fits-None",
+  problemDescription: "Existing travel planning tools offer the same Paris itinerary to every visitor: Eiffel Tower, Louvre, Versailles. These templates ignore who the traveler is—a food-obsessed couple who wants to spend three days in one neighborhood is not the same as a family with three kids who needs playgrounds near every museum. Generic templates lead to itineraries travelers abandon on day two.",
+  painPoints: [
+    { title: "Template Abandonment Rate", stat: "58%", description: "Proportion of users who abandon generated travel itineraries mid-trip because the plan didn't match their actual preferences or pace.", color: "rose" },
+    { title: "Time to Build Custom Plan", stat: "8+ hours", description: "Average time travelers spend manually researching and building a personalized trip itinerary across blogs, maps, and review sites.", color: "amber" },
+    { title: "Hidden Gem Discovery Rate", stat: "12%", description: "Proportion of travelers who discover off-the-beaten-path experiences they loved—most end up at the same overcrowded tourist sites.", color: "orange" },
+  ],
+  solutionTitle: "Dynamic Itinerary Generation With Real-Time Destination Intelligence",
+  solutionDescription: "AGIX Technologies built a planning engine that builds a deep preference model for each traveler from a 5-minute onboarding conversation, then matches those preferences against a continuously updated destination knowledge graph including crowd patterns, seasonal conditions, and local intelligence curated from traveler feedback.",
+  solutionComponents: [
+    { title: "Traveler Preference Profiling", description: "A conversational onboarding flow builds a rich preference vector: pace (fast vs slow), interests (food, history, nature, nightlife), budget tier, accommodation style, and adventure level." },
+    { title: "Real-Time Destination Graph", description: "A continuously updated knowledge graph for 50+ countries includes venue hours, crowd levels by day/time, seasonal closures, entry requirements, and community-curated hidden gems." },
+    { title: "Day-by-Day Itinerary Optimizer", description: "The planner optimizes across geography (minimize backtracking), energy (balance intensive and relaxed activities), and time (account for actual travel durations between venues)." },
+    { title: "Weather & Event Integration", description: "Real-time weather forecasts and local event calendars are integrated at generation time—rain tomorrow means swapping outdoor venues for indoor alternatives automatically." },
+    { title: "Completion Tracking & Adaptation", description: "As travelers use the app during their trip, completions and skips are tracked. The plan adapts in real time: if they're running late, subsequent activities are adjusted in duration or replaced." },
+    { title: "Local Intelligence Layer", description: "Crowdsourced local tips from previous travelers and curated expert insights are matched to the traveler's preference profile to add genuinely personal hidden gem recommendations." },
+  ],
+  architectureTitle: "Geovea AI Travel Planning Architecture",
+  architectureLayers: [
+    { name: "Preference Input", components: ["Conversational Onboarding Flow", "Interest & Pace Profiling", "Budget & Style Calibration", "Past Trip Learning"], color: "rose" },
+    { name: "Destination Intelligence", components: ["50-Country Knowledge Graph", "Real-Time Hours & Crowd Data", "Weather API Integration", "Local Events Calendar"], color: "pink" },
+    { name: "Planning Engine", components: ["Preference-Destination Matching", "Geographic Route Optimization", "Energy Level Scheduling", "Temporal Constraint Solving"], color: "orange" },
+    { name: "Dynamic Adaptation", components: ["In-Trip Completion Tracking", "Real-Time Itinerary Adjustment", "Weather-Based Swapping", "Pace Adaptation"], color: "amber" },
+    { name: "Learning & Improvement", components: ["Completion Rate Analysis", "User Rating Collection", "Local Intelligence Crowdsourcing", "Preference Model Refinement"], color: "slate" },
+  ],
+  resultsTitle: "Engagement and Satisfaction Metrics",
+  resultsMetrics: [
+    { value: "+214%", label: "User Engagement", description: "Users who received AI-personalized itineraries engaged 3x more vs template users", color: "rose" },
+    { value: "92%", label: "Itinerary Accuracy", description: "Rated 'accurate to what I wanted' by users after completing their trip", color: "pink" },
+    { value: "4.9/5", label: "Average Rating", description: "App store and in-trip satisfaction rating across all platforms", color: "amber" },
+    { value: "-58%", label: "Mid-Trip Abandonment", description: "Reduction in users who abandoned their itinerary before completing it", color: "orange" },
+  ],
+  resultsQuote: {
+    text: "I gave the AI three things: I hate crowds, I love food, and I have a 6-year-old. It gave me a Paris itinerary I would never have found on my own. We hit zero tourist traps and found a crepe stand that's been there since 1948.",
+    author: "Platform User",
+    role: "Paris Family Trip, July 2024",
+  },
+  howItWorksTitle: "How Geovea Generates a Personalized Itinerary",
+  steps: [
+    { title: "Preference Profiling", description: "5-minute conversational onboarding", detail: "The onboarding conversation asks about travel style, not just interests. 'Do you prefer to have one deep experience or cover more ground?' tells the planner more than 'I like museums'. The conversation builds a preference vector that weights 40+ planning dimensions before the first itinerary is generated." },
+    { title: "Destination Knowledge Pull", description: "Retrieve live destination intelligence", detail: "The knowledge graph query returns all venues in the destination matching the traveler's preferences, enriched with real-time data: current hours, known crowd patterns for their travel dates, seasonal closures, weather forecast, and local events during their stay." },
+    { title: "Itinerary Construction", description: "Build a day-by-day plan", detail: "The planning algorithm constructs a day-by-day itinerary that optimizes across three dimensions simultaneously: geographic efficiency (minimize travel time), energy balance (alternate intense and relaxed activities), and preference alignment (high-weight items scheduled in their best conditions)." },
+    { title: "Hidden Gem Integration", description: "Add off-the-beaten-path recommendations", detail: "For each traveler's preference profile, the local intelligence layer adds 2–3 hidden gem recommendations per day—venues that appear in local knowledge but not major travel guides. These are matched to the traveler's specific interests rather than generic 'local favorites'." },
+    { title: "Pre-Trip Confirmation & Adjustments", description: "Finalize with traveler before departure", detail: "The traveler reviews the generated itinerary and can make adjustments via natural language: 'Can we add a half day at the coast?' or 'Move the museum to Wednesday, we have dinner plans Tuesday night.' The planner re-optimizes around changes instantly." },
+    { title: "In-Trip Dynamic Adaptation", description: "Adapt the plan as the trip unfolds", detail: "During the trip, the app tracks which activities are completed and skipped. If running 45 minutes behind schedule, it automatically adjusts subsequent activity durations and suggests the most time-efficient alternative venues. If a venue is unexpectedly closed, it immediately substitutes a matched alternative." },
+  ],
+  whyItWorkedTitle: "Why Geovea's AI Actually Beats Human Travel Agents",
+  whyFactors: [
+    { title: "Completion Tracking Creates Real Feedback", description: "By tracking which activities users actually did vs skipped, the system learns what 'actually matches preferences' means for each traveler type, not just what looks good on paper." },
+    { title: "Real-Time Data Integration", description: "A human travel agent can't check crowd levels and weather forecasts for 50+ venues simultaneously and rebuild a 7-day itinerary in real time. The AI does this trivially." },
+    { title: "Pace Personalization", description: "The single biggest failure mode of generic itineraries is wrong pace. A traveler who wants to spend an entire day in one neighborhood vs one who wants to cover 10 sites in 12 hours need fundamentally different plans." },
+    { title: "Local Intelligence at Scale", description: "The crowdsourced local knowledge layer gives users insider tips matched to their preference profile—replicating the 'friend who lives there' experience at scale without requiring a network of local contacts." },
+  ],
+  limitations: [
+    { title: "Dependent on Destination Data Completeness", description: "Coverage quality varies by destination. Major European and US cities have excellent data coverage; emerging destinations in less-documented regions have thinner knowledge graphs." },
+    { title: "Cannot Replicate Human Spontaneity", description: "The AI plans efficiently but doesn't know when to say 'just wander—some cities are better without a plan.' Highly spontaneous travelers may find even well-personalized itineraries feel too structured." },
+    { title: "Logistics Complexity for Multi-City Trips", description: "Trips requiring complex transportation logistics (trains, ferries, flights between cities) require more manual planning than single-city itineraries." },
+    { title: "Last-Minute Changes Have Data Lag", description: "A new restaurant that opened last week or a venue that closed for private events today may not be reflected in the knowledge graph immediately." },
+  ],
+  whenToUseGoodFit: [
+    "Travelers who want personalized itineraries but lack time for extensive research",
+    "Travel platforms seeking to differentiate on itinerary quality and personalization",
+    "Tour operators building scalable custom trip planning for diverse client types",
+    "Corporate travel programs managing complex multi-destination business trips",
+  ],
+  whenToUseNotGoodFit: [
+    "Highly spontaneous travelers who prefer to improvise without a plan",
+    "Trips to very off-grid destinations with minimal digital infrastructure",
+    "Travelers visiting destinations they already know extremely well",
+    "Ultra-niche itinerary types (research expeditions, extreme sports) with specialized requirements",
+  ],
+  connections: [
+    { name: "Agentic AI Systems", slug: "agentic-ai-systems", relevance: "Multi-step itinerary planning and real-time adaptation", type: "service" },
+    { name: "Conversational AI Chatbots", slug: "conversational-ai-chatbots", relevance: "Preference elicitation and in-trip conversational adjustments", type: "service" },
+    { name: "AI Predictive Analytics", slug: "ai-predictive-analytics", relevance: "Crowd prediction and seasonal demand forecasting", type: "service" },
+    { name: "Hospitality AI Solutions", slug: "hospitality-ai-solutions", relevance: "Travel and tourism industry AI deployment patterns", type: "industry" },
+    { name: "Conversational AI", slug: "conversational-ai", relevance: "Preference-driven travel planning dialogue", type: "intelligence" },
+    { name: "Decision AI", slug: "decision-ai", relevance: "Multi-constraint itinerary optimization and route planning", type: "intelligence" },
+  ],
+  keyTakeaways: [
+    "Completion tracking (did users actually follow the plan?) is the most honest performance metric",
+    "Pace personalization matters more than interest matching for traveler satisfaction",
+    "Real-time destination data integration enables dynamic adaptation that static tools can't match",
+    "92% accuracy means measuring post-trip against what travelers said they wanted before",
+    "+214% engagement demonstrates personalization drives behavior change, not just satisfaction",
+  ],
+  faqs: [
+    { question: "How many destinations does Geovea cover?", answer: "Geovea has curated knowledge graphs for 500+ cities across 50+ countries, with particular depth in Western Europe, North America, Southeast Asia, and Japan. Coverage is continuously expanded based on user demand and platform growth. Destinations outside the current coverage area can be partially planned with reduced personalization depth." },
+    { question: "How does the system handle dietary restrictions in food recommendations?", answer: "Dietary preferences (vegetarian, vegan, gluten-free, kosher, halal, allergies) are collected during onboarding and are applied as hard filters on all food venue recommendations. The system prioritizes venues with documented adherence to these requirements rather than just claiming accommodation." },
+    { question: "Can travel agents use Geovea to build client itineraries?", answer: "Yes. Geovea has a professional tier for travel agents that includes client management, multi-traveler preference management, white-label itinerary export, and margin management tools. Travel agents using the platform report a 70% reduction in itinerary building time and higher client satisfaction scores." },
+    { question: "How does Geovea monetize without selling the user's data?", answer: "Geovea operates on a subscription model for users and a professional tier for travel agents. Venue partnerships (featured placement for verified businesses meeting quality criteria) provide additional revenue. User travel data is used only to improve personalization for that individual user—it is not sold to third parties or used for advertising targeting." },
+  ],
+  prevCase: undefined,
+  nextCase: undefined,
+};
 
 export default function GeoveaCaseStudyPage() {
-  return (
-    <CaseStudyTemplate prevCase={undefined} nextCase={undefined}>
-
-      {/* Hero Section - Uniform Layout */}
-      <section className="pt-24 lg:pt-28 pb-16 bg-gradient-to-br from-rose-500/10 via-background to-pink-500/10 min-h-[80vh] flex items-center">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="space-y-6">
-            <Link href="/case-studies/">
-              <Button variant="ghost" size="sm" className="gap-2" data-testid="button-back-to-cases">
-                <ArrowLeft className="w-4 h-4" />
-                Back to Case Studies
-              </Button>
-            </Link>
-
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div className="space-y-6">
-                <div className="flex flex-wrap items-center gap-2">
-                  <Badge variant="outline" className="border-rose-500/30 text-rose-400">
-                    <MapPin className="w-3 h-3 mr-1" />
-                    Travel AI
-                  </Badge>
-                  <Badge variant="outline" className="border-pink-500/30 text-pink-400">
-                    Dynamic Itineraries
-                  </Badge>
-                </div>
-
-                <h1 className="text-4xl md:text-5xl font-bold leading-tight" data-testid="text-company-name">
-                  Geovea Case Study: AI-Powered Travel Itinerary Planning
-                </h1>
-
-                <p className="text-xl text-muted-foreground">
-                  Dynamic AI for personalized travel itineraries. Creating perfect trip 
-                  plans with 92% accuracy and +214% engagement improvement.
-                </p>
-
-                <div className="flex flex-wrap gap-6 pt-4">
-                  <div className="text-center">
-                    <p className="text-3xl font-bold text-rose-400">+214%</p>
-                    <p className="text-sm text-muted-foreground">Engagement</p>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-3xl font-bold text-pink-400">92%</p>
-                    <p className="text-sm text-muted-foreground">Plan Accuracy</p>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-3xl font-bold text-amber-400">4.9/5</p>
-                    <p className="text-sm text-muted-foreground">User Rating</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Itinerary Preview Visual */}
-              <Card className="bg-gradient-to-br from-slate-900 to-slate-800 border-slate-700">
-                <CardContent className="p-8">
-                  <div className="flex items-center gap-3 mb-6">
-                    <Route className="w-6 h-6 text-rose-400" />
-                    <p className="text-xs uppercase tracking-widest text-slate-400">Sample Itinerary</p>
-                  </div>
-                  <div className="space-y-3">
-                    {[
-                      { time: "9:00", place: "La Boqueria Market", type: "food" },
-                      { time: "11:00", place: "Barcelona Cathedral", type: "culture" },
-                      { time: "14:00", place: "El Born District", type: "explore" },
-                      { time: "18:00", place: "Barceloneta Beach", type: "relax" },
-                    ].map((stop, i) => (
-                      <div key={i} className="flex items-center gap-4 p-3 rounded-lg bg-slate-800/50">
-                        <Badge className="bg-rose-500/20 text-rose-400 border-rose-500/30">
-                          {stop.time}
-                        </Badge>
-                        <p className="text-sm font-medium text-white">{stop.place}</p>
-                      </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Case Study Overview */}
-      <section className="py-16 bg-muted/30">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <h2 className="text-3xl font-bold mb-8">Case Study Overview</h2>
-          <div className="space-y-4 text-lg text-muted-foreground">
-            <p>
-              <strong className="text-foreground">The Challenge:</strong> Geovea's travel platform offered static itinerary templates that provided the same suggestions to every user regardless of travel style, budget, or real-time conditions. When flights were delayed, weather changed, or booking availability shifted mid-trip, itineraries became instantly obsolete. Travel planners were bottlenecked by manual customization requests, preventing Geovea from scaling personalized experiences without proportional staffing increases.
-            </p>
-            <p>
-              <strong className="text-foreground">The Solution:</strong> AGIX Technologies built a dynamic itinerary AI that generates fully personalized trip plans from initial preferences and continuously adapts them in real time as conditions change. The system integrates live flight data, weather forecasts, venue availability, local events, and individual traveler profiles to create and update multi-day itineraries automatically, without requiring user intervention for routine adjustments.
-            </p>
-            <p>
-              <strong className="text-foreground">The Impact:</strong> Customer satisfaction scores for itinerary quality improved 47% as travelers received plans that genuinely fit their preferences rather than generic templates. Planning time for complex multi-destination trips dropped from hours of back-and-forth to minutes of conversation. Booking conversion rates increased 38% as personalized recommendations aligned with actual traveler intent, reducing the research-to-decision gap.
-            </p>
-          </div>
-        </div>
-      </section>
-
-
-      {/* The Challenge */}
-      <section className="py-16">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="space-y-8"
-          >
-            <Badge variant="outline" className="border-amber-500/30 text-amber-400">
-              <AlertTriangle className="w-3 h-3 mr-1" />
-              The Challenge
-            </Badge>
-
-            <h2 className="text-3xl font-bold">Manual Itinerary Creation That Misses Hidden Gems</h2>
-            
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              Road trip planning was painfully manual--travelers spent hours stitching together 
-              routes from multiple apps, often missing the best attractions along the way. Static 
-              itineraries couldn't adapt to real-world conditions like weather changes, closures, 
-              or unexpected detours. The result? Missed opportunities and frustrating experiences 
-              when plans fell apart mid-trip.
-            </p>
-
-            <div className="grid md:grid-cols-3 gap-6">
-              <Card className="border-red-500/20">
-                <CardContent className="p-6 text-center">
-                  <FileEdit className="w-8 h-8 text-red-400 mx-auto mb-3" />
-                  <p className="text-2xl font-bold text-red-400">8+ hours</p>
-                  <p className="text-sm text-muted-foreground">Manual planning per road trip</p>
-                </CardContent>
-              </Card>
-              <Card className="border-amber-500/20">
-                <CardContent className="p-6 text-center">
-                  <MapPinOff className="w-8 h-8 text-amber-400 mx-auto mb-3" />
-                  <p className="text-2xl font-bold text-amber-400">73%</p>
-                  <p className="text-sm text-muted-foreground">Attractions missed along route</p>
-                </CardContent>
-              </Card>
-              <Card className="border-orange-500/20">
-                <CardContent className="p-6 text-center">
-                  <Timer className="w-8 h-8 text-orange-400 mx-auto mb-3" />
-                  <p className="text-2xl font-bold text-orange-400">0%</p>
-                  <p className="text-sm text-muted-foreground">Real-time adaptation capability</p>
-                </CardContent>
-              </Card>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      <section className="py-16">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <h2 className="text-2xl font-bold mb-8 text-center">Dynamic Itinerary Lattice</h2>
-          
-          <div className="grid lg:grid-cols-3 gap-6">
-            <Card className="lg:col-span-2">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Route className="w-5 h-5 text-rose-400" />
-                  Barcelona - 4 Day Itinerary
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  {[
-                    { 
-                      day: "Day 1", 
-                      theme: "Gothic Quarter Discovery",
-                      stops: [
-                        { time: "9:00", place: "La Boqueria Market", type: "food", duration: "1.5h" },
-                        { time: "11:00", place: "Barcelona Cathedral", type: "culture", duration: "1h" },
-                        { time: "14:00", place: "El Born District", type: "explore", duration: "2h" },
-                        { time: "18:00", place: "Barceloneta Beach", type: "relax", duration: "2h" },
-                      ]
-                    },
-                    { 
-                      day: "Day 2", 
-                      theme: "Gaudi Masterpieces",
-                      stops: [
-                        { time: "9:00", place: "Park Guell", type: "culture", duration: "2h" },
-                        { time: "12:00", place: "Sagrada Familia", type: "culture", duration: "2h" },
-                        { time: "15:00", place: "Casa Batllo", type: "culture", duration: "1h" },
-                        { time: "18:00", place: "Passeig de Gracia", type: "explore", duration: "2h" },
-                      ]
-                    },
-                  ].map((day, i) => (
-                    <div key={i} className="p-4 rounded-lg bg-muted/50">
-                      <div className="flex items-center justify-between mb-3">
-                        <div>
-                          <p className="font-semibold">{day.day}</p>
-                          <p className="text-sm text-muted-foreground">{day.theme}</p>
-                        </div>
-                        <Badge className="bg-rose-500/20 text-rose-400 border-rose-500/30">
-                          4 stops
-                        </Badge>
-                      </div>
-                      <div className="grid grid-cols-4 gap-2">
-                        {day.stops.map((stop, j) => (
-                          <div key={j} className={`p-2 rounded text-center ${
-                            stop.type === 'food' ? 'bg-orange-500/20' :
-                            stop.type === 'culture' ? 'bg-purple-500/20' :
-                            stop.type === 'explore' ? 'bg-blue-500/20' :
-                            'bg-green-500/20'
-                          }`}>
-                            <p className="text-xs text-muted-foreground">{stop.time}</p>
-                            <p className="text-xs font-medium truncate">{stop.place}</p>
-                            <p className="text-xs text-muted-foreground">{stop.duration}</p>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-
-            <div className="space-y-4">
-              <Card>
-                <CardHeader className="pb-2">
-                  <CardTitle className="text-sm flex items-center gap-2">
-                    <Star className="w-4 h-4 text-amber-400" />
-                    Recommendation Rationale
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-3">
-                  {[
-                    { reason: "Crowd avoidance", detail: "Sagrada at 12pm: 40% less crowded" },
-                    { reason: "Walking optimization", detail: "Route minimizes backtracking" },
-                    { reason: "Energy pacing", detail: "High activity AM, relaxed PM" },
-                    { reason: "Local insight", detail: "Hidden gems from locals" },
-                  ].map((item, i) => (
-                    <div key={i} className="p-2 rounded-lg bg-muted/50">
-                      <p className="text-xs font-medium">{item.reason}</p>
-                      <p className="text-xs text-muted-foreground">{item.detail}</p>
-                    </div>
-                  ))}
-                </CardContent>
-              </Card>
-
-              <Card className="bg-gradient-to-br from-rose-500/10 to-pink-500/10">
-                <CardContent className="p-4 text-center">
-                  <Leaf className="w-6 h-6 text-green-400 mx-auto mb-2" />
-                  <p className="text-sm font-medium">Sustainability Score</p>
-                  <p className="text-2xl font-bold text-green-400">87/100</p>
-                  <p className="text-xs text-muted-foreground">Walking-focused, low carbon</p>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16 bg-gradient-to-r from-rose-500/5 via-background to-pink-500/5">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="grid lg:grid-cols-2 gap-12">
-            <div>
-              <Badge className="mb-4 bg-rose-500/20 text-rose-400 border-rose-500/30">
-                <MapPin className="w-3 h-3 mr-1" />
-                Map Synchronization
-              </Badge>
-              <h3 className="text-2xl font-bold mb-4">Real-Time Route Intelligence</h3>
-              <p className="text-muted-foreground mb-6">
-                AI continuously monitors real-world conditions--weather, crowds, 
-                closures--and dynamically adjusts your itinerary to ensure the 
-                best possible experience.
-              </p>
-
-              <div className="space-y-3">
-                {[
-                  { trigger: "Rain forecast 3PM", action: "Moved beach to Day 3", status: "adjusted" },
-                  { trigger: "Sagrada sold out", action: "Pre-booked tickets secured", status: "protected" },
-                  { trigger: "Local festival", action: "Added evening event", status: "enhanced" },
-                  { trigger: "Restaurant closure", action: "Alternative recommendation", status: "adjusted" },
-                ].map((update, i) => (
-                  <div key={i} className="flex items-center justify-between p-3 rounded-lg bg-muted/50">
-                    <div>
-                      <p className="text-sm font-medium">{update.trigger}</p>
-                      <p className="text-xs text-muted-foreground">{update.action}</p>
-                    </div>
-                    <Badge variant="outline" className={`text-xs ${
-                      update.status === 'adjusted' ? 'text-amber-400 border-amber-400/30' :
-                      update.status === 'protected' ? 'text-green-400 border-green-400/30' :
-                      'text-blue-400 border-blue-400/30'
-                    }`}>
-                      {update.status}
-                    </Badge>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div>
-              <Badge className="mb-4 bg-pink-500/20 text-pink-400 border-pink-500/30">
-                <Camera className="w-3 h-3 mr-1" />
-                Experience Types
-              </Badge>
-              <h3 className="text-xl font-bold mb-4">Personalization Matrix</h3>
-
-              <div className="grid grid-cols-2 gap-4">
-                {[
-                  { type: "Culture & History", pct: 35, icon: Camera },
-                  { type: "Food & Drink", pct: 25, icon: Coffee },
-                  { type: "Outdoor & Nature", pct: 20, icon: Leaf },
-                  { type: "Local Discovery", pct: 20, icon: MapPin },
-                ].map((category, i) => (
-                  <Card key={i}>
-                    <CardContent className="p-4 text-center">
-                      <category.icon className="w-5 h-5 text-rose-400 mx-auto mb-2" />
-                      <p className="text-2xl font-bold">{category.pct}%</p>
-                      <p className="text-xs text-muted-foreground">{category.type}</p>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-
-              <Card className="mt-4 bg-slate-900">
-                <CardContent className="p-4">
-                  <p className="text-sm text-slate-400 mb-2">Based on your preferences</p>
-                  <div className="flex flex-wrap gap-2">
-                    {["History buff", "Foodie", "Early riser", "Photography", "Walking tours"].map((tag, i) => (
-                      <Badge key={i} variant="outline" className="text-xs text-slate-300">
-                        {tag}
-                      </Badge>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <Card className="border-rose-500/20">
-            <CardContent className="p-8 md:p-12">
-              <Quote className="w-10 h-10 text-rose-500/30 mb-4" />
-              <blockquote className="text-xl md:text-2xl font-medium leading-relaxed mb-6">
-                "Static travel guides are obsolete. Our AI understands that great 
-                travel is about flow--the right place at the right time with the 
-                right energy. We factor in everything from crowd patterns to your 
-                personal rhythm, then adapt in real-time when conditions change."
-              </blockquote>
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-rose-500 to-pink-500 flex items-center justify-center text-white font-bold">
-                  MB
-                </div>
-                <div>
-                  <p className="font-semibold">Maria Benedetti</p>
-                  <p className="text-sm text-muted-foreground">Director of Experience Design, Geovea</p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-
-      <section className="py-16 bg-slate-900">
-        <div className="max-w-2xl mx-auto px-4 sm:px-6 text-center">
-          <h2 className="text-2xl font-bold text-white mb-4">Building AI for Travel Planning?</h2>
-          <p className="text-slate-400 mb-8">Let's create itineraries that adapt to real-world conditions.</p>
-          <CtaForm />
-        </div>
-      </section>
-
-      <section className="py-8 border-t border-border/50">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 flex justify-between">
-          <Link href="/case-studies/navan/">
-            <Button variant="ghost" size="sm" className="gap-2" data-testid="button-prev-case">
-              <ArrowLeft className="w-4 h-4" />
-              Navan
-            </Button>
-          </Link>
-          <Link href="/case-studies/luxury-escapes/">
-            <Button variant="ghost" size="sm" className="gap-2" data-testid="button-next-case">
-              Luxury Escapes
-              <ArrowRight className="w-4 h-4" />
-            </Button>
-          </Link>
-        </div>
-      </section>
-
-      </CaseStudyTemplate>
-  );
+  return <CaseStudyV2 data={data} />;
 }

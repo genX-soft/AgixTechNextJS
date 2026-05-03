@@ -22,53 +22,124 @@ function scrollToSection(id: string) {
   document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
-function HeroSection() {
+function DecisionPyramidVisual() {
+  const layers = [
+    { label: "DECIDE & EXECUTE", sub: "AI takes autonomous action", color: "bg-purple-500/20 border-purple-500/50 text-purple-300", glow: "shadow-purple-500/30", icon: "⚡", width: "w-48" },
+    { label: "PREDICT & OPTIMIZE", sub: "Model future outcomes", color: "bg-blue-500/20 border-blue-500/40 text-blue-300", glow: "shadow-blue-500/20", icon: "🎯", width: "w-64" },
+    { label: "DIAGNOSE & EXPLAIN", sub: "Understand root causes", color: "bg-indigo-500/20 border-indigo-500/30 text-indigo-300", glow: "shadow-indigo-500/20", icon: "🔍", width: "w-80" },
+    { label: "ANALYZE & DESCRIBE", sub: "What happened & why", color: "bg-slate-700/60 border-slate-600/50 text-slate-300", glow: "", icon: "📊", width: "w-full" },
+  ];
   return (
-    <section className="pt-24 lg:pt-28 pb-20 min-h-[85vh] flex items-center relative overflow-hidden bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-purple-900/20 via-transparent to-transparent" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_var(--tw-gradient-stops))] from-amber-900/10 via-transparent to-transparent" />
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full relative z-10">
-        <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }} className="max-w-4xl mx-auto text-center space-y-6">
-          <nav aria-label="Breadcrumb" className="flex justify-center">
-            <ol className="flex items-center gap-1.5 text-xs text-muted-foreground">
-              <li><Link href="/" className="hover:text-white transition-colors">Home</Link></li>
-              <ChevronRight className="w-3 h-3" />
-              <li><span className="text-muted-foreground">Intelligence</span></li>
-              <ChevronRight className="w-3 h-3" />
-              <li><span className="text-purple-400">Decision Intelligence</span></li>
-            </ol>
-          </nav>
-          <Badge className="bg-purple-500/10 text-purple-400 border-purple-500/30 px-4 py-1.5" data-testid="badge-hero-category">
-            <Brain className="w-4 h-4 mr-2" />Intelligence Framework
-          </Badge>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight" data-testid="text-hero-headline">
-            Decision Intelligence:{" "}
-            <span className="text-purple-400">When AI Doesn&apos;t Just Inform — It Decides</span>
-          </h1>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed" data-testid="text-hero-subheadline">
-            <span className="text-slate-300">Analytics</span> tells you what happened.{" "}
-            <span className="text-blue-400">Prediction</span> tells you what will happen.{" "}
-            <span className="text-purple-400">Decision Intelligence</span> tells you what to do about it — and can execute the answer.
-          </p>
-          <p className="text-sm text-muted-foreground/70 italic">
-            By <Link href="/author/santosh/" className="text-purple-400/80 hover:text-purple-400 transition-colors">Santosh Singh</Link>, Founder &amp; CEO, AGIX Technologies · April 2026
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-            <Button size="lg" className="bg-purple-500 hover:bg-purple-600 text-white shadow-lg shadow-purple-500/25" onClick={() => scrollToSection("di-pyramid")} data-testid="button-hero-primary">
-              Explore the Decision Pyramid <ArrowRight className="w-5 h-5 ml-2" />
-            </Button>
-            <Button variant="outline" size="lg" onClick={() => scrollToSection("complexity-matrix")} data-testid="button-hero-secondary">
-              Decision Complexity Matrix <ChevronDown className="w-5 h-5 ml-2" />
-            </Button>
+    <div className="w-full max-w-[400px] mx-auto space-y-1.5">
+      {/* Title */}
+      <div className="text-center mb-3">
+        <span className="text-xs font-bold tracking-widest text-purple-400 uppercase">Decision Intelligence Pyramid</span>
+      </div>
+
+      {/* Pyramid layers (top → bottom = most → least intelligent) */}
+      {layers.map((layer, i) => (
+        <motion.div
+          key={i}
+          className={`mx-auto rounded-xl border px-4 py-3 ${layer.color} shadow-lg ${layer.glow} ${layer.width}`}
+          animate={{ opacity: [0.75, 1, 0.75], scale: [1, 1.02, 1] }}
+          transition={{ duration: 3 + i * 0.5, repeat: Infinity, ease: "easeInOut", delay: i * 0.6 }}
+        >
+          <div className="flex items-center gap-2">
+            <span className="text-lg">{layer.icon}</span>
+            <div>
+              <div className="text-[10px] font-black tracking-wide leading-none">{layer.label}</div>
+              <div className="text-[9px] text-muted-foreground mt-0.5">{layer.sub}</div>
+            </div>
+            {i === 0 && (
+              <div className="ml-auto flex items-center gap-1">
+                <motion.div className="w-2 h-2 rounded-full bg-purple-400" animate={{ opacity: [1, 0.3, 1] }} transition={{ duration: 0.8, repeat: Infinity }} />
+                <span className="text-[9px] text-purple-400 font-semibold">LIVE</span>
+              </div>
+            )}
           </div>
         </motion.div>
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1 }} className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
-          <button onClick={() => scrollToSection("definition")} aria-label="Scroll down" data-testid="button-scroll-down">
-            <motion.div animate={{ y: [0, 8, 0] }} transition={{ duration: 2, repeat: Infinity }} className="text-muted-foreground hover:text-purple-400 transition-colors">
-              <ArrowDown className="w-5 h-5" />
-            </motion.div>
-          </button>
-        </motion.div>
+      ))}
+
+      {/* Flow arrow */}
+      <div className="flex items-center justify-center gap-2 pt-2">
+        <div className="h-px flex-1 bg-gradient-to-r from-transparent to-purple-500/40" />
+        <span className="text-[10px] text-muted-foreground">AI escalates through layers automatically</span>
+        <div className="h-px flex-1 bg-gradient-to-l from-transparent to-purple-500/40" />
+      </div>
+
+      {/* Decision cards */}
+      <div className="grid grid-cols-3 gap-2 pt-2">
+        {[["92%", "accuracy", "text-purple-400"], ["<200ms", "latency", "text-blue-400"], ["$2.3B", "value unlocked", "text-amber-400"]].map(([v, l, c]) => (
+          <div key={v} className="bg-slate-800/60 border border-slate-700/50 rounded-lg p-2 text-center">
+            <div className={`text-sm font-black ${c}`}>{v}</div>
+            <div className="text-[9px] text-muted-foreground">{l}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function HeroSection() {
+  return (
+    <section className="pt-24 lg:pt-32 pb-16 min-h-screen flex items-center relative overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-purple-900/25 via-transparent to-transparent" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_var(--tw-gradient-stops))] from-indigo-900/15 via-transparent to-transparent" />
+      <div className="absolute top-1/3 right-1/4 w-80 h-80 bg-purple-500/5 rounded-full blur-3xl" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full relative z-10">
+        <div className="grid lg:grid-cols-[1fr_440px] gap-12 xl:gap-20 items-center">
+
+          {/* LEFT: Text */}
+          <div className="space-y-6">
+            <nav aria-label="Breadcrumb">
+              <ol className="flex items-center gap-1.5 text-xs text-muted-foreground">
+                <li><Link href="/" className="hover:text-white transition-colors">Home</Link></li>
+                <ChevronRight className="w-3 h-3" />
+                <li><span className="text-muted-foreground">Intelligence</span></li>
+                <ChevronRight className="w-3 h-3" />
+                <li><span className="text-purple-400">Decision Intelligence</span></li>
+              </ol>
+            </nav>
+            <Badge className="bg-purple-500/10 text-purple-400 border-purple-500/30 px-4 py-1.5" data-testid="badge-hero-category">
+              <Brain className="w-4 h-4 mr-2" />Intelligence Framework
+            </Badge>
+            <h1 className="text-4xl md:text-5xl lg:text-[3.5rem] font-black leading-[1.08] tracking-tight" data-testid="text-hero-headline">
+              Decision Intelligence:{" "}
+              <span className="text-purple-400">When AI Doesn&apos;t Just Inform — It Decides</span>
+            </h1>
+            <p className="text-lg text-muted-foreground leading-relaxed max-w-xl" data-testid="text-hero-subheadline">
+              <span className="text-slate-300 font-semibold">Analytics</span> tells you what happened.{" "}
+              <span className="text-blue-400 font-semibold">Prediction</span> tells you what will happen.{" "}
+              <span className="text-purple-400 font-semibold">Decision Intelligence</span> tells you what to do — and executes it.
+            </p>
+            <p suppressHydrationWarning className="text-sm text-muted-foreground/60 italic">
+              By <Link href="/author/santosh/" className="text-purple-400/80 hover:text-purple-400 transition-colors">Santosh Singh</Link>, Founder &amp; CEO, AGIX Technologies · {new Date().toLocaleString("en-US", { month: "long", year: "numeric" })}
+            </p>
+            <div className="flex flex-wrap gap-3">
+              {[["4 Layers", "from analytics to autonomous action"], ["92%", "decision accuracy at scale"], ["<200ms", "real-time decision latency"]].map(([v, l]) => (
+                <div key={v} className="flex items-center gap-2 rounded-full bg-slate-800/60 border border-slate-700/50 px-3 py-1.5">
+                  <span className="text-sm font-bold text-purple-400">{v}</span>
+                  <span className="text-xs text-muted-foreground">{l}</span>
+                </div>
+              ))}
+            </div>
+            <div className="flex flex-col sm:flex-row gap-4 pt-2">
+              <Button size="lg" className="bg-purple-500 hover:bg-purple-600 text-white shadow-lg shadow-purple-500/25 h-12 px-7" onClick={() => scrollToSection("di-pyramid")} data-testid="button-hero-primary">
+                Explore the Decision Pyramid <ArrowRight className="w-5 h-5 ml-2" />
+              </Button>
+              <Button variant="outline" size="lg" className="h-12 px-7" onClick={() => scrollToSection("complexity-matrix")} data-testid="button-hero-secondary">
+                Decision Complexity Matrix <ChevronDown className="w-5 h-5 ml-2" />
+              </Button>
+            </div>
+          </div>
+
+          {/* RIGHT: Decision Pyramid Visual */}
+          <div className="hidden lg:flex items-center justify-center">
+            <DecisionPyramidVisual />
+          </div>
+
+        </div>
       </div>
     </section>
   );

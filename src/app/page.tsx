@@ -1,7 +1,6 @@
 import { MainHeader } from "@/components/main-header";
 import { HeroSection } from "@/components/home/hero-section";
 import ValuePropositionSection from "@/components/home/ValuePropositionSection";
-import DidYouKnowBanner from "@/components/home/DidYouKnowBanner";
 import ServicesSection from "@/components/home/SolutionsSection";
 import IntelligenceSection from "@/components/home/IntelligenceSection";
 import IndustriesSection from "@/components/home/IndustriesSection";
@@ -18,6 +17,7 @@ export default function Home() {
     <>
       <Schema type="home" />
       <MainHeader />
+
       <HeroSection />
       <ValuePropositionSection />
       <ServicesSection />
@@ -32,7 +32,6 @@ export default function Home() {
         subtitle="Everything you need to know about our AI systems, services, and approach."
       />
       <MainFooter />
-      <DidYouKnowBanner />
     </>
   );
 }

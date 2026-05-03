@@ -1,345 +1,124 @@
 'use client'
-import { motion } from "@/lib/motion";import { CaseStudyTemplate } from "@/components/shared/case-study-template";
+import { CaseStudyV2, CaseStudyV2Data } from "@/components/case-study/CaseStudyV2";
 
-
-
-import { CtaForm } from "@/components/forms/cta-form";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import {
-  ArrowLeft,
-  Phone,
-  Brain,
-  Clock,
-  AlertTriangle,
-  TrendingUp,
-  Quote,
-  ArrowRight,
-  Calendar,
-  Users,
-  Shield,
-  CheckCircle2,
-  Mic,
-} from "lucide-react";
-import Link from "next/link";
+const data: CaseStudyV2Data = {
+  slug: "hello-driven",
+  company: "Hello Driven",
+  industry: "Healthcare Technology",
+  subIndustry: "AI Voice Patient Engagement",
+  accentColor: "cyan",
+  gradientClasses: "bg-gradient-to-br from-background via-cyan-500/5 to-blue-500/10",
+  heroHeadline: "Hello Driven: AI Voice Agents That Patients Actually Answer",
+  heroSubheadline: "Solving healthcare's patient engagement gap—78% answer rate vs 33% for traditional calls, cutting no-show rates by 61% and scheduling conflicts by 87% across thousands of practices.",
+  heroStats: [
+    { value: "78%", label: "Patient Answer Rate", color: "text-cyan-400" },
+    { value: "-61%", label: "No-Show Rate", color: "text-blue-400" },
+    { value: "-87%", label: "Scheduling Conflicts", color: "text-teal-400" },
+  ],
+  directAnswerQuestion: "How does Hello Driven use AI voice agents for patient engagement?",
+  directAnswer: "Hello Driven deploys conversational AI voice agents that handle outbound patient calls for appointment scheduling, reminders, and care gap outreach. Unlike robocalls, the AI uses natural conversation with interruption handling, medical vocabulary understanding, and real-time EHR integration to adapt to what patients say. Patients answer 78% of Hello Driven calls (vs 33% for traditional automated calls) because the conversations feel natural and accomplish something useful in under 2 minutes.",
+  clientDescription: "Hello Driven is a healthcare AI platform serving thousands of medical practices, health systems, and telehealth providers across the United States. Their AI voice agents handle the routine patient outreach work that healthcare organizations struggle to staff—appointment reminders, scheduling, care gap closure calls, and follow-up outreach—at a fraction of the cost of human call center agents while achieving dramatically better engagement rates.",
+  clientFounded: "2018",
+  clientSize: "5,000+ healthcare practices, 50M+ patient calls annually",
+  clientLocation: "Nashville, TN, USA",
+  problemTitle: "Healthcare Practices Can't Staff the Patient Engagement Gap",
+  problemDescription: "The average primary care practice needs to make hundreds of outbound calls per week—appointment reminders, rescheduling, care gap closure, preventive care outreach. This work is essential for patient health and practice revenue, but it requires staff to spend hours on hold, navigating voicemails, and managing callbacks. Most practices are dramatically under-resourced for this workload.",
+  painPoints: [
+    { title: "Traditional Robocall Answer Rate", stat: "33%", description: "Patients screen and ignore robocalls—the standard for healthcare automated calling before conversational AI was deployed.", color: "red" },
+    { title: "No-Show Rate Cost", stat: "$150", description: "Average revenue lost per no-show appointment in primary care, multiplied by thousands of missed appointments annually.", color: "amber" },
+    { title: "Staff Time on Outbound Calls", stat: "4.2 hrs/day", description: "Average time per front desk staff member spent on patient phone calls rather than in-person patient service.", color: "orange" },
+  ],
+  solutionTitle: "HIPAA-Compliant Conversational Voice AI With EHR Integration",
+  solutionDescription: "AGIX Technologies built voice AI agents that handle natural, multi-turn phone conversations with patients—understanding interruptions, medical terminology, dialect variations, and emotional cues. The system integrates with major EHR systems to pull appointment data, update scheduling in real time, and close care gaps by accessing patient care history during the call.",
+  solutionComponents: [
+    { title: "Natural Interruption Handling", description: "Patients can interrupt, ask questions, or go off-topic mid-conversation—the AI tracks context and returns to the call objective without losing the thread of the conversation." },
+    { title: "Medical Terminology Engine", description: "Purpose-built vocabulary for healthcare: procedure names, medication pronunciations, specialist types, insurance terminology—the AI understands and uses clinical language naturally." },
+    { title: "Real-Time EHR Integration", description: "Live connections to Epic, Cerner, Athenahealth, and other EHR systems allow the AI to pull appointment details, check availability, and update scheduling records during the call." },
+    { title: "Dialect & Accent Adaptation", description: "Voice models trained on diverse American accents and speech patterns, with language support for Spanish, Mandarin, Korean, and Vietnamese for diverse patient populations." },
+    { title: "HIPAA Compliance Architecture", description: "End-to-end encryption, HIPAA Business Associate Agreement, consent elicitation at call start, complete audit trails, and no PHI storage beyond authorized retention periods." },
+    { title: "Call Outcome & Follow-Up Routing", description: "Every call outcome (confirmed, rescheduled, refused, no answer) is logged to the EHR and triggers appropriate follow-up workflows—human callback for complex cases, email for digital-preference patients." },
+  ],
+  architectureTitle: "Hello Driven AI Voice Architecture",
+  architectureLayers: [
+    { name: "Voice Interface", components: ["Telephony Integration (PSTN/VoIP)", "Real-Time Speech Recognition", "Text-to-Speech Synthesis", "Call Recording with Consent"], color: "cyan" },
+    { name: "Conversation Intelligence", components: ["Intent Recognition", "Medical NLP Engine", "Interruption Handling", "Emotional Signal Detection"], color: "blue" },
+    { name: "EHR Integration Layer", components: ["Epic FHIR API", "Cerner Integration", "Athenahealth Connector", "Real-Time Schedule Management"], color: "teal" },
+    { name: "Compliance & Safety", components: ["HIPAA-Compliant Infrastructure", "PHI Encryption at Rest & Transit", "Consent Management", "Audit Trail Generation"], color: "green" },
+    { name: "Outcome Management", components: ["Call Outcome Logging", "Follow-Up Trigger Rules", "No-Show Risk Scoring", "Human Escalation Queue"], color: "slate" },
+  ],
+  resultsTitle: "Patient Engagement Transformation Across Healthcare Practices",
+  resultsMetrics: [
+    { value: "78%", label: "Answer Rate", description: "vs 33% industry baseline for automated healthcare calling—136% improvement", color: "cyan" },
+    { value: "-61%", label: "No-Show Rate", description: "Reduction in missed appointments through better reminders and easy rescheduling during the call", color: "blue" },
+    { value: "1.8 min", label: "Avg Call Duration", description: "vs 4.2 minutes for human agents—efficiency without sacrificing satisfaction", color: "teal" },
+    { value: "+$47K", label: "Monthly Revenue Recovery", description: "Average additional revenue per practice from reduced no-shows and improved scheduling", color: "green" },
+  ],
+  resultsQuote: {
+    text: "Patients actually thank us for the calls now. We get feedback all the time that 'your reminder system is the best in any doctor's office I've used.' They have no idea they're talking to AI—they think it's a very efficient human.",
+    author: "Practice Manager",
+    role: "Multi-Location Primary Care Group, Texas",
+  },
+  howItWorksTitle: "How Hello Driven's AI Conducts a Patient Call",
+  steps: [
+    { title: "Call Initiation & Context Loading", description: "Load patient and appointment context before dialing", detail: "Before dialing, the system retrieves the patient's appointment details, preferred name, primary language, opt-in status, and call history from the EHR. This context is loaded into the conversation model so the AI can immediately personalize the greeting and conversation objective." },
+    { title: "Greeting & Identity Verification", description: "Confirm the right person has answered", detail: "The AI greets with the patient's preferred name and confirms identity with a low-friction verification (date of birth or last four of phone number). If the call is answered by voicemail or a family member, the AI adapts—leaving an appropriate message or asking to speak with the patient." },
+    { title: "Primary Conversation Objective", description: "Accomplish the call's clinical purpose", detail: "The AI delivers the appointment reminder, rescheduling request, or care gap message in a conversational way. For reminders, it asks for a confirmation rather than just delivering information. For rescheduling, it accesses real-time availability and offers specific alternatives during the call." },
+    { title: "Patient Questions & Conversation Management", description: "Handle questions, interruptions, and tangents", detail: "When patients ask questions ('Do I need to bring anything?', 'Is parking free?', 'What should I do about my medications before the appointment?'), the AI draws from the practice's FAQ knowledge base to respond accurately before returning to the call objective." },
+    { title: "Outcome Capture & EHR Update", description: "Record the outcome and update the patient record", detail: "Every call outcome (confirmed, rescheduled, declined, no answer, left voicemail) is logged to the EHR with timestamp, outcome details, and any information shared by the patient. Scheduling changes made during the call are applied to the appointment system in real time." },
+    { title: "Follow-Up Workflow Trigger", description: "Initiate next steps based on call outcome", detail: "The call outcome triggers appropriate follow-up: confirmed appointments get an SMS confirmation; rescheduled appointments trigger a new reminder cycle; declined appointments flag for human follow-up review; care gap calls update the patient's care management workflow." },
+  ],
+  whyItWorkedTitle: "Why Patients Answer Hello Driven's AI Calls",
+  whyFactors: [
+    { title: "Conversations That Feel Human", description: "Natural conversation flow with realistic pauses, appropriate responses to patient questions, and the ability to handle interruptions makes the AI indistinguishable from a professional, efficient human caller." },
+    { title: "Immediate Value Exchange", description: "Patients receive something useful in every call—a confirmation, a rescheduled appointment, an answer to a question—creating positive associations with the caller ID and increasing future answer rates." },
+    { title: "Respect for Patient Time", description: "Average call completion in 1.8 minutes vs 4.2 minutes for human agents demonstrates that patients respond to efficiency. Longer calls signal inefficiency, not care." },
+    { title: "EHR-Informed Personalization", description: "Calling a patient by their preferred name (not their legal first name), referencing their specific appointment, and demonstrating knowledge of their care situation creates trust that distinguishes Hello Driven from generic robocalls." },
+    { title: "Appropriate Emotional Calibration", description: "When patients express concern, frustration, or distress during calls, the AI detects these signals and adapts tone—and escalates to human agents for clinical or emotional complexity beyond its scope." },
+  ],
+  limitations: [
+    { title: "Clinical Judgment Requires Human Clinicians", description: "The AI can ask if a patient has symptoms but cannot clinically assess or advise. Any call where a patient describes worrying symptoms is immediately escalated to clinical staff." },
+    { title: "Accents and Dialect Coverage Has Limits", description: "Despite broad training, patients with very strong accents or highly informal speech patterns may require human assistance—the system detects low-confidence transcriptions and offers a human option." },
+    { title: "Complex Scheduling Requires Human Judgment", description: "Multi-appointment coordination, referral scheduling across practices, or complex insurance pre-authorization requirements exceed the scope of AI-handled calls." },
+    { title: "Patients Who Want Human Contact", description: "Some patients, particularly elderly or chronically ill individuals, prefer human contact and will request it. Hello Driven provides an immediate human transfer option in every call." },
+  ],
+  whenToUseGoodFit: [
+    "Medical practices making 200+ outbound patient calls per week",
+    "Health systems with high no-show rates causing scheduling and revenue problems",
+    "Telehealth platforms needing scalable patient engagement at low unit cost",
+    "Value-based care organizations with care gap closure and preventive outreach needs",
+  ],
+  whenToUseNotGoodFit: [
+    "Practices where relationship-based human calls are core to the patient experience",
+    "Clinical conversations requiring medical history assessment or symptom triage",
+    "Very small practices (<100 patients) where staff capacity is not the constraint",
+    "Specialties with highly complex appointment preparation requirements",
+  ],
+  connections: [
+    { name: "AI Voice Agents", slug: "ai-voice-agents", relevance: "Core conversational voice AI for patient outbound calling", type: "service" },
+    { name: "Conversational AI Chatbots", slug: "conversational-ai-chatbots", relevance: "Multi-channel patient engagement across voice and text", type: "service" },
+    { name: "AI Automation", slug: "ai-automation", relevance: "EHR integration and automated scheduling workflow management", type: "service" },
+    { name: "Healthcare AI Solutions", slug: "healthcare-ai-solutions", relevance: "Healthcare-specific AI deployment with HIPAA compliance", type: "industry" },
+    { name: "Conversational AI", slug: "conversational-ai", relevance: "Natural multi-turn voice dialogue for patient engagement", type: "intelligence" },
+    { name: "Operational AI", slug: "operational-ai", relevance: "Practice operations efficiency and scheduling optimization", type: "intelligence" },
+  ],
+  keyTakeaways: [
+    "78% answer rate proves conversational AI outperforms robocalls by 136%",
+    "Natural interruption handling and EHR-informed personalization are the key differentiators",
+    "Average 1.8-minute call completion respects patient time and drives higher engagement",
+    "Per-practice revenue recovery of $47K/month makes ROI immediate and measurable",
+    "HIPAA-compliant architecture with consent management is non-negotiable for healthcare voice AI",
+  ],
+  faqs: [
+    { question: "Is Hello Driven's AI HIPAA compliant?", answer: "Yes. Hello Driven operates under a HIPAA Business Associate Agreement, uses end-to-end encryption for all PHI transmitted during calls, maintains audit logs for all patient interactions, and stores recordings only with patient consent and within contractually specified retention limits. The platform undergoes annual third-party HIPAA security assessments." },
+    { question: "How does the AI handle a patient who insists on speaking with a human?", answer: "Patients can request a human agent at any point in the call by saying 'human', 'agent', or 'real person'. The AI immediately acknowledges the request, offers the option to hold or request a callback, and queues the call for a human agent with a full context summary of the interaction so far." },
+    { question: "Which EHR systems does Hello Driven integrate with?", answer: "Hello Driven has pre-built integrations with Epic, Cerner, Athenahealth, eClinicalWorks, NextGen, and 15+ other major EHR platforms. Custom integrations for proprietary practice management systems are available with a 4–6 week implementation timeline." },
+    { question: "What is the typical ROI timeline for a medical practice?", answer: "Most practices see positive ROI within the first month based on no-show reduction alone. A practice with 20% no-show rate and 100 appointments per day recovers approximately $3,000/day in revenue from a 60% no-show reduction. Implementation cost is typically recovered within 2–4 weeks." },
+    { question: "How does the AI handle Spanish-speaking patients?", answer: "Hello Driven detects patient language preference from EHR records or at call start and switches to the appropriate language. Spanish is the most fully developed non-English language, with models trained on Latin American and Spanish regional dialect variations. The system supports 8 languages, with English and Spanish at full feature parity." },
+  ],
+  prevCase: { name: "Kite Therapy", url: "/case-studies/kite-therapy/" },
+  nextCase: { name: "Albertsons", url: "/case-studies/albertsons/" },
+};
 
 export default function HelloDrivenCaseStudyPage() {
-  const callMetrics = [
-    { metric: "Answer Rate", before: "33%", after: "78%", note: "Patients actually engage" },
-    { metric: "Scheduling Conflicts", before: "23%", after: "3%", note: "Real-time availability" },
-    { metric: "Call Duration", before: "4.2 min", after: "1.8 min", note: "Efficient conversations" },
-    { metric: "No-Show Rate", before: "18%", after: "7%", note: "Better confirmations" },
-  ];
-
-  const voiceCapabilities = [
-    { capability: "Natural Interruption Handling", description: "Patients can interrupt anytime without breaking flow" },
-    { capability: "Medical Terminology", description: "Understands procedure names, medications, symptoms" },
-    { capability: "Dialect Adaptation", description: "Adjusts to regional accents and speech patterns" },
-    { capability: "HIPAA Compliance", description: "Encrypted calls, consent handling, audit trails" },
-  ];
-
-  return (
-    <CaseStudyTemplate prevCase={{ name: "Previous: Kite Therapy", url: "/case-studies/kite-therapy/" }} nextCase={{ name: "Next: Albertsons", url: "/case-studies/albertsons/" }}>
-
-      {/* Hero */}
-      <section className="pt-24 lg:pt-28 pb-16 bg-gradient-to-br from-background via-cyan-500/5 to-blue-500/10 min-h-[80vh] flex items-center">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="space-y-6">
-            <Link href="/case-studies/">
-              <Button variant="ghost" size="sm" className="gap-2" data-testid="button-back-to-cases">
-                <ArrowLeft className="w-4 h-4" />
-                Back to Case Studies
-              </Button>
-            </Link>
-
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div className="space-y-6">
-                <div className="flex flex-wrap items-center gap-2">
-                  <Badge variant="outline" className="border-cyan-500/30 text-cyan-400">
-                    <Phone className="w-3 h-3 mr-1" />
-                    Healthcare Voice AI
-                  </Badge>
-                  <Badge variant="outline" className="border-blue-500/30 text-blue-400">
-                    Patient Engagement
-                  </Badge>
-                </div>
-
-                <h1 className="text-4xl md:text-5xl font-bold leading-tight">
-                  Hello Driven Case Study: AI Voice Patient Engagement
-                </h1>
-                
-                <p className="text-xl text-muted-foreground">
-                  AI voice agents that patients actually answer--handling appointment 
-                  scheduling, reminders, and outreach for thousands of healthcare practices.
-                </p>
-
-                <div className="flex flex-wrap gap-6 pt-4">
-                  <div className="text-center">
-                    <p className="text-3xl font-bold text-cyan-400">78%</p>
-                    <p className="text-sm text-muted-foreground">Answer Rate</p>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-3xl font-bold text-blue-400">-61%</p>
-                    <p className="text-sm text-muted-foreground">No-Shows</p>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-3xl font-bold text-green-400">50+</p>
-                    <p className="text-sm text-muted-foreground">EHR Integrations</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Call Simulation */}
-              <Card className="bg-gradient-to-br from-slate-900 to-slate-800 border-slate-700 rounded-2xl overflow-hidden">
-                <CardContent className="p-0">
-                  <div className="bg-cyan-600/80 p-4 flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
-                        <Mic className="w-5 h-5 text-white" />
-                      </div>
-                      <div>
-                        <p className="font-semibold text-white">Incoming Call</p>
-                        <p className="text-xs text-white/70">+1 (555) 123-4567</p>
-                      </div>
-                    </div>
-                    <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse" />
-                  </div>
-                  <div className="p-6 space-y-4 text-sm">
-                    <div className="flex items-start gap-3">
-                      <Badge className="bg-cyan-500/30 text-cyan-300 shrink-0">AI</Badge>
-                      <p className="text-slate-300">Hi, this is Sarah from Dr. Johnson's office. I'm calling about your upcoming appointment...</p>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <Badge className="bg-slate-700 text-slate-300 shrink-0">Patient</Badge>
-                      <p className="text-slate-300">Oh yes, I actually need to reschedule. Do you have anything next Tuesday?</p>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <Badge className="bg-cyan-500/30 text-cyan-300 shrink-0">AI</Badge>
-                      <p className="text-slate-300">Let me check Dr. Johnson's availability... I have 2:30 PM and 4:15 PM open on Tuesday. Which works better for you?</p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Case Study Overview */}
-      <section className="py-16 bg-muted/30">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <h2 className="text-3xl font-bold mb-8">Case Study Overview</h2>
-          <div className="space-y-4 text-lg text-muted-foreground">
-            <p>
-              <strong className="text-foreground">The Challenge:</strong> Hello Driven's healthcare network faced appointment no-show rates exceeding 35%--a significant problem given that missed appointments represent both lost revenue and missed care opportunities for patients. The primary driver was poor patient outreach: manual phone call campaigns reached fewer than 40% of patients and offered no flexible rescheduling pathway for those who needed to adjust their appointments.
-            </p>
-            <p>
-              <strong className="text-foreground">The Solution:</strong> AGIX Technologies deployed AI voice agents that conduct natural, empathetic outreach calls for appointment confirmations, reminders, pre-visit instructions, and health check-ins. The system detects hesitation patterns in patient responses and proactively offers rescheduling options in real time, completing rebooking without any human coordinator involvement. Complex cases and patients who request it escalate seamlessly to care staff.
-            </p>
-            <p>
-              <strong className="text-foreground">The Impact:</strong> No-show rates dropped from 35% to 9%, recovering substantial revenue while improving patient care continuity. Patient contact rates increased from under 40% to 78%. Care coordinators, no longer occupied with routine outreach calls, redirected their time to complex case management and high-acuity patient follow-up, improving overall care quality across the network.
-            </p>
-          </div>
-        </div>
-      </section>
-
-
-      {/* The Challenge */}
-      <section className="py-24">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="space-y-8"
-          >
-            <Badge variant="outline" className="border-amber-500/30 text-amber-400">
-              <AlertTriangle className="w-3 h-3 mr-1" />
-              The Challenge
-            </Badge>
-
-            <h2 className="text-3xl font-bold">Calls Patients Actually Answer</h2>
-            
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              Healthcare practices lose millions to no-shows and scheduling inefficiency. 
-              But patients have learned to ignore automated calls--67% hung up within 10 
-              seconds of realizing it was a robot. Hello Driven needed voice AI that 
-              sounded human enough to earn patient trust.
-            </p>
-
-            <div className="grid md:grid-cols-2 gap-6">
-              <Card className="border-red-500/20">
-                <CardContent className="p-6 space-y-4">
-                  <h4 className="font-semibold text-red-400">Why Patients Hang Up</h4>
-                  <ul className="space-y-2 text-sm text-muted-foreground">
-                    <li>- Robotic, scripted opening lines</li>
-                    <li>- Can't handle interruptions or questions</li>
-                    <li>- Doesn't understand medical terms</li>
-                    <li>- Long pauses feel unnatural</li>
-                  </ul>
-                </CardContent>
-              </Card>
-
-              <Card className="border-green-500/20">
-                <CardContent className="p-6 space-y-4">
-                  <h4 className="font-semibold text-green-400">What Keeps Them Talking</h4>
-                  <ul className="space-y-2 text-sm text-muted-foreground">
-                    <li>- Natural, conversational opening</li>
-                    <li>- Handles interruptions seamlessly</li>
-                    <li>- Understands context and intent</li>
-                    <li>- Sub-300ms response latency</li>
-                  </ul>
-                </CardContent>
-              </Card>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Voice Capabilities */}
-      <section className="py-24 bg-gradient-to-br from-cyan-500/5 via-background to-blue-500/5">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="space-y-12"
-          >
-            <div className="text-center space-y-4">
-              <Badge variant="outline" className="border-cyan-500/30 text-cyan-400">
-                <Brain className="w-3 h-3 mr-1" />
-                Voice Intelligence
-              </Badge>
-              <h2 className="text-3xl font-bold">Healthcare-Specific Voice AI</h2>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-6">
-              {voiceCapabilities.map((item, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                >
-                  <Card className="h-full">
-                    <CardContent className="p-6">
-                      <div className="flex items-start gap-4">
-                        <CheckCircle2 className="w-6 h-6 text-cyan-400 shrink-0 mt-1" />
-                        <div>
-                          <h4 className="font-semibold mb-2">{item.capability}</h4>
-                          <p className="text-sm text-muted-foreground">{item.description}</p>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Results */}
-      <section className="py-24 bg-gradient-to-br from-slate-900 to-slate-800">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="space-y-12"
-          >
-            <div className="text-center space-y-4">
-              <Badge className="bg-green-500/20 text-green-400 border-green-500/30">
-                <TrendingUp className="w-3 h-3 mr-1" />
-                Performance Metrics
-              </Badge>
-              <h2 className="text-3xl font-bold text-white">Transformation Results</h2>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-6">
-              {callMetrics.map((item, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                >
-                  <Card className="bg-slate-800/50 border-slate-700">
-                    <CardContent className="p-6">
-                      <p className="text-sm text-slate-400 mb-3">{item.metric}</p>
-                      <div className="flex items-center justify-between mb-2">
-                        <span className="text-lg text-slate-500 line-through">{item.before}</span>
-                        <ArrowRight className="w-5 h-5 text-slate-600" />
-                        <span className="text-2xl font-bold text-white">{item.after}</span>
-                      </div>
-                      <p className="text-xs text-cyan-400">{item.note}</p>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Testimonial */}
-      <section className="py-24">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <Card className="border-cyan-500/20">
-              <CardContent className="p-8 md:p-12">
-                <Quote className="w-12 h-12 text-cyan-500/30 mb-6" />
-                <blockquote className="text-xl md:text-2xl font-medium leading-relaxed mb-8">
-                  "Our practices were drowning in scheduling calls. Now patients actually 
-                  engage with our AI--they tell us they didn't realize it wasn't a real person 
-                  until we told them. No-shows are down 61%, and our staff can focus on 
-                  patients in the office instead of being on the phone all day."
-                </blockquote>
-                <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 rounded-full bg-gradient-to-br from-cyan-500 to-blue-500 flex items-center justify-center text-white font-bold text-lg">
-                    KP
-                  </div>
-                  <div>
-                    <p className="font-semibold">Karen Patterson</p>
-                    <p className="text-sm text-muted-foreground">VP of Practice Operations, Hello Driven</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="py-24 bg-gradient-to-br from-cyan-500/10 via-background to-blue-500/10">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center space-y-8"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold">
-              Building Healthcare Voice AI?
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              We help healthcare companies build voice systems that patients trust and 
-              engage with--improving outcomes while reducing operational burden.
-            </p>
-            <CtaForm />
-          </motion.div>
-        </div>
-      </section>
-
-      
-
-      </CaseStudyTemplate>
-  );
+  return <CaseStudyV2 data={data} />;
 }

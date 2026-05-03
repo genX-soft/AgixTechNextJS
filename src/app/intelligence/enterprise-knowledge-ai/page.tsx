@@ -22,53 +22,167 @@ function scrollToSection(id: string) {
   document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
+function KnowledgeGraphVisual() {
+  const S = 320;        // strictly square canvas
+  const CX = S / 2;    // 160
+  const CY = S / 2;    // 160
+  const R = 112;        // orbit radius — nodes fit inside S with 76px node width (half=38px; 160+112+38=310 < 320 ✓)
+
+  // 6 nodes equally spaced at 60° — starting at 270° (top) so first node is at top-centre
+  const satellites = [
+    { label: "Contracts",     icon: "📄", color: "text-amber-400 border-amber-500/40 bg-amber-500/10",  angle: 270 },
+    { label: "Policies",      icon: "⚖️", color: "text-teal-400 border-teal-500/40 bg-teal-500/10",    angle: 330 },
+    { label: "Customer Data", icon: "👥", color: "text-purple-400 border-purple-500/40 bg-purple-500/10", angle: 30 },
+    { label: "Reports",       icon: "📊", color: "text-rose-400 border-rose-500/40 bg-rose-500/10",     angle: 90 },
+    { label: "Runbooks",      icon: "📋", color: "text-green-400 border-green-500/40 bg-green-500/10",  angle: 150 },
+    { label: "Research",      icon: "🔬", color: "text-blue-400 border-blue-500/40 bg-blue-500/10",     angle: 210 },
+  ];
+
+  return (
+    <div className="flex flex-col items-center gap-3">
+      {/* Fixed square canvas — SVG and HTML nodes share the same S×S pixel space */}
+      <div className="relative" style={{ width: S, height: S }}>
+
+        {/* SVG: orbit ring + animated spoke lines */}
+        <svg className="absolute inset-0" width={S} height={S}>
+          {/* Orbit circle */}
+          <circle cx={CX} cy={CY} r={R} fill="none" stroke="rgba(251,191,36,0.10)" strokeWidth="1" />
+          {/* Outer guide ring */}
+          <circle cx={CX} cy={CY} r={R + 16} fill="none" stroke="rgba(251,191,36,0.04)" strokeWidth="1" strokeDasharray="3 6" />
+          {/* Spoke lines hub → each node */}
+          {satellites.map((s, i) => {
+            const rad = (s.angle * Math.PI) / 180;
+            return (
+              <motion.line
+                key={i}
+                x1={CX} y1={CY}
+                x2={CX + R * Math.cos(rad)}
+                y2={CY + R * Math.sin(rad)}
+                stroke="rgba(251,191,36,0.22)"
+                strokeWidth="1"
+                strokeDasharray="4 3"
+                animate={{ opacity: [0.25, 0.85, 0.25] }}
+                transition={{ duration: 2.5, repeat: Infinity, delay: i * 0.42 }}
+              />
+            );
+          })}
+        </svg>
+
+        {/* Center hub */}
+        <div className="absolute" style={{ left: CX, top: CY, transform: "translate(-50%,-50%)" }}>
+          <motion.div
+            className="w-20 h-20 rounded-full bg-amber-500/15 border-2 border-amber-500/50 flex flex-col items-center justify-center shadow-lg shadow-amber-500/20 z-10 relative"
+            animate={{ scale: [1, 1.06, 1] }}
+            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <BookOpen className="w-7 h-7 text-amber-400" />
+            <span className="text-[9px] font-bold text-amber-400 mt-0.5">AI BRAIN</span>
+          </motion.div>
+          <motion.div
+            className="absolute w-20 h-20 rounded-full border border-amber-400/30"
+            style={{ top: 0, left: 0 }}
+            animate={{ scale: [1, 1.85], opacity: [0.4, 0] }}
+            transition={{ duration: 2.5, repeat: Infinity, ease: "easeOut" }}
+          />
+        </div>
+
+        {/* Satellite nodes — outer div handles position, inner motion.div handles scale only */}
+        {satellites.map((s, i) => {
+          const rad = (s.angle * Math.PI) / 180;
+          const nx = CX + R * Math.cos(rad);
+          const ny = CY + R * Math.sin(rad);
+          return (
+            <div
+              key={i}
+              className="absolute"
+              style={{ left: nx, top: ny, transform: "translate(-50%,-50%)" }}
+            >
+              <motion.div
+                className={`w-[76px] rounded-xl border p-2 text-center ${s.color} shadow-md`}
+                animate={{ scale: [1, 1.06, 1] }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: i * 0.5 }}
+              >
+                <div className="text-base mb-0.5">{s.icon}</div>
+                <div className="text-[9px] font-bold leading-tight">{s.label}</div>
+              </motion.div>
+            </div>
+          );
+        })}
+      </div>
+
+      {/* Stats strip */}
+      <div className="grid grid-cols-3 gap-2 w-full">
+        {[["18M+", "docs indexed", "text-amber-400"], ["<1s", "retrieval", "text-teal-400"], ["99.8%", "accuracy", "text-green-400"]].map(([v, l, c]) => (
+          <div key={v} className="bg-slate-800/60 border border-slate-700/50 rounded-lg p-2 text-center">
+            <div className={`text-sm font-black ${c}`}>{v}</div>
+            <div className="text-[9px] text-muted-foreground">{l}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function HeroSection() {
   return (
-    <section className="pt-24 lg:pt-28 pb-20 min-h-[85vh] flex items-center relative overflow-hidden bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-amber-900/20 via-transparent to-transparent" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_var(--tw-gradient-stops))] from-teal-900/10 via-transparent to-transparent" />
+    <section className="pt-24 lg:pt-32 pb-16 min-h-screen flex items-center relative overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-amber-900/25 via-transparent to-transparent" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_var(--tw-gradient-stops))] from-teal-900/15 via-transparent to-transparent" />
+      <div className="absolute top-1/3 right-1/4 w-80 h-80 bg-amber-500/5 rounded-full blur-3xl" />
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full relative z-10">
-        <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }} className="max-w-4xl mx-auto text-center space-y-6">
-          <nav aria-label="Breadcrumb" className="flex justify-center">
-            <ol className="flex items-center gap-1.5 text-xs text-muted-foreground">
-              <li><Link href="/" className="hover:text-white transition-colors">Home</Link></li>
-              <ChevronRight className="w-3 h-3" />
-              <li><span className="text-muted-foreground">Intelligence</span></li>
-              <ChevronRight className="w-3 h-3" />
-              <li><span className="text-amber-400">Enterprise Knowledge Intelligence</span></li>
-            </ol>
-          </nav>
-          <Badge className="bg-amber-500/10 text-amber-400 border-amber-500/30 px-4 py-1.5" data-testid="badge-hero-category">
-            <BookOpen className="w-4 h-4 mr-2" />Intelligence Framework
-          </Badge>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight" data-testid="text-hero-headline">
-            Enterprise Knowledge Intelligence:{" "}
-            <span className="text-amber-400">When Your Organization&apos;s Knowledge Becomes an Active Asset</span>
-          </h1>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed" data-testid="text-hero-subheadline">
-            <span className="text-amber-400">Knowledge Intelligence</span> is not document management. It is not a search engine. It is not a RAG deployment.{" "}
-            It is the <span className="text-teal-400">organizational capability to store, govern, retrieve, and reason over collective knowledge</span>{" "}
-            using AI — with <span className="text-green-400">accuracy, traceability, and access control</span>.
-          </p>
-          <p className="text-sm text-muted-foreground/70 italic">
-            By <Link href="/author/santosh/" className="text-amber-400/80 hover:text-amber-400 transition-colors">Santosh Singh</Link>, Founder &amp; CEO, AGIX Technologies · April 2026
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-            <Button size="lg" className="bg-amber-500 hover:bg-amber-600 text-white shadow-lg shadow-amber-500/25" onClick={() => scrollToSection("ki-maturity")} data-testid="button-hero-primary">
-              Explore the 5-Stage Model <ArrowRight className="w-5 h-5 ml-2" />
-            </Button>
-            <Button variant="outline" size="lg" onClick={() => scrollToSection("ki-foundation")} data-testid="button-hero-secondary">
-              Knowledge as Foundation <ChevronDown className="w-5 h-5 ml-2" />
-            </Button>
+        <div className="grid lg:grid-cols-[1fr_400px] gap-12 xl:gap-20 items-center">
+
+          {/* LEFT: Text */}
+          <div className="space-y-6">
+            <nav aria-label="Breadcrumb">
+              <ol className="flex items-center gap-1.5 text-xs text-muted-foreground">
+                <li><Link href="/" className="hover:text-white transition-colors">Home</Link></li>
+                <ChevronRight className="w-3 h-3" />
+                <li><span className="text-muted-foreground">Intelligence</span></li>
+                <ChevronRight className="w-3 h-3" />
+                <li><span className="text-amber-400">Enterprise Knowledge Intelligence</span></li>
+              </ol>
+            </nav>
+            <Badge className="bg-amber-500/10 text-amber-400 border-amber-500/30 px-4 py-1.5" data-testid="badge-hero-category">
+              <BookOpen className="w-4 h-4 mr-2" />Intelligence Framework
+            </Badge>
+            <h1 className="text-4xl md:text-5xl lg:text-[3.5rem] font-black leading-[1.08] tracking-tight" data-testid="text-hero-headline">
+              Enterprise Knowledge Intelligence:{" "}
+              <span className="text-amber-400">Your Organization&apos;s Knowledge as an Active Asset</span>
+            </h1>
+            <p className="text-lg text-muted-foreground leading-relaxed max-w-xl" data-testid="text-hero-subheadline">
+              Not document management. Not search. Not RAG.{" "}
+              The <span className="text-teal-400 font-semibold">organizational capability to store, govern, retrieve, and reason over knowledge</span>{" "}
+              — with <span className="text-green-400 font-semibold">accuracy, traceability, and access control</span>.
+            </p>
+            <p suppressHydrationWarning className="text-sm text-muted-foreground/60 italic">
+              By <Link href="/author/santosh/" className="text-amber-400/80 hover:text-amber-400 transition-colors">Santosh Singh</Link>, Founder &amp; CEO, AGIX Technologies · {new Date().toLocaleString("en-US", { month: "long", year: "numeric" })}
+            </p>
+            <div className="flex flex-wrap gap-3">
+              {[["5 Stages", "knowledge maturity model"], ["18M+", "enterprise documents indexed"], ["<1s", "AI retrieval latency"]].map(([v, l]) => (
+                <div key={v} className="flex items-center gap-2 rounded-full bg-slate-800/60 border border-slate-700/50 px-3 py-1.5">
+                  <span className="text-sm font-bold text-amber-400">{v}</span>
+                  <span className="text-xs text-muted-foreground">{l}</span>
+                </div>
+              ))}
+            </div>
+            <div className="flex flex-col sm:flex-row gap-4 pt-2">
+              <Button size="lg" className="bg-amber-500 hover:bg-amber-600 text-white shadow-lg shadow-amber-500/25 h-12 px-7" onClick={() => scrollToSection("ki-maturity")} data-testid="button-hero-primary">
+                Explore the 5-Stage Model <ArrowRight className="w-5 h-5 ml-2" />
+              </Button>
+              <Button variant="outline" size="lg" className="h-12 px-7" onClick={() => scrollToSection("ki-foundation")} data-testid="button-hero-secondary">
+                Knowledge as Foundation <ChevronDown className="w-5 h-5 ml-2" />
+              </Button>
+            </div>
           </div>
-        </motion.div>
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1 }} className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
-          <button onClick={() => scrollToSection("definition")} aria-label="Scroll down" data-testid="button-scroll-down">
-            <motion.div animate={{ y: [0, 8, 0] }} transition={{ duration: 2, repeat: Infinity }} className="text-muted-foreground hover:text-amber-400 transition-colors">
-              <ArrowDown className="w-5 h-5" />
-            </motion.div>
-          </button>
-        </motion.div>
+
+          {/* RIGHT: Knowledge Graph */}
+          <div className="hidden lg:flex items-center justify-center">
+            <KnowledgeGraphVisual />
+          </div>
+
+        </div>
       </div>
     </section>
   );

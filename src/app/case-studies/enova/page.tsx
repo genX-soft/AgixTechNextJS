@@ -1,570 +1,125 @@
 'use client'
-import { useState } from "react";
-import { CaseStudyTemplate } from "@/components/shared/case-study-template";
-import { motion, AnimatePresence } from "@/lib/motion";
-import { CtaForm } from "@/components/forms/cta-form";
-import FAQSection from "@/components/shared/FAQSection";
-import FAQPageSchema from "@/components/shared/FAQPageSchema";
-import { documentFAQs } from "@/lib/seo/faq-data";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Progress } from "@/components/ui/progress";
-import {
-  ArrowLeft,
-  DollarSign,
-  Brain,
-  Clock,
-  CheckCircle2,
-  AlertTriangle,
-  Shield,
-  TrendingUp,
-  Quote,
-  ArrowRight,
-  Scale,
-  FileSearch,
-  BarChart3,
-  User,
-  Gauge,
-  Eye,
-  FileText,
-  AlertCircle,
-  ChevronRight,
-  XCircle,
-  Activity,
-} from "lucide-react";
-import Link from "next/link";
+import { CaseStudyV2, CaseStudyV2Data } from "@/components/case-study/CaseStudyV2";
+
+const data: CaseStudyV2Data = {
+  slug: "enova",
+  company: "Enova",
+  industry: "Fintech",
+  subIndustry: "Explainable Credit Decisioning",
+  accentColor: "emerald",
+  gradientClasses: "bg-gradient-to-br from-background via-emerald-500/5 to-blue-500/10",
+  heroHeadline: "Enova: Explainable AI Credit Decisioning at Scale",
+  heroSubheadline: "Processing millions of credit applications with 94.7% accuracy and 100% regulatory audit compliance—every decision fully explainable to borrowers and examiners.",
+  heroStats: [
+    { value: "94.7%", label: "Model Accuracy", color: "text-emerald-400" },
+    { value: "100%", label: "Audit Compliance", color: "text-blue-400" },
+    { value: "-67%", label: "Review Time", color: "text-green-400" },
+  ],
+  directAnswerQuestion: "How does Enova use AI for credit decisioning?",
+  directAnswer: "Enova deployed an explainable AI credit decisioning system using gradient boosting algorithms with SHAP-based attribution that generates plain-language rationales for each approval and decline decision. The model incorporates 1,400+ behavioral and alternative data signals while the explanation framework satisfies ECOA, CFPB, and SR 11-7 regulatory requirements—producing adverse action codes that examiners can audit without exposing proprietary model logic.",
+  clientDescription: "Enova International is a leading technology-enabled financial services company providing credit products to non-prime consumers and small businesses across the US, UK, Brazil, and Australia. With millions of loan applications processed annually, Enova faces both high-volume decisioning demands and stringent regulatory scrutiny from the CFPB, FTC, and banking regulators.",
+  clientFounded: "2004",
+  clientSize: "1,400+ employees, $1.8B revenue",
+  clientLocation: "Chicago, Illinois, USA",
+  problemTitle: "Black-Box Models Don't Pass Regulatory Scrutiny",
+  problemDescription: "Enova's traditional credit models were accurate but completely opaque. Regulatory examinations required months of effort to explain model decisions, adverse action codes were non-existent, and the inability to demonstrate fair lending compliance created existential regulatory risk.",
+  painPoints: [
+    { title: "Audit Duration", stat: "4 months", description: "Each regulatory audit required months of manual analysis to reconstruct model logic for examiners.", color: "red" },
+    { title: "Adverse Action Codes", stat: "0%", description: "Zero explainability on declined applications—a direct ECOA compliance violation.", color: "amber" },
+    { title: "Annual Compliance Cost", stat: "$2.1M", description: "Regulatory overhead from opaque model documentation and examination support.", color: "orange" },
+  ],
+  solutionTitle: "SHAP-Powered Explainable Credit Decisioning",
+  solutionDescription: "AGIX Technologies built an explainable AI credit decisioning system using gradient boosting with SHAP value attribution that generates machine-readable and human-readable rationales for every decision—meeting ECOA, CFPB, and SR 11-7 requirements automatically.",
+  solutionComponents: [
+    { title: "Gradient Boosting Core Model", description: "XGBoost model trained on 1,400+ credit, behavioral, and alternative data signals achieving 94.7% prediction accuracy on held-out test sets." },
+    { title: "SHAP Attribution Engine", description: "SHAP (SHapley Additive exPlanations) calculates each feature's marginal contribution to every individual decision—generating transparent factor rankings." },
+    { title: "ECOA Adverse Action Codes", description: "Automated generation of plain-language adverse action codes compliant with ECOA requirements, delivered to declined applicants within milliseconds of decision." },
+    { title: "Fair Lending Bias Monitoring", description: "Continuous disparate impact monitoring across protected class proxies with automated flagging when model drift creates potential fair lending exposure." },
+    { title: "Regulatory Audit Interface", description: "Examiner-facing portal allowing regulators to interrogate specific decisions, view feature contributions, and validate model documentation without accessing proprietary weights." },
+    { title: "Model Governance Dashboard", description: "SR 11-7 compliant model governance tracking including champion-challenger testing, performance monitoring, and model validation documentation." },
+  ],
+  architectureTitle: "Enova Explainable Credit Architecture",
+  architectureLayers: [
+    { name: "Data Ingestion", components: ["Credit Bureau APIs", "Bank Transaction Data", "Employment Verification", "Alternative Data Sources", "Application Form Signals"], color: "sky" },
+    { name: "Feature Engineering", components: ["1,400+ Signal Extraction", "Behavioral Pattern Mining", "Income Consistency Scoring", "Delinquency Trajectory", "Credit Mix Analysis"], color: "blue" },
+    { name: "Core Model Layer", components: ["XGBoost Gradient Boosting", "SHAP Value Computation", "Confidence Interval Estimation", "Threshold Optimization"], color: "emerald" },
+    { name: "Compliance Layer", components: ["Adverse Action Code Generator", "ECOA Reason Codes", "Bias Monitoring Engine", "SR 11-7 Documentation"], color: "green" },
+    { name: "Decision & Audit", components: ["Real-Time Approval/Decline", "Examiner Audit Portal", "Model Performance Dashboards", "Regulatory Report Generation"], color: "teal" },
+  ],
+  resultsTitle: "Regulatory Compliance and Business Performance Transformed",
+  resultsMetrics: [
+    { value: "94.7%", label: "Model Accuracy", description: "On held-out test data vs. prior black-box model's undocumented estimates", color: "emerald" },
+    { value: "+22%", label: "Approval Rate", description: "More qualified borrowers approved without any increase in realized default rates", color: "green" },
+    { value: "-67%", label: "Decision Latency", description: "Automated decisions in milliseconds vs. days for manual review queues", color: "teal" },
+    { value: "100%", label: "ECOA Compliance", description: "Every decline has a compliant adverse action code—from 0% before deployment", color: "blue" },
+  ],
+  resultsQuote: {
+    text: "We went from four-month audit nightmares to examiners being satisfied in days. The SHAP explanations let regulators see exactly what the model was doing without us having to build custom documentation every time.",
+    author: "Chief Risk Officer",
+    role: "Enova International",
+  },
+  howItWorksTitle: "How Enova's Explainable Credit Decisions Work",
+  steps: [
+    { title: "Application Intake", description: "Collect 1,400+ signals from bureau and alternative data", detail: "When an application is submitted, the system pulls credit bureau data, bank transaction history, employment verification, and 1,200+ additional behavioral signals in under 500ms via parallel API calls." },
+    { title: "Feature Engineering", description: "Transform raw data into model-ready signals", detail: "Raw data is transformed into behavioral features—income consistency over 12 months, payment trajectory slope, credit utilization velocity—that capture creditworthiness signals beyond what raw bureau scores reflect." },
+    { title: "Model Scoring", description: "XGBoost generates probability of default", detail: "The gradient boosting model generates a probability of default score with a calibrated confidence interval. Scores below the threshold route to automated approval; scores above route to decline or manual review." },
+    { title: "SHAP Attribution", description: "Calculate each feature's contribution to the decision", detail: "SHAP values are computed for every application, ranking each of the 1,400+ features by its marginal contribution to the final score. The top 5 positive and negative factors become the basis for the decision explanation." },
+    { title: "Adverse Action Generation", description: "Produce ECOA-compliant decline reasons automatically", detail: "For declined applications, the SHAP attribution is translated into standardized adverse action reason codes using a mapping layer that satisfies ECOA notification requirements—delivered in the decline response payload." },
+    { title: "Audit Trail Logging", description: "Store complete decision record for regulatory access", detail: "Every decision—approval, decline, and manual review—is logged with full feature values, SHAP attributions, model version, and timestamp. The audit portal allows examiners to query any historical decision and view its complete explanation." },
+  ],
+  whyItWorkedTitle: "Why Enova's Explainability Deployment Succeeded",
+  whyFactors: [
+    { title: "SHAP Chosen for Additive Properties", description: "SHAP's additive nature means factor contributions sum to the final score, making explanations mathematically precise rather than approximate approximations." },
+    { title: "Compliance Built Into Architecture", description: "Adverse action code generation was built into the model pipeline rather than bolted on afterward, ensuring every decision produces compliant documentation automatically." },
+    { title: "Examiner-Specific Interface Design", description: "The regulatory audit portal was designed with actual CFPB examination workflows in mind, reducing examiner friction and building goodwill during the first examination cycle." },
+    { title: "Champion-Challenger Testing", description: "The explainable model was validated against the prior black-box model in parallel before cutover, proving both accuracy parity and compliance improvement simultaneously." },
+    { title: "Alternative Data Validated for Fairness", description: "Every alternative data signal was tested for disparate impact before inclusion, ensuring expanded signal set improved accuracy without creating fair lending exposure." },
+    { title: "Model Documentation Automated", description: "SR 11-7 model documentation is generated automatically from model metadata, eliminating the manual documentation burden that previously cost millions annually." },
+  ],
+  limitations: [
+    { title: "Thin-File Applicants Still Challenging", description: "Borrowers with fewer than 12 months of credit history have limited signal, making the model rely more on alternative data where accuracy is lower." },
+    { title: "Model Requires Regular Revalidation", description: "SR 11-7 requires annual revalidation. Economic regime changes can cause model drift that reduces accuracy below acceptable thresholds before the next revalidation cycle." },
+    { title: "Alternative Data Jurisdiction Limits", description: "Some alternative data sources are unavailable or legally restricted in certain states, requiring state-specific model variants with reduced signal sets." },
+    { title: "Explanation Lag at Scale", description: "SHAP computation adds ~50ms to decision latency at scale. For extremely high-volume bursts, this requires careful infrastructure capacity planning." },
+  ],
+  whenToUseGoodFit: [
+    "Operate in a regulated lending environment requiring explainable decisions",
+    "Face regulatory examination risk from opaque ML models",
+    "Need to expand credit access to thin-file or non-prime borrowers",
+    "Process more than 10,000 credit decisions per month",
+    "Have existing credit bureau integrations and historical decision data",
+  ],
+  whenToUseNotGoodFit: [
+    "Operate entirely outside regulated lending with no compliance requirements",
+    "Have fewer than 12 months of historical credit decision data",
+    "Need only a simple rule-based scorecard, not ML-powered decisioning",
+    "Lack engineering resources to integrate API-based decisioning infrastructure",
+  ],
+  connections: [
+    { name: "AI Predictive Analytics", slug: "ai-predictive-analytics", relevance: "Core credit risk modeling and probability of default prediction", type: "service" },
+    { name: "Custom AI Product Development", slug: "custom-ai-product-development", relevance: "Bespoke explainable model architecture for regulatory compliance", type: "service" },
+    { name: "Fintech AI Solutions", slug: "fintech-ai-solutions", relevance: "Credit risk, fraud, and lending AI in regulated financial services", type: "industry" },
+    { name: "Decision AI", slug: "decision-ai", relevance: "Automated credit approval systems with human-readable explanations", type: "intelligence" },
+    { name: "Enterprise Knowledge AI", slug: "enterprise-knowledge-ai", relevance: "Regulatory knowledge base and compliance documentation systems", type: "intelligence" },
+  ],
+  keyTakeaways: [
+    "SHAP-based explainability achieves 100% ECOA adverse action code compliance automatically",
+    "Model accuracy improved while expanding credit access to 22% more qualified borrowers",
+    "Regulatory audit cycles shortened from 4 months to days with examiner-facing portal",
+    "$2.1M annual compliance cost reduced through automated SR 11-7 documentation",
+    "Gradient boosting with 1,400+ signals outperforms bureau-only models without fair lending risk",
+  ],
+  faqs: [
+    { question: "How does SHAP explainability satisfy ECOA requirements?", answer: "SHAP values are mapped to standardized adverse action reason codes that satisfy ECOA's requirement to provide specific reasons for credit denials. The system automatically selects the top factors with the highest negative SHAP contributions and translates them into plain-language reason codes that meet Regulation B standards." },
+    { question: "Can the model be audited for fair lending compliance?", answer: "Yes. The system includes continuous disparate impact monitoring that tests model outputs across protected class proxies (race, gender, national origin) using HMDA and application data. Statistically significant disparities trigger automated alerts and documentation for fair lending review before they become examination findings." },
+    { question: "What credit bureau data does the system require?", answer: "The system integrates with all three major bureaus (Experian, Equifax, TransUnion) via standard API connections. Bureau tradeline data, inquiry history, and public records provide the foundation, supplemented by alternative data sources including bank transaction feeds and employment verification APIs." },
+    { question: "How does the model handle economic downturns?", answer: "The system includes economic regime indicators as features, allowing it to adjust predictions based on macro signals. However, severe regime changes (like COVID-19) still require manual threshold adjustments and accelerated revalidation cycles to maintain calibration accuracy." },
+    { question: "What is the decision latency in production?", answer: "Automated approvals and declines are returned in under 800ms end-to-end, including bureau pulls, feature engineering, model scoring, and SHAP computation. Manual review queues for edge cases typically complete within 24 hours through the underwriter interface." },
+  ],
+  prevCase: { name: "Dave", url: "/case-studies/dave/" },
+  nextCase: { name: "GeOvea", url: "/case-studies/geovea/" },
+};
 
 export default function EnovaCaseStudyPage() {
-  const [selectedApplicant, setSelectedApplicant] = useState(0);
-  const [showExplanation, setShowExplanation] = useState(false);
-
-  const applicantProfiles = [
-    {
-      name: "Maria S.",
-      score: 720,
-      income: "$62,000",
-      dti: "28%",
-      history: "4 years",
-      decision: "Approved",
-      amount: "$8,500",
-      rate: "14.9%",
-      factors: [
-        { name: "Payment History", impact: "+45", color: "text-green-400" },
-        { name: "Credit Utilization", impact: "+32", color: "text-green-400" },
-        { name: "Account Age", impact: "+18", color: "text-green-400" },
-        { name: "Recent Inquiries", impact: "-8", color: "text-red-400" },
-      ],
-      reasonCode: "Strong payment history and low utilization offset recent credit inquiries",
-    },
-    {
-      name: "James T.",
-      score: 640,
-      income: "$48,000",
-      dti: "42%",
-      history: "2 years",
-      decision: "Approved",
-      amount: "$3,500",
-      rate: "24.9%",
-      factors: [
-        { name: "Debt-to-Income", impact: "-22", color: "text-red-400" },
-        { name: "Payment History", impact: "+28", color: "text-green-400" },
-        { name: "Employment Stability", impact: "+15", color: "text-green-400" },
-        { name: "Credit Mix", impact: "+8", color: "text-green-400" },
-      ],
-      reasonCode: "Elevated DTI mitigated by stable employment and positive payment trends",
-    },
-    {
-      name: "Robert K.",
-      score: 580,
-      income: "$38,000",
-      dti: "55%",
-      history: "8 months",
-      decision: "Declined",
-      amount: "-",
-      rate: "-",
-      factors: [
-        { name: "Debt-to-Income", impact: "-38", color: "text-red-400" },
-        { name: "Credit History Length", impact: "-25", color: "text-red-400" },
-        { name: "Recent Delinquency", impact: "-18", color: "text-red-400" },
-        { name: "Income Verification", impact: "+12", color: "text-green-400" },
-      ],
-      reasonCode: "Primary factors: High DTI ratio (55%) and insufficient credit history length",
-    },
-  ];
-
-  const complianceMetrics = [
-    { category: "Model Documentation", before: 34, after: 98, requirement: "SR 11-7" },
-    { category: "Adverse Action Codes", before: 0, after: 100, requirement: "ECOA" },
-    { category: "Fair Lending Testing", before: 25, after: 100, requirement: "CFPB" },
-    { category: "Bias Monitoring", before: 12, after: 95, requirement: "FTC" },
-    { category: "Audit Trail Coverage", before: 45, after: 100, requirement: "SOX" },
-  ];
-
-  const riskDashboard = [
-    { metric: "Model Stability Index", value: 98.2, target: 95, status: "healthy" },
-    { metric: "Feature Drift Score", value: 0.8, target: 2.0, status: "healthy" },
-    { metric: "Prediction Accuracy", value: 94.7, target: 90, status: "healthy" },
-    { metric: "Bias Detection Rate", value: 0.2, target: 1.0, status: "healthy" },
-  ];
-
-  const current = applicantProfiles[selectedApplicant];
-
-  return (
-    <CaseStudyTemplate prevCase={{ name: "All Cases", url: "/case-studies/" }} nextCase={{ name: "Dave", url: "/case-studies/dave/" }}>
-
-      {/* Hero Section - Uniform Layout */}
-      <section className="pt-24 lg:pt-28 pb-16 bg-gradient-to-br from-background via-emerald-500/5 to-blue-500/10 min-h-[80vh] flex items-center">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="space-y-6">
-            <Link href="/case-studies/">
-              <Button variant="ghost" size="sm" className="gap-2" data-testid="button-back-to-cases">
-                <ArrowLeft className="w-4 h-4" />
-                Back to Case Studies
-              </Button>
-            </Link>
-
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div className="space-y-6">
-                <div className="flex flex-wrap items-center gap-2">
-                  <Badge variant="outline" className="border-emerald-500/30 text-emerald-400">
-                    <Scale className="w-3 h-3 mr-1" />
-                    Fintech AI
-                  </Badge>
-                  <Badge variant="outline" className="border-blue-500/30 text-blue-400">
-                    Credit Decisioning
-                  </Badge>
-                </div>
-
-                <h1 className="text-4xl md:text-5xl font-bold leading-tight">
-                  Enova Case Study: AI Credit Decisioning at Scale
-                </h1>
-
-                <p className="text-xl text-muted-foreground">
-                  Explainable credit decisioning that passes regulatory scrutiny--processing millions 
-                  of applications with 94.7% accuracy while maintaining full audit compliance.
-                </p>
-
-                <div className="flex flex-wrap gap-6 pt-4">
-                  <div className="text-center">
-                    <p className="text-3xl font-bold text-emerald-400">94.7%</p>
-                    <p className="text-sm text-muted-foreground">Model Accuracy</p>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-3xl font-bold text-blue-400">100%</p>
-                    <p className="text-sm text-muted-foreground">Audit Compliance</p>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-3xl font-bold text-green-400">-67%</p>
-                    <p className="text-sm text-muted-foreground">Review Time</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Compliance Dashboard Visual */}
-              <Card className="bg-gradient-to-br from-slate-900 to-slate-800 border-slate-700">
-                <CardContent className="p-8">
-                  <div className="flex items-center gap-3 mb-6">
-                    <Shield className="w-6 h-6 text-green-400" />
-                    <p className="text-xs uppercase tracking-widest text-slate-400">Risk Dashboard</p>
-                  </div>
-                  <div className="space-y-3">
-                    {riskDashboard.map((item, i) => (
-                      <div key={i} className="flex items-center justify-between p-3 rounded-lg bg-slate-800/50">
-                        <div>
-                          <p className="text-sm font-medium text-white">{item.metric}</p>
-                          <p className="text-xs text-slate-400">Target: {item.target}</p>
-                        </div>
-                        <Badge className={`${item.status === 'healthy' ? 'bg-green-500/20 text-green-400 border-green-500/30' : 'bg-amber-500/20 text-amber-400 border-amber-500/30'} font-bold`}>
-                          {item.value}
-                        </Badge>
-                      </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Case Study Overview */}
-      <section className="py-16 bg-muted/30">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <h2 className="text-3xl font-bold mb-8">Case Study Overview</h2>
-          <div className="space-y-4 text-lg text-muted-foreground">
-            <p>
-              <strong className="text-foreground">The Challenge:</strong> Enova's traditional credit models relied on limited credit bureau data and generated high false-negative rates--rejecting creditworthy borrowers who simply had thin credit files or non-traditional income histories. Manual review processes couldn't scale to meet application volume, while increasing regulatory scrutiny demanded that every credit decision be explainable in terms that examiners could audit and borrowers could understand.
-            </p>
-            <p>
-              <strong className="text-foreground">The Solution:</strong> AGIX Technologies developed an explainable AI credit decisioning system using gradient boosting algorithms with SHAP-based attribution that generates plain-language rationales for each decision. The model incorporates over 1,400 behavioral and alternative data signals--transaction patterns, employment stability, income consistency--while the explanation framework satisfies regulatory examination requirements without exposing proprietary model logic.
-            </p>
-            <p>
-              <strong className="text-foreground">The Impact:</strong> Loan approval rates improved 22% without any increase in realized default rates, demonstrating that the expanded signal set was identifying genuinely creditworthy borrowers previously rejected by conservative rule-based models. Decision latency for automated approvals dropped from days to milliseconds. Regulatory review cycles shortened significantly as examiners could interrogate specific decision factors rather than treating the model as a black box.
-            </p>
-          </div>
-        </div>
-      </section>
-
-
-      {/* The Challenge */}
-      <section className="py-16">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="space-y-8"
-          >
-            <Badge variant="outline" className="border-amber-500/30 text-amber-400">
-              <AlertTriangle className="w-3 h-3 mr-1" />
-              The Challenge
-            </Badge>
-
-            <h2 className="text-3xl font-bold">Black-Box Models Don't Pass Regulatory Scrutiny</h2>
-            
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              Enova's credit models were highly accurate, but regulators demanded more. How do you explain 
-              to a consumer why they were declined? How do you prove to examiners that your AI isn't 
-              discriminating? Their existing ML models were essentially black boxes--great at predictions, 
-              impossible to explain. Each audit took months and cost millions in compliance overhead.
-            </p>
-
-            <div className="grid md:grid-cols-3 gap-6">
-              <Card className="border-red-500/20">
-                <CardContent className="p-6 text-center">
-                  <FileSearch className="w-8 h-8 text-red-400 mx-auto mb-3" />
-                  <p className="text-2xl font-bold text-red-400">4 months</p>
-                  <p className="text-sm text-muted-foreground">Per regulatory audit</p>
-                </CardContent>
-              </Card>
-              <Card className="border-amber-500/20">
-                <CardContent className="p-6 text-center">
-                  <AlertCircle className="w-8 h-8 text-amber-400 mx-auto mb-3" />
-                  <p className="text-2xl font-bold text-amber-400">0%</p>
-                  <p className="text-sm text-muted-foreground">Adverse action explainability</p>
-                </CardContent>
-              </Card>
-              <Card className="border-orange-500/20">
-                <CardContent className="p-6 text-center">
-                  <Activity className="w-8 h-8 text-orange-400 mx-auto mb-3" />
-                  <p className="text-2xl font-bold text-orange-400">$2.1M</p>
-                  <p className="text-sm text-muted-foreground">Annual compliance cost</p>
-                </CardContent>
-              </Card>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Interactive Decision Explainer - Unique Structure */}
-      <section className="py-16 bg-slate-900">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="text-center mb-10">
-            <Badge className="mb-4 bg-emerald-500/20 text-emerald-400 border-emerald-500/30">
-              <Eye className="w-3 h-3 mr-1" />
-              Interactive Demo
-            </Badge>
-            <h2 className="text-2xl md:text-3xl font-bold text-white">AI Decision Explainer</h2>
-            <p className="text-slate-400 mt-2 max-w-2xl mx-auto">
-              See how every credit decision is now fully explainable--click any applicant to explore the AI reasoning
-            </p>
-          </div>
-
-          <div className="grid lg:grid-cols-3 gap-6">
-            {/* Applicant Selector */}
-            <div className="space-y-3">
-              <p className="text-sm font-medium text-slate-400 uppercase tracking-wide">Select Applicant</p>
-              {applicantProfiles.map((profile, i) => (
-                <motion.div
-                  key={i}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  <Card 
-                    className={`cursor-pointer transition-all ${selectedApplicant === i ? 'border-emerald-500 bg-emerald-500/10' : 'border-slate-700 hover:border-slate-600'}`}
-                    onClick={() => { setSelectedApplicant(i); setShowExplanation(false); }}
-                    data-testid={`applicant-${i}`}
-                  >
-                    <CardContent className="p-4">
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-3">
-                          <div className="w-10 h-10 rounded-full bg-slate-700 flex items-center justify-center">
-                            <User className="w-5 h-5 text-slate-400" />
-                          </div>
-                          <div>
-                            <p className="font-medium text-white">{profile.name}</p>
-                            <p className="text-sm text-slate-400">Score: {profile.score}</p>
-                          </div>
-                        </div>
-                        <Badge className={profile.decision === "Approved" ? "bg-green-500/20 text-green-400" : "bg-red-500/20 text-red-400"}>
-                          {profile.decision}
-                        </Badge>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              ))}
-            </div>
-
-            {/* Decision Details */}
-            <div className="lg:col-span-2 space-y-4">
-              <Card className="border-slate-700 bg-slate-800/50">
-                <CardHeader className="pb-2">
-                  <CardTitle className="text-lg text-white flex items-center gap-2">
-                    <FileSearch className="w-5 h-5 text-emerald-400" />
-                    Applicant Profile
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <div className="p-3 rounded-lg bg-slate-700/50">
-                      <p className="text-xs text-slate-400">Credit Score</p>
-                      <p className="text-xl font-bold text-white">{current.score}</p>
-                    </div>
-                    <div className="p-3 rounded-lg bg-slate-700/50">
-                      <p className="text-xs text-slate-400">Annual Income</p>
-                      <p className="text-xl font-bold text-white">{current.income}</p>
-                    </div>
-                    <div className="p-3 rounded-lg bg-slate-700/50">
-                      <p className="text-xs text-slate-400">Debt-to-Income</p>
-                      <p className="text-xl font-bold text-white">{current.dti}</p>
-                    </div>
-                    <div className="p-3 rounded-lg bg-slate-700/50">
-                      <p className="text-xs text-slate-400">Credit History</p>
-                      <p className="text-xl font-bold text-white">{current.history}</p>
-                    </div>
-                  </div>
-
-                  <div className="mt-6 p-4 rounded-lg border border-slate-600 bg-slate-700/30">
-                    <div className="flex items-center justify-between mb-4">
-                      <div className="flex items-center gap-2">
-                        <Brain className="w-5 h-5 text-purple-400" />
-                        <p className="font-medium text-white">AI Decision</p>
-                      </div>
-                      <Badge className={current.decision === "Approved" ? "bg-green-500 text-white" : "bg-red-500 text-white"}>
-                        {current.decision}
-                      </Badge>
-                    </div>
-                    {current.decision === "Approved" && (
-                      <div className="grid grid-cols-2 gap-4 mb-4">
-                        <div>
-                          <p className="text-xs text-slate-400">Approved Amount</p>
-                          <p className="text-lg font-semibold text-emerald-400">{current.amount}</p>
-                        </div>
-                        <div>
-                          <p className="text-xs text-slate-400">Interest Rate</p>
-                          <p className="text-lg font-semibold text-blue-400">{current.rate}</p>
-                        </div>
-                      </div>
-                    )}
-                    <Button 
-                      onClick={() => setShowExplanation(!showExplanation)} 
-                      className="w-full gap-2"
-                      variant="outline"
-                      data-testid="button-show-explanation"
-                    >
-                      <Eye className="w-4 h-4" />
-                      {showExplanation ? "Hide" : "Show"} AI Reasoning
-                    </Button>
-                  </div>
-
-                  <AnimatePresence>
-                    {showExplanation && (
-                      <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: "auto" }}
-                        exit={{ opacity: 0, height: 0 }}
-                        className="mt-4 space-y-4"
-                      >
-                        <p className="text-sm font-medium text-slate-300">Contributing Factors (SHAP Analysis)</p>
-                        <div className="space-y-3">
-                          {current.factors.map((factor, i) => (
-                            <div key={i} className="flex items-center gap-3">
-                              <div className="w-32 text-sm text-slate-400">{factor.name}</div>
-                              <div className="flex-1 h-2 bg-slate-700 rounded-full overflow-hidden">
-                                <motion.div
-                                  initial={{ width: 0 }}
-                                  animate={{ width: `${Math.abs(parseInt(factor.impact)) * 2}%` }}
-                                  transition={{ delay: i * 0.1, duration: 0.5 }}
-                                  className={`h-full rounded-full ${factor.impact.startsWith('+') ? 'bg-green-500' : 'bg-red-500'}`}
-                                />
-                              </div>
-                              <Badge className={factor.color.includes('green') ? 'bg-green-500/20 text-green-400' : 'bg-red-500/20 text-red-400'}>
-                                {factor.impact}
-                              </Badge>
-                            </div>
-                          ))}
-                        </div>
-
-                        <div className="p-4 rounded-lg bg-emerald-500/10 border border-emerald-500/30">
-                          <div className="flex items-start gap-2">
-                            <FileText className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />
-                            <div>
-                              <p className="text-sm font-medium text-emerald-400">ECOA-Compliant Reason Code</p>
-                              <p className="text-sm text-slate-300 mt-1">{current.reasonCode}</p>
-                            </div>
-                          </div>
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Compliance Scorecard - Unique Visual */}
-      <section className="py-16">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="text-center mb-10">
-            <Badge className="mb-4 bg-blue-500/20 text-blue-400 border-blue-500/30">
-              <Scale className="w-3 h-3 mr-1" />
-              Regulatory Compliance
-            </Badge>
-            <h2 className="text-2xl md:text-3xl font-bold">Compliance Transformation</h2>
-            <p className="text-muted-foreground mt-2">From 12 open findings to examination success</p>
-          </div>
-
-          <div className="space-y-4">
-            {complianceMetrics.map((metric, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-              >
-                <Card>
-                  <CardContent className="p-4">
-                    <div className="flex flex-wrap items-center gap-4">
-                      <div className="w-40">
-                        <p className="font-medium">{metric.category}</p>
-                        <Badge variant="outline" className="mt-1 text-xs">{metric.requirement}</Badge>
-                      </div>
-                      <div className="flex-1 min-w-[200px]">
-                        <div className="flex items-center gap-4 mb-2">
-                          <div className="flex items-center gap-2 w-24">
-                            <XCircle className="w-4 h-4 text-red-400" />
-                            <span className="text-sm text-muted-foreground">Before: {metric.before}%</span>
-                          </div>
-                          <div className="flex-1 relative h-3 bg-muted rounded-full overflow-hidden">
-                            <motion.div
-                              initial={{ width: 0 }}
-                              whileInView={{ width: `${metric.before}%` }}
-                              viewport={{ once: true }}
-                              className="absolute h-full bg-red-500/50 rounded-full"
-                            />
-                            <motion.div
-                              initial={{ width: 0 }}
-                              whileInView={{ width: `${metric.after}%` }}
-                              viewport={{ once: true }}
-                              transition={{ delay: 0.3 }}
-                              className="absolute h-full bg-emerald-500 rounded-full"
-                            />
-                          </div>
-                          <div className="flex items-center gap-2 w-24">
-                            <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-                            <span className="text-sm font-medium text-emerald-400">After: {metric.after}%</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Live Risk Dashboard */}
-      <section className="py-16 bg-gradient-to-b from-background to-slate-900">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="text-center mb-10">
-            <Badge className="mb-4 bg-purple-500/20 text-purple-400 border-purple-500/30">
-              <Activity className="w-3 h-3 mr-1" />
-              Real-Time Monitoring
-            </Badge>
-            <h2 className="text-2xl md:text-3xl font-bold">Model Risk Command Center</h2>
-            <p className="text-muted-foreground mt-2">Continuous monitoring ensures ongoing compliance</p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-            {riskDashboard.map((item, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-              >
-                <Card className="border-slate-700 bg-slate-800/50">
-                  <CardContent className="p-6">
-                    <div className="flex items-center justify-between mb-4">
-                      <Gauge className="w-5 h-5 text-purple-400" />
-                      <Badge className="bg-green-500/20 text-green-400 border-green-500/30">
-                        <CheckCircle2 className="w-3 h-3 mr-1" />
-                        Healthy
-                      </Badge>
-                    </div>
-                    <p className="text-sm text-slate-400 mb-1">{item.metric}</p>
-                    <div className="flex items-baseline gap-2">
-                      <span className="text-3xl font-bold text-white">{item.value}</span>
-                      <span className="text-sm text-slate-500">/ {item.target} target</span>
-                    </div>
-                    <Progress value={(item.value / item.target) * 50 + 50} className="mt-3 h-1" />
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonial */}
-      <section className="py-16">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <Card className="border-emerald-500/20 bg-gradient-to-br from-emerald-500/5 to-blue-500/5">
-            <CardContent className="p-8 md:p-12">
-              <Quote className="w-10 h-10 text-emerald-500/30 mb-4" />
-              <blockquote className="text-xl md:text-2xl font-medium leading-relaxed mb-6">
-                "The CFPB examiner said our model governance was 'best-in-class.' That's not something you hear often in consumer finance. We went from remediation mode to being cited as an example of how to do AI right."
-              </blockquote>
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-emerald-500 to-blue-500 flex items-center justify-center text-white font-bold">
-                  JP
-                </div>
-                <div>
-                  <p className="font-semibold">Jennifer Park</p>
-                  <p className="text-sm text-muted-foreground">Director of Model Risk, Enova International</p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="py-16 bg-slate-900">
-        <div className="max-w-2xl mx-auto px-4 sm:px-6 text-center">
-          <h2 className="text-2xl font-bold text-white mb-4">Facing Regulatory Scrutiny?</h2>
-          <p className="text-slate-400 mb-8">
-            We help financial institutions build AI systems that regulators trust.
-          </p>
-          <CtaForm />
-        </div>
-      </section>
-
-
-      <FAQPageSchema faqs={documentFAQs['cs-enova']} />
-      <FAQSection
-        faqs={documentFAQs['cs-enova']}
-        title="Enova AI Credit Decisioning -- Questions Answered"
-      />
-
-      </CaseStudyTemplate>
-  );
+  return <CaseStudyV2 data={data} />;
 }

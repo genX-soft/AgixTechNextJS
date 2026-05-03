@@ -59,104 +59,146 @@ function scrollToSection(id: string) {
   }
 }
 
-function HeroSection() {
+function OperationalDashboardVisual() {
+  const metrics = [
+    { label: "System Uptime", value: "99.97%", delta: "+0.02%", color: "text-green-400", bg: "bg-green-500/10 border-green-500/30", bar: 99.97, barColor: "bg-green-500" },
+    { label: "Anomalies Blocked", value: "1,284", delta: "last 24h", color: "text-orange-400", bg: "bg-orange-500/10 border-orange-500/30", bar: 74, barColor: "bg-orange-500" },
+    { label: "Decisions / Minute", value: "3,421", delta: "↑ 18% vs yesterday", color: "text-blue-400", bg: "bg-blue-500/10 border-blue-500/30", bar: 85, barColor: "bg-blue-500" },
+    { label: "Avg Response Time", value: "48ms", delta: "↓ 12ms from baseline", color: "text-purple-400", bg: "bg-purple-500/10 border-purple-500/30", bar: 92, barColor: "bg-purple-500" },
+  ];
+
   return (
-    <section className="pt-24 lg:pt-28 pb-20 min-h-[85vh] flex items-center relative overflow-hidden bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-900/20 via-transparent to-transparent" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_var(--tw-gradient-stops))] from-orange-900/10 via-transparent to-transparent" />
+    <div className="w-full max-w-[420px] mx-auto space-y-2">
+      {/* Dashboard header */}
+      <div className="flex items-center justify-between bg-slate-800/60 border border-slate-700/50 rounded-2xl px-4 py-3">
+        <div className="flex items-center gap-2">
+          <Workflow className="w-4 h-4 text-orange-400" />
+          <span className="text-xs font-bold text-white">Operational Intelligence Dashboard</span>
+        </div>
+        <div className="flex items-center gap-1.5">
+          <motion.div className="w-2 h-2 rounded-full bg-green-400" animate={{ opacity: [1, 0.3, 1] }} transition={{ duration: 1.2, repeat: Infinity }} />
+          <span className="text-[10px] text-green-400 font-semibold">LIVE</span>
+        </div>
+      </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full relative z-10">
+      {/* Metric cards */}
+      {metrics.map((m, i) => (
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-          className="max-w-4xl mx-auto text-center space-y-6"
+          key={i}
+          className={`rounded-xl border px-4 py-3 ${m.bg}`}
+          animate={{ opacity: [0.85, 1, 0.85] }}
+          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: i * 0.7 }}
         >
-          <nav aria-label="Breadcrumb" className="flex justify-center">
-            <ol className="flex items-center gap-1.5 text-xs text-muted-foreground" itemScope itemType="https://schema.org/BreadcrumbList">
-              <li itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
-                <Link href="/" className="hover:text-white transition-colors" itemProp="item"><span itemProp="name">Home</span></Link>
-                <meta itemProp="position" content="1" />
-              </li>
-              <ChevronRight className="w-3 h-3" />
-              <li itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
-                <span className="text-muted-foreground" itemProp="name">Intelligence</span>
-                <meta itemProp="position" content="2" />
-              </li>
-              <ChevronRight className="w-3 h-3" />
-              <li itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
-                <span className="text-orange-400" itemProp="name">Operational Intelligence</span>
-                <meta itemProp="position" content="3" />
-              </li>
-            </ol>
-          </nav>
-
-          <Badge className="bg-orange-500/10 text-orange-400 border-orange-500/30 px-4 py-1.5" data-testid="badge-intelligence-category">
-            <Workflow className="w-4 h-4 mr-2" />
-            Intelligence Framework
-          </Badge>
-
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight" data-testid="text-hero-headline">
-            Operational Intelligence:{" "}
-            <span className="text-orange-400">When Your Business Operations Learn to Think</span>
-          </h1>
-
-          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed" data-testid="text-hero-subheadline">
-            Operational Intelligence is the ability of an organization to continuously{" "}
-            <span className="text-blue-400">observe</span>,{" "}
-            <span className="text-purple-400">understand</span>,{" "}
-            <span className="text-amber-400">predict</span>, and{" "}
-            <span className="text-green-400">act</span>{" "}
-            on operational data in real time — before problems escalate, demand shifts, or competitors move.
-          </p>
-
-          <p className="text-sm text-muted-foreground/70 italic">
-            By <Link href="/author/santosh/" className="text-orange-400/80 hover:text-orange-400 transition-colors">Santosh Singh</Link>, Founder &amp; CEO, AGIX Technologies · April 2026
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-            <Button
-              size="lg"
-              className="bg-orange-500 hover:bg-orange-600 text-gray-900 shadow-lg shadow-orange-500/25"
-              onClick={() => scrollToSection("agix-intelligence-stack")}
-              data-testid="button-hero-cta-primary"
-            >
-              Explore the 4-Layer Stack
-              <ArrowRight className="w-5 h-5 ml-2" />
-            </Button>
-            <Button
-              variant="outline"
-              size="lg"
-              onClick={() => scrollToSection("maturity-assessment")}
-              data-testid="button-hero-cta-secondary"
-            >
-              Assess Your Maturity
-              <ChevronDown className="w-5 h-5 ml-2" />
-            </Button>
+          <div className="flex items-center justify-between mb-2">
+            <span className="text-[10px] text-muted-foreground font-medium uppercase tracking-wide">{m.label}</span>
+            <span className={`text-xl font-black ${m.color}`}>{m.value}</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="flex-1 h-1.5 bg-slate-700/60 rounded-full overflow-hidden">
+              <motion.div
+                className={`h-full ${m.barColor} rounded-full`}
+                animate={{ width: [`${m.bar - 8}%`, `${m.bar}%`, `${m.bar - 4}%`] }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: i * 0.5 }}
+              />
+            </div>
+            <span className="text-[10px] text-muted-foreground whitespace-nowrap">{m.delta}</span>
           </div>
         </motion.div>
+      ))}
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1, duration: 0.6 }}
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-        >
-          <button
-            onClick={() => scrollToSection("definition")}
-            className="cursor-pointer hover:text-orange-400 transition-colors"
-            aria-label="Scroll down"
-            data-testid="button-scroll-down"
-          >
-            <motion.div
-              animate={{ y: [0, 8, 0] }}
-              transition={{ duration: 2, repeat: Infinity }}
-              className="text-muted-foreground hover:text-orange-400"
-            >
-              <ArrowDown className="w-5 h-5" />
-            </motion.div>
-          </button>
-        </motion.div>
+      {/* Alert row */}
+      <motion.div
+        className="flex items-center gap-2 bg-slate-800/40 border border-slate-700/40 rounded-xl px-4 py-2.5"
+        animate={{ opacity: [0.6, 1, 0.6] }}
+        transition={{ duration: 2, repeat: Infinity }}
+      >
+        <motion.div className="w-2 h-2 rounded-full bg-orange-400" animate={{ scale: [1, 1.4, 1] }} transition={{ duration: 1, repeat: Infinity }} />
+        <span className="text-[10px] text-muted-foreground">AI predicted demand surge in Warehouse 4 — <span className="text-orange-400 font-semibold">pre-staging initiated</span></span>
+      </motion.div>
+
+      {/* 4-layer tag strip */}
+      <div className="flex items-center gap-2 flex-wrap">
+        {[["Observe", "text-blue-400 bg-blue-500/10 border-blue-500/20"], ["Understand", "text-purple-400 bg-purple-500/10 border-purple-500/20"], ["Predict", "text-amber-400 bg-amber-500/10 border-amber-500/20"], ["Act", "text-green-400 bg-green-500/10 border-green-500/20"]].map(([l, c]) => (
+          <span key={l} className={`text-[10px] font-bold px-2.5 py-1 rounded-full border ${c}`}>{l}</span>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function HeroSection() {
+  return (
+    <section className="pt-24 lg:pt-32 pb-16 min-h-screen flex items-center relative overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-orange-900/20 via-transparent to-transparent" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_var(--tw-gradient-stops))] from-amber-900/10 via-transparent to-transparent" />
+      <div className="absolute top-1/3 right-1/4 w-80 h-80 bg-orange-500/5 rounded-full blur-3xl" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full relative z-10">
+        <div className="grid lg:grid-cols-[1fr_460px] gap-12 xl:gap-20 items-center">
+
+          {/* LEFT: Text */}
+          <div className="space-y-6">
+            <nav aria-label="Breadcrumb">
+              <ol className="flex items-center gap-1.5 text-xs text-muted-foreground" itemScope itemType="https://schema.org/BreadcrumbList">
+                <li itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
+                  <Link href="/" className="hover:text-white transition-colors" itemProp="item"><span itemProp="name">Home</span></Link>
+                  <meta itemProp="position" content="1" />
+                </li>
+                <ChevronRight className="w-3 h-3" />
+                <li itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
+                  <span className="text-muted-foreground" itemProp="name">Intelligence</span>
+                  <meta itemProp="position" content="2" />
+                </li>
+                <ChevronRight className="w-3 h-3" />
+                <li itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
+                  <span className="text-orange-400" itemProp="name">Operational Intelligence</span>
+                  <meta itemProp="position" content="3" />
+                </li>
+              </ol>
+            </nav>
+            <Badge className="bg-orange-500/10 text-orange-400 border-orange-500/30 px-4 py-1.5" data-testid="badge-intelligence-category">
+              <Workflow className="w-4 h-4 mr-2" />
+              Intelligence Framework
+            </Badge>
+            <h1 className="text-4xl md:text-5xl lg:text-[3.5rem] font-black leading-[1.08] tracking-tight" data-testid="text-hero-headline">
+              Operational Intelligence:{" "}
+              <span className="text-orange-400">When Your Business Operations Learn to Think</span>
+            </h1>
+            <p className="text-lg text-muted-foreground leading-relaxed max-w-xl" data-testid="text-hero-subheadline">
+              The ability to continuously{" "}
+              <span className="text-blue-400 font-semibold">observe</span>,{" "}
+              <span className="text-purple-400 font-semibold">understand</span>,{" "}
+              <span className="text-amber-400 font-semibold">predict</span>, and{" "}
+              <span className="text-green-400 font-semibold">act</span>{" "}
+              on operational data in real time — before problems escalate.
+            </p>
+            <p suppressHydrationWarning className="text-sm text-muted-foreground/60 italic">
+              By <Link href="/author/santosh/" className="text-orange-400/80 hover:text-orange-400 transition-colors">Santosh Singh</Link>, Founder &amp; CEO, AGIX Technologies · {new Date().toLocaleString("en-US", { month: "long", year: "numeric" })}
+            </p>
+            <div className="flex flex-wrap gap-3">
+              {[["4 Layers", "observe → understand → predict → act"], ["3,400+", "decisions per minute"], ["48ms", "real-time response latency"]].map(([v, l]) => (
+                <div key={v} className="flex items-center gap-2 rounded-full bg-slate-800/60 border border-slate-700/50 px-3 py-1.5">
+                  <span className="text-sm font-bold text-orange-400">{v}</span>
+                  <span className="text-xs text-muted-foreground">{l}</span>
+                </div>
+              ))}
+            </div>
+            <div className="flex flex-col sm:flex-row gap-4 pt-2">
+              <Button size="lg" className="bg-orange-500 hover:bg-orange-600 text-white shadow-lg shadow-orange-500/25 h-12 px-7" onClick={() => scrollToSection("agix-intelligence-stack")} data-testid="button-hero-cta-primary">
+                Explore the 4-Layer Stack <ArrowRight className="w-5 h-5 ml-2" />
+              </Button>
+              <Button variant="outline" size="lg" className="h-12 px-7" onClick={() => scrollToSection("maturity-assessment")} data-testid="button-hero-cta-secondary">
+                Assess Your Maturity <ChevronDown className="w-5 h-5 ml-2" />
+              </Button>
+            </div>
+          </div>
+
+          {/* RIGHT: Live Dashboard Visual */}
+          <div className="hidden lg:flex items-center justify-center">
+            <OperationalDashboardVisual />
+          </div>
+
+        </div>
       </div>
     </section>
   );

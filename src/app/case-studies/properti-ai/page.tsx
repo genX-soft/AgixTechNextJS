@@ -1,393 +1,125 @@
 'use client'
+import { CaseStudyV2, CaseStudyV2Data } from "@/components/case-study/CaseStudyV2";
 
-import { CaseStudyTemplate } from "@/components/shared/case-study-template";
-
-import { motion } from "@/lib/motion";
-
-import { CtaForm } from "@/components/forms/cta-form";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import {
-  ArrowLeft,
-  ArrowRight,
-  Home,
-  Target,
-  Clock,
-  TrendingUp,
-  Quote,
-  MapPin,
-  Search,
-  Users,
-  DollarSign,
-  CheckCircle2,
-  Building,
-  Bed,
-  Bath,
-  AlertTriangle,
-  FileSearch,
-  Activity,
-} from "lucide-react";
-import Link from "next/link";
+const data: CaseStudyV2Data = {
+  slug: "properti-ai",
+  company: "Properti AI",
+  industry: "Real Estate",
+  subIndustry: "AI Property Discovery Platform",
+  accentColor: "teal",
+  gradientClasses: "bg-gradient-to-br from-background via-teal-500/5 to-cyan-500/10",
+  heroHeadline: "Properti AI: Conversational Property Discovery That Converts",
+  heroSubheadline: "AI chatbot that understands lifestyle needs, not just square footage—delivering +156% lead conversion and 89% match accuracy while cutting agent qualification time 68%.",
+  heroStats: [
+    { value: "+156%", label: "Lead Conversion", color: "text-teal-400" },
+    { value: "89%", label: "Match Accuracy", color: "text-cyan-400" },
+    { value: "-68%", label: "Agent Time", color: "text-green-400" },
+  ],
+  directAnswerQuestion: "How does Properti AI use AI to improve property discovery?",
+  directAnswer: "Properti AI deployed a conversational property discovery AI that engages buyers in structured natural language dialogue to surface both explicit requirements and implicit preferences—commute priorities, neighborhood character, renovation appetite, and lifestyle fit. The AI cross-references the resulting intent profile against live listing data, school district ratings, walkability scores, and historical price trend data to generate ranked, personalized property recommendations. Buyers now find properties matching their actual preferences after viewing an average of 4.2 listings compared to 23.7 with traditional search.",
+  clientDescription: "Properti AI is a technology-forward real estate platform serving buyers and sellers across multiple markets. The platform generates significant lead volume but faced poor lead-to-qualified-viewing conversion rates driven by misalignment between stated buyer preferences and actual property needs—a gap that only became apparent after multiple wasted property tours.",
+  clientFounded: "2019",
+  clientSize: "150+ employees, operating in 12 markets",
+  clientLocation: "Singapore & Southeast Asia",
+  problemTitle: "Property Searches That Wasted Everyone's Time",
+  problemDescription: "Buyers waded through hundreds of mismatched listings while agents spent 60-70% of qualification time on prospects whose stated preferences didn't reflect what they actually wanted. Traditional search filters couldn't capture the nuanced factors—school districts, commute times, neighborhood character—that actually drove purchase decisions.",
+  painPoints: [
+    { title: "Mismatched Listings", stat: "73%", description: "Percentage of properties shown to buyers that didn't match their actual preferences—discovered only after tours.", color: "red" },
+    { title: "Agent Time Per Buyer", stat: "12+ hrs", description: "Hours agents spent qualifying each buyer through repetitive back-and-forth before reaching a good property match.", color: "amber" },
+    { title: "Lead Conversion Rate", stat: "34%", description: "Pre-AI conversion from initial inquiry to qualified viewing—leaving 66% of leads unrealized.", color: "orange" },
+  ],
+  solutionTitle: "Conversational Intent Profiling for Precision Property Matching",
+  solutionDescription: "AGIX Technologies built a conversational AI that discovers the buyer's true property requirements through structured dialogue—capturing lifestyle needs that filter-based search cannot express—then matches those requirements against live listings enriched with neighborhood, school, walkability, and appreciation data.",
+  solutionComponents: [
+    { title: "Conversational Intent Engine", description: "Multi-turn dialogue system that surfaces both explicit requirements (bedrooms, price) and implicit preferences (quiet street vs. vibrant area, renovation appetite, school priority) through natural conversation." },
+    { title: "Neighborhood Intelligence Layer", description: "Live enrichment of listings with school district ratings, walkability scores, commute time calculations, crime data, and 5-year price appreciation trends per neighborhood." },
+    { title: "Buyer Profile Modeling", description: "Structured buyer intent profiles combining stated preferences, inferred priorities, budget trajectory, and timeline signals—persisted across sessions as preferences refine." },
+    { title: "Ranked Match Engine", description: "Semantic matching algorithm that scores each listing against the buyer's complete intent profile, generating match percentage scores and ranked recommendation lists." },
+    { title: "Agent Handoff Intelligence", description: "When buyers reach viewing intent, agents receive the complete buyer profile, top-matched properties, and AI-detected motivation signals to accelerate the relationship from first meeting." },
+    { title: "Feedback Loop Refinement", description: "Every property tour outcome (interested/not interested and reasons) refines the buyer's preference model, improving subsequent recommendations throughout the purchase journey." },
+  ],
+  architectureTitle: "Properti AI Property Discovery Architecture",
+  architectureLayers: [
+    { name: "Buyer Engagement", components: ["Conversational Chat Interface", "Intent Dialogue Engine", "Preference Elicitation Flows", "Session Persistence", "Mobile & Web SDKs"], color: "sky" },
+    { name: "Intent Modeling", components: ["Explicit Requirement Extraction", "Implicit Preference Inference", "Lifestyle Scoring Model", "Buyer Segment Classification", "Priority Weighting Engine"], color: "teal" },
+    { name: "Listing Intelligence", components: ["Live MLS/Listing Feed", "School District API", "Walk Score Integration", "Commute Time Calculator", "Price Trend Database"], color: "cyan" },
+    { name: "Matching Engine", components: ["Semantic Profile Matching", "Match Score Generation", "Ranked Recommendation List", "Diversity & Exploration Balancing", "New Listing Alerts"], color: "blue" },
+    { name: "Agent Enablement", components: ["Buyer Profile Dashboard", "Match Explanation Export", "Viewing Readiness Score", "CRM Integration", "Conversion Tracking"], color: "green" },
+  ],
+  resultsTitle: "Lead Quality and Agent Efficiency Both Transformed",
+  resultsMetrics: [
+    { value: "+156%", label: "Lead-to-Viewing Conversion", description: "Buyers pre-qualified by AI arrive at viewings with genuine property fit", color: "teal" },
+    { value: "4.2", label: "Avg Properties to Purchase", description: "Down from 23.7 viewings under the old process—dramatically shorter buyer journeys", color: "cyan" },
+    { value: "-68%", label: "Agent Qualification Time", description: "Agents focus on high-intent buyers where relationship skills drive outcomes", color: "green" },
+    { value: "89%", label: "Match Accuracy", description: "Percentage of AI-recommended properties that buyers rate as genuinely fitting their needs", color: "blue" },
+  ],
+  resultsQuote: {
+    text: "Buyers used to waste weeks looking at properties that didn't fit. Our AI asks the right questions, understands lifestyle needs—not just square footage—and surfaces matches that feel like magic. Agents now spend time closing deals, not qualifying tire-kickers.",
+    author: "VP of Growth",
+    role: "Properti AI",
+  },
+  howItWorksTitle: "How Properti AI Matches Buyers to Properties",
+  steps: [
+    { title: "Conversational Onboarding", description: "Engage buyers in structured dialogue about needs and lifestyle", detail: "Rather than presenting filter dropdowns, the AI opens a conversation: 'Tell me what's important to you in your next home.' It guides the buyer through a structured but natural dialogue that surfaces both explicit requirements and lifestyle priorities—school proximity, work-from-home needs, entertaining space—in 5-7 minutes." },
+    { title: "Intent Profile Construction", description: "Build a structured buyer profile from dialogue signals", detail: "Each conversational exchange is parsed to extract and weight requirements. Repeated mentions of school ratings across multiple questions signal higher priority than a single mention of parking. The system constructs a weighted intent vector that captures the buyer's true preference hierarchy." },
+    { title: "Listing Enrichment", description: "Enrich every listing with contextual neighborhood data", detail: "Each listing in the market is enriched in real time with school district ratings, walk score, commute time to the buyer's stated workplace, safety scores, and 5-year price appreciation for that specific neighborhood—converting raw listing data into lifestyle-relevant profiles." },
+    { title: "Semantic Matching", description: "Score every listing against the buyer's intent profile", detail: "The matching engine calculates a fit score for every listing in the market against the buyer's intent vector, weighting factors by the buyer's stated and inferred priorities. Listings are ranked by match score and presented with match explanations." },
+    { title: "Recommendation Delivery", description: "Present ranked recommendations with match explanations", detail: "The top 5-10 properties are presented with percentage match scores and specific explanations—'93% match: 4 bedrooms, excellent school district (9.1/10), 18-min commute, quiet cul-de-sac street.' Buyers understand why each property was recommended." },
+    { title: "Preference Refinement", description: "Learn from viewing feedback to improve future matches", detail: "After each viewing, the buyer rates the property and optionally explains why it did or didn't fit. These feedback signals update the intent model—if a buyer consistently rejects open-plan layouts despite not mentioning them initially, the system infers that preference and filters accordingly." },
+  ],
+  whyItWorkedTitle: "Why Properti AI's Matching Platform Succeeded",
+  whyFactors: [
+    { title: "Lifestyle Needs Over Filter Logic", description: "Capturing 'good for remote work' and 'family-friendly neighborhood' through dialogue is impossible with dropdown filters—conversational AI unlocked preferences that traditional search cannot express." },
+    { title: "Match Explanations Build Trust", description: "Showing buyers exactly why each property was recommended—with specific data on schools, commute, and fit factors—increased engagement with recommendations vs. algorithmic black-box lists." },
+    { title: "Agent Collaboration Not Replacement", description: "The AI positions itself as a pre-qualification layer that improves agent effectiveness, not a replacement. Agents receive better-qualified buyers—a value proposition that drove adoption." },
+    { title: "Enriched Listing Data as Competitive Moat", description: "Integrating school district, walkability, and commute data per listing created a richer matching surface than raw listing attributes alone—improving recommendation quality across all buyer types." },
+    { title: "Session Persistence Across Journey", description: "Persisting buyer profiles across multiple sessions allowed the AI to refine recommendations over days and weeks as buyer preferences evolved—not just one-time matching." },
+    { title: "Feedback Loop as Training Data", description: "Viewing outcome feedback creates a continuously improving training set specific to each market's buyer preferences, giving the platform a data moat that strengthens over time." },
+  ],
+  limitations: [
+    { title: "Limited in Off-Market Inventory", description: "The matching engine can only recommend listed properties. Off-market opportunities, new construction pre-sales, and auction properties require separate integration." },
+    { title: "Buyer Preference Volatility", description: "Buyer preferences sometimes shift dramatically after seeing a property (realizing they actually want more space than they said). Rapid preference changes require multiple feedback cycles to stabilize the model." },
+    { title: "Market Data Currency", description: "School ratings, crime data, and walkability scores can lag actual neighborhood conditions by 6-12 months, potentially creating mismatches for rapidly changing areas." },
+    { title: "Investment Property Matching Is Different", description: "Investor buyers evaluating rental yield, cap rate, and appreciation potential require a separate model focused on financial metrics rather than lifestyle fit." },
+  ],
+  whenToUseGoodFit: [
+    "Operate a property marketplace with 1,000+ active listings generating significant lead volume",
+    "Face lead quality issues where agents spend excessive time on unqualified buyers",
+    "Sell residential properties where lifestyle fit is a significant purchase driver",
+    "Have API access to listing data and can integrate neighborhood data sources",
+    "Want to differentiate on buyer experience rather than competing purely on listing volume",
+  ],
+  whenToUseNotGoodFit: [
+    "Small single-agent practices where personal consultation handles pre-qualification",
+    "Pure commercial real estate where financial metrics dominate lifestyle considerations",
+    "Markets with very limited inventory (fewer than 100 active listings)",
+    "Auction or distressed property platforms where speed and price dominate all other factors",
+  ],
+  connections: [
+    { name: "Conversational AI Chatbots", slug: "conversational-ai-chatbots", relevance: "Multi-turn dialogue system for buyer intent discovery", type: "service" },
+    { name: "AI Predictive Analytics", slug: "ai-predictive-analytics", relevance: "Property match scoring and buyer preference modeling", type: "service" },
+    { name: "RAG Knowledge AI", slug: "rag-knowledge-ai", relevance: "Neighborhood intelligence and listing data enrichment", type: "service" },
+    { name: "Real Estate AI Solutions", slug: "real-estate-ai-solutions", relevance: "AI deployment patterns across residential and commercial real estate", type: "industry" },
+    { name: "Conversational AI", slug: "conversational-ai", relevance: "Natural language buyer profiling and preference elicitation", type: "intelligence" },
+  ],
+  keyTakeaways: [
+    "Lead-to-qualified-viewing conversion increased +156% through AI pre-qualification",
+    "Average properties viewed before purchase: 4.2 vs 23.7 with traditional search",
+    "Conversational AI surfaces lifestyle preferences that filter-based search cannot capture",
+    "Agent qualification time reduced 68%—agents focus on high-intent buyers",
+    "89% match accuracy achieved by enriching listings with school, commute, and walkability data",
+  ],
+  faqs: [
+    { question: "How does the AI discover implicit preferences that buyers don't explicitly state?", answer: "The dialogue system uses structured prompting that surfaces lifestyle context: asking about a typical weekend, work location, family stage, and how the buyer currently spends time reveals preferences around neighborhood character, commute, and space needs that buyers rarely volunteer unprompted." },
+    { question: "What data sources power the neighborhood enrichment layer?", answer: "School district ratings from GreatSchools, walkability scores from Walk Score, commute times from Google Maps API, crime data from local police APIs, and price appreciation from MLS historical data are aggregated per listing to create the neighborhood intelligence layer." },
+    { question: "How does the system handle buyers who don't know what they want?", answer: "The dialogue is designed for exactly this case. Rather than asking buyers to specify requirements, it presents concrete trade-offs ('Would you prefer a smaller home in a top school district or more space in a good-but-not-top district?') that reveal priorities through choices rather than free-form specification." },
+    { question: "Can agents adjust or override AI recommendations?", answer: "Yes. Agents can view and modify the buyer's intent profile, add or remove specific requirements, and manually override match rankings based on information gathered in consultation. Agent overrides are tracked as feedback that improves the model." },
+    { question: "How does the system integrate with existing CRM and listing platforms?", answer: "Properti AI provides REST APIs and webhooks for CRM integration (Salesforce, HubSpot) and connects to MLS feeds via standard RETS or RESO Web API protocols. Typical integration takes 3-4 weeks including testing and data validation." },
+  ],
+  prevCase: { name: "Brainfish", url: "/case-studies/brainfish/" },
+  nextCase: { name: "Dartmouth College", url: "/case-studies/dartmouth-college/" },
+};
 
 export default function PropertiAICaseStudyPage() {
-  return (
-    <CaseStudyTemplate prevCase={undefined} nextCase={undefined}>
-
-      {/* Hero Section - Uniform Layout */}
-      <section className="pt-24 lg:pt-28 pb-16 bg-gradient-to-br from-teal-500/10 via-background to-cyan-500/10 min-h-[80vh] flex items-center">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="space-y-6">
-            <Link href="/case-studies/">
-              <Button variant="ghost" size="sm" className="gap-2" data-testid="button-back-to-cases">
-                <ArrowLeft className="w-4 h-4" />
-                Back to Case Studies
-              </Button>
-            </Link>
-
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div className="space-y-6">
-                <div className="flex flex-wrap items-center gap-2">
-                  <Badge variant="outline" className="border-teal-500/30 text-teal-400">
-                    <Home className="w-3 h-3 mr-1" />
-                    Real Estate
-                  </Badge>
-                  <Badge variant="outline" className="border-cyan-500/30 text-cyan-400">
-                    Property AI
-                  </Badge>
-                </div>
-
-                <h1 className="text-4xl md:text-5xl font-bold leading-tight" data-testid="text-company-name">
-                  Properti AI Case Study: AI Property Discovery Platform
-                </h1>
-
-                <p className="text-xl text-muted-foreground">
-                  AI chatbot for intelligent property discovery. Achieving +156% lead 
-                  conversion with 89% match accuracy for buyers.
-                </p>
-
-                <div className="flex flex-wrap gap-6 pt-4">
-                  <div className="text-center">
-                    <p className="text-3xl font-bold text-teal-400">+156%</p>
-                    <p className="text-sm text-muted-foreground">Lead Conversion</p>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-3xl font-bold text-cyan-400">+89%</p>
-                    <p className="text-sm text-muted-foreground">Match Accuracy</p>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-3xl font-bold text-green-400">-68%</p>
-                    <p className="text-sm text-muted-foreground">Agent Time</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Property Matching Visual */}
-              <Card className="bg-gradient-to-br from-slate-900 to-slate-800 border-slate-700">
-                <CardContent className="p-8">
-                  <div className="flex items-center gap-3 mb-6">
-                    <Search className="w-6 h-6 text-teal-400" />
-                    <p className="text-xs uppercase tracking-widest text-slate-400">Property Match</p>
-                  </div>
-                  <div className="space-y-3">
-                    {[
-                      { name: "Modern Downtown Condo", price: "$485,000", match: "96%" },
-                      { name: "Austin Heights Home", price: "$520,000", match: "91%" },
-                      { name: "East Side Townhouse", price: "$495,000", match: "88%" },
-                    ].map((property, i) => (
-                      <div key={i} className="flex items-center justify-between p-3 rounded-lg bg-slate-800/50">
-                        <div>
-                          <p className="text-sm font-medium text-white">{property.name}</p>
-                          <p className="text-xs text-slate-400">{property.price}</p>
-                        </div>
-                        <Badge className="bg-teal-500/20 text-teal-400 border-teal-500/30">
-                          {property.match} match
-                        </Badge>
-                      </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Case Study Overview */}
-      <section className="py-16 bg-muted/30">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <h2 className="text-3xl font-bold mb-8">Case Study Overview</h2>
-          <div className="space-y-4 text-lg text-muted-foreground">
-            <p>
-              <strong className="text-foreground">The Challenge:</strong> Properti AI's real estate platform was generating significant lead volume, but conversion from initial inquiry to qualified viewing was poor. Agents spent 60-70% of their qualification time on prospects whose stated preferences and actual property needs were misaligned--a mismatch that only became apparent after multiple property tours. Buyers navigated listings using basic filters that couldn't capture the nuanced combination of factors that actually drove purchase decisions.
-            </p>
-            <p>
-              <strong className="text-foreground">The Solution:</strong> AGIX Technologies built a conversational property discovery AI that engages buyers in structured natural language dialogue to surface both explicit requirements and implicit preferences--commute priorities, neighborhood character preferences, renovation appetite, lifestyle fit--and cross-references the resulting intent profile against live listing data, school district ratings, walkability scores, and historical price trend data to generate ranked, personalized property recommendations.
-            </p>
-            <p>
-              <strong className="text-foreground">The Impact:</strong> Lead-to-qualified-viewing conversion improved +156% as the AI pre-qualification layer ensured that buyers entering the viewing process had genuine fit with the properties they were considering. Buyers found properties matching their actual preferences after viewing an average of 4.2 listings, compared to 23.7 with the traditional search interface. Agent time spent on initial qualification dropped 68%, allowing them to concentrate on high-intent buyers where relationship and negotiation skills drive outcomes.
-            </p>
-          </div>
-        </div>
-      </section>
-
-
-      {/* The Challenge */}
-      <section className="py-16">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="space-y-8"
-          >
-            <Badge variant="outline" className="border-amber-500/30 text-amber-400">
-              <AlertTriangle className="w-3 h-3 mr-1" />
-              The Challenge
-            </Badge>
-
-            <h2 className="text-3xl font-bold">Property Searches That Wasted Everyone's Time</h2>
-            
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              Buyers were wading through hundreds of mismatched listings, while agents spent hours 
-              qualifying leads who weren't ready to buy. Traditional search filters couldn't understand 
-              lifestyle needs--like "good for remote work" or "family-friendly neighborhood"--leading to 
-              endless property tours that went nowhere. Both sides were frustrated, and deals were falling through.
-            </p>
-
-            <div className="grid md:grid-cols-3 gap-6">
-              <Card className="border-red-500/20">
-                <CardContent className="p-6 text-center">
-                  <FileSearch className="w-8 h-8 text-red-400 mx-auto mb-3" />
-                  <p className="text-2xl font-bold text-red-400">73%</p>
-                  <p className="text-sm text-muted-foreground">Mismatched listings shown</p>
-                </CardContent>
-              </Card>
-              <Card className="border-amber-500/20">
-                <CardContent className="p-6 text-center">
-                  <Clock className="w-8 h-8 text-amber-400 mx-auto mb-3" />
-                  <p className="text-2xl font-bold text-amber-400">12+ hrs</p>
-                  <p className="text-sm text-muted-foreground">Agent time per buyer</p>
-                </CardContent>
-              </Card>
-              <Card className="border-orange-500/20">
-                <CardContent className="p-6 text-center">
-                  <Activity className="w-8 h-8 text-orange-400 mx-auto mb-3" />
-                  <p className="text-2xl font-bold text-orange-400">34%</p>
-                  <p className="text-sm text-muted-foreground">Lead conversion rate</p>
-                </CardContent>
-              </Card>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      <section className="py-16">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <h2 className="text-2xl font-bold mb-8 text-center">Property Discovery Journey</h2>
-          
-          <div className="grid lg:grid-cols-3 gap-6">
-            <Card className="lg:col-span-1">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Users className="w-5 h-5 text-teal-400" />
-                  Buyer Persona
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="p-4 rounded-lg bg-teal-500/10">
-                  <p className="text-sm font-medium mb-2">First-Time Buyer</p>
-                  <div className="space-y-2 text-sm text-muted-foreground">
-                    <div className="flex justify-between">
-                      <span>Budget:</span>
-                      <span className="font-medium text-foreground">$450K - $550K</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span>Location:</span>
-                      <span className="font-medium text-foreground">Austin, TX</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span>Type:</span>
-                      <span className="font-medium text-foreground">Single Family</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span>Must-Have:</span>
-                      <span className="font-medium text-foreground">Home office</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="space-y-2">
-                  <p className="text-xs font-medium text-muted-foreground">AI-Detected Priorities</p>
-                  <div className="flex flex-wrap gap-1">
-                    {["School district", "Quiet street", "Modern kitchen", "Garage"].map((tag, i) => (
-                      <Badge key={i} variant="outline" className="text-xs">{tag}</Badge>
-                    ))}
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="lg:col-span-2">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Search className="w-5 h-5 text-teal-400" />
-                  AI-Matched Properties
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                {[
-                  { address: "2847 Oak Haven Dr", match: "96%", price: "$525,000", beds: 4, baths: 3, sqft: "2,450" },
-                  { address: "1923 Maple Ridge Ln", match: "94%", price: "$498,000", beds: 3, baths: 2.5, sqft: "2,180" },
-                  { address: "5612 Cedar Park Blvd", match: "91%", price: "$542,000", beds: 4, baths: 2, sqft: "2,620" },
-                ].map((property, i) => (
-                  <div key={i} className="flex items-center gap-4 p-4 rounded-lg bg-muted/50">
-                    <div className="w-20 h-20 rounded-lg bg-slate-200 dark:bg-slate-700 flex items-center justify-center">
-                      <Building className="w-8 h-8 text-muted-foreground" />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center gap-2 mb-1">
-                        <p className="font-medium truncate">{property.address}</p>
-                        <Badge className="bg-teal-500/20 text-teal-400 border-teal-500/30 flex-shrink-0">
-                          {property.match} match
-                        </Badge>
-                      </div>
-                      <p className="text-lg font-bold text-teal-400">{property.price}</p>
-                      <div className="flex items-center gap-3 text-sm text-muted-foreground mt-1">
-                        <span className="flex items-center gap-1">
-                          <Bed className="w-3 h-3" /> {property.beds}
-                        </span>
-                        <span className="flex items-center gap-1">
-                          <Bath className="w-3 h-3" /> {property.baths}
-                        </span>
-                        <span>{property.sqft} sqft</span>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16 bg-gradient-to-r from-teal-500/5 via-background to-cyan-500/5">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="grid lg:grid-cols-2 gap-12">
-            <div>
-              <Badge className="mb-4 bg-teal-500/20 text-teal-400 border-teal-500/30">
-                <MapPin className="w-3 h-3 mr-1" />
-                Neighborhood Intelligence
-              </Badge>
-              <h3 className="text-2xl font-bold mb-4">Contextual Location Insights</h3>
-              
-              <div className="grid grid-cols-2 gap-4">
-                {[
-                  { category: "Schools", score: "9.2/10", detail: "Top-rated district" },
-                  { category: "Safety", score: "A+", detail: "Low crime area" },
-                  { category: "Commute", score: "22 min", detail: "To downtown" },
-                  { category: "Walkability", score: "74", detail: "Very walkable" },
-                  { category: "Growth", score: "+12%", detail: "5-yr appreciation" },
-                  { category: "Amenities", score: "Excellent", detail: "Parks, shops nearby" },
-                ].map((item, i) => (
-                  <Card key={i}>
-                    <CardContent className="p-3">
-                      <p className="text-xs text-muted-foreground">{item.category}</p>
-                      <p className="text-lg font-bold text-teal-400">{item.score}</p>
-                      <p className="text-xs text-muted-foreground">{item.detail}</p>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-            </div>
-
-            <div>
-              <Badge className="mb-4 bg-cyan-500/20 text-cyan-400 border-cyan-500/30">
-                <CheckCircle2 className="w-3 h-3 mr-1" />
-                Buyer Readiness
-              </Badge>
-              <h3 className="text-xl font-bold mb-4">Negotiation Readiness Checklist</h3>
-
-              <Card className="bg-slate-900">
-                <CardContent className="p-4 space-y-3">
-                  {[
-                    { item: "Pre-approval letter obtained", status: true },
-                    { item: "Down payment verified (15%)", status: true },
-                    { item: "Inspection contingency discussed", status: true },
-                    { item: "Closing timeline aligned", status: true },
-                    { item: "Counter-offer strategy defined", status: false },
-                  ].map((check, i) => (
-                    <div key={i} className="flex items-center justify-between">
-                      <span className={`text-sm ${check.status ? 'text-slate-200' : 'text-slate-500'}`}>
-                        {check.item}
-                      </span>
-                      <CheckCircle2 className={`w-4 h-4 ${check.status ? 'text-green-400' : 'text-slate-600'}`} />
-                    </div>
-                  ))}
-                </CardContent>
-              </Card>
-
-              <Card className="mt-4 bg-gradient-to-br from-teal-500/10 to-cyan-500/10">
-                <CardContent className="p-4 text-center">
-                  <p className="text-sm text-muted-foreground mb-1">Buyer Readiness Score</p>
-                  <p className="text-3xl font-bold text-teal-400">85%</p>
-                  <p className="text-xs text-muted-foreground mt-1">Ready to make competitive offers</p>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <Card className="border-teal-500/20">
-            <CardContent className="p-8 md:p-12">
-              <Quote className="w-10 h-10 text-teal-500/30 mb-4" />
-              <blockquote className="text-xl md:text-2xl font-medium leading-relaxed mb-6">
-                "Buyers used to waste weeks looking at properties that didn't fit. 
-                Our AI asks the right questions, understands lifestyle needs--not just 
-                square footage--and surfaces matches that feel like magic. Agents now 
-                spend time closing deals, not qualifying tire-kickers."
-              </blockquote>
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-teal-500 to-cyan-500 flex items-center justify-center text-white font-bold">
-                  KR
-                </div>
-                <div>
-                  <p className="font-semibold">Kevin Rodriguez</p>
-                  <p className="text-sm text-muted-foreground">VP of Growth, Properti AI</p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-
-      <section className="py-16 bg-slate-900">
-        <div className="max-w-2xl mx-auto px-4 sm:px-6 text-center">
-          <h2 className="text-2xl font-bold text-white mb-4">Building Real Estate Discovery AI?</h2>
-          <p className="text-slate-400 mb-8">Let's create property matching that delights buyers and agents.</p>
-          <CtaForm />
-        </div>
-      </section>
-
-      <section className="py-8 border-t border-border/50">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 flex justify-between">
-          <Link href="/case-studies/brainfish/">
-            <Button variant="ghost" size="sm" className="gap-2" data-testid="button-prev-case">
-              <ArrowLeft className="w-4 h-4" />
-              Brainfish
-            </Button>
-          </Link>
-          <Link href="/case-studies/dartmouth-college/">
-            <Button variant="ghost" size="sm" className="gap-2" data-testid="button-next-case">
-              Dartmouth College
-              <ArrowRight className="w-4 h-4" />
-            </Button>
-          </Link>
-        </div>
-      </section>
-      </CaseStudyTemplate>
-  );
+  return <CaseStudyV2 data={data} />;
 }

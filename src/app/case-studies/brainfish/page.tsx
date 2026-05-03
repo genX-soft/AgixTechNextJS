@@ -1,512 +1,124 @@
 'use client'
-import { useState } from "react";import { CaseStudyTemplate } from "@/components/shared/case-study-template";
+import { CaseStudyV2, CaseStudyV2Data } from "@/components/case-study/CaseStudyV2";
 
-import { motion, AnimatePresence } from "@/lib/motion";
-
-
-import { CtaForm } from "@/components/forms/cta-form";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Progress } from "@/components/ui/progress";
-import {
-  ArrowLeft,
-  ArrowRight,
-  MessageSquare,
-  Target,
-  Clock,
-  TrendingDown,
-  Quote,
-  Zap,
-  Users,
-  Bot,
-  ArrowDown,
-  CheckCircle2,
-  Languages,
-  ShieldCheck,
-  Brain,
-  ThumbsUp,
-  Send,
-  HelpCircle,
-  FileQuestion,
-  CreditCard,
-  Package,
-  RotateCcw,
-  AlertTriangle,
-  FileX,
-  Inbox,
-} from "lucide-react";
-import Link from "next/link";
+const data: CaseStudyV2Data = {
+  slug: "brainfish",
+  company: "Brainfish",
+  industry: "SaaS Customer Support",
+  subIndustry: "AI Self-Service Resolution",
+  accentColor: "violet",
+  gradientClasses: "bg-gradient-to-br from-background via-violet-500/5 to-purple-500/10",
+  heroHeadline: "Brainfish: AI Support That Resolves 91% of Tickets Without a Human",
+  heroSubheadline: "Moving customer support from reactive ticket queues to instant, contextual resolution—handling 28,000+ support conversations monthly with 91% first-contact resolution and sub-3-second response times.",
+  heroStats: [
+    { value: "91%", label: "First-Contact Resolution", color: "text-violet-400" },
+    { value: "-78%", label: "Escalation to Human", color: "text-purple-400" },
+    { value: "<3s", label: "Response Time", color: "text-indigo-400" },
+  ],
+  directAnswerQuestion: "How does Brainfish achieve 91% AI customer support resolution?",
+  directAnswer: "Brainfish uses a retrieval-augmented generation (RAG) system that combines a fine-tuned language model with a live knowledge base of product documentation, past resolved tickets, and policy FAQs. When a customer asks a question, the system retrieves the most relevant context from all knowledge sources, generates a precise answer grounded in that context, and resolves 91% of tickets without human involvement. For the remaining 9%, it generates a detailed handoff summary for the human agent.",
+  clientDescription: "Brainfish is an AI-powered customer support platform used by B2B SaaS companies processing millions of customer interactions. The platform sits in front of existing support ticketing systems and handles routine inquiries, product how-to questions, billing issues, and technical troubleshooting—routing only genuine exceptions to human agents.",
+  clientFounded: "2019",
+  clientSize: "500+ SaaS customers, processing 2M+ monthly interactions",
+  clientLocation: "San Francisco, CA, USA",
+  problemTitle: "SaaS Support Teams Are Drowning in Repetitive Tickets",
+  problemDescription: "In B2B SaaS, the same questions get asked thousands of times. 'How do I export my data?', 'Why was I charged twice?', 'Why is the integration not syncing?'—these account for 70%+ of all support volume. Every ticket is handled identically by a human agent who has answered the same question 500 times before. The work is repetitive, agents burn out, and customers wait.",
+  painPoints: [
+    { title: "Repetitive Ticket Rate", stat: "73%", description: "Proportion of support tickets that ask questions with existing, known answers in product documentation or past tickets.", color: "amber" },
+    { title: "Average First Response Time", stat: "6.5 min", description: "Time customers waited for initial response before AI, including queue time and agent reading time.", color: "red" },
+    { title: "Agent Annual Turnover", stat: "42%", description: "High turnover driven by repetitive, low-engagement work—costing companies 6–9 months salary per replacement.", color: "orange" },
+  ],
+  solutionTitle: "RAG-Powered Self-Service That Learns From Every Resolved Ticket",
+  solutionDescription: "AGIX Technologies built a retrieval-augmented support system that ingests the company's entire knowledge base—documentation, FAQs, past tickets, policy documents—and uses semantic search plus a generative model to compose accurate, contextual answers. The system handles the full resolution flow: understand intent, retrieve context, generate answer, confirm resolution, escalate if needed.",
+  solutionComponents: [
+    { title: "Intent Classification Engine", description: "Classifies incoming queries into intent categories (billing, how-to, technical, account) to route to the appropriate knowledge domains and response templates." },
+    { title: "Multi-Source Knowledge Retrieval", description: "Semantic search across product docs, FAQ articles, and 24 months of resolved tickets to find the most relevant context for each specific query." },
+    { title: "Answer Generation with Grounding", description: "GPT-4 class model generates answers grounded in retrieved context, with citations to source documents and step-by-step instructions where applicable." },
+    { title: "Resolution Confidence Scoring", description: "Each generated answer receives a confidence score based on retrieval quality and answer coherence. Low-confidence responses are flagged for human review before delivery." },
+    { title: "Seamless Escalation Handoff", description: "When escalation is needed, the system generates a complete case summary—conversation history, extracted entities, attempted solutions—so agents have full context immediately." },
+    { title: "Continuous Learning Pipeline", description: "Every resolved ticket (human or AI) enriches the knowledge base. CSAT scores on AI-handled tickets drive targeted knowledge gap identification and resolution." },
+  ],
+  architectureTitle: "Brainfish AI Support Architecture",
+  architectureLayers: [
+    { name: "Intake & Routing", components: ["Multi-Channel Ingestion (Chat, Email, API)", "Language Detection", "Intent Classification", "Priority Scoring"], color: "violet" },
+    { name: "Knowledge Retrieval", components: ["Product Documentation Index", "Resolved Ticket Corpus", "Policy & FAQ Database", "Semantic Vector Search"], color: "indigo" },
+    { name: "Answer Generation", components: ["Context Assembly", "GPT-4 Grounded Generation", "Step-by-Step Instruction Generation", "Citation Tracking"], color: "purple" },
+    { name: "Quality & Resolution", components: ["Confidence Scoring", "Resolution Confirmation Flow", "CSAT Collection", "Escalation Handoff Builder"], color: "blue" },
+    { name: "Learning & Improvement", components: ["Ticket Outcome Tracking", "Knowledge Gap Detection", "Model Retraining Triggers", "Agent Feedback Loop"], color: "cyan" },
+  ],
+  resultsTitle: "Transforming Support from Cost Center to Competitive Advantage",
+  resultsMetrics: [
+    { value: "91%", label: "First-Contact Resolution", description: "Tickets resolved by AI without any human agent involvement across all intent types", color: "violet" },
+    { value: "<3s", label: "Median Response Time", description: "vs 6.5 minutes average before AI implementation across all channels", color: "purple" },
+    { value: "-78%", label: "Human Escalations", description: "Reduction in tickets requiring human agent involvement since deployment", color: "indigo" },
+    { value: "4.7/5", label: "AI CSAT Score", description: "Customer satisfaction rating on AI-handled conversations vs 4.2 for human-only", color: "blue" },
+  ],
+  resultsQuote: {
+    text: "Our support team used to handle 3,000 tickets a week. Now they handle 650—and they're the hard ones that actually require judgment. Job satisfaction scores went up 40% because agents are finally doing interesting work.",
+    author: "VP of Customer Success",
+    role: "Series C SaaS Company",
+  },
+  howItWorksTitle: "How Brainfish Resolves a Support Ticket",
+  steps: [
+    { title: "Ticket Ingestion & Classification", description: "Receive query and identify what the customer needs", detail: "Incoming queries arrive via chat widget, email integration, or API. The intent classifier identifies the query type (billing, how-to, technical, account management) and extracts key entities: product names, error codes, account identifiers, specific features mentioned." },
+    { title: "Knowledge Retrieval", description: "Find the most relevant context from all knowledge sources", detail: "The retrieval layer runs parallel semantic searches across product documentation, the FAQ database, and 24 months of resolved support tickets. The top 5 most relevant chunks from each source are assembled into a retrieval context, ranked by relevance score." },
+    { title: "Answer Generation", description: "Compose a precise, grounded answer", detail: "The generative model receives the user query and retrieved context and produces a direct answer. For how-to questions, it generates numbered step-by-step instructions citing the specific documentation section. For billing questions, it references account data where available. All answers include confidence metadata." },
+    { title: "Confidence Gating", description: "Decide: deliver, review, or escalate", detail: "Answers above 85% confidence are delivered directly to the customer. Answers between 65–85% confidence are queued for quick human review before delivery (typically <30 seconds). Answers below 65% confidence trigger immediate human escalation with a full case summary." },
+    { title: "Resolution Confirmation", description: "Verify the customer's issue was actually solved", detail: "After delivering an answer, the system asks a confirmation question: 'Did this resolve your issue?' Negative responses trigger a follow-up clarification loop, trying a different approach before escalating. This confirmation step raised first-contact resolution from 82% to 91% in A/B testing." },
+    { title: "Learning & Knowledge Update", description: "Improve the system from every interaction", detail: "Tickets where the AI answer was confirmed as resolved are added to the knowledge corpus with their query-answer pair. Escalated tickets are reviewed by agents, who update documentation where gaps existed. CSAT data is used to identify which answer types need quality improvement." },
+  ],
+  whyItWorkedTitle: "Why 91% Resolution Isn't Lucky—It's Engineered",
+  whyFactors: [
+    { title: "Grounding Prevents Hallucination", description: "By constraining the generative model to only use retrieved context, the system cannot fabricate answers—every response traces back to a verified source document." },
+    { title: "Confidence Gating Maintained Quality", description: "Not delivering every answer automatically—routing low-confidence responses through human review—protected customer experience during the transition period." },
+    { title: "Resolution Confirmation Loop", description: "Asking customers to confirm resolution rather than assuming success identified a 9% gap between 'answer delivered' and 'issue actually resolved', driving targeted improvements." },
+    { title: "Continuous Knowledge Base Enrichment", description: "Every resolved ticket becoming a training example meant the system improved fastest in exactly the areas customers asked about most frequently." },
+    { title: "Agent Handoff Quality", description: "Agents receiving AI-generated handoff summaries resolved escalated tickets 45% faster than cold transfers, creating a strong incentive for agents to trust the system." },
+  ],
+  limitations: [
+    { title: "Complex Multi-System Issues", description: "When a customer's problem spans multiple product areas, integrations, or requires account-level investigation, the system often cannot resolve without human access to internal tools." },
+    { title: "Emotionally Escalated Customers", description: "Customers who are angry or distressed need human empathy. The system detects emotional escalation signals and routes proactively, but some cases arrive already too elevated for AI handling." },
+    { title: "Knowledge Base Quality Dependency", description: "The system is only as good as the documentation it retrieves from. Companies with outdated, inconsistent, or sparse documentation see lower resolution rates until they invest in knowledge management." },
+    { title: "Product Changes Require Knowledge Updates", description: "New product features or pricing changes must be reflected in the knowledge base before the AI can handle related questions. There's typically a 24–48 hour lag between a product change and AI coverage." },
+  ],
+  whenToUseGoodFit: [
+    "B2B SaaS companies with 500+ support tickets per month",
+    "Support teams spending >60% of time on repetitive, answerable questions",
+    "Organizations with reasonably well-documented products and policies",
+    "Companies with a clear escalation path to human agents for complex issues",
+  ],
+  whenToUseNotGoodFit: [
+    "Products with extremely high complexity where every ticket is unique",
+    "Industries requiring licensed professionals (legal, medical) for support decisions",
+    "Companies without a maintained product knowledge base",
+    "Low-volume support environments where human touch is core to the value proposition",
+  ],
+  connections: [
+    { name: "RAG Knowledge AI", slug: "rag-knowledge-ai", relevance: "Core retrieval-augmented generation for support resolution", type: "service" },
+    { name: "Conversational AI Chatbots", slug: "conversational-ai-chatbots", relevance: "Customer-facing dialogue management and intent handling", type: "service" },
+    { name: "AI Automation", slug: "ai-automation", relevance: "Ticket routing, classification, and workflow automation", type: "service" },
+    { name: "Enterprise Knowledge AI", slug: "enterprise-knowledge-ai", relevance: "Internal knowledge base management and search", type: "intelligence" },
+    { name: "Conversational AI", slug: "conversational-ai", relevance: "Multi-turn support dialogue with resolution confirmation", type: "intelligence" },
+    { name: "Operational AI", slug: "operational-ai", relevance: "Support operations efficiency and CSAT optimization", type: "intelligence" },
+  ],
+  keyTakeaways: [
+    "91% first-contact resolution achievable with RAG grounding and confidence gating",
+    "Resolution confirmation loop is critical—don't assume delivery equals resolution",
+    "Closed knowledge loop (resolved tickets → training data) compounds improvement over time",
+    "Agent satisfaction improves significantly when AI filters out repetitive work",
+    "Handoff quality to human agents is as important as AI resolution rate",
+  ],
+  faqs: [
+    { question: "How long does it take to integrate Brainfish with existing support tools?", answer: "Standard integration with Zendesk, Intercom, or Freshdesk takes 1–2 weeks. Custom integrations via API can handle any ticketing system. Initial knowledge base ingestion from documentation and past tickets takes 3–5 days, after which the system is live for pilot testing." },
+    { question: "What happens to agents' jobs when 78% of tickets are handled by AI?", answer: "In every deployment, total ticket volume grew (customers submit more tickets when resolution is instant). Agents shifted from handling 100% of 3,000 tickets to handling 22% of 5,000 tickets—roughly the same workload, but focused on genuinely complex cases. No deployments resulted in agent headcount reductions." },
+    { question: "How does the system handle questions about features that don't exist yet?", answer: "The system responds with what the product currently supports and, where configured, offers to log a feature request. It doesn't speculate about future features, which prevents both inaccurate promises to customers and premature product commitments." },
+    { question: "What is the minimum ticket volume needed to justify this investment?", answer: "The ROI breakeven point is typically around 300–500 tickets per month, where AI handling costs are offset by reduced human agent time. Below this volume, a well-organized FAQ page is often more cost-effective. The system delivers maximum value above 2,000 tickets per month." },
+    { question: "Can the system handle multiple languages?", answer: "Yes. The system detects the customer's language and responds in kind. Current supported languages include English, Spanish, French, German, Portuguese, Japanese, and Mandarin. Knowledge base content must be available in each language, though automated translation of existing documentation is available as an add-on." },
+  ],
+  prevCase: undefined,
+  nextCase: undefined,
+};
 
 export default function BrainfishCaseStudyPage() {
-  const [selectedIntent, setSelectedIntent] = useState("billing");
-  const [showResponse, setShowResponse] = useState(false);
-  const [chatMessages, setChatMessages] = useState<{type: string; text: string}[]>([]);
-
-  const intents = [
-    { 
-      id: "billing", 
-      name: "Account & Billing", 
-      icon: CreditCard,
-      volume: "28%", 
-      resolution: "91%",
-      sample: { 
-        query: "Why was I charged twice this month?", 
-        response: "I see there were two charges on your account. Looking at the transaction history, the first was your regular monthly subscription on the 1st, and the second appears to be an annual add-on you signed up for on the 15th. Would you like me to show you the breakdown or help you cancel the add-on?"
-      }
-    },
-    { 
-      id: "howto", 
-      name: "Product How-To", 
-      icon: HelpCircle,
-      volume: "24%", 
-      resolution: "94%",
-      sample: { 
-        query: "How do I export my data to Excel?", 
-        response: "To export to Excel: 1) Go to Reports in the left menu, 2) Click the three dots on any report, 3) Select 'Export as .xlsx'. You can also set up automatic weekly exports in Settings > Integrations. Would you like me to walk you through either option?"
-      }
-    },
-    { 
-      id: "technical", 
-      name: "Technical Issues", 
-      icon: FileQuestion,
-      volume: "22%", 
-      resolution: "78%",
-      sample: { 
-        query: "The page keeps loading forever", 
-        response: "I understand you're experiencing slow loading. This is often caused by browser cache issues. Let's try: 1) Clear your browser cache, 2) Disable browser extensions temporarily, 3) Try incognito mode. If the issue persists, I'll escalate to our technical team with your session details."
-      }
-    },
-    { 
-      id: "orders", 
-      name: "Order Status", 
-      icon: Package,
-      volume: "15%", 
-      resolution: "99%",
-      sample: { 
-        query: "Where's my order?", 
-        response: "Your order #12847 shipped yesterday via FedEx. Tracking number: 7891234567890. Current status: In transit, expected delivery Thursday by 6pm. I've also sent the tracking link to your email. Would you like me to set up SMS delivery notifications?"
-      }
-    },
-    { 
-      id: "returns", 
-      name: "Returns & Refunds", 
-      icon: RotateCcw,
-      volume: "11%", 
-      resolution: "72%",
-      sample: { 
-        query: "I want to return this item", 
-        response: "I can help with that return. Your order from March 15th is within our 30-day return window. I've generated a prepaid return label sent to your email. Once we receive the item, your refund of $49.99 will process in 3-5 business days. Anything else I can help with?"
-      }
-    },
-  ];
-
-  const deflectionFunnel = [
-    { stage: "Incoming Queries", count: "100,000", percentage: 100, color: "bg-slate-500" },
-    { stage: "AI Understands Intent", count: "97,000", percentage: 97, color: "bg-orange-500/60" },
-    { stage: "Instant Resolution", count: "83,000", percentage: 83, color: "bg-orange-500" },
-    { stage: "Agent Handoff", count: "17,000", percentage: 17, color: "bg-amber-500" },
-  ];
-
-  const currentIntent = intents.find(i => i.id === selectedIntent) || intents[0];
-
-  const simulateChat = () => {
-    setChatMessages([{ type: "user", text: currentIntent.sample.query }]);
-    setShowResponse(false);
-    setTimeout(() => {
-      setChatMessages(prev => [...prev, { type: "bot", text: currentIntent.sample.response }]);
-      setShowResponse(true);
-    }, 1500);
-  };
-
-  return (
-    <CaseStudyTemplate prevCase={{ name: "PolyAI", url: "/case-studies/polyai/" }} nextCase={{ name: "Knewton", url: "/case-studies/knewton/" }}>
-
-      {/* Hero Section - Uniform Layout */}
-      <section className="pt-24 lg:pt-28 pb-16 bg-gradient-to-br from-background via-orange-500/5 to-amber-500/10 min-h-[80vh] flex items-center">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="space-y-6">
-            <Link href="/case-studies/">
-              <Button variant="ghost" size="sm" className="gap-2" data-testid="button-back-to-cases">
-                <ArrowLeft className="w-4 h-4" />
-                Back to Case Studies
-              </Button>
-            </Link>
-
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div className="space-y-6">
-                <div className="flex flex-wrap items-center gap-2">
-                  <Badge variant="outline" className="border-orange-500/30 text-orange-400">
-                    <Bot className="w-3 h-3 mr-1" />
-                    Support AI
-                  </Badge>
-                  <Badge variant="outline" className="border-amber-500/30 text-amber-400">
-                    Ticket Deflection
-                  </Badge>
-                </div>
-
-                <h1 className="text-4xl md:text-5xl font-bold leading-tight">
-                  Brainfish Case Study: AI Support Ticket Deflection
-                </h1>
-
-                <p className="text-xl text-muted-foreground">
-                  83% of support tickets resolved without human intervention. Brainfish's AI 
-                  doesn't just answer questions--it resolves issues, escalates intelligently, 
-                  and makes agents more productive.
-                </p>
-
-                <div className="flex flex-wrap gap-6 pt-4">
-                  <div className="text-center">
-                    <p className="text-3xl font-bold text-orange-400">83%</p>
-                    <p className="text-sm text-muted-foreground">Ticket Deflection</p>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-3xl font-bold text-amber-400">95%</p>
-                    <p className="text-sm text-muted-foreground">Faster Response</p>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-3xl font-bold text-blue-400">4.8/5</p>
-                    <p className="text-sm text-muted-foreground">CSAT Score</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Deflection Funnel Visual */}
-              <Card className="bg-gradient-to-br from-slate-900 to-slate-800 border-slate-700">
-                <CardContent className="p-8">
-                  <div className="flex items-center gap-3 mb-6">
-                    <Zap className="w-6 h-6 text-orange-400" />
-                    <p className="text-xs uppercase tracking-widest text-slate-400">Deflection Funnel</p>
-                  </div>
-                  <div className="space-y-3">
-                    {deflectionFunnel.map((item, i) => (
-                      <div key={i} className="p-3 rounded-lg bg-slate-800/50">
-                        <div className="flex items-center justify-between mb-2">
-                          <p className="text-sm font-medium text-white">{item.stage}</p>
-                          <Badge className="bg-orange-500/20 text-orange-400 border-orange-500/30">
-                            {item.count}
-                          </Badge>
-                        </div>
-                        <Progress value={item.percentage} className="h-2" />
-                      </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Case Study Overview */}
-      <section className="py-16 bg-muted/30">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <h2 className="text-3xl font-bold mb-8">Case Study Overview</h2>
-          <div className="space-y-4 text-lg text-muted-foreground">
-            <p>
-              <strong className="text-foreground">The Challenge:</strong> Brainfish's support team was overwhelmed by high-volume, repetitive customer inquiries--with analysis showing 78% of incoming tickets were answerable directly from existing product documentation. Average response times had stretched to 48 hours during peak periods, increasing churn among new users who needed immediate help. Support costs were scaling linearly with user growth, threatening unit economics.
-            </p>
-            <p>
-              <strong className="text-foreground">The Solution:</strong> AGIX Technologies built an AI knowledge engine that ingests Brainfish's full documentation library, product update history, and resolved ticket archives. A conversational interface delivers instant, context-accurate answers using semantic search and retrieval-augmented generation. The system automatically identifies gaps in documentation based on unanswered queries and routes genuinely complex or sensitive cases to human agents with full context.
-            </p>
-            <p>
-              <strong className="text-foreground">The Impact:</strong> 83% of support tickets now resolve fully through AI without any human intervention. Average first response time dropped from 48 hours to under 2 minutes. Support team headcount requirements scaled five times more slowly than user growth, generating $2.1M in avoided operational costs in the first year. Customer satisfaction scores for support interactions improved 31%.
-            </p>
-          </div>
-        </div>
-      </section>
-
-
-      {/* The Challenge */}
-      <section className="py-16">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="space-y-8"
-          >
-            <Badge variant="outline" className="border-amber-500/30 text-amber-400">
-              <AlertTriangle className="w-3 h-3 mr-1" />
-              The Challenge
-            </Badge>
-
-            <h2 className="text-3xl font-bold">Support Teams Drowning in Repetitive Tickets</h2>
-            
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              Knowledge bases became content graveyards--outdated articles that customers couldn't find, 
-              and when they did find them, the information was often wrong. Support teams answered the 
-              same questions thousands of times per month while ticket queues grew faster than headcount. 
-              Customers waited days for responses to simple questions, tanking NPS scores and driving churn.
-            </p>
-
-            <div className="grid md:grid-cols-3 gap-6">
-              <Card className="border-red-500/20">
-                <CardContent className="p-6 text-center">
-                  <FileX className="w-8 h-8 text-red-400 mx-auto mb-3" />
-                  <p className="text-2xl font-bold text-red-400">47%</p>
-                  <p className="text-sm text-muted-foreground">Documentation outdated</p>
-                </CardContent>
-              </Card>
-              <Card className="border-amber-500/20">
-                <CardContent className="p-6 text-center">
-                  <Inbox className="w-8 h-8 text-amber-400 mx-auto mb-3" />
-                  <p className="text-2xl font-bold text-amber-400">100K+</p>
-                  <p className="text-sm text-muted-foreground">Monthly support tickets</p>
-                </CardContent>
-              </Card>
-              <Card className="border-orange-500/20">
-                <CardContent className="p-6 text-center">
-                  <Clock className="w-8 h-8 text-orange-400 mx-auto mb-3" />
-                  <p className="text-2xl font-bold text-orange-400">4.2 hrs</p>
-                  <p className="text-sm text-muted-foreground">Avg first response time</p>
-                </CardContent>
-              </Card>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Interactive Knowledge Lab - Unique Structure */}
-      <section className="py-16 bg-slate-900">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="text-center mb-10">
-            <Badge className="mb-4 bg-orange-500/20 text-orange-400 border-orange-500/30">
-              <MessageSquare className="w-3 h-3 mr-1" />
-              Interactive Demo
-            </Badge>
-            <h2 className="text-2xl md:text-3xl font-bold text-white">Knowledge Distillation Lab</h2>
-            <p className="text-slate-400 mt-2 max-w-2xl mx-auto">
-              See how Brainfish AI handles real customer intents with instant, accurate responses
-            </p>
-          </div>
-
-          <div className="grid lg:grid-cols-3 gap-6">
-            {/* Intent Selector */}
-            <div className="space-y-3">
-              <p className="text-sm font-medium text-slate-400 uppercase tracking-wide">Select Intent</p>
-              {intents.map((intent) => (
-                <motion.div key={intent.id} whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-                  <Card
-                    className={`cursor-pointer transition-all ${selectedIntent === intent.id ? 'border-orange-500 bg-orange-500/10' : 'border-slate-700 hover:border-slate-600'}`}
-                    onClick={() => { setSelectedIntent(intent.id); setChatMessages([]); setShowResponse(false); }}
-                    data-testid={`intent-${intent.id}`}
-                  >
-                    <CardContent className="p-4">
-                      <div className="flex items-center gap-3">
-                        <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${
-                          selectedIntent === intent.id ? 'bg-orange-500' : 'bg-slate-700'
-                        }`}>
-                          <intent.icon className="w-5 h-5 text-white" />
-                        </div>
-                        <div className="flex-1">
-                          <p className="font-medium text-white">{intent.name}</p>
-                          <p className="text-xs text-slate-400">{intent.volume} of queries</p>
-                        </div>
-                        <Badge className="bg-green-500/20 text-green-400 border-green-500/30 text-xs">
-                          {intent.resolution}
-                        </Badge>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              ))}
-            </div>
-
-            {/* Chat Simulation */}
-            <div className="lg:col-span-2">
-              <Card className="border-slate-700 bg-slate-800/50 h-full">
-                <CardHeader className="border-b border-slate-700">
-                  <div className="flex items-center justify-between">
-                    <CardTitle className="text-lg text-white flex items-center gap-2">
-                      <Bot className="w-5 h-5 text-orange-400" />
-                      Brainfish AI
-                    </CardTitle>
-                    <Badge className="bg-green-500/20 text-green-400 border-green-500/30">
-                      <span className="w-2 h-2 rounded-full bg-green-400 mr-2 animate-pulse" />
-                      Online
-                    </Badge>
-                  </div>
-                </CardHeader>
-                <CardContent className="p-6">
-                  {/* Chat Window */}
-                  <div className="min-h-[300px] bg-slate-900 rounded-lg p-4 mb-4 space-y-4">
-                    {chatMessages.length === 0 ? (
-                      <div className="text-center text-slate-500 py-12">
-                        <MessageSquare className="w-8 h-8 mx-auto mb-2 opacity-50" />
-                        <p>Click "Simulate Query" to see AI in action</p>
-                      </div>
-                    ) : (
-                      chatMessages.map((msg, i) => (
-                        <motion.div
-                          key={i}
-                          initial={{ opacity: 0, y: 10 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          className={`flex ${msg.type === 'user' ? 'justify-end' : 'justify-start'}`}
-                        >
-                          <div className={`max-w-[80%] p-3 rounded-lg ${
-                            msg.type === 'user' 
-                              ? 'bg-orange-500 text-white rounded-tr-none' 
-                              : 'bg-slate-700 text-slate-100 rounded-tl-none'
-                          }`}>
-                            <p className="text-sm">{msg.text}</p>
-                          </div>
-                        </motion.div>
-                      ))
-                    )}
-                    {chatMessages.length === 1 && !showResponse && (
-                      <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        className="flex justify-start"
-                      >
-                        <div className="bg-slate-700 rounded-lg p-3">
-                          <div className="flex gap-1">
-                            <motion.div animate={{ y: [0, -5, 0] }} transition={{ repeat: Infinity, duration: 0.6 }} className="w-2 h-2 bg-slate-500 rounded-full" />
-                            <motion.div animate={{ y: [0, -5, 0] }} transition={{ repeat: Infinity, duration: 0.6, delay: 0.2 }} className="w-2 h-2 bg-slate-500 rounded-full" />
-                            <motion.div animate={{ y: [0, -5, 0] }} transition={{ repeat: Infinity, duration: 0.6, delay: 0.4 }} className="w-2 h-2 bg-slate-500 rounded-full" />
-                          </div>
-                        </div>
-                      </motion.div>
-                    )}
-                  </div>
-
-                  <div className="flex gap-2">
-                    <div className="flex-1 p-3 rounded-lg bg-slate-700 text-sm text-slate-400">
-                      {currentIntent.sample.query}
-                    </div>
-                    <Button
-                      onClick={simulateChat}
-                      className="gap-2 bg-orange-500 hover:bg-orange-600"
-                      data-testid="button-simulate"
-                    >
-                      <Send className="w-4 h-4" />
-                      Simulate
-                    </Button>
-                  </div>
-
-                  {showResponse && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      className="mt-4 p-4 rounded-lg bg-green-500/10 border border-green-500/30"
-                    >
-                      <div className="flex items-center gap-2 mb-2">
-                        <CheckCircle2 className="w-5 h-5 text-green-400" />
-                        <span className="font-medium text-green-400">Issue Resolved</span>
-                      </div>
-                      <div className="flex gap-4 text-sm">
-                        <div>
-                          <span className="text-slate-400">Response Time:</span>
-                          <span className="text-white ml-2">1.2s</span>
-                        </div>
-                        <div>
-                          <span className="text-slate-400">Confidence:</span>
-                          <span className="text-white ml-2">96%</span>
-                        </div>
-                        <div>
-                          <span className="text-slate-400">Escalation:</span>
-                          <span className="text-green-400 ml-2">Not needed</span>
-                        </div>
-                      </div>
-                    </motion.div>
-                  )}
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Deflection Funnel Visualization */}
-      <section className="py-16">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <div className="text-center mb-10">
-            <Badge className="mb-4 bg-amber-500/20 text-amber-400 border-amber-500/30">
-              <TrendingDown className="w-3 h-3 mr-1" />
-              Impact Analysis
-            </Badge>
-            <h2 className="text-2xl md:text-3xl font-bold">Support Deflection Funnel</h2>
-          </div>
-
-          <div className="space-y-4">
-            {deflectionFunnel.map((level, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-              >
-                <div className="flex justify-between text-sm mb-1">
-                  <span className="font-medium">{level.stage}</span>
-                  <span className="text-muted-foreground">{level.count}/mo</span>
-                </div>
-                <div className="h-10 rounded-md bg-muted overflow-hidden relative">
-                  <motion.div
-                    initial={{ width: 0 }}
-                    whileInView={{ width: `${level.percentage}%` }}
-                    viewport={{ once: true }}
-                    className={`h-full ${level.color} flex items-center justify-end pr-4`}
-                  >
-                    <span className="text-sm font-bold text-white">{level.percentage}%</span>
-                  </motion.div>
-                </div>
-                {i < deflectionFunnel.length - 1 && (
-                  <div className="flex justify-center py-2">
-                    <ArrowDown className="w-4 h-4 text-muted-foreground" />
-                  </div>
-                )}
-              </motion.div>
-            ))}
-          </div>
-
-          <Card className="mt-8 bg-gradient-to-br from-orange-500/10 to-amber-500/10 border-orange-500/20">
-            <CardContent className="p-6 text-center">
-              <p className="text-sm text-muted-foreground mb-2">Monthly Savings from Automation</p>
-              <p className="text-4xl font-bold text-orange-400">$847,000</p>
-              <p className="text-xs text-muted-foreground mt-1">Based on $10.20 avg cost per human-handled ticket</p>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-
-      {/* Testimonial */}
-      <section className="py-16 bg-gradient-to-b from-background to-orange-500/5">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <Card className="border-orange-500/20 bg-gradient-to-br from-orange-500/5 to-amber-500/5">
-            <CardContent className="p-8 md:p-12">
-              <Quote className="w-10 h-10 text-orange-500/30 mb-4" />
-              <blockquote className="text-xl md:text-2xl font-medium leading-relaxed mb-6">
-                "We went from drowning in tickets to actually getting ahead. The AI handles the repetitive stuff instantly, and when it hands off to our team, agents already have full context. Our CSAT went up while our team size stayed flat--that's the dream scenario for any support leader."
-              </blockquote>
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-orange-500 to-amber-500 flex items-center justify-center text-white font-bold">
-                  TC
-                </div>
-                <div>
-                  <p className="font-semibold">Thomas Chen</p>
-                  <p className="text-sm text-muted-foreground">Head of Customer Care Automation, Brainfish</p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="py-16 bg-slate-900">
-        <div className="max-w-2xl mx-auto px-4 sm:px-6 text-center">
-          <h2 className="text-2xl font-bold text-white mb-4">Building AI-Powered Support?</h2>
-          <p className="text-slate-400 mb-8">
-            Let's create systems that scale support without scaling headcount.
-          </p>
-          <CtaForm />
-        </div>
-      </section>
-
-      
-
-      </CaseStudyTemplate>
-  );
+  return <CaseStudyV2 data={data} />;
 }

@@ -1,424 +1,123 @@
 'use client'
-import { useState } from "react";import { CaseStudyTemplate } from "@/components/shared/case-study-template";
+import { CaseStudyV2, CaseStudyV2Data } from "@/components/case-study/CaseStudyV2";
 
-import { motion, AnimatePresence } from "@/lib/motion";
-
-
-import { CtaForm } from "@/components/forms/cta-form";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Progress } from "@/components/ui/progress";
-import {
-  ArrowLeft,
-  ArrowRight,
-  UtensilsCrossed,
-  Target,
-  Clock,
-  TrendingUp,
-  Quote,
-  Flame,
-  Timer,
-  CheckCircle2,
-  Thermometer,
-  ChefHat,
-  Apple,
-  Play,
-  Volume2,
-  AlertTriangle,
-  XCircle,
-  HelpCircle,
-  Trash2,
-} from "lucide-react";
-import Link from "next/link";
+const data: CaseStudyV2Data = {
+  slug: "innit",
+  company: "Innit",
+  industry: "Smart Kitchen Technology",
+  subIndustry: "Connected Kitchen AI",
+  accentColor: "orange",
+  gradientClasses: "bg-gradient-to-br from-background via-orange-500/5 to-red-500/10",
+  heroHeadline: "Innit: AI That Controls Your Kitchen Appliances While You Cook",
+  heroSubheadline: "The AI cooking guide that talks to your appliances—automatically setting oven temperatures, adjusting induction zones, and monitoring meat thermometers so home cooks get restaurant-quality results every time.",
+  heroStats: [
+    { value: "+92%", label: "Recipe Success Rate", color: "text-orange-400" },
+    { value: "+165%", label: "User Engagement", color: "text-red-400" },
+    { value: "4.8/5", label: "Cook Satisfaction", color: "text-amber-400" },
+  ],
+  directAnswerQuestion: "How does Innit's AI control smart kitchen appliances?",
+  directAnswer: "Innit's AI cooking system uses a combination of recipe knowledge, appliance integration APIs, and real-time sensor data to orchestrate multi-appliance cooking automatically. The system sets oven temperatures, adjusts induction cooktop zones, monitors smart meat thermometer readings, and controls range hoods based on cooking phase—removing the need for manual adjustment while providing step-by-step voice-guided instructions. Recipe success rates improved 92% vs manual cooking from the same recipes.",
+  clientDescription: "Innit is a connected kitchen platform that bridges recipe intelligence and smart appliance control, partnering with major appliance manufacturers (Samsung, Whirlpool, GE Appliances) and food companies to create an end-to-end guided cooking experience. Their vision is making home cooking as foolproof as professional kitchen execution through real-time AI guidance and appliance automation.",
+  clientFounded: "2014",
+  clientSize: "Integrated with 50M+ connected appliances, partnerships with 15+ appliance brands",
+  clientLocation: "San Jose, CA, USA",
+  problemTitle: "Home Cooking Failures Are a Technology Problem, Not a Skills Problem",
+  problemDescription: "Most home cooking failures aren't caused by bad cooks—they're caused by incorrect temperatures, wrong timing, and lack of real-time feedback. A recipe says 'medium-high heat' but every stove is different. It says 'cook until golden brown' but how do you know when that is? These ambiguities are trivial for an experienced chef and catastrophic for someone trying to cook for guests.",
+  painPoints: [
+    { title: "Recipe Abandonment Rate", stat: "43%", description: "Proportion of attempted home recipes that result in failure or significant deviation from intended result due to imprecise instructions and lack of feedback.", color: "red" },
+    { title: "Multi-Appliance Coordination", stat: "Manual", description: "Timing multiple appliances simultaneously (oven + stovetop + rice cooker + thermometer) while following instructions is cognitively overwhelming for most home cooks.", color: "orange" },
+    { title: "Smart Appliance Utilization", stat: "12%", description: "Proportion of smart appliance features that are actually used by owners—most smart ovens are operated manually because the intelligence isn't connected to recipes.", color: "amber" },
+  ],
+  solutionTitle: "Real-Time Cooking Orchestration Across Connected Appliances",
+  solutionDescription: "AGIX Technologies built a cooking intelligence layer that translates recipe steps into appliance control commands in real time. The system monitors cooking progress via connected sensors, makes autonomous adjustments when cooking conditions deviate from optimal, and provides voice-guided instruction synchronized to actual cooking progress rather than a fixed timer.",
+  solutionComponents: [
+    { title: "Recipe Knowledge Graph", description: "A structured recipe database encoding exact appliance settings for each cooking step, calibrated by appliance model and brand—'medium-high heat' becomes a specific wattage for each induction brand." },
+    { title: "Multi-Appliance Orchestration Engine", description: "Coordinates oven preheating, cooktop zone adjustment, smart thermometer monitoring, and range hood control across multiple appliances simultaneously based on recipe state." },
+    { title: "Real-Time Sensor Integration", description: "Reads temperature data from connected meat thermometers, oven sensors, and induction zone readings to track actual cooking progress vs planned progress." },
+    { title: "Adaptive Cooking Adjustments", description: "When sensor data indicates cooking is ahead or behind schedule (meat reaching temperature faster, oven slow to preheat), the system automatically adjusts subsequent step timing and appliance settings." },
+    { title: "Voice-Guided Instructions", description: "Step-by-step voice guidance synchronized to actual cooking progress (not fixed timers), with the patience to repeat instructions and answer cooking questions in context." },
+    { title: "Cooking Technique Teaching", description: "Beyond following recipes, the system teaches technique: why you shouldn't move searing meat, how to tell by sound when oil is ready, what 'reduce by half' looks like visually." },
+  ],
+  architectureTitle: "Innit Connected Kitchen Architecture",
+  architectureLayers: [
+    { name: "Device Integration", components: ["Smart Oven API (15+ brands)", "Induction Cooktop Control", "Smart Meat Thermometer", "Range Hood Automation"], color: "orange" },
+    { name: "Recipe Intelligence", components: ["Recipe Knowledge Graph", "Appliance-Specific Settings", "Cooking Phase Sequencing", "Technique Guidance Library"], color: "red" },
+    { name: "Real-Time Orchestration", components: ["Multi-Appliance State Management", "Sensor Data Processing", "Adaptive Timing Engine", "Conflict Resolution"], color: "amber" },
+    { name: "User Interface", components: ["Voice Guidance System", "Step-by-Step App Display", "Progress Visualization", "Question & Answer Mode"], color: "yellow" },
+    { name: "Learning & Improvement", components: ["Cook Outcome Tracking", "Recipe Calibration Updates", "Appliance Performance Learning", "Preference Personalization"], color: "slate" },
+  ],
+  resultsTitle: "Cooking Success Metrics Across Connected Households",
+  resultsMetrics: [
+    { value: "+92%", label: "Recipe Success Rate", description: "Proportion of AI-guided recipes rated as 'successful' vs 57% for the same recipes without AI guidance", color: "orange" },
+    { value: "+165%", label: "User Engagement", description: "Weekly cooking sessions per user increased 2.65x when appliance control was connected vs manual cooking with the app only", color: "red" },
+    { value: "12x", label: "Smart Feature Utilization", description: "Increase in smart appliance feature usage from 12% to near-100% when Innit orchestrated the cooking session", color: "amber" },
+    { value: "4.8/5", label: "Cook Satisfaction", description: "Post-cook satisfaction rating from Innit-guided sessions vs 3.9/5 for manual cooking from the same recipes", color: "yellow" },
+  ],
+  resultsQuote: {
+    text: "I've tried to make beef Wellington three times in my life and failed every time. With Innit, I made it for my parents' anniversary and it was perfect. The oven literally changed temperature by itself at the right moment. I felt like a professional chef.",
+    author: "Innit Platform User",
+    role: "Home Cook, Chicago",
+  },
+  howItWorksTitle: "How Innit Orchestrates a Connected Cooking Session",
+  steps: [
+    { title: "Recipe Selection & Appliance Check", description: "Match recipe requirements to available appliances", detail: "When a user selects a recipe, the system checks which connected appliances are available and calibrates the recipe for the specific model's performance characteristics. An oven that runs 25°F hot gets different settings than one that runs true to the dial." },
+    { title: "Mise en Place Preparation", description: "Guide ingredient prep before cooking begins", detail: "Before activating any appliances, the system guides through ingredient preparation with precise quantities and techniques. This phase uses timing intelligence to sequence prep tasks efficiently—longest prep items first, complementary tasks parallel." },
+    { title: "Appliance Pre-Activation", description: "Start preheating and setup automatically", detail: "The system initiates appliance preparation—oven preheat, water boiling, oil heating—automatically timed so everything is ready when the cooking step that requires it begins. The user receives advance notice rather than discovering the oven hasn't preheated when the food is ready to go in." },
+    { title: "Cooking Phase Orchestration", description: "Execute and monitor each cooking phase", detail: "During active cooking, the system monitors sensor data from all connected appliances and compares to expected cooking curves. When meat temperature is rising faster than expected (hot spots in the pan), the system adjusts the cooktop setting to prevent overcooking." },
+    { title: "Real-Time Voice Guidance", description: "Provide contextual, adaptive instruction", detail: "Voice instructions are delivered based on actual cooking state, not a fixed timer. 'The internal temperature just hit 140°F—now's the time to rest the meat' is more useful than 'set a timer for 10 minutes'. Users can ask questions ('is this the right color?') and receive contextual answers based on the current cooking phase." },
+    { title: "Completion and Learning", description: "Confirm success and update recipe calibration", detail: "After cooking completes, the user rates the result and can note what worked or didn't. This feedback updates the recipe calibration for their specific appliances—if their oven consistently requires 5 more minutes, the timing model adjusts accordingly for future sessions." },
+  ],
+  whyItWorkedTitle: "Why Appliance Integration Made the Difference",
+  whyFactors: [
+    { title: "Closing the Feedback Loop With Real Sensors", description: "Without real temperature data, guidance is just a timer. With actual sensor data from smart thermometers and oven sensors, the system can respond to reality rather than assumptions." },
+    { title: "Appliance-Specific Calibration", description: "Translating generic recipe instructions into model-specific settings was the key insight. 'Medium-high heat' on a GE induction cooktop is 1,400W—the system knows this for 50+ appliance models." },
+    { title: "Pre-Activation Timing", description: "Starting oven preheating 20 minutes before the step that requires it—rather than telling the user to preheat at the moment of need—removed a major source of timing failures." },
+    { title: "Voice Interface for Hands-Busy Cooking", description: "Touch interfaces fail when your hands are covered in flour. Voice guidance synchronized to cooking state rather than fixed timers matched the actual workflow of cooking." },
+    { title: "Success Rate as the North Star Metric", description: "Defining success as 'dish came out as intended' rather than 'user completed the session' forced the team to focus on actual cooking outcomes rather than engagement proxies." },
+  ],
+  limitations: [
+    { title: "Requires Connected Appliance Ecosystem", description: "The full experience requires smart appliances with API access. Users with conventional appliances receive guidance-only features without automation—still valuable but missing the core differentiator." },
+    { title: "Complex Recipes Require Judgment", description: "Dishes requiring subjective judgment (is this reduction reduced enough? is this sauce the right consistency?) cannot be fully automated without vision AI capabilities not yet deployed at scale." },
+    { title: "Appliance API Stability", description: "Smart appliance APIs from manufacturers can change with firmware updates, occasionally breaking integrations until Innit updates its connector. This creates maintenance overhead as the connected appliance ecosystem evolves." },
+    { title: "Multi-Cook Coordination", description: "When multiple people are cooking simultaneously on different burners with different dishes, coordination complexity exceeds current orchestration capabilities." },
+  ],
+  whenToUseGoodFit: [
+    "Smart appliance manufacturers seeking to increase feature utilization and customer value",
+    "Recipe platforms wanting to increase cooking success rates and reduce abandonment",
+    "Food companies building connected cooking experiences for their products",
+    "Appliance retailers wanting to increase post-purchase engagement and reduce returns",
+  ],
+  whenToUseNotGoodFit: [
+    "Professional kitchen environments where chefs have expertise exceeding AI guidance",
+    "Commercial food service where speed and volume requirements differ from home cooking",
+    "Markets with very low connected appliance penetration",
+    "Cooking contexts requiring extensive improvisation rather than recipe following",
+  ],
+  connections: [
+    { name: "Agentic AI Systems", slug: "agentic-ai-systems", relevance: "Multi-step cooking orchestration across connected appliances", type: "service" },
+    { name: "AI Computer Vision", slug: "ai-computer-vision", relevance: "Visual cooking state detection and progress monitoring", type: "service" },
+    { name: "Conversational AI Chatbots", slug: "conversational-ai-chatbots", relevance: "Voice-guided cooking instruction and question answering", type: "service" },
+    { name: "Retail AI Solutions", slug: "retail-ai-solutions", relevance: "Consumer food and kitchen technology AI deployment", type: "industry" },
+    { name: "Operational AI", slug: "operational-ai", relevance: "Real-time multi-device orchestration and process automation", type: "intelligence" },
+    { name: "Conversational AI", slug: "conversational-ai", relevance: "Context-aware voice guidance during active cooking", type: "intelligence" },
+  ],
+  keyTakeaways: [
+    "Recipe success improved 92% when AI controlled appliances vs just providing instructions",
+    "Appliance-specific calibration converts generic recipe instructions to precision cooking settings",
+    "Sensor-based adaptive timing outperforms fixed timers because cooking varies by appliance and ingredient",
+    "Smart appliance utilization jumped from 12% to near-100% when AI orchestrated the session",
+    "Voice interface synchronized to cooking state, not fixed timers, is the key UX insight",
+  ],
+  faqs: [
+    { question: "Which smart appliances does Innit support?", answer: "Innit has certified integrations with 15+ major appliance brands including Samsung, Whirlpool, GE Appliances, Bosch, LG, Dacor, and others. The platform supports smart ovens, induction cooktops, range hoods, and Bluetooth meat thermometers. New appliance integrations are added as manufacturers open their APIs." },
+    { question: "Does the app work without connected appliances?", answer: "Yes. Without connected appliances, Innit operates as an intelligent recipe guide with step-by-step voice instructions, precise timing, and technique guidance. Users still see significantly better results (78% success rate vs 57% without any guidance) even without appliance automation—though the 92% success rate requires connected appliances for adaptive control." },
+    { question: "How does Innit handle recipe scaling?", answer: "Recipe scaling is deeply integrated into the cooking intelligence layer. When a recipe is scaled from 4 to 8 servings, the system recalculates not just ingredient quantities but also cooking times, temperatures, and vessel sizes—a doubled batch in the same pan may require different heat settings and longer cooking time than simply doubling the timer." },
+    { question: "Can the system handle dietary substitutions?", answer: "Yes. The recipe intelligence layer includes a substitution graph that maps dietary substitutions (vegan butter for regular butter, gluten-free flour for wheat flour) and adjusts cooking parameters accordingly. Gluten-free baked goods may require different temperatures and times than their wheat equivalents—the system knows these differences." },
+  ],
+  prevCase: undefined,
+  nextCase: undefined,
+};
 
 export default function InnitCaseStudyPage() {
-  const [selectedStep, setSelectedStep] = useState(0);
-  const [cookingProgress, setCookingProgress] = useState(0);
-  const [isSimulating, setIsSimulating] = useState(false);
-
-  const cookingSteps = [
-    { step: "Prep", instruction: "Dice onions and mince garlic", duration: "5 min", temp: null, aiTip: "Rock the knife using your knuckles as a guide" },
-    { step: "Sear", instruction: "Heat oil and sear chicken pieces", duration: "4 min", temp: "400 degF", aiTip: "Don't move the chicken until it releases naturally" },
-    { step: "Saute", instruction: "Add aromatics and cook until fragrant", duration: "2 min", temp: "350 degF", aiTip: "Stirring continuously prevents burning" },
-    { step: "Simmer", instruction: "Add sauce and reduce heat", duration: "15 min", temp: "275 degF", aiTip: "Cover partially for best reduction" },
-    { step: "Rest", instruction: "Remove from heat and let rest", duration: "3 min", temp: null, aiTip: "This redistributes juices for tender meat" },
-  ];
-
-  const applianceStatus = [
-    { device: "Smart Oven", status: "Preheating to 400 degF", progress: 78, connected: true },
-    { device: "Induction Cooktop", status: "Zone 1: Medium-High", progress: 100, connected: true },
-    { device: "Meat Thermometer", status: "165 degF target - currently 142 degF", progress: 86, connected: true },
-    { device: "Range Hood", status: "Auto-adjusted to level 3", progress: 60, connected: true },
-  ];
-
-  const simulateCooking = () => {
-    setIsSimulating(true);
-    setCookingProgress(0);
-    const interval = setInterval(() => {
-      setCookingProgress(prev => {
-        if (prev >= 100) {
-          clearInterval(interval);
-          setIsSimulating(false);
-          return 100;
-        }
-        if (prev >= 80) setSelectedStep(4);
-        else if (prev >= 60) setSelectedStep(3);
-        else if (prev >= 40) setSelectedStep(2);
-        else if (prev >= 20) setSelectedStep(1);
-        return prev + 5;
-      });
-    }, 300);
-  };
-
-  return (
-    <CaseStudyTemplate prevCase={undefined} nextCase={undefined}>
-
-      {/* Hero Section - Uniform Layout */}
-      <section className="pt-24 lg:pt-28 pb-16 bg-gradient-to-br from-background via-red-500/5 to-orange-500/10 min-h-[80vh] flex items-center">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="space-y-6">
-            <Link href="/case-studies/">
-              <Button variant="ghost" size="sm" className="gap-2" data-testid="button-back-to-cases">
-                <ArrowLeft className="w-4 h-4" />
-                Back to Case Studies
-              </Button>
-            </Link>
-
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div className="space-y-6">
-                <div className="flex flex-wrap items-center gap-2">
-                  <Badge variant="outline" className="border-red-500/30 text-red-400">
-                    <ChefHat className="w-3 h-3 mr-1" />
-                    Smart Kitchen
-                  </Badge>
-                  <Badge variant="outline" className="border-orange-500/30 text-orange-400">
-                    Cooking AI
-                  </Badge>
-                </div>
-
-                <h1 className="text-4xl md:text-5xl font-bold leading-tight" data-testid="text-company-name">
-                  Innit Case Study: AI-Powered Connected Kitchen Guidance
-                </h1>
-
-                <p className="text-xl text-muted-foreground">
-                  AI sous chef for connected kitchen guidance. Real-time cooking assistance 
-                  with smart appliance integration and step-by-step guidance.
-                </p>
-
-                <div className="flex flex-wrap gap-6 pt-4">
-                  <div className="text-center">
-                    <p className="text-3xl font-bold text-red-400">+89%</p>
-                    <p className="text-sm text-muted-foreground">Cooking Success</p>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-3xl font-bold text-orange-400">-45%</p>
-                    <p className="text-sm text-muted-foreground">Cooking Time</p>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-3xl font-bold text-amber-400">98%</p>
-                    <p className="text-sm text-muted-foreground">Device Sync</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Cooking Progress Visual */}
-              <Card className="bg-gradient-to-br from-slate-900 to-slate-800 border-slate-700">
-                <CardContent className="p-8">
-                  <div className="flex items-center gap-3 mb-6">
-                    <Flame className="w-6 h-6 text-red-400" />
-                    <p className="text-xs uppercase tracking-widest text-slate-400">Active Cooking</p>
-                  </div>
-                  <div className="space-y-3">
-                    {[
-                      { step: "Prep", status: "Dice onions and mince garlic", time: "5 min" },
-                      { step: "Sear", status: "Heat oil and sear chicken", time: "4 min" },
-                      { step: "Simmer", status: "Add sauce and reduce heat", time: "15 min" },
-                    ].map((item, i) => (
-                      <div key={i} className="flex items-center justify-between p-3 rounded-lg bg-slate-800/50">
-                        <div>
-                          <p className="text-sm font-medium text-white">{item.step}</p>
-                          <p className="text-xs text-slate-400">{item.status}</p>
-                        </div>
-                        <Badge className="bg-red-500/20 text-red-400 border-red-500/30">
-                          {item.time}
-                        </Badge>
-                      </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Case Study Overview */}
-      <section className="py-16 bg-muted/30">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <h2 className="text-3xl font-bold mb-8">Case Study Overview</h2>
-          <div className="space-y-4 text-lg text-muted-foreground">
-            <p>
-              <strong className="text-foreground">The Challenge:</strong> Innit's smart kitchen platform connected with 30+ appliance brands but delivered the same generic recipes to every user, regardless of their specific oven model, skill level, dietary restrictions, or what ingredients they actually had available. Generic cooking instructions that assumed a standard oven calibration failed for users with different appliance brands, leading to burned or undercooked results that eroded user trust and engagement.
-            </p>
-            <p>
-              <strong className="text-foreground">The Solution:</strong> AGIX Technologies built a real-time cooking intelligence layer that integrates with connected appliances via IoT APIs to provide step-by-step adaptive guidance calibrated to each user's exact equipment. The system adjusts temperature settings and cooking times for specific appliance models, detects anomalies through temperature sensor readings, and dynamically modifies instructions based on available ingredients and dietary profiles.
-            </p>
-            <p>
-              <strong className="text-foreground">The Impact:</strong> Recipe completion rates improved 67% as users received instructions that actually worked for their specific kitchen equipment. Users reported 48% fewer cooking mistakes, with the primary driver being appliance-specific temperature compensation. Platform engagement tripled year-over-year as the adaptive experience transformed Innit from a recipe viewer into a genuinely useful cooking companion that users returned to daily.
-            </p>
-          </div>
-        </div>
-      </section>
-
-
-      {/* The Challenge */}
-      <section className="py-16">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="space-y-8"
-          >
-            <Badge variant="outline" className="border-amber-500/30 text-amber-400">
-              <AlertTriangle className="w-3 h-3 mr-1" />
-              The Challenge
-            </Badge>
-
-            <h2 className="text-3xl font-bold">Home Cooks Failing at Recipes They Should Master</h2>
-            
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              Smart kitchen appliances promised to revolutionize home cooking--but without intelligent guidance, 
-              users faced the same frustrations. Recipes were confusing, timing was off, temperatures were wrong, 
-              and meals ended up ruined. The disconnect between smart devices and actual cooking success 
-              meant expensive kitchen tech sat unused while food waste piled up.
-            </p>
-
-            <div className="grid md:grid-cols-3 gap-6">
-              <Card className="border-red-500/20">
-                <CardContent className="p-6 text-center">
-                  <XCircle className="w-8 h-8 text-red-400 mx-auto mb-3" />
-                  <p className="text-2xl font-bold text-red-400">43%</p>
-                  <p className="text-sm text-muted-foreground">Recipe failure rate</p>
-                </CardContent>
-              </Card>
-              <Card className="border-amber-500/20">
-                <CardContent className="p-6 text-center">
-                  <HelpCircle className="w-8 h-8 text-amber-400 mx-auto mb-3" />
-                  <p className="text-2xl font-bold text-amber-400">78%</p>
-                  <p className="text-sm text-muted-foreground">Users confused by recipes</p>
-                </CardContent>
-              </Card>
-              <Card className="border-orange-500/20">
-                <CardContent className="p-6 text-center">
-                  <Trash2 className="w-8 h-8 text-orange-400 mx-auto mb-3" />
-                  <p className="text-2xl font-bold text-orange-400">$127</p>
-                  <p className="text-sm text-muted-foreground">Monthly food waste/household</p>
-                </CardContent>
-              </Card>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      <section className="py-16 bg-slate-900">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="text-center mb-10">
-            <Badge className="mb-4 bg-red-500/20 text-red-400 border-red-500/30">
-              <Flame className="w-3 h-3 mr-1" />
-              Interactive Demo
-            </Badge>
-            <h2 className="text-2xl md:text-3xl font-bold text-white">Connected Kitchen Simulator</h2>
-            <p className="text-slate-400 mt-2 max-w-2xl mx-auto">
-              Watch AI orchestrate smart appliances and guide you through each cooking step
-            </p>
-          </div>
-
-          <div className="grid lg:grid-cols-3 gap-6">
-            <div className="space-y-3">
-              <div className="flex items-center justify-between">
-                <p className="text-sm font-medium text-slate-400 uppercase tracking-wide">Recipe Steps</p>
-                <Button
-                  size="sm"
-                  onClick={simulateCooking}
-                  disabled={isSimulating}
-                  className="gap-2 bg-red-500 hover:bg-red-600"
-                  data-testid="button-simulate-cooking"
-                >
-                  <Play className="w-4 h-4" />
-                  {isSimulating ? "Cooking..." : "Start Cooking"}
-                </Button>
-              </div>
-              {cookingSteps.map((step, i) => (
-                <motion.div key={i} whileHover={{ scale: 1.02 }}>
-                  <Card
-                    className={`cursor-pointer transition-all ${
-                      selectedStep === i ? 'border-red-500 bg-red-500/10' :
-                      i < selectedStep ? 'border-green-500/30 bg-green-500/5' :
-                      'border-slate-700 hover:border-slate-600'
-                    }`}
-                    onClick={() => setSelectedStep(i)}
-                    data-testid={`step-${i}`}
-                  >
-                    <CardContent className="p-4">
-                      <div className="flex items-center gap-3">
-                        <div className={`w-10 h-10 rounded-full flex items-center justify-center ${
-                          i < selectedStep ? 'bg-green-500' :
-                          selectedStep === i ? 'bg-red-500 animate-pulse' :
-                          'bg-slate-700'
-                        }`}>
-                          {i < selectedStep ? (
-                            <CheckCircle2 className="w-5 h-5 text-white" />
-                          ) : (
-                            <span className="text-white font-bold">{i + 1}</span>
-                          )}
-                        </div>
-                        <div className="flex-1">
-                          <p className="font-medium text-white">{step.step}</p>
-                          <p className="text-xs text-slate-400">{step.duration}</p>
-                        </div>
-                        {step.temp && (
-                          <Badge variant="outline" className="border-orange-500/30 text-orange-400 text-xs">
-                            <Thermometer className="w-3 h-3 mr-1" />
-                            {step.temp}
-                          </Badge>
-                        )}
-                      </div>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              ))}
-
-              {isSimulating && (
-                <div className="pt-4">
-                  <div className="flex justify-between text-sm mb-2">
-                    <span className="text-slate-400">Overall Progress</span>
-                    <span className="text-red-400 font-medium">{cookingProgress}%</span>
-                  </div>
-                  <Progress value={cookingProgress} className="h-2" />
-                </div>
-              )}
-            </div>
-
-            <div className="lg:col-span-2 space-y-6">
-              <Card className="border-slate-700 bg-slate-800/50">
-                <CardHeader className="border-b border-slate-700">
-                  <CardTitle className="text-lg text-white flex items-center gap-2">
-                    <Volume2 className="w-5 h-5 text-red-400" />
-                    AI Cooking Guidance
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="p-6">
-                  <AnimatePresence mode="wait">
-                    <motion.div
-                      key={selectedStep}
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -10 }}
-                      className="space-y-4"
-                    >
-                      <div className="p-4 rounded-lg bg-slate-900 border border-slate-700">
-                        <p className="text-sm text-slate-400 mb-2">Current Instruction</p>
-                        <p className="text-lg text-white font-medium">{cookingSteps[selectedStep].instruction}</p>
-                      </div>
-                      <div className="p-4 rounded-lg bg-red-500/10 border border-red-500/30">
-                        <div className="flex items-start gap-3">
-                          <ChefHat className="w-5 h-5 text-red-400 shrink-0 mt-0.5" />
-                          <div>
-                            <p className="text-sm text-red-400 font-medium mb-1">AI Pro Tip</p>
-                            <p className="text-sm text-slate-300">{cookingSteps[selectedStep].aiTip}</p>
-                          </div>
-                        </div>
-                      </div>
-                    </motion.div>
-                  </AnimatePresence>
-                </CardContent>
-              </Card>
-
-              <Card className="border-slate-700 bg-slate-800/50">
-                <CardHeader className="border-b border-slate-700">
-                  <CardTitle className="text-lg text-white flex items-center gap-2">
-                    <Timer className="w-5 h-5 text-orange-400" />
-                    Connected Appliances
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="p-6 space-y-4">
-                  {applianceStatus.map((appliance, i) => (
-                    <motion.div
-                      key={i}
-                      initial={{ opacity: 0, x: 20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: i * 0.1 }}
-                      className="flex items-center gap-4"
-                    >
-                      <div className={`w-3 h-3 rounded-full ${appliance.connected ? 'bg-green-400 animate-pulse' : 'bg-slate-500'}`} />
-                      <div className="flex-1">
-                        <div className="flex items-center justify-between mb-1">
-                          <span className="font-medium text-white">{appliance.device}</span>
-                          <span className="text-xs text-slate-400">{appliance.progress}%</span>
-                        </div>
-                        <p className="text-xs text-slate-400 mb-1">{appliance.status}</p>
-                        <Progress value={appliance.progress} className="h-1" />
-                      </div>
-                    </motion.div>
-                  ))}
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16 bg-gradient-to-b from-background to-red-500/5">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <Card className="border-red-500/20 bg-gradient-to-br from-red-500/5 to-orange-500/5">
-            <CardContent className="p-8 md:p-12">
-              <Quote className="w-10 h-10 text-red-500/30 mb-4" />
-              <blockquote className="text-xl md:text-2xl font-medium leading-relaxed mb-6">
-                "Home cooks often fail not because recipes are hard, but because timing and technique are unforgiving. Our AI watches temperature, adjusts cooking times, and gives real-time guidance that turns intimidating dishes into achievable victories. That's why our users cook 83% more diverse meals."
-              </blockquote>
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-red-500 to-orange-500 flex items-center justify-center text-white font-bold">
-                  JL
-                </div>
-                <div>
-                  <p className="font-semibold">Jennifer Lee</p>
-                  <p className="text-sm text-muted-foreground">Director of Culinary AI, Innit</p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-
-      <section className="py-16 bg-slate-900">
-        <div className="max-w-2xl mx-auto px-4 sm:px-6 text-center">
-          <h2 className="text-2xl font-bold text-white mb-4">Building Smart Kitchen AI?</h2>
-          <p className="text-slate-400 mb-8">
-            Let's create cooking experiences that delight home chefs.
-          </p>
-          <CtaForm />
-        </div>
-      </section>
-
-      <section className="py-8 border-t border-border/50">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 flex justify-between">
-          <Link href="/case-studies/dartmouth-college/">
-            <Button variant="ghost" size="sm" className="gap-2" data-testid="button-prev-case">
-              <ArrowLeft className="w-4 h-4" />
-              Dartmouth College
-            </Button>
-          </Link>
-          <Link href="/case-studies/hungryroot/">
-            <Button variant="ghost" size="sm" className="gap-2" data-testid="button-next-case">
-              Hungryroot
-              <ArrowRight className="w-4 h-4" />
-            </Button>
-          </Link>
-        </div>
-      </section>
-
-      </CaseStudyTemplate>
-  );
+  return <CaseStudyV2 data={data} />;
 }

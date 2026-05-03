@@ -1,401 +1,121 @@
 'use client'
-import { motion } from "@/lib/motion";import { CaseStudyTemplate } from "@/components/shared/case-study-template";
+import { CaseStudyV2, CaseStudyV2Data } from "@/components/case-study/CaseStudyV2";
 
-
-
-import { CtaForm } from "@/components/forms/cta-form";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import {
-  ArrowLeft,
-  ArrowRight,
-  Crown,
-  Target,
-  Clock,
-  TrendingUp,
-  Quote,
-  Star,
-  Gem,
-  Sparkles,
-  Shield,
-  MessageSquare,
-  Plane,
-  Hotel,
-  AlertTriangle,
-  Users,
-  Copy,
-  HeartCrack,
-} from "lucide-react";
-import Link from "next/link";
+const data: CaseStudyV2Data = {
+  slug: "luxury-escapes",
+  company: "Luxury Escapes",
+  industry: "Luxury Travel",
+  subIndustry: "AI Concierge & Personalization",
+  accentColor: "amber",
+  gradientClasses: "bg-gradient-to-br from-background via-amber-500/5 to-yellow-500/10",
+  heroHeadline: "Luxury Escapes: AI Concierge That Converts Browsers Into Luxury Bookers",
+  heroSubheadline: "Building the digital concierge that luxury travelers actually trust—+189% booking conversion, 94% CSAT, and personalized deal curation that serves the right offer to the right traveler at the right moment.",
+  heroStats: [
+    { value: "+189%", label: "Booking Conversion", color: "text-amber-400" },
+    { value: "94%", label: "Customer Satisfaction", color: "text-yellow-400" },
+    { value: "+$420", label: "Avg Basket Value", color: "text-orange-400" },
+  ],
+  directAnswerQuestion: "How does Luxury Escapes use AI to drive travel booking conversions?",
+  directAnswer: "Luxury Escapes uses a multi-layer AI system that combines behavioral targeting, personalized deal curation, and a conversational concierge to move luxury travelers from browsing to booking. The deal recommendation engine matches each user's travel history and preference signals to the most relevant limited-time offers, while the AI concierge answers complex questions about properties, destinations, and inclusions in real time—converting the research phase into a booking decision.",
+  clientDescription: "Luxury Escapes is one of the world's fastest-growing luxury travel platforms, offering curated hotel packages at exclusive prices to over 8 million members. Unlike traditional OTAs, Luxury Escapes curates a small number of exceptional deals with value-adding inclusions rather than listing every available room. This curated model requires sophisticated personalization to match the right deal to each member.",
+  clientFounded: "2013",
+  clientSize: "8M+ members, operations in 30+ countries",
+  clientLocation: "Melbourne, Australia",
+  problemTitle: "Luxury Travel Customers Require Concierge-Level Personalization—At Scale",
+  problemDescription: "Luxury travelers have high expectations and specific preferences. Generic OTA-style listings of hundreds of properties are overwhelming and fail to create the curated, trusted experience luxury buyers expect. But providing genuine concierge-level service to 8 million members is impossible with human teams alone—the economics simply don't work.",
+  painPoints: [
+    { title: "Homepage Abandonment Rate", stat: "76%", description: "Proportion of visitors who left Luxury Escapes without engaging with any deal—the curated model failed without personalization to show each visitor their most relevant deals.", color: "red" },
+    { title: "Research-to-Book Conversion", stat: "1.2%", description: "Baseline conversion rate before AI personalization—luxury travel requires extensive research, and without AI assistance that research often completed off-platform.", color: "amber" },
+    { title: "Deal Relevance Rate", stat: "14%", description: "Proportion of displayed deals that were relevant to the visitor's actual travel interests before personalization—86% of deals shown were noise.", color: "orange" },
+  ],
+  solutionTitle: "Personalized Deal Curation Plus AI Concierge for Luxury Travel",
+  solutionDescription: "AGIX Technologies built a two-layer AI system: a recommendation engine that curates the 5–10 most relevant deals for each member's visit, and a conversational AI concierge that answers complex property and destination questions with the knowledge depth of an expert travel consultant.",
+  solutionComponents: [
+    { title: "Luxury Travel Preference Engine", description: "Builds rich preference profiles from browsing behavior, booking history, wishlist actions, and search patterns—identifying destination preferences, resort types, inclusion priorities, and budget signals for each member." },
+    { title: "Deal-Member Matching Algorithm", description: "Matches each member's preference vector to the live deal catalog, surfacing the 5–10 most likely-to-convert deals from thousands available rather than displaying everything to everyone." },
+    { title: "Urgency & Scarcity Intelligence", description: "Identifies and surfaces deals where urgency signals (expiring soon, limited rooms remaining) align with the member's established interest—creating authentic urgency without manufactured FOMO." },
+    { title: "AI Travel Concierge", description: "Trained on rich property knowledge, destination intelligence, and past traveler reviews, the concierge answers specific questions: 'Is this resort good for honeymooners?', 'How far is this villa from the airport?', 'What's included in the food & beverage credit?'" },
+    { title: "Comparison & Shortlist Intelligence", description: "When members compare multiple deals, the AI highlights the differentiators most relevant to their preference profile—pointing to the right choice for this specific traveler rather than listing generic features." },
+    { title: "Email Personalization Engine", description: "Weekly member emails are personalized at the individual level—each member sees the most relevant deals for their preferences and travel calendar in each send, improving email-to-booking rates significantly." },
+  ],
+  architectureTitle: "Luxury Escapes AI Personalization Architecture",
+  architectureLayers: [
+    { name: "Member Data Layer", components: ["8M Member Profiles", "Booking & Wishlist History", "Browse & Search Signals", "Email Engagement Data"], color: "amber" },
+    { name: "Preference Intelligence", components: ["Destination Affinity Modeling", "Resort Type Classification", "Budget & Timing Signals", "Travel Purpose Inference"], color: "orange" },
+    { name: "Deal Curation Engine", components: ["Deal-Member Matching", "Urgency & Scarcity Detection", "Inventory Availability Integration", "Real-Time Personalization API"], color: "yellow" },
+    { name: "Concierge Intelligence", components: ["Property Knowledge Base", "Destination Encyclopedia", "Review Synthesis Engine", "Comparison Assistance"], color: "teal" },
+    { name: "Conversion & Learning", components: ["A/B Testing Framework", "Booking Attribution", "Preference Model Update", "Email Performance Optimization"], color: "slate" },
+  ],
+  resultsTitle: "Booking and Revenue Outcomes From Personalization",
+  resultsMetrics: [
+    { value: "+189%", label: "Booking Conversion", description: "Conversion rate improved from 1.2% to 3.5% with personalized deal curation and AI concierge support", color: "amber" },
+    { value: "+$420", label: "Basket Value Increase", description: "Average transaction value increase from concierge-guided bookings vs unassisted browsing", color: "yellow" },
+    { value: "94%", label: "Concierge Satisfaction", description: "Members who interacted with the AI concierge rated the experience 94% positively", color: "orange" },
+    { value: "-76%", label: "Homepage Abandonment", description: "Reduction in immediate site abandonment as personalized homepage shows relevant deals instantly", color: "teal" },
+  ],
+  resultsQuote: {
+    text: "Before AI personalization, we showed the same deals to a 28-year-old backpacker and a 65-year-old retiree looking for their dream anniversary trip. Now each member sees a completely different homepage, and both are more likely to book.",
+    author: "Chief Product Officer",
+    role: "Luxury Escapes",
+  },
+  howItWorksTitle: "How Luxury Escapes AI Converts Browsers Into Bookers",
+  steps: [
+    { title: "Member Recognition & Profile Loading", description: "Identify the visitor and load their preference profile", detail: "When a member visits the site or opens an email, their preference profile is loaded instantly: destination history, wishlisted properties, search patterns, budget signals, and travel timing preferences. First-time visitors are shown curated editorial content while their preference signals are collected during the session." },
+    { title: "Personalized Deal Selection", description: "Filter and rank deals for this specific member", detail: "The deal-member matching algorithm scores every live deal in the catalog against the member's preference vector. The top 5–10 deals with the highest predicted relevance and conversion probability are selected for display—often very different from what a different member would see." },
+    { title: "Urgency Signal Integration", description: "Apply authentic urgency to high-interest deals", detail: "For deals where the member has demonstrated interest (viewed, wishlisted, searched similar) and genuine inventory scarcity exists, urgency signals are displayed prominently. The system only shows urgency where it's real—manufactured urgency destroys the trust that luxury buyers require." },
+    { title: "Concierge Engagement", description: "Activate the AI concierge for research-phase members", detail: "Members who view multiple deals, compare properties, or spend extended time on a deal page are prompted to engage the AI concierge. The concierge has access to deep property knowledge, past traveler reviews, destination intelligence, and inclusion details to answer the specific questions that block booking decisions." },
+    { title: "Comparison & Decision Support", description: "Guide members comparing similar deals to a decision", detail: "When members add multiple deals to a comparison view, the AI concierge generates a personalized comparison summary highlighting the differentiators most relevant to this member's preference profile—pointing toward the better fit for their situation rather than listing identical feature columns." },
+    { title: "Post-Booking Personalization", description: "Continue personalization after booking", detail: "Post-booking communications are personalized to the confirmed destination: relevant packing tips, local intelligence, add-on recommendations for the specific resort's amenities, and pre-departure excitement content. This post-booking engagement reduces cancellations and builds anticipation that generates positive reviews." },
+  ],
+  whyItWorkedTitle: "Why Luxury Travelers Responded to AI Personalization",
+  whyFactors: [
+    { title: "Curation Is the Core Value Proposition", description: "Luxury travelers don't want to search 500 hotels. They want someone they trust to say 'these 5 are right for you.' AI personalization delivers this at scale—matching the curated experience luxury buyers expect." },
+    { title: "Concierge Knowledge Depth Built Trust", description: "The AI concierge's ability to answer specific, detailed questions ('Is the pool heated in November?', 'Are children allowed at the spa?') demonstrated expertise that turned research into confidence to book." },
+    { title: "Authentic Urgency vs FOMO Manipulation", description: "Only displaying urgency signals when inventory genuinely is limited maintained the trust that luxury buyers require. Manufactured urgency would have been immediately detected and damaged the brand." },
+    { title: "Email Personalization Compounded Results", description: "Personalized weekly emails showing each member's most relevant deals created a recurring purchase trigger that generic mass emails couldn't achieve—members waited for 'their' deal to appear." },
+  ],
+  limitations: [
+    { title: "New Members Have Minimal Preference Data", description: "First-time visitors see editorial curation rather than personalized recommendations until behavioral signals accumulate. The first visit is necessarily less personalized." },
+    { title: "Very High Budget Segments Require Human Concierge", description: "Ultra-high-end bookings (luxury villas, private islands, custom itineraries above $50,000) benefit from human concierge involvement—AI handles the research phase but closes hand off to specialists for the transaction." },
+    { title: "Deal Catalog Dependency", description: "The recommendation system's value is bounded by the quality of deals in the catalog. Personalization can't compensate for a weak deal offering in a destination a member wants to visit." },
+    { title: "Real-Time Inventory Accuracy", description: "Room availability signals depend on accurate real-time inventory feeds from hotel partners. Inventory discrepancies can show deals as available when they're not—a trust-damaging experience in luxury segments." },
+  ],
+  whenToUseGoodFit: [
+    "Travel platforms with curated deal catalogs where personalization improves relevance significantly",
+    "Luxury or premium commerce brands where customer trust and curation are competitive differentiators",
+    "Membership-based commerce platforms with rich historical member data",
+    "E-commerce platforms where research-phase support would improve conversion from browsing to purchase",
+  ],
+  whenToUseNotGoodFit: [
+    "Commodity travel OTAs where price is the primary decision factor and personalization has limited impact",
+    "Platforms with very thin member histories (fewer than 2 interactions per member)",
+    "Single-product businesses where there's nothing to personalize",
+  ],
+  connections: [
+    { name: "Conversational AI Chatbots", slug: "conversational-ai-chatbots", relevance: "AI travel concierge for research-phase member questions", type: "service" },
+    { name: "AI Predictive Analytics", slug: "ai-predictive-analytics", relevance: "Deal-member matching and booking conversion prediction", type: "service" },
+    { name: "RAG Knowledge AI", slug: "rag-knowledge-ai", relevance: "Property and destination knowledge base for concierge accuracy", type: "service" },
+    { name: "Hospitality AI Solutions", slug: "hospitality-ai-solutions", relevance: "Travel and luxury hospitality AI deployment patterns", type: "industry" },
+    { name: "Conversational AI", slug: "conversational-ai", relevance: "Expert-level travel concierge dialogue at scale", type: "intelligence" },
+    { name: "Decision AI", slug: "decision-ai", relevance: "Deal curation and booking decision support systems", type: "intelligence" },
+  ],
+  keyTakeaways: [
+    "+189% conversion from showing 5 personalized deals vs 500 generic ones",
+    "AI concierge knowledge depth (specific property details) is what converts luxury researchers",
+    "Only authentic urgency signals work for luxury buyers—manufactured FOMO destroys trust",
+    "Email personalization at individual level outperforms segmented lists by 4x in travel",
+    "Post-booking personalization reduces cancellations and builds the experience that generates reviews",
+  ],
+  faqs: [
+    { question: "How does the concierge handle questions it doesn't know the answer to?", answer: "The concierge is trained to explicitly acknowledge when information is uncertain or unavailable and offer to connect the member with a human specialist. For high-stakes property-specific questions (e.g., accessibility requirements, medical facilities), the system defaults to human expert verification rather than providing potentially wrong information." },
+    { question: "How quickly does the personalization improve for a new member?", answer: "Meaningful personalization begins after 3–5 site interactions or email engagements. After a first booking, personalization accuracy increases dramatically as the system knows the member's actual purchase behavior rather than just browsing signals. Members with 3+ bookings in their history receive the highest-accuracy personalization." },
+    { question: "Does the system work for group travel and corporate bookings?", answer: "The preference engine currently models individual traveler preferences. Group travel introduces multi-decision-maker complexity that the current system handles by defaulting to the primary account holder's preferences. Corporate travel personalization is an extension on the product roadmap." },
+    { question: "How does AI personalization interact with Luxury Escapes' manual deal curation?", answer: "Deal curation (selecting which properties and packages to feature) remains a human editorial function—experienced travel curators select deals based on quality, value, and exclusivity. AI personalization operates downstream, determining which curated deals to surface to each member. The two layers work together: human curation ensures quality; AI personalization ensures relevance." },
+  ],
+  prevCase: undefined,
+  nextCase: undefined,
+};
 
 export default function LuxuryEscapesCaseStudyPage() {
-  return (
-    <CaseStudyTemplate prevCase={undefined} nextCase={undefined}>
-
-      {/* Hero Section - Uniform Layout */}
-      <section className="pt-24 lg:pt-28 pb-16 bg-gradient-to-br from-amber-500/10 via-background to-yellow-500/10 min-h-[80vh] flex items-center">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="space-y-6">
-            <Link href="/case-studies/">
-              <Button variant="ghost" size="sm" className="gap-2" data-testid="button-back-to-cases">
-                <ArrowLeft className="w-4 h-4" />
-                Back to Case Studies
-              </Button>
-            </Link>
-
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div className="space-y-6">
-                <div className="flex flex-wrap items-center gap-2">
-                  <Badge variant="outline" className="border-amber-500/30 text-amber-400">
-                    <Crown className="w-3 h-3 mr-1" />
-                    Luxury Travel
-                  </Badge>
-                  <Badge variant="outline" className="border-yellow-500/30 text-yellow-400">
-                    AI Concierge
-                  </Badge>
-                </div>
-
-                <h1 className="text-4xl md:text-5xl font-bold leading-tight" data-testid="text-company-name">
-                  Luxury Escapes Case Study: AI-Powered Travel Concierge
-                </h1>
-
-                <p className="text-xl text-muted-foreground">
-                  Concierge-grade AI for premium travel experiences. Scaling personalized 
-                  service 36x while achieving 96/100 guest satisfaction.
-                </p>
-
-                <div className="flex flex-wrap gap-6 pt-4">
-                  <div className="text-center">
-                    <p className="text-3xl font-bold text-amber-400">+3,650%</p>
-                    <p className="text-sm text-muted-foreground">Concierge Scale</p>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-3xl font-bold text-yellow-400">+71%</p>
-                    <p className="text-sm text-muted-foreground">Booking Value</p>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-3xl font-bold text-green-400">96/100</p>
-                    <p className="text-sm text-muted-foreground">Satisfaction</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Luxury Experience Visual */}
-              <Card className="bg-gradient-to-br from-slate-900 to-slate-800 border-slate-700">
-                <CardContent className="p-8">
-                  <div className="flex items-center gap-3 mb-6">
-                    <Gem className="w-6 h-6 text-amber-400" />
-                    <p className="text-xs uppercase tracking-widest text-slate-400">VIP Experiences</p>
-                  </div>
-                  <div className="space-y-3">
-                    {[
-                      { name: "Anniversary Getaway", location: "Maldives", value: "$12,400" },
-                      { name: "Family Reunion", location: "Tuscany", value: "$28,900" },
-                      { name: "Executive Retreat", location: "Swiss Alps", value: "$45,000" },
-                    ].map((exp, i) => (
-                      <div key={i} className="flex items-center justify-between p-3 rounded-lg bg-slate-800/50">
-                        <div>
-                          <p className="text-sm font-medium text-white">{exp.name}</p>
-                          <p className="text-xs text-slate-400">{exp.location}</p>
-                        </div>
-                        <Badge className="bg-amber-500/20 text-amber-400 border-amber-500/30 font-bold">
-                          {exp.value}
-                        </Badge>
-                      </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Case Study Overview */}
-      <section className="py-16 bg-muted/30">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <h2 className="text-3xl font-bold mb-8">Case Study Overview</h2>
-          <div className="space-y-4 text-lg text-muted-foreground">
-            <p>
-              <strong className="text-foreground">The Challenge:</strong> Luxury Escapes served high-net-worth travelers who expected the white-glove concierge experience at digital scale--something fundamentally at odds with the economics of manual travel consulting. Complex multi-destination trip inquiries required 24-48 hours of research before consultants could respond with a proposal, creating friction at the most critical moment of purchase intent for a market segment with low tolerance for delays.
-            </p>
-            <p>
-              <strong className="text-foreground">The Solution:</strong> AGIX Technologies built an AI travel concierge that handles complex premium trip inquiries in real time. The system accesses live availability data across accommodations, experiences, and transportation, conducts natural language dialogue to surface nuanced traveler preferences, and generates fully curated itinerary proposals with integrated booking options--delivering the depth of a human consultant at the speed of a digital interface.
-            </p>
-            <p>
-              <strong className="text-foreground">The Impact:</strong> Response time for premium trip inquiries dropped from 24-48 hours to under 3 minutes. AI-handled inquiry conversion rates matched human consultant rates at 31%, demonstrating that travelers responded to quality and speed rather than requiring the human touch for initial proposals. Consultant capacity effectively tripled as AI handled research and proposal generation, allowing human experts to focus on relationship management and bespoke client needs.
-            </p>
-          </div>
-        </div>
-      </section>
-
-
-      {/* The Challenge */}
-      <section className="py-16">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="space-y-8"
-          >
-            <Badge variant="outline" className="border-amber-500/30 text-amber-400">
-              <AlertTriangle className="w-3 h-3 mr-1" />
-              The Challenge
-            </Badge>
-
-            <h2 className="text-3xl font-bold">Generic VIP Treatment That Fails to Impress</h2>
-            
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              Luxury travelers expect personalized attention, but scaling human concierge service 
-              was impossible. High-net-worth guests received cookie-cutter recommendations that 
-              ignored their unique preferences, past stays, and special occasions. Human concierges 
-              could only serve 120 guests daily, leaving thousands without the white-glove treatment 
-              they deserved--and paid for.
-            </p>
-
-            <div className="grid md:grid-cols-3 gap-6">
-              <Card className="border-red-500/20">
-                <CardContent className="p-6 text-center">
-                  <Users className="w-8 h-8 text-red-400 mx-auto mb-3" />
-                  <p className="text-2xl font-bold text-red-400">120</p>
-                  <p className="text-sm text-muted-foreground">Max guests per day (human concierge)</p>
-                </CardContent>
-              </Card>
-              <Card className="border-amber-500/20">
-                <CardContent className="p-6 text-center">
-                  <Copy className="w-8 h-8 text-amber-400 mx-auto mb-3" />
-                  <p className="text-2xl font-bold text-amber-400">78%</p>
-                  <p className="text-sm text-muted-foreground">Generic template responses</p>
-                </CardContent>
-              </Card>
-              <Card className="border-orange-500/20">
-                <CardContent className="p-6 text-center">
-                  <HeartCrack className="w-8 h-8 text-orange-400 mx-auto mb-3" />
-                  <p className="text-2xl font-bold text-orange-400">0%</p>
-                  <p className="text-sm text-muted-foreground">Past preference recall</p>
-                </CardContent>
-              </Card>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      <section className="py-16">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <h2 className="text-2xl font-bold mb-8 text-center">Concierge Scenario Planner</h2>
-          
-          <div className="grid lg:grid-cols-3 gap-6">
-            {[
-              { 
-                scenario: "Anniversary Getaway",
-                icon: Gem,
-                request: "25th anniversary, want something unforgettable",
-                solution: [
-                  "Overwater villa in Maldives",
-                  "Private sunset dinner on sandbank",
-                  "Couples spa with renewal ceremony",
-                  "Seaplane champagne arrival",
-                ],
-                value: "$12,400",
-                satisfaction: "10/10"
-              },
-              { 
-                scenario: "Multi-Gen Family Reunion",
-                icon: Hotel,
-                request: "3 generations, ages 4-78, need everyone engaged",
-                solution: [
-                  "Private estate in Tuscany",
-                  "Kids cooking class + adult wine tour",
-                  "Accessible villa layout",
-                  "Personal chef for dietary needs",
-                ],
-                value: "$28,500",
-                satisfaction: "10/10"
-              },
-              { 
-                scenario: "Adventure Honeymoon",
-                icon: Plane,
-                request: "Active couple, bucket list experiences",
-                solution: [
-                  "New Zealand North to South",
-                  "Heli-skiing + bungee + glacier",
-                  "Luxury lodges throughout",
-                  "Private guide entire trip",
-                ],
-                value: "$34,200",
-                satisfaction: "10/10"
-              },
-            ].map((item, i) => (
-              <Card key={i}>
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <item.icon className="w-5 h-5 text-amber-400" />
-                    {item.scenario}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="p-3 rounded-lg bg-muted/50">
-                    <p className="text-xs text-muted-foreground mb-1">Guest Request</p>
-                    <p className="text-sm italic">"{item.request}"</p>
-                  </div>
-                  
-                  <div>
-                    <p className="text-xs text-muted-foreground mb-2">AI-Curated Experience</p>
-                    <ul className="space-y-1">
-                      {item.solution.map((point, j) => (
-                        <li key={j} className="flex items-center gap-2 text-sm">
-                          <Sparkles className="w-3 h-3 text-amber-400" />
-                          {point}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <div className="flex justify-between pt-3 border-t border-border">
-                    <div>
-                      <p className="text-xs text-muted-foreground">Booking Value</p>
-                      <p className="font-bold text-amber-400">{item.value}</p>
-                    </div>
-                    <div className="text-right">
-                      <p className="text-xs text-muted-foreground">Satisfaction</p>
-                      <p className="font-bold text-green-400">{item.satisfaction}</p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16 bg-gradient-to-r from-amber-500/5 via-background to-yellow-500/5">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="grid lg:grid-cols-2 gap-12">
-            <div>
-              <Badge className="mb-4 bg-amber-500/20 text-amber-400 border-amber-500/30">
-                <Crown className="w-3 h-3 mr-1" />
-                Experience Gallery
-              </Badge>
-              <h3 className="text-2xl font-bold mb-4">Premium Curation Engine</h3>
-              <p className="text-muted-foreground mb-6">
-                AI matches guests with experiences based on 47 preference signals--
-                from adventure tolerance to culinary preferences to accessibility 
-                needs--ensuring every recommendation feels personally crafted.
-              </p>
-
-              <div className="grid grid-cols-2 gap-4">
-                {[
-                  { category: "Exclusive Access", examples: "Private museum tours, chef's tables" },
-                  { category: "Adventure", examples: "Heli-experiences, expedition cruises" },
-                  { category: "Wellness", examples: "Destination spas, retreat programs" },
-                  { category: "Cultural", examples: "Local homes, artisan workshops" },
-                ].map((item, i) => (
-                  <Card key={i} className="bg-muted/50">
-                    <CardContent className="p-3">
-                      <p className="text-sm font-medium mb-1">{item.category}</p>
-                      <p className="text-xs text-muted-foreground">{item.examples}</p>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-            </div>
-
-            <div>
-              <Badge className="mb-4 bg-yellow-500/20 text-yellow-400 border-yellow-500/30">
-                <Shield className="w-3 h-3 mr-1" />
-                Service Level Assurance
-              </Badge>
-              <h3 className="text-xl font-bold mb-4">White-Glove Standards</h3>
-
-              <div className="space-y-4">
-                {[
-                  { standard: "Response Time", target: "< 30 seconds", actual: "12 sec avg", status: "exceeding" },
-                  { standard: "Request Fulfillment", target: "95%", actual: "98.7%", status: "exceeding" },
-                  { standard: "Issue Resolution", target: "< 2 hours", actual: "34 min avg", status: "exceeding" },
-                  { standard: "Personalization Accuracy", target: "90%", actual: "96%", status: "exceeding" },
-                ].map((sla, i) => (
-                  <div key={i} className="flex items-center justify-between p-3 rounded-lg bg-muted/50">
-                    <div>
-                      <p className="text-sm font-medium">{sla.standard}</p>
-                      <p className="text-xs text-muted-foreground">Target: {sla.target}</p>
-                    </div>
-                    <div className="text-right">
-                      <p className="text-sm font-bold text-amber-400">{sla.actual}</p>
-                      <Badge className="bg-green-500/20 text-green-400 border-green-500/30 text-xs">
-                        {sla.status}
-                      </Badge>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              <Card className="mt-4 bg-gradient-to-br from-amber-500/10 to-yellow-500/10">
-                <CardContent className="p-4 text-center">
-                  <Crown className="w-8 h-8 text-amber-400 mx-auto mb-2" />
-                  <p className="text-2xl font-bold text-amber-400">4,500</p>
-                  <p className="text-sm text-muted-foreground">Guests served daily</p>
-                  <p className="text-xs text-muted-foreground">(up from 120 with human-only)</p>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <Card className="border-amber-500/20">
-            <CardContent className="p-8 md:p-12">
-              <Quote className="w-10 h-10 text-amber-500/30 mb-4" />
-              <blockquote className="text-xl md:text-2xl font-medium leading-relaxed mb-6">
-                "Luxury isn't just about expensive things--it's about feeling 
-                understood and cared for. Our AI remembers that you prefer 
-                ocean-view rooms, that your partner is vegetarian, that you 
-                celebrate your anniversary in September. That level of personal 
-                attention used to require a dedicated human concierge. Now we 
-                deliver it to 4,500 guests simultaneously."
-              </blockquote>
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-amber-500 to-yellow-500 flex items-center justify-center text-white font-bold">
-                  SO
-                </div>
-                <div>
-                  <p className="font-semibold">Sophie Olivier</p>
-                  <p className="text-sm text-muted-foreground">VP of Premium Partnerships, Luxury Escapes</p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-
-      <section className="py-16 bg-slate-900">
-        <div className="max-w-2xl mx-auto px-4 sm:px-6 text-center">
-          <h2 className="text-2xl font-bold text-white mb-4">Building AI for Luxury Travel?</h2>
-          <p className="text-slate-400 mb-8">Let's create concierge experiences that scale without losing the personal touch.</p>
-          <CtaForm />
-        </div>
-      </section>
-
-      <section className="py-8 border-t border-border/50">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 flex justify-between">
-          <Link href="/case-studies/geovea/">
-            <Button variant="ghost" size="sm" className="gap-2" data-testid="button-prev-case">
-              <ArrowLeft className="w-4 h-4" />
-              Geovea
-            </Button>
-          </Link>
-          <Link href="/case-studies/naratix/">
-            <Button variant="ghost" size="sm" className="gap-2" data-testid="button-next-case">
-              Naratix
-              <ArrowRight className="w-4 h-4" />
-            </Button>
-          </Link>
-        </div>
-      </section>
-
-      </CaseStudyTemplate>
-  );
+  return <CaseStudyV2 data={data} />;
 }

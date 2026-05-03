@@ -1,460 +1,125 @@
 'use client'
+import { CaseStudyV2, CaseStudyV2Data } from "@/components/case-study/CaseStudyV2";
 
-import { CaseStudyTemplate } from "@/components/shared/case-study-template";
-
-import { useState } from "react";
-import { motion, AnimatePresence } from "@/lib/motion";
-
-import { CtaForm } from "@/components/forms/cta-form";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Progress } from "@/components/ui/progress";
-import {
-  ArrowLeft,
-  ArrowRight,
-  Mic,
-  Phone,
-  Clock,
-  TrendingUp,
-  Quote,
-  Globe,
-  Users,
-  Gauge,
-  CheckCircle2,
-  XCircle,
-  BarChart3,
-  Headphones,
-  Languages,
-  Play,
-  Pause,
-  Volume2,
-  MessageSquare,
-  Zap,
-  Brain,
-  AlertTriangle,
-  DollarSign,
-  UserX,
-} from "lucide-react";
-import Link from "next/link";
+const data: CaseStudyV2Data = {
+  slug: "polyai",
+  company: "PolyAI",
+  industry: "Enterprise Software",
+  subIndustry: "AI Voice Call Center Automation",
+  accentColor: "violet",
+  gradientClasses: "bg-gradient-to-br from-background via-violet-500/5 to-cyan-500/10",
+  heroHeadline: "PolyAI: Voice AI That Resolves Calls, Not Just Routes Them",
+  heroSubheadline: "Enterprise voice AI handling millions of calls with 89% resolution rate across 8+ languages—cutting cost-per-call by 74% while raising CSAT scores 22%.",
+  heroStats: [
+    { value: "89%", label: "Resolution Rate", color: "text-violet-400" },
+    { value: "-74%", label: "Cost Per Call", color: "text-cyan-400" },
+    { value: "+22%", label: "CSAT Improvement", color: "text-green-400" },
+  ],
+  directAnswerQuestion: "How does PolyAI use AI to automate enterprise call centers?",
+  directAnswer: "PolyAI deploys a production-grade voice AI platform with natural language understanding capable of handling complex, multi-turn conversations across 8+ languages and regional accent variations. The system integrates directly with CRM, booking, and ticketing systems to resolve inquiries end-to-end—accessing live customer data to provide personalized responses—and escalates to human agents with full conversation context only when inquiries genuinely require human judgment. 87% of inbound calls now resolve without any human intervention.",
+  clientDescription: "PolyAI builds enterprise-grade conversational AI for customer service. Their clients include major hospitality, retail, and financial services companies operating contact centers handling millions of inbound calls annually. PolyAI's platform is purpose-built for enterprise deployment with the reliability, security, and integration depth that large-scale customer operations demand.",
+  clientFounded: "2017",
+  clientSize: "300+ employees, serving Fortune 500 clients",
+  clientLocation: "London, UK & New York, USA",
+  problemTitle: "Traditional Call Centers Couldn't Scale to Demand",
+  problemDescription: "Enterprise contact centers faced a structural crisis: customers waited in endless queues, human agents cost $12+ per call on routine inquiries, and IVR systems frustrated callers with press-1-for-this menus that resolved almost nothing. Agent burnout from repetitive calls was driving 40%+ annual turnover.",
+  painPoints: [
+    { title: "Avg Handle Time", stat: "8.2 min", description: "Average time per call before AI, dominated by routine inquiries that required no complex judgment.", color: "red" },
+    { title: "Cost Per Call", stat: "$12.40", description: "Human-handled call cost including agent wages, overhead, and quality assurance overhead.", color: "amber" },
+    { title: "Resolution Rate", stat: "62%", description: "Pre-AI first-call resolution rate—38% of calls required callbacks or escalations.", color: "orange" },
+  ],
+  solutionTitle: "Natural Language Voice AI With Full System Integration",
+  solutionDescription: "AGIX Technologies built a production-grade voice AI platform with conversational NLU that handles complex multi-turn dialogues, integrates with live backend systems, and escalates intelligently—routing calls to human agents with complete conversation context when human judgment is genuinely needed.",
+  solutionComponents: [
+    { title: "Conversational NLU Engine", description: "Natural language understanding that processes natural speech—not press-1 menus—detecting intent, entities, and sentiment across complex multi-turn conversations." },
+    { title: "Multi-Language Support", description: "Supports 8+ languages with regional accent variations (US/UK/AU English, Latin American vs. Castilian Spanish, etc.) with 94-100% coverage per language." },
+    { title: "Live CRM Integration", description: "Real-time API calls to CRM, booking, and ticketing systems during the call—enabling personalized responses using actual customer data without agent intervention." },
+    { title: "Intelligent Escalation", description: "When calls exceed the AI's resolution capability, it escalates to human agents with complete conversation transcript, detected intent, and attempted resolution summary." },
+    { title: "Voice Synthesis", description: "Sub-200ms response latency with natural prosody and pause patterns—callers report not realizing they were speaking with AI until informed." },
+    { title: "Analytics & Quality Monitoring", description: "Post-call analytics tracking resolution rate, escalation reasons, CSAT correlation, and agent override patterns to continuously improve the model." },
+  ],
+  architectureTitle: "PolyAI Voice AI Architecture",
+  architectureLayers: [
+    { name: "Voice Interface", components: ["Telephony Integration (SIP/PSTN)", "Speech-to-Text (ASR)", "Text-to-Speech (TTS)", "Language Detection", "Accent Normalization"], color: "sky" },
+    { name: "NLU & Dialog", components: ["Intent Classification", "Entity Extraction", "Sentiment Analysis", "Conversation State Manager", "Multi-Turn Dialog Engine"], color: "violet" },
+    { name: "Integration Layer", components: ["CRM API Connector", "Booking System APIs", "Order Tracking Integration", "Knowledge Base Retrieval", "Authentication Module"], color: "blue" },
+    { name: "Decision & Resolution", components: ["Resolution Logic Engine", "Confidence Thresholding", "Escalation Trigger", "Human Handoff Protocol", "Context Package Builder"], color: "cyan" },
+    { name: "Analytics & Learning", components: ["Call Recording & Transcription", "Resolution Rate Tracking", "CSAT Correlation Engine", "Model Retraining Pipeline", "Performance Dashboards"], color: "green" },
+  ],
+  resultsTitle: "Call Center Performance Transformed Across All Metrics",
+  resultsMetrics: [
+    { value: "89%", label: "AI Resolution Rate", description: "Calls fully resolved by voice AI with no human agent involvement", color: "violet" },
+    { value: "-74%", label: "Cost Per Call", description: "$3.20 vs $12.40 before AI deployment—significant margin expansion", color: "cyan" },
+    { value: "+22%", label: "CSAT Improvement", description: "Near-instant response (under 30 seconds) vs. 8-minute hold times drives satisfaction gains", color: "green" },
+    { value: "<30s", label: "Wait Time", description: "Average wait time reduced from 8 minutes to under 30 seconds for AI-handled calls", color: "blue" },
+  ],
+  resultsQuote: {
+    text: "Customers tell us they didn't realize they were talking to AI until we mentioned it. The latency is so low and the responses so natural that it feels like a real conversation. That's the bar for enterprise voice AI.",
+    author: "Head of Voice Platform Operations",
+    role: "PolyAI",
+  },
+  howItWorksTitle: "How PolyAI Handles a Call End-to-End",
+  steps: [
+    { title: "Call Receipt & Language Detection", description: "Identify caller, detect language and accent variant", detail: "The call arrives via PSTN or SIP. Within 500ms the system authenticates the caller using ANI/DNIS, pulls their CRM record, and detects the language and regional accent from the greeting utterance. The appropriate language model is selected before the first response." },
+    { title: "Intent Classification", description: "Understand what the caller needs in natural speech", detail: "The caller's first utterance is processed by the NLU engine, which classifies intent (booking inquiry, account question, order status, complaint) and extracts entities (dates, account numbers, product names) from natural speech without requiring callers to use specific keywords." },
+    { title: "Context Gathering", description: "Multi-turn dialogue to collect missing information", detail: "For intents requiring additional information (e.g., a booking modification requires the original booking reference and new date), the system conducts targeted follow-up questions using conversational phrasing—not form-filling prompts." },
+    { title: "Live System Lookup", description: "Query backend systems in real time during the call", detail: "The integration layer makes real-time API calls to the relevant backend system while the caller is on the line. For booking inquiries, this means pulling the actual booking record. For order status, querying the fulfillment system. Responses are personalized with actual data." },
+    { title: "Resolution or Escalation", description: "Resolve the inquiry or hand off intelligently", detail: "If the system can resolve the inquiry (confirming a booking, providing a tracking number, processing a standard refund), it does so and confirms the resolution. If the inquiry requires human judgment, it escalates with a complete context package—caller identity, intent, conversation transcript, and attempted resolution." },
+    { title: "Post-Call Analytics", description: "Learn from every call to improve future performance", detail: "Every call generates a resolution record: was it resolved, how many turns did it take, was it escalated and why, and what CSAT score was provided. This data feeds the model retraining pipeline, continuously improving resolution rates and reducing unnecessary escalations." },
+  ],
+  whyItWorkedTitle: "Why PolyAI's Voice AI Deployment Succeeded",
+  whyFactors: [
+    { title: "Resolution Over Routing", description: "PolyAI's architecture was designed to resolve inquiries end-to-end, not route them to human queues—requiring deep system integration that most voice AI platforms skip." },
+    { title: "Sub-200ms Latency", description: "Natural conversation requires response latency under 300ms. Achieving this at scale required careful infrastructure architecture including regional model hosting and streaming ASR." },
+    { title: "Accent & Dialect Training", description: "Each language was trained on regional accent variations rather than a single standard dialect, dramatically improving recognition accuracy for non-standard accent callers." },
+    { title: "Intelligent Confidence Thresholding", description: "Rather than attempting to resolve every call regardless of confidence, the system escalates when confidence falls below threshold—human agents only see calls where AI genuinely struggled." },
+    { title: "Transparent Human Handoff", description: "When escalating, the complete conversation context is surfaced to the human agent instantly, eliminating repeat-yourself frustration that drives CSAT down on escalated calls." },
+    { title: "Phased Capability Rollout", description: "New call intents were added incrementally after validation rather than attempting to handle all inquiry types on day one, allowing quality control and model refinement per intent category." },
+  ],
+  limitations: [
+    { title: "High-Emotion Calls Require Human Empathy", description: "Complaints involving significant customer distress, bereavement-related cancellations, or safety concerns are escalated to human agents regardless of technical resolvability." },
+    { title: "Highly Complex Multi-System Inquiries", description: "Calls requiring coordination across 3+ backend systems simultaneously increase resolution time and escalation risk, requiring careful workflow design." },
+    { title: "Regulatory Disclosure Requirements", description: "Some jurisdictions require disclosure that callers are speaking with AI. Disclosure handling must be built into call flow design for compliant deployments." },
+    { title: "Cold Start for New Intent Types", description: "Newly added intent categories require 500-1,000 training examples before resolution rates reach target levels, creating a ramp period for expanded capability." },
+  ],
+  whenToUseGoodFit: [
+    "Operate contact centers handling 50,000+ inbound calls per month",
+    "Have 40%+ of call volume from routine, repeatable inquiry types",
+    "Maintain APIs or integration points into backend CRM and fulfillment systems",
+    "Face agent retention challenges from repetitive call volume",
+    "Operate across multiple languages or international markets",
+  ],
+  whenToUseNotGoodFit: [
+    "Call volume is primarily complex, high-judgment cases with no routine patterns",
+    "No API access to backend systems—voice AI without live data integration is limited",
+    "Operate in a single language with no scale challenges",
+    "Call center handles exclusively outbound sales rather than inbound service",
+  ],
+  connections: [
+    { name: "AI Voice Agents", slug: "ai-voice-agents", relevance: "Core voice AI infrastructure for enterprise call center automation", type: "service" },
+    { name: "Conversational AI Chatbots", slug: "conversational-ai-chatbots", relevance: "Multi-channel conversational AI extending voice to digital channels", type: "service" },
+    { name: "Agentic AI Systems", slug: "agentic-ai-systems", relevance: "Autonomous resolution agents that take action within backend systems", type: "service" },
+    { name: "Conversational AI", slug: "conversational-ai", relevance: "Natural language understanding and multi-turn dialogue intelligence", type: "intelligence" },
+    { name: "Operational AI", slug: "operational-ai", relevance: "Contact center operations optimization and workforce management", type: "intelligence" },
+  ],
+  keyTakeaways: [
+    "89% of calls resolve without human agent involvement at $3.20 vs $12.40 per call",
+    "Sub-30-second wait time vs. 8-minute hold times drives 22% CSAT improvement",
+    "Live CRM integration during calls enables personalized resolution without human lookup",
+    "Intelligent escalation routes only genuinely complex calls to human agents",
+    "8+ language support with regional accent training enables multinational deployment",
+  ],
+  faqs: [
+    { question: "How does the AI handle callers who insist on speaking with a human?", answer: "The system immediately escalates to a human agent when a caller requests one—there is no attempt to persuade callers to continue with AI. Escalation confidence and timing are tuned to ensure callers who want human interaction receive it within seconds." },
+    { question: "What happens when the AI doesn't understand what the caller said?", answer: "The system has a configurable maximum number of clarification attempts. If understanding cannot be achieved within that threshold, the call escalates to a human agent with the partial conversation transcript. Repeated misunderstanding patterns trigger model review for that intent type." },
+    { question: "How is the voice AI integrated with existing telephony infrastructure?", answer: "PolyAI integrates via SIP trunk or telephony API with all major platforms including Genesys, Avaya, and Twilio. The integration layer is configured during a 4-6 week technical onboarding phase before go-live." },
+    { question: "Can the system handle outbound calls in addition to inbound?", answer: "Yes. The platform supports outbound use cases including appointment reminders, payment notifications, and proactive service updates. Outbound flows are configured separately from inbound resolution flows and require compliance review for TCPA/GDPR adherence." },
+    { question: "How long does deployment typically take?", answer: "A standard deployment covers 3-5 high-volume intent types and takes 8-12 weeks: 4 weeks for CRM integration and intent training, 2 weeks for quality assurance and accent testing, and 2-4 weeks for phased go-live starting with pilot call volume." },
+  ],
+  prevCase: { name: "Naratix", url: "/case-studies/naratix/" },
+  nextCase: { name: "Brainfish", url: "/case-studies/brainfish/" },
+};
 
 export default function PolyAICaseStudyPage() {
-  const [activeCallState, setActiveCallState] = useState(0);
-  const [isSimulating, setIsSimulating] = useState(false);
-  const [selectedLanguage, setSelectedLanguage] = useState("english");
-
-  const callFlowStates = [
-    { state: "Greeting", time: "2s", icon: Phone, description: "Language detection + personalized welcome", transcript: "Thank you for calling TechCorp support. How can I help you today?" },
-    { state: "Intent Classification", time: "1.5s", icon: Brain, description: "NLU classifies caller intent from natural speech", transcript: "I understand you're having trouble with your account login. Let me help with that." },
-    { state: "Context Gathering", time: "15s", icon: MessageSquare, description: "Conversational follow-up questions", transcript: "Can you confirm the email address associated with your account?" },
-    { state: "Action Execution", time: "3s", icon: Zap, description: "API calls to backend systems", transcript: "I've sent a password reset link to j***@email.com. It should arrive in the next few minutes." },
-    { state: "Confirmation", time: "5s", icon: CheckCircle2, description: "Verify resolution with caller", transcript: "Is there anything else I can help you with today?" },
-  ];
-
-  const languages = [
-    { id: "english", name: "English", variants: ["US", "UK", "AU"], coverage: "100%" },
-    { id: "spanish", name: "Spanish", variants: ["ES", "MX", "LATAM"], coverage: "98%" },
-    { id: "french", name: "French", variants: ["FR", "CA"], coverage: "97%" },
-    { id: "german", name: "German", variants: ["DE", "AT", "CH"], coverage: "96%" },
-    { id: "japanese", name: "Japanese", variants: ["JP"], coverage: "94%" },
-    { id: "mandarin", name: "Mandarin", variants: ["CN", "TW"], coverage: "95%" },
-  ];
-
-  const performanceMetrics = [
-    { metric: "Resolution Rate", before: "62%", after: "89%", improvement: "+44%" },
-    { metric: "Avg Handle Time", before: "8.2 min", after: "3.1 min", improvement: "-62%" },
-    { metric: "First Call Resolution", before: "54%", after: "81%", improvement: "+50%" },
-    { metric: "Cost per Call", before: "$12.40", after: "$3.20", improvement: "-74%" },
-  ];
-
-  const simulateCall = () => {
-    setIsSimulating(true);
-    setActiveCallState(0);
-    const interval = setInterval(() => {
-      setActiveCallState(prev => {
-        if (prev >= callFlowStates.length - 1) {
-          clearInterval(interval);
-          setIsSimulating(false);
-          return prev;
-        }
-        return prev + 1;
-      });
-    }, 2000);
-  };
-
-  return (
-    <CaseStudyTemplate prevCase={{ name: "Naratix", url: "/case-studies/naratix/" }} nextCase={{ name: "Brainfish", url: "/case-studies/brainfish/" }}>
-
-      {/* Hero Section - Uniform Layout */}
-      <section className="pt-24 lg:pt-28 pb-16 bg-gradient-to-br from-slate-900 via-violet-900/20 to-slate-900 min-h-[80vh] flex items-center">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="space-y-6">
-            <Link href="/case-studies/">
-              <Button variant="ghost" size="sm" className="gap-2 text-slate-300" data-testid="button-back-to-cases">
-                <ArrowLeft className="w-4 h-4" />
-                Back to Case Studies
-              </Button>
-            </Link>
-
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div className="space-y-6">
-                <div className="flex flex-wrap items-center gap-2">
-                  <Badge variant="outline" className="border-violet-500/30 text-violet-400">
-                    <Mic className="w-3 h-3 mr-1" />
-                    Voice AI
-                  </Badge>
-                  <Badge variant="outline" className="border-cyan-500/30 text-cyan-400">
-                    Call Center Automation
-                  </Badge>
-                </div>
-
-                <h1 className="text-4xl md:text-5xl font-bold leading-tight text-white">
-                  PolyAI Case Study: AI-Powered Call Center Automation
-                </h1>
-
-                <p className="text-xl text-slate-300">
-                  Enterprise voice AI that resolves, not just routes. Handling millions 
-                  of calls with human-level understanding across 8+ languages.
-                </p>
-
-                <div className="flex flex-wrap gap-6 pt-4">
-                  <div className="text-center">
-                    <p className="text-3xl font-bold text-violet-400">89%</p>
-                    <p className="text-sm text-slate-400">Resolution Rate</p>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-3xl font-bold text-cyan-400">-74%</p>
-                    <p className="text-sm text-slate-400">Cost per Call</p>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-3xl font-bold text-green-400">8+</p>
-                    <p className="text-sm text-slate-400">Languages</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Performance Dashboard Visual */}
-              <Card className="bg-gradient-to-br from-slate-800 to-slate-900 border-slate-700">
-                <CardContent className="p-8">
-                  <div className="flex items-center gap-3 mb-6">
-                    <Gauge className="w-6 h-6 text-violet-400" />
-                    <p className="text-xs uppercase tracking-widest text-slate-400">Performance</p>
-                  </div>
-                  <div className="space-y-4">
-                    {performanceMetrics.map((item, i) => (
-                      <div key={i} className="flex items-center justify-between p-3 rounded-lg bg-slate-700/30">
-                        <div>
-                          <p className="text-sm font-medium text-white">{item.metric}</p>
-                          <p className="text-xs text-slate-400">{item.before} before</p>
-                        </div>
-                        <div className="text-right">
-                          <p className="text-lg font-bold text-white">{item.after}</p>
-                          <Badge className="bg-green-500/20 text-green-400 border-green-500/30 text-xs">
-                            {item.improvement}
-                          </Badge>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Case Study Overview */}
-      <section className="py-16 bg-muted/30">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <h2 className="text-3xl font-bold mb-8">Case Study Overview</h2>
-          <div className="space-y-4 text-lg text-muted-foreground">
-            <p>
-              <strong className="text-foreground">The Challenge:</strong> PolyAI's enterprise clients operated contact centers handling millions of inbound calls annually, with over 60% of those calls involving routine inquiries--booking confirmations, account status, order tracking, FAQs--that required no complex human judgment. Long hold times averaging 8 minutes, agent burnout from repetitive interactions, and inconsistent service quality across agent shifts were driving measurable customer churn.
-            </p>
-            <p>
-              <strong className="text-foreground">The Solution:</strong> AGIX Technologies built a production-grade voice AI platform with natural language understanding capable of handling complex, multi-turn conversations across multiple languages and regional accent variations. The system integrates with CRM, booking, and ticketing systems to resolve inquiries end-to-end--accessing live customer data to provide personalized responses--and escalates to human agents with full conversation context only when the inquiry genuinely requires human judgment.
-            </p>
-            <p>
-              <strong className="text-foreground">The Impact:</strong> 87% of inbound calls now resolve fully through voice AI without any human intervention. Average hold times dropped from 8 minutes to under 30 seconds, the single largest driver of improved customer satisfaction. CSAT scores improved 22% as the near-instant response experience outweighed initial caller reluctance. Human agents, freed from repetitive calls, handled a higher proportion of complex cases where empathy and judgment create real value.
-            </p>
-          </div>
-        </div>
-      </section>
-
-
-      {/* The Challenge */}
-      <section className="py-16">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="space-y-8"
-          >
-            <Badge variant="outline" className="border-amber-500/30 text-amber-400">
-              <AlertTriangle className="w-3 h-3 mr-1" />
-              The Challenge
-            </Badge>
-
-            <h2 className="text-3xl font-bold">Traditional Call Centers Couldn't Scale</h2>
-            
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              Enterprise contact centers faced a perfect storm: customers waited in endless queues, 
-              human agents cost $12+ per call, and CSAT scores tanked as hold times grew. The old 
-              IVR systems--press 1 for this, press 2 for that--frustrated callers and created more 
-              escalations than they resolved. Companies needed voice AI that could actually resolve 
-              issues, not just route calls to the next queue.
-            </p>
-
-            <div className="grid md:grid-cols-3 gap-6">
-              <Card className="border-red-500/20">
-                <CardContent className="p-6 text-center">
-                  <Clock className="w-8 h-8 text-red-400 mx-auto mb-3" />
-                  <p className="text-2xl font-bold text-red-400">8.2 min</p>
-                  <p className="text-sm text-muted-foreground">Avg handle time per call</p>
-                </CardContent>
-              </Card>
-              <Card className="border-amber-500/20">
-                <CardContent className="p-6 text-center">
-                  <DollarSign className="w-8 h-8 text-amber-400 mx-auto mb-3" />
-                  <p className="text-2xl font-bold text-amber-400">$12.40</p>
-                  <p className="text-sm text-muted-foreground">Cost per human-handled call</p>
-                </CardContent>
-              </Card>
-              <Card className="border-orange-500/20">
-                <CardContent className="p-6 text-center">
-                  <UserX className="w-8 h-8 text-orange-400 mx-auto mb-3" />
-                  <p className="text-2xl font-bold text-orange-400">62%</p>
-                  <p className="text-sm text-muted-foreground">Resolution rate before AI</p>
-                </CardContent>
-              </Card>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Interactive Call Flow Simulator - Unique Structure */}
-      <section className="py-16">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="text-center mb-10">
-            <Badge className="mb-4 bg-violet-500/20 text-violet-400 border-violet-500/30">
-              <Phone className="w-3 h-3 mr-1" />
-              Interactive Demo
-            </Badge>
-            <h2 className="text-2xl md:text-3xl font-bold">Call Flow Decision Theater</h2>
-            <p className="text-muted-foreground mt-2 max-w-2xl mx-auto">
-              Watch how PolyAI handles a real customer call from start to resolution
-            </p>
-          </div>
-
-          <div className="grid lg:grid-cols-3 gap-6">
-            {/* Call Simulation Panel */}
-            <div className="lg:col-span-2">
-              <Card className="border-slate-700 bg-slate-800/50">
-                <CardHeader className="border-b border-slate-700">
-                  <div className="flex items-center justify-between">
-                    <CardTitle className="text-lg text-white flex items-center gap-2">
-                      <Headphones className="w-5 h-5 text-violet-400" />
-                      Live Call Simulation
-                    </CardTitle>
-                    <Button
-                      onClick={simulateCall}
-                      disabled={isSimulating}
-                      className="gap-2 bg-violet-500 hover:bg-violet-600"
-                      data-testid="button-simulate-call"
-                    >
-                      {isSimulating ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />}
-                      {isSimulating ? "In Progress..." : "Simulate Call"}
-                    </Button>
-                  </div>
-                </CardHeader>
-                <CardContent className="p-6">
-                  {/* Call State Progress */}
-                  <div className="space-y-4 mb-6">
-                    {callFlowStates.map((state, i) => {
-                      const isActive = i === activeCallState && isSimulating;
-                      const isComplete = i < activeCallState || (!isSimulating && activeCallState === callFlowStates.length - 1 && i <= activeCallState);
-
-                      return (
-                        <motion.div
-                          key={i}
-                          initial={{ opacity: 0.5 }}
-                          animate={{ opacity: isActive || isComplete ? 1 : 0.5 }}
-                          className={`p-4 rounded-lg border transition-all ${
-                            isActive ? 'border-violet-500 bg-violet-500/10' :
-                            isComplete ? 'border-green-500/30 bg-green-500/5' :
-                            'border-slate-700 bg-slate-800/30'
-                          }`}
-                        >
-                          <div className="flex items-center gap-3">
-                            <div className={`w-10 h-10 rounded-full flex items-center justify-center ${
-                              isActive ? 'bg-violet-500 animate-pulse' :
-                              isComplete ? 'bg-green-500' :
-                              'bg-slate-700'
-                            }`}>
-                              {isComplete && !isActive ? (
-                                <CheckCircle2 className="w-5 h-5 text-white" />
-                              ) : (
-                                <state.icon className="w-5 h-5 text-white" />
-                              )}
-                            </div>
-                            <div className="flex-1">
-                              <div className="flex items-center justify-between">
-                                <p className="font-medium text-white">{state.state}</p>
-                                <Badge variant="outline" className="text-xs border-slate-600">
-                                  {state.time}
-                                </Badge>
-                              </div>
-                              <p className="text-sm text-slate-400">{state.description}</p>
-                            </div>
-                          </div>
-
-                          <AnimatePresence>
-                            {(isActive || isComplete) && (
-                              <motion.div
-                                initial={{ opacity: 0, height: 0 }}
-                                animate={{ opacity: 1, height: "auto" }}
-                                exit={{ opacity: 0, height: 0 }}
-                                className="mt-3 p-3 rounded bg-slate-900"
-                              >
-                                <div className="flex items-center gap-2 mb-1">
-                                  <Volume2 className="w-3 h-3 text-violet-400" />
-                                  <span className="text-xs text-violet-400">AI Response</span>
-                                </div>
-                                <p className="text-sm text-slate-300 italic">"{state.transcript}"</p>
-                              </motion.div>
-                            )}
-                          </AnimatePresence>
-                        </motion.div>
-                      );
-                    })}
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-
-            {/* Language Support Panel */}
-            <div>
-              <Card className="border-slate-700 bg-slate-800/50 h-full">
-                <CardHeader>
-                  <CardTitle className="text-lg text-white flex items-center gap-2">
-                    <Languages className="w-5 h-5 text-cyan-400" />
-                    Multi-Language Support
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-3">
-                  {languages.map((lang) => (
-                    <div
-                      key={lang.id}
-                      className={`p-3 rounded-lg cursor-pointer transition-all ${
-                        selectedLanguage === lang.id
-                          ? 'bg-cyan-500/10 border border-cyan-500/30'
-                          : 'bg-slate-700/50 hover:bg-slate-700'
-                      }`}
-                      onClick={() => setSelectedLanguage(lang.id)}
-                      data-testid={`language-${lang.id}`}
-                    >
-                      <div className="flex items-center justify-between mb-2">
-                        <span className="font-medium text-white">{lang.name}</span>
-                        <Badge className="bg-green-500/20 text-green-400 border-green-500/30 text-xs">
-                          {lang.coverage}
-                        </Badge>
-                      </div>
-                      <div className="flex flex-wrap gap-1">
-                        {lang.variants.map((v, i) => (
-                          <Badge key={i} variant="outline" className="text-xs border-slate-600 text-slate-400">
-                            {v}
-                          </Badge>
-                        ))}
-                      </div>
-                    </div>
-                  ))}
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Performance Comparison */}
-      <section className="py-16 bg-gradient-to-b from-background to-violet-500/5">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="text-center mb-10">
-            <Badge className="mb-4 bg-green-500/20 text-green-400 border-green-500/30">
-              <BarChart3 className="w-3 h-3 mr-1" />
-              Impact Metrics
-            </Badge>
-            <h2 className="text-2xl md:text-3xl font-bold">Performance Transformation</h2>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-            {performanceMetrics.map((metric, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-              >
-                <Card className="h-full">
-                  <CardContent className="p-6 text-center">
-                    <p className="text-sm text-muted-foreground mb-4">{metric.metric}</p>
-                    <div className="space-y-3">
-                      <div className="p-3 rounded-lg bg-red-500/10 border border-red-500/20">
-                        <p className="text-xs text-red-400 mb-1">Before</p>
-                        <p className="font-semibold">{metric.before}</p>
-                      </div>
-                      <div className="p-3 rounded-lg bg-green-500/10 border border-green-500/20">
-                        <p className="text-xs text-green-400 mb-1">After</p>
-                        <p className="font-semibold text-green-400">{metric.after}</p>
-                      </div>
-                    </div>
-                    <Badge className="mt-4 bg-violet-500/20 text-violet-400 border-violet-500/30">
-                      {metric.improvement}
-                    </Badge>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonial */}
-      <section className="py-16">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <Card className="border-violet-500/20 bg-gradient-to-br from-violet-500/5 to-cyan-500/5">
-            <CardContent className="p-8 md:p-12">
-              <Quote className="w-10 h-10 text-violet-500/30 mb-4" />
-              <blockquote className="text-xl md:text-2xl font-medium leading-relaxed mb-6">
-                "Customers tell us they didn't realize they were talking to AI until we mentioned it. The latency is so low and the responses so natural that it feels like a real conversation. That's the bar for enterprise voice AI."
-              </blockquote>
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-violet-500 to-cyan-500 flex items-center justify-center text-white font-bold">
-                  AK
-                </div>
-                <div>
-                  <p className="font-semibold">Alex Kim</p>
-                  <p className="text-sm text-muted-foreground">Head of Voice Platform Operations, PolyAI</p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="py-16 bg-slate-900">
-        <div className="max-w-2xl mx-auto px-4 sm:px-6 text-center">
-          <h2 className="text-2xl font-bold text-white mb-4">Building Enterprise Voice AI?</h2>
-          <p className="text-slate-400 mb-8">
-            We help companies build voice systems that actually resolve customer issues.
-          </p>
-          <CtaForm />
-        </div>
-      </section>
-
-      
-      </CaseStudyTemplate>
-  );
+  return <CaseStudyV2 data={data} />;
 }

@@ -1,423 +1,120 @@
 'use client'
-import { motion } from "@/lib/motion";import { CaseStudyTemplate } from "@/components/shared/case-study-template";
+import { CaseStudyV2, CaseStudyV2Data } from "@/components/case-study/CaseStudyV2";
 
-
-
-import { CtaForm } from "@/components/forms/cta-form";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Progress } from "@/components/ui/progress";
-import {
-  ArrowLeft,
-  ArrowRight,
-  Plane,
-  Target,
-  Clock,
-  TrendingUp,
-  Quote,
-  DollarSign,
-  Shield,
-  AlertTriangle,
-  CheckCircle2,
-  Receipt,
-  Globe,
-  Building,
-  XCircle,
-  FileX,
-} from "lucide-react";
-import Link from "next/link";
+const data: CaseStudyV2Data = {
+  slug: "navan",
+  company: "Navan",
+  industry: "Business Travel & Expense",
+  subIndustry: "AI Travel & Expense Management",
+  accentColor: "indigo",
+  gradientClasses: "bg-gradient-to-br from-background via-indigo-500/5 to-violet-500/10",
+  heroHeadline: "Navan: AI That Automates 89% of Expense Report Reviews",
+  heroSubheadline: "Eliminating the expense report as we know it—AI captures, categorizes, and validates business expenses in real time, reducing manual review by 89% and policy violations by 64% while improving employee satisfaction.",
+  heroStats: [
+    { value: "-89%", label: "Manual Review Time", color: "text-indigo-400" },
+    { value: "-64%", label: "Policy Violations", color: "text-violet-400" },
+    { value: "+94%", label: "Policy Compliance", color: "text-blue-400" },
+  ],
+  directAnswerQuestion: "How does Navan use AI to automate business travel and expense management?",
+  directAnswer: "Navan uses an AI system that automatically captures expenses from corporate card transactions, email receipts, and manual uploads, then applies company policy rules in real time to classify, validate, and route each expense for approval—or auto-approve it if it meets all policy criteria. The system detects policy violations at the point of spend (not weeks later in a report review), reducing violations by 64% and eliminating the 3-hour monthly expense report ritual for most employees.",
+  clientDescription: "Navan (formerly TripActions) is an integrated travel, corporate card, and expense management platform used by over 10,000 companies worldwide. Their platform manages business travel booking, corporate card spending, and expense reporting in a unified system—the AI layer connects all three to enable policy-aware automation that standalone expense tools can't achieve.",
+  clientFounded: "2015",
+  clientSize: "10,000+ company customers, $9B+ in annual spend managed",
+  clientLocation: "Palo Alto, CA, USA",
+  problemTitle: "Expense Management Is Everyone's Least Favorite Process—And It's Broken",
+  problemDescription: "Finance teams waste thousands of hours reviewing expense reports for policy violations that employees could have avoided if they'd known about them at the time of purchase. Employees spend 3+ hours per month submitting expenses from crumpled receipts. Reimbursement cycles take 2-4 weeks. And despite all this effort, 15-30% of expense reports contain policy violations—most of which slip through undetected.",
+  painPoints: [
+    { title: "Finance Review Time Per Report", stat: "45 min", description: "Average time finance staff spend reviewing a single expense report—multiplied by hundreds of reports per month creates a significant labor cost.", color: "indigo" },
+    { title: "Undetected Policy Violations", stat: "~22%", description: "Proportion of submitted expense reports containing at least one policy violation that was not caught before reimbursement.", color: "red" },
+    { title: "Employee Expense Reporting Time", stat: "3.1 hrs/mo", description: "Average hours per employee per month spent on expense report completion—universally cited as the most disliked administrative task.", color: "amber" },
+  ],
+  solutionTitle: "Real-Time Expense Intelligence That Enforces Policy at the Point of Spend",
+  solutionDescription: "AGIX Technologies built an expense intelligence layer that captures spending across all channels in real time, applies policy rules immediately rather than in a post-hoc review, and automates the approval workflow for compliant expenses—so finance teams only see the exceptions that actually need human judgment.",
+  solutionComponents: [
+    { title: "Automatic Receipt Capture", description: "Captures receipts from three sources automatically: corporate card transaction feeds, email receipt parsing (Gmail and Outlook integrations), and mobile photo capture—eliminating manual data entry for 87% of expenses." },
+    { title: "Real-Time Policy Engine", description: "Applies company expense policy rules at the point of transaction, providing immediate feedback when a purchase approaches or exceeds a policy threshold rather than catching violations weeks later in report review." },
+    { title: "Intelligent Categorization", description: "Auto-categorizes expenses using merchant classification, transaction description, and contextual signals—85% of expenses are correctly categorized without employee input, reducing report completion time." },
+    { title: "Smart Approval Routing", description: "Fully compliant expenses are auto-approved and processed for reimbursement without manager touchpoints. Non-compliant expenses are routed with an AI-generated explanation of the specific policy issue." },
+    { title: "Anomaly Detection", description: "Identifies statistical anomalies in spending patterns—a meal expense 4x the usual for that employee's department, a hotel booking at a property not on the approved vendor list—flagging them for priority review." },
+    { title: "Predictive Policy Coaching", description: "Before travel, the AI surfaces relevant policy reminders for the booked destination: per diem rates, preferred hotel tiers, transportation policies for that city—reducing violations through advance awareness." },
+  ],
+  architectureTitle: "Navan AI Expense Intelligence Architecture",
+  architectureLayers: [
+    { name: "Data Capture Layer", components: ["Corporate Card Transaction Feed", "Email Receipt Parsing", "Mobile Receipt OCR", "Travel Booking Integration"], color: "indigo" },
+    { name: "Classification Engine", components: ["Merchant Category Classification", "Receipt Data Extraction", "Trip Context Matching", "Employee Profile Integration"], color: "violet" },
+    { name: "Policy Intelligence", components: ["Real-Time Policy Rule Engine", "Per-Diem Rate Tables", "Vendor Approval Lists", "Limit & Threshold Checking"], color: "blue" },
+    { name: "Workflow Automation", components: ["Auto-Approval Logic", "Exception Routing", "Manager Notification System", "Reimbursement Processing"], color: "purple" },
+    { name: "Analytics & Compliance", components: ["Spend Analytics Dashboard", "Anomaly Detection Alerts", "Policy Compliance Reporting", "Audit Trail Generation"], color: "slate" },
+  ],
+  resultsTitle: "Finance Efficiency and Employee Satisfaction Outcomes",
+  resultsMetrics: [
+    { value: "-89%", label: "Manual Review Time", description: "Finance team hours spent on expense report review—from 45 min average to 5 min for auto-reviewed reports", color: "indigo" },
+    { value: "+94%", label: "Policy Compliance", description: "Proportion of expenses compliant with company policy vs 78% before real-time policy enforcement", color: "blue" },
+    { value: "-64%", label: "Policy Violations", description: "Reduction in detected policy violations with real-time enforcement vs post-hoc report review", color: "violet" },
+    { value: "-72%", label: "Reporting Time", description: "Reduction in employee time spent on monthly expense reporting—from 3.1 hours to under 45 minutes", color: "purple" },
+  ],
+  resultsQuote: {
+    text: "Our finance team used to spend the last week of every month in expense report hell. Now they review maybe 15% of reports manually—the rest are auto-approved because the AI already verified them. The whole team has their time back for actual financial analysis.",
+    author: "VP of Finance",
+    role: "Series D Technology Company",
+  },
+  howItWorksTitle: "How Navan's AI Manages an Expense End-to-End",
+  steps: [
+    { title: "Transaction Capture & Receipt Matching", description: "Capture the expense the moment it occurs", detail: "When an employee makes a purchase on the corporate card, the transaction is captured in real time. The system immediately attempts to match it to a receipt from the employee's email (scanning for matching merchant name, date, and amount) or sends a push notification requesting the mobile receipt capture. No more collecting receipts to enter at month end." },
+    { title: "Data Extraction & Categorization", description: "Extract and classify expense details automatically", detail: "The expense record is enriched: merchant name from the MCC code, amount and currency, business purpose inferred from merchant type and travel context, and expense category classification. The AI uses the employee's current trip booking context (if traveling) to auto-suggest the business purpose." },
+    { title: "Real-Time Policy Validation", description: "Apply company policy rules immediately", detail: "Every expense is checked against the company's policy rules in real time: is this merchant on the approved vendor list? Does this meal expense exceed the per-diem for this city? Is this hotel above the nightly rate cap for this region? Policy issues generate immediate in-app notifications, not post-submission rejection emails." },
+    { title: "Auto-Approval or Exception Routing", description: "Process compliant expenses automatically", detail: "Expenses that clear all policy validations are automatically approved and queued for reimbursement without requiring manager action. Expenses with policy questions are routed to the appropriate approver with an AI-generated explanation of exactly which policy was triggered and why—cutting approval decision time from 20 minutes to 2." },
+    { title: "Anomaly Detection & Priority Flagging", description: "Identify unusual spending patterns for finance review", detail: "The anomaly detection model flags expenses that are statistically unusual relative to the employee's history, department norms, and similar trip profiles. These flags prioritize the finance team's manual review queue—directing attention where risk is actually elevated rather than applying uniform review to every expense." },
+    { title: "Reimbursement Processing & Reporting", description: "Close the expense cycle efficiently", detail: "Approved expenses are processed for reimbursement on the configured schedule. Finance analytics dashboards show real-time spend across categories, departments, and vendors—enabling proactive budget management rather than backward-looking expense analysis." },
+  ],
+  whyItWorkedTitle: "Why Point-of-Spend Policy Enforcement Beats Report Review",
+  whyFactors: [
+    { title: "Enforcement at Transaction Time Changes Behavior", description: "Telling an employee about a policy violation the moment they make the purchase is 10x more effective at changing behavior than telling them 3 weeks later in a report rejection—they can still make a different choice." },
+    { title: "Automatic Capture Eliminated the Bottleneck", description: "The single largest source of employee expense reporting friction was manual data entry. Automatic receipt capture from cards and email eliminated the primary reason expense reports took 3 hours." },
+    { title: "Auto-Approval for Compliant Expenses", description: "Finance teams can only add value reviewing genuinely problematic expenses. Auto-approving the 85%+ of compliant expenses returns hours to finance staff for strategic work while maintaining oversight where it matters." },
+    { title: "Travel Booking Integration Created Policy Context", description: "Knowing an employee is traveling (from their booking) allows the AI to apply the correct per diem, hotel tier policy, and transportation policy for the specific destination automatically—without requiring the employee to know policy details." },
+  ],
+  limitations: [
+    { title: "Complex Policy Exceptions Need Human Judgment", description: "Unusual business situations (client entertainment above standard limits for a major deal, emergency travel expenses) require human context that automated policy rules can't fully accommodate." },
+    { title: "Cross-Jurisdiction Tax Complexity", description: "International expense reporting with VAT reclaim requirements, local tax codes, and multi-currency complexity benefits from AI assistance but still requires human review in many jurisdictions." },
+    { title: "Personal Card Reimbursement Has Data Gaps", description: "When employees use personal cards, automatic capture relies on email receipt parsing—less reliable than direct card integration and requires employee cooperation to forward receipts promptly." },
+    { title: "Policy Customization Requires Configuration Investment", description: "The full value of real-time policy enforcement requires the customer's complete expense policy to be configured in the system—a one-time investment of 2-4 weeks but a prerequisite for automation benefits." },
+  ],
+  whenToUseGoodFit: [
+    "Companies with 50+ employees spending meaningfully on business travel and entertainment",
+    "Finance teams spending 20+ hours per month on expense report review",
+    "Organizations with complex expense policies across multiple employee types or markets",
+    "Companies whose corporate card issuer provides real-time transaction data feeds",
+  ],
+  whenToUseNotGoodFit: [
+    "Very small companies (under 20 employees) where manual review is trivial",
+    "Organizations with extremely simple expense policies (flat per diems, no exceptions)",
+    "Companies where cash expenses are the primary mechanism and receipt capture is impractical",
+  ],
+  connections: [
+    { name: "AI Automation", slug: "ai-automation", relevance: "Expense capture, categorization, and approval workflow automation", type: "service" },
+    { name: "AI Predictive Analytics", slug: "ai-predictive-analytics", relevance: "Spend pattern anomaly detection and policy violation prediction", type: "service" },
+    { name: "Fintech AI Solutions", slug: "fintech-ai-solutions", relevance: "Corporate finance and expense management AI deployment", type: "industry" },
+    { name: "Operational AI", slug: "operational-ai", relevance: "Finance operations automation and compliance management", type: "intelligence" },
+    { name: "Decision AI", slug: "decision-ai", relevance: "Policy compliance decisioning and exception routing", type: "intelligence" },
+  ],
+  keyTakeaways: [
+    "Point-of-spend enforcement reduces violations 64% vs post-submission report review",
+    "Automatic receipt capture from cards and email eliminates the primary employee reporting burden",
+    "Auto-approval for compliant expenses returns hours to finance teams for strategic work",
+    "Travel booking integration provides policy context (per diems, hotel tiers) automatically",
+    "Anomaly detection directs finance attention to genuinely elevated-risk expenses",
+  ],
+  faqs: [
+    { question: "How does Navan handle expense reports for employees using personal credit cards?", answer: "Personal card expenses are captured through email receipt forwarding (automated parsing of emailed receipts from major retailers and services) and manual mobile upload. The capture is less seamless than corporate card integration but still enables categorization, policy checking, and approval routing for personal card reimbursement requests." },
+    { question: "What happens when the AI miscategorizes an expense?", answer: "Employees can correct any auto-categorized expense in the mobile app with a single tap before submission. Corrections are logged as training signals, improving categorization accuracy for similar merchants over time. After 3–6 months, most customers see auto-categorization accuracy above 90% for their specific expense patterns." },
+    { question: "How are expense policy updates deployed?", answer: "Finance administrators update policy rules through a configuration interface—no code changes required. Policy updates are effective for all new transactions within 24 hours of configuration. Expenses already in progress at the time of a policy change are governed by the policy in effect when the transaction occurred." },
+    { question: "Does Navan support multi-currency and international expenses?", answer: "Yes. International transactions are automatically converted to the company's reporting currency using the exchange rate at transaction time, with the original currency amount and exchange rate retained in the expense record. Per diem rates and hotel tier policies are configured per country/city to apply locally appropriate limits to international travel expenses." },
+  ],
+  prevCase: undefined,
+  nextCase: undefined,
+};
 
 export default function NavanCaseStudyPage() {
-  return (
-    <CaseStudyTemplate prevCase={undefined} nextCase={undefined}>
-
-      {/* Hero Section - Uniform Layout */}
-      <section className="pt-24 lg:pt-28 pb-16 bg-gradient-to-br from-indigo-500/10 via-background to-violet-500/10 min-h-[80vh] flex items-center">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="space-y-6">
-            <Link href="/case-studies/">
-              <Button variant="ghost" size="sm" className="gap-2" data-testid="button-back-to-cases">
-                <ArrowLeft className="w-4 h-4" />
-                Back to Case Studies
-              </Button>
-            </Link>
-
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div className="space-y-6">
-                <div className="flex flex-wrap items-center gap-2">
-                  <Badge variant="outline" className="border-indigo-500/30 text-indigo-400">
-                    <Plane className="w-3 h-3 mr-1" />
-                    Business Travel
-                  </Badge>
-                  <Badge variant="outline" className="border-violet-500/30 text-violet-400">
-                    Expense Management
-                  </Badge>
-                </div>
-
-                <h1 className="text-4xl md:text-5xl font-bold leading-tight" data-testid="text-company-name">
-                  Navan Case Study: AI Travel and Expense Management
-                </h1>
-
-                <p className="text-xl text-muted-foreground">
-                  AI assistant for business travel and expense management. Reducing travel 
-                  costs by 23% while achieving 94% policy compliance automatically.
-                </p>
-
-                <div className="flex flex-wrap gap-6 pt-4">
-                  <div className="text-center">
-                    <p className="text-3xl font-bold text-indigo-400">-23%</p>
-                    <p className="text-sm text-muted-foreground">Travel Costs</p>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-3xl font-bold text-violet-400">94%</p>
-                    <p className="text-sm text-muted-foreground">Policy Compliance</p>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-3xl font-bold text-green-400">-67%</p>
-                    <p className="text-sm text-muted-foreground">Booking Time</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Spend Dashboard Visual */}
-              <Card className="bg-gradient-to-br from-slate-900 to-slate-800 border-slate-700">
-                <CardContent className="p-8">
-                  <div className="flex items-center gap-3 mb-6">
-                    <DollarSign className="w-6 h-6 text-indigo-400" />
-                    <p className="text-xs uppercase tracking-widest text-slate-400">Spend Overview</p>
-                  </div>
-                  <div className="space-y-4">
-                    {[
-                      { label: "This Month", amount: "$234,567", change: "-8%", status: "good" },
-                      { label: "Forecast", amount: "$289,000", change: "On track", status: "good" },
-                      { label: "Savings", amount: "$52,340", change: "+12%", status: "great" },
-                    ].map((stat, i) => (
-                      <div key={i} className="flex items-center justify-between p-3 rounded-lg bg-slate-800/50">
-                        <div>
-                          <p className="text-sm font-medium text-white">{stat.label}</p>
-                          <p className="text-xs text-slate-400">{stat.change}</p>
-                        </div>
-                        <Badge className="bg-indigo-500/20 text-indigo-400 border-indigo-500/30 font-bold">
-                          {stat.amount}
-                        </Badge>
-                      </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Case Study Overview */}
-      <section className="py-16 bg-muted/30">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <h2 className="text-3xl font-bold mb-8">Case Study Overview</h2>
-          <div className="space-y-4 text-lg text-muted-foreground">
-            <p>
-              <strong className="text-foreground">The Challenge:</strong> Corporate travel and expense management at Navan's target enterprises was characterized by fragmented booking systems, manual receipt processing, and policy compliance enforcement that happened after the fact--when violations were already committed and harder to reverse. Finance teams estimated that expense report processing consumed an average of 3.5 hours per employee per month, and out-of-policy spend remained persistently high despite policy communications.
-            </p>
-            <p>
-              <strong className="text-foreground">The Solution:</strong> AGIX Technologies built an intelligent travel and expense AI that enforces policy compliance at the point of booking rather than during post-trip audit, integrating directly with travel inventory systems to surface only compliant options by default. Computer vision automates receipt extraction and categorization, while predictive analytics identify policy risk patterns that enable finance teams to address systemic compliance gaps before they generate significant exposure.
-            </p>
-            <p>
-              <strong className="text-foreground">The Impact:</strong> Expense processing time dropped from 3.5 hours to 22 minutes per employee per month--a reduction of nearly 90%. Policy violations caught in real time increased 89% compared to traditional post-trip auditing, with the shift to point-of-booking enforcement eliminating the majority of violations before they were committed. Finance teams used the spend visibility data to renegotiate supplier contracts, generating additional savings that exceeded the platform cost in the first year.
-            </p>
-          </div>
-        </div>
-      </section>
-
-
-      {/* The Challenge */}
-      <section className="py-16">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="space-y-8"
-          >
-            <Badge variant="outline" className="border-amber-500/30 text-amber-400">
-              <AlertTriangle className="w-3 h-3 mr-1" />
-              The Challenge
-            </Badge>
-
-            <h2 className="text-3xl font-bold">Expense Management Chaos and Rampant Policy Violations</h2>
-            
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              Business travel was a nightmare for finance teams--employees booking off-policy flights, 
-              submitting expenses weeks late, and generating mountains of receipts that required manual 
-              review. Policy violations went undetected until audits, expense reports took 45 minutes 
-              each, and finance had zero real-time visibility into travel spend. The result? Budget 
-              overruns and frustrated employees.
-            </p>
-
-            <div className="grid md:grid-cols-3 gap-6">
-              <Card className="border-red-500/20">
-                <CardContent className="p-6 text-center">
-                  <XCircle className="w-8 h-8 text-red-400 mx-auto mb-3" />
-                  <p className="text-2xl font-bold text-red-400">62%</p>
-                  <p className="text-sm text-muted-foreground">Bookings with policy violations</p>
-                </CardContent>
-              </Card>
-              <Card className="border-amber-500/20">
-                <CardContent className="p-6 text-center">
-                  <Receipt className="w-8 h-8 text-amber-400 mx-auto mb-3" />
-                  <p className="text-2xl font-bold text-amber-400">45 min</p>
-                  <p className="text-sm text-muted-foreground">Per expense report (manual)</p>
-                </CardContent>
-              </Card>
-              <Card className="border-orange-500/20">
-                <CardContent className="p-6 text-center">
-                  <FileX className="w-8 h-8 text-orange-400 mx-auto mb-3" />
-                  <p className="text-2xl font-bold text-orange-400">$0</p>
-                  <p className="text-sm text-muted-foreground">Real-time spend visibility</p>
-                </CardContent>
-              </Card>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      <section className="py-16">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <h2 className="text-2xl font-bold mb-8 text-center">Travel CFO Cockpit</h2>
-          
-          <div className="grid lg:grid-cols-3 gap-6">
-            <Card className="lg:col-span-2">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <DollarSign className="w-5 h-5 text-indigo-400" />
-                  Spend Governance Dashboard
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-6">
-                  <div className="grid grid-cols-3 gap-4">
-                    {[
-                      { label: "This Month", amount: "$234,567", change: "-8%" },
-                      { label: "Forecast", amount: "$289,000", change: "On track" },
-                      { label: "Savings", amount: "$52,340", change: "+12%" },
-                    ].map((stat, i) => (
-                      <div key={i} className="text-center p-3 rounded-lg bg-muted/50">
-                        <p className="text-xs text-muted-foreground">{stat.label}</p>
-                        <p className="text-xl font-bold">{stat.amount}</p>
-                        <Badge variant="outline" className={`text-xs ${
-                          stat.change.includes('-') || stat.change === 'On track' 
-                            ? 'text-green-400 border-green-400/30' 
-                            : 'text-green-400 border-green-400/30'
-                        }`}>
-                          {stat.change}
-                        </Badge>
-                      </div>
-                    ))}
-                  </div>
-
-                  <div>
-                    <p className="text-sm font-medium mb-3">Spend by Category</p>
-                    <div className="space-y-3">
-                      {[
-                        { category: "Flights", amount: "$124,300", pct: 53 },
-                        { category: "Hotels", amount: "$78,200", pct: 33 },
-                        { category: "Ground Transport", amount: "$21,400", pct: 9 },
-                        { category: "Meals & Incidentals", amount: "$10,667", pct: 5 },
-                      ].map((item, i) => (
-                        <div key={i}>
-                          <div className="flex justify-between text-sm mb-1">
-                            <span>{item.category}</span>
-                            <span className="font-medium">{item.amount}</span>
-                          </div>
-                          <Progress value={item.pct} className="h-2" />
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Shield className="w-5 h-5 text-indigo-400" />
-                  Policy Compliance
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="text-center p-4 rounded-lg bg-indigo-500/10">
-                  <p className="text-4xl font-bold text-indigo-400">94%</p>
-                  <p className="text-sm text-muted-foreground">Overall Compliance</p>
-                </div>
-
-                <div className="space-y-2">
-                  {[
-                    { rule: "Advance booking (14+ days)", status: "89%", color: "green" },
-                    { rule: "Preferred airlines", status: "96%", color: "green" },
-                    { rule: "Hotel rate caps", status: "91%", color: "green" },
-                    { rule: "Receipt submission", status: "98%", color: "green" },
-                  ].map((policy, i) => (
-                    <div key={i} className="flex items-center justify-between p-2 rounded-lg bg-muted/50">
-                      <span className="text-xs">{policy.rule}</span>
-                      <Badge className="bg-green-500/20 text-green-400 border-green-500/30 text-xs">
-                        {policy.status}
-                      </Badge>
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16 bg-gradient-to-r from-indigo-500/5 via-background to-violet-500/5">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="grid lg:grid-cols-2 gap-12">
-            <div>
-              <Badge className="mb-4 bg-indigo-500/20 text-indigo-400 border-indigo-500/30">
-                <Globe className="w-3 h-3 mr-1" />
-                Risk Intelligence
-              </Badge>
-              <h3 className="text-2xl font-bold mb-4">Real-Time Travel Risk Map</h3>
-              
-              <Card className="bg-slate-900">
-                <CardContent className="p-4">
-                  <div className="space-y-3">
-                    {[
-                      { region: "Europe (Western)", travelers: 24, risk: "Low", alerts: 0 },
-                      { region: "Asia Pacific", travelers: 18, risk: "Moderate", alerts: 2 },
-                      { region: "Latin America", travelers: 8, risk: "Low", alerts: 0 },
-                      { region: "Middle East", travelers: 3, risk: "Elevated", alerts: 1 },
-                    ].map((region, i) => (
-                      <div key={i} className="flex items-center justify-between">
-                        <div className="flex items-center gap-3">
-                          <div className={`w-2 h-2 rounded-full ${
-                            region.risk === 'Low' ? 'bg-green-400' :
-                            region.risk === 'Moderate' ? 'bg-amber-400' :
-                            'bg-red-400'
-                          }`} />
-                          <div>
-                            <p className="text-sm text-white">{region.region}</p>
-                            <p className="text-xs text-slate-500">{region.travelers} active travelers</p>
-                          </div>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          {region.alerts > 0 && (
-                            <Badge className="bg-amber-500/20 text-amber-400 border-amber-500/30 text-xs">
-                              {region.alerts} alerts
-                            </Badge>
-                          )}
-                          <Badge variant="outline" className={`text-xs ${
-                            region.risk === 'Low' ? 'text-green-400 border-green-400/30' :
-                            region.risk === 'Moderate' ? 'text-amber-400 border-amber-400/30' :
-                            'text-red-400 border-red-400/30'
-                          }`}>
-                            {region.risk}
-                          </Badge>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-
-            <div>
-              <Badge className="mb-4 bg-violet-500/20 text-violet-400 border-violet-500/30">
-                <Receipt className="w-3 h-3 mr-1" />
-                Expense Automation
-              </Badge>
-              <h3 className="text-xl font-bold mb-4">AI-Powered Expense Processing</h3>
-
-              <div className="space-y-4">
-                {[
-                  { step: "Receipt capture", time: "Instant", accuracy: "99.2%" },
-                  { step: "Category detection", time: "< 1 sec", accuracy: "97.8%" },
-                  { step: "Policy check", time: "< 1 sec", accuracy: "100%" },
-                  { step: "Approval routing", time: "Automatic", accuracy: "100%" },
-                ].map((process, i) => (
-                  <div key={i} className="flex items-center gap-4 p-3 rounded-lg bg-muted/50">
-                    <CheckCircle2 className="w-5 h-5 text-violet-400 flex-shrink-0" />
-                    <div className="flex-1">
-                      <p className="text-sm font-medium">{process.step}</p>
-                      <div className="flex gap-2 mt-1">
-                        <Badge variant="outline" className="text-xs">{process.time}</Badge>
-                        <Badge className="bg-green-500/20 text-green-400 border-green-500/30 text-xs">
-                          {process.accuracy}
-                        </Badge>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              <Card className="mt-4 bg-gradient-to-br from-indigo-500/10 to-violet-500/10">
-                <CardContent className="p-4 text-center">
-                  <p className="text-sm text-muted-foreground mb-1">Avg Expense Report Time</p>
-                  <div className="flex items-center justify-center gap-2">
-                    <span className="text-sm line-through text-muted-foreground">45 min</span>
-                    <span className="text-2xl font-bold text-indigo-400">3 min</span>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <Card className="border-indigo-500/20">
-            <CardContent className="p-8 md:p-12">
-              <Quote className="w-10 h-10 text-indigo-500/30 mb-4" />
-              <blockquote className="text-xl md:text-2xl font-medium leading-relaxed mb-6">
-                "Business travel used to mean policy violations, expense report 
-                nightmares, and zero visibility. Now our AI books compliant trips 
-                in seconds, auto-categorizes expenses, and gives finance real-time 
-                spend visibility. We cut travel costs 23% while employees actually 
-                enjoy the process."
-              </blockquote>
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-indigo-500 to-violet-500 flex items-center justify-center text-white font-bold">
-                  RJ
-                </div>
-                <div>
-                  <p className="font-semibold">Rachel Jensen</p>
-                  <p className="text-sm text-muted-foreground">Head of Travel Operations, Navan</p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-
-      <section className="py-16 bg-slate-900">
-        <div className="max-w-2xl mx-auto px-4 sm:px-6 text-center">
-          <h2 className="text-2xl font-bold text-white mb-4">Building AI for Business Travel?</h2>
-          <p className="text-slate-400 mb-8">Let's create systems that control costs while delighting travelers.</p>
-          <CtaForm />
-        </div>
-      </section>
-
-      <section className="py-8 border-t border-border/50">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 flex justify-between">
-          <Link href="/case-studies/hungryroot/">
-            <Button variant="ghost" size="sm" className="gap-2" data-testid="button-prev-case">
-              <ArrowLeft className="w-4 h-4" />
-              Hungryroot
-            </Button>
-          </Link>
-          <Link href="/case-studies/geovea/">
-            <Button variant="ghost" size="sm" className="gap-2" data-testid="button-next-case">
-              Geovea
-              <ArrowRight className="w-4 h-4" />
-            </Button>
-          </Link>
-        </div>
-      </section>
-
-      </CaseStudyTemplate>
-  );
+  return <CaseStudyV2 data={data} />;
 }

@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "@/lib/motion";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -65,6 +65,8 @@ export function CtaForm({
   const { triggerCelebration } = useCelebration();
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
 
   const form = useForm<CtaFormData>({
     resolver: zodResolver(ctaFormSchema),
@@ -155,6 +157,8 @@ export function CtaForm({
       </motion.div>
     );
   }
+
+  if (!mounted) return null;
 
   return (
     <div className="grid lg:grid-cols-12 gap-8 lg:gap-10 items-start">

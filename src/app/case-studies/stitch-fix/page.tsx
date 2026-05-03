@@ -1,452 +1,125 @@
 'use client'
+import { CaseStudyV2, CaseStudyV2Data } from "@/components/case-study/CaseStudyV2";
 
-import { CaseStudyTemplate } from "@/components/shared/case-study-template";
-
-import { motion } from "@/lib/motion";
-
-import { CtaForm } from "@/components/forms/cta-form";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import {
-  ArrowLeft,
-  Shirt,
-  Brain,
-  Clock,
-  AlertTriangle,
-  TrendingUp,
-  Quote,
-  ArrowRight,
-  Sparkles,
-  Heart,
-  Users,
-  Package,
-  Target,
-} from "lucide-react";
-import Link from "next/link";
+const data: CaseStudyV2Data = {
+  slug: "stitch-fix",
+  company: "Stitch Fix",
+  industry: "Fashion Retail",
+  subIndustry: "AI-Human Stylist Collaboration",
+  accentColor: "pink",
+  gradientClasses: "bg-gradient-to-br from-background via-pink-500/5 to-purple-500/10",
+  heroHeadline: "Stitch Fix: AI That Gives Human Stylists Superpowers",
+  heroSubheadline: "Where algorithms meet artistry—AI pre-selection amplifying human stylists to serve 4M+ clients at scale, delivering 61% first-box keep rates and $587 lifetime value.",
+  heroStats: [
+    { value: "61%", label: "First Box Keep Rate", color: "text-pink-400" },
+    { value: "-58%", label: "Stylist Time Per Box", color: "text-purple-400" },
+    { value: "+42%", label: "Client Lifetime Value", color: "text-cyan-400" },
+  ],
+  directAnswerQuestion: "How does Stitch Fix use AI to personalize fashion recommendations?",
+  directAnswer: "Stitch Fix uses a hybrid AI system where collaborative filtering and multi-modal deep learning models analyze purchase history, style ratings, body measurements, lifestyle questionnaire responses, and external fashion trend signals to pre-select high-probability clothing candidates for each client. Human stylists review the AI's curated shortlist using their expert judgment, and their selection patterns become training signal that continuously improves future candidate sets. The result: 4x stylist capacity, 31% higher keep rates, and a +42% increase in client lifetime value.",
+  clientDescription: "Stitch Fix is a personal styling service that ships curated boxes of clothing to subscribers based on their unique style preferences, body measurements, and lifestyle. With 4M+ active clients and human stylists as a core part of the service model, scaling the business required AI that could amplify—not replace—the stylists who make the experience distinctive.",
+  clientFounded: "2011",
+  clientSize: "7,000+ employees, 4M+ active clients, $1.7B revenue",
+  clientLocation: "San Francisco, California, USA",
+  problemTitle: "Personal Styling Was Impossible to Scale Without AI",
+  problemDescription: "Stitch Fix's human stylists were exceptionally skilled but fundamentally limited by time. Manual review of 10,000+ inventory items per client was impossible. The cold-start problem for new clients with no purchase history resulted in first-box keep rates of just 42%. Fit-related returns consumed 34% of all returns, representing preventable waste.",
+  painPoints: [
+    { title: "First Box Keep Rate", stat: "42%", description: "New clients with no purchase history received essentially random recommendations—58% of first boxes were returned.", color: "red" },
+    { title: "Fit-Related Returns", stat: "34%", description: "One-third of all returns were fit-related—the same size from different brands fits completely differently.", color: "amber" },
+    { title: "Stylist Time Per Box", stat: "12 min", description: "Stylists spent 12 minutes per box on data lookup and inventory review before applying any creative styling judgment.", color: "orange" },
+  ],
+  solutionTitle: "AI-Human Collaboration for Personalized Styling at Scale",
+  solutionDescription: "AGIX Technologies built a hybrid AI system that handles the data-intensive pre-selection work—analyzing 10,000+ inventory items against each client's profile—so human stylists can focus their expertise on the creative judgment that makes the experience feel personal.",
+  solutionComponents: [
+    { title: "Cold Start Style Capture", description: "Optimized onboarding quiz capturing style signal through visual preference selection, trade-off questions, and lifestyle context—building a useful style embedding in 4 targeted questions vs. competitors' 20." },
+    { title: "Collaborative Filtering Engine", description: "Item-to-item and user-to-user collaborative filtering identifies high-probability candidates based on patterns from millions of client ratings and purchase decisions." },
+    { title: "Multi-Modal Style Embedding", description: "Deep learning model that encodes style preferences from visual imagery (outfit photos the client has rated), text descriptions, and behavioral signals into a unified style vector." },
+    { title: "Fit Prediction Model", description: "Brand-specific size calibration model that accounts for variance in how size labels correspond to actual garment dimensions across 500+ brand partners—reducing fit-related returns." },
+    { title: "Stylist Copilot Interface", description: "AI-curated shortlist of 50 items (from 10,000+) presented to the stylist with match scores, fit predictions, and styling note templates—reducing cognitive load while maintaining creative control." },
+    { title: "Stylist Selection as Training Signal", description: "When a stylist overrides an AI recommendation, that selection pattern is captured as training data, continuously refining the AI's understanding of nuanced style judgment." },
+  ],
+  architectureTitle: "Stitch Fix AI Personalization Architecture",
+  architectureLayers: [
+    { name: "Client Data Ingestion", components: ["Style Onboarding Quiz", "Purchase History & Ratings", "Body Measurement Profile", "Visual Style Selections", "Lifestyle Questionnaire"], color: "pink" },
+    { name: "Style Modeling", components: ["Collaborative Filtering Engine", "Style Embedding (Multi-Modal)", "Brand Affinity Modeling", "Price Sensitivity Estimation", "Trend Integration Signal"], color: "purple" },
+    { name: "Fit Prediction", components: ["Brand-Size Calibration DB", "Body Measurement Matching", "Fit Feedback Incorporation", "Return Reason Analysis", "Comfort Preference Modeling"], color: "rose" },
+    { name: "Stylist Copilot", components: ["50-Item AI Shortlist", "Match Score Display", "Fit Prediction per Item", "Styling Note Templates", "Override Capture System"], color: "violet" },
+    { name: "Feedback & Retraining", components: ["Keep/Return Signal Ingestion", "Stylist Selection Patterns", "Client Rating Collection", "Model Retraining Pipeline", "A/B Test Framework"], color: "blue" },
+  ],
+  resultsTitle: "Better Styling, at 4x the Scale, at Lower Cost",
+  resultsMetrics: [
+    { value: "61%", label: "First Box Keep Rate", description: "Up from 42% for new clients—AI cold-start solution works", color: "pink" },
+    { value: "-32%", label: "Fit-Related Returns", description: "Brand-specific size calibration model cuts the largest return category", color: "purple" },
+    { value: "$587", label: "Client Lifetime Value", description: "Up from $412—better personalization drives longer client relationships", color: "violet" },
+    { value: "4x", label: "Stylist Capacity", description: "Each stylist serves 4x more clients per day—AI handles the data work", color: "blue" },
+  ],
+  resultsQuote: {
+    text: "What we built isn't AI replacing stylists—it's AI giving stylists superpowers. They now understand each client's preferences instantly, see size predictions they can trust, and spend their time on what humans do best: creative styling that makes clients feel amazing.",
+    author: "Director of Styling Operations",
+    role: "Stitch Fix",
+  },
+  howItWorksTitle: "How Stitch Fix's AI-Human Styling Process Works",
+  steps: [
+    { title: "Style Onboarding", description: "Capture style preferences through visual choices and targeted questions", detail: "New clients complete a 4-question onboarding flow that surfaces style preferences through visual trade-offs (pick between two outfits), lifestyle questions (work environment, activity mix), and fit preferences. Four targeted questions provide more signal than traditional 20-question surveys by focusing on high-information items." },
+    { title: "Client Profile Assembly", description: "Build a multi-dimensional style and fit profile", detail: "Purchase history, ratings from previous boxes, body measurements, lifestyle inputs, and visual style selections are combined into a multi-dimensional client profile that includes style vector, brand affinity scores, fit requirements per garment category, and price sensitivity estimate." },
+    { title: "AI Pre-Selection", description: "Shortlist 50 high-probability items from 10,000+ inventory", detail: "The collaborative filtering and style matching models score every item in current inventory against the client's profile and generate a ranked shortlist of ~50 items that are most likely to result in a keep decision. Fit predictions and price fit are pre-calculated for each item." },
+    { title: "Stylist Creative Review", description: "Stylist applies expert judgment to AI's curated shortlist", detail: "The human stylist reviews the AI-generated shortlist with match scores and fit predictions visible. They apply their expertise—current trends, outfit coordination, the client's stated occasion needs—to make the final 5-item selection. This takes 3-5 minutes vs. 12+ without AI support." },
+    { title: "Styling Note Generation", description: "AI drafts personalized styling notes the stylist refines", detail: "AI generates draft styling notes for each selected item explaining why it was chosen for this specific client, how to wear it, and how it coordinates with other items in the box. The stylist refines the notes to add personal observations and styling tips." },
+    { title: "Keep/Return Feedback Loop", description: "Every return reason improves future recommendations", detail: "When the client receives the box, they rate each item (kept or returned) and provide reasons for returns. This rich feedback—'I loved the color but the waist was too high'—is the most valuable training signal in the system, driving the continuous improvement in both the style model and the fit prediction model." },
+  ],
+  whyItWorkedTitle: "Why Stitch Fix's AI-Human Hybrid Succeeded",
+  whyFactors: [
+    { title: "Human + AI vs. Either Alone", description: "The fundamental insight: AI can process 10,000 inventory items instantly; humans can apply nuanced creative judgment. The system assigns each task to who does it best." },
+    { title: "Cold Start Solved Through Visual Trade-Offs", description: "Rather than asking clients to describe preferences they can't articulate, the onboarding quiz presents visual choices that reveal preferences through decisions—mapping taste without requiring self-description." },
+    { title: "Fit Model Built on Brand-Level Data", description: "Building a brand-specific size calibration model that accounts for how each brand's sizing translates to actual garment dimensions required collecting and processing returns data at the brand level—a moat others can't easily replicate." },
+    { title: "Stylist Overrides as Training Data", description: "Every time a stylist chose differently from the AI's top recommendation, that selection was captured as a training signal. Stylists effectively taught the AI their professional judgment at scale." },
+    { title: "Keep Rate as the North Star Metric", description: "Aligning every model decision to the keep rate metric ensured the AI optimized for what the business actually needed—rather than engagement or session metrics that can diverge from commercial outcomes." },
+    { title: "Continuous Inventory Integration", description: "The model re-scores every client's top recommendations whenever new inventory arrives, ensuring fresh items surface immediately to clients most likely to appreciate them—driving discovery of new brands." },
+  ],
+  limitations: [
+    { title: "Artisan and Niche Sizing Is Harder", description: "Brands with non-standard sizing (vintage-inspired, avant-garde) have less calibration data and higher fit prediction error rates, requiring more conservative sizing recommendations." },
+    { title: "Style Preference Drift Requires Feedback", description: "The model requires ongoing feedback (ratings, return reasons) to track style preference evolution. Clients who stop providing feedback will receive recommendations based on increasingly stale preference data." },
+    { title: "High-Novelty Items Are Harder to Pre-Select", description: "Items introducing genuinely new style directions—not just variations on known preferences—are harder for collaborative filtering to surface, requiring stylist initiative to introduce novelty." },
+    { title: "New Brand Onboarding Takes Time", description: "New brand partners require 6+ months of return data to build accurate size calibration models, during which fit prediction accuracy for those brands is lower." },
+  ],
+  whenToUseGoodFit: [
+    "Fashion subscription or curation businesses where stylists or curators are a core part of the value proposition",
+    "Platforms with significant return rates driven by fit or style mismatch",
+    "Services with new client cold-start challenges where preference data is initially unavailable",
+    "Businesses with large inventory (1,000+ SKUs) making manual curation impossible at scale",
+    "Consumer brands where personalization quality directly drives retention and lifetime value",
+  ],
+  whenToUseNotGoodFit: [
+    "Commodity products where personalization doesn't drive preference or loyalty",
+    "Very small inventory where algorithmic selection doesn't provide efficiency gains",
+    "Self-serve e-commerce where the human stylist interaction is not part of the value proposition",
+    "Products where preferences are extremely stable and infrequently change",
+  ],
+  connections: [
+    { name: "AI Predictive Analytics", slug: "ai-predictive-analytics", relevance: "Collaborative filtering, style matching, and keep rate prediction", type: "service" },
+    { name: "Custom AI Product Development", slug: "custom-ai-product-development", relevance: "Multi-modal style embedding and fit prediction model architecture", type: "service" },
+    { name: "Retail AI Solutions", slug: "retail-ai-solutions", relevance: "AI personalization for retail subscription and curation businesses", type: "industry" },
+    { name: "Decision AI", slug: "decision-ai", relevance: "AI-powered item selection and stylist recommendation systems", type: "intelligence" },
+    { name: "Operational AI", slug: "operational-ai", relevance: "Stylist workflow automation and fulfillment efficiency optimization", type: "intelligence" },
+  ],
+  keyTakeaways: [
+    "First-box keep rate improved from 42% to 61% by solving the cold-start problem with visual preference capture",
+    "Fit-related returns reduced 32% through brand-specific size calibration across 500+ brands",
+    "AI pre-selection reduces stylist time from 12 to 3-5 minutes per box, enabling 4x capacity",
+    "Client lifetime value increased +42% to $587 as better personalization extends relationships",
+    "Human stylists remain central—AI amplifies their judgment rather than replacing their role",
+  ],
+  faqs: [
+    { question: "How does the cold start solution work for new clients with no purchase history?", answer: "New clients complete a visual style elicitation flow where they choose between outfit photos, indicate lifestyle contexts, specify fit preferences per garment type, and answer 4-5 high-signal questions. Visual trade-off choices reveal preferences more accurately than text descriptions, providing enough signal for meaningful first-box recommendations." },
+    { question: "How does the fit prediction model work across different brands?", answer: "The model is trained on return data at the brand × size × garment category level. For each brand, it builds a mapping from labeled sizes to actual garment dimensions (measured from returns) and from client body measurements to the correct size for that brand. Clients who are between sizes for a brand get the conservative recommendation." },
+    { question: "What happens when a stylist consistently overrides the AI?", answer: "When a specific stylist consistently selects different items than the AI shortlists, their override patterns are analyzed to identify systematic judgment differences. These patterns are used to personalize the AI shortlist for that stylist—essentially learning each stylist's aesthetic sensibility and applying it during pre-selection." },
+    { question: "Can clients request specific items instead of receiving AI suggestions?", answer: "Stitch Fix offers a 'Shop' feature where clients can request specific items they've seen and want to try. Requested items are automatically included in the next box unless size is unavailable, supplementing the AI-stylist curated selection." },
+    { question: "How does the AI integrate trend information from fashion industry signals?", answer: "Trend signals are incorporated through item-level tagging (trend tags applied by merchandise buyers) and by weighting recently purchased items by similar clients more heavily in collaborative filtering—creating a natural trend signal that reflects what fashion-forward clients are currently buying." },
+  ],
+  prevCase: { name: "Kroger", url: "/case-studies/kroger/" },
+  nextCase: { name: "Quizlet", url: "/case-studies/quizlet/" },
+};
 
 export default function StitchFixCaseStudyPage() {
-  const stylistWorkflow = [
-    { step: "AI Pre-Selection", description: "Algorithm curates 50 items from 10,000+ inventory", time: "Instant", icon: Brain },
-    { step: "Style Match Score", description: "Each item scored for client preference alignment", time: "Real-time", icon: Target },
-    { step: "Fit Prediction", description: "Size recommendations based on body + brand data", time: "Real-time", icon: Shirt },
-    { step: "Stylist Review", description: "Human stylist makes final selection from AI picks", time: "3 min", icon: Users },
-    { step: "Explanation Gen", description: "AI drafts personalized styling notes", time: "Instant", icon: Sparkles },
-  ];
-
-  const coldStartSolution = [
-    { question: "What's your typical weekend outfit?", insight: "Casual vs. formal preference" },
-    { question: "Pick 3 colors you never wear", insight: "Color palette boundaries" },
-    { question: "Rate these 10 outfit photos", insight: "Style embedding in 30 seconds" },
-    { question: "How adventurous with new styles?", insight: "Exploration vs. exploitation balance" },
-  ];
-
-  return (
-    <CaseStudyTemplate prevCase={{ name: "Previous: Kroger", url: "/case-studies/kroger/" }} nextCase={{ name: "Next: Quizlet", url: "/case-studies/quizlet/" }}>
-
-      {/* Hero - Fashion Focus */}
-      <section className="pt-24 lg:pt-28 pb-16 bg-gradient-to-br from-background via-pink-500/5 to-purple-500/10 min-h-[80vh] flex items-center">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="space-y-6">
-            <Link href="/case-studies/">
-              <Button variant="ghost" size="sm" className="gap-2" data-testid="button-back-to-cases">
-                <ArrowLeft className="w-4 h-4" />
-                Back to Case Studies
-              </Button>
-            </Link>
-
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div className="space-y-6">
-                <div className="flex flex-wrap items-center gap-2">
-                  <Badge variant="outline" className="border-pink-500/30 text-pink-400">
-                    <Shirt className="w-3 h-3 mr-1" />
-                    Fashion Tech
-                  </Badge>
-                  <Badge variant="outline" className="border-purple-500/30 text-purple-400">
-                    AI Personalization
-                  </Badge>
-                </div>
-
-                <h1 className="text-4xl md:text-5xl font-bold leading-tight">
-                  Stitch Fix Case Study: AI-Powered Style Personalization
-                </h1>
-                
-                <p className="text-xl text-muted-foreground">
-                  Where algorithms meet artistry: building AI that amplifies human stylists, 
-                  not replaces them--serving millions of unique style preferences at scale.
-                </p>
-
-                <div className="flex flex-wrap gap-6 pt-4">
-                  <div className="text-center">
-                    <p className="text-3xl font-bold text-pink-400">61%</p>
-                    <p className="text-sm text-muted-foreground">First Box Keep Rate</p>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-3xl font-bold text-purple-400">-58%</p>
-                    <p className="text-sm text-muted-foreground">Stylist Time/Box</p>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-3xl font-bold text-cyan-400">+42%</p>
-                    <p className="text-sm text-muted-foreground">Client Lifetime Value</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Style Card Visual */}
-              <Card className="bg-gradient-to-br from-slate-900 to-slate-800 border-slate-700">
-                <CardContent className="p-8">
-                  <p className="text-xs uppercase tracking-widest text-slate-400 mb-6">Client Style Profile</p>
-                  <div className="space-y-4">
-                    <div className="flex justify-between items-center">
-                      <span className="text-sm text-slate-400">Style Preference</span>
-                      <Badge className="bg-pink-500/20 text-pink-400 border-pink-500/30">Modern Minimalist</Badge>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-sm text-slate-400">Color Palette</span>
-                      <div className="flex gap-1">
-                        {["bg-slate-800", "bg-white", "bg-blue-900", "bg-amber-700"].map((c, i) => (
-                          <div key={i} className={`w-5 h-5 rounded-full ${c} border border-slate-600`} />
-                        ))}
-                      </div>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-sm text-slate-400">Fit Preference</span>
-                      <Badge variant="outline" className="text-slate-300">Relaxed, not tight</Badge>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-sm text-slate-400">Price Sensitivity</span>
-                      <Badge variant="outline" className="text-slate-300">Mid-range ($40-80)</Badge>
-                    </div>
-                    <div className="pt-4 border-t border-slate-700">
-                      <p className="text-xs text-green-400 mb-2">AI Confidence</p>
-                      <div className="h-2 bg-slate-700 rounded-full overflow-hidden">
-                        <motion.div 
-                          initial={{ width: 0 }}
-                          animate={{ width: "89%" }}
-                          transition={{ delay: 0.5, duration: 1 }}
-                          className="h-full bg-gradient-to-r from-pink-500 to-purple-500"
-                        />
-                      </div>
-                      <p className="text-right text-xs text-slate-400 mt-1">89% match confidence</p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Case Study Overview */}
-      <section className="py-16 bg-muted/30">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <h2 className="text-3xl font-bold mb-8">Case Study Overview</h2>
-          <div className="space-y-4 text-lg text-muted-foreground">
-            <p>
-              <strong className="text-foreground">The Challenge:</strong> Stitch Fix's human stylists were exceptionally skilled but fundamentally constrained by time: each could realistically manage a limited number of active client profiles, making individualized styling difficult to scale. Algorithmic recommendation systems alone couldn't capture the nuanced interplay of body proportions, personal style identity, lifestyle context, and evolving fashion preferences that good styling requires--producing recommendations that felt generic compared to what expert human stylists could achieve.
-            </p>
-            <p>
-              <strong className="text-foreground">The Solution:</strong> AGIX Technologies built a hybrid AI system where collaborative filtering and multi-modal deep learning models analyze purchase history, style ratings, body measurements, lifestyle questionnaire responses, and even external fashion trend signals to pre-select high-probability candidates for each client. Human stylists review and refine the AI's shortlist using their expert judgment, and their selection patterns become training signal that continuously improves future candidate sets.
-            </p>
-            <p>
-              <strong className="text-foreground">The Impact:</strong> Stylist capacity increased 4x as AI pre-selection reduced the manual review time required per client from hours to minutes. Keep rates--the percentage of shipped items retained by clients--improved 31%, indicating that the AI-human collaboration was achieving better personalization than either could independently. This combination of efficiency and quality enabled Stitch Fix to serve over 4 million active clients while maintaining the individualized experience central to their brand promise.
-            </p>
-          </div>
-        </div>
-      </section>
-
-
-      {/* The Challenge */}
-      <section className="py-24">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="space-y-8"
-          >
-            <Badge variant="outline" className="border-amber-500/30 text-amber-400">
-              <AlertTriangle className="w-3 h-3 mr-1" />
-              The Challenge
-            </Badge>
-
-            <h2 className="text-3xl font-bold">Capturing Taste You Can't Describe</h2>
-            
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              Fashion is deeply personal--and often unconscious. Clients can't articulate why 
-              they love one dress and hate another that looks similar. The AI needed to learn 
-              preferences that clients themselves couldn't explain.
-            </p>
-
-            <div className="grid md:grid-cols-2 gap-6">
-              <Card className="border-red-500/20">
-                <CardContent className="p-6 space-y-4">
-                  <h4 className="font-semibold text-red-400">The Cold Start Problem</h4>
-                  <p className="text-sm text-muted-foreground">
-                    New clients have no purchase history. First box recommendations were 
-                    essentially random--with only 42% keep rate and massive return costs.
-                  </p>
-                </CardContent>
-              </Card>
-
-              <Card className="border-amber-500/20">
-                <CardContent className="p-6 space-y-4">
-                  <h4 className="font-semibold text-amber-400">The Fit Nightmare</h4>
-                  <p className="text-sm text-muted-foreground">
-                    Same size fits differently across brands. "Medium" from one brand is 
-                    another's "Large." 34% of returns were fit-related--pure waste.
-                  </p>
-                </CardContent>
-              </Card>
-            </div>
-
-            <div className="p-6 rounded-lg bg-muted/50 border border-border">
-              <p className="text-muted-foreground italic">
-                "Our stylists are artists, but they were spending 80% of their time on data 
-                entry--looking up inventory, checking sizes, reading past notes. We needed 
-                AI to handle the data work so they could focus on creative styling."
-              </p>
-              <p className="text-sm text-muted-foreground mt-3">
-                -- Michelle Wong, Director of Styling Operations
-              </p>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Cold Start Solution */}
-      <section className="py-24 bg-gradient-to-br from-pink-500/5 via-background to-purple-500/5">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="space-y-12"
-          >
-            <div className="text-center space-y-4">
-              <Badge variant="outline" className="border-pink-500/30 text-pink-400">
-                <Sparkles className="w-3 h-3 mr-1" />
-                Cold Start Solution
-              </Badge>
-              <h2 className="text-3xl font-bold">Learning Style in 2 Minutes</h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
-                Our optimized onboarding quiz captures more style signal in 4 questions 
-                than competitors get from 20.
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-6">
-              {coldStartSolution.map((item, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                >
-                  <Card className="h-full">
-                    <CardContent className="p-6">
-                      <div className="flex items-start gap-4">
-                        <div className="w-8 h-8 rounded-full bg-pink-500/20 flex items-center justify-center text-pink-400 font-bold shrink-0">
-                          {i + 1}
-                        </div>
-                        <div>
-                          <p className="font-medium mb-2">{item.question}</p>
-                          <Badge variant="outline" className="text-xs">
-                            <Brain className="w-3 h-3 mr-1" />
-                            {item.insight}
-                          </Badge>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              ))}
-            </div>
-
-            <div className="text-center">
-              <Badge className="bg-green-500/20 text-green-400 border-green-500/30">
-                Result: First box keep rate improved from 42% to 61%
-              </Badge>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Stylist Workflow */}
-      <section className="py-24">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="space-y-12"
-          >
-            <div className="text-center space-y-4">
-              <Badge variant="outline" className="border-purple-500/30 text-purple-400">
-                <Users className="w-3 h-3 mr-1" />
-                Human + AI Collaboration
-              </Badge>
-              <h2 className="text-3xl font-bold">The Stylist Copilot Workflow</h2>
-            </div>
-
-            <div className="space-y-4">
-              {stylistWorkflow.map((step, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                >
-                  <Card className={i === 3 ? "border-purple-500/30 bg-purple-500/5" : ""}>
-                    <CardContent className="p-6">
-                      <div className="flex items-center gap-6">
-                        <div className={`w-12 h-12 rounded-lg flex items-center justify-center ${
-                          i === 3 ? "bg-purple-500/20" : "bg-muted"
-                        }`}>
-                          <step.icon className={`w-6 h-6 ${i === 3 ? "text-purple-400" : "text-muted-foreground"}`} />
-                        </div>
-                        <div className="flex-1">
-                          <div className="flex items-center gap-3">
-                            <h4 className="font-semibold">{step.step}</h4>
-                            {i === 3 && (
-                              <Badge className="bg-purple-500/20 text-purple-400 border-purple-500/30 text-xs">
-                                Human Touch
-                              </Badge>
-                            )}
-                          </div>
-                          <p className="text-sm text-muted-foreground">{step.description}</p>
-                        </div>
-                        <Badge variant="outline" className="shrink-0">
-                          <Clock className="w-3 h-3 mr-1" />
-                          {step.time}
-                        </Badge>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              ))}
-            </div>
-
-            <div className="p-6 rounded-lg bg-purple-500/10 border border-purple-500/20 text-center">
-              <p className="text-purple-400 font-medium">
-                Total time from assignment to ship: 5 minutes (down from 12)
-              </p>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Results */}
-      <section className="py-24 bg-gradient-to-br from-slate-900 to-slate-800">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="space-y-12"
-          >
-            <div className="text-center space-y-4">
-              <Badge className="bg-green-500/20 text-green-400 border-green-500/30">
-                <TrendingUp className="w-3 h-3 mr-1" />
-                Business Impact
-              </Badge>
-              <h2 className="text-3xl font-bold text-white">Measured Results</h2>
-            </div>
-
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-              <Card className="bg-slate-800/50 border-slate-700">
-                <CardContent className="p-6 text-center">
-                  <Package className="w-8 h-8 text-pink-400 mx-auto mb-3" />
-                  <p className="text-3xl font-bold text-white">61%</p>
-                  <p className="text-sm text-slate-400 mt-2">First Box Keep Rate</p>
-                  <p className="text-xs text-slate-500">up from 42%</p>
-                </CardContent>
-              </Card>
-              <Card className="bg-slate-800/50 border-slate-700">
-                <CardContent className="p-6 text-center">
-                  <Shirt className="w-8 h-8 text-purple-400 mx-auto mb-3" />
-                  <p className="text-3xl font-bold text-white">-32%</p>
-                  <p className="text-sm text-slate-400 mt-2">Fit-Related Returns</p>
-                  <p className="text-xs text-slate-500">better size prediction</p>
-                </CardContent>
-              </Card>
-              <Card className="bg-slate-800/50 border-slate-700">
-                <CardContent className="p-6 text-center">
-                  <Heart className="w-8 h-8 text-red-400 mx-auto mb-3" />
-                  <p className="text-3xl font-bold text-white">$587</p>
-                  <p className="text-sm text-slate-400 mt-2">Client Lifetime Value</p>
-                  <p className="text-xs text-slate-500">up from $412</p>
-                </CardContent>
-              </Card>
-              <Card className="bg-slate-800/50 border-slate-700">
-                <CardContent className="p-6 text-center">
-                  <Clock className="w-8 h-8 text-cyan-400 mx-auto mb-3" />
-                  <p className="text-3xl font-bold text-white">5 min</p>
-                  <p className="text-sm text-slate-400 mt-2">Stylist Time/Box</p>
-                  <p className="text-xs text-slate-500">down from 12 min</p>
-                </CardContent>
-              </Card>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Testimonial - Director Level */}
-      <section className="py-24">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <Card className="border-pink-500/20">
-              <CardContent className="p-8 md:p-12">
-                <Quote className="w-12 h-12 text-pink-500/30 mb-6" />
-                <blockquote className="text-xl md:text-2xl font-medium leading-relaxed mb-8">
-                  "What we built isn't AI replacing stylists--it's AI giving stylists superpowers. 
-                  They now understand each client's preferences instantly, see size predictions 
-                  they can trust, and spend their time on what humans do best: creative styling 
-                  that makes clients feel amazing."
-                </blockquote>
-                <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 rounded-full bg-gradient-to-br from-pink-500 to-purple-500 flex items-center justify-center text-white font-bold text-lg">
-                    MW
-                  </div>
-                  <div>
-                    <p className="font-semibold">Michelle Wong</p>
-                    <p className="text-sm text-muted-foreground">Director of Styling Operations, Stitch Fix</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="py-24 bg-gradient-to-br from-pink-500/10 via-background to-purple-500/10">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center space-y-8"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold">
-              Building AI for Personalization?
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              We help companies build recommendation systems that learn what users 
-              want--even when they can't articulate it.
-            </p>
-            <CtaForm />
-          </motion.div>
-        </div>
-      </section>
-
-      
-      </CaseStudyTemplate>
-  );
+  return <CaseStudyV2 data={data} />;
 }

@@ -1,515 +1,125 @@
 'use client'
+import { CaseStudyV2, CaseStudyV2Data } from "@/components/case-study/CaseStudyV2";
 
-import { CaseStudyTemplate } from "@/components/shared/case-study-template";
-
-import { useState } from "react";
-import { motion, AnimatePresence } from "@/lib/motion";
-
-import { CtaForm } from "@/components/forms/cta-form";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Progress } from "@/components/ui/progress";
-import {
-  ArrowLeft,
-  ArrowRight,
-  Sparkles,
-  Target,
-  TrendingUp,
-  Users,
-  Heart,
-  Gift,
-  Quote,
-  CheckCircle2,
-  Star,
-  ShoppingBag,
-  Mail,
-  Crown,
-  Palette,
-  Eye,
-  ChevronRight,
-  AlertTriangle,
-  Frown,
-  Layers,
-  TrendingDown,
-} from "lucide-react";
-import Link from "next/link";
+const data: CaseStudyV2Data = {
+  slug: "ulta-beauty",
+  company: "Ulta Beauty",
+  industry: "Beauty Retail",
+  subIndustry: "AI Loyalty Program Optimization",
+  accentColor: "pink",
+  gradientClasses: "bg-gradient-to-br from-background via-pink-500/5 to-purple-500/10",
+  heroHeadline: "Ulta Beauty: Turning 37M Members Into a Personalization Engine",
+  heroSubheadline: "Transforming Ultamate Rewards from a generic points program into an AI personalization platform—delivering +172% campaign conversion, -57% churn, and nearly 3x offer redemption rates.",
+  heroStats: [
+    { value: "+172%", label: "Campaign Conversion", color: "text-pink-400" },
+    { value: "37M", label: "Members", color: "text-purple-400" },
+    { value: "-57%", label: "Customer Churn", color: "text-green-400" },
+  ],
+  directAnswerQuestion: "How does Ulta Beauty use AI to optimize its loyalty program?",
+  directAnswer: "Ulta Beauty's AI personalization system models each of 37M+ members' beauty category affinity, brand preferences, purchase cycle patterns, and price sensitivity—generating individualized offers that align with actual purchase intent. AI-generated offers surface skincare replenishment reminders before a user runs out, recommend complementary products based on recent purchases, and deliver personalized rewards at predicted moments of highest purchase intent through the member's preferred channel. Offer redemption rates increased from 12% to 34%—nearly tripling engagement without increasing marketing spend.",
+  clientDescription: "Ulta Beauty is the largest specialty beauty retailer in the United States, operating 1,350+ stores and serving 37M+ active Ultamate Rewards loyalty members. With 25,000+ products across mass and prestige categories, the challenge of delivering relevant personalization at scale across the full beauty spectrum is uniquely complex.",
+  clientFounded: "1990",
+  clientSize: "47,000+ employees, 1,350+ stores, $10B+ revenue",
+  clientLocation: "Bolingbrook, Illinois, USA",
+  problemTitle: "37 Million Members, Zero Meaningful Personalization",
+  problemDescription: "Ultamate Rewards had massive scale but treated every member identically. Skincare enthusiasts received fragrance promotions. Value seekers got prestige brand emails. The result: 12% email open rates, 3.2% campaign conversion, and 28% annual member churn—leaving billions in loyalty value unrealized.",
+  painPoints: [
+    { title: "Email Open Rate", stat: "12%", description: "Generic blast emails to all 37M members achieved only 12% open rates—irrelevant content drove disengagement.", color: "red" },
+    { title: "Campaign Conversion", stat: "3.2%", description: "Under 4% of campaign recipients converted to purchase—personalization gap costing hundreds of millions annually.", color: "amber" },
+    { title: "Member Churn Rate", stat: "28%", description: "Nearly one-third of active members lapsed annually, driven largely by irrelevant communication and offers.", color: "orange" },
+  ],
+  solutionTitle: "Predictive Personalization Across the Full Member Lifecycle",
+  solutionDescription: "AGIX Technologies transformed Ultamate Rewards into a predictive personalization engine that models each member's beauty preferences, purchase cycles, and price sensitivity—delivering hyper-relevant offers through the right channel at the right moment.",
+  solutionComponents: [
+    { title: "Beauty Category Affinity Modeling", description: "ML models classify each member's primary beauty category affinities (skincare, makeup, fragrance, haircare, tools) and brand tier preferences (mass vs. prestige) from purchase history." },
+    { title: "Purchase Cycle Prediction", description: "Product-specific repurchase cycle models predict when each member is likely to run out of a frequently purchased product—enabling perfectly timed replenishment reminders." },
+    { title: "Churn Risk Scoring", description: "Binary churn classifier generates a real-time churn probability score for every member, triggering proactive retention interventions 30 days before predicted lapse." },
+    { title: "Next Best Action Engine", description: "Decision engine determines the optimal offer, product recommendation, or engagement trigger for each member in each communication cycle—choosing from hundreds of action options." },
+    { title: "Channel and Send-Time Optimization", description: "Per-member channel preference model (email vs. app push vs. SMS) and send-time optimization predicts the hour and channel most likely to drive engagement for each individual member." },
+    { title: "Tier Advancement Nudge System", description: "Identifies members within reach of tier advancement, calculates the exact points needed, and delivers personalized incentives timed to accelerate tier qualification." },
+  ],
+  architectureTitle: "Ulta Beauty AI Personalization Architecture",
+  architectureLayers: [
+    { name: "Member Data Platform", components: ["Purchase History (7+ years)", "In-Store & Online Transactions", "App Engagement Signals", "Email Click/Open Data", "Review & Rating History"], color: "pink" },
+    { name: "Preference Modeling", components: ["Category Affinity Model", "Brand Tier Preference Model", "Price Sensitivity Estimator", "Ingredient/Formulation Matching", "Seasonal Purchase Patterns"], color: "purple" },
+    { name: "Predictive Engines", components: ["Repurchase Cycle Prediction", "Churn Risk Scorer", "CLV Projection Model", "Tier Advancement Calculator", "Product Discovery Ranker"], color: "rose" },
+    { name: "Next Best Action", components: ["Offer Selection Engine", "Channel Optimizer", "Send-Time Personalization", "Frequency Capping Logic", "A/B Test Orchestration"], color: "violet" },
+    { name: "Execution & Measurement", components: ["ESP Integration", "Push Notification Platform", "SMS Delivery Layer", "Real-Time Segmentation", "Conversion Attribution"], color: "blue" },
+  ],
+  resultsTitle: "Personalization Transformed Every Loyalty Metric",
+  resultsMetrics: [
+    { value: "34%", label: "Offer Redemption Rate", description: "Up from 12%—nearly tripling engagement with loyalty program communications", color: "pink" },
+    { value: "+28%", label: "Purchase Frequency", description: "Mid-tier loyalty members purchasing more frequently driven by timely, relevant outreach", color: "purple" },
+    { value: "-57%", label: "Member Churn Rate", description: "Annual lapse rate dropped from 28% to 12% through proactive churn intervention", color: "green" },
+    { value: "+19%", label: "Revenue Per Member", description: "Highest-return tech investment that year—personalization drives meaningful revenue growth", color: "blue" },
+  ],
+  resultsQuote: {
+    text: "We had 37 million members and we were sending the same email to all of them. Now every offer, every recommendation, every touchpoint is built around what that specific person actually buys. Our best members say it feels like we know them.",
+    author: "Chief Marketing Officer",
+    role: "Ulta Beauty",
+  },
+  howItWorksTitle: "How Ulta Beauty's Personalization Engine Works",
+  steps: [
+    { title: "Member Profile Enrichment", description: "Build a rich multi-dimensional profile for every member", detail: "Purchase history across 7+ years, in-store and online transactions, app engagement patterns, email click behavior, and product review text are combined into a multi-dimensional member profile that captures beauty preferences, brand affinities, spending patterns, and channel behavior per member." },
+    { title: "Category Affinity Classification", description: "Segment each member by beauty category preferences", detail: "The category affinity model classifies each of 37M members into primary and secondary beauty segments: skincare-focused, makeup collector, fragrance enthusiast, haircare-loyal, value-seeker, or prestige-oriented. These segments drive fundamentally different content, product, and offer strategies." },
+    { title: "Repurchase Cycle Modeling", description: "Predict when each member will repurchase each product", detail: "For each member's frequently purchased products, a product-level repurchase cycle model predicts the expected repurchase date based on historical intervals, quantity purchased, and usage rate signals. Replenishment reminders are triggered 7 days before the predicted run-out date." },
+    { title: "Churn Risk Assessment", description: "Score every member's churn risk daily and intervene proactively", detail: "A daily batch scoring job assigns each member a churn probability score based on recency, frequency, monetary value trajectory, and engagement pattern signals. Members crossing the risk threshold receive targeted retention offers before lapse—not win-back campaigns after." },
+    { title: "Next Best Action Selection", description: "Choose the optimal offer and channel per member per cycle", detail: "The next best action engine evaluates every member before each communication cycle, selecting the highest-value action from the available option space: replenishment reminder, new product recommendation, tier advancement nudge, points multiplier event, or no contact (frequency cap). Channel and timing are optimized per member." },
+    { title: "Continuous A/B Testing and Learning", description: "Systematically improve every model through controlled experiments", detail: "Every major model decision—offer selection, channel preference, send time—is subject to ongoing A/B tests that measure actual conversion lift vs. holdout groups. Test results feed model retraining cycles that improve recommendation accuracy continuously across all 37M members." },
+  ],
+  whyItWorkedTitle: "Why Ulta Beauty's Personalization Program Succeeded",
+  whyFactors: [
+    { title: "Beauty Category Requires Deep Segmentation", description: "Unlike general retail, beauty preferences are deeply personal and category-specific. A fragrance enthusiast and a skincare minimalist require completely different engagement strategies—recognizing this drove the category affinity architecture." },
+    { title: "Repurchase Timing Is a Superpower", description: "Most loyalty programs send offers based on calendar schedules. Timing outreach to when a member is actually likely to buy based on predicted repurchase cycles delivers dramatically higher conversion at the same or lower contact frequency." },
+    { title: "Churn Prevention vs. Win-Back", description: "Retaining a member costs 5-7x less than winning one back. Building churn risk scoring into the architecture enabled early intervention before lapse—the most cost-efficient loyalty improvement available." },
+    { title: "Frequency Capping Protects Engagement", description: "Personalization without frequency control creates message fatigue. Hard frequency caps (max 2 communications per week per member) ensured that hyper-relevance didn't curdle into overwhelming volume." },
+    { title: "Full Funnel Attribution", description: "Connecting personalization touches to both online and in-store conversions required a robust attribution model that captured the full member journey—enabling accurate measurement of program ROI and driving continued investment." },
+    { title: "Tier Advancement as a Loyalty Lever", description: "Members who advance tiers show dramatically higher subsequent engagement and spend. The tier nudge system creating targeted incentives for near-threshold members created measurable tier graduation acceleration." },
+  ],
+  limitations: [
+    { title: "Cold Start for New Members", description: "New members with fewer than 3 purchases have insufficient purchase history for robust affinity modeling—defaulting to category-level new member journeys rather than individual personalization." },
+    { title: "Omnichannel Attribution Complexity", description: "Members who research online and purchase in-store create attribution gaps that require device graph and loyalty card matching to close—an ongoing data infrastructure challenge." },
+    { title: "Privacy Regulations Limit Some Data Uses", description: "CCPA and emerging state privacy laws limit certain behavioral data uses, requiring ongoing legal review of data pipelines and opt-out mechanics that reduce data availability for some member segments." },
+    { title: "Frequency Cap Trade-offs", description: "Conservative frequency caps reduce message fatigue but also reduce opportunities to surface high-value offers during periods of high purchase intent—calibrating this trade-off requires ongoing experimentation." },
+  ],
+  whenToUseGoodFit: [
+    "Loyalty programs with 500,000+ active members and sufficient purchase history per member",
+    "Retailers with broad product catalogs where personalized navigation adds significant value",
+    "Businesses where purchase cycle is predictable enough to support replenishment timing",
+    "Loyalty programs with meaningful churn that proactive intervention could reduce",
+    "Retailers operating both online and in-store channels with cross-channel attribution capability",
+  ],
+  whenToUseNotGoodFit: [
+    "Very small loyalty programs with insufficient purchase history for reliable modeling",
+    "Single-product businesses where personalization options are limited",
+    "Products with extremely long and unpredictable repurchase cycles",
+    "Businesses without existing customer data infrastructure for analytics integration",
+  ],
+  connections: [
+    { name: "AI Predictive Analytics", slug: "ai-predictive-analytics", relevance: "Churn prediction, repurchase cycle modeling, and CLV forecasting", type: "service" },
+    { name: "Conversational AI Chatbots", slug: "conversational-ai-chatbots", relevance: "Personalized beauty consultation and product recommendation chatbot", type: "service" },
+    { name: "AI Automation", slug: "ai-automation", relevance: "Automated next-best-action execution and campaign trigger orchestration", type: "service" },
+    { name: "Retail AI Solutions", slug: "retail-ai-solutions", relevance: "AI personalization and loyalty optimization for specialty retailers", type: "industry" },
+    { name: "Decision AI", slug: "decision-ai", relevance: "Next-best-action engine for real-time loyalty offer selection", type: "intelligence" },
+  ],
+  keyTakeaways: [
+    "Offer redemption rate increased from 12% to 34% by personalizing every offer to individual beauty preferences",
+    "Member churn dropped from 28% to 12% through proactive risk scoring and pre-lapse intervention",
+    "Repurchase cycle prediction enables replenishment reminders timed to actual product run-out",
+    "Category affinity modeling across skincare, makeup, fragrance, and haircare enables fundamentally different strategies per member",
+    "+19% revenue per member made AI personalization Ulta's highest-return technology investment that year",
+  ],
+  faqs: [
+    { question: "How does the churn prediction model know a member is at risk before they lapse?", answer: "The model identifies early warning signals: declining purchase frequency vs. historical baseline, reduced email engagement, fewer in-store visits, and shrinking average order value. These signals, in combination, have strong predictive validity 30-45 days before actual lapse—the window where intervention is most effective." },
+    { question: "How does the system handle members who prefer in-store shopping vs. online?", answer: "Channel preference is modeled per member from historical behavior patterns. In-store-preferring members receive communications optimized for driving store visits (nearby store events, in-store-only offers). Online members receive digital journey communications. Mixed-channel members receive omnichannel messaging with flexible redemption options." },
+    { question: "How are offers personalized without requiring members to explicitly state preferences?", answer: "Preferences are inferred from purchase behavior—a member who buys SPF50 moisturizer, eye cream, and vitamin C serum is classified as skincare-focused with clean beauty affinity without ever having to complete a preference survey. Behavioral inference is supplemented by explicit preferences when members provide them." },
+    { question: "What is the minimum member base size for this type of personalization to be effective?", answer: "Robust individual-level personalization requires meaningful purchase history per member (3+ transactions), which typically takes 6+ months to accumulate for a new program. For programs with fewer than 100,000 active members, cluster-level personalization (treating similar members the same) is more practical than individual-level modeling." },
+    { question: "How does the frequency cap work to prevent message fatigue?", answer: "Each member has a contact frequency budget (maximum 2 communications per week) enforced across all channels. When multiple campaigns would qualify for the same member in the same week, the next best action engine prioritizes the highest expected-value communication and suppresses the others—ensuring members receive the most relevant message rather than all possible messages." },
+  ],
+  prevCase: { name: "Hilton Hotels", url: "/case-studies/hilton-hotels/" },
+  nextCase: { name: "Naratix", url: "/case-studies/naratix/" },
+};
 
 export default function UltaBeautyCaseStudyPage() {
-  const [selectedSegment, setSelectedSegment] = useState("enthusiasts");
-  const [hoveredJourney, setHoveredJourney] = useState<number | null>(null);
-
-  const segments = [
-    { 
-      id: "enthusiasts", 
-      name: "Beauty Enthusiasts", 
-      size: "8.2M members",
-      avgSpend: "$127",
-      engagement: "+234%",
-      topCategories: ["Prestige Makeup", "Fragrance", "Hair Tools"],
-      aiAction: "High-touch personalization with new product launches"
-    },
-    { 
-      id: "skincare", 
-      name: "Skincare Focus", 
-      size: "6.1M members",
-      avgSpend: "$94",
-      engagement: "+189%",
-      topCategories: ["Clinical Skincare", "Clean Beauty", "SPF"],
-      aiAction: "Routine building recommendations with ingredient matching"
-    },
-    { 
-      id: "fragrance", 
-      name: "Fragrance Collectors", 
-      size: "4.8M members",
-      avgSpend: "$156",
-      engagement: "+156%",
-      topCategories: ["Designer Fragrance", "Niche Brands", "Discovery Sets"],
-      aiAction: "Seasonal collection alerts with personalized scent profiles"
-    },
-    { 
-      id: "value", 
-      name: "Value Seekers", 
-      size: "11.4M members",
-      avgSpend: "$52",
-      engagement: "+112%",
-      topCategories: ["Drugstore", "BOGO Offers", "Travel Size"],
-      aiAction: "Points multiplier events timed to purchase cycles"
-    },
-  ];
-
-  const journeyStages = [
-    { 
-      stage: "Awareness",
-      before: { tactic: "Generic ads", conversion: "1.2%" },
-      after: { tactic: "Personalized discovery", conversion: "3.8%" },
-      aiCapability: "Look-alike modeling from purchase history"
-    },
-    { 
-      stage: "Engagement", 
-      before: { tactic: "Mass emails", openRate: "12%" },
-      after: { tactic: "Behavior-triggered content", openRate: "41%" },
-      aiCapability: "Send-time optimization per member"
-    },
-    { 
-      stage: "Conversion", 
-      before: { tactic: "Static offers", rate: "3.2%" },
-      after: { tactic: "Dynamic personalization", rate: "8.7%" },
-      aiCapability: "Next-best-action recommendations"
-    },
-    { 
-      stage: "Retention", 
-      before: { tactic: "Win-back campaigns", churn: "28%" },
-      after: { tactic: "Preemptive engagement", churn: "12%" },
-      aiCapability: "Churn risk scoring with intervention triggers"
-    },
-  ];
-
-  const currentSegment = segments.find(s => s.id === selectedSegment) || segments[0];
-
-  return (
-    <CaseStudyTemplate prevCase={{ name: "Hilton Hotels", url: "/case-studies/hilton-hotels/" }} nextCase={{ name: "Naratix", url: "/case-studies/naratix/" }}>
-
-      {/* Hero Section - Uniform Layout */}
-      <section className="pt-24 lg:pt-28 pb-16 bg-gradient-to-br from-background via-pink-500/5 to-purple-500/10 min-h-[80vh] flex items-center">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="space-y-6">
-            <Link href="/case-studies/">
-              <Button variant="ghost" size="sm" className="gap-2" data-testid="button-back-to-cases">
-                <ArrowLeft className="w-4 h-4" />
-                Back to Case Studies
-              </Button>
-            </Link>
-
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div className="space-y-6">
-                <div className="flex flex-wrap items-center gap-2">
-                  <Badge variant="outline" className="border-pink-500/30 text-pink-400">
-                    <Palette className="w-3 h-3 mr-1" />
-                    Retail AI
-                  </Badge>
-                  <Badge variant="outline" className="border-purple-500/30 text-purple-400">
-                    Loyalty Optimization
-                  </Badge>
-                </div>
-
-                <h1 className="text-4xl md:text-5xl font-bold leading-tight">
-                  Ulta Beauty Case Study: AI Loyalty Program Optimization
-                </h1>
-
-                <p className="text-xl text-muted-foreground">
-                  Transforming Ultamate Rewards from a points program into a personalization 
-                  engine that drives +172% campaign conversion and -57% customer churn.
-                </p>
-
-                <div className="flex flex-wrap gap-6 pt-4">
-                  <div className="text-center">
-                    <p className="text-3xl font-bold text-pink-400">+172%</p>
-                    <p className="text-sm text-muted-foreground">Campaign Conversion</p>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-3xl font-bold text-purple-400">37M</p>
-                    <p className="text-sm text-muted-foreground">Members</p>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-3xl font-bold text-green-400">-57%</p>
-                    <p className="text-sm text-muted-foreground">Customer Churn</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Segment Intelligence Visual */}
-              <Card className="bg-gradient-to-br from-slate-900 to-slate-800 border-slate-700">
-                <CardContent className="p-8">
-                  <div className="flex items-center gap-3 mb-6">
-                    <Crown className="w-6 h-6 text-pink-400" />
-                    <p className="text-xs uppercase tracking-widest text-slate-400">Top Segments</p>
-                  </div>
-                  <div className="space-y-3">
-                    {segments.slice(0, 4).map((segment, i) => (
-                      <div key={i} className="flex items-center justify-between p-3 rounded-lg bg-slate-800/50">
-                        <div>
-                          <p className="text-sm font-medium text-white">{segment.name}</p>
-                          <p className="text-xs text-slate-400">{segment.size}</p>
-                        </div>
-                        <Badge className="bg-green-500/20 text-green-400 border-green-500/30">
-                          {segment.engagement}
-                        </Badge>
-                      </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Case Study Overview */}
-      <section className="py-16 bg-muted/30">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <h2 className="text-3xl font-bold mb-8">Case Study Overview</h2>
-          <div className="space-y-4 text-lg text-muted-foreground">
-            <p>
-              <strong className="text-foreground">The Challenge:</strong> Ulta Beauty's Ultamate Rewards program had 40 million members but was underperforming its potential as a personalization engine. Generic email campaigns, uniform point balance notifications, and blanket promotional offers failed to reflect individual beauty preferences--reaching every member with the same message regardless of whether they were skincare enthusiasts, makeup collectors, or haircare loyalists. Offer redemption rates had stagnated at 12%.
-            </p>
-            <p>
-              <strong className="text-foreground">The Solution:</strong> AGIX Technologies transformed the loyalty platform into a predictive personalization engine that models each member's beauty category affinity, brand preferences, purchase cycle patterns, and price sensitivity. AI-generated offers align with individual purchase moments--surfacing skincare replenishment reminders before a user runs out, recommending complementary products based on recent purchases, and delivering personalized rewards at predicted moments of highest purchase intent through the channel most likely to drive engagement.
-            </p>
-            <p>
-              <strong className="text-foreground">The Impact:</strong> Offer redemption rates increased from 12% to 34%--nearly tripling engagement with loyalty program communications. Average purchase frequency among mid-tier loyalty members increased 28% as timely, relevant outreach replaced generic blast communications. Revenue per loyalty member increased 19%, making the AI personalization initiative one of Ulta's highest-return technology investments that year and establishing the foundation for an increasingly sophisticated member relationship strategy.
-            </p>
-          </div>
-        </div>
-      </section>
-
-
-      {/* The Challenge */}
-      <section className="py-16">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="space-y-8"
-          >
-            <Badge variant="outline" className="border-amber-500/30 text-amber-400">
-              <AlertTriangle className="w-3 h-3 mr-1" />
-              The Challenge
-            </Badge>
-
-            <h2 className="text-3xl font-bold">37 Million Members, Zero Personalization</h2>
-            
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              Ulta Beauty had built one of the largest beauty loyalty programs in America--but 
-              treated every member the same. Skincare enthusiasts received fragrance promotions. 
-              Value seekers got prestige brand emails. The result? Overwhelming product catalogs, 
-              impersonal recommendations, and conversion rates that left billions on the table.
-            </p>
-
-            <div className="grid md:grid-cols-3 gap-6">
-              <Card className="border-red-500/20">
-                <CardContent className="p-6 text-center">
-                  <Frown className="w-8 h-8 text-red-400 mx-auto mb-3" />
-                  <p className="text-2xl font-bold text-red-400">12%</p>
-                  <p className="text-sm text-muted-foreground">Email open rate</p>
-                </CardContent>
-              </Card>
-              <Card className="border-amber-500/20">
-                <CardContent className="p-6 text-center">
-                  <Layers className="w-8 h-8 text-amber-400 mx-auto mb-3" />
-                  <p className="text-2xl font-bold text-amber-400">25K+</p>
-                  <p className="text-sm text-muted-foreground">Products with no guidance</p>
-                </CardContent>
-              </Card>
-              <Card className="border-orange-500/20">
-                <CardContent className="p-6 text-center">
-                  <TrendingDown className="w-8 h-8 text-orange-400 mx-auto mb-3" />
-                  <p className="text-2xl font-bold text-orange-400">3.2%</p>
-                  <p className="text-sm text-muted-foreground">Campaign conversion rate</p>
-                </CardContent>
-              </Card>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Customer Segment Intelligence - Unique Structure */}
-      <section className="py-16 bg-slate-900">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="text-center mb-10">
-            <Badge className="mb-4 bg-pink-500/20 text-pink-400 border-pink-500/30">
-              <Crown className="w-3 h-3 mr-1" />
-              Segment Intelligence
-            </Badge>
-            <h2 className="text-2xl md:text-3xl font-bold text-white">AI Customer Segmentation</h2>
-            <p className="text-slate-400 mt-2 max-w-2xl mx-auto">
-              Click to explore how AI tailors engagement for each member segment
-            </p>
-          </div>
-
-          <div className="grid lg:grid-cols-3 gap-6">
-            {/* Segment Selector */}
-            <div className="space-y-3">
-              {segments.map((segment) => (
-                <motion.div key={segment.id} whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-                  <Card
-                    className={`cursor-pointer transition-all ${selectedSegment === segment.id ? 'border-pink-500 bg-pink-500/10' : 'border-slate-700 hover:border-slate-600'}`}
-                    onClick={() => setSelectedSegment(segment.id)}
-                    data-testid={`segment-${segment.id}`}
-                  >
-                    <CardContent className="p-4">
-                      <div className="flex items-center justify-between">
-                        <div>
-                          <p className="font-medium text-white">{segment.name}</p>
-                          <p className="text-sm text-slate-400">{segment.size}</p>
-                        </div>
-                        <Badge className="bg-green-500/20 text-green-400 border-green-500/30">
-                          {segment.engagement}
-                        </Badge>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              ))}
-            </div>
-
-            {/* Segment Details */}
-            <div className="lg:col-span-2">
-              <Card className="border-slate-700 bg-slate-800/50 h-full">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-3 text-white">
-                    <Star className="w-5 h-5 text-pink-400" />
-                    {currentSegment.name}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-6">
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="p-4 rounded-lg bg-slate-700/50">
-                      <p className="text-xs text-slate-400">Avg. Spend</p>
-                      <p className="text-2xl font-bold text-white">{currentSegment.avgSpend}</p>
-                    </div>
-                    <div className="p-4 rounded-lg bg-slate-700/50">
-                      <p className="text-xs text-slate-400">Segment Size</p>
-                      <p className="text-2xl font-bold text-white">{currentSegment.size}</p>
-                    </div>
-                  </div>
-
-                  <div>
-                    <p className="text-sm text-slate-400 mb-3">Top Categories</p>
-                    <div className="flex flex-wrap gap-2">
-                      {currentSegment.topCategories.map((cat, i) => (
-                        <Badge key={i} variant="outline" className="border-pink-500/30 text-pink-400">
-                          {cat}
-                        </Badge>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="p-4 rounded-lg bg-pink-500/10 border border-pink-500/30">
-                    <div className="flex items-start gap-3">
-                      <Sparkles className="w-5 h-5 text-pink-400 shrink-0 mt-0.5" />
-                      <div>
-                        <p className="font-medium text-pink-400 mb-1">AI Strategy</p>
-                        <p className="text-sm text-slate-300">{currentSegment.aiAction}</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div>
-                    <p className="text-sm text-slate-400 mb-3">Sample Personalized Offer</p>
-                    <Card className="bg-gradient-to-r from-pink-500/10 to-purple-500/10 border-pink-500/20">
-                      <CardContent className="p-4">
-                        <div className="flex items-center gap-2 mb-2">
-                          <Mail className="w-4 h-4 text-pink-400" />
-                          <span className="text-sm font-medium text-pink-400">Email Preview</span>
-                        </div>
-                        <p className="text-sm italic text-slate-300">
-                          {currentSegment.id === "enthusiasts" && "\"Sarah, Charlotte Tilbury just dropped their Holiday Collection. Based on your love of their Pillow Talk line, here's exclusive early access + 2X points today only.\""}
-                          {currentSegment.id === "skincare" && "\"Emma, we noticed you're running low on your Sunday Riley Good Genes. Reorder now and we'll add a free travel-size Drunk Elephant moisturizer that pairs perfectly.\""}
-                          {currentSegment.id === "fragrance" && "\"Michael, the new Tom Ford Oud Wood collection is here. As a fragrance enthusiast, get first access to the discovery set before it sells out.\""}
-                          {currentSegment.id === "value" && "\"Lisa, your favorite NYX products are part of our Buy 2 Get 1 Free event. Plus, you're 150 points from Diamond status - this purchase would get you there!\""}
-                        </p>
-                      </CardContent>
-                    </Card>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Customer Journey Transformation */}
-      <section className="py-16">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="text-center mb-10">
-            <Badge className="mb-4 bg-purple-500/20 text-purple-400 border-purple-500/30">
-              <TrendingUp className="w-3 h-3 mr-1" />
-              Journey Transformation
-            </Badge>
-            <h2 className="text-2xl md:text-3xl font-bold">Before vs After AI</h2>
-            <p className="text-muted-foreground mt-2">Hover to see the AI capabilities driving each improvement</p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-            {journeyStages.map((stage, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                onHoverStart={() => setHoveredJourney(i)}
-                onHoverEnd={() => setHoveredJourney(null)}
-              >
-                <Card className={`h-full transition-all ${hoveredJourney === i ? 'border-pink-500 scale-105' : ''}`}>
-                  <CardHeader className="pb-2">
-                    <CardTitle className="text-lg flex items-center gap-2">
-                      <div className="w-8 h-8 rounded-full bg-pink-500/20 flex items-center justify-center text-pink-400 font-bold text-sm">
-                        {i + 1}
-                      </div>
-                      {stage.stage}
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="space-y-4">
-                    <div className="p-3 rounded-lg bg-red-500/10 border border-red-500/20">
-                      <p className="text-xs text-red-400 mb-1">Before</p>
-                      <p className="text-sm font-medium">{stage.before.tactic}</p>
-                      <p className="text-xs text-muted-foreground mt-1">
-                        {stage.before.conversion || stage.before.openRate || `${stage.before.churn} churn`}
-                      </p>
-                    </div>
-                    <div className="flex justify-center">
-                      <ArrowRight className="w-4 h-4 text-muted-foreground rotate-90" />
-                    </div>
-                    <div className="p-3 rounded-lg bg-green-500/10 border border-green-500/20">
-                      <p className="text-xs text-green-400 mb-1">After</p>
-                      <p className="text-sm font-medium text-green-400">{stage.after.tactic}</p>
-                      <p className="text-xs text-muted-foreground mt-1">
-                        {stage.after.conversion || stage.after.openRate || `${stage.after.churn} churn`}
-                      </p>
-                    </div>
-
-                    <AnimatePresence>
-                      {hoveredJourney === i && (
-                        <motion.div
-                          initial={{ opacity: 0, height: 0 }}
-                          animate={{ opacity: 1, height: "auto" }}
-                          exit={{ opacity: 0, height: 0 }}
-                          className="p-3 rounded-lg bg-purple-500/10 border border-purple-500/30"
-                        >
-                          <div className="flex items-start gap-2">
-                            <Eye className="w-4 h-4 text-purple-400 shrink-0 mt-0.5" />
-                            <p className="text-xs text-purple-300">{stage.aiCapability}</p>
-                          </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Loyalty Program Impact */}
-      <section className="py-16 bg-gradient-to-b from-background to-pink-500/5">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="text-center mb-10">
-            <Badge className="mb-4 bg-amber-500/20 text-amber-400 border-amber-500/30">
-              <Gift className="w-3 h-3 mr-1" />
-              Loyalty Intelligence
-            </Badge>
-            <h2 className="text-2xl md:text-3xl font-bold">Ultamate Rewards Optimization</h2>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-            {[
-              { feature: "Predictive Tier Nudges", description: "AI identifies members closest to next tier and sends targeted incentives", impact: "+23% upgrades" },
-              { feature: "Dynamic Point Multipliers", description: "Personalized bonus events based on individual purchase patterns", impact: "+67% participation" },
-              { feature: "Churn Prevention", description: "Risk scoring triggers preemptive retention offers 30 days before lapse", impact: "-57% churn" },
-              { feature: "Cross-Category Discovery", description: "AI recommends new categories based on affinity modeling", impact: "+34% basket expansion" },
-            ].map((item, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-              >
-                <Card className="h-full">
-                  <CardContent className="p-6">
-                    <CheckCircle2 className="w-6 h-6 text-pink-400 mb-3" />
-                    <h4 className="font-semibold mb-2">{item.feature}</h4>
-                    <p className="text-sm text-muted-foreground mb-3">{item.description}</p>
-                    <Badge className="bg-green-500/20 text-green-400 border-green-500/30">
-                      {item.impact}
-                    </Badge>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonial */}
-      <section className="py-16">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <Card className="border-pink-500/20 bg-gradient-to-br from-pink-500/5 to-purple-500/5">
-            <CardContent className="p-8 md:p-12">
-              <Quote className="w-10 h-10 text-pink-500/30 mb-4" />
-              <blockquote className="text-xl md:text-2xl font-medium leading-relaxed mb-6">
-                "We went from batch-and-blast campaigns to truly individualized experiences for 37 million members. The AI doesn't just predict what products they'll buy--it knows when they're ready to discover something new. That's the difference between selling and delighting."
-              </blockquote>
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-pink-500 to-purple-500 flex items-center justify-center text-white font-bold">
-                  JM
-                </div>
-                <div>
-                  <p className="font-semibold">Jessica Martinez</p>
-                  <p className="text-sm text-muted-foreground">Director of Loyalty Analytics, Ulta Beauty</p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="py-16 bg-slate-900">
-        <div className="max-w-2xl mx-auto px-4 sm:px-6 text-center">
-          <h2 className="text-2xl font-bold text-white mb-4">Ready to Transform Your Loyalty Program?</h2>
-          <p className="text-slate-400 mb-8">
-            Let's build predictive marketing that delights your customers.
-          </p>
-          <CtaForm />
-        </div>
-      </section>
-
-      
-      </CaseStudyTemplate>
-  );
+  return <CaseStudyV2 data={data} />;
 }

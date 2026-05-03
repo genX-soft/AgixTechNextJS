@@ -42,7 +42,7 @@ export function IndustryCaseStudies({ caseStudies, industryName }: IndustryCaseS
           className="text-center mb-12"
         >
           <Badge className="mb-4">Real Results</Badge>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">
             AI in Action:{" "}
             <span className="text-primary">{industryName} Case Studies</span>
           </h2>
@@ -112,7 +112,7 @@ export function IndustryServices({ services, industryName }: IndustryServicesPro
             <Zap className="w-3 h-3 mr-1" />
             AI Services
           </Badge>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">
             Solutions Built For{" "}
             <span className="text-primary">{industryName}</span>
           </h2>

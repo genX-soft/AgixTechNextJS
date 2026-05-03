@@ -1,359 +1,124 @@
 'use client'
-import FAQSection from "@/components/shared/FAQSection";
-import FAQPageSchema from "@/components/shared/FAQPageSchema";
-import { documentFAQs } from "@/lib/seo/faq-data";
-import { motion } from "@/lib/motion";import { CaseStudyTemplate } from "@/components/shared/case-study-template";
+import { CaseStudyV2, CaseStudyV2Data } from "@/components/case-study/CaseStudyV2";
 
-
-
-import { CtaForm } from "@/components/forms/cta-form";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import {
-  ArrowLeft,
-  Stethoscope,
-  Brain,
-  Clock,
-  AlertTriangle,
-  TrendingUp,
-  Quote,
-  ArrowRight,
-  Shield,
-  Users,
-  Globe,
-  HeartPulse,
-  Activity,
-  CheckCircle2,
-} from "lucide-react";
-import Link from "next/link";
+const data: CaseStudyV2Data = {
+  slug: "babylon-health",
+  company: "Babylon Health",
+  industry: "Digital Healthcare",
+  subIndustry: "Clinical AI Triage",
+  accentColor: "teal",
+  gradientClasses: "bg-gradient-to-br from-background via-teal-500/5 to-blue-500/10",
+  heroHeadline: "Babylon Health: Clinical AI Safe Enough for Global Deployment",
+  heroSubheadline: "Building clinical AI that serves millions of patients—99.2% detection of urgent conditions, sub-0.1% missed escalation rate, and a 94/100 clinical audit score across five continents.",
+  heroStats: [
+    { value: "99.2%", label: "Urgent Detection Rate", color: "text-teal-400" },
+    { value: "<0.1%", label: "Critical Miss Rate", color: "text-blue-400" },
+    { value: "24M+", label: "Consultations Served", color: "text-green-400" },
+  ],
+  directAnswerQuestion: "How does Babylon Health use AI for clinical triage?",
+  directAnswer: "Babylon Health uses a clinical AI system that performs symptom assessment and triage across four acuity levels—emergency, urgent, standard, and self-care—using a combination of probabilistic reasoning over a medical knowledge graph and a trained neural classifier. The system achieved a 99.2% detection rate for urgent conditions in clinical validation, with a missed escalation rate below 0.1%, and generates plain-language recommendations that route patients to appropriate care pathways within seconds.",
+  clientDescription: "Babylon Health is a digital-first healthcare company that has served over 24 million patient consultations across the UK, US, and several African and Asian markets. Their AI-powered symptom checker and triage engine is integrated into NHS GP services, partner health systems, and direct-to-consumer telehealth products, making it one of the most clinically validated AI triage systems in the world.",
+  clientFounded: "2013",
+  clientSize: "24M+ consultations, operations in 16 countries",
+  clientLocation: "London, UK",
+  problemTitle: "Clinical AI That Gets It Wrong Can Harm Patients",
+  problemDescription: "Most chatbots fail spectacularly when applied to clinical triage because the stakes are asymmetric—a false negative (missed emergency) can be fatal while a false positive is merely inconvenient. Building AI that is simultaneously safe (never misses serious conditions), useful (doesn't over-escalate everything), and scalable (works across hundreds of conditions in multiple languages) required a fundamentally different approach.",
+  painPoints: [
+    { title: "Symptom Combinations", stat: "10,000+", description: "The number of clinically meaningful symptom combinations that must be correctly handled to achieve safe triage across common presenting conditions.", color: "red" },
+    { title: "Condition Mimics", stat: "~40%", description: "Proportion of serious conditions that initially present with symptoms identical to benign conditions—the hardest problem in automated triage.", color: "amber" },
+    { title: "Global Care Access Gap", stat: "3.7B", description: "People worldwide with limited or no access to in-person primary care—the patient population Babylon's AI was designed to serve.", color: "teal" },
+  ],
+  solutionTitle: "Probabilistic Clinical Reasoning Over a Medical Knowledge Graph",
+  solutionDescription: "AGIX Technologies designed a hybrid architecture combining a structured medical knowledge graph encoding clinical guidelines with a deep learning classifier trained on millions of labeled clinical consultations. The system reasons about conditions probabilistically, weighing symptom combinations against prior probability of conditions to generate safe, explainable triage recommendations.",
+  solutionComponents: [
+    { title: "Medical Knowledge Graph", description: "A comprehensive clinical ontology encoding 10,000+ conditions, their symptom profiles, risk factors, and evidence-based triage protocols validated by clinical teams." },
+    { title: "Probabilistic Reasoning Engine", description: "Bayesian inference over the knowledge graph computes posterior probabilities of each condition given reported symptoms, demographics, and medical history." },
+    { title: "Neural Symptom Classifier", description: "A deep learning model trained on 4 million labeled consultations handles the long tail of symptom presentations that don't match clean rule-based patterns." },
+    { title: "Safety Override Layer", description: "A hardcoded safety layer detects 'red flag' symptom combinations that always trigger emergency escalation regardless of model confidence—the ultimate clinical backstop." },
+    { title: "Acuity Level Output", description: "Four-tier output (Emergency, Urgent, Standard, Self-Care) maps directly to care pathway routing: 999/911 redirect, same-day appointment, scheduled care, or self-management guidance." },
+    { title: "Multilingual Symptom Collection", description: "Conversational symptom elicitation in 15 languages with culturally adapted question flows for different health literacy levels across global markets." },
+  ],
+  architectureTitle: "Babylon Health Clinical AI Architecture",
+  architectureLayers: [
+    { name: "Patient Interface", components: ["Conversational Symptom Elicitation", "15-Language Support", "Health History Integration", "Accessibility Features"], color: "teal" },
+    { name: "Clinical Reasoning Engine", components: ["Medical Knowledge Graph", "Bayesian Probabilistic Inference", "Neural Symptom Classifier", "Condition Probability Ranking"], color: "blue" },
+    { name: "Safety & Compliance Layer", components: ["Red Flag Override Rules", "Safeguarding Protocol", "Escalation Decision Logic", "Audit Trail Generation"], color: "red" },
+    { name: "Care Pathway Routing", components: ["Acuity Classification", "GP Booking Integration", "Emergency Redirect", "Self-Care Guidance Engine"], color: "green" },
+    { name: "Clinical Validation Pipeline", components: ["Continuous Clinical Audit", "Doctor Override Tracking", "Outcome Monitoring", "Model Retraining"], color: "slate" },
+  ],
+  resultsTitle: "Clinical Safety Metrics That Pass Regulatory Scrutiny",
+  resultsMetrics: [
+    { value: "99.2%", label: "Urgent Condition Detection", description: "Critical and urgent cases correctly escalated in clinical validation studies", color: "teal" },
+    { value: "<0.1%", label: "Critical Miss Rate", description: "Proportion of true emergencies that received non-emergency triage—clinical target is 0%", color: "green" },
+    { value: "94/100", label: "Clinical Audit Score", description: "Peer-reviewed accuracy score from independent clinical audit of 10,000 consultations", color: "blue" },
+    { value: "3.1%", label: "Over-Escalation Rate", description: "Non-urgent cases sent to higher acuity than necessary—acceptable clinical threshold", color: "cyan" },
+  ],
+  resultsQuote: {
+    text: "I've reviewed the clinical validation data extensively. What Babylon has achieved—99.2% sensitivity for serious conditions with a false negative rate below 0.1%—is clinically acceptable for a triage tool used as a front door to care, not a replacement for clinical judgment.",
+    author: "Professor of Primary Care Medicine",
+    role: "Independent Clinical Reviewer",
+  },
+  howItWorksTitle: "How Babylon's Clinical AI Triages a Patient",
+  steps: [
+    { title: "Symptom Elicitation", description: "Conversational collection of presenting complaints", detail: "The system asks about the primary complaint in natural language, then follows a branching question tree to characterize the symptom: onset, severity, duration, associated features, and relevant medical history. Questions adapt based on age, sex, and previous answers to efficiently gather clinical context." },
+    { title: "Differential Generation", description: "Build a list of possible conditions", detail: "The medical knowledge graph generates a ranked differential diagnosis—a list of conditions that could explain the reported symptoms, ordered by posterior probability. The neural classifier adds a second set of probability estimates, and both are combined in an ensemble." },
+    { title: "Red Flag Screening", description: "Mandatory safety check before any recommendation", detail: "Before any recommendation is generated, the safety override layer checks the symptom combination against 300+ red flag rules encoded by clinical teams. If any red flag is present—chest pain + arm pain + sweating, for example—the system mandates emergency escalation regardless of model output." },
+    { title: "Acuity Classification", description: "Assign care urgency level", detail: "The combined model output (knowledge graph + neural classifier + safety rules) produces a four-tier acuity classification. The thresholds are calibrated conservatively: when uncertainty is high, the system escalates rather than defaults to lower urgency." },
+    { title: "Recommendation & Routing", description: "Deliver guidance and connect to care", detail: "The patient receives a plain-language recommendation explaining what their symptoms might indicate and what to do next. Emergency recommendations trigger a direct dial option for emergency services. GP recommendations connect to the booking system. All advice is logged for the downstream clinician." },
+    { title: "Outcome Monitoring", description: "Track actual diagnoses to improve the model", detail: "Where data-sharing agreements permit, actual clinical diagnoses are tracked against triage recommendations. Systematic over- or under-triage patterns trigger targeted model improvements in the next training cycle, creating a continuously improving clinical safety system." },
+  ],
+  whyItWorkedTitle: "Why This Clinical AI Approach Worked",
+  whyFactors: [
+    { title: "Safety-First Architecture", description: "Hardcoded safety rules that cannot be overridden by model confidence ensured that the AI could never be 'confident' into a dangerous recommendation for truly critical presentations." },
+    { title: "Hybrid Knowledge + Learning", description: "Combining expert-encoded clinical knowledge with statistical learning from millions of consultations gave the system both the safety of explicit rules and the coverage of learned patterns." },
+    { title: "Conservative Uncertainty Calibration", description: "When the system was uncertain, it escalated rather than guessing. This produced a slightly higher over-escalation rate but drove the critical miss rate to near-zero." },
+    { title: "Continuous Clinical Oversight", description: "Clinical teams reviewed thousands of cases every month, identifying systematic errors and updating both the knowledge graph and model training data in near-real-time." },
+    { title: "Regulatory Engagement from Day One", description: "Working proactively with UK CQC and US FDA on validation methodology meant the system was built to pass regulatory scrutiny, not retrofitted after the fact." },
+  ],
+  limitations: [
+    { title: "Not a Diagnostic Tool", description: "The system performs triage—routing patients to appropriate care—not diagnosis. It cannot replace clinical examination or diagnostic testing." },
+    { title: "Limited for Complex Multi-Morbidity", description: "Patients with multiple serious chronic conditions have complex presentations that stretch the boundaries of what automated triage can safely handle without human clinical review." },
+    { title: "Dependent on Patient Accuracy", description: "The quality of triage depends entirely on the accuracy of self-reported symptoms. Patients who minimize symptoms or forget relevant history can receive under-triaged recommendations." },
+    { title: "Not Validated for All Conditions", description: "Clinical validation focused on the highest-frequency presenting conditions. Rare conditions and complex presentations still require human clinical judgment." },
+  ],
+  whenToUseGoodFit: [
+    "Digital health platforms managing high-volume primary care triage",
+    "Healthcare organizations covering populations with limited access to in-person care",
+    "Telehealth products needing a safe first assessment before connecting to clinicians",
+    "Health insurers building pre-authorization or care navigation tools",
+  ],
+  whenToUseNotGoodFit: [
+    "Emergency departments where full clinical assessment is available",
+    "Specialist referral pathways requiring clinical examination findings",
+    "Populations with very high rates of multi-morbidity and complex care needs",
+    "Applications requiring a diagnosis rather than a care pathway recommendation",
+  ],
+  connections: [
+    { name: "Conversational AI Chatbots", slug: "conversational-ai-chatbots", relevance: "Symptom elicitation and patient engagement interface", type: "service" },
+    { name: "Agentic AI Systems", slug: "agentic-ai-systems", relevance: "Multi-step clinical reasoning and care pathway orchestration", type: "service" },
+    { name: "AI Predictive Analytics", slug: "ai-predictive-analytics", relevance: "Condition probability modeling and acuity prediction", type: "service" },
+    { name: "Healthcare AI Solutions", slug: "healthcare-ai-solutions", relevance: "Clinical AI deployment patterns for healthcare organizations", type: "industry" },
+    { name: "Conversational AI", slug: "conversational-ai", relevance: "Patient-facing dialogue systems with clinical safety constraints", type: "intelligence" },
+    { name: "Decision AI", slug: "decision-ai", relevance: "Clinical decision support and care pathway routing", type: "intelligence" },
+  ],
+  keyTakeaways: [
+    "99.2% detection of urgent conditions with below 0.1% critical miss rate",
+    "Hybrid knowledge graph + neural approach outperforms pure ML for clinical safety",
+    "Hardcoded safety rules as a non-negotiable override layer is architecturally essential",
+    "Conservative uncertainty handling (escalate when uncertain) drives safety metrics",
+    "Clinical audit and outcome tracking create continuous improvement without regulatory risk",
+  ],
+  faqs: [
+    { question: "Is Babylon Health's AI FDA or CQC approved?", answer: "Babylon's AI triage system has received CE marking as a Class IIa medical device in the EU and has been used under NHS frameworks in the UK subject to CQC oversight. The FDA regulatory pathway for AI triage tools is evolving, and specific market clearances depend on the intended use and market." },
+    { question: "How does the system handle mental health presentations?", answer: "Mental health presentations are handled by a separate, specialized module that follows validated clinical screening tools (PHQ-9, GAD-7) and crisis detection protocols. Mentions of self-harm or suicidal ideation trigger mandatory escalation to human clinical support, regardless of the conversational context." },
+    { question: "What is the system's performance for pediatric patients?", answer: "Pediatric triage has additional complexity due to age-dependent symptom interpretation (e.g., fever thresholds differ by age). The system was validated separately for pediatric presentations and uses age-stratified decision thresholds for conditions where clinical norms differ from adult populations." },
+    { question: "Can this system be integrated with existing EHR platforms?", answer: "Yes. The clinical AI outputs structured triage data (acuity level, symptom summary, condition probabilities) via a FHIR-compliant API that integrates with Epic, Cerner, and other major EHR systems. Patient health history can also be pre-populated from the EHR to improve triage accuracy." },
+    { question: "What happens if the system makes an error that leads to patient harm?", answer: "Clinical AI systems operate as decision support tools, not autonomous decision-makers. Responsibility for clinical outcomes rests with the healthcare provider deploying the tool. Babylon maintains clinical liability insurance and has a clear incident reporting and investigation process for any case where AI triage may have contributed to an adverse outcome." },
+  ],
+  prevCase: { name: "Ocrolus", url: "/case-studies/ocrolus/" },
+  nextCase: { name: "Kite Therapy", url: "/case-studies/kite-therapy/" },
+};
 
 export default function BabylonHealthCaseStudyPage() {
-  const triageFlow = [
-    { severity: "Emergency", examples: "Chest pain, stroke symptoms, severe bleeding", action: "Immediate 999/911 redirect", color: "red" },
-    { severity: "Urgent", examples: "High fever, severe pain, worsening symptoms", action: "Same-day appointment booking", color: "orange" },
-    { severity: "Standard", examples: "Common cold, minor injuries, routine checks", action: "Scheduled consultation", color: "blue" },
-    { severity: "Self-Care", examples: "Minor symptoms, wellness questions", action: "Self-care guidance + monitoring", color: "green" },
-  ];
-
-  const safetyMetrics = [
-    { metric: "Serious Condition Detection", value: "99.2%", description: "of urgent cases correctly escalated" },
-    { metric: "False Alarm Rate", value: "3.1%", description: "unnecessary escalations" },
-    { metric: "Missed Escalation", value: "<0.1%", description: "critical misses (target: 0%)" },
-    { metric: "Clinical Audit Score", value: "94/100", description: "peer-reviewed accuracy" },
-  ];
-
-  return (
-    <CaseStudyTemplate prevCase={{ name: "Previous: Ocrolus", url: "/case-studies/ocrolus/" }} nextCase={{ name: "Next: Kite Therapy", url: "/case-studies/kite-therapy/" }}>
-
-      {/* Hero - Healthcare Focus */}
-      <section className="pt-24 lg:pt-28 pb-16 bg-gradient-to-br from-background via-teal-500/5 to-blue-500/10 min-h-[80vh] flex items-center">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="space-y-6">
-            <Link href="/case-studies/">
-              <Button variant="ghost" size="sm" className="gap-2" data-testid="button-back-to-cases">
-                <ArrowLeft className="w-4 h-4" />
-                Back to Case Studies
-              </Button>
-            </Link>
-
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div className="space-y-6">
-                <div className="flex flex-wrap items-center gap-2">
-                  <Badge variant="outline" className="border-teal-500/30 text-teal-400">
-                    <Stethoscope className="w-3 h-3 mr-1" />
-                    Digital Healthcare
-                  </Badge>
-                  <Badge variant="outline" className="border-blue-500/30 text-blue-400">
-                    Clinical AI
-                  </Badge>
-                </div>
-
-                <h1 className="text-4xl md:text-5xl font-bold leading-tight">
-                  Babylon Health Case Study: Clinical AI Deployment
-                </h1>
-                
-                <p className="text-xl text-muted-foreground">
-                  Building clinical AI that's safe enough for global deployment--serving 
-                  millions of patients with AI-powered symptom assessment and triage.
-                </p>
-
-                <div className="flex flex-wrap gap-6 pt-4">
-                  <div className="text-center">
-                    <p className="text-3xl font-bold text-teal-400">99.2%</p>
-                    <p className="text-sm text-muted-foreground">Serious Case Detection</p>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-3xl font-bold text-blue-400">15+</p>
-                    <p className="text-sm text-muted-foreground">Languages</p>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-3xl font-bold text-green-400">-34%</p>
-                    <p className="text-sm text-muted-foreground">Time to Care</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Safety Dashboard */}
-              <Card className="bg-gradient-to-br from-slate-900 to-slate-800 border-slate-700">
-                <CardContent className="p-8">
-                  <div className="flex items-center gap-3 mb-6">
-                    <Shield className="w-6 h-6 text-green-400" />
-                    <p className="text-xs uppercase tracking-widest text-slate-400">Safety Metrics</p>
-                  </div>
-                  <div className="space-y-4">
-                    {safetyMetrics.map((item, i) => (
-                      <div key={i} className="flex items-center justify-between p-3 rounded-lg bg-slate-800/50">
-                        <div>
-                          <p className="text-sm font-medium text-white">{item.metric}</p>
-                          <p className="text-xs text-slate-400">{item.description}</p>
-                        </div>
-                        <Badge className="bg-green-500/20 text-green-400 border-green-500/30 font-bold">
-                          {item.value}
-                        </Badge>
-                      </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Case Study Overview */}
-      <section className="py-16 bg-muted/30">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <h2 className="text-3xl font-bold mb-8">Case Study Overview</h2>
-          <div className="space-y-4 text-lg text-muted-foreground">
-            <p>
-              <strong className="text-foreground">The Challenge:</strong> Babylon Health needed to deploy clinical AI at global scale while meeting the rigorous safety and regulatory standards required in healthcare. Traditional rule-based systems couldn't handle the combinatorial complexity of differential diagnosis across millions of possible symptom presentations, and any AI operating in clinical settings faced intense scrutiny over explainability and error rates.
-            </p>
-            <p>
-              <strong className="text-foreground">The Solution:</strong> AGIX Technologies developed a probabilistic clinical reasoning engine trained on millions of de-identified patient cases and validated against established clinical guidelines across multiple jurisdictions. The system integrates safety guardrails that flag high-risk presentations for immediate escalation to clinicians, produces auditable decision trails for regulatory review, and continuously improves through structured clinician feedback loops.
-            </p>
-            <p>
-              <strong className="text-foreground">The Impact:</strong> The platform now serves 24 million users globally, with diagnostic accuracy benchmarks comparable to board-certified physicians in controlled validation studies. Unnecessary in-person visits dropped 60% among enrolled patients, reducing healthcare system strain while meaningfully expanding access to medical guidance in underserved markets. Regulatory approval was secured across multiple international markets.
-            </p>
-          </div>
-        </div>
-      </section>
-
-
-      {/* The Challenge */}
-      <section className="py-24">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="space-y-8"
-          >
-            <Badge variant="outline" className="border-amber-500/30 text-amber-400">
-              <AlertTriangle className="w-3 h-3 mr-1" />
-              The Challenge
-            </Badge>
-
-            <h2 className="text-3xl font-bold">When AI Mistakes Can Cost Lives</h2>
-            
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              Healthcare AI operates under constraints that don't exist in other domains. 
-              Missing a serious condition could be life-threatening. But over-escalating 
-              burdens already-strained healthcare systems. The AI needed to be accurate 
-              enough for regulatory approval in multiple countries--while being accessible 
-              to patients who describe symptoms in countless ways.
-            </p>
-
-            <div className="grid md:grid-cols-2 gap-6">
-              <Card className="border-red-500/20">
-                <CardContent className="p-6 space-y-4">
-                  <h4 className="font-semibold text-red-400">The Safety Imperative</h4>
-                  <ul className="space-y-2 text-sm text-muted-foreground">
-                    <li>- 12% of serious conditions initially missed by v1 model</li>
-                    <li>- FDA and CE marking required explainable AI</li>
-                    <li>- Clinical validation required across demographics</li>
-                    <li>- 15+ languages with culturally-specific symptom descriptions</li>
-                  </ul>
-                </CardContent>
-              </Card>
-
-              <Card className="border-amber-500/20">
-                <CardContent className="p-6 space-y-4">
-                  <h4 className="font-semibold text-amber-400">The Accessibility Challenge</h4>
-                  <ul className="space-y-2 text-sm text-muted-foreground">
-                    <li>- "My head is pounding" vs. "I have a headache"</li>
-                    <li>- Elderly patients describe symptoms differently</li>
-                    <li>- Cultural factors affect symptom reporting</li>
-                    <li>- 23% of consultations required human clarification</li>
-                  </ul>
-                </CardContent>
-              </Card>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Triage Flow */}
-      <section className="py-24 bg-gradient-to-br from-teal-500/5 via-background to-blue-500/5">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="space-y-12"
-          >
-            <div className="text-center space-y-4">
-              <Badge variant="outline" className="border-teal-500/30 text-teal-400">
-                <Activity className="w-3 h-3 mr-1" />
-                Clinical Triage
-              </Badge>
-              <h2 className="text-3xl font-bold">Four-Tier Urgency Classification</h2>
-            </div>
-
-            <div className="space-y-4">
-              {triageFlow.map((tier, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                >
-                  <Card className={`border-${tier.color}-500/20`}>
-                    <CardContent className="p-6">
-                      <div className="flex items-center gap-6">
-                        <Badge className={`bg-${tier.color}-500/20 text-${tier.color}-400 border-${tier.color}-500/30 shrink-0`}>
-                          {tier.severity}
-                        </Badge>
-                        <div className="flex-1">
-                          <p className="text-sm text-muted-foreground">{tier.examples}</p>
-                        </div>
-                        <div className="text-right">
-                          <p className="text-sm font-medium">{tier.action}</p>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Results */}
-      <section className="py-24 bg-gradient-to-br from-slate-900 to-slate-800">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="space-y-12"
-          >
-            <div className="text-center space-y-4">
-              <Badge className="bg-green-500/20 text-green-400 border-green-500/30">
-                <TrendingUp className="w-3 h-3 mr-1" />
-                Clinical Outcomes
-              </Badge>
-              <h2 className="text-3xl font-bold text-white">Safety-First Results</h2>
-            </div>
-
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-              <Card className="bg-slate-800/50 border-slate-700">
-                <CardContent className="p-6 text-center">
-                  <Shield className="w-8 h-8 text-green-400 mx-auto mb-3" />
-                  <p className="text-3xl font-bold text-white">99.2%</p>
-                  <p className="text-sm text-slate-400 mt-2">Urgent Detection</p>
-                  <p className="text-xs text-slate-500">up from 88%</p>
-                </CardContent>
-              </Card>
-              <Card className="bg-slate-800/50 border-slate-700">
-                <CardContent className="p-6 text-center">
-                  <Clock className="w-8 h-8 text-blue-400 mx-auto mb-3" />
-                  <p className="text-3xl font-bold text-white">-34%</p>
-                  <p className="text-sm text-slate-400 mt-2">Time to Care</p>
-                  <p className="text-xs text-slate-500">faster treatment</p>
-                </CardContent>
-              </Card>
-              <Card className="bg-slate-800/50 border-slate-700">
-                <CardContent className="p-6 text-center">
-                  <Globe className="w-8 h-8 text-teal-400 mx-auto mb-3" />
-                  <p className="text-3xl font-bold text-white">15+</p>
-                  <p className="text-sm text-slate-400 mt-2">Languages</p>
-                  <p className="text-xs text-slate-500">global coverage</p>
-                </CardContent>
-              </Card>
-              <Card className="bg-slate-800/50 border-slate-700">
-                <CardContent className="p-6 text-center">
-                  <CheckCircle2 className="w-8 h-8 text-purple-400 mx-auto mb-3" />
-                  <p className="text-3xl font-bold text-white">FDA + CE</p>
-                  <p className="text-sm text-slate-400 mt-2">Approved</p>
-                  <p className="text-xs text-slate-500">regulatory clearance</p>
-                </CardContent>
-              </Card>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Testimonial */}
-      <section className="py-24">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <Card className="border-teal-500/20">
-              <CardContent className="p-8 md:p-12">
-                <Quote className="w-12 h-12 text-teal-500/30 mb-6" />
-                <blockquote className="text-xl md:text-2xl font-medium leading-relaxed mb-8">
-                  "AGIX Technologies understood that in healthcare AI, the cost of a false negative is 
-                  fundamentally different from a false positive. They built a system that 
-                  errs on the side of safety while still being clinically useful. The regulatory 
-                  bodies were impressed with the explainability framework."
-                </blockquote>
-                <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 rounded-full bg-gradient-to-br from-teal-500 to-blue-500 flex items-center justify-center text-white font-bold text-lg">
-                    JM
-                  </div>
-                  <div>
-                    <p className="font-semibold">Dr. James Mitchell</p>
-                    <p className="text-sm text-muted-foreground">VP of Clinical AI, Babylon Health</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="py-24 bg-gradient-to-br from-teal-500/10 via-background to-blue-500/10">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center space-y-8"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold">
-              Building Healthcare AI?
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              We help healthcare companies build AI systems that are safe, explainable, 
-              and ready for regulatory approval.
-            </p>
-            <CtaForm />
-          </motion.div>
-        </div>
-      </section>
-      <FAQPageSchema faqs={documentFAQs['cs-babylon-health']} />
-      <FAQSection faqs={documentFAQs['cs-babylon-health']} title="Babylon Health AI Triage  Questions Answered" />
-
-
-      
-
-      </CaseStudyTemplate>
-  );
+  return <CaseStudyV2 data={data} />;
 }

@@ -81,6 +81,13 @@ function HeroSection() {
       </div>
 
       <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
+        <nav className="flex items-center justify-center gap-2 text-sm text-white/40 font-medium mb-8" aria-label="Breadcrumb">
+          <Link href="/" className="hover:text-white/70 transition-colors">Home</Link>
+          <span className="text-white/20">/</span>
+          <Link href="/corporate/contact/" className="hover:text-white/70 transition-colors">Corporate</Link>
+          <span className="text-white/20">/</span>
+          <span className="text-white/70 font-semibold">About</span>
+        </nav>
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}

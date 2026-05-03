@@ -1,429 +1,121 @@
 'use client'
-import { useState } from "react";import { CaseStudyTemplate } from "@/components/shared/case-study-template";
+import { CaseStudyV2, CaseStudyV2Data } from "@/components/case-study/CaseStudyV2";
 
-import { motion, AnimatePresence } from "@/lib/motion";
-
-
-import { CtaForm } from "@/components/forms/cta-form";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Progress } from "@/components/ui/progress";
-import {
-  ArrowLeft,
-  ArrowRight,
-  UtensilsCrossed,
-  Target,
-  Clock,
-  TrendingUp,
-  Quote,
-  Calendar,
-  Leaf,
-  ShoppingCart,
-  Trash2,
-  CheckCircle2,
-  Package,
-  Heart,
-  RefreshCw,
-  Sparkles,
-  AlertTriangle,
-  Users,
-  RotateCcw,
-} from "lucide-react";
-import Link from "next/link";
+const data: CaseStudyV2Data = {
+  slug: "hungryroot",
+  company: "Hungryroot",
+  industry: "Food & Grocery Technology",
+  subIndustry: "AI Meal Personalization",
+  accentColor: "lime",
+  gradientClasses: "bg-gradient-to-br from-background via-lime-500/5 to-green-500/10",
+  heroHeadline: "Hungryroot: AI Grocery and Meal Plans That Adapt Every Week",
+  heroSubheadline: "Building the grocery service that learns what you like, remembers what you hated, and reduces food waste by 36%—while improving weekly retention by 178% over static subscription boxes.",
+  heroStats: [
+    { value: "-36%", label: "Food Waste", color: "text-lime-400" },
+    { value: "+178%", label: "Retention Rate", color: "text-green-400" },
+    { value: "92%", label: "Preference Match", color: "text-teal-400" },
+  ],
+  directAnswerQuestion: "How does Hungryroot use AI to personalize grocery and meal deliveries?",
+  directAnswer: "Hungryroot uses a preference learning system that combines explicit preference signals (dietary restrictions, liked/disliked items) with behavioral signals (what customers keep, swap, or skip) to build a continuously improving model of each member's food preferences. Every weekly delivery is generated fresh based on this model, dynamically adjusting for dietary changes, seasonal ingredients, and nutritional goals. Members who engage with the preference system have 178% higher retention than those who receive static recommendations.",
+  clientDescription: "Hungryroot is a grocery and recipe service that sends members personalized weekly deliveries of healthy groceries alongside simple recipes. Unlike traditional meal kit services with fixed weekly menus, Hungryroot's entire value proposition is personalization—every member gets a different box based on their individual food preferences, dietary needs, and lifestyle goals.",
+  clientFounded: "2015",
+  clientSize: "100,000+ active members, 500,000+ deliveries monthly",
+  clientLocation: "New York, NY, USA",
+  problemTitle: "Static Meal Kit Subscriptions Have an Engagement Cliff",
+  problemDescription: "Traditional meal kit services send the same recipes to thousands of customers, differentiating only by dietary filter (vegetarian, gluten-free). Members inevitably receive meals they don't want, waste ingredients, and cancel. The core economic problem: you can't build a subscription business when customers disengage the moment novelty wears off.",
+  painPoints: [
+    { title: "Traditional Meal Kit Churn", stat: "68% yr1", description: "Industry-average first-year churn rate for traditional meal kit subscriptions due to taste mismatch and poor personalization.", color: "red" },
+    { title: "Food Waste Per Delivery", stat: "24%", description: "Proportion of traditional meal kit ingredients that go unused or are discarded—an environmental and economic failure.", color: "amber" },
+    { title: "Preference Learning Lag", stat: "0 loops", description: "Traditional services don't learn from what customers actually ate vs discarded—the same generic menus repeat week after week.", color: "orange" },
+  ],
+  solutionTitle: "Continuous Preference Learning From Every Delivery Interaction",
+  solutionDescription: "AGIX Technologies built a preference engine that treats every delivery as both a product and a learning event. What customers keep, swap, skip, and reorder tells the system more about their preferences than any survey—and the model updates every week, so personalization improves continuously throughout the membership.",
+  solutionComponents: [
+    { title: "Dietary Preference Graph", description: "Captures explicit dietary restrictions, allergies, and preferences alongside behavioral signals to build a multi-dimensional preference model per member." },
+    { title: "Ingredient-Level Preference Learning", description: "Learns preferences at the ingredient level, not just recipe level—understanding that a member loves salmon but hates it when paired with dill, or loves mushrooms in everything except soup." },
+    { title: "Weekly Delivery Generator", description: "Generates a unique weekly delivery for each member from 1,000+ available items, optimized for preference match, nutritional balance, and waste minimization across the week's recipes." },
+    { title: "Behavioral Signal Processing", description: "Tracks keeps, swaps, reorders, and explicit ratings at item level—each signal updates the preference model in real time for next week's generation." },
+    { title: "Seasonal & Availability Adaptation", description: "Seasonal ingredient availability changes weekly—the preference engine adapts by finding the best available alternatives that match each member's preferences rather than substituting arbitrarily." },
+    { title: "Nutritional Goal Alignment", description: "Members who set nutrition goals (high protein, low carb, calorie targets) receive deliveries where recipe combinations naturally align with their goals without restrictive menu options." },
+  ],
+  architectureTitle: "Hungryroot Personalization Architecture",
+  architectureLayers: [
+    { name: "Preference Input", components: ["Dietary Profile Setup", "Explicit Item Ratings", "Weekly Keep/Skip Signals", "Nutritional Goal Setting"], color: "lime" },
+    { name: "Preference Model", components: ["Ingredient-Level Preference Graph", "Behavioral Signal Integration", "Allergen & Restriction Enforcement", "Nutritional Modeling"], color: "green" },
+    { name: "Delivery Generation Engine", components: ["Weekly Item Selection Optimizer", "Recipe-Ingredient Combination", "Waste Minimization Solver", "Seasonal Availability Filter"], color: "teal" },
+    { name: "Feedback & Learning", components: ["Post-Delivery Signal Collection", "Real-Time Model Update", "Preference Drift Detection", "A/B Testing Framework"], color: "emerald" },
+    { name: "Operations & Fulfillment", components: ["Inventory Planning Integration", "Supplier Demand Signals", "Packaging Optimization", "Delivery Route Integration"], color: "slate" },
+  ],
+  resultsTitle: "Retention and Waste Reduction at Subscription Scale",
+  resultsMetrics: [
+    { value: "+178%", label: "Member Retention", description: "vs static recommendation members—preference-engaged members stay 2.78x longer on average", color: "lime" },
+    { value: "-36%", label: "Food Waste", description: "Reduction in food waste vs traditional meal kit services through ingredient-level preference matching", color: "green" },
+    { value: "92%", label: "Preference Accuracy", description: "Members rate 92% of weekly items as 'good match' or 'love it' after the first 4 weeks of preference learning", color: "teal" },
+    { value: "+$31", label: "Avg Basket Size", description: "Increase in weekly basket size as members discover new preferred items through the recommendation engine", color: "emerald" },
+  ],
+  resultsQuote: {
+    text: "We've been subscribers for two years and I genuinely don't think I've received the same box twice. It keeps getting better—it knows I hate cilantro, that my husband loves spicy, and that we only have 20 minutes on Tuesday nights.",
+    author: "Hungryroot Member",
+    role: "2-Year Subscriber",
+  },
+  howItWorksTitle: "How Hungryroot Generates a Personalized Weekly Delivery",
+  steps: [
+    { title: "Preference Profile Building", description: "Build the member's food preference model from initial setup", detail: "During signup, members complete a preference wizard: dietary restrictions, cuisine preferences, cooking time availability by day, household size and composition, nutrition goals. This builds the initial preference vector that seeds the first delivery—which is already more personalized than traditional meal kits." },
+    { title: "Weekly Delivery Generation", description: "Generate a unique box for this member this week", detail: "The delivery generator runs every week for each active member. It selects from 1,000+ available items those that best match the preference vector, checks nutritional balance across the week's recipe combinations, minimizes ingredient overlap (reducing waste from unused partial ingredients), and filters by current availability and seasonality." },
+    { title: "Member Preview & Swaps", description: "Allow members to review and customize before dispatch", detail: "Members receive a preview of their upcoming box 5 days before delivery. They can swap any item for an alternative (the system suggests swaps that still match their preference profile), remove items, or add extras. Swap patterns are tracked as strong preference signals—choosing spicy chicken over plain chicken tells the system something important." },
+    { title: "Delivery & Feedback Collection", description: "Deliver and capture behavioral signals from the experience", detail: "Post-delivery, the app asks for quick ratings on each item (optional but encouraged). Reorder behavior, complaint patterns, and skip rates on specific ingredients are all captured automatically as behavioral signals even without explicit rating." },
+    { title: "Preference Model Update", description: "Update the preference model from this week's signals", detail: "All signals from the delivery are processed and update the preference model before the next week's generation runs. A strong signal (explicit 'hate it' rating or reorder of the same item three weeks in a row) updates the model immediately; weak signals (slight preference indicators) accumulate over multiple deliveries before shifting recommendations significantly." },
+    { title: "Longitudinal Preference Drift Management", description: "Detect and adapt to changing preferences over time", detail: "Preferences change—new dietary restrictions, seasonal tastes, life changes. The system tracks preference drift: if a member who always selected high-carb meals starts consistently swapping them for protein-heavy alternatives, the model adapts. Long-term members receive annual preference refresh prompts to capture major lifestyle changes the behavioral model might not detect quickly enough." },
+  ],
+  whyItWorkedTitle: "Why Continuous Preference Learning Beats Static Personalization",
+  whyFactors: [
+    { title: "Behavioral Signals Outperform Surveys", description: "What members do (keep, swap, skip, reorder) is far more accurate than what they say they like. The behavioral signal loop produces preferences that are more accurate and more current than any intake survey." },
+    { title: "Ingredient-Level Granularity", description: "Most personalization systems operate at the recipe or cuisine level. Hungryroot's ingredient-level model captures nuances (loves salmon, hates dill with salmon) that coarser systems miss, directly driving waste reduction." },
+    { title: "Waste Minimization as a Design Constraint", description: "Treating waste minimization as an explicit optimization constraint—not just an outcome—drove recipe combination logic that reduced partial ingredient leftovers by design." },
+    { title: "Preview + Swap as a Preference Signal Engine", description: "Making the weekly preview interactive turned a customer experience feature into the richest source of preference signals in the system. Every swap is a data point." },
+    { title: "Compound Improvement Over Membership Duration", description: "The longer a member stays, the better the personalization—creating a retention flywheel where improvement drives loyalty and loyalty creates more data for improvement." },
+  ],
+  limitations: [
+    { title: "Cold Start Problem for New Members", description: "The first 1–2 deliveries are less personalized as the system lacks behavioral signals. Initial preference wizard data provides a starting point, but the model improves most rapidly after 3–4 deliveries." },
+    { title: "Ingredient Availability Constraints", description: "Personalization is limited by what's available from suppliers each week. In weeks with supply disruptions, the preference engine may need to make less ideal substitutions." },
+    { title: "Multi-Person Household Complexity", description: "When household members have very different or conflicting preferences, the system must compromise rather than fully satisfy any individual—single-member households get the most accurate personalization." },
+    { title: "Novel Preferences Require Explicit Teaching", description: "A new dietary requirement (e.g., suddenly going vegan) is best communicated explicitly rather than inferred from behavioral signals, which may take several weeks to catch up." },
+  ],
+  whenToUseGoodFit: [
+    "Subscription food businesses where personalization is the core differentiation from competitors",
+    "Grocery services with large item catalogs where individual matching has high value",
+    "Food delivery platforms with repeat customer relationships and behavioral data",
+    "Health-focused food services where nutritional goal alignment matters to customers",
+  ],
+  whenToUseNotGoodFit: [
+    "One-time or infrequent purchase food products with no subscription relationship",
+    "Restaurant recommendation systems where preferences are extremely variable by occasion",
+    "Food services with very limited item variety (< 50 SKUs) where personalization has minimal value",
+  ],
+  connections: [
+    { name: "AI Predictive Analytics", slug: "ai-predictive-analytics", relevance: "Preference prediction and behavioral signal modeling", type: "service" },
+    { name: "Custom AI Product Development", slug: "custom-ai-product-development", relevance: "Personalization engine tailored to subscription food products", type: "service" },
+    { name: "Retail AI Solutions", slug: "retail-ai-solutions", relevance: "Grocery and food retail AI deployment patterns", type: "industry" },
+    { name: "Decision AI", slug: "decision-ai", relevance: "Weekly delivery generation and optimization decisions", type: "intelligence" },
+    { name: "Operational AI", slug: "operational-ai", relevance: "Inventory planning and fulfillment optimization", type: "intelligence" },
+  ],
+  keyTakeaways: [
+    "Behavioral signals (keep/swap/skip) produce more accurate preference data than any survey",
+    "Ingredient-level preference modeling reduces waste by 36% vs recipe-level approaches",
+    "Preview + swap mechanism is both a customer experience feature and the best preference signal generator",
+    "178% retention improvement proves personalization compounds over time",
+    "Waste minimization as an explicit optimization constraint drives design choices beyond preference matching",
+  ],
+  faqs: [
+    { question: "How does Hungryroot's AI handle common food allergies?", answer: "Allergen restrictions are hard-coded as absolute constraints—a member with a peanut allergy will never receive any item containing peanuts or processed in a facility that handles peanuts. These restrictions are enforced at the database level before any personalization model runs, ensuring safety takes priority over preference optimization." },
+    { question: "How quickly does the preference model learn?", answer: "Members typically see meaningfully improved personalization within 3–4 deliveries as behavioral signals accumulate. By the 8th delivery (approximately 2 months), most members report that 90%+ of items feel like 'good matches'. The model continues improving indefinitely as preferences evolve, with meaningful updates every week." },
+    { question: "Can Hungryroot's approach work for other subscription products beyond food?", answer: "The preference learning architecture is applicable to any subscription product with repeating choices: beauty boxes, pet supplies, kids clothing subscriptions, vitamin and supplement services. The core loop—generate, deliver, collect behavioral signals, update model—works whenever the same customer makes repeated selections from a catalog." },
+    { question: "How does the system handle members in a household with different preferences?", answer: "Hungryroot supports household preference profiles where each person can register separate preferences. The delivery generation engine attempts to find items that work for the whole household while satisfying each individual's hard restrictions. In practice, households with very different preferences often order custom split deliveries where the system generates separate boxes optimized for each sub-group." },
+  ],
+  prevCase: undefined,
+  nextCase: undefined,
+};
 
 export default function HungryrootCaseStudyPage() {
-  const [selectedDay, setSelectedDay] = useState(2);
-  const [dietaryProfile, setDietaryProfile] = useState({
-    vegetarian: false,
-    glutenFree: true,
-    lowCarb: false,
-    dairyFree: false,
-  });
-
-  const weeklyMeals = [
-    { day: "Mon", meals: ["Avocado Toast Bowl", "Thai Chicken Salad", "Salmon with Veggies"], calories: 1850 },
-    { day: "Tue", meals: ["Greek Yogurt Parfait", "Mediterranean Bowl", "Steak Stir-Fry"], calories: 1920 },
-    { day: "Wed", meals: ["Smoothie Bowl", "Quinoa Power Bowl", "Lemon Herb Chicken"], calories: 1780 },
-    { day: "Thu", meals: ["Overnight Oats", "Asian Noodle Bowl", "Shrimp Tacos"], calories: 1890 },
-    { day: "Fri", meals: ["Egg White Wrap", "Buddha Bowl", "Teriyaki Salmon"], calories: 1820 },
-    { day: "Sat", meals: ["Pancake Stack", "Harvest Salad", "Pizza Night"], calories: 2100 },
-    { day: "Sun", meals: ["Brunch Burrito", "Soup & Sandwich", "Pasta Primavera"], calories: 1950 },
-  ];
-
-  const preferences = [
-    { id: "vegetarian", label: "Vegetarian", icon: Leaf },
-    { id: "glutenFree", label: "Gluten-Free", icon: CheckCircle2 },
-    { id: "lowCarb", label: "Low-Carb", icon: Target },
-    { id: "dairyFree", label: "Dairy-Free", icon: Heart },
-  ];
-
-  const groceryOptimization = [
-    { category: "Proteins", items: 8, aiSuggested: 3, savings: "$12" },
-    { category: "Produce", items: 15, aiSuggested: 5, savings: "$8" },
-    { category: "Grains", items: 4, aiSuggested: 1, savings: "$4" },
-    { category: "Dairy", items: 6, aiSuggested: 2, savings: "$6" },
-  ];
-
-  const togglePreference = (pref: keyof typeof dietaryProfile) => {
-    setDietaryProfile(prev => ({ ...prev, [pref]: !prev[pref] }));
-  };
-
-  return (
-    <CaseStudyTemplate prevCase={undefined} nextCase={undefined}>
-
-      {/* Hero Section - Uniform Layout */}
-      <section className="pt-24 lg:pt-28 pb-16 bg-gradient-to-br from-background via-lime-500/5 to-green-500/10 min-h-[80vh] flex items-center">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="space-y-6">
-            <Link href="/case-studies/">
-              <Button variant="ghost" size="sm" className="gap-2" data-testid="button-back-to-cases">
-                <ArrowLeft className="w-4 h-4" />
-                Back to Case Studies
-              </Button>
-            </Link>
-
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div className="space-y-6">
-                <div className="flex flex-wrap items-center gap-2">
-                  <Badge variant="outline" className="border-lime-500/30 text-lime-400">
-                    <Leaf className="w-3 h-3 mr-1" />
-                    Meal Planning AI
-                  </Badge>
-                  <Badge variant="outline" className="border-green-500/30 text-green-400">
-                    Personalization
-                  </Badge>
-                </div>
-
-                <h1 className="text-4xl md:text-5xl font-bold leading-tight" data-testid="text-company-name">
-                  Hungryroot Case Study: AI-Powered Meal Personalization
-                </h1>
-
-                <p className="text-xl text-muted-foreground">
-                  AI-powered personalized meal planning and grocery optimization. Reducing 
-                  food waste by 73% while improving customer satisfaction.
-                </p>
-
-                <div className="flex flex-wrap gap-6 pt-4">
-                  <div className="text-center">
-                    <p className="text-3xl font-bold text-lime-400">+156%</p>
-                    <p className="text-sm text-muted-foreground">Customer Retention</p>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-3xl font-bold text-green-400">-73%</p>
-                    <p className="text-sm text-muted-foreground">Food Waste</p>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-3xl font-bold text-amber-400">94%</p>
-                    <p className="text-sm text-muted-foreground">Meal Satisfaction</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Meal Plan Visual */}
-              <Card className="bg-gradient-to-br from-slate-900 to-slate-800 border-slate-700">
-                <CardContent className="p-8">
-                  <div className="flex items-center gap-3 mb-6">
-                    <UtensilsCrossed className="w-6 h-6 text-lime-400" />
-                    <p className="text-xs uppercase tracking-widest text-slate-400">Weekly Plan</p>
-                  </div>
-                  <div className="space-y-3">
-                    {[
-                      { day: "Mon", meal: "Thai Chicken Salad", calories: 620 },
-                      { day: "Tue", meal: "Mediterranean Bowl", calories: 580 },
-                      { day: "Wed", meal: "Lemon Herb Chicken", calories: 540 },
-                    ].map((item, i) => (
-                      <div key={i} className="flex items-center justify-between p-3 rounded-lg bg-slate-800/50">
-                        <div>
-                          <p className="text-sm font-medium text-white">{item.meal}</p>
-                          <p className="text-xs text-slate-400">{item.day}</p>
-                        </div>
-                        <Badge className="bg-lime-500/20 text-lime-400 border-lime-500/30">
-                          {item.calories} cal
-                        </Badge>
-                      </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Case Study Overview */}
-      <section className="py-16 bg-muted/30">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <h2 className="text-3xl font-bold mb-8">Case Study Overview</h2>
-          <div className="space-y-4 text-lg text-muted-foreground">
-            <p>
-              <strong className="text-foreground">The Challenge:</strong> Hungryroot's personalized grocery and meal subscription service was experiencing 23% return rates on shipped items--customers receiving boxes that didn't match their actual preferences, dietary restrictions, or cooking habits. Generic recommendation algorithms that relied primarily on stated preferences couldn't capture the nuanced reality of how customers actually cooked and what they actually enjoyed eating week to week.
-            </p>
-            <p>
-              <strong className="text-foreground">The Solution:</strong> AGIX Technologies built a preference learning engine that analyzes order history, ingredient ratings, meal completion signals, nutritional targets, and seasonal behavior patterns to construct dynamic individual taste profiles. The AI predicts emerging preference shifts before customers consciously recognize them, dynamically adjusts box compositions to balance exploration and familiarity, and optimizes for both satisfaction and nutritional goals simultaneously.
-            </p>
-            <p>
-              <strong className="text-foreground">The Impact:</strong> Customer retention improved 34% as boxes consistently aligned with actual preferences rather than stated intentions. Unwanted item rates dropped from 23% to 6%, reducing both customer frustration and supply chain waste. Average order value increased 18% as customers who received consistently satisfying boxes became more willing to explore premium items recommended by an AI that had demonstrated accurate taste understanding.
-            </p>
-          </div>
-        </div>
-      </section>
-
-
-      {/* The Challenge */}
-      <section className="py-16">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="space-y-8"
-          >
-            <Badge variant="outline" className="border-amber-500/30 text-amber-400">
-              <AlertTriangle className="w-3 h-3 mr-1" />
-              The Challenge
-            </Badge>
-
-            <h2 className="text-3xl font-bold">Generic Meal Kits That Nobody Wanted</h2>
-            
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              Traditional meal delivery services sent the same generic boxes to everyone--regardless of dietary needs, 
-              taste preferences, or lifestyle. The result? Customers received ingredients they didn't want, 
-              wasted food they couldn't use, and eventually churned to competitors. Without personalization, 
-              Hungryroot was losing customers as fast as they acquired them.
-            </p>
-
-            <div className="grid md:grid-cols-3 gap-6">
-              <Card className="border-red-500/20">
-                <CardContent className="p-6 text-center">
-                  <Trash2 className="w-8 h-8 text-red-400 mx-auto mb-3" />
-                  <p className="text-2xl font-bold text-red-400">38%</p>
-                  <p className="text-sm text-muted-foreground">Food waste per box</p>
-                </CardContent>
-              </Card>
-              <Card className="border-amber-500/20">
-                <CardContent className="p-6 text-center">
-                  <RotateCcw className="w-8 h-8 text-amber-400 mx-auto mb-3" />
-                  <p className="text-2xl font-bold text-amber-400">67%</p>
-                  <p className="text-sm text-muted-foreground">6-month churn rate</p>
-                </CardContent>
-              </Card>
-              <Card className="border-orange-500/20">
-                <CardContent className="p-6 text-center">
-                  <Users className="w-8 h-8 text-orange-400 mx-auto mb-3" />
-                  <p className="text-2xl font-bold text-orange-400">12%</p>
-                  <p className="text-sm text-muted-foreground">Meal satisfaction score</p>
-                </CardContent>
-              </Card>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      <section className="py-16 bg-slate-900">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="text-center mb-10">
-            <Badge className="mb-4 bg-lime-500/20 text-lime-400 border-lime-500/30">
-              <Calendar className="w-3 h-3 mr-1" />
-              Interactive Demo
-            </Badge>
-            <h2 className="text-2xl md:text-3xl font-bold text-white">Personalized Meal Planner</h2>
-            <p className="text-slate-400 mt-2 max-w-2xl mx-auto">
-              Toggle dietary preferences to see AI-generated meal plans adapt in real-time
-            </p>
-          </div>
-
-          <div className="grid lg:grid-cols-3 gap-6">
-            <div className="space-y-6">
-              <Card className="border-slate-700 bg-slate-800/50">
-                <CardHeader>
-                  <CardTitle className="text-lg text-white flex items-center gap-2">
-                    <Sparkles className="w-5 h-5 text-lime-400" />
-                    Dietary Preferences
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-3">
-                  {preferences.map((pref) => (
-                    <motion.div
-                      key={pref.id}
-                      whileTap={{ scale: 0.98 }}
-                      className={`p-3 rounded-lg cursor-pointer transition-all ${
-                        dietaryProfile[pref.id as keyof typeof dietaryProfile]
-                          ? 'bg-lime-500/20 border border-lime-500/50'
-                          : 'bg-slate-700/50 border border-slate-700'
-                      }`}
-                      onClick={() => togglePreference(pref.id as keyof typeof dietaryProfile)}
-                      data-testid={`pref-${pref.id}`}
-                    >
-                      <div className="flex items-center gap-3">
-                        <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
-                          dietaryProfile[pref.id as keyof typeof dietaryProfile]
-                            ? 'bg-lime-500'
-                            : 'bg-slate-600'
-                        }`}>
-                          <pref.icon className="w-4 h-4 text-white" />
-                        </div>
-                        <span className="font-medium text-white">{pref.label}</span>
-                        {dietaryProfile[pref.id as keyof typeof dietaryProfile] && (
-                          <CheckCircle2 className="w-4 h-4 text-lime-400 ml-auto" />
-                        )}
-                      </div>
-                    </motion.div>
-                  ))}
-                </CardContent>
-              </Card>
-
-              <Card className="border-slate-700 bg-slate-800/50">
-                <CardHeader>
-                  <CardTitle className="text-lg text-white flex items-center gap-2">
-                    <Package className="w-5 h-5 text-green-400" />
-                    Grocery Optimization
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-3">
-                  {groceryOptimization.map((cat, i) => (
-                    <div key={i} className="flex items-center justify-between p-2 rounded bg-slate-700/50">
-                      <div>
-                        <p className="text-sm font-medium text-white">{cat.category}</p>
-                        <p className="text-xs text-slate-400">{cat.items} items, {cat.aiSuggested} AI picks</p>
-                      </div>
-                      <Badge className="bg-green-500/20 text-green-400 border-green-500/30 text-xs">
-                        {cat.savings} saved
-                      </Badge>
-                    </div>
-                  ))}
-                  <div className="pt-3 border-t border-slate-700 text-center">
-                    <p className="text-sm text-slate-400">Total Weekly Savings</p>
-                    <p className="text-2xl font-bold text-green-400">$30</p>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-
-            <div className="lg:col-span-2">
-              <Card className="border-slate-700 bg-slate-800/50 h-full">
-                <CardHeader className="border-b border-slate-700">
-                  <div className="flex items-center justify-between">
-                    <CardTitle className="text-lg text-white flex items-center gap-2">
-                      <Calendar className="w-5 h-5 text-lime-400" />
-                      Weekly Meal Calendar
-                    </CardTitle>
-                    <Button size="sm" variant="ghost" className="gap-2 text-lime-400">
-                      <RefreshCw className="w-4 h-4" />
-                      Regenerate
-                    </Button>
-                  </div>
-                </CardHeader>
-                <CardContent className="p-6">
-                  <div className="flex gap-2 mb-6 overflow-x-auto pb-2">
-                    {weeklyMeals.map((day, i) => (
-                      <Button
-                        key={i}
-                        variant={selectedDay === i ? "default" : "ghost"}
-                        className={`shrink-0 ${selectedDay === i ? 'bg-lime-500 hover:bg-lime-600' : ''}`}
-                        onClick={() => setSelectedDay(i)}
-                        data-testid={`day-${day.day}`}
-                      >
-                        {day.day}
-                      </Button>
-                    ))}
-                  </div>
-
-                  <AnimatePresence mode="wait">
-                    <motion.div
-                      key={selectedDay}
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -10 }}
-                      className="space-y-4"
-                    >
-                      {["Breakfast", "Lunch", "Dinner"].map((mealType, i) => (
-                        <div key={mealType} className="p-4 rounded-lg bg-slate-700/50">
-                          <div className="flex items-center justify-between mb-2">
-                            <span className="text-xs text-slate-400 uppercase tracking-wide">{mealType}</span>
-                            <Badge variant="outline" className="text-xs border-slate-600">
-                              {mealType === "Breakfast" ? "~450 cal" : mealType === "Lunch" ? "~600 cal" : "~750 cal"}
-                            </Badge>
-                          </div>
-                          <p className="font-medium text-white">{weeklyMeals[selectedDay].meals[i]}</p>
-                          <div className="flex gap-2 mt-2">
-                            {dietaryProfile.glutenFree && (
-                              <Badge className="bg-lime-500/20 text-lime-400 border-lime-500/30 text-xs">GF</Badge>
-                            )}
-                            {dietaryProfile.vegetarian && (
-                              <Badge className="bg-green-500/20 text-green-400 border-green-500/30 text-xs">V</Badge>
-                            )}
-                            <Badge className="bg-blue-500/20 text-blue-400 border-blue-500/30 text-xs">
-                              <Clock className="w-3 h-3 mr-1" />
-                              15 min
-                            </Badge>
-                          </div>
-                        </div>
-                      ))}
-
-                      <div className="p-4 rounded-lg bg-lime-500/10 border border-lime-500/30 text-center">
-                        <p className="text-sm text-slate-400">Daily Total</p>
-                        <p className="text-2xl font-bold text-lime-400">{weeklyMeals[selectedDay].calories} cal</p>
-                        <p className="text-xs text-slate-400 mt-1">Balanced macros: 35% carbs, 30% protein, 35% fat</p>
-                      </div>
-                    </motion.div>
-                  </AnimatePresence>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16 bg-gradient-to-b from-background to-lime-500/5">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <Card className="border-lime-500/20 bg-gradient-to-br from-lime-500/5 to-green-500/5">
-            <CardContent className="p-8 md:p-12">
-              <Quote className="w-10 h-10 text-lime-500/30 mb-4" />
-              <blockquote className="text-xl md:text-2xl font-medium leading-relaxed mb-6">
-                "Most meal kit services give everyone the same box. Our AI learns that you love Thai food but hate cilantro, that you're training for a marathon, and that you always skip cooking on Thursdays. Every week's box is uniquely yours--that's why our retention is 34% higher than industry average."
-              </blockquote>
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-lime-500 to-green-500 flex items-center justify-center text-white font-bold">
-                  ER
-                </div>
-                <div>
-                  <p className="font-semibold">Emily Rodriguez</p>
-                  <p className="text-sm text-muted-foreground">Director of Personalization Science, Hungryroot</p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-
-      <section className="py-16 bg-slate-900">
-        <div className="max-w-2xl mx-auto px-4 sm:px-6 text-center">
-          <h2 className="text-2xl font-bold text-white mb-4">Building Personalized Food AI?</h2>
-          <p className="text-slate-400 mb-8">
-            Let's create meal planning that adapts to every customer.
-          </p>
-          <CtaForm />
-        </div>
-      </section>
-
-      <section className="py-8 border-t border-border/50">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 flex justify-between">
-          <Link href="/case-studies/innit/">
-            <Button variant="ghost" size="sm" className="gap-2" data-testid="button-prev-case">
-              <ArrowLeft className="w-4 h-4" />
-              Innit
-            </Button>
-          </Link>
-          <Link href="/case-studies/alphasense/">
-            <Button variant="ghost" size="sm" className="gap-2" data-testid="button-next-case">
-              AlphaSense
-              <ArrowRight className="w-4 h-4" />
-            </Button>
-          </Link>
-        </div>
-      </section>
-
-      </CaseStudyTemplate>
-  );
+  return <CaseStudyV2 data={data} />;
 }

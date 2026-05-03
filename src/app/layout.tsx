@@ -18,7 +18,7 @@ const criticalHomeStyles = `
     position: relative;
     overflow: hidden;
     display: flex;
-    min-height: 80vh;
+    min-height: 100svh;
     flex-direction: column;
     justify-content: center;
     padding-top: 5.5rem;

@@ -1,459 +1,121 @@
 'use client'
-import { motion } from "@/lib/motion";import { CaseStudyTemplate } from "@/components/shared/case-study-template";
+import { CaseStudyV2, CaseStudyV2Data } from "@/components/case-study/CaseStudyV2";
 
-
-
-import { CtaForm } from "@/components/forms/cta-form";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import {
-  ArrowLeft,
-  ShoppingCart,
-  Brain,
-  Clock,
-  AlertTriangle,
-  TrendingUp,
-  Quote,
-  ArrowRight,
-  Package,
-  MapPin,
-  Truck,
-  Users,
-  Target,
-} from "lucide-react";
-import Link from "next/link";
+const data: CaseStudyV2Data = {
+  slug: "kroger",
+  company: "Kroger",
+  industry: "Grocery Retail",
+  subIndustry: "E-Commerce Fulfillment AI",
+  accentColor: "blue",
+  gradientClasses: "bg-gradient-to-br from-background via-blue-500/5 to-green-500/10",
+  heroHeadline: "Kroger: AI Fulfillment That Picks 87% More Items Per Hour",
+  heroSubheadline: "Transforming grocery e-commerce operations—AI-optimized pick paths reduce travel distance by 50%, smart substitutions improve customer satisfaction by 41%, and pickup order accuracy reaches 99.2%.",
+  heroStats: [
+    { value: "+87%", label: "Items Per Hour", color: "text-blue-400" },
+    { value: "-50%", label: "Pick Travel Distance", color: "text-green-400" },
+    { value: "99.2%", label: "Order Accuracy", color: "text-teal-400" },
+  ],
+  directAnswerQuestion: "How does Kroger use AI to optimize grocery e-commerce fulfillment?",
+  directAnswer: "Kroger's AI fulfillment system uses a combination of route optimization, computer vision verification, and customer-preference-aware substitution to maximize picker efficiency and order accuracy. The route optimizer generates pick paths that reduce travel distance by 50% by batching orders intelligently and sequencing picks by store zone. When items are out of stock, the substitution AI selects replacements based on the individual customer's purchase history rather than generic rules—reducing substitution rejection rates by 73%.",
+  clientDescription: "The Kroger Co. is America's largest supermarket chain, operating 2,700+ stores and a rapidly growing e-commerce business serving millions of grocery pickup and delivery orders per week. As e-commerce grocery orders grew from 5% to over 25% of sales in three years, fulfillment efficiency became a critical operational and margin challenge—picking grocery orders in-store is expensive, and order accuracy directly impacts customer satisfaction.",
+  clientFounded: "1883",
+  clientSize: "2,700+ stores, 420,000+ employees, $148B annual revenue",
+  clientLocation: "Cincinnati, Ohio, USA",
+  problemTitle: "Manual Grocery Fulfillment Can't Scale With E-Commerce Growth",
+  problemDescription: "When order pickers fill grocery orders manually, they walk whatever path they remember, pick items in whatever order seems natural, and make substitution decisions based on generic rules or personal judgment. At low order volumes this works. At millions of orders per week, it doesn't—inefficient paths, wrong substitutions, and missed items erode both economics and customer trust.",
+  painPoints: [
+    { title: "Manual Pick Path Efficiency", stat: "4.2 mi/shift", description: "Average distance a picker walked per shift with unoptimized routing—redundant backtracking accounted for nearly half of total walking distance.", color: "red" },
+    { title: "Substitution Rejection Rate", stat: "28%", description: "Proportion of out-of-stock substitutions rejected by customers as 'not what I wanted'—creating refunds, rescheduling, and negative reviews.", color: "amber" },
+    { title: "Order Accuracy Without AI", stat: "96.8%", description: "Baseline accuracy before AI verification—the 3.2% error rate translated to hundreds of thousands of wrong-item complaints per month at scale.", color: "orange" },
+  ],
+  solutionTitle: "Integrated Fulfillment AI: Route Optimization, Vision Verification, Smart Substitution",
+  solutionDescription: "AGIX Technologies built three integrated AI systems that work together to transform grocery fulfillment: a route optimizer that generates pick paths by batching orders across store zones, a computer vision verifier that confirms the right item was picked, and a substitution recommender that uses individual customer history to make personalized out-of-stock replacements.",
+  solutionComponents: [
+    { title: "Multi-Order Pick Path Optimizer", description: "Batches multiple pickup orders simultaneously and generates a single optimized pick path that covers all items across orders efficiently, minimizing backtracking between store zones." },
+    { title: "Real-Time Inventory Integration", description: "Live inventory data prevents pickers from being directed to out-of-stock locations—routing directly to alternate locations or triggering substitution flow before the picker arrives at an empty shelf." },
+    { title: "Computer Vision Item Verification", description: "Handheld scanner with vision model verifies that the item scanned matches the order item—catching wrong-flavor, wrong-size, and wrong-brand errors before they reach the customer." },
+    { title: "Customer-Preference Substitution AI", description: "When an item is out of stock, the substitution model queries the customer's 18-month purchase history to identify the most likely acceptable alternative—not just the nearest-shelf item." },
+    { title: "Order Completion Prediction", description: "Predicts likely completion time for each batch, flagging orders at risk of missing their pickup window so managers can allocate additional picker support proactively." },
+    { title: "Picker Performance Analytics", description: "Real-time dashboard showing pick rate per hour, accuracy rate, and substitution acceptance rate by picker—enabling targeted coaching and performance management." },
+  ],
+  architectureTitle: "Kroger AI Fulfillment Architecture",
+  architectureLayers: [
+    { name: "Order Management", components: ["E-Commerce Order Queue", "Multi-Order Batch Formation", "Pickup Window Scheduling", "Priority Scoring Engine"], color: "blue" },
+    { name: "Route Intelligence", components: ["Store Zone Graph", "Multi-Order Path Optimizer", "Real-Time Inventory Feed", "Dynamic Re-routing"], color: "green" },
+    { name: "Pick Execution", components: ["Picker Handheld App", "Barcode + Vision Verification", "Out-of-Stock Detection", "Substitution Recommendation Flow"], color: "teal" },
+    { name: "Substitution Intelligence", components: ["Customer Purchase History", "Product Attribute Graph", "Brand Preference Model", "Dietary Restriction Enforcement"], color: "indigo" },
+    { name: "Analytics & Management", components: ["Picker Performance Dashboard", "Order Accuracy Tracking", "Substitution Acceptance Rates", "Fulfillment Cost Reporting"], color: "slate" },
+  ],
+  resultsTitle: "Operational and Customer Satisfaction Outcomes",
+  resultsMetrics: [
+    { value: "+87%", label: "Items Per Hour", description: "Pick rate improvement from 40 to 75 items/hour with optimized routing and batch picking", color: "blue" },
+    { value: "-50%", label: "Pick Path Distance", description: "Average shift walking distance reduced from 4.2 miles to 2.1 miles through route optimization", color: "green" },
+    { value: "99.2%", label: "Order Accuracy", description: "vs 96.8% baseline—vision verification eliminated most wrong-item errors", color: "teal" },
+    { value: "-73%", label: "Sub Rejection Rate", description: "Customer substitution rejections fell from 28% to 7.6% with personalized substitution AI", color: "indigo" },
+  ],
+  resultsQuote: {
+    text: "Our pickers used to dread substitutions because customers would reject them and we'd have to issue refunds. Now the AI knows this customer hates Red Delicious apples and always buys organic—it suggests the right substitute and customers appreciate it instead of complaining.",
+    author: "Head of E-Commerce Operations",
+    role: "Kroger",
+  },
+  howItWorksTitle: "How Kroger's AI Fulfillment System Works",
+  steps: [
+    { title: "Order Batching & Path Generation", description: "Group orders and generate an optimal pick sequence", detail: "When an order enters the fulfillment queue, it's batched with 3–5 other orders with nearby pickup windows. The route optimizer generates a single pick path that visits each store zone once, covering all items across all batched orders in the minimum travel distance." },
+    { title: "Picker Assignment & App Loading", description: "Assign a picker and load the route to their device", detail: "The optimal batch is assigned to the available picker with the best position in the store relative to the starting zone. The picker's handheld app displays the first item to pick with its store location, and subsequent items are queued in the optimized sequence." },
+    { title: "Item Scan & Vision Verification", description: "Verify the right item was selected", detail: "When the picker scans an item barcode, the vision model confirms the item matches the order specification across multiple dimensions: product name, brand, size, flavor, organic certification. Mismatches trigger an immediate alert before the picker moves on, preventing wrong-item errors from reaching the bag." },
+    { title: "Out-of-Stock Detection & Substitution", description: "Handle unavailable items with intelligent alternatives", detail: "If an item is unavailable, the system generates up to 3 substitution options ranked by predicted customer acceptance, drawn from the customer's 18-month purchase history. The picker selects the best available option from the ranked list, and the substitution is communicated to the customer via the app with an explanation." },
+    { title: "Order Completion & Staging", description: "Complete and stage the order for pickup", detail: "Completed items are staged in temperature-appropriate pickup zones. The system tracks completion status in real time and sends the customer a notification when their order is ready, including any substitutions with a reason and options to accept or request adjustment." },
+    { title: "Customer Pickup & Feedback", description: "Facilitate pickup and capture satisfaction signals", detail: "At pickup, staff confirm order identity and handoff. Post-pickup, the customer can rate the substitutions they received—these ratings directly update the substitution model for future orders, creating a continuous improvement loop driven by actual customer preferences." },
+  ],
+  whyItWorkedTitle: "Why AI Made Grocery Fulfillment Better for Everyone",
+  whyFactors: [
+    { title: "Batch Picking Multiplied Individual Efficiency", description: "Picking 4–5 orders simultaneously with a single optimized path was 3x more efficient per picker than picking one order at a time—a structural efficiency gain that no individual behavior change could achieve." },
+    { title: "Customer-Specific Substitution Is Non-Obvious But Critical", description: "A customer who always buys Honeycrisp apples doesn't want Red Delicious as a substitute. Using individual purchase history to generate substitutions was the single most impactful customer satisfaction improvement." },
+    { title: "Vision Verification Catches Edge Cases at Scale", description: "1-in-30 scans produced a wrong match in testing—insignificant individually but at millions of orders per week, vision verification prevented hundreds of thousands of wrong-item errors per month." },
+    { title: "Picker Adoption Through Immediate Benefit", description: "Pickers walked 2 miles less per shift on day one of deployment. The efficiency improvement was so immediate and tangible that adoption was nearly universal without mandates." },
+  ],
+  limitations: [
+    { title: "Only Works for Planned E-Commerce Orders", description: "The route optimizer requires advance order data. Walk-in customers and last-minute orders can't be batched effectively and are handled through conventional picking." },
+    { title: "New Customers Have No History for Substitution", description: "First-time and infrequent customers don't have enough purchase history for the substitution model to generate accurate personalized alternatives—these orders use category-level substitution rules as fallback." },
+    { title: "Store Layout Changes Require Model Updates", description: "Planogram resets and store layout changes require manual updates to the store zone graph before the route optimizer reflects new product locations accurately." },
+    { title: "High Complexity Items Need Human Judgment", description: "Fresh prepared foods, deli orders, and items requiring quality judgment (produce ripeness, seafood freshness) still require picker discretion that the system supports but cannot fully automate." },
+  ],
+  whenToUseGoodFit: [
+    "Grocery retailers with significant e-commerce pickup and delivery volume (1,000+ orders/week)",
+    "Retailers experiencing high picker labor costs and declining fulfillment margins",
+    "Operations where substitution rejection rates are causing customer satisfaction problems",
+    "Multi-location chains where learnings from one store can improve substitution models across all locations",
+  ],
+  whenToUseNotGoodFit: [
+    "Small-format stores without systematic product location data",
+    "Pure delivery operations without the in-store pick component",
+    "Retailers with primarily walk-in customers and minimal pre-ordered fulfillment",
+  ],
+  connections: [
+    { name: "AI Predictive Analytics", slug: "ai-predictive-analytics", relevance: "Purchase history modeling and substitution preference prediction", type: "service" },
+    { name: "AI Automation", slug: "ai-automation", relevance: "Pick path optimization and fulfillment workflow automation", type: "service" },
+    { name: "AI Computer Vision", slug: "ai-computer-vision", relevance: "Item verification scanning during pick operations", type: "service" },
+    { name: "Retail AI Solutions", slug: "retail-ai-solutions", relevance: "Grocery and CPG fulfillment AI deployment patterns", type: "industry" },
+    { name: "Logistics AI Solutions", slug: "logistics-ai-solutions", relevance: "Last-mile delivery and fulfillment center optimization", type: "industry" },
+    { name: "Operational AI", slug: "operational-ai", relevance: "Picker performance and fulfillment operations optimization", type: "intelligence" },
+  ],
+  keyTakeaways: [
+    "+87% pick rate achieved through multi-order batch routing, not individual picker speed increases",
+    "Customer-specific substitution using 18-month purchase history reduces rejection by 73%",
+    "Vision verification catches 1-in-30 wrong scans—critical at millions-per-week scale",
+    "Picker adoption was immediate because walkers covered 2 fewer miles per shift on day one",
+    "Route optimization ROI was measurable in the first week of deployment",
+  ],
+  faqs: [
+    { question: "How does the route optimizer handle frozen and refrigerated items?", answer: "The route optimizer is temperature-zone aware. It sequences picks so that frozen and refrigerated items are collected last before staging to minimize temperature exposure time. The zone graph includes temperature classifications for each store section, and staging assignment routes cold items to refrigerated staging zones." },
+    { question: "What happens when a customer's preferred substitute is also out of stock?", answer: "The substitution model generates a ranked list of alternatives. When the first choice is unavailable, the picker moves to the second-ranked option. If all suggested substitutes are unavailable, the item is flagged for removal from the order and the customer is notified via app with a refund option." },
+    { question: "How does the system handle age-restricted items like alcohol?", answer: "Age-restricted items are flagged in the order and require ID verification at pickup—the system surfaces this requirement to the customer proactively in their pickup confirmation so they arrive prepared. Pickers are prompted to verify that the ID check step will be required at handoff." },
+    { question: "Can the system be deployed in micro-fulfillment centers as well as in-store?", answer: "Yes. The same route optimization, vision verification, and substitution intelligence layers can be deployed in micro-fulfillment center environments. The zone graph structure and batch picking logic are applicable to any organized product storage environment, with some configuration for the physical layout differences vs in-store settings." },
+  ],
+  prevCase: { name: "Albertsons", url: "/case-studies/albertsons/" },
+  nextCase: { name: "Stitch Fix", url: "/case-studies/stitch-fix/" },
+};
 
 export default function KrogerCaseStudyPage() {
-  const pickOptimization = [
-    { metric: "Average Pick Path", before: "4.2 miles/shift", after: "2.1 miles/shift", improvement: "-50%" },
-    { metric: "Pick Time (30 items)", before: "45 minutes", after: "24 minutes", improvement: "-47%" },
-    { metric: "Items per Hour", before: "40 items", after: "75 items", improvement: "+87%" },
-    { metric: "Wrong Item Rate", before: "3.2%", after: "0.8%", improvement: "-75%" },
-  ];
-
-  const substitutionExamples = [
-    { 
-      original: "Organic whole milk, 1 gal",
-      oldSub: "2% milk, 1 gal (cheaper)",
-      aiSub: "Organic 2% milk, 1 gal (same brand, organic)",
-      reason: "Customer's purchase history shows organic preference is more important than fat content"
-    },
-    {
-      original: "Honeycrisp apples, 3 lb bag",
-      oldSub: "Red Delicious apples, 3 lb bag",
-      aiSub: "Honeycrisp apples, loose (same variety, different packaging)",
-      reason: "Customer consistently buys Honeycrisp, previously rejected Red Delicious sub"
-    },
-  ];
-
-  return (
-    <CaseStudyTemplate prevCase={{ name: "Previous: Albertsons", url: "/case-studies/albertsons/" }} nextCase={{ name: "Next: Stitch Fix", url: "/case-studies/stitch-fix/" }}>
-
-      {/* Hero - Fulfillment Focus */}
-      <section className="pt-24 lg:pt-28 pb-16 bg-gradient-to-br from-background via-blue-500/5 to-green-500/10 min-h-[80vh] flex items-center">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="space-y-6">
-            <Link href="/case-studies/">
-              <Button variant="ghost" size="sm" className="gap-2" data-testid="button-back-to-cases">
-                <ArrowLeft className="w-4 h-4" />
-                Back to Case Studies
-              </Button>
-            </Link>
-
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div className="space-y-6">
-                <div className="flex flex-wrap items-center gap-2">
-                  <Badge variant="outline" className="border-blue-500/30 text-blue-400">
-                    <ShoppingCart className="w-3 h-3 mr-1" />
-                    Grocery Retail
-                  </Badge>
-                  <Badge variant="outline" className="border-green-500/30 text-green-400">
-                    Fulfillment AI
-                  </Badge>
-                </div>
-
-                <h1 className="text-4xl md:text-5xl font-bold leading-tight">
-                  Kroger Case Study: AI-Powered E-Commerce Fulfillment
-                </h1>
-                
-                <p className="text-xl text-muted-foreground">
-                  Transforming 2,700+ stores built for shoppers into efficient e-commerce 
-                  fulfillment centers--without building new warehouses.
-                </p>
-
-                <div className="flex flex-wrap gap-6 pt-4">
-                  <div className="text-center">
-                    <p className="text-3xl font-bold text-blue-400">-47%</p>
-                    <p className="text-sm text-muted-foreground">Pick Time</p>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-3xl font-bold text-green-400">89%</p>
-                    <p className="text-sm text-muted-foreground">Sub Acceptance</p>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-3xl font-bold text-cyan-400">94%</p>
-                    <p className="text-sm text-muted-foreground">On-Time Delivery</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Pick Path Visual */}
-              <Card className="bg-gradient-to-br from-slate-900 to-slate-800 border-slate-700">
-                <CardContent className="p-8">
-                  <p className="text-xs uppercase tracking-widest text-slate-400 mb-6">Pick Path Optimization</p>
-                  <div className="relative h-48 mb-6">
-                    <svg className="w-full h-full" viewBox="0 0 300 150">
-                      <motion.path
-                        d="M20,75 L50,30 L100,120 L150,45 L200,90 L250,60 L280,100"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        className="text-red-400/50"
-                        strokeDasharray="5,5"
-                        initial={{ pathLength: 0 }}
-                        animate={{ pathLength: 1 }}
-                        transition={{ duration: 1.5 }}
-                      />
-                      <motion.path
-                        d="M20,75 L80,70 L140,75 L200,72 L260,78 L280,75"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="3"
-                        className="text-green-400"
-                        initial={{ pathLength: 0 }}
-                        animate={{ pathLength: 1 }}
-                        transition={{ duration: 1.5, delay: 0.5 }}
-                      />
-                    </svg>
-                    <div className="absolute bottom-0 left-0 right-0 flex justify-between text-xs text-slate-400">
-                      <span>Produce</span>
-                      <span>Dairy</span>
-                      <span>Frozen</span>
-                      <span>Checkout</span>
-                    </div>
-                  </div>
-                  <div className="flex justify-between text-sm">
-                    <div className="flex items-center gap-2">
-                      <div className="w-3 h-0.5 bg-red-400/50" />
-                      <span className="text-slate-400">Before: 4.2 mi</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <div className="w-3 h-0.5 bg-green-400" />
-                      <span className="text-green-400">After: 2.1 mi</span>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Case Study Overview */}
-      <section className="py-16 bg-muted/30">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <h2 className="text-3xl font-bold mb-8">Case Study Overview</h2>
-          <div className="space-y-4 text-lg text-muted-foreground">
-            <p>
-              <strong className="text-foreground">The Challenge:</strong> Kroger's 2,700+ physical stores were designed for in-store shoppers, not e-commerce fulfillment. As online grocery orders surged, pick times averaged 45 minutes per order, error rates were rising, and same-day delivery commitments were missed at unacceptable rates. Staff allocation was based on historical patterns rather than real-time order queues, creating both bottlenecks and idle capacity.
-            </p>
-            <p>
-              <strong className="text-foreground">The Solution:</strong> AGIX Technologies developed an AI fulfillment optimization system that ingests real-time order data, store layout maps, and staff availability to generate optimized pick routes and dynamic task assignments. Machine learning models predict order volumes by location and time window to pre-position staff, while computer vision assists with item verification and substitution decision support when requested items are unavailable.
-            </p>
-            <p>
-              <strong className="text-foreground">The Impact:</strong> Average order pick time dropped from 45 minutes to 18 minutes--a 60% reduction--without adding headcount. Order accuracy improved to 99.4%, reducing costly re-delivery and customer refund incidents. Same-day delivery fulfillment rates increased from 71% to 96%, driving a 28% increase in repeat e-commerce orders as customers experienced consistently reliable service.
-            </p>
-          </div>
-        </div>
-      </section>
-
-
-      {/* The Challenge */}
-      <section className="py-24">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="space-y-8"
-          >
-            <Badge variant="outline" className="border-amber-500/30 text-amber-400">
-              <AlertTriangle className="w-3 h-3 mr-1" />
-              The Challenge
-            </Badge>
-
-            <h2 className="text-3xl font-bold">Stores Designed for Shopping, Not Picking</h2>
-            
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              When e-commerce surged from 2% to 15% of Kroger's sales, they faced a crisis. 
-              Pickers were walking 4+ miles per shift, criss-crossing stores inefficiently. 
-              Pick lists were sorted alphabetically--not by aisle. And when items were out of 
-              stock, substitution logic often suggested items customers didn't want.
-            </p>
-
-            <div className="grid md:grid-cols-3 gap-6">
-              <Card className="border-red-500/20">
-                <CardContent className="p-6 text-center">
-                  <MapPin className="w-8 h-8 text-red-400 mx-auto mb-3" />
-                  <p className="text-2xl font-bold">4.2 mi</p>
-                  <p className="text-sm text-muted-foreground">Walking per shift</p>
-                </CardContent>
-              </Card>
-              <Card className="border-amber-500/20">
-                <CardContent className="p-6 text-center">
-                  <Package className="w-8 h-8 text-amber-400 mx-auto mb-3" />
-                  <p className="text-2xl font-bold">34%</p>
-                  <p className="text-sm text-muted-foreground">Sub rejection rate</p>
-                </CardContent>
-              </Card>
-              <Card className="border-orange-500/20">
-                <CardContent className="p-6 text-center">
-                  <Truck className="w-8 h-8 text-orange-400 mx-auto mb-3" />
-                  <p className="text-2xl font-bold">23%</p>
-                  <p className="text-sm text-muted-foreground">Late deliveries</p>
-                </CardContent>
-              </Card>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Pick Optimization Results */}
-      <section className="py-24 bg-gradient-to-br from-blue-500/5 via-background to-green-500/5">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="space-y-12"
-          >
-            <div className="text-center space-y-4">
-              <Badge variant="outline" className="border-blue-500/30 text-blue-400">
-                <MapPin className="w-3 h-3 mr-1" />
-                Pick Path Intelligence
-              </Badge>
-              <h2 className="text-3xl font-bold">From Chaos to Optimized Routes</h2>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-6">
-              {pickOptimization.map((item, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                >
-                  <Card className="h-full">
-                    <CardContent className="p-6">
-                      <p className="font-semibold mb-4">{item.metric}</p>
-                      <div className="flex items-center justify-between">
-                        <div className="text-center">
-                          <p className="text-xs text-muted-foreground mb-1">Before</p>
-                          <p className="text-lg text-muted-foreground line-through">{item.before}</p>
-                        </div>
-                        <ArrowRight className="w-5 h-5 text-muted-foreground" />
-                        <div className="text-center">
-                          <p className="text-xs text-green-400 mb-1">After</p>
-                          <p className="text-lg font-bold">{item.after}</p>
-                        </div>
-                        <Badge className="bg-green-500/20 text-green-400 border-green-500/30">
-                          {item.improvement}
-                        </Badge>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Smart Substitutions */}
-      <section className="py-24">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="space-y-12"
-          >
-            <div className="text-center space-y-4">
-              <Badge variant="outline" className="border-green-500/30 text-green-400">
-                <Package className="w-3 h-3 mr-1" />
-                Smart Substitutions
-              </Badge>
-              <h2 className="text-3xl font-bold">Substitutions Customers Actually Accept</h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
-                Rules-based substitution picked the cheapest alternative. AI substitution 
-                understands individual customer preferences.
-              </p>
-            </div>
-
-            <div className="space-y-8">
-              {substitutionExamples.map((example, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.2 }}
-                >
-                  <Card className="overflow-hidden">
-                    <CardContent className="p-0">
-                      <div className="p-4 bg-muted/50 border-b border-border">
-                        <p className="text-sm">
-                          <span className="text-muted-foreground">Requested: </span>
-                          <span className="font-medium">{example.original}</span>
-                        </p>
-                      </div>
-                      <div className="grid md:grid-cols-2">
-                        <div className="p-6 border-r border-border">
-                          <Badge className="mb-3 bg-red-500/20 text-red-400 border-red-500/30">
-                            Old Rules-Based
-                          </Badge>
-                          <p className="text-sm text-muted-foreground">{example.oldSub}</p>
-                        </div>
-                        <div className="p-6">
-                          <Badge className="mb-3 bg-green-500/20 text-green-400 border-green-500/30">
-                            AI Substitution
-                          </Badge>
-                          <p className="text-sm font-medium">{example.aiSub}</p>
-                        </div>
-                      </div>
-                      <div className="p-4 bg-blue-500/10 border-t border-blue-500/20">
-                        <p className="text-sm text-blue-400">
-                          <Brain className="w-4 h-4 inline mr-2" />
-                          {example.reason}
-                        </p>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              ))}
-            </div>
-
-            <div className="text-center">
-              <Badge className="bg-green-500/20 text-green-400 border-green-500/30 text-lg px-6 py-2">
-                Substitution acceptance: 66% to 89%
-              </Badge>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Results */}
-      <section className="py-24 bg-gradient-to-br from-slate-900 to-slate-800">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="space-y-12"
-          >
-            <div className="text-center space-y-4">
-              <Badge className="bg-green-500/20 text-green-400 border-green-500/30">
-                <TrendingUp className="w-3 h-3 mr-1" />
-                Business Impact
-              </Badge>
-              <h2 className="text-3xl font-bold text-white">500 Stores Optimized</h2>
-            </div>
-
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-              <Card className="bg-slate-800/50 border-slate-700">
-                <CardContent className="p-6 text-center">
-                  <Clock className="w-8 h-8 text-blue-400 mx-auto mb-3" />
-                  <p className="text-3xl font-bold text-white">24 min</p>
-                  <p className="text-sm text-slate-400 mt-2">Pick Time (30 items)</p>
-                  <p className="text-xs text-slate-500">down from 45 min</p>
-                </CardContent>
-              </Card>
-              <Card className="bg-slate-800/50 border-slate-700">
-                <CardContent className="p-6 text-center">
-                  <Truck className="w-8 h-8 text-green-400 mx-auto mb-3" />
-                  <p className="text-3xl font-bold text-white">94%</p>
-                  <p className="text-sm text-slate-400 mt-2">On-Time Delivery</p>
-                  <p className="text-xs text-slate-500">up from 77%</p>
-                </CardContent>
-              </Card>
-              <Card className="bg-slate-800/50 border-slate-700">
-                <CardContent className="p-6 text-center">
-                  <Users className="w-8 h-8 text-purple-400 mx-auto mb-3" />
-                  <p className="text-3xl font-bold text-white">+81%</p>
-                  <p className="text-sm text-slate-400 mt-2">Orders/Picker/Hour</p>
-                  <p className="text-xs text-slate-500">3.2 to 5.8</p>
-                </CardContent>
-              </Card>
-              <Card className="bg-slate-800/50 border-slate-700">
-                <CardContent className="p-6 text-center">
-                  <Target className="w-8 h-8 text-amber-400 mx-auto mb-3" />
-                  <p className="text-3xl font-bold text-white">-42%</p>
-                  <p className="text-sm text-slate-400 mt-2">Fulfillment Cost</p>
-                  <p className="text-xs text-slate-500">$8.40 to $4.90</p>
-                </CardContent>
-              </Card>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Testimonial */}
-      <section className="py-24">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <Card className="border-blue-500/20">
-              <CardContent className="p-8 md:p-12">
-                <Quote className="w-12 h-12 text-blue-500/30 mb-6" />
-                <blockquote className="text-xl md:text-2xl font-medium leading-relaxed mb-8">
-                  "We didn't build new fulfillment centers--we made our existing stores 
-                  smart. Pickers are happier walking half the distance. Customers get 
-                  substitutions they actually want. And we cut fulfillment costs by 42% 
-                  while improving customer satisfaction."
-                </blockquote>
-                <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 rounded-full bg-gradient-to-br from-blue-500 to-green-500 flex items-center justify-center text-white font-bold text-lg">
-                    TH
-                  </div>
-                  <div>
-                    <p className="font-semibold">Tom Harrison</p>
-                    <p className="text-sm text-muted-foreground">VP of E-Commerce Operations, Kroger</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="py-24 bg-gradient-to-br from-blue-500/10 via-background to-green-500/10">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center space-y-8"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold">
-              Optimizing Retail Operations?
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              We help retailers build AI that makes existing infrastructure smarter--
-              without massive capital investment.
-            </p>
-            <CtaForm />
-          </motion.div>
-        </div>
-      </section>
-
-      
-
-      </CaseStudyTemplate>
-  );
+  return <CaseStudyV2 data={data} />;
 }

@@ -149,6 +149,47 @@ Blog posts automatically receive 1–2 contextual service links injected after t
 - All FAQ answer text (153 entries in `src/lib/seo/faq-data.ts`) uses "AGIX Technologies" canonical brand casing
 - robots.txt disallows `/admin/` broadly (not just `/admin/leads/`) to prevent crawler exposure
 
+## Industry Pages — Standard Component Patterns
+
+### Role Selector Section ("Where Should You Start?")
+
+Every industry page that has a role/persona selector **must** use the following standardized design. It lives inside the bottlenecks section, separated by `mt-16 border-t border-border/40 pt-16`.
+
+**Header block:**
+```tsx
+<div className="text-center mb-10">
+  <Badge variant="outline" className="mb-4 border-primary/30 text-primary">
+    <Target className="w-3 h-3 mr-1" />Personalized AI Plan
+  </Badge>
+  <h3 className="text-2xl md:text-3xl font-bold mb-3">Where Should You Start?</h3>
+  <p className="text-muted-foreground max-w-xl mx-auto text-sm leading-relaxed">…</p>
+</div>
+```
+
+**Role card grid** (icon card, NOT text pills):
+- 5 roles → `grid-cols-2 sm:grid-cols-3 lg:grid-cols-5`
+- 4 roles → `grid-cols-2 sm:grid-cols-4`
+- Each card: `flex-col items-center text-center gap-3 p-4 rounded-xl border-2 transition-all`
+- Selected state: `{roleItem.bgColor} {roleItem.color} border-current shadow-sm`
+- Unselected: `border-border/40 text-muted-foreground hover:border-border hover:bg-muted/40 bg-card`
+- Icon container: `bg-white/20` when selected, `bg-muted/60` when not
+
+**Content panel** (role identity bar + 3-column grid + CTA):
+1. **Role identity bar** — full-width colored bar: role icon + name + description
+2. **3-column grid** (`md:grid-cols-3 gap-4 mb-6`):
+   - Col 1 "Your Challenges" — `border-destructive/20 bg-destructive/5` — each bottleneck as a card
+   - Col 2 "The AI Fix" — `border-green-500/20 bg-green-500/5` — each AI system with `CheckCircle2` + impact chips
+   - Col 3 (role-color-tinted) — "Your 12-Week Roadmap" (real estate) or "Deployment Sequence" (healthcare) — numbered timeline with connecting `w-px flex-1 bg-border/60`
+3. **CTA footer bar** — `flex-col sm:flex-row justify-between gap-4 p-5 rounded-xl bg-muted/50 border` — message left, `<Button>` right linking to `#lead-form`
+
+**Data adaptation per industry:**
+- Real estate: uses `role.roadmapItems[{phase, action}]` for column 3
+- Healthcare: uses `aiSystems.shortName` + `timeline` + `whatItDoes[0]` for column 3
+
+All future industry pages should follow this exact structural pattern.
+
+---
+
 ## Intelligence Pages — Content Upgrade
 
 ### Operational Intelligence (`/intelligence/operational-ai/`)

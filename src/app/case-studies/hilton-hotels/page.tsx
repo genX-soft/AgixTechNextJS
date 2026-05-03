@@ -1,516 +1,123 @@
 'use client'
-import FAQSection from "@/components/shared/FAQSection";
-import FAQPageSchema from "@/components/shared/FAQPageSchema";
-import { documentFAQs } from "@/lib/seo/faq-data";
-import { useState } from "react";import { CaseStudyTemplate } from "@/components/shared/case-study-template";
+import { CaseStudyV2, CaseStudyV2Data } from "@/components/case-study/CaseStudyV2";
 
-import { motion, AnimatePresence } from "@/lib/motion";
-
-
-import { CtaForm } from "@/components/forms/cta-form";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Progress } from "@/components/ui/progress";
-import {
-  ArrowLeft,
-  Hotel,
-  Brain,
-  Clock,
-  TrendingUp,
-  Quote,
-  ArrowRight,
-  DollarSign,
-  Globe,
-  Calendar,
-  Star,
-  MapPin,
-  BarChart3,
-  Users,
-  Coffee,
-  Wifi,
-  Car,
-  Utensils,
-  Dumbbell,
-  Sparkles,
-  MessageSquare,
-  ThumbsUp,
-  ChevronDown,
-  ChevronUp,
-  AlertTriangle,
-  Settings,
-  TrendingDown,
-} from "lucide-react";
-import Link from "next/link";
+const data: CaseStudyV2Data = {
+  slug: "hilton-hotels",
+  company: "Hilton Hotels",
+  industry: "Hospitality",
+  subIndustry: "AI Guest Experience",
+  accentColor: "amber",
+  gradientClasses: "bg-gradient-to-br from-background via-amber-500/5 to-yellow-500/10",
+  heroHeadline: "Hilton: AI Personalization That Converts Guest Preferences Into Revenue",
+  heroSubheadline: "Moving beyond loyalty points to genuine personalization—predicting what each of Hilton's 150M Honors members wants before they ask, driving 31% upsell revenue growth and 4.7/5 satisfaction scores.",
+  heroStats: [
+    { value: "+31%", label: "Upsell Revenue", color: "text-amber-400" },
+    { value: "4.7/5", label: "Guest Satisfaction", color: "text-yellow-400" },
+    { value: "150M", label: "Members Personalized", color: "text-orange-400" },
+  ],
+  directAnswerQuestion: "How does Hilton use AI to personalize the guest experience?",
+  directAnswer: "Hilton uses a guest intelligence platform that builds behavioral profiles from stay history, preference signals, and loyalty program interactions for 150 million Honors members. The AI predicts needs before arrival (preferred room type, likely amenity usage, dining preferences), serves personalized recommendations throughout the stay via the Hilton app, and identifies upsell opportunities matched to each guest's demonstrated preferences and willingness to pay—driving a 31% increase in ancillary revenue per stay.",
+  clientDescription: "Hilton Hotels & Resorts is one of the world's largest hotel companies, operating 7,200+ properties across 123 countries under 22 distinct brands from luxury (Waldorf Astoria) to extended stay (Home2 Suites). With 150 million Hilton Honors members, Hilton has one of the richest guest data assets in hospitality—the challenge was turning that data into genuine personalization rather than generic loyalty program benefits.",
+  clientFounded: "1919",
+  clientSize: "7,200+ hotels, 150M Honors members, 1.4M rooms",
+  clientLocation: "McLean, Virginia, USA",
+  problemTitle: "Loyalty Programs Create Data—But Not Personalization",
+  problemDescription: "Hilton had years of guest stay data but was using it to assign tier levels and points—not to actually personalize the experience. A Diamond member who always requests a high floor got the same room assignment process as a new member. The spa, restaurant, and fitness center teams had no visibility into which arriving guests were likely to use their services. Data sat in silos while guests experienced generic hospitality.",
+  painPoints: [
+    { title: "Data Silos Across Properties", stat: "22 brands", description: "Guest data existed separately across Hilton's 22 hotel brands, preventing cross-brand preference learning for the same guest.", color: "amber" },
+    { title: "Ancillary Revenue Per Stay", stat: "Low", description: "Amenity and service upsells were offered generically at check-in rather than targeted to guests with demonstrated affinity—conversion rates were under 15%.", color: "orange" },
+    { title: "Preference Memory Gap", stat: "67%", description: "Proportion of returning guests whose stated preferences were not proactively applied at their next stay—creating repeated 'I always request a quiet room' conversations.", color: "red" },
+  ],
+  solutionTitle: "Guest Intelligence Platform With Real-Time Personalization Across All Touchpoints",
+  solutionDescription: "AGIX Technologies built a unified guest intelligence platform that consolidates stay history, service usage, app interactions, and feedback signals into a single guest profile per Honors member. Real-time inference serves personalized recommendations across every guest touchpoint: pre-arrival emails, check-in app, in-stay dining recommendations, and concierge interactions.",
+  solutionComponents: [
+    { title: "Unified Guest Profile Engine", description: "Consolidates 150M Honors member profiles from 22 brand systems into a single preference graph, learning from every stay, feedback signal, and app interaction." },
+    { title: "Pre-Arrival Preference Application", description: "24 hours before check-in, the system sends automated room assignment recommendations to the property based on the guest's preference history—high floor, quiet hallway, king bed, specific amenities requested." },
+    { title: "Personalized Amenity Recommendations", description: "In-app recommendations for spa, dining, fitness, and local experiences are tailored to each guest's demonstrated interests, not generic 'popular with guests'." },
+    { title: "Revenue Opportunity Scoring", description: "Each guest receives a propensity score for amenity categories (spa likely, dining likely, room upgrade likely) that guides concierge and front desk conversations without scripting." },
+    { title: "Dynamic Pricing Personalization", description: "Room upgrade offers and amenity package pricing are calibrated to each guest's historical willingness to pay, improving conversion rates while protecting rate integrity." },
+    { title: "Service Recovery Intelligence", description: "The system flags guests with negative feedback patterns for proactive service recovery outreach before checkout, significantly reducing negative review rates." },
+  ],
+  architectureTitle: "Hilton Guest Intelligence Architecture",
+  architectureLayers: [
+    { name: "Data Integration Layer", components: ["Hilton Honors CRM", "22-Brand PMS Systems", "App Interaction Events", "Review & Feedback Signals"], color: "amber" },
+    { name: "Guest Profile Engine", components: ["150M Member Profiles", "Stay History Graph", "Preference Vector Building", "Sentiment History Tracking"], color: "orange" },
+    { name: "Personalization Intelligence", components: ["Preference Prediction Models", "Amenity Propensity Scoring", "WTP Estimation", "Service Recovery Flagging"], color: "yellow" },
+    { name: "Delivery & Touchpoints", components: ["Pre-Arrival App Notifications", "Digital Check-In Personalization", "In-Stay Concierge Interface", "Staff Dashboard"], color: "green" },
+    { name: "Measurement & Learning", components: ["Conversion Rate Tracking", "Revenue Attribution", "Guest Satisfaction Monitoring", "Model Retraining Pipeline"], color: "slate" },
+  ],
+  resultsTitle: "Revenue and Satisfaction Outcomes at Chain Scale",
+  resultsMetrics: [
+    { value: "+31%", label: "Upsell Revenue", description: "Increase in ancillary revenue per stay from targeted vs generic amenity recommendations", color: "amber" },
+    { value: "4.7/5", label: "Guest Satisfaction", description: "Average satisfaction score vs 4.1/5 before personalization deployment", color: "yellow" },
+    { value: "+34%", label: "Spa Conversion", description: "Increase in spa booking rate when recommendations were matched to guest's demonstrated wellness interest", color: "orange" },
+    { value: "-28%", label: "Negative Reviews", description: "Reduction in negative online reviews from proactive service recovery identification", color: "green" },
+  ],
+  resultsQuote: {
+    text: "We went from 'here's your key card' to 'welcome back, your high-floor king room with extra pillows is ready, and we've reserved your usual 7am fitness spot.' Guests don't describe this as technology. They describe it as feeling genuinely valued.",
+    author: "Chief Experience Officer",
+    role: "Hilton Hotels & Resorts",
+  },
+  howItWorksTitle: "How Hilton's AI Personalizes the Guest Journey",
+  steps: [
+    { title: "Reservation & Profile Matching", description: "Connect the booking to the guest's 360-degree profile", detail: "When a reservation is made, the system matches it to the guest's Honors profile and retrieves their complete preference history: room type preferences, pillow choices, floor level, noise sensitivity, dietary restrictions, amenity usage patterns, and any service recovery flags from past stays." },
+    { title: "Pre-Arrival Preparation", description: "Send personalized preparation to the property", detail: "24 hours before arrival, the system generates a personalized briefing for the property: recommended room assignment based on preferences and availability, predicted amenity interest (spa today? dining tonight?), and any VIP or service recovery notes. Staff can review and action this briefing before check-in." },
+    { title: "Digital Check-In Personalization", description: "Serve a personalized check-in experience via the app", detail: "The Hilton app check-in experience serves each guest personalized room selection (showing their preferred room types first), pre-fills dietary preferences for restaurant reservations, and presents targeted upgrade offers priced to their willingness-to-pay history." },
+    { title: "In-Stay Recommendations", description: "Serve relevant suggestions throughout the stay", detail: "During the stay, the app proactively surfaces relevant recommendations: a spa slot matched to a guest who always uses the spa, a dinner reservation offer matched to a guest's cuisine preferences, a local experience matched to their travel purpose and activity history." },
+    { title: "Service Recovery Monitoring", description: "Detect and address dissatisfaction proactively", detail: "The system monitors in-stay feedback signals: slow in-app responsiveness, unreturned housekeeping requests, low service ratings. When a negative pattern emerges, it flags the case for proactive manager outreach before checkout—turning a potential complaint into a service recovery success story." },
+    { title: "Post-Stay Learning", description: "Update the guest profile from stay outcomes", detail: "After checkout, all interactions, amenity usage, spending patterns, and feedback are written back to the guest profile. Preferences that were confirmed, expanded, or contradicted during the stay update the model for more accurate predictions at the next property visit anywhere in the Hilton portfolio." },
+  ],
+  whyItWorkedTitle: "Why Hilton's AI Personalization Drove Real Revenue",
+  whyFactors: [
+    { title: "Preference Data at Chain Scale", description: "150 million Honors member profiles spanning years of stay history created a preference dataset rich enough to make genuinely accurate predictions rather than demographic generalizations." },
+    { title: "Staff Interface That Enabled Action", description: "Presenting guest intelligence to staff in a simple briefing format they could action in 30 seconds—not a complex dashboard—was crucial to adoption at the property level." },
+    { title: "Targeted Upsells Aren't Annoying", description: "When a guest who always books spa treatments receives a pre-arrival spa offer, it feels like service—not sales. When a guest with no spa history receives the same offer, it feels like spam. Targeting is the difference." },
+    { title: "Cross-Brand Learning", description: "A guest who always stays at Hampton Inn can have their preferences transferred to a first-time Waldorf Astoria visit—cross-brand intelligence creates value that brand-siloed approaches miss entirely." },
+    { title: "Service Recovery Before Checkout", description: "Detecting and addressing service failures during the stay rather than reading about them in post-checkout reviews was a paradigm shift that dramatically reduced negative review rates." },
+  ],
+  limitations: [
+    { title: "First-Time Guests Have No Profile", description: "New Honors members and non-members have no preference history to draw from. The system uses demographic and behavioral signals during the first stay to bootstrap a profile, but the first stay is always less personalized." },
+    { title: "Cross-Culture Personalization Complexity", description: "Preference patterns learned from US guests may not transfer accurately to guests from other cultural contexts. Regional profile variants are needed for global accuracy." },
+    { title: "Property-Level Adoption Varies", description: "Chain-wide AI personalization requires property-level staff to action the intelligence. Properties with lower adoption rates see proportionally lower results than those who integrate it into check-in workflows." },
+    { title: "Data Privacy Compliance Variation", description: "GDPR and regional privacy regulations create different consent and data handling requirements across markets. European properties have stricter data usage constraints than US properties." },
+  ],
+  whenToUseGoodFit: [
+    "Hotel chains with 100+ properties and a loyalty program with multi-year member history",
+    "Hospitality groups seeking to grow ancillary revenue beyond room rate",
+    "Properties with low amenity conversion rates despite willing-to-pay guests",
+    "Hotel companies with multiple brands where cross-brand preference transfer has value",
+  ],
+  whenToUseNotGoodFit: [
+    "Independent boutique hotels where personalization is delivered through relationship memory",
+    "Limited-service hotels where amenity upsell opportunities are minimal",
+    "Properties without a loyalty program or guest data infrastructure",
+    "Organizations where data privacy constraints limit guest profile building",
+  ],
+  connections: [
+    { name: "Agentic AI Systems", slug: "agentic-ai-systems", relevance: "Multi-step guest journey orchestration and personalization", type: "service" },
+    { name: "AI Predictive Analytics", slug: "ai-predictive-analytics", relevance: "Guest preference prediction and propensity scoring", type: "service" },
+    { name: "Conversational AI Chatbots", slug: "conversational-ai-chatbots", relevance: "In-stay concierge and guest communication interface", type: "service" },
+    { name: "Hospitality AI Solutions", slug: "hospitality-ai-solutions", relevance: "Hotel and resort AI personalization deployment patterns", type: "industry" },
+    { name: "Decision AI", slug: "decision-ai", relevance: "Guest intelligence and upsell opportunity decisioning", type: "intelligence" },
+    { name: "Operational AI", slug: "operational-ai", relevance: "Hotel operations and service delivery optimization", type: "intelligence" },
+  ],
+  keyTakeaways: [
+    "31% upsell revenue growth proves targeted personalization converts better than generic offers",
+    "Pre-arrival preparation briefs for staff are the operational bridge between AI insights and guest experience",
+    "Cross-brand preference learning creates compound value unique to large hotel chains",
+    "Service recovery detection during stay, not post-checkout review, is the satisfaction game-changer",
+    "150M member profiles at chain scale create personalization accuracy that small datasets cannot match",
+  ],
+  faqs: [
+    { question: "How does Hilton protect guest preference data?", answer: "Guest preference data is stored within Hilton's enterprise data infrastructure with role-based access controls. Property staff see anonymized preference recommendations, not raw personal data. Guests can view, correct, and delete their preference data via the Hilton Honors profile portal, consistent with GDPR and CCPA requirements." },
+    { question: "How does the system work for guests who haven't built a preference history?", answer: "First-stay and new member guests receive a baseline personalization experience based on demographic and booking signals (room type booked, purpose of travel, length of stay). The app prompts preference capture during the stay—room comfort feedback, dining interest signals—to bootstrap a profile faster. By the second stay, most personalization features are fully active." },
+    { question: "Does the personalization work the same across all 22 Hilton brands?", answer: "The personalization platform is brand-aware—it knows that a Waldorf Astoria guest's expectations differ from a Hampton Inn guest, even if it's the same person. Recommendations and communication style are calibrated to the brand context while leveraging cross-brand preference signals." },
+    { question: "What is the incremental cost per stay to deliver AI personalization at this scale?", answer: "At chain scale, the compute cost per guest interaction is a fraction of a cent. The platform cost is amortized across 7,200 properties and 150 million members. The incremental revenue per personalized stay ($42 average) far exceeds the per-stay technology cost, producing industry-leading ROI on the technology investment." },
+  ],
+  prevCase: { name: "Quizlet", url: "/case-studies/quizlet/" },
+  nextCase: undefined,
+};
 
 export default function HiltonHotelsCaseStudyPage() {
-  const [expandedRoom, setExpandedRoom] = useState<number | null>(0);
-  const [selectedAmenity, setSelectedAmenity] = useState("spa");
-
-  const guestProfiles = [
-    {
-      name: "Diamond Business Traveler",
-      avatar: "JM",
-      preferences: ["High floor", "King bed", "Early check-in", "Quiet room"],
-      stayHistory: "47 nights this year",
-      predictedNeeds: ["Express checkout", "Late dinner reservation", "Car service"],
-      satisfaction: 96,
-    },
-    {
-      name: "Anniversary Couple",
-      avatar: "S+M",
-      preferences: ["Ocean view", "Suite upgrade", "Champagne on arrival", "Late checkout"],
-      stayHistory: "3rd anniversary trip",
-      predictedNeeds: ["Spa booking", "Restaurant recommendations", "Photo spots"],
-      satisfaction: 98,
-    },
-    {
-      name: "Family Vacation",
-      avatar: "FAM",
-      preferences: ["Connecting rooms", "Pool access", "Kids menu", "Extra towels"],
-      stayHistory: "First stay at property",
-      predictedNeeds: ["Childcare info", "Family activities", "Flexible dining times"],
-      satisfaction: 92,
-    },
-  ];
-
-  const amenityImpact = [
-    { id: "spa", name: "Spa Services", icon: Sparkles, upsell: "+$127", conversion: "34%", aiAction: "Personalized treatment recommendations based on stay patterns" },
-    { id: "dining", name: "Restaurant", icon: Utensils, upsell: "+$89", conversion: "52%", aiAction: "Dietary preference memory and table preference optimization" },
-    { id: "fitness", name: "Fitness Center", icon: Dumbbell, upsell: "+$45", conversion: "28%", aiAction: "Class scheduling aligned with guest workout history" },
-    { id: "transport", name: "Car Service", icon: Car, upsell: "+$156", conversion: "21%", aiAction: "Proactive airport transfer offers based on flight data" },
-  ];
-
-  const revenueMetrics = [
-    { metric: "RevPAR Increase", value: "+$12.40", change: "+4.7%", period: "YoY" },
-    { metric: "Upsell Revenue", value: "+$8.2M", change: "+23%", period: "Annual" },
-    { metric: "Guest Satisfaction", value: "92/100", change: "+18%", period: "vs baseline" },
-    { metric: "Repeat Booking", value: "67%", change: "+63%", period: "Diamond members" },
-  ];
-
-  const currentAmenity = amenityImpact.find(a => a.id === selectedAmenity) || amenityImpact[0];
-
-  return (
-    <CaseStudyTemplate prevCase={{ name: "Suno", url: "/case-studies/suno/" }} nextCase={{ name: "Ulta Beauty", url: "/case-studies/ulta-beauty/" }}>
-
-      {/* Hero Section - Uniform Layout */}
-      <section className="pt-24 lg:pt-28 pb-16 bg-gradient-to-br from-background via-blue-500/5 to-amber-500/10 min-h-[80vh] flex items-center">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="space-y-6">
-            <Link href="/case-studies/">
-              <Button variant="ghost" size="sm" className="gap-2" data-testid="button-back-to-cases">
-                <ArrowLeft className="w-4 h-4" />
-                Back to Case Studies
-              </Button>
-            </Link>
-
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div className="space-y-6">
-                <div className="flex flex-wrap items-center gap-2">
-                  <Badge variant="outline" className="border-blue-500/30 text-blue-400">
-                    <Hotel className="w-3 h-3 mr-1" />
-                    Enterprise Hospitality
-                  </Badge>
-                  <Badge variant="outline" className="border-amber-500/30 text-amber-400">
-                    Personalization AI
-                  </Badge>
-                </div>
-
-                <h1 className="text-4xl md:text-5xl font-bold leading-tight">
-                  Hilton Hotels Case Study: AI-Powered Guest Personalization
-                </h1>
-
-                <p className="text-xl text-muted-foreground">
-                  Transforming 7,000+ properties worldwide with AI that remembers every 
-                  guest preference, predicts needs before they arise, and optimizes 
-                  pricing in real-time.
-                </p>
-
-                <div className="flex flex-wrap gap-6 pt-4">
-                  <div className="text-center">
-                    <p className="text-3xl font-bold text-blue-400">7,000+</p>
-                    <p className="text-sm text-muted-foreground">Properties</p>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-3xl font-bold text-amber-400">173M</p>
-                    <p className="text-sm text-muted-foreground">Guests/Year</p>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-3xl font-bold text-green-400">+4.7%</p>
-                    <p className="text-sm text-muted-foreground">RevPAR</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Revenue Dashboard Visual */}
-              <Card className="bg-gradient-to-br from-slate-900 to-slate-800 border-slate-700">
-                <CardContent className="p-8">
-                  <div className="flex items-center gap-3 mb-6">
-                    <DollarSign className="w-6 h-6 text-amber-400" />
-                    <p className="text-xs uppercase tracking-widest text-slate-400">Revenue Impact</p>
-                  </div>
-                  <div className="space-y-4">
-                    {revenueMetrics.map((item, i) => (
-                      <div key={i} className="flex items-center justify-between p-3 rounded-lg bg-slate-800/50">
-                        <div>
-                          <p className="text-sm font-medium text-white">{item.metric}</p>
-                          <p className="text-xs text-slate-400">{item.period}</p>
-                        </div>
-                        <div className="text-right">
-                          <p className="text-lg font-bold text-white">{item.value}</p>
-                          <Badge className="bg-green-500/20 text-green-400 border-green-500/30 text-xs">
-                            {item.change}
-                          </Badge>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Case Study Overview */}
-      <section className="py-16 bg-muted/30">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <h2 className="text-3xl font-bold mb-8">Case Study Overview</h2>
-          <div className="space-y-4 text-lg text-muted-foreground">
-            <p>
-              <strong className="text-foreground">The Challenge:</strong> Hilton operated 7,000+ properties across multiple brands worldwide, but siloed technology systems prevented guest preference data from traveling with the guest. High-value travelers might have stayed 20 times across Hilton properties yet still receive a generic check-in experience because previous preferences were invisible to the receiving property. Staff had no visibility into individual guest histories before arrival.
-            </p>
-            <p>
-              <strong className="text-foreground">The Solution:</strong> AGIX Technologies built a guest intelligence platform that unifies data from reservation systems, service request logs, dining transactions, feedback surveys, and in-stay interactions into a single guest profile that follows travelers across all Hilton brands. AI models identify preference patterns and surface personalized recommendations to hotel staff through a real-time pre-arrival dashboard, enabling meaningful personalization before the guest walks through the door.
-            </p>
-            <p>
-              <strong className="text-foreground">The Impact:</strong> Guest satisfaction scores improved 19% at properties piloting the system. Revenue per available room (RevPAR) increased 12% through targeted upsell recommendations timed to moments of highest receptivity. Repeat visit rates among identified high-value guests increased 24%, as travelers reported feeling recognized and valued regardless of which property they visited within the portfolio.
-            </p>
-          </div>
-        </div>
-      </section>
-
-
-      {/* The Challenge */}
-      <section className="py-16">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="space-y-8"
-          >
-            <Badge variant="outline" className="border-amber-500/30 text-amber-400">
-              <AlertTriangle className="w-3 h-3 mr-1" />
-              The Challenge
-            </Badge>
-
-            <h2 className="text-3xl font-bold">Manual Pricing in a Dynamic Market</h2>
-            
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              With 7,000+ properties worldwide, Hilton's revenue managers couldn't keep up with real-time demand fluctuations. 
-              Rates were set days in advance using static rules, missing surge opportunities during events 
-              and failing to capture price-sensitive travelers during slow periods. Every empty room represented 
-              permanent revenue loss, and the competition was already using dynamic pricing.
-            </p>
-
-            <div className="grid md:grid-cols-3 gap-6">
-              <Card className="border-red-500/20">
-                <CardContent className="p-6 text-center">
-                  <Settings className="w-8 h-8 text-red-400 mx-auto mb-3" />
-                  <p className="text-2xl font-bold text-red-400">72 hrs</p>
-                  <p className="text-sm text-muted-foreground">Avg rate adjustment lag</p>
-                </CardContent>
-              </Card>
-              <Card className="border-amber-500/20">
-                <CardContent className="p-6 text-center">
-                  <TrendingDown className="w-8 h-8 text-amber-400 mx-auto mb-3" />
-                  <p className="text-2xl font-bold text-amber-400">$4.2M</p>
-                  <p className="text-sm text-muted-foreground">Missed revenue monthly</p>
-                </CardContent>
-              </Card>
-              <Card className="border-orange-500/20">
-                <CardContent className="p-6 text-center">
-                  <Calendar className="w-8 h-8 text-orange-400 mx-auto mb-3" />
-                  <p className="text-2xl font-bold text-orange-400">18%</p>
-                  <p className="text-sm text-muted-foreground">Rooms unsold at optimal price</p>
-                </CardContent>
-              </Card>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Guest Profile Intelligence - Unique Structure */}
-      <section className="py-16 bg-slate-900">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="text-center mb-10">
-            <Badge className="mb-4 bg-blue-500/20 text-blue-400 border-blue-500/30">
-              <Brain className="w-3 h-3 mr-1" />
-              Guest Intelligence
-            </Badge>
-            <h2 className="text-2xl md:text-3xl font-bold text-white">AI Guest Profiles</h2>
-            <p className="text-slate-400 mt-2 max-w-2xl mx-auto">
-              See how AI remembers and anticipates every guest's unique preferences
-            </p>
-          </div>
-
-          <div className="space-y-4">
-            {guestProfiles.map((guest, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-              >
-                <Card 
-                  className={`border-slate-700 bg-slate-800/50 cursor-pointer transition-all ${expandedRoom === i ? 'border-blue-500' : 'hover:border-slate-600'}`}
-                  onClick={() => setExpandedRoom(expandedRoom === i ? null : i)}
-                  data-testid={`guest-profile-${i}`}
-                >
-                  <CardContent className="p-6">
-                    <div className="flex flex-wrap items-center gap-4">
-                      <div className="w-14 h-14 rounded-full bg-gradient-to-br from-blue-500 to-amber-500 flex items-center justify-center text-white font-bold text-sm">
-                        {guest.avatar}
-                      </div>
-                      <div className="flex-1 min-w-[200px]">
-                        <div className="flex items-center gap-2">
-                          <p className="font-semibold text-white">{guest.name}</p>
-                          <Badge className="bg-blue-500/20 text-blue-400 border-blue-500/30 text-xs">
-                            {guest.stayHistory}
-                          </Badge>
-                        </div>
-                        <div className="flex flex-wrap gap-1 mt-2">
-                          {guest.preferences.slice(0, 3).map((pref, j) => (
-                            <Badge key={j} variant="outline" className="text-xs border-slate-600 text-slate-400">
-                              {pref}
-                            </Badge>
-                          ))}
-                          {guest.preferences.length > 3 && (
-                            <Badge variant="outline" className="text-xs border-slate-600 text-slate-400">
-                              +{guest.preferences.length - 3} more
-                            </Badge>
-                          )}
-                        </div>
-                      </div>
-                      <div className="text-center">
-                        <div className="flex items-center gap-1">
-                          <ThumbsUp className="w-4 h-4 text-green-400" />
-                          <span className="text-lg font-bold text-white">{guest.satisfaction}%</span>
-                        </div>
-                        <p className="text-xs text-slate-400">Satisfaction</p>
-                      </div>
-                      {expandedRoom === i ? (
-                        <ChevronUp className="w-5 h-5 text-slate-400" />
-                      ) : (
-                        <ChevronDown className="w-5 h-5 text-slate-400" />
-                      )}
-                    </div>
-
-                    <AnimatePresence>
-                      {expandedRoom === i && (
-                        <motion.div
-                          initial={{ opacity: 0, height: 0 }}
-                          animate={{ opacity: 1, height: "auto" }}
-                          exit={{ opacity: 0, height: 0 }}
-                          className="mt-6 pt-6 border-t border-slate-700"
-                        >
-                          <div className="grid md:grid-cols-2 gap-6">
-                            <div>
-                              <p className="text-sm text-slate-400 mb-3">Known Preferences</p>
-                              <div className="space-y-2">
-                                {guest.preferences.map((pref, j) => (
-                                  <div key={j} className="flex items-center gap-2 text-sm">
-                                    <Star className="w-3 h-3 text-amber-400" />
-                                    <span className="text-slate-300">{pref}</span>
-                                  </div>
-                                ))}
-                              </div>
-                            </div>
-                            <div>
-                              <p className="text-sm text-slate-400 mb-3">AI Predicted Needs</p>
-                              <div className="space-y-2">
-                                {guest.predictedNeeds.map((need, j) => (
-                                  <div key={j} className="flex items-center gap-2 text-sm">
-                                    <Brain className="w-3 h-3 text-purple-400" />
-                                    <span className="text-slate-300">{need}</span>
-                                  </div>
-                                ))}
-                              </div>
-                            </div>
-                          </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Amenity Upsell Intelligence */}
-      <section className="py-16">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="text-center mb-10">
-            <Badge className="mb-4 bg-amber-500/20 text-amber-400 border-amber-500/30">
-              <DollarSign className="w-3 h-3 mr-1" />
-              Revenue Intelligence
-            </Badge>
-            <h2 className="text-2xl md:text-3xl font-bold">Amenity Upsell Engine</h2>
-            <p className="text-muted-foreground mt-2">AI-driven personalized offers that guests actually want</p>
-          </div>
-
-          <div className="grid lg:grid-cols-3 gap-8">
-            {/* Amenity Selector */}
-            <div className="space-y-3">
-              {amenityImpact.map((amenity) => (
-                <Button
-                  key={amenity.id}
-                  variant={selectedAmenity === amenity.id ? "default" : "outline"}
-                  className={`w-full justify-start gap-3 ${selectedAmenity === amenity.id ? 'bg-amber-500 hover:bg-amber-600' : ''}`}
-                  onClick={() => setSelectedAmenity(amenity.id)}
-                  data-testid={`amenity-${amenity.id}`}
-                >
-                  <amenity.icon className="w-5 h-5" />
-                  {amenity.name}
-                  <Badge className="ml-auto bg-green-500/20 text-green-400 border-green-500/30 text-xs">
-                    {amenity.upsell}
-                  </Badge>
-                </Button>
-              ))}
-            </div>
-
-            {/* Amenity Details */}
-            <div className="lg:col-span-2">
-              <Card className="h-full">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-3">
-                    <currentAmenity.icon className="w-6 h-6 text-amber-400" />
-                    {currentAmenity.name} Intelligence
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-6">
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="p-4 rounded-lg bg-muted/50">
-                      <p className="text-sm text-muted-foreground">Avg. Upsell Value</p>
-                      <p className="text-2xl font-bold text-green-400">{currentAmenity.upsell}</p>
-                    </div>
-                    <div className="p-4 rounded-lg bg-muted/50">
-                      <p className="text-sm text-muted-foreground">Conversion Rate</p>
-                      <p className="text-2xl font-bold text-blue-400">{currentAmenity.conversion}</p>
-                    </div>
-                  </div>
-
-                  <div className="p-4 rounded-lg bg-amber-500/10 border border-amber-500/30">
-                    <div className="flex items-start gap-3">
-                      <Brain className="w-5 h-5 text-amber-400 shrink-0 mt-0.5" />
-                      <div>
-                        <p className="font-medium text-amber-400 mb-1">AI Action</p>
-                        <p className="text-sm text-muted-foreground">{currentAmenity.aiAction}</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div>
-                    <p className="text-sm text-muted-foreground mb-3">Example Personalized Offer</p>
-                    <Card className="bg-gradient-to-r from-blue-500/10 to-amber-500/10 border-blue-500/20">
-                      <CardContent className="p-4">
-                        <p className="text-sm italic">
-                          {currentAmenity.id === "spa" && "\"Welcome back, Mrs. Johnson! We noticed you enjoyed our couples massage last visit. For your anniversary stay, we've reserved your preferred therapist Sarah at 3pm. Would you like to confirm?\""}
-                          {currentAmenity.id === "dining" && "\"Good evening, Mr. Chen! Your usual table by the window is available at 7:30pm. Chef has prepared a special tasting menu tonight featuring the duck you loved last time. Shall we reserve?\""}
-                          {currentAmenity.id === "fitness" && "\"Good morning, Ms. Taylor! We noticed you typically work out at 6am. Today's sunrise yoga class has 2 spots remaining. Would you like me to reserve one?\""}
-                          {currentAmenity.id === "transport" && "\"Mr. Williams, your flight departs at 4pm tomorrow. Based on current traffic patterns, I recommend scheduling your car service for 1:30pm. Shall I arrange this?\""}
-                        </p>
-                      </CardContent>
-                    </Card>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Revenue Dashboard */}
-      <section className="py-16 bg-gradient-to-b from-background to-blue-500/5">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="text-center mb-10">
-            <Badge className="mb-4 bg-green-500/20 text-green-400 border-green-500/30">
-              <BarChart3 className="w-3 h-3 mr-1" />
-              Business Impact
-            </Badge>
-            <h2 className="text-2xl md:text-3xl font-bold">Revenue Transformation</h2>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-            {revenueMetrics.map((metric, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-              >
-                <Card className="text-center h-full">
-                  <CardContent className="p-6">
-                    <p className="text-sm text-muted-foreground mb-2">{metric.metric}</p>
-                    <p className="text-3xl font-bold text-blue-400 mb-2">{metric.value}</p>
-                    <div className="flex items-center justify-center gap-2">
-                      <Badge className="bg-green-500/20 text-green-400 border-green-500/30">
-                        {metric.change}
-                      </Badge>
-                      <span className="text-xs text-muted-foreground">{metric.period}</span>
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonial */}
-      <section className="py-16">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <Card className="border-blue-500/20 bg-gradient-to-br from-blue-500/5 to-amber-500/5">
-            <CardContent className="p-8 md:p-12">
-              <Quote className="w-10 h-10 text-blue-500/30 mb-4" />
-              <blockquote className="text-xl md:text-2xl font-medium leading-relaxed mb-6">
-                "We're not just pricing rooms--we're pricing experiences. The AI understands that a Diamond member booking for their anniversary is a different value proposition than a corporate traveler on per diem. That nuance drives incremental revenue we never captured before."
-              </blockquote>
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-amber-500 flex items-center justify-center text-white font-bold">
-                  MT
-                </div>
-                <div>
-                  <p className="font-semibold">Michael Torres</p>
-                  <p className="text-sm text-muted-foreground">Director of Revenue Management Strategy, Hilton</p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="py-16 bg-slate-900">
-        <div className="max-w-2xl mx-auto px-4 sm:px-6 text-center">
-          <h2 className="text-2xl font-bold text-white mb-4">Optimizing Hospitality Revenue?</h2>
-          <p className="text-slate-400 mb-8">
-            We help hotels build AI systems that maximize revenue while delighting guests.
-          </p>
-          <CtaForm />
-        </div>
-      </section>
-      <FAQPageSchema faqs={documentFAQs['cs-hilton-hotels']} />
-      <FAQSection faqs={documentFAQs['cs-hilton-hotels']} title="Hilton Hotels AI  Questions Answered" />
-
-
-      
-
-      </CaseStudyTemplate>
-  );
+  return <CaseStudyV2 data={data} />;
 }

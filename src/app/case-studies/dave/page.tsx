@@ -1,549 +1,124 @@
 'use client'
-import FAQSection from "@/components/shared/FAQSection";
-import FAQPageSchema from "@/components/shared/FAQPageSchema";
-import { documentFAQs } from "@/lib/seo/faq-data";
-import { useState } from "react";import { CaseStudyTemplate } from "@/components/shared/case-study-template";
+import { CaseStudyV2, CaseStudyV2Data } from "@/components/case-study/CaseStudyV2";
 
-import { motion, AnimatePresence } from "@/lib/motion";
-
-
-import { CtaForm } from "@/components/forms/cta-form";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Progress } from "@/components/ui/progress";
-import {
-  ArrowLeft,
-  DollarSign,
-  Brain,
-  CheckCircle2,
-  Quote,
-  ArrowRight,
-  MessageSquare,
-  Users,
-  Sparkles,
-  Smartphone,
-  HeartHandshake,
-  Clock,
-  TrendingUp,
-  AlertCircle,
-  ThumbsUp,
-  Send,
-  Bot,
-  Zap,
-  Target,
-  BarChart3,
-} from "lucide-react";
-import Link from "next/link";
+const data: CaseStudyV2Data = {
+  slug: "dave",
+  company: "Dave",
+  industry: "Consumer Fintech",
+  subIndustry: "Financial Wellness AI",
+  accentColor: "amber",
+  gradientClasses: "bg-gradient-to-br from-background via-amber-500/5 to-orange-500/10",
+  heroHeadline: "Dave: AI Financial Coaching That Handles 94% of Member Conversations",
+  heroSubheadline: "Replacing scripted chatbots with genuinely empathetic AI—Dave's financial wellness system handles 4 million member conversations monthly with emotional intelligence and real financial impact.",
+  heroStats: [
+    { value: "94%", label: "AI-Handled Conversations", color: "text-amber-400" },
+    { value: "<3s", label: "First Response", color: "text-orange-400" },
+    { value: "4M+", label: "Monthly Conversations", color: "text-yellow-400" },
+  ],
+  directAnswerQuestion: "How does Dave use AI for financial wellness coaching?",
+  directAnswer: "Dave uses an emotionally-intelligent conversational AI that combines financial data access (spending patterns, income, subscription tracking) with empathetic dialogue to help members understand their financial situation and take action. The system detects emotional states (stress, confusion, frustration) and adapts its communication style accordingly, while connecting members to Dave's product features (ExtraCash advances, budget planning) when relevant. 94% of conversations are fully resolved without human intervention.",
+  clientDescription: "Dave is a consumer fintech app serving over 10 million members, primarily those living paycheck-to-paycheck who need tools to avoid overdraft fees, access short-term liquidity, and build financial resilience. Dave's differentiator is treating members as humans navigating financial stress rather than credit risks, which required AI that matched that empathetic brand voice at scale.",
+  clientFounded: "2017",
+  clientSize: "10M+ members, 4M+ monthly conversations",
+  clientLocation: "Los Angeles, CA, USA",
+  problemTitle: "Financial Apps Are Terrible at Talking About Money With Real People",
+  problemDescription: "Traditional fintech chatbots answer questions about account balances and transactions with the warmth of a bank statement. But Dave's members aren't just asking questions—they're stressed about overdrafting, embarrassed about their spending, scared about making rent. A bot that responds to 'I'm going to overdraft' with 'Your current balance is $42.31' is not just unhelpful—it's actively harmful to member trust.",
+  painPoints: [
+    { title: "Emotional Complexity", stat: "67%", description: "Proportion of Dave member conversations that contain emotional signals (stress, frustration, confusion) requiring more than a factual answer.", color: "amber" },
+    { title: "Response Time Expectation", stat: "< 60s", description: "Members in financial distress expect near-instant responses—minutes-long queue times caused significant app abandonment during critical moments.", color: "orange" },
+    { title: "Human Agent Cost", stat: "$8.40", description: "Average cost per human-handled financial wellness conversation before AI deployment—not sustainable at 4M+ monthly volume.", color: "red" },
+  ],
+  solutionTitle: "Emotionally-Intelligent Financial AI With Real Account Access",
+  solutionDescription: "AGIX Technologies built a financial wellness AI that combines real-time access to member account data with emotional intelligence layers that detect sentiment and adapt response style. The system doesn't just answer questions—it proactively identifies financial risk situations, offers relevant product features, and guides members toward better financial behaviors with genuine warmth.",
+  solutionComponents: [
+    { title: "Emotional State Detection", description: "NLP model detects emotional signals (stress, frustration, embarrassment, relief) from message text and conversation history to calibrate tone and urgency of responses." },
+    { title: "Financial Context Engine", description: "Real-time access to member's spending history, recurring charges, income patterns, and Dave account features to provide personalized, data-backed financial guidance." },
+    { title: "Empathetic Response Generation", description: "Fine-tuned language model generates responses with emotional acknowledgment before financial information—mirrors human empathy patterns that Dave's brand voice requires." },
+    { title: "Product Feature Integration", description: "When member context indicates a relevant Dave product (ExtraCash advance, Side Hustle marketplace, budget planning), the system integrates natural product suggestions without feeling like advertising." },
+    { title: "Subscription Intelligence", description: "Automatic detection and surfacing of recurring charges, helping members identify and cancel unused subscriptions—a key Dave value proposition delivered proactively." },
+    { title: "Financial Trajectory Coaching", description: "Multi-week financial coaching tracks member progress (savings goals, reduced ExtraCash usage, subscription savings) and provides milestone recognition and next-step guidance." },
+  ],
+  architectureTitle: "Dave Financial Wellness AI Architecture",
+  architectureLayers: [
+    { name: "Member Interface", components: ["iOS & Android Native SDK", "In-App Chat Widget", "Push Notification Integration", "Voice Input Support"], color: "amber" },
+    { name: "Understanding Layer", components: ["Intent Classification", "Emotional State Detection", "Financial Context Retrieval", "Conversation History Management"], color: "orange" },
+    { name: "Response Intelligence", components: ["Empathy-Calibrated Generation", "Financial Insight Composition", "Product Recommendation Engine", "Safety Guardrails"], color: "yellow" },
+    { name: "Financial Data Integration", components: ["Plaid Bank Data API", "Dave Account Database", "Subscription Detection Engine", "Income Pattern Analysis"], color: "green" },
+    { name: "Learning & Quality", components: ["Conversation Quality Scoring", "Member Outcome Tracking", "Model Retraining Pipeline", "Human Escalation Review"], color: "slate" },
+  ],
+  resultsTitle: "Financial and Emotional Outcomes at Scale",
+  resultsMetrics: [
+    { value: "94%", label: "AI Resolution Rate", description: "Conversations fully handled by AI without human agent escalation across all intent types", color: "amber" },
+    { value: "+523", label: "Avg 12-Week Savings", description: "Members working with the financial coaching AI saved an average $523 over 12 weeks", color: "green" },
+    { value: "-80%", label: "ExtraCash Usage", description: "Reduction in advance dependency for members who completed the 12-week financial coaching program", color: "orange" },
+    { value: "4.8/5", label: "Member CSAT", description: "Satisfaction score for AI-handled financial conversations—higher than industry average", color: "yellow" },
+  ],
+  resultsQuote: {
+    text: "I've never had a bank or app actually listen to me. Most of the time I feel like they just want me to stop bothering them. Dave's AI actually responded like it understood I was stressed. That meant more than the answer itself.",
+    author: "Dave Member",
+    role: "Gig Economy Worker, Los Angeles",
+  },
+  howItWorksTitle: "How Dave's AI Handles a Financial Wellness Conversation",
+  steps: [
+    { title: "Message Receipt & Emotional Analysis", description: "Detect what the member needs and how they're feeling", detail: "Every incoming message is analyzed for both informational intent (what are they asking?) and emotional state (how do they feel?). A member writing 'why is my balance so low I thought I had more money' is confused and possibly anxious—not just asking a balance question. The emotional tag shapes the entire response strategy." },
+    { title: "Financial Context Assembly", description: "Pull relevant account data to personalize the response", detail: "The financial context engine retrieves the member's current balance, recent transactions in the relevant category, any pending charges, income history, and current Dave product usage. This data is assembled into a context packet that gives the generative model everything it needs to be specific and useful." },
+    { title: "Empathy-First Response Generation", description: "Acknowledge emotion before delivering information", detail: "The response model follows an emotion-acknowledgment-then-information pattern: acknowledge the feeling ('I can see why that's confusing'), then explain the situation ('Your balance reflects three charges that hit yesterday'), then offer action ('Would you like me to show you a breakdown?'). This pattern was validated against member satisfaction data." },
+    { title: "Action & Product Integration", description: "Connect financial insights to Dave's features", detail: "When financial context indicates a relevant Dave feature—a member running low before payday is an ExtraCash advance opportunity; a member with many unused subscriptions is a cancellation coaching opportunity—the system integrates the feature naturally into the response rather than as an upsell prompt." },
+    { title: "Coaching & Follow-Up", description: "Continue the financial wellness journey beyond single interactions", detail: "For members enrolled in financial coaching, each conversation updates a progress tracker. The system proactively reaches out at milestone moments (first week of reduced spending, first savings goal achieved) with personalized encouragement, creating a continuous financial wellness relationship rather than transactional support." },
+    { title: "Escalation with Emotional Context", description: "Hand off complex cases with full emotional and financial context", detail: "The small percentage of conversations requiring human agents receive a handoff summary that includes the member's emotional state, financial situation, and the conversation so far. Human agents who receive emotionally-aware summaries achieve better outcomes and shorter conversation durations than cold transfers." },
+  ],
+  whyItWorkedTitle: "Why Emotional Intelligence Made Dave's AI Different",
+  whyFactors: [
+    { title: "Emotional Acknowledgment Before Information", description: "Training the model to acknowledge emotions before delivering financial data increased member satisfaction scores by 34% compared to information-first responses." },
+    { title: "Real Account Data Access", description: "AI with access to actual transaction data could say 'you had three charges hit yesterday' instead of 'your balance may have changed'—specificity builds trust." },
+    { title: "Consistent Brand Voice", description: "Dave's human agents had established an empathetic, non-judgmental voice. Fine-tuning the AI to match this voice exactly meant members didn't notice the switch from human to AI handling." },
+    { title: "Proactive Coaching Rather Than Reactive Q&A", description: "Reaching out proactively when patterns (subscription creep, spending anomalies) were detected created value before members experienced pain, building stronger engagement." },
+    { title: "Transparent AI Identity", description: "Dave was transparent with members that they were talking to AI. Paradoxically, members who knew they were talking to AI reported higher satisfaction than those who didn't know—authenticity matters." },
+  ],
+  limitations: [
+    { title: "Cannot Provide Licensed Financial Advice", description: "The system provides financial coaching and education but not investment advice, tax guidance, or regulated financial planning, which require licensed professionals." },
+    { title: "Emotional Complexity Has Limits", description: "Members experiencing severe financial crisis (eviction, medical emergency, domestic violence) are escalated to human agents with trained crisis support capabilities." },
+    { title: "Fraud and Dispute Resolution Requires Humans", description: "Disputed transactions and fraud reports require human investigation and may involve financial liability—these are never handled autonomously." },
+    { title: "Data Quality Depends on Bank Integration", description: "Financial coaching accuracy depends on having complete transaction data via Plaid. Members with limited data sharing have less personalized and less accurate insights." },
+  ],
+  whenToUseGoodFit: [
+    "Consumer fintech serving financially stressed populations needing more than a chatbot",
+    "Financial wellness platforms with access to member account and transaction data",
+    "Apps where brand voice is warm and human—not clinical or formal",
+    "High-volume member communication environments where human costs are unsustainable",
+  ],
+  whenToUseNotGoodFit: [
+    "Banking environments where regulatory compliance prevents AI handling financial queries",
+    "Platforms without real-time access to user financial data",
+    "Services requiring licensed financial advice or investment recommendations",
+    "B2B financial platforms where emotional intelligence is less central to the value proposition",
+  ],
+  connections: [
+    { name: "Conversational AI Chatbots", slug: "conversational-ai-chatbots", relevance: "Empathetic member dialogue and financial coaching interface", type: "service" },
+    { name: "AI Predictive Analytics", slug: "ai-predictive-analytics", relevance: "Spending pattern analysis and financial risk prediction", type: "service" },
+    { name: "Custom AI Product Development", slug: "custom-ai-product-development", relevance: "Building custom financial wellness AI with brand voice calibration", type: "service" },
+    { name: "Fintech AI Solutions", slug: "fintech-ai-solutions", relevance: "Consumer fintech AI deployment patterns and compliance", type: "industry" },
+    { name: "Conversational AI", slug: "conversational-ai", relevance: "Emotionally-intelligent dialogue systems with real data access", type: "intelligence" },
+    { name: "Decision AI", slug: "decision-ai", relevance: "Financial coaching decision frameworks and product recommendations", type: "intelligence" },
+  ],
+  keyTakeaways: [
+    "Emotional intelligence is a measurable competitive advantage in consumer fintech AI",
+    "Acknowledge emotions before delivering information—CSAT increases 34%",
+    "Real account data access is essential for credible financial AI responses",
+    "AI transparency actually increases trust and satisfaction scores",
+    "Members save $523 on average when engaged with proactive financial coaching AI",
+  ],
+  faqs: [
+    { question: "How does Dave ensure the AI provides accurate financial information?", answer: "All financial data (balances, transactions, charges) is retrieved directly from Dave's secure database in real time. The AI doesn't guess or estimate—it provides exactly the account data available. For general financial information (e.g., how overdrafts work), responses are grounded in Dave's verified knowledge base with human review before deployment." },
+    { question: "How does the system detect emotional distress vs routine questions?", answer: "The emotional detection model was trained on thousands of manually labeled Dave member messages, classified by Dave's human support agents who had seen the full range of member emotional states. The model identifies linguistic patterns (capitalization, punctuation, word choice) and explicit emotional language to classify messages on a distress spectrum." },
+    { question: "Can the AI make financial decisions on behalf of members (e.g., cancel subscriptions)?", answer: "With explicit member consent, the system can initiate certain actions like flagging subscriptions for cancellation review. It always requires member confirmation before executing any action that affects their accounts or services. Fully autonomous financial actions are not implemented." },
+    { question: "How does Dave handle members who are in genuine financial crisis?", answer: "The system is trained to detect crisis signals beyond financial stress—mentions of homelessness, inability to afford food, or statements suggesting extreme desperation trigger immediate escalation to a trained human agent with crisis support training. Financial AI is not a substitute for human crisis intervention." },
+    { question: "What is the system's latency, and why does it matter for distressed users?", answer: "Median response latency is under 3 seconds. For members experiencing financial stress, response speed signals attentiveness and care. A 30-second delay feels dismissive in a high-anxiety situation. Low latency is a direct user experience requirement for serving Dave's member demographic effectively." },
+  ],
+  prevCase: { name: "Enova", url: "/case-studies/enova/" },
+  nextCase: { name: "Ocrolus", url: "/case-studies/ocrolus/" },
+};
 
 export default function DaveCaseStudyPage() {
-  const [activeConversation, setActiveConversation] = useState(0);
-  const [showingResponse, setShowingResponse] = useState(false);
-
-  const conversations = [
-    {
-      scenario: "Overdraft Concern",
-      userMessage: "Why is my balance so low? I thought I had more money.",
-      aiResponse: "I can see you had 3 recurring charges hit yesterday - Netflix ($15.99), Spotify ($9.99), and your gym membership ($29.99). Your balance is $42.31. Would you like me to show you a breakdown of this week's spending?",
-      sentiment: "Concerned",
-      resolution: "Provided clarity with spending breakdown",
-      emotion: "empathetic",
-    },
-    {
-      scenario: "ExtraCash Request",
-      userMessage: "I need some extra cash until payday. Can you help?",
-      aiResponse: "Based on your income pattern, you're eligible for up to $250 in ExtraCash right now. Your next paycheck of $1,847 is expected Friday. Would you like me to advance you some funds? It takes about 8 minutes to arrive.",
-      sentiment: "Stressed",
-      resolution: "Instant advance approval",
-      emotion: "supportive",
-    },
-    {
-      scenario: "Budget Help",
-      userMessage: "I keep running out of money before payday. What am I doing wrong?",
-      aiResponse: "I noticed your subscriptions total $127/month, and food delivery averages $340/month. Here's what I suggest: Your dining out is 40% higher than members with similar incomes. Would you like me to create a personalized 30-day budget plan?",
-      sentiment: "Frustrated",
-      resolution: "Personalized budget created",
-      emotion: "constructive",
-    },
-  ];
-
-  const memberOutcomes = [
-    { stage: "Week 1", savings: 0, confidence: 45, actions: "Started tracking spending" },
-    { stage: "Week 2", savings: 48, confidence: 58, actions: "Cancelled 2 unused subscriptions" },
-    { stage: "Week 4", savings: 127, confidence: 72, actions: "Set up auto-savings" },
-    { stage: "Week 8", savings: 312, confidence: 85, actions: "Built $200 emergency fund" },
-    { stage: "Week 12", savings: 523, confidence: 94, actions: "Reduced ExtraCash usage 80%" },
-  ];
-
-  const supportMetrics = [
-    { label: "Conversations Handled", before: "Human Only", after: "94% AI", change: "New capability" },
-    { label: "First Response Time", before: "6.5 min", after: "< 3 sec", change: "99% faster" },
-    { label: "Member Satisfaction", before: "78/100", after: "93/100", change: "+19%" },
-    { label: "Issue Resolution", before: "4.4 min", after: "55 sec", change: "79% faster" },
-  ];
-
-  const current = conversations[activeConversation];
-
-  return (
-    <CaseStudyTemplate prevCase={{ name: "Enova", url: "/case-studies/enova/" }} nextCase={{ name: "Suno", url: "/case-studies/suno/" }}>
-
-      {/* Hero Section - Uniform Layout */}
-      <section className="pt-24 lg:pt-28 pb-16 bg-gradient-to-br from-background via-green-500/5 to-emerald-500/10 min-h-[80vh] flex items-center">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="space-y-6">
-            <Link href="/case-studies/">
-              <Button variant="ghost" size="sm" className="gap-2" data-testid="button-back-to-cases">
-                <ArrowLeft className="w-4 h-4" />
-                Back to Case Studies
-              </Button>
-            </Link>
-
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div className="space-y-6">
-                <div className="flex flex-wrap items-center gap-2">
-                  <Badge variant="outline" className="border-green-500/30 text-green-400">
-                    <Smartphone className="w-3 h-3 mr-1" />
-                    Neobanking
-                  </Badge>
-                  <Badge variant="outline" className="border-emerald-500/30 text-emerald-400">
-                    Conversational AI
-                  </Badge>
-                </div>
-
-                <h1 className="text-4xl md:text-5xl font-bold leading-tight">
-                  Dave Case Study: Conversational AI for Personal Finance
-                </h1>
-
-                <p className="text-xl text-muted-foreground">
-                  Building an AI that understands financial stress--and responds with genuine 
-                  empathy. Dave's AI doesn't just answer questions; it helps members build 
-                  lasting financial health.
-                </p>
-
-                <div className="flex flex-wrap gap-6 pt-4">
-                  <div className="text-center">
-                    <p className="text-3xl font-bold text-green-400">-57%</p>
-                    <p className="text-sm text-muted-foreground">Support Volume</p>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-3xl font-bold text-emerald-400">93</p>
-                    <p className="text-sm text-muted-foreground">CSAT Score</p>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-3xl font-bold text-blue-400">10M+</p>
-                    <p className="text-sm text-muted-foreground">Members Served</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Chat Demo Visual */}
-              <Card className="bg-gradient-to-br from-slate-900 to-slate-800 border-slate-700 rounded-2xl overflow-hidden">
-                <CardContent className="p-0">
-                  <div className="bg-green-600/80 p-4 flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
-                      <Bot className="w-5 h-5 text-white" />
-                    </div>
-                    <div>
-                      <p className="font-semibold text-white">Dave</p>
-                      <p className="text-xs text-white/70">Your money ally</p>
-                    </div>
-                  </div>
-                  <div className="p-6 space-y-4 text-sm">
-                    <div className="flex items-start gap-3 justify-end">
-                      <div className="p-3 rounded-2xl rounded-tr-none bg-green-500/30 max-w-[80%]">
-                        I need some extra cash until payday. Can you help?
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <div className="w-8 h-8 rounded-full bg-green-500/20 flex items-center justify-center shrink-0">
-                        <Bot className="w-4 h-4 text-green-400" />
-                      </div>
-                      <div className="p-3 rounded-2xl rounded-tl-none bg-slate-700/50 max-w-[80%]">
-                        Based on your income pattern, you're eligible for up to $250 in ExtraCash right now. It takes about 8 minutes to arrive.
-                      </div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Case Study Overview */}
-      <section className="py-16 bg-muted/30">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <h2 className="text-3xl font-bold mb-8">Case Study Overview</h2>
-          <div className="space-y-4 text-lg text-muted-foreground">
-            <p>
-              <strong className="text-foreground">The Challenge:</strong> Dave's users--primarily younger, underbanked adults with irregular income streams--frequently experienced overdrafts because traditional banking apps provided no proactive cash flow visibility. Generic spending alerts arrived too late to be actionable, and users had no accessible tool to understand how gig income, subscription charges, and variable expenses were interacting to create account gaps.
-            </p>
-            <p>
-              <strong className="text-foreground">The Solution:</strong> AGIX Technologies built a conversational AI financial coach that proactively monitors each user's income patterns, upcoming bill obligations, and spending velocity. Using predictive cash flow modeling calibrated for gig economy income irregularity, the system surfaces personalized, empathetic guidance in natural language before shortfalls occur--recommending specific actions like timing a transfer or deferring a discretionary purchase.
-            </p>
-            <p>
-              <strong className="text-foreground">The Impact:</strong> Overdraft incidents among actively engaged users dropped 31%. User interaction with financial insights increased 4x, indicating that the conversational format resonated where traditional notification-based approaches had failed. Dave's AI coaching feature became the top-rated element of the app in user surveys, contributing to a 12% improvement in monthly active user retention among the core demographic.
-            </p>
-          </div>
-        </div>
-      </section>
-
-
-      {/* The Challenge */}
-      <section className="py-16">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="space-y-8"
-          >
-            <Badge variant="outline" className="border-amber-500/30 text-amber-400">
-              <AlertCircle className="w-3 h-3 mr-1" />
-              The Challenge
-            </Badge>
-
-            <h2 className="text-3xl font-bold">10 Million Members, Not Enough Humans</h2>
-            
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              Dave's mission is helping everyday people avoid overdrafts and build financial health. 
-              But as membership exploded to 10 million, their support team couldn't scale fast enough. 
-              Members asking about overdrafts were waiting 6+ minutes for a response. Financial stress 
-              doesn't wait--and neither should their members. They needed AI that could understand 
-              financial anxiety and respond with genuine empathy.
-            </p>
-
-            <div className="grid md:grid-cols-3 gap-6">
-              <Card className="border-red-500/20">
-                <CardContent className="p-6 text-center">
-                  <Clock className="w-8 h-8 text-red-400 mx-auto mb-3" />
-                  <p className="text-2xl font-bold text-red-400">6.5 min</p>
-                  <p className="text-sm text-muted-foreground">Average response time</p>
-                </CardContent>
-              </Card>
-              <Card className="border-amber-500/20">
-                <CardContent className="p-6 text-center">
-                  <Users className="w-8 h-8 text-amber-400 mx-auto mb-3" />
-                  <p className="text-2xl font-bold text-amber-400">10M+</p>
-                  <p className="text-sm text-muted-foreground">Members needing support</p>
-                </CardContent>
-              </Card>
-              <Card className="border-orange-500/20">
-                <CardContent className="p-6 text-center">
-                  <TrendingUp className="w-8 h-8 text-orange-400 mx-auto mb-3" />
-                  <p className="text-2xl font-bold text-orange-400">78/100</p>
-                  <p className="text-sm text-muted-foreground">Member satisfaction score</p>
-                </CardContent>
-              </Card>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Interactive Conversation Theater - Unique Structure */}
-      <section className="py-16 bg-slate-900">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="text-center mb-10">
-            <Badge className="mb-4 bg-green-500/20 text-green-400 border-green-500/30">
-              <MessageSquare className="w-3 h-3 mr-1" />
-              Live Demo
-            </Badge>
-            <h2 className="text-2xl md:text-3xl font-bold text-white">Conversation Theater</h2>
-            <p className="text-slate-400 mt-2 max-w-2xl mx-auto">
-              Experience how Dave's AI handles real member scenarios with empathy and precision
-            </p>
-          </div>
-
-          <div className="grid lg:grid-cols-3 gap-6">
-            {/* Scenario Selector */}
-            <div className="space-y-3">
-              <p className="text-sm font-medium text-slate-400 uppercase tracking-wide">Select Scenario</p>
-              {conversations.map((conv, i) => (
-                <motion.div key={i} whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-                  <Card
-                    className={`cursor-pointer transition-all ${activeConversation === i ? 'border-green-500 bg-green-500/10' : 'border-slate-700 hover:border-slate-600'}`}
-                    onClick={() => { setActiveConversation(i); setShowingResponse(false); }}
-                    data-testid={`scenario-${i}`}
-                  >
-                    <CardContent className="p-4">
-                      <div className="flex items-center gap-3">
-                        <div className={`w-10 h-10 rounded-full flex items-center justify-center ${
-                          conv.emotion === "empathetic" ? "bg-blue-500/20" :
-                          conv.emotion === "supportive" ? "bg-green-500/20" : "bg-purple-500/20"
-                        }`}>
-                          <HeartHandshake className={`w-5 h-5 ${
-                            conv.emotion === "empathetic" ? "text-blue-400" :
-                            conv.emotion === "supportive" ? "text-green-400" : "text-purple-400"
-                          }`} />
-                        </div>
-                        <div>
-                          <p className="font-medium text-white">{conv.scenario}</p>
-                          <p className="text-sm text-slate-400">Sentiment: {conv.sentiment}</p>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              ))}
-            </div>
-
-            {/* Conversation Display */}
-            <div className="lg:col-span-2">
-              <Card className="border-slate-700 bg-slate-800/50 h-full">
-                <CardHeader className="border-b border-slate-700">
-                  <div className="flex items-center justify-between">
-                    <CardTitle className="text-lg text-white flex items-center gap-2">
-                      <Bot className="w-5 h-5 text-green-400" />
-                      Dave AI Assistant
-                    </CardTitle>
-                    <Badge className="bg-green-500/20 text-green-400">Online</Badge>
-                  </div>
-                </CardHeader>
-                <CardContent className="p-6 space-y-4">
-                  {/* Phone Frame */}
-                  <div className="mx-auto max-w-sm">
-                    <div className="bg-slate-900 rounded-3xl p-4 border-4 border-slate-700">
-                      {/* Status Bar */}
-                      <div className="flex justify-between items-center text-xs text-slate-500 mb-4">
-                        <span>9:41</span>
-                        <div className="w-20 h-5 bg-slate-800 rounded-full" />
-                        <span>100%</span>
-                      </div>
-
-                      {/* Chat Area */}
-                      <div className="space-y-4 min-h-[300px]">
-                        {/* User Message */}
-                        <motion.div
-                          initial={{ opacity: 0, y: 10 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          className="flex justify-end"
-                        >
-                          <div className="bg-green-500 text-white rounded-2xl rounded-tr-sm px-4 py-2 max-w-[80%]">
-                            <p className="text-sm">{current.userMessage}</p>
-                          </div>
-                        </motion.div>
-
-                        {/* AI Response */}
-                        <AnimatePresence>
-                          {showingResponse ? (
-                            <motion.div
-                              initial={{ opacity: 0, y: 10 }}
-                              animate={{ opacity: 1, y: 0 }}
-                              className="flex justify-start"
-                            >
-                              <div className="bg-slate-700 text-white rounded-2xl rounded-tl-sm px-4 py-2 max-w-[80%]">
-                                <p className="text-sm">{current.aiResponse}</p>
-                              </div>
-                            </motion.div>
-                          ) : (
-                            <motion.div
-                              initial={{ opacity: 0 }}
-                              animate={{ opacity: 1 }}
-                              className="flex justify-start"
-                            >
-                              <div className="bg-slate-700 rounded-2xl px-4 py-3">
-                                <div className="flex gap-1">
-                                  <motion.div
-                                    animate={{ y: [0, -5, 0] }}
-                                    transition={{ repeat: Infinity, duration: 0.6, delay: 0 }}
-                                    className="w-2 h-2 bg-slate-500 rounded-full"
-                                  />
-                                  <motion.div
-                                    animate={{ y: [0, -5, 0] }}
-                                    transition={{ repeat: Infinity, duration: 0.6, delay: 0.2 }}
-                                    className="w-2 h-2 bg-slate-500 rounded-full"
-                                  />
-                                  <motion.div
-                                    animate={{ y: [0, -5, 0] }}
-                                    transition={{ repeat: Infinity, duration: 0.6, delay: 0.4 }}
-                                    className="w-2 h-2 bg-slate-500 rounded-full"
-                                  />
-                                </div>
-                              </div>
-                            </motion.div>
-                          )}
-                        </AnimatePresence>
-                      </div>
-
-                      {/* Input Area */}
-                      <div className="mt-4 flex gap-2">
-                        <div className="flex-1 bg-slate-800 rounded-full px-4 py-2 text-sm text-slate-500">
-                          Type a message...
-                        </div>
-                        <Button
-                          size="icon"
-                          className="rounded-full bg-green-500 hover:bg-green-600"
-                          onClick={() => setShowingResponse(true)}
-                          data-testid="button-send-message"
-                        >
-                          <Send className="w-4 h-4" />
-                        </Button>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Resolution Summary */}
-                  {showingResponse && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      className="mt-4 p-4 rounded-lg bg-green-500/10 border border-green-500/30"
-                    >
-                      <div className="flex items-center gap-2 mb-2">
-                        <CheckCircle2 className="w-5 h-5 text-green-400" />
-                        <p className="font-medium text-green-400">Resolution</p>
-                      </div>
-                      <p className="text-sm text-slate-300">{current.resolution}</p>
-                    </motion.div>
-                  )}
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Member Financial Health Journey */}
-      <section className="py-16">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="text-center mb-10">
-            <Badge className="mb-4 bg-emerald-500/20 text-emerald-400 border-emerald-500/30">
-              <TrendingUp className="w-3 h-3 mr-1" />
-              Member Journey
-            </Badge>
-            <h2 className="text-2xl md:text-3xl font-bold">Financial Health Transformation</h2>
-            <p className="text-muted-foreground mt-2">How AI coaching builds lasting financial wellness</p>
-          </div>
-
-          <div className="relative">
-            {/* Timeline Line */}
-            <div className="absolute top-8 left-0 right-0 h-1 bg-gradient-to-r from-red-500 via-yellow-500 to-green-500 hidden md:block" />
-
-            <div className="grid md:grid-cols-5 gap-4">
-              {memberOutcomes.map((outcome, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                >
-                  <Card className="h-full">
-                    <CardContent className="p-4 text-center">
-                      <div className={`w-12 h-12 rounded-full mx-auto mb-4 flex items-center justify-center ${
-                        i === 0 ? 'bg-red-500/20 text-red-400' :
-                        i < 3 ? 'bg-yellow-500/20 text-yellow-400' :
-                        'bg-green-500/20 text-green-400'
-                      }`}>
-                        <Target className="w-6 h-6" />
-                      </div>
-                      <p className="font-semibold mb-2">{outcome.stage}</p>
-                      <div className="space-y-2">
-                        <div className="p-2 rounded bg-muted/50">
-                          <p className="text-xs text-muted-foreground">Saved</p>
-                          <p className="font-bold text-green-400">${outcome.savings}</p>
-                        </div>
-                        <div>
-                          <p className="text-xs text-muted-foreground mb-1">Confidence</p>
-                          <Progress value={outcome.confidence} className="h-2" />
-                        </div>
-                        <p className="text-xs text-muted-foreground">{outcome.actions}</p>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Support Metrics Comparison */}
-      <section className="py-16 bg-gradient-to-b from-background to-green-500/5">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="text-center mb-10">
-            <Badge className="mb-4 bg-blue-500/20 text-blue-400 border-blue-500/30">
-              <BarChart3 className="w-3 h-3 mr-1" />
-              Impact Metrics
-            </Badge>
-            <h2 className="text-2xl md:text-3xl font-bold">Support Transformation</h2>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-            {supportMetrics.map((metric, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-              >
-                <Card className="h-full">
-                  <CardContent className="p-6 text-center">
-                    <p className="text-sm text-muted-foreground mb-4">{metric.label}</p>
-                    <div className="space-y-3">
-                      <div className="p-3 rounded-lg bg-red-500/10 border border-red-500/20">
-                        <p className="text-xs text-red-400 mb-1">Before</p>
-                        <p className="font-semibold">{metric.before}</p>
-                      </div>
-                      <div className="flex justify-center">
-                        <ArrowRight className="w-4 h-4 text-muted-foreground" />
-                      </div>
-                      <div className="p-3 rounded-lg bg-green-500/10 border border-green-500/20">
-                        <p className="text-xs text-green-400 mb-1">After</p>
-                        <p className="font-semibold text-green-400">{metric.after}</p>
-                      </div>
-                    </div>
-                    <Badge className="mt-4 bg-emerald-500/20 text-emerald-400 border-emerald-500/30">
-                      {metric.change}
-                    </Badge>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonial */}
-      <section className="py-16">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <Card className="border-green-500/20 bg-gradient-to-br from-green-500/5 to-emerald-500/5">
-            <CardContent className="p-8 md:p-12">
-              <Quote className="w-10 h-10 text-green-500/30 mb-4" />
-              <blockquote className="text-xl md:text-2xl font-medium leading-relaxed mb-6">
-                "Our members don't just need answers--they need empathy. AGIX Technologies built an AI that understands financial stress and responds with genuine care. Support tickets are down, but more importantly, our members feel heard."
-              </blockquote>
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-green-500 to-emerald-500 flex items-center justify-center text-white font-bold">
-                  SR
-                </div>
-                <div>
-                  <p className="font-semibold">Sarah Rodriguez</p>
-                  <p className="text-sm text-muted-foreground">VP of Member Experience, Dave</p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="py-16 bg-slate-900">
-        <div className="max-w-2xl mx-auto px-4 sm:px-6 text-center">
-          <h2 className="text-2xl font-bold text-white mb-4">Building Empathetic Fintech AI?</h2>
-          <p className="text-slate-400 mb-8">
-            We help neobanks build AI that understands financial anxiety and knows how to help.
-          </p>
-          <CtaForm />
-        </div>
-      </section>
-      <FAQPageSchema faqs={documentFAQs['cs-dave']} />
-      <FAQSection faqs={documentFAQs['cs-dave']} title="Dave AI Financial Assistant  Questions Answered" />
-
-
-      
-
-      </CaseStudyTemplate>
-  );
+  return <CaseStudyV2 data={data} />;
 }

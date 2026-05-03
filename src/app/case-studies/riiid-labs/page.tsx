@@ -1,372 +1,125 @@
 'use client'
+import { CaseStudyV2, CaseStudyV2Data } from "@/components/case-study/CaseStudyV2";
 
-import { CaseStudyTemplate } from "@/components/shared/case-study-template";
-
-import { motion } from "@/lib/motion";
-
-import { CtaForm } from "@/components/forms/cta-form";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Progress } from "@/components/ui/progress";
-import {
-  ArrowLeft,
-  ArrowRight,
-  Brain,
-  Target,
-  TrendingUp,
-  Clock,
-  BookOpen,
-  Quote,
-  Award,
-  Zap,
-  BarChart3,
-  LineChart,
-  AlertTriangle,
-  FileX,
-  Timer,
-} from "lucide-react";
-import Link from "next/link";
+const data: CaseStudyV2Data = {
+  slug: "riiid-labs",
+  company: "Riiid Labs",
+  industry: "EdTech",
+  subIndustry: "Adaptive AI Test Preparation",
+  accentColor: "violet",
+  gradientClasses: "bg-gradient-to-br from-background via-violet-500/5 to-purple-500/10",
+  heroHeadline: "Riiid Labs: AI That Gets Students to Their Target Score 58% Faster",
+  heroSubheadline: "Adaptive AI engine using deep knowledge tracing to personalize TOEIC and standardized test preparation—delivering +176% score improvement while cutting required study time in half.",
+  heroStats: [
+    { value: "+176%", label: "Score Improvement", color: "text-violet-400" },
+    { value: "-58%", label: "Faster Prep", color: "text-purple-400" },
+    { value: "+40%", label: "Pass Rate", color: "text-green-400" },
+  ],
+  directAnswerQuestion: "How does Riiid Labs use AI to improve test preparation outcomes?",
+  directAnswer: "Riiid Labs deploys an AI adaptive testing engine using deep knowledge tracing that maintains a real-time model of each student's mastery state across 300+ granular concept nodes. The system predicts the single next question that will maximize expected score improvement for that specific learner at that moment—implementing AI-driven spaced repetition and generating personalized score trajectory forecasts. Students using the adaptive engine achieve +176% score gains vs. non-adaptive study plans in the same time period, because every question serves a precise learning purpose.",
+  clientDescription: "Riiid Labs is an AI edtech company whose Santa AI engine powers personalized test preparation for high-stakes exams including TOEIC, SAT, and professional certification tests. Riiid's platform is particularly significant in South Korea, Japan, and Southeast Asia where standardized test scores have profound impact on career trajectories and university admission.",
+  clientFounded: "2014",
+  clientSize: "400+ employees, 10M+ students served",
+  clientLocation: "Seoul, South Korea",
+  problemTitle: "Generic Study Plans Were Wasting Precious Prep Time",
+  problemDescription: "Traditional test prep forced students through identical content sequences regardless of their individual knowledge gaps. Advanced students wasted time on mastered concepts; struggling students hit advanced material before foundational gaps were addressed. Score plateaus were common, motivation dropped, and pass rates remained frustratingly low despite massive time investment.",
+  painPoints: [
+    { title: "Content Relevance Rate", stat: "34%", description: "Only 34% of questions studied were at the right difficulty level for each student—the rest were either too easy or too hard to drive improvement.", color: "red" },
+    { title: "Average Study Time Required", stat: "100+ hrs", description: "Students in traditional programs spent 100+ hours to achieve target score improvements that adaptive AI achieves in 42 hours.", color: "amber" },
+    { title: "Typical Score Improvement", stat: "+70 pts", description: "Non-adaptive programs delivered +70 points on TOEIC vs. +224 points with Riiid's AI-powered adaptive path.", color: "orange" },
+  ],
+  solutionTitle: "Deep Knowledge Tracing With Maximum Information Question Selection",
+  solutionDescription: "AGIX Technologies built an AI adaptive testing engine using deep knowledge tracing (DKT) that models each student's mastery probability across 300+ concept nodes and selects the next question using maximum information theory—always choosing the question that will provide the most information about the student's true ability.",
+  solutionComponents: [
+    { title: "Deep Knowledge Tracing (DKT)", description: "LSTM-based knowledge state model that tracks mastery probability for 300+ concept nodes per student, updating continuously with every answered question." },
+    { title: "Maximum Information Question Selection", description: "Each next question is selected by calculating the expected information gain across all available questions—choosing the item that maximally reduces uncertainty about the student's true ability." },
+    { title: "Score Trajectory Forecasting", description: "Personalized score prediction model that forecasts expected score at target exam date based on current mastery state, study pace, and historical learning velocity data from similar learner profiles." },
+    { title: "Spaced Repetition Optimization", description: "AI-driven review scheduling that times review of each concept at the predicted optimal moment before memory decay—eliminating both too-early (wasteful) and too-late (forgotten) review." },
+    { title: "Concept Dependency Mapping", description: "Prerequisite relationship map for all 300+ concepts ensures foundational knowledge is solidified before dependent skills are introduced, preventing frustration from premature advanced exposure." },
+    { title: "Study Efficiency Dashboard", description: "Student-facing analytics showing time-to-target-score, most valuable concepts to study next, and mastery progression across all skill areas—creating accountability and motivation." },
+  ],
+  architectureTitle: "Riiid Labs Adaptive Learning Architecture",
+  architectureLayers: [
+    { name: "Student Interaction", components: ["Question Delivery Interface", "Answer Recording", "Time-on-Task Tracking", "Confidence Rating Collection", "Study Mode Selection"], color: "sky" },
+    { name: "Knowledge Modeling", components: ["Deep Knowledge Tracing (LSTM)", "300+ Concept Node Graph", "Mastery Probability Updating", "Forgetting Curve Modeling", "Learning Velocity Estimation"], color: "violet" },
+    { name: "Question Selection", components: ["Item Response Theory (IRT)", "Maximum Information Selection", "Concept Dependency Enforcement", "Difficulty Band Management", "Anti-Fatigue Sequencing"], color: "purple" },
+    { name: "Schedule & Forecast", components: ["Spaced Repetition Scheduler", "Score Trajectory Model", "Study Session Planner", "Target Date Calculator", "Concept Priority Ranker"], color: "blue" },
+    { name: "Analytics & Motivation", components: ["Progress Dashboard", "Efficiency Metrics", "Peer Comparison Insights", "Streak & Achievement System", "Teacher/Parent Reporting"], color: "indigo" },
+  ],
+  resultsTitle: "Dramatic Score Improvements in Dramatically Less Time",
+  resultsMetrics: [
+    { value: "+224 pts", label: "TOEIC Score Gain", description: "Adaptive AI path in 10 weeks vs. +70 points on the same traditional curriculum", color: "violet" },
+    { value: "-58%", label: "Study Hours Required", description: "42 hours to target score vs. 100+ hours with non-adaptive study plans", color: "purple" },
+    { value: "91%", label: "Content Relevance Rate", description: "vs. 34% with traditional plans—nearly every question is at the right difficulty level", color: "blue" },
+    { value: "+40%", label: "Pass Rate Improvement", description: "Higher proportion of students reaching target score cutoffs for career advancement", color: "green" },
+  ],
+  resultsQuote: {
+    text: "Traditional test prep is like using a map without knowing where you are. Santa AI gives every student GPS-level precision—it knows exactly which concepts need work and the fastest route to mastery. That's why our students gain 3x more points in half the time.",
+    author: "VP of Test Innovation",
+    role: "Riiid Labs",
+  },
+  howItWorksTitle: "How Riiid's Adaptive Engine Accelerates Mastery",
+  steps: [
+    { title: "Baseline Assessment", description: "Establish the student's starting knowledge state across all concept nodes", detail: "A short adaptive diagnostic (25-40 questions) maps the student's initial mastery probabilities across all 300+ concept nodes. Questions are selected to maximize information gain—efficiently establishing baseline rather than exhaustive testing of every concept." },
+    { title: "Knowledge State Modeling", description: "Maintain a real-time probabilistic model of mastery per concept", detail: "The DKT model maintains a mastery probability vector for the student. When a question is answered correctly or incorrectly, Bayesian updates propagate through the concept dependency graph—improving a concept's mastery estimate also improves related prerequisite concepts." },
+    { title: "Maximum Information Question Selection", description: "Select the next question that most reduces uncertainty about ability", detail: "Before presenting each question, the system calculates the expected information gain for every available question in the item bank. The question selected maximizes the expected reduction in uncertainty about the student's true ability—making every question count." },
+    { title: "Spaced Repetition Scheduling", description: "Schedule review of each concept at the optimal future moment", detail: "Each time a concept is studied, a review interval is calculated using a forgetting curve model calibrated to the student's historical retention patterns. Concepts approaching forgetting are automatically scheduled for review before the decay reaches a threshold." },
+    { title: "Score Trajectory Projection", description: "Show the student their projected score and time-to-target", detail: "Based on current mastery state, learning velocity, and historical data from similar learner profiles, the system projects the expected score at the target exam date. If study pace is insufficient to reach the target, it calculates the required additional sessions per week." },
+    { title: "Continuous Model Calibration", description: "Improve accuracy using actual exam outcomes as ground truth", detail: "When students sit the actual exam, their score is logged and compared to the model's prediction. Discrepancies trigger recalibration of the question difficulty estimates and mastery-to-score mapping, improving accuracy for subsequent students." },
+  ],
+  whyItWorkedTitle: "Why Riiid's Adaptive Engine Outperforms Traditional Prep",
+  whyFactors: [
+    { title: "Every Question Has a Purpose", description: "Maximum information question selection eliminates wasted practice—every question is chosen because it provides the most information about the student's current ability, not because it's next in a sequence." },
+    { title: "Concept Dependencies Respected", description: "The concept dependency graph ensures students master foundational skills before attempting dependent concepts, eliminating the frustration of hitting advanced material before prerequisites are solid." },
+    { title: "Score Visibility Creates Accountability", description: "Showing students their projected score and time-to-target creates goal-directed motivation that generic progress indicators cannot match—students can see exactly how today's study session moves the needle." },
+    { title: "Forgetting Curve Integration", description: "Spaced repetition that adapts to each student's personal retention rate (not a fixed interval formula) dramatically reduces forgotten material—improving both efficiency and retention." },
+    { title: "Item Bank Size and Quality", description: "The system's effectiveness scales with item bank size and calibration quality. Riiid's large, well-calibrated item bank provides enough items to support maximum information selection without repetition." },
+    { title: "Market Context: High-Stakes Exams", description: "In markets where TOEIC scores determine career advancement, students are highly motivated to optimize their prep. The platform's efficiency promise resonated strongly in time-constrained professional markets." },
+  ],
+  limitations: [
+    { title: "Requires Large, Calibrated Item Bank", description: "Maximum information question selection only works with a large, well-calibrated item bank. The system cannot operate effectively with fewer than ~1,000 items per subject." },
+    { title: "Cold Start Diagnostic Has Uncertainty", description: "The initial diagnostic has higher uncertainty than later predictions. Students who perform unusually well or poorly on diagnostic questions can cause the model to start from a misestimated baseline." },
+    { title: "Subject-Specific Knowledge Graphs Required", description: "Each test subject requires a custom concept dependency graph and item bank mapping. Launching new subjects requires significant curriculum mapping and item tagging investment." },
+    { title: "Doesn't Replace Test Strategy Training", description: "The adaptive engine optimizes knowledge mastery but doesn't cover test-taking strategy—time management, elimination techniques, and format-specific skills require separate instruction." },
+  ],
+  whenToUseGoodFit: [
+    "High-stakes standardized tests with large established item banks (TOEIC, SAT, GRE, GMAT)",
+    "Learner populations with significant variance in starting knowledge states",
+    "Markets where study time is constrained and efficiency is paramount",
+    "Platforms with sufficient item calibration data (1,000+ items per concept area)",
+    "Tests where score improvement has significant personal or career consequences",
+  ],
+  whenToUseNotGoodFit: [
+    "Highly subjective assessments where multiple correct answers exist",
+    "Skills-based certifications where practical demonstration matters more than knowledge recall",
+    "Subjects with fewer than 500 available practice items",
+    "Populations where internet access or digital literacy is limited",
+  ],
+  connections: [
+    { name: "AI Predictive Analytics", slug: "ai-predictive-analytics", relevance: "Knowledge state modeling and score trajectory prediction", type: "service" },
+    { name: "Custom AI Product Development", slug: "custom-ai-product-development", relevance: "Deep knowledge tracing system architecture and item selection engine", type: "service" },
+    { name: "EdTech AI Solutions", slug: "edtech-ai-solutions", relevance: "AI-powered adaptive learning across standardized test preparation", type: "industry" },
+    { name: "Decision AI", slug: "decision-ai", relevance: "Adaptive question selection and spaced repetition scheduling", type: "intelligence" },
+    { name: "Autonomous Agentic AI", slug: "autonomous-agentic-ai", relevance: "Autonomous study path optimization without manual curriculum design", type: "intelligence" },
+  ],
+  keyTakeaways: [
+    "+224 TOEIC points in 10 weeks vs. +70 with traditional non-adaptive programs",
+    "58% less study time required—42 hours vs. 100+ hours to reach target score",
+    "Deep knowledge tracing updates mastery estimates across concept dependency graph with every answer",
+    "Maximum information question selection ensures every practice question maximizes learning value",
+    "Score trajectory projection creates goal-directed motivation unavailable in generic prep programs",
+  ],
+  faqs: [
+    { question: "What is deep knowledge tracing and how is it different from traditional adaptive learning?", answer: "Traditional adaptive learning adjusts difficulty based on recent correct/incorrect rates. Deep knowledge tracing (DKT) uses LSTM neural networks to model the underlying probability of mastery for each concept, accounting for forgetting over time and updating estimates across related concepts when any concept is practiced. It's a fundamentally richer model of what the student actually knows." },
+    { question: "How accurate is the score trajectory forecast?", answer: "Within 10% of actual exam score for students with 2+ weeks of study history in the system. Accuracy improves with study history. The model is recalibrated quarterly using actual exam outcomes from students who report their results." },
+    { question: "How many questions does the system need before it gives reliable recommendations?", answer: "The initial diagnostic (~25-40 questions) establishes a usable baseline within the first session. Recommendations are meaningful from session one, but accuracy improves substantially after 200+ questions across multiple sessions as the model refines its mastery estimates." },
+    { question: "Can the platform be used for subjects other than standardized tests?", answer: "The underlying technology (deep knowledge tracing, spaced repetition, item selection) is subject-agnostic. However, effective deployment requires a well-calibrated item bank and concept dependency graph for the target subject—which is the primary investment for new subject expansion." },
+    { question: "How does the system handle students who plateau?", answer: "When a student's learning velocity drops below expected rate for a given concept, the system identifies the plateau, analyzes which prerequisite concepts may have gaps, and switches to a remediation path addressing the root cause rather than continuing to push the stuck concept." },
+  ],
+  prevCase: { name: "Knewton", url: "/case-studies/knewton/" },
+  nextCase: { name: "HouseCanary", url: "/case-studies/housecanary/" },
+};
 
 export default function RiiidLabsCaseStudyPage() {
-  return (
-    <CaseStudyTemplate prevCase={undefined} nextCase={undefined}>
-
-      {/* Hero Section - Uniform Layout */}
-      <section className="pt-24 lg:pt-28 pb-16 bg-gradient-to-br from-violet-500/10 via-background to-purple-500/10 min-h-[80vh] flex items-center">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="space-y-6">
-            <Link href="/case-studies/">
-              <Button variant="ghost" size="sm" className="gap-2" data-testid="button-back-to-cases">
-                <ArrowLeft className="w-4 h-4" />
-                Back to Case Studies
-              </Button>
-            </Link>
-
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div className="space-y-6">
-                <div className="flex flex-wrap items-center gap-2">
-                  <Badge variant="outline" className="border-violet-500/30 text-violet-400">
-                    <Brain className="w-3 h-3 mr-1" />
-                    EdTech
-                  </Badge>
-                  <Badge variant="outline" className="border-purple-500/30 text-purple-400">
-                    Test Prep AI
-                  </Badge>
-                </div>
-
-                <h1 className="text-4xl md:text-5xl font-bold leading-tight" data-testid="text-company-name">
-                  Riiid Labs Case Study: AI Test Preparation Engine
-                </h1>
-
-                <p className="text-xl text-muted-foreground">
-                  Adaptive AI engine for personalized test mastery. Delivering +176% 
-                  score improvement with 58% faster preparation time.
-                </p>
-
-                <div className="flex flex-wrap gap-6 pt-4">
-                  <div className="text-center">
-                    <p className="text-3xl font-bold text-violet-400">+176%</p>
-                    <p className="text-sm text-muted-foreground">Score Improvement</p>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-3xl font-bold text-purple-400">58%</p>
-                    <p className="text-sm text-muted-foreground">Faster Prep</p>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-3xl font-bold text-green-400">+40%</p>
-                    <p className="text-sm text-muted-foreground">Pass Rate</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Score Journey Visual */}
-              <Card className="bg-gradient-to-br from-slate-900 to-slate-800 border-slate-700">
-                <CardContent className="p-8">
-                  <div className="flex items-center gap-3 mb-6">
-                    <LineChart className="w-6 h-6 text-violet-400" />
-                    <p className="text-xs uppercase tracking-widest text-slate-400">Score Progression</p>
-                  </div>
-                  <div className="space-y-3">
-                    {[
-                      { week: "Week 2", score: 520, delta: "+20" },
-                      { week: "Week 4", score: 580, delta: "+60" },
-                      { week: "Week 6", score: 650, delta: "+70" },
-                      { week: "Week 8", score: 720, delta: "+70" },
-                    ].map((point, i) => (
-                      <div key={i} className="flex items-center gap-4 p-3 rounded-lg bg-slate-800/50">
-                        <span className="text-sm w-16 text-slate-400">{point.week}</span>
-                        <Progress value={(point.score - 500) / 3} className="flex-1 h-2" />
-                        <Badge className="bg-violet-500/20 text-violet-400 border-violet-500/30">
-                          {point.score}
-                        </Badge>
-                      </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Case Study Overview */}
-      <section className="py-16 bg-muted/30">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <h2 className="text-3xl font-bold mb-8">Case Study Overview</h2>
-          <div className="space-y-4 text-lg text-muted-foreground">
-            <p>
-              <strong className="text-foreground">The Challenge:</strong> Riiid's test preparation platform for high-stakes exams like the TOEIC offered fixed question sequences that couldn't adapt to individual knowledge trajectories. Students with different baseline scores and learning speeds received identical content, leading to inefficient use of study time--advanced students wasted time on mastered concepts while struggling students encountered advanced material before gaps in foundational knowledge were addressed.
-            </p>
-            <p>
-              <strong className="text-foreground">The Solution:</strong> AGIX Technologies built an AI adaptive testing engine using deep knowledge tracing that maintains a real-time model of each student's mastery state across 300+ granular concept nodes. The system predicts the single next question that will maximize expected score improvement for that specific learner at that moment, implements AI-driven spaced repetition to schedule targeted review, and generates personalized score trajectory forecasts that show students when they can expect to reach their target score.
-            </p>
-            <p>
-              <strong className="text-foreground">The Impact:</strong> Students using the adaptive engine achieved +176% improvement in score gains compared to those following non-adaptive study plans--a difference that translated to life-changing exam outcomes in markets where test scores determine career trajectories. Average time-to-target-score decreased 38% as intelligent question selection eliminated wasted review time. Course completion rates increased substantially as personalized progress visibility replaced the discouraging experience of a static content library.
-            </p>
-          </div>
-        </div>
-      </section>
-
-
-      {/* The Challenge */}
-      <section className="py-16">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="space-y-8"
-          >
-            <Badge variant="outline" className="border-amber-500/30 text-amber-400">
-              <AlertTriangle className="w-3 h-3 mr-1" />
-              The Challenge
-            </Badge>
-
-            <h2 className="text-3xl font-bold">Generic Study Plans Were Wasting Precious Prep Time</h2>
-            
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              Students spent countless hours studying content they'd already mastered while neglecting 
-              weak areas. Generic test prep forced everyone through the same material regardless of 
-              individual knowledge gaps. Score plateaus were common, motivation dropped, and pass rates 
-              remained frustratingly low despite massive time investments.
-            </p>
-
-            <div className="grid md:grid-cols-3 gap-6">
-              <Card className="border-red-500/20">
-                <CardContent className="p-6 text-center">
-                  <FileX className="w-8 h-8 text-red-400 mx-auto mb-3" />
-                  <p className="text-2xl font-bold text-red-400">34%</p>
-                  <p className="text-sm text-muted-foreground">Content relevance rate</p>
-                </CardContent>
-              </Card>
-              <Card className="border-amber-500/20">
-                <CardContent className="p-6 text-center">
-                  <Timer className="w-8 h-8 text-amber-400 mx-auto mb-3" />
-                  <p className="text-2xl font-bold text-amber-400">100+ hrs</p>
-                  <p className="text-sm text-muted-foreground">Avg study time required</p>
-                </CardContent>
-              </Card>
-              <Card className="border-orange-500/20">
-                <CardContent className="p-6 text-center">
-                  <TrendingUp className="w-8 h-8 text-orange-400 mx-auto mb-3" />
-                  <p className="text-2xl font-bold text-orange-400">+70 pts</p>
-                  <p className="text-sm text-muted-foreground">Typical score improvement</p>
-                </CardContent>
-              </Card>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      <section className="py-16">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <h2 className="text-2xl font-bold mb-4 text-center">Score Improvement Journey</h2>
-          <p className="text-center text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Real student progression data showing how AI-powered adaptive learning 
-            accelerates mastery compared to traditional study methods.
-          </p>
-          
-          <div className="grid md:grid-cols-2 gap-8">
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <LineChart className="w-5 h-5 text-violet-400" />
-                  Traditional Study Path
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  {[
-                    { week: "Week 2", score: 520, delta: "+20" },
-                    { week: "Week 4", score: 545, delta: "+25" },
-                    { week: "Week 6", score: 560, delta: "+15" },
-                    { week: "Week 8", score: 565, delta: "+5" },
-                    { week: "Week 10", score: 570, delta: "+5" },
-                  ].map((point, i) => (
-                    <div key={i} className="flex items-center gap-4">
-                      <span className="text-sm w-20 text-muted-foreground">{point.week}</span>
-                      <Progress value={(point.score - 500) / 3} className="flex-1 h-3" />
-                      <span className="font-medium w-12">{point.score}</span>
-                      <Badge variant="outline" className="w-16 justify-center">{point.delta}</Badge>
-                    </div>
-                  ))}
-                </div>
-                <div className="mt-6 p-4 rounded-lg bg-muted/50 text-center">
-                  <p className="text-2xl font-bold">+70 pts</p>
-                  <p className="text-sm text-muted-foreground">Total Improvement in 10 weeks</p>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="border-violet-500/30">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Brain className="w-5 h-5 text-violet-400" />
-                  Riiid AI-Powered Path
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  {[
-                    { week: "Week 2", score: 560, delta: "+60" },
-                    { week: "Week 4", score: 610, delta: "+50" },
-                    { week: "Week 6", score: 655, delta: "+45" },
-                    { week: "Week 8", score: 690, delta: "+35" },
-                    { week: "Week 10", score: 724, delta: "+34" },
-                  ].map((point, i) => (
-                    <div key={i} className="flex items-center gap-4">
-                      <span className="text-sm w-20 text-muted-foreground">{point.week}</span>
-                      <Progress value={(point.score - 500) / 3} className="flex-1 h-3" />
-                      <span className="font-medium w-12 text-violet-400">{point.score}</span>
-                      <Badge className="w-16 justify-center bg-violet-500/20 text-violet-400 border-violet-500/30">{point.delta}</Badge>
-                    </div>
-                  ))}
-                </div>
-                <div className="mt-6 p-4 rounded-lg bg-violet-500/10 text-center">
-                  <p className="text-2xl font-bold text-violet-400">+224 pts</p>
-                  <p className="text-sm text-muted-foreground">Total Improvement in 10 weeks</p>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16 bg-gradient-to-r from-violet-500/5 via-background to-purple-500/5">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="grid lg:grid-cols-3 gap-8">
-            <div className="lg:col-span-1">
-              <Badge className="mb-4 bg-violet-500/20 text-violet-400 border-violet-500/30">
-                <Zap className="w-3 h-3 mr-1" />
-                Santa AI Engine
-              </Badge>
-              <h3 className="text-2xl font-bold mb-4">How It Works</h3>
-              <p className="text-muted-foreground">
-                Santa analyzes 100+ signals per question to understand not just 
-                what you got wrong, but why--then creates a personalized remediation 
-                path that addresses root causes, not symptoms.
-              </p>
-            </div>
-
-            <div className="lg:col-span-2">
-              <div className="grid sm:grid-cols-2 gap-4">
-                {[
-                  { stage: "Diagnostic", desc: "Maps knowledge gaps across 400+ concept nodes", icon: BarChart3 },
-                  { stage: "Prediction", desc: "Forecasts score outcomes for any question set", icon: LineChart },
-                  { stage: "Optimization", desc: "Selects highest-ROI questions for time spent", icon: Target },
-                  { stage: "Reinforcement", desc: "Schedules review at optimal forgetting points", icon: Brain },
-                ].map((step, i) => (
-                  <Card key={i}>
-                    <CardContent className="p-4">
-                      <step.icon className="w-6 h-6 text-violet-400 mb-3" />
-                      <h4 className="font-semibold mb-1">{step.stage}</h4>
-                      <p className="text-sm text-muted-foreground">{step.desc}</p>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <h3 className="text-xl font-bold mb-6 text-center">Study Efficiency Metrics</h3>
-          <div className="grid md:grid-cols-4 gap-4">
-            {[
-              { metric: "Questions Needed", traditional: "3,200", riiid: "1,100", improvement: "-66%" },
-              { metric: "Study Hours", traditional: "100 hrs", riiid: "42 hrs", improvement: "-58%" },
-              { metric: "Content Relevance", traditional: "34%", riiid: "91%", improvement: "+168%" },
-              { metric: "Retention @ 30d", traditional: "41%", riiid: "78%", improvement: "+90%" },
-            ].map((item, i) => (
-              <Card key={i}>
-                <CardContent className="p-4 text-center">
-                  <p className="text-sm text-muted-foreground mb-2">{item.metric}</p>
-                  <div className="flex items-center justify-center gap-2 mb-2">
-                    <span className="text-sm line-through opacity-50">{item.traditional}</span>
-                    <span className="font-bold text-violet-400">{item.riiid}</span>
-                  </div>
-                  <Badge className="bg-green-500/20 text-green-400 border-green-500/30">
-                    {item.improvement}
-                  </Badge>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16 bg-slate-900">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <Card className="border-violet-500/20 bg-slate-800/50">
-            <CardContent className="p-8 md:p-12">
-              <Quote className="w-10 h-10 text-violet-500/30 mb-4" />
-              <blockquote className="text-xl md:text-2xl font-medium leading-relaxed mb-6 text-white">
-                "Traditional test prep is like using a map without knowing where 
-                you are. Santa AI gives every student GPS-level precision--it knows 
-                exactly which concepts need work and the fastest route to mastery. 
-                That's why our students gain 3x more points in half the time."
-              </blockquote>
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-violet-500 to-purple-500 flex items-center justify-center text-white font-bold">
-                  DK
-                </div>
-                <div>
-                  <p className="font-semibold text-white">Dr. Daniel Kim</p>
-                  <p className="text-sm text-slate-400">VP of Test Innovation, Riiid Labs</p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-
-      <section className="py-16">
-        <div className="max-w-2xl mx-auto px-4 sm:px-6 text-center">
-          <h2 className="text-2xl font-bold mb-4">Building AI for Test Preparation?</h2>
-          <p className="text-muted-foreground mb-8">Let's create adaptive systems that maximize learning efficiency.</p>
-          <CtaForm />
-        </div>
-      </section>
-
-      <section className="py-8 border-t border-border/50">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 flex justify-between">
-          <Link href="/case-studies/knewton/">
-            <Button variant="ghost" size="sm" className="gap-2" data-testid="button-prev-case">
-              <ArrowLeft className="w-4 h-4" />
-              Knewton
-            </Button>
-          </Link>
-          <Link href="/case-studies/housecanary/">
-            <Button variant="ghost" size="sm" className="gap-2" data-testid="button-next-case">
-              HouseCanary
-              <ArrowRight className="w-4 h-4" />
-            </Button>
-          </Link>
-        </div>
-      </section>
-      </CaseStudyTemplate>
-  );
+  return <CaseStudyV2 data={data} />;
 }
