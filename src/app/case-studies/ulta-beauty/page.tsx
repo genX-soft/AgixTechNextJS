@@ -191,13 +191,13 @@ export default function UltaBeautyCaseStudyPage() {
           <h2 className="text-3xl font-bold mb-8">Case Study Overview</h2>
           <div className="space-y-4 text-lg text-muted-foreground">
             <p>
-              <strong className="text-foreground">The Challenge:</strong> Ulta Beauty's Ultamate Rewards program had 40 million members but was underperforming its potential as a personalization engine. Generic email campaigns, uniform point balance notifications, and blanket promotional offers failed to reflect individual beauty preferences—reaching every member with the same message regardless of whether they were skincare enthusiasts, makeup collectors, or haircare loyalists. Offer redemption rates had stagnated at 12%.
+              <strong className="text-foreground">The Challenge:</strong> Ulta Beauty's Ultamate Rewards program had 40 million members but was underperforming its potential as a personalization engine. Generic email campaigns, uniform point balance notifications, and blanket promotional offers failed to reflect individual beauty preferences--reaching every member with the same message regardless of whether they were skincare enthusiasts, makeup collectors, or haircare loyalists. Offer redemption rates had stagnated at 12%.
             </p>
             <p>
-              <strong className="text-foreground">The Solution:</strong> AGIX Technologies transformed the loyalty platform into a predictive personalization engine that models each member's beauty category affinity, brand preferences, purchase cycle patterns, and price sensitivity. AI-generated offers align with individual purchase moments—surfacing skincare replenishment reminders before a user runs out, recommending complementary products based on recent purchases, and delivering personalized rewards at predicted moments of highest purchase intent through the channel most likely to drive engagement.
+              <strong className="text-foreground">The Solution:</strong> AGIX Technologies transformed the loyalty platform into a predictive personalization engine that models each member's beauty category affinity, brand preferences, purchase cycle patterns, and price sensitivity. AI-generated offers align with individual purchase moments--surfacing skincare replenishment reminders before a user runs out, recommending complementary products based on recent purchases, and delivering personalized rewards at predicted moments of highest purchase intent through the channel most likely to drive engagement.
             </p>
             <p>
-              <strong className="text-foreground">The Impact:</strong> Offer redemption rates increased from 12% to 34%—nearly tripling engagement with loyalty program communications. Average purchase frequency among mid-tier loyalty members increased 28% as timely, relevant outreach replaced generic blast communications. Revenue per loyalty member increased 19%, making the AI personalization initiative one of Ulta's highest-return technology investments that year and establishing the foundation for an increasingly sophisticated member relationship strategy.
+              <strong className="text-foreground">The Impact:</strong> Offer redemption rates increased from 12% to 34%--nearly tripling engagement with loyalty program communications. Average purchase frequency among mid-tier loyalty members increased 28% as timely, relevant outreach replaced generic blast communications. Revenue per loyalty member increased 19%, making the AI personalization initiative one of Ulta's highest-return technology investments that year and establishing the foundation for an increasingly sophisticated member relationship strategy.
             </p>
           </div>
         </div>
@@ -221,7 +221,7 @@ export default function UltaBeautyCaseStudyPage() {
             <h2 className="text-3xl font-bold">37 Million Members, Zero Personalization</h2>
             
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Ulta Beauty had built one of the largest beauty loyalty programs in America—but 
+              Ulta Beauty had built one of the largest beauty loyalty programs in America--but 
               treated every member the same. Skincare enthusiasts received fragrance promotions. 
               Value seekers got prestige brand emails. The result? Overwhelming product catalogs, 
               impersonal recommendations, and conversion rates that left billions on the table.
@@ -482,7 +482,7 @@ export default function UltaBeautyCaseStudyPage() {
             <CardContent className="p-8 md:p-12">
               <Quote className="w-10 h-10 text-pink-500/30 mb-4" />
               <blockquote className="text-xl md:text-2xl font-medium leading-relaxed mb-6">
-                "We went from batch-and-blast campaigns to truly individualized experiences for 37 million members. The AI doesn't just predict what products they'll buy—it knows when they're ready to discover something new. That's the difference between selling and delighting."
+                "We went from batch-and-blast campaigns to truly individualized experiences for 37 million members. The AI doesn't just predict what products they'll buy--it knows when they're ready to discover something new. That's the difference between selling and delighting."
               </blockquote>
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 rounded-full bg-gradient-to-br from-pink-500 to-purple-500 flex items-center justify-center text-white font-bold">

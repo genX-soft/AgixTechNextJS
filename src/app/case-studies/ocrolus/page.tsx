@@ -1,4 +1,7 @@
 'use client'
+import FAQSection from "@/components/shared/FAQSection";
+import FAQPageSchema from "@/components/shared/FAQPageSchema";
+import { documentFAQs } from "@/lib/seo/faq-data";
 
 import { CaseStudyTemplate } from "@/components/shared/case-study-template";
 
@@ -81,7 +84,7 @@ export default function OcrolusCaseStudyPage() {
                 </h1>
                 
                 <p className="text-xl text-muted-foreground">
-                  Processing 6+ million financial documents monthly with 99%+ accuracy—turning 
+                  Processing 6+ million financial documents monthly with 99%+ accuracy--turning 
                   unstructured bank statements, pay stubs, and tax returns into verified data lenders can trust.
                 </p>
 
@@ -140,10 +143,10 @@ export default function OcrolusCaseStudyPage() {
           <h2 className="text-3xl font-bold mb-8">Case Study Overview</h2>
           <div className="space-y-4 text-lg text-muted-foreground">
             <p>
-              <strong className="text-foreground">The Challenge:</strong> Ocrolus processed over 6 million financial documents monthly for lending institutions—bank statements, tax returns, pay stubs, and alternative income documentation—but inconsistent scan quality, diverse formatting, handwritten annotations, and non-standard templates created processing bottlenecks. Manual review queues for flagged documents were creating 2–3 day delays in loan decisions, undermining the fast-funding commitments that defined Ocrolus's competitive positioning.
+              <strong className="text-foreground">The Challenge:</strong> Ocrolus processed over 6 million financial documents monthly for lending institutions--bank statements, tax returns, pay stubs, and alternative income documentation--but inconsistent scan quality, diverse formatting, handwritten annotations, and non-standard templates created processing bottlenecks. Manual review queues for flagged documents were creating 2-3 day delays in loan decisions, undermining the fast-funding commitments that defined Ocrolus's competitive positioning.
             </p>
             <p>
-              <strong className="text-foreground">The Solution:</strong> AGIX Technologies built a document intelligence pipeline combining computer vision, NLP, and custom extraction models trained specifically on 50+ financial document types. The system handles degraded image quality, identifies handwritten fields, reconciles data across multi-page documents, and cross-validates extracted figures for internal consistency—automatically routing genuinely ambiguous cases to human reviewers with highlighted uncertainty regions rather than entire document reviews.
+              <strong className="text-foreground">The Solution:</strong> AGIX Technologies built a document intelligence pipeline combining computer vision, NLP, and custom extraction models trained specifically on 50+ financial document types. The system handles degraded image quality, identifies handwritten fields, reconciles data across multi-page documents, and cross-validates extracted figures for internal consistency--automatically routing genuinely ambiguous cases to human reviewers with highlighted uncertainty regions rather than entire document reviews.
             </p>
             <p>
               <strong className="text-foreground">The Impact:</strong> Document processing accuracy reached 99%+, reducing manual review requirements by 82% through intelligent triage that directed reviewer attention to genuinely uncertain cases. Processing time for complex multi-document loan files dropped from 3 days to 4 hours. Lender clients reported 40% faster loan decisioning cycles, enabling same-day funding commitments that became a key competitive differentiator in the consumer lending market.
@@ -172,7 +175,7 @@ export default function OcrolusCaseStudyPage() {
             <p className="text-lg text-muted-foreground leading-relaxed">
               Financial documents come in thousands of formats. Each bank has its own statement layout. 
               Pay stubs vary by payroll provider. Tax forms change yearly. Traditional OCR breaks down 
-              when it can't anticipate the structure—and in lending, one wrong number can change a credit decision.
+              when it can't anticipate the structure--and in lending, one wrong number can change a credit decision.
             </p>
 
             <div className="grid md:grid-cols-2 gap-6">
@@ -194,7 +197,7 @@ export default function OcrolusCaseStudyPage() {
                   <h4 className="font-semibold">The Scale Problem</h4>
                   <p className="text-sm text-muted-foreground">
                     Lenders need results in seconds, not hours. Manual review doesn't scale. 
-                    Ocrolus was spending 2,000+ hours monthly on manual QA review—and still 
+                    Ocrolus was spending 2,000+ hours monthly on manual QA review--and still 
                     missing edge cases.
                   </p>
                 </CardContent>
@@ -205,10 +208,10 @@ export default function OcrolusCaseStudyPage() {
               <p className="text-muted-foreground italic">
                 "We had a QA team manually reviewing extractions, and they were drowning. Every 
                 new bank format meant more edge cases. We needed AI that could learn from 
-                corrections automatically—not just follow rules."
+                corrections automatically--not just follow rules."
               </p>
               <p className="text-sm text-muted-foreground mt-3">
-                — Rachel Martinez, Director of Data Operations
+                -- Rachel Martinez, Director of Data Operations
               </p>
             </div>
           </motion.div>
@@ -430,6 +433,9 @@ export default function OcrolusCaseStudyPage() {
           </motion.div>
         </div>
       </section>
+      <FAQPageSchema faqs={documentFAQs['cs-ocrolus']} />
+      <FAQSection faqs={documentFAQs['cs-ocrolus']} title="Ocrolus Document AI  Questions Answered" />
+
 
       
       </CaseStudyTemplate>

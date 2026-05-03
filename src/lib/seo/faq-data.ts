@@ -956,6 +956,184 @@ export const documentFAQs: Record<string, FAQItem[]> = {
         'Applications for all open roles at AGIX Technologies are accepted via the careers page at agixtech.com/corporate/careers/. You can also send your CV and a brief note on your area of expertise directly to hello@agixtech.com with the subject line "Career Enquiry — [Role Name]". AGIX Technologies reviews applications on a rolling basis and responds to all qualified applications within 5 business days.',
     },
   ],
+
+  // ─── Case Study FAQs ──────────────────────────────────────────────────────────
+
+  "cs-enova": [
+    {
+      question: "What problem did Enova need to solve with AI?",
+      answer:
+        "Enova's traditional credit models relied on limited bureau data and generated high false-negative rates — rejecting creditworthy borrowers with thin credit files or non-traditional income histories. Manual review couldn't scale with application volume, and regulators demanded that every decision be fully explainable for audit purposes.",
+    },
+    {
+      question: "How did AGIX Technologies make Enova's AI credit decisions explainable?",
+      answer:
+        "AGIX Technologies built a gradient boosting model with SHAP-based attribution that generates plain-language rationales for each credit decision. Every approval or decline is backed by ranked contributing factors — payment history, debt-to-income ratio, employment stability — expressed in terms that satisfy ECOA adverse action requirements and CFPB examination standards.",
+    },
+    {
+      question: "What accuracy did the Enova AI credit model achieve?",
+      answer:
+        "The explainable AI credit decisioning system achieved 94.7% prediction accuracy across Enova's application portfolio. Loan approval rates improved 22% without any increase in realised default rates — demonstrating that the expanded signal set was identifying genuinely creditworthy borrowers previously rejected by conservative rule-based models.",
+    },
+    {
+      question: "How did Enova's regulatory audit time improve after deploying AI?",
+      answer:
+        "Regulatory review cycles shortened by 67% after deployment. Examiners could interrogate specific decision factors through the SHAP explanation framework rather than treating the model as a black box. Enova achieved 100% adverse action code coverage and 100% audit trail compliance — eliminating the 12 open compliance findings that existed before the project.",
+    },
+    {
+      question: "What financial regulations does the Enova AI system comply with?",
+      answer:
+        "The Enova AI credit system satisfies SR 11-7 model documentation requirements, ECOA adverse action notice obligations, CFPB fair lending examination standards, FTC bias monitoring requirements, and SOX audit trail coverage. All decision rationales are generated in real time and stored for regulatory retrieval without manual documentation effort.",
+    },
+    {
+      question: "Can this type of explainable AI be built for other fintech or lending companies?",
+      answer:
+        "Yes. AGIX Technologies builds explainable AI credit decisioning systems for fintech lenders, digital banks, NBFCs, and consumer finance platforms across the USA, UK, and Australia. Each system is trained on your specific data and configured for your regulatory environment. Engagements typically begin at $18,000–$35,000 depending on model complexity and integration scope.",
+    },
+  ],
+
+  "cs-dave": [
+    {
+      question: "What challenge was Dave trying to solve with AI?",
+      answer:
+        "Dave, a fintech app serving 10 million members, faced overwhelming support volume — the vast majority of queries were repetitive financial questions about account balances, transaction history, and overdraft protection. Human agents couldn't scale cost-effectively while maintaining the empathetic, human-like experience Dave's brand required.",
+    },
+    {
+      question: "How does the Dave AI assistant handle member conversations?",
+      answer:
+        "AGIX Technologies built a conversational AI assistant that understands natural language financial queries, retrieves live account data, and responds with contextual, empathetic answers. The system handles 94% of inquiries autonomously — covering balance checks, transaction explanations, ExtraCash advance queries, and subscription questions — while escalating complex or emotionally charged conversations to human agents.",
+    },
+    {
+      question: "What CSAT score did Dave's AI assistant achieve?",
+      answer:
+        "Dave's AI assistant achieved a 93 CSAT score — comparable to human agent performance benchmarks in consumer financial services. Response time for automated resolutions dropped to under 30 seconds, compared to average wait times of 8+ minutes for human agent queues.",
+    },
+    {
+      question: "How much did Dave reduce support volume and costs with AI?",
+      answer:
+        "The conversational AI reduced inbound human-handled support volume by 57% within 90 days of deployment. Average resolution time decreased by 79% for queries resolved by the AI assistant. Dave's cost-per-interaction for AI-handled conversations is approximately 85% lower than human-agent-handled equivalents at scale.",
+    },
+    {
+      question: "How is the Dave AI assistant kept empathetic and on-brand?",
+      answer:
+        "AGIX Technologies trained the assistant on Dave's specific brand voice, product terminology, and member communication history. The system includes tone calibration — detecting financial stress signals in member messages and adjusting response style accordingly. Escalation thresholds are tuned to route emotionally sensitive conversations to human agents before frustration escalates.",
+    },
+  ],
+
+  "cs-ocrolus": [
+    {
+      question: "What document processing challenge did Ocrolus face before using AI?",
+      answer:
+        "Ocrolus processes millions of financial documents monthly — bank statements, pay stubs, tax returns, and loan applications — for fintech lenders. Manual review created throughput bottlenecks and accuracy inconsistencies, particularly for complex or semi-structured documents. Scale was limited by human reviewer capacity rather than document volume.",
+    },
+    {
+      question: "How accurate is the Ocrolus document AI system?",
+      answer:
+        "The AGIX Technologies document AI system processes Ocrolus financial documents with 99.2% accuracy for structured documents and over 95% accuracy for semi-structured formats. The system handles more than 6 million documents per month with consistent quality — eliminating the accuracy variance that occurs when human reviewers handle high volumes under time pressure.",
+    },
+    {
+      question: "What types of financial documents can the Ocrolus AI process?",
+      answer:
+        "The system processes bank statements (all major US banks), payroll documents, W-2s, 1099s, tax returns, business financial statements, and alternative income documents including gig economy earnings. Multi-page, multi-account bank statement packages are consolidated automatically into structured data outputs compatible with major loan origination systems.",
+    },
+    {
+      question: "How much did Ocrolus save in annual labour costs with AI?",
+      answer:
+        "The document AI deployment saved Ocrolus $1.8M in annual labour costs by automating the manual review stage for high-confidence documents. Processing turnaround time dropped from an average of 4 hours to under 8 minutes for standard document packages — enabling lenders using Ocrolus to deliver same-day credit decisions at scale.",
+    },
+  ],
+
+  "cs-babylon-health": [
+    {
+      question: "What is the Babylon Health AI triage system and what does it do?",
+      answer:
+        "AGIX Technologies built an AI clinical triage system for Babylon Health that assesses patient-reported symptoms, determines urgency levels, and routes patients to the appropriate care pathway — GP consultation, urgent care, emergency services, or self-care — with 99.2% precision on identifying urgent cases. The system operates across 15+ languages and handles millions of triage interactions across Babylon's global patient base.",
+    },
+    {
+      question: "How accurate is Babylon Health's AI at identifying urgent medical cases?",
+      answer:
+        "The Babylon Health AI triage system identifies urgent and emergency cases with 99.2% precision — meaning fewer than 0.8% of urgent cases are missed or incorrectly triaged to lower-priority pathways. The system was clinically validated against GP-level triage performance benchmarks before deployment and operates under continuous monitoring with human clinical oversight.",
+    },
+    {
+      question: "Is the Babylon Health AI system safe and regulatory approved?",
+      answer:
+        "Yes. The Babylon Health triage AI is designed with safety-first architecture — it escalates to human clinicians for any case where confidence thresholds are not met, and it never prevents a patient from accessing emergency care. The system has regulatory approval in the jurisdictions where Babylon operates, meeting CE marking standards in Europe and CQC guidance requirements in the UK.",
+    },
+    {
+      question: "How many languages does the Babylon Health AI triage system support?",
+      answer:
+        "The system supports triage interactions in 15+ languages, including English, Arabic, French, Kinyarwanda, and Swahili — enabling Babylon Health to serve patients in markets across Africa and Asia where access to native-language clinical care is severely limited. Language detection is automatic, and the clinical reasoning engine maintains equivalent accuracy across all supported languages.",
+    },
+  ],
+
+  "cs-hilton-hotels": [
+    {
+      question: "What AI system did AGIX Technologies build for Hilton Hotels?",
+      answer:
+        "AGIX Technologies engineered a guest intelligence engine for Hilton Hotels that processes real-time and historical guest data across 7,000+ properties to deliver personalised upsell offers, predictive room assignment, loyalty-aware pricing recommendations, and post-stay re-engagement triggers. The system integrates with Hilton's OnQ property management system and Hilton Honors loyalty platform.",
+    },
+    {
+      question: "How much did RevPAR improve across Hilton properties after AI deployment?",
+      answer:
+        "Revenue per Available Room (RevPAR) increased by 4.7% across properties using the guest intelligence engine — representing hundreds of millions in incremental annual revenue across Hilton's 7,000-property portfolio. The improvement was driven by AI-optimised upsell conversion, rate calibration to real-time demand signals, and higher ancillary revenue from personalised service offers.",
+    },
+    {
+      question: "How does Hilton's AI personalise the guest experience at scale?",
+      answer:
+        "The system builds individual guest preference profiles from stay history, amenity usage, dining patterns, loyalty tier behaviour, and real-time booking signals. These profiles power personalised pre-arrival communications, room upgrade recommendations timed to conversion likelihood, personalised F&B offers, and targeted post-stay loyalty bonus offers — all delivered without requiring front-desk staff intervention.",
+    },
+    {
+      question: "Can similar guest intelligence AI be built for independent hotels or boutique properties?",
+      answer:
+        "Yes. AGIX Technologies builds guest intelligence systems for hospitality businesses at all scales — from boutique properties and hotel groups to large resort chains. Systems are scaled to match property volume, data availability, and PMS infrastructure. Independent hotel implementations typically start at $15,000–$30,000 depending on integration complexity and the number of properties covered.",
+    },
+  ],
+
+  "cs-housecanary": [
+    {
+      question: "What is the HouseCanary AVM and how does it work?",
+      answer:
+        "AGIX Technologies built an Automated Valuation Model (AVM) for HouseCanary that analyses 400+ property signals — comparable sales, location attributes, property condition indicators, market trend data, school ratings, and micro-neighbourhood factors — to generate institutional-grade property valuations in seconds. The model achieves 97.2% accuracy against independently verified appraisals.",
+    },
+    {
+      question: "How accurate is the HouseCanary property valuation AI?",
+      answer:
+        "The HouseCanary AVM delivers 97.2% valuation accuracy across its US property coverage universe — 9.2% more accurate than industry-standard AVM benchmarks. For lenders using HouseCanary valuations in underwriting decisions, this accuracy level satisfies secondary market requirements and reduces appraisal waiver risk significantly.",
+    },
+    {
+      question: "What data sources does the HouseCanary AI use to value properties?",
+      answer:
+        "The valuation model ingests MLS transaction data, county recorder records, property tax assessments, permit history, satellite imagery-derived condition signals, local market supply/demand indicators, school district ratings, walkability scores, environmental risk factors, and real-time listing activity — all synthesised through an ensemble model that weights signals dynamically by property type and geography.",
+    },
+    {
+      question: "How fast does the HouseCanary AI deliver property valuations?",
+      answer:
+        "Valuations are generated in under 3 seconds via API — enabling lenders, investors, and proptech platforms to embed real-time property intelligence into origination workflows, investment screening tools, and portfolio monitoring dashboards without the 10–14 day turnaround required for traditional appraisals.",
+    },
+  ],
+
+  "cs-quizlet": [
+    {
+      question: "What is Q-Chat and how did AGIX Technologies build it for Quizlet?",
+      answer:
+        "Q-Chat is an AI-powered Socratic tutor built by AGIX Technologies for Quizlet's 60 million student users. Rather than providing direct answers, Q-Chat guides students through the reasoning process using targeted questions, misconception detection, and adaptive hint progression — mimicking the instructional approach of an expert human tutor at unlimited scale.",
+    },
+    {
+      question: "How much did Quizlet's Q-Chat improve learning outcomes?",
+      answer:
+        "Q-Chat resolved 89% of student misconceptions within a single tutoring session — compared to 34% for students using standard flashcard review. Learning gains measured through pre/post assessments improved by 67% for students who engaged with Q-Chat versus those using traditional Quizlet study modes, driven by active recall and guided reasoning rather than passive repetition.",
+    },
+    {
+      question: "How does Q-Chat adapt to individual students?",
+      answer:
+        "Q-Chat tracks each student's response patterns, identifies specific knowledge gaps at the concept level, and adjusts its questioning strategy based on demonstrated understanding. Students who answer confidently receive harder questions; students who struggle receive scaffolded hints and simplified analogies. The system also detects when a student is guessing versus reasoning — and adjusts accordingly.",
+    },
+    {
+      question: "Is the Quizlet Q-Chat AI safe and appropriate for student use?",
+      answer:
+        "Yes. Q-Chat includes content safety filtering aligned with COPPA requirements for under-13 users, and conversation boundaries are enforced to keep interactions within educational contexts. AGIX Technologies built age-appropriate guardrails and response tone calibration to ensure Q-Chat maintains an encouraging, pedagogically appropriate interaction style across Quizlet's diverse user age range.",
+    },
+  ],
 };
 
 export function generateFAQPageSchema(faqs: FAQItem[]) {

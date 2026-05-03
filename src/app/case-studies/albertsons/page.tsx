@@ -71,7 +71,7 @@ export default function AlbertsonsCaseStudyPage() {
                 </h1>
                 
                 <p className="text-xl text-muted-foreground">
-                  Predicting demand for products that expire in days—reducing $180M in 
+                  Predicting demand for products that expire in days--reducing $180M in 
                   annual food waste while keeping shelves stocked with the freshest products.
                 </p>
 
@@ -134,7 +134,7 @@ export default function AlbertsonsCaseStudyPage() {
           <h2 className="text-3xl font-bold mb-8">Case Study Overview</h2>
           <div className="space-y-4 text-lg text-muted-foreground">
             <p>
-              <strong className="text-foreground">The Challenge:</strong> Albertsons managed perishable inventory across hundreds of stores—products that expire in days, not weeks. Demand swings driven by weather, local events, and promotions were nearly impossible to anticipate with traditional forecasting tools, resulting in an estimated $180M in annual waste from unsold and expired goods while popular items still ran out of stock.
+              <strong className="text-foreground">The Challenge:</strong> Albertsons managed perishable inventory across hundreds of stores--products that expire in days, not weeks. Demand swings driven by weather, local events, and promotions were nearly impossible to anticipate with traditional forecasting tools, resulting in an estimated $180M in annual waste from unsold and expired goods while popular items still ran out of stock.
             </p>
             <p>
               <strong className="text-foreground">The Solution:</strong> AGIX Technologies deployed a machine learning demand forecasting system that analyzed historical sales data, local demographics, seasonal patterns, weather forecasts, and promotional calendars in real time. The AI generated daily replenishment recommendations for over 50,000 SKUs per store, replacing manual ordering with exception-based management that only escalated outliers to human review.
@@ -167,7 +167,7 @@ export default function AlbertsonsCaseStudyPage() {
               Fresh produce and perishables represent 30% of grocery revenue but 60% of 
               waste costs. Traditional forecasting models built for shelf-stable goods fail 
               when applied to items with 3-7 day shelf lives. Albertsons was losing $180M 
-              annually to spoilage—while simultaneously running out of popular items.
+              annually to spoilage--while simultaneously running out of popular items.
             </p>
 
             <div className="grid md:grid-cols-3 gap-6">
@@ -314,7 +314,7 @@ export default function AlbertsonsCaseStudyPage() {
                 <blockquote className="text-xl md:text-2xl font-medium leading-relaxed mb-8">
                   "Store managers used to override our forecasts 67% of the time because 
                   they didn't trust the numbers. Now? Override rate is under 15%. The AI 
-                  factors in things they couldn't—like a concert three miles away or a 
+                  factors in things they couldn't--like a concert three miles away or a 
                   cold snap coming next Tuesday. They've learned to trust it."
                 </blockquote>
                 <div className="flex items-center gap-4">

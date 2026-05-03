@@ -37,6 +37,43 @@ export const homepageOrganizationSchema = {
     "Human-in-the-loop AI",
     "Industry-Specific AI Solutions"
   ],
+  "location": [
+    {
+      "@type": "Place",
+      "name": "AGIX Technologies Boston Office",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "99 Derby Street",
+        "addressLocality": "Hingham",
+        "addressRegion": "MA",
+        "postalCode": "02043",
+        "addressCountry": "US"
+      }
+    },
+    {
+      "@type": "Place",
+      "name": "AGIX Technologies London Office",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "61 Bridge Street",
+        "addressLocality": "Kington",
+        "postalCode": "HR5 3DJ",
+        "addressCountry": "GB"
+      }
+    },
+    {
+      "@type": "Place",
+      "name": "AGIX Technologies Jaipur Office",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "2nd Floor, R 10/63 Chitrakoot, Vaishali Nagar",
+        "addressLocality": "Jaipur",
+        "addressRegion": "RJ",
+        "postalCode": "302021",
+        "addressCountry": "IN"
+      }
+    }
+  ],
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
     "name": "AGIX Technologies Services & Solutions",

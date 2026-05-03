@@ -79,7 +79,7 @@ export default function KrogerCaseStudyPage() {
                 
                 <p className="text-xl text-muted-foreground">
                   Transforming 2,700+ stores built for shoppers into efficient e-commerce 
-                  fulfillment centers—without building new warehouses.
+                  fulfillment centers--without building new warehouses.
                 </p>
 
                 <div className="flex flex-wrap gap-6 pt-4">
@@ -162,7 +162,7 @@ export default function KrogerCaseStudyPage() {
               <strong className="text-foreground">The Solution:</strong> AGIX Technologies developed an AI fulfillment optimization system that ingests real-time order data, store layout maps, and staff availability to generate optimized pick routes and dynamic task assignments. Machine learning models predict order volumes by location and time window to pre-position staff, while computer vision assists with item verification and substitution decision support when requested items are unavailable.
             </p>
             <p>
-              <strong className="text-foreground">The Impact:</strong> Average order pick time dropped from 45 minutes to 18 minutes—a 60% reduction—without adding headcount. Order accuracy improved to 99.4%, reducing costly re-delivery and customer refund incidents. Same-day delivery fulfillment rates increased from 71% to 96%, driving a 28% increase in repeat e-commerce orders as customers experienced consistently reliable service.
+              <strong className="text-foreground">The Impact:</strong> Average order pick time dropped from 45 minutes to 18 minutes--a 60% reduction--without adding headcount. Order accuracy improved to 99.4%, reducing costly re-delivery and customer refund incidents. Same-day delivery fulfillment rates increased from 71% to 96%, driving a 28% increase in repeat e-commerce orders as customers experienced consistently reliable service.
             </p>
           </div>
         </div>
@@ -188,7 +188,7 @@ export default function KrogerCaseStudyPage() {
             <p className="text-lg text-muted-foreground leading-relaxed">
               When e-commerce surged from 2% to 15% of Kroger's sales, they faced a crisis. 
               Pickers were walking 4+ miles per shift, criss-crossing stores inefficiently. 
-              Pick lists were sorted alphabetically—not by aisle. And when items were out of 
+              Pick lists were sorted alphabetically--not by aisle. And when items were out of 
               stock, substitution logic often suggested items customers didn't want.
             </p>
 
@@ -411,7 +411,7 @@ export default function KrogerCaseStudyPage() {
               <CardContent className="p-8 md:p-12">
                 <Quote className="w-12 h-12 text-blue-500/30 mb-6" />
                 <blockquote className="text-xl md:text-2xl font-medium leading-relaxed mb-8">
-                  "We didn't build new fulfillment centers—we made our existing stores 
+                  "We didn't build new fulfillment centers--we made our existing stores 
                   smart. Pickers are happier walking half the distance. Customers get 
                   substitutions they actually want. And we cut fulfillment costs by 42% 
                   while improving customer satisfaction."
@@ -444,7 +444,7 @@ export default function KrogerCaseStudyPage() {
               Optimizing Retail Operations?
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              We help retailers build AI that makes existing infrastructure smarter—
+              We help retailers build AI that makes existing infrastructure smarter--
               without massive capital investment.
             </p>
             <CtaForm />

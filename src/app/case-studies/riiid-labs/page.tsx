@@ -116,13 +116,13 @@ export default function RiiidLabsCaseStudyPage() {
           <h2 className="text-3xl font-bold mb-8">Case Study Overview</h2>
           <div className="space-y-4 text-lg text-muted-foreground">
             <p>
-              <strong className="text-foreground">The Challenge:</strong> Riiid's test preparation platform for high-stakes exams like the TOEIC offered fixed question sequences that couldn't adapt to individual knowledge trajectories. Students with different baseline scores and learning speeds received identical content, leading to inefficient use of study time—advanced students wasted time on mastered concepts while struggling students encountered advanced material before gaps in foundational knowledge were addressed.
+              <strong className="text-foreground">The Challenge:</strong> Riiid's test preparation platform for high-stakes exams like the TOEIC offered fixed question sequences that couldn't adapt to individual knowledge trajectories. Students with different baseline scores and learning speeds received identical content, leading to inefficient use of study time--advanced students wasted time on mastered concepts while struggling students encountered advanced material before gaps in foundational knowledge were addressed.
             </p>
             <p>
               <strong className="text-foreground">The Solution:</strong> AGIX Technologies built an AI adaptive testing engine using deep knowledge tracing that maintains a real-time model of each student's mastery state across 300+ granular concept nodes. The system predicts the single next question that will maximize expected score improvement for that specific learner at that moment, implements AI-driven spaced repetition to schedule targeted review, and generates personalized score trajectory forecasts that show students when they can expect to reach their target score.
             </p>
             <p>
-              <strong className="text-foreground">The Impact:</strong> Students using the adaptive engine achieved +176% improvement in score gains compared to those following non-adaptive study plans—a difference that translated to life-changing exam outcomes in markets where test scores determine career trajectories. Average time-to-target-score decreased 38% as intelligent question selection eliminated wasted review time. Course completion rates increased substantially as personalized progress visibility replaced the discouraging experience of a static content library.
+              <strong className="text-foreground">The Impact:</strong> Students using the adaptive engine achieved +176% improvement in score gains compared to those following non-adaptive study plans--a difference that translated to life-changing exam outcomes in markets where test scores determine career trajectories. Average time-to-target-score decreased 38% as intelligent question selection eliminated wasted review time. Course completion rates increased substantially as personalized progress visibility replaced the discouraging experience of a static content library.
             </p>
           </div>
         </div>
@@ -264,7 +264,7 @@ export default function RiiidLabsCaseStudyPage() {
               <h3 className="text-2xl font-bold mb-4">How It Works</h3>
               <p className="text-muted-foreground">
                 Santa analyzes 100+ signals per question to understand not just 
-                what you got wrong, but why—then creates a personalized remediation 
+                what you got wrong, but why--then creates a personalized remediation 
                 path that addresses root causes, not symptoms.
               </p>
             </div>
@@ -325,7 +325,7 @@ export default function RiiidLabsCaseStudyPage() {
               <Quote className="w-10 h-10 text-violet-500/30 mb-4" />
               <blockquote className="text-xl md:text-2xl font-medium leading-relaxed mb-6 text-white">
                 "Traditional test prep is like using a map without knowing where 
-                you are. Santa AI gives every student GPS-level precision—it knows 
+                you are. Santa AI gives every student GPS-level precision--it knows 
                 exactly which concepts need work and the fastest route to mastery. 
                 That's why our students gain 3x more points in half the time."
               </blockquote>

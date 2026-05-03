@@ -118,13 +118,13 @@ export default function LuxuryEscapesCaseStudyPage() {
           <h2 className="text-3xl font-bold mb-8">Case Study Overview</h2>
           <div className="space-y-4 text-lg text-muted-foreground">
             <p>
-              <strong className="text-foreground">The Challenge:</strong> Luxury Escapes served high-net-worth travelers who expected the white-glove concierge experience at digital scale—something fundamentally at odds with the economics of manual travel consulting. Complex multi-destination trip inquiries required 24–48 hours of research before consultants could respond with a proposal, creating friction at the most critical moment of purchase intent for a market segment with low tolerance for delays.
+              <strong className="text-foreground">The Challenge:</strong> Luxury Escapes served high-net-worth travelers who expected the white-glove concierge experience at digital scale--something fundamentally at odds with the economics of manual travel consulting. Complex multi-destination trip inquiries required 24-48 hours of research before consultants could respond with a proposal, creating friction at the most critical moment of purchase intent for a market segment with low tolerance for delays.
             </p>
             <p>
-              <strong className="text-foreground">The Solution:</strong> AGIX Technologies built an AI travel concierge that handles complex premium trip inquiries in real time. The system accesses live availability data across accommodations, experiences, and transportation, conducts natural language dialogue to surface nuanced traveler preferences, and generates fully curated itinerary proposals with integrated booking options—delivering the depth of a human consultant at the speed of a digital interface.
+              <strong className="text-foreground">The Solution:</strong> AGIX Technologies built an AI travel concierge that handles complex premium trip inquiries in real time. The system accesses live availability data across accommodations, experiences, and transportation, conducts natural language dialogue to surface nuanced traveler preferences, and generates fully curated itinerary proposals with integrated booking options--delivering the depth of a human consultant at the speed of a digital interface.
             </p>
             <p>
-              <strong className="text-foreground">The Impact:</strong> Response time for premium trip inquiries dropped from 24–48 hours to under 3 minutes. AI-handled inquiry conversion rates matched human consultant rates at 31%, demonstrating that travelers responded to quality and speed rather than requiring the human touch for initial proposals. Consultant capacity effectively tripled as AI handled research and proposal generation, allowing human experts to focus on relationship management and bespoke client needs.
+              <strong className="text-foreground">The Impact:</strong> Response time for premium trip inquiries dropped from 24-48 hours to under 3 minutes. AI-handled inquiry conversion rates matched human consultant rates at 31%, demonstrating that travelers responded to quality and speed rather than requiring the human touch for initial proposals. Consultant capacity effectively tripled as AI handled research and proposal generation, allowing human experts to focus on relationship management and bespoke client needs.
             </p>
           </div>
         </div>
@@ -152,7 +152,7 @@ export default function LuxuryEscapesCaseStudyPage() {
               was impossible. High-net-worth guests received cookie-cutter recommendations that 
               ignored their unique preferences, past stays, and special occasions. Human concierges 
               could only serve 120 guests daily, leaving thousands without the white-glove treatment 
-              they deserved—and paid for.
+              they deserved--and paid for.
             </p>
 
             <div className="grid md:grid-cols-3 gap-6">
@@ -280,9 +280,9 @@ export default function LuxuryEscapesCaseStudyPage() {
               </Badge>
               <h3 className="text-2xl font-bold mb-4">Premium Curation Engine</h3>
               <p className="text-muted-foreground mb-6">
-                AI matches guests with experiences based on 47 preference signals—
+                AI matches guests with experiences based on 47 preference signals--
                 from adventure tolerance to culinary preferences to accessibility 
-                needs—ensuring every recommendation feels personally crafted.
+                needs--ensuring every recommendation feels personally crafted.
               </p>
 
               <div className="grid grid-cols-2 gap-4">
@@ -350,7 +350,7 @@ export default function LuxuryEscapesCaseStudyPage() {
             <CardContent className="p-8 md:p-12">
               <Quote className="w-10 h-10 text-amber-500/30 mb-4" />
               <blockquote className="text-xl md:text-2xl font-medium leading-relaxed mb-6">
-                "Luxury isn't just about expensive things—it's about feeling 
+                "Luxury isn't just about expensive things--it's about feeling 
                 understood and cared for. Our AI remembers that you prefer 
                 ocean-view rooms, that your partner is vegetarian, that you 
                 celebrate your anniversary in September. That level of personal 

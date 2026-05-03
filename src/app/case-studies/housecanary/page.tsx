@@ -1,4 +1,7 @@
 'use client'
+import FAQSection from "@/components/shared/FAQSection";
+import FAQPageSchema from "@/components/shared/FAQPageSchema";
+import { documentFAQs } from "@/lib/seo/faq-data";
 import { useState } from "react";import { CaseStudyTemplate } from "@/components/shared/case-study-template";
 
 import { motion, AnimatePresence } from "@/lib/motion";
@@ -144,7 +147,7 @@ export default function HouseCanaryCaseStudyPage() {
           <h2 className="text-3xl font-bold mb-8">Case Study Overview</h2>
           <div className="space-y-4 text-lg text-muted-foreground">
             <p>
-              <strong className="text-foreground">The Challenge:</strong> HouseCanary needed to provide accurate automated property valuations across the full spectrum of US real estate markets—including rural counties, unique architectural types, and rapidly appreciating or declining micro-markets where comparable sales data is sparse. Traditional automated valuation models failed precisely where lenders needed accuracy most: in non-conforming markets and at scale for high-volume mortgage decisions.
+              <strong className="text-foreground">The Challenge:</strong> HouseCanary needed to provide accurate automated property valuations across the full spectrum of US real estate markets--including rural counties, unique architectural types, and rapidly appreciating or declining micro-markets where comparable sales data is sparse. Traditional automated valuation models failed precisely where lenders needed accuracy most: in non-conforming markets and at scale for high-volume mortgage decisions.
             </p>
             <p>
               <strong className="text-foreground">The Solution:</strong> AGIX Technologies developed a multi-model AVM ensemble that incorporates over 400 property attributes alongside satellite imagery analysis, neighborhood-level trend modeling, permit data, school ratings, and local market microeconomic signals. The system produces calibrated confidence intervals alongside valuations, enabling lenders to identify which appraisals warrant additional scrutiny and which can be approved automatically with high reliability.
@@ -191,7 +194,7 @@ export default function HouseCanaryCaseStudyPage() {
               <Card className="border-amber-500/20">
                 <CardContent className="p-6 text-center">
                   <AlertTriangle className="w-8 h-8 text-amber-400 mx-auto mb-3" />
-                  <p className="text-2xl font-bold text-amber-400">±15%</p>
+                  <p className="text-2xl font-bold text-amber-400">+/-15%</p>
                   <p className="text-sm text-muted-foreground">Valuation variance</p>
                 </CardContent>
               </Card>
@@ -409,7 +412,7 @@ export default function HouseCanaryCaseStudyPage() {
             <CardContent className="p-8 md:p-12">
               <Quote className="w-10 h-10 text-emerald-500/30 mb-4" />
               <blockquote className="text-xl md:text-2xl font-medium leading-relaxed mb-6">
-                "Traditional appraisals take days and cost hundreds of dollars each. Our AI delivers institutional-grade valuations in under a second, analyzing signals that human appraisers simply can't see—satellite imagery changes, permit filings, neighborhood trends. That's why the largest lenders and investors trust HouseCanary for portfolio-scale decisions."
+                "Traditional appraisals take days and cost hundreds of dollars each. Our AI delivers institutional-grade valuations in under a second, analyzing signals that human appraisers simply can't see--satellite imagery changes, permit filings, neighborhood trends. That's why the largest lenders and investors trust HouseCanary for portfolio-scale decisions."
               </blockquote>
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 rounded-full bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center text-white font-bold">
@@ -451,6 +454,9 @@ export default function HouseCanaryCaseStudyPage() {
           </Link>
         </div>
       </section>
+      <FAQPageSchema faqs={documentFAQs['cs-housecanary']} />
+      <FAQSection faqs={documentFAQs['cs-housecanary']} title="HouseCanary AI Valuation  Questions Answered" />
+
 
       </CaseStudyTemplate>
   );

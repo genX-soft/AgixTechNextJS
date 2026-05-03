@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "@/lib/motion";
 import { MessageCircle, X, ArrowRight, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -37,7 +38,11 @@ function scrollToToolsSection() {
 }
 
 export function FloatingChatCta() {
+  const pathname = usePathname();
   const [isExpanded, setIsExpanded] = useState(false);
+
+  const pageSlug = pathname === '/' ? 'home' : pathname?.replace(/^\/|\/$/g, '').replace(/\//g, '-') || 'unknown';
+  const utmString = `?utm_source=agixtech&utm_medium=cta&utm_campaign=consult&utm_content=${pageSlug}`;
 
   return (
     <AnimatePresence>
@@ -78,11 +83,13 @@ export function FloatingChatCta() {
                 </p>
                 <Button 
                   className="w-full bg-orange-500 hover:bg-orange-600 shadow-lg shadow-orange-500/25"
-                  onClick={() => { scrollToFormSection(); setIsExpanded(false); }}
+                  asChild
                   data-testid="button-floating-cta-contact"
                 >
-                  Schedule a Consultation
-                  <ArrowRight className="w-4 h-4 ml-2" aria-hidden="true" />
+                  <a href={`/corporate/contact/${utmString}`}>
+                    Schedule a Consultation
+                    <ArrowRight className="w-4 h-4 ml-2" aria-hidden="true" />
+                  </a>
                 </Button>
                 <Button 
                   variant="outline" 

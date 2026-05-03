@@ -91,7 +91,7 @@ export default function AlphaSenseCaseStudyPage() {
                 </h1>
 
                 <p className="text-xl text-muted-foreground">
-                  AI that transforms millions of documents into actionable investment insights—
+                  AI that transforms millions of documents into actionable investment insights--
                   97% faster research with +500% analyst productivity.
                 </p>
 
@@ -148,7 +148,7 @@ export default function AlphaSenseCaseStudyPage() {
           <h2 className="text-3xl font-bold mb-8">Case Study Overview</h2>
           <div className="space-y-4 text-lg text-muted-foreground">
             <p>
-              <strong className="text-foreground">The Challenge:</strong> Financial analysts at investment firms were spending up to 80% of their time manually searching earnings calls, SEC filings, analyst reports, and news articles for market signals. The sheer volume of documents—millions published every day—made it impossible to stay current across all relevant companies. Competitors who could surface critical insights faster gained decisive advantages that compounded over time.
+              <strong className="text-foreground">The Challenge:</strong> Financial analysts at investment firms were spending up to 80% of their time manually searching earnings calls, SEC filings, analyst reports, and news articles for market signals. The sheer volume of documents--millions published every day--made it impossible to stay current across all relevant companies. Competitors who could surface critical insights faster gained decisive advantages that compounded over time.
             </p>
             <p>
               <strong className="text-foreground">The Solution:</strong> AGIX Technologies built a large-scale NLP analytics engine that ingests 10,000+ data sources in real time, including earnings call transcripts, SEC filings, broker research, news, and supply chain data. Custom financial language models extract signals, track sentiment changes over time, identify anomalies, and surface pattern matches that would take human analysts weeks to discover manually.
@@ -179,7 +179,7 @@ export default function AlphaSenseCaseStudyPage() {
             
             <p className="text-lg text-muted-foreground leading-relaxed">
               Investment analysts were spending 80% of their time hunting for information buried in 
-              earnings transcripts, SEC filings, and research reports—leaving only 20% for actual analysis. 
+              earnings transcripts, SEC filings, and research reports--leaving only 20% for actual analysis. 
               Critical signals were being missed because no human could read 10,000+ documents fast enough. 
               Competitor moves, management sentiment shifts, and market-moving insights were hiding in plain sight.
             </p>
@@ -373,7 +373,7 @@ export default function AlphaSenseCaseStudyPage() {
             <CardContent className="p-8 md:p-12">
               <Quote className="w-10 h-10 text-emerald-500/30 mb-4" />
               <blockquote className="text-xl md:text-2xl font-medium leading-relaxed mb-6">
-                "Before AlphaSense, our analysts spent 80% of their time finding information and 20% analyzing it. Now those ratios are flipped. The AI surfaces signals from earnings calls, filings, and research that would take humans weeks to discover—and it does it in seconds with context and sentiment scoring."
+                "Before AlphaSense, our analysts spent 80% of their time finding information and 20% analyzing it. Now those ratios are flipped. The AI surfaces signals from earnings calls, filings, and research that would take humans weeks to discover--and it does it in seconds with context and sentiment scoring."
               </blockquote>
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 rounded-full bg-gradient-to-br from-emerald-500 to-green-500 flex items-center justify-center text-white font-bold">

@@ -28,6 +28,7 @@ import { useCelebration } from "@/components/success-celebration";
 import { trackEvent } from "@/lib/analytics";
 import { IndustryCaseStudies, IndustryServices } from "@/components/industry-sections";
 import FAQSection from "@/components/shared/FAQSection";
+import FAQPageSchema from "@/components/shared/FAQPageSchema";
 import { documentFAQs } from "@/lib/seo/faq-data";
 import {
   Landmark,
@@ -1931,6 +1932,7 @@ export default function FintechIndustryPage() {
           </p>
         </div>
       </section>
+      <FAQPageSchema faqs={documentFAQs['fintech-ai-solutions']} />
       <FAQSection
         faqs={documentFAQs['fintech-ai-solutions']}
         title="Fintech AI Questions Answered"

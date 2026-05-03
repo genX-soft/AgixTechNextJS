@@ -603,7 +603,7 @@ export default function CaseStudiesPage() {
 
             <p className="text-lg md:text-xl text-muted-foreground max-w-4xl mx-auto">
               Explore how AGIX Technologies engineers Operational, Conversational, Decision, and Agentic Intelligence
-              across healthcare, finance, retail, education, travel, and global enterprises —
+              across healthcare, finance, retail, education, travel, and global enterprises --
               not as features, but as production-ready systems.
             </p>
           </motion.div>
@@ -760,7 +760,7 @@ export default function CaseStudiesPage() {
             </h2>
 
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              Every case study represents a production AI system engineered for scale, compliance, and real business impact —
+              Every case study represents a production AI system engineered for scale, compliance, and real business impact --
               across voice, agents, prediction, automation, and intelligence layers.
             </p>
 

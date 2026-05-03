@@ -157,7 +157,7 @@ export default function HungryrootCaseStudyPage() {
           <h2 className="text-3xl font-bold mb-8">Case Study Overview</h2>
           <div className="space-y-4 text-lg text-muted-foreground">
             <p>
-              <strong className="text-foreground">The Challenge:</strong> Hungryroot's personalized grocery and meal subscription service was experiencing 23% return rates on shipped items—customers receiving boxes that didn't match their actual preferences, dietary restrictions, or cooking habits. Generic recommendation algorithms that relied primarily on stated preferences couldn't capture the nuanced reality of how customers actually cooked and what they actually enjoyed eating week to week.
+              <strong className="text-foreground">The Challenge:</strong> Hungryroot's personalized grocery and meal subscription service was experiencing 23% return rates on shipped items--customers receiving boxes that didn't match their actual preferences, dietary restrictions, or cooking habits. Generic recommendation algorithms that relied primarily on stated preferences couldn't capture the nuanced reality of how customers actually cooked and what they actually enjoyed eating week to week.
             </p>
             <p>
               <strong className="text-foreground">The Solution:</strong> AGIX Technologies built a preference learning engine that analyzes order history, ingredient ratings, meal completion signals, nutritional targets, and seasonal behavior patterns to construct dynamic individual taste profiles. The AI predicts emerging preference shifts before customers consciously recognize them, dynamically adjusts box compositions to balance exploration and familiarity, and optimizes for both satisfaction and nutritional goals simultaneously.
@@ -187,7 +187,7 @@ export default function HungryrootCaseStudyPage() {
             <h2 className="text-3xl font-bold">Generic Meal Kits That Nobody Wanted</h2>
             
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Traditional meal delivery services sent the same generic boxes to everyone—regardless of dietary needs, 
+              Traditional meal delivery services sent the same generic boxes to everyone--regardless of dietary needs, 
               taste preferences, or lifestyle. The result? Customers received ingredients they didn't want, 
               wasted food they couldn't use, and eventually churned to competitors. Without personalization, 
               Hungryroot was losing customers as fast as they acquired them.
@@ -381,7 +381,7 @@ export default function HungryrootCaseStudyPage() {
             <CardContent className="p-8 md:p-12">
               <Quote className="w-10 h-10 text-lime-500/30 mb-4" />
               <blockquote className="text-xl md:text-2xl font-medium leading-relaxed mb-6">
-                "Most meal kit services give everyone the same box. Our AI learns that you love Thai food but hate cilantro, that you're training for a marathon, and that you always skip cooking on Thursdays. Every week's box is uniquely yours—that's why our retention is 34% higher than industry average."
+                "Most meal kit services give everyone the same box. Our AI learns that you love Thai food but hate cilantro, that you're training for a marathon, and that you always skip cooking on Thursdays. Every week's box is uniquely yours--that's why our retention is 34% higher than industry average."
               </blockquote>
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 rounded-full bg-gradient-to-br from-lime-500 to-green-500 flex items-center justify-center text-white font-bold">

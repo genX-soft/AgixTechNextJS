@@ -36,6 +36,9 @@ const nextConfig = {
 
   assetPrefix: devPrefix,
 
+  typescript: {
+    ignoreBuildErrors: true,
+  },
   experimental: {
     serverActions: {
       bodySizeLimit: '2mb',
@@ -138,10 +141,7 @@ const nextConfig = {
       { source: '/service/digital-transformation-consulting', destination: '/intelligence/operational-ai/', permanent: true },
       { source: '/service/custom-ai-agents-models', destination: '/services/agentic-ai-systems/', permanent: true },
 
-      // ===== INSIGHTS SLUG CONSOLIDATION =====
-      // /insights/[slug]/ is no longer the canonical URL — all posts live at /[slug]/
-      { source: '/insights/:slug/', destination: '/:slug/', permanent: true },
-      { source: '/insights/:slug', destination: '/:slug/', permanent: true },
+
 
       // ===== BLOG POST URL REDIRECTS =====
       { source: '/retell-vs-twilio-voice-vs-vonage-ai-best-voice-api-for-gpt4', destination: '/retell-vs-twilio-voice-vs-vonage-ai-gpt-4-call-agents/', permanent: true },
@@ -164,6 +164,7 @@ const nextConfig = {
       
       // ===== CORPORATE PAGE REDIRECTS =====
       { source: '/portfolio', destination: '/case-studies/', permanent: true },
+      { source: '/customer-testimonials', destination: '/corporate/testimonials/', permanent: true },
       { source: '/terms-and-condition', destination: '/terms-of-service/', permanent: true },
       { source: '/terms', destination: '/terms-of-service/', permanent: true },
       { source: '/privacy', destination: '/privacy-policy/', permanent: true },

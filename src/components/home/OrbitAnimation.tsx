@@ -17,7 +17,7 @@ export default function OrbitAnimation() {
     <>
       <motion.div
         animate={{ rotate: 360 }}
-        transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
         className="absolute inset-8"
       >
         {floatingCards.map((card, i) => {
@@ -38,7 +38,7 @@ export default function OrbitAnimation() {
             >
               <motion.div
                 animate={{ rotate: -360 }}
-                transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
                 className="flex flex-col items-center gap-2 p-3 rounded-xl bg-slate-800/80 border border-slate-700/50 backdrop-blur-sm"
               >
                 <card.icon className="h-5 w-5 text-primary" />

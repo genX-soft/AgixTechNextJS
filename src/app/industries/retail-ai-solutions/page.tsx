@@ -52,6 +52,7 @@ import { useCelebration } from "@/components/success-celebration";
 import { trackEvent } from "@/lib/analytics";
 import { IndustryCaseStudies, IndustryServices } from "@/components/industry-sections";
 import FAQSection from "@/components/shared/FAQSection";
+import FAQPageSchema from "@/components/shared/FAQPageSchema";
 import { documentFAQs } from "@/lib/seo/faq-data";
 
 const caseStudies = [
@@ -1685,6 +1686,7 @@ export default function EcommerceIndustryPage() {
           </div>
         </div>
       </section>
+      <FAQPageSchema faqs={documentFAQs['retail-ai-solutions']} />
       <FAQSection
         faqs={documentFAQs['retail-ai-solutions']}
         title="Retail AI Questions Answered"

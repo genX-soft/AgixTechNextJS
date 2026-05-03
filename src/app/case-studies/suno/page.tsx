@@ -107,7 +107,7 @@ export default function SunoCaseStudyPage() {
 
                 <p className="text-xl text-muted-foreground">
                   Making music creation feel like magic. We helped Suno reduce generation 
-                  time from 90 seconds to 20 seconds—transforming user behavior from 
+                  time from 90 seconds to 20 seconds--transforming user behavior from 
                   "submit and forget" to "create and iterate."
                 </p>
 
@@ -163,13 +163,13 @@ export default function SunoCaseStudyPage() {
           <h2 className="text-3xl font-bold mb-8">Case Study Overview</h2>
           <div className="space-y-4 text-lg text-muted-foreground">
             <p>
-              <strong className="text-foreground">The Challenge:</strong> Suno's AI music generation platform needed to fundamentally reduce generation latency to deliver a fluid, consumer-grade creative experience. Early generation times of 45+ seconds per track created significant disruption to the creative flow that makes music generation compelling—users would lose creative momentum waiting for results, and iterating on musical ideas required patience that casual creators weren't willing to invest.
+              <strong className="text-foreground">The Challenge:</strong> Suno's AI music generation platform needed to fundamentally reduce generation latency to deliver a fluid, consumer-grade creative experience. Early generation times of 45+ seconds per track created significant disruption to the creative flow that makes music generation compelling--users would lose creative momentum waiting for results, and iterating on musical ideas required patience that casual creators weren't willing to invest.
             </p>
             <p>
               <strong className="text-foreground">The Solution:</strong> AGIX Technologies optimized Suno's generation pipeline through a multi-pronged approach: model distillation to reduce parameter count without sacrificing creative quality, inference optimization including quantization and batching improvements, and an intelligent speculative generation layer that pre-generates likely musical continuations based on partial input signals. Architecture redesign reduced computational overhead while maintaining the harmonic and rhythmic fidelity of outputs.
             </p>
             <p>
-              <strong className="text-foreground">The Impact:</strong> Music generation time dropped from 45 seconds to under 8 seconds—a 5x improvement that transformed the experience from waiting to near-instant creative feedback. Audio quality scores improved 34% in blind listening tests, demonstrating that the optimization process didn't compromise creative output. Creator retention increased 52% in the six months following deployment, with reduced latency cited as the primary driver of returning users' willingness to invest in extended creative sessions.
+              <strong className="text-foreground">The Impact:</strong> Music generation time dropped from 45 seconds to under 8 seconds--a 5x improvement that transformed the experience from waiting to near-instant creative feedback. Audio quality scores improved 34% in blind listening tests, demonstrating that the optimization process didn't compromise creative output. Creator retention increased 52% in the six months following deployment, with reduced latency cited as the primary driver of returning users' willingness to invest in extended creative sessions.
             </p>
           </div>
         </div>
@@ -196,7 +196,7 @@ export default function SunoCaseStudyPage() {
               Content creators and businesses faced a brutal reality: original music was either prohibitively 
               expensive through licensing, required years of musical training to produce, or meant settling 
               for generic royalty-free tracks that sounded like everyone else. Creative vision was constantly 
-              compromised by budget and skill constraints—until AI changed the game.
+              compromised by budget and skill constraints--until AI changed the game.
             </p>
 
             <div className="grid md:grid-cols-3 gap-6">

@@ -145,7 +145,7 @@ export default function GeoveaCaseStudyPage() {
             <h2 className="text-3xl font-bold">Manual Itinerary Creation That Misses Hidden Gems</h2>
             
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Road trip planning was painfully manual—travelers spent hours stitching together 
+              Road trip planning was painfully manual--travelers spent hours stitching together 
               routes from multiple apps, often missing the best attractions along the way. Static 
               itineraries couldn't adapt to real-world conditions like weather changes, closures, 
               or unexpected detours. The result? Missed opportunities and frustrating experiences 
@@ -291,8 +291,8 @@ export default function GeoveaCaseStudyPage() {
               </Badge>
               <h3 className="text-2xl font-bold mb-4">Real-Time Route Intelligence</h3>
               <p className="text-muted-foreground mb-6">
-                AI continuously monitors real-world conditions—weather, crowds, 
-                closures—and dynamically adjusts your itinerary to ensure the 
+                AI continuously monitors real-world conditions--weather, crowds, 
+                closures--and dynamically adjusts your itinerary to ensure the 
                 best possible experience.
               </p>
 
@@ -368,7 +368,7 @@ export default function GeoveaCaseStudyPage() {
               <Quote className="w-10 h-10 text-rose-500/30 mb-4" />
               <blockquote className="text-xl md:text-2xl font-medium leading-relaxed mb-6">
                 "Static travel guides are obsolete. Our AI understands that great 
-                travel is about flow—the right place at the right time with the 
+                travel is about flow--the right place at the right time with the 
                 right energy. We factor in everything from crowd patterns to your 
                 personal rhythm, then adapt in real-time when conditions change."
               </blockquote>

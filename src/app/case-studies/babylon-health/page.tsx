@@ -1,4 +1,7 @@
 'use client'
+import FAQSection from "@/components/shared/FAQSection";
+import FAQPageSchema from "@/components/shared/FAQPageSchema";
+import { documentFAQs } from "@/lib/seo/faq-data";
 import { motion } from "@/lib/motion";import { CaseStudyTemplate } from "@/components/shared/case-study-template";
 
 
@@ -71,7 +74,7 @@ export default function BabylonHealthCaseStudyPage() {
                 </h1>
                 
                 <p className="text-xl text-muted-foreground">
-                  Building clinical AI that's safe enough for global deployment—serving 
+                  Building clinical AI that's safe enough for global deployment--serving 
                   millions of patients with AI-powered symptom assessment and triage.
                 </p>
 
@@ -157,7 +160,7 @@ export default function BabylonHealthCaseStudyPage() {
               Healthcare AI operates under constraints that don't exist in other domains. 
               Missing a serious condition could be life-threatening. But over-escalating 
               burdens already-strained healthcare systems. The AI needed to be accurate 
-              enough for regulatory approval in multiple countries—while being accessible 
+              enough for regulatory approval in multiple countries--while being accessible 
               to patients who describe symptoms in countless ways.
             </p>
 
@@ -345,6 +348,9 @@ export default function BabylonHealthCaseStudyPage() {
           </motion.div>
         </div>
       </section>
+      <FAQPageSchema faqs={documentFAQs['cs-babylon-health']} />
+      <FAQSection faqs={documentFAQs['cs-babylon-health']} title="Babylon Health AI Triage  Questions Answered" />
+
 
       
 

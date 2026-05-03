@@ -245,6 +245,12 @@ export default function BlogArticlePage({ initialPost, initialFaqData, relatedSe
                 <Calendar className="w-4 h-4" />
                 {formatDate(post.date)}
               </span>
+              {post.modified && post.modified !== post.date && (
+                <span className="flex items-center gap-2 text-primary font-medium">
+                  <Clock className="w-4 h-4" />
+                  Updated: {formatDate(post.modified)}
+                </span>
+              )}
               <span className="flex items-center gap-2">
                 <Clock className="w-4 h-4" />
                 {readTime} min read

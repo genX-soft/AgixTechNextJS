@@ -2,6 +2,7 @@
 
 import { Badge } from "@/components/ui/badge";
 import AgixNetworkAnimation from "./AgixNetworkAnimation";
+import { motion } from "framer-motion";
 
 const metrics = [
   { value: "100+",       label: "AI systems deployed" },
@@ -30,59 +31,79 @@ export default function ValuePropositionSection() {
 
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-slate-700/60 to-transparent" />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 lg:pt-14 pb-20 lg:pb-28">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
-          <div className="relative h-[420px] sm:h-[520px] lg:h-[600px] flex items-center justify-center order-2 lg:order-1">
+          <div className="relative h-[380px] sm:h-[420px] lg:h-[500px] flex items-center justify-center order-2 lg:order-1">
             <div className="absolute top-0 left-0 w-24 h-24 border-l-2 border-t-2 border-cyan-500/20 rounded-tl-xl pointer-events-none" />
             <div className="absolute bottom-0 right-0 w-24 h-24 border-r-2 border-b-2 border-cyan-500/20 rounded-br-xl pointer-events-none" />
             <AgixNetworkAnimation />
           </div>
 
-          <div className="flex flex-col gap-7 order-1 lg:order-2">
-
-            <div className="flex justify-center lg:justify-start">
-              <Badge variant="outline" className="border-cyan-500/30 text-cyan-400">
+          <div className="flex flex-col gap-8 order-1 lg:order-2">
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="flex justify-center lg:justify-start"
+            >
+              <Badge variant="outline" className="border-cyan-500/30 text-cyan-400 bg-cyan-500/5 px-3 py-1">
                 About AGIX Technologies
               </Badge>
-            </div>
+            </motion.div>
 
-            <div className="text-center lg:text-left space-y-2">
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-white leading-tight">
-                We don&apos;t build AI tools.{" "}
-                <span className="text-cyan-400">We engineer AI systems.</span>
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="text-center lg:text-left space-y-4"
+            >
+              <h2 className="text-3xl sm:text-4xl lg:text-[2.75rem] font-bold tracking-tight text-white leading-[1.1]">
+                We don&apos;t just build AI tools.{" "}
+                <span className="block text-cyan-400">We engineer AI systems.</span>
               </h2>
-            </div>
+            </motion.div>
 
-            <div className="space-y-4 text-center lg:text-left">
-              <p className="text-slate-300 text-base sm:text-lg leading-relaxed">
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="space-y-6 text-center lg:text-left"
+            >
+              <p className="text-slate-300 text-lg leading-relaxed">
                 AGIX Technologies designs and deploys agentic AI, workflow
                 automation, and enterprise intelligence systems that replace
                 manual work with scalable, production-ready infrastructure.
               </p>
-              <p className="text-slate-500 text-sm sm:text-base leading-relaxed">
-                From AI voice agents to autonomous workflows and decision
-                intelligence dashboards — everything integrates with your
-                existing CRMs, databases, and internal tools. No
-                rip-and-replace. Just AI that works.
+              <p className="text-slate-400 text-base leading-relaxed max-w-xl">
+                From autonomous voice agents to complex decision-intelligence dashboards — our systems integrate seamlessly with your existing tech stack.
               </p>
-            </div>
+            </motion.div>
 
-            <div className="grid grid-cols-2 gap-3 mt-2">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="grid grid-cols-2 gap-4 mt-4"
+            >
               {metrics.map(({ value, label }) => (
                 <div
                   key={label}
-                  className="rounded-xl border border-slate-700/50 bg-slate-900/50 px-5 py-5 flex flex-col gap-1 hover:border-cyan-500/30 hover:bg-slate-800/40 transition-colors duration-200"
+                  className="group rounded-2xl border border-white/5 bg-white/[0.02] backdrop-blur-md p-6 flex flex-col gap-2 hover:border-cyan-500/30 hover:bg-white/[0.05] transition-all duration-300 hover:shadow-xl hover:shadow-cyan-500/10"
                 >
-                  <span className="text-xl sm:text-2xl font-bold text-cyan-400 leading-none tracking-tight">
+                  <span className="text-2xl sm:text-3xl font-bold text-cyan-400 leading-none tracking-tight group-hover:scale-105 transition-transform origin-left">
                     {value}
                   </span>
-                  <span className="text-xs text-slate-400 leading-snug">
+                  <span className="text-xs sm:text-sm text-slate-400 font-medium uppercase tracking-wider group-hover:text-slate-300 transition-colors">
                     {label}
                   </span>
                 </div>
               ))}
-            </div>
+            </motion.div>
           </div>
 
         </div>

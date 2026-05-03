@@ -1,10 +1,11 @@
 'use client'
-import { useState } from "react";import { CaseStudyTemplate } from "@/components/shared/case-study-template";
-
+import { useState } from "react";
+import { CaseStudyTemplate } from "@/components/shared/case-study-template";
 import { motion, AnimatePresence } from "@/lib/motion";
-
-
 import { CtaForm } from "@/components/forms/cta-form";
+import FAQSection from "@/components/shared/FAQSection";
+import FAQPageSchema from "@/components/shared/FAQPageSchema";
+import { documentFAQs } from "@/lib/seo/faq-data";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -140,7 +141,7 @@ export default function EnovaCaseStudyPage() {
                 </h1>
 
                 <p className="text-xl text-muted-foreground">
-                  Explainable credit decisioning that passes regulatory scrutiny—processing millions 
+                  Explainable credit decisioning that passes regulatory scrutiny--processing millions 
                   of applications with 94.7% accuracy while maintaining full audit compliance.
                 </p>
 
@@ -193,10 +194,10 @@ export default function EnovaCaseStudyPage() {
           <h2 className="text-3xl font-bold mb-8">Case Study Overview</h2>
           <div className="space-y-4 text-lg text-muted-foreground">
             <p>
-              <strong className="text-foreground">The Challenge:</strong> Enova's traditional credit models relied on limited credit bureau data and generated high false-negative rates—rejecting creditworthy borrowers who simply had thin credit files or non-traditional income histories. Manual review processes couldn't scale to meet application volume, while increasing regulatory scrutiny demanded that every credit decision be explainable in terms that examiners could audit and borrowers could understand.
+              <strong className="text-foreground">The Challenge:</strong> Enova's traditional credit models relied on limited credit bureau data and generated high false-negative rates--rejecting creditworthy borrowers who simply had thin credit files or non-traditional income histories. Manual review processes couldn't scale to meet application volume, while increasing regulatory scrutiny demanded that every credit decision be explainable in terms that examiners could audit and borrowers could understand.
             </p>
             <p>
-              <strong className="text-foreground">The Solution:</strong> AGIX Technologies developed an explainable AI credit decisioning system using gradient boosting algorithms with SHAP-based attribution that generates plain-language rationales for each decision. The model incorporates over 1,400 behavioral and alternative data signals—transaction patterns, employment stability, income consistency—while the explanation framework satisfies regulatory examination requirements without exposing proprietary model logic.
+              <strong className="text-foreground">The Solution:</strong> AGIX Technologies developed an explainable AI credit decisioning system using gradient boosting algorithms with SHAP-based attribution that generates plain-language rationales for each decision. The model incorporates over 1,400 behavioral and alternative data signals--transaction patterns, employment stability, income consistency--while the explanation framework satisfies regulatory examination requirements without exposing proprietary model logic.
             </p>
             <p>
               <strong className="text-foreground">The Impact:</strong> Loan approval rates improved 22% without any increase in realized default rates, demonstrating that the expanded signal set was identifying genuinely creditworthy borrowers previously rejected by conservative rule-based models. Decision latency for automated approvals dropped from days to milliseconds. Regulatory review cycles shortened significantly as examiners could interrogate specific decision factors rather than treating the model as a black box.
@@ -225,7 +226,7 @@ export default function EnovaCaseStudyPage() {
             <p className="text-lg text-muted-foreground leading-relaxed">
               Enova's credit models were highly accurate, but regulators demanded more. How do you explain 
               to a consumer why they were declined? How do you prove to examiners that your AI isn't 
-              discriminating? Their existing ML models were essentially black boxes—great at predictions, 
+              discriminating? Their existing ML models were essentially black boxes--great at predictions, 
               impossible to explain. Each audit took months and cost millions in compliance overhead.
             </p>
 
@@ -266,7 +267,7 @@ export default function EnovaCaseStudyPage() {
             </Badge>
             <h2 className="text-2xl md:text-3xl font-bold text-white">AI Decision Explainer</h2>
             <p className="text-slate-400 mt-2 max-w-2xl mx-auto">
-              See how every credit decision is now fully explainable—click any applicant to explore the AI reasoning
+              See how every credit decision is now fully explainable--click any applicant to explore the AI reasoning
             </p>
           </div>
 
@@ -557,7 +558,12 @@ export default function EnovaCaseStudyPage() {
         </div>
       </section>
 
-      
+
+      <FAQPageSchema faqs={documentFAQs['cs-enova']} />
+      <FAQSection
+        faqs={documentFAQs['cs-enova']}
+        title="Enova AI Credit Decisioning -- Questions Answered"
+      />
 
       </CaseStudyTemplate>
   );
