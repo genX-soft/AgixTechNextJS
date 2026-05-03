@@ -1,2040 +1,264 @@
 'use client'
-import { useState, useMemo } from "react";
-import { motion, AnimatePresence } from "@/lib/motion";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Slider } from "@/components/ui/slider";
-import { Textarea } from "@/components/ui/textarea";
+import { IndustryPageTemplate, IndustryPageData } from "@/components/industries/IndustryPageTemplate";
 import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
-import { MainHeader } from "@/components/main-header";
-import { MainFooter } from "@/components/main-footer";
-import { useToast } from "@/hooks/use-toast";
-import { 
-  Home,
-  Building2,
-  Users,
-  Clock,
-  Phone,
-  MessageSquare,
-  TrendingUp,
-  DollarSign,
-  CheckCircle2,
-  XCircle,
-  ArrowRight,
-  ChevronRight,
-  Calculator,
-  Target,
-  Zap,
-  Search,
-  Calendar,
-  FileText,
-  BarChart3,
-  AlertCircle,
-  Loader2,
-  Star,
-  UserCheck,
-  MapPin,
-  Key,
-  Briefcase,
-  Building,
-  ClipboardList,
-  RefreshCw,
-  HeadphonesIcon,
-  Database,
-  Bot,
-  Mail,
-  Globe,
-  Shield,
-  HelpCircle,
-  Layers,
-  Brain
+  Building2, BarChart3, TrendingUp, Clock, DollarSign, Users,
+  Activity, Zap, ShieldCheck, Brain, Search, FileText, MapPin
 } from "lucide-react";
-import { trackEvent } from "@/lib/analytics";
-import { submitLead } from "@/lib/lead-submission";
-import { useCelebration } from "@/components/success-celebration";
-import { IndustryCaseStudies, IndustryServices } from "@/components/industry-sections";
-import FAQSection from "@/components/shared/FAQSection";
-import FAQPageSchema from "@/components/shared/FAQPageSchema";
-import { documentFAQs } from "@/lib/seo/faq-data";
 
-const caseStudies = [
-  { company: "HouseCanary", description: "AI platform delivering real-time property valuation and market forecasting for real estate investors and lenders.", impact: ["Automated property valuations at scale", "More accurate market predictions", "Faster deal underwriting"], href: "/case-studies/housecanary/" },
-  { company: "Properti AI", description: "AI-powered property discovery chatbot offering personalized, always-on search experiences for homebuyers.", impact: ["24/7 property discovery assistance", "Personalized listing recommendations", "Higher buyer engagement rates"], href: "/case-studies/properti-ai/" },
-  { company: "AlphaSense", description: "AI-powered market intelligence platform enabling real estate investors to extract insights from vast data sources.", impact: ["Faster market research cycles", "Deeper investment insights", "Reduced analyst workload"], href: "/case-studies/alphasense/" },
-];
-
-const industryServices = [
-  { title: "Conversational AI", description: "AI chatbots that engage buyers and renters 24/7, answer property questions, and qualify leads automatically.", useCases: ["Lead qualification", "Property FAQs", "Viewing scheduling"], href: "/services/conversational-ai-chatbots/", ctaText: "Explore Conversational AI" },
-  { title: "Predictive & Analytics AI", description: "AI models that forecast property values, rental yields, and market trends with precision.", useCases: ["Property valuation", "Market trend forecasting", "Investment risk scoring"], href: "/services/ai-predictive-analytics/", ctaText: "Explore Predictive AI" },
-  { title: "RAG & Knowledge AI", description: "AI systems that surface relevant listings, contracts, and market data from large document repositories.", useCases: ["Contract analysis", "Listing intelligence", "Regulatory compliance retrieval"], href: "/services/rag-knowledge-ai/", ctaText: "Explore Knowledge AI" },
-  { title: "Agentic AI Systems", description: "Autonomous AI agents that handle property research, outreach, and transaction coordination end-to-end.", useCases: ["Automated outreach", "Transaction coordination", "Due diligence automation"], href: "/services/agentic-ai-systems/", ctaText: "Explore Agentic AI" },
-];
-
-
-
-const fadeInUp = {
-  initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.5 }
+const data: IndustryPageData = {
+  industry: "Real Estate",
+  slug: "real-estate-ai-solutions",
+  accent: "orange",
+  heroIcon: Building2,
+  breadcrumb: "Real Estate AI Solutions",
+  heroTitle: "How AI Is Transforming",
+  heroTitleHighlight: "Real Estate",
+  heroSubtitle: "AI in real estate delivers instant property valuations, scores and converts leads at scale, automates document processing and compliance, powers virtual tours, predicts market movements, and enables conversational AI for 24/7 buyer and tenant service — compressing the deal cycle and reducing cost per transaction.",
+  directAnswer: "AI in real estate automates property valuation, lead scoring, document processing, market analysis, and customer communication — enabling agents, brokers, and developers to close deals faster, qualify leads more accurately, and serve clients 24/7 without proportional headcount increases.",
+  signatureQuote: "Real estate is a relationship business — but the administrative, analytical, and qualifying work that precedes every relationship is where AI creates the most value. Agents who automate the process can focus on the relationship.",
+  signatureAuthor: "Santosh Singh, Founder & CEO, AGIX Technologies",
+  heroCards: [
+    { icon: DollarSign, title: "Instant Valuation", desc: "AVM accuracy within 2–5% of market value" },
+    { icon: Users, title: "Lead Scoring", desc: "Conversion rate improvement up to 35%" },
+    { icon: FileText, title: "Document AI", desc: "Contract review: hours → minutes" },
+    { icon: TrendingUp, title: "Market Intelligence", desc: "Predictive analytics for investment decisions" },
+  ],
+  aeoAnswer: "AI in real estate automates property valuation, lead scoring, document processing, market analysis, and customer communication — enabling agents, brokers, and developers to close deals faster, qualify leads more accurately, and serve clients 24/7 without proportional headcount increases.",
+  statsHeadline: "Why Real Estate Needs AI Now",
+  stats: [
+    { value: "$12B", label: "AI in real estate market (2025)", icon: BarChart3 },
+    { value: "85%", label: "of buyers start property searches online", icon: Search },
+    { value: "40%", label: "faster deal closure with AI-assisted pipelines", icon: Clock },
+    { value: "60%", label: "of leads are lost to slow follow-up — AI solves this", icon: Users },
+    { value: "3%", label: "average agent conversion rate — AI triples industry leaders", icon: TrendingUp },
+  ],
+  definitionTitle: "What Is AI in Real Estate?",
+  definitionText: "AI in real estate applies machine learning, NLP, computer vision, and conversational AI to property transactions, market analysis, lead management, and portfolio operations. It enables real estate professionals to value properties instantly, score and nurture leads automatically, process documents in minutes, analyze market dynamics with predictive accuracy, and serve clients through AI-powered 24/7 communication — compressing the deal cycle while improving the quality of every decision.",
+  howItWorksTitle: "How AI Works in Real Estate — Simplified",
+  howItWorksSteps: [
+    { title: "Data aggregation", desc: "MLS data, tax records, permits, demographics, comparable sales, economic signals, and behavioral data", icon: FileText },
+    { title: "Property intelligence", desc: "AVM models generate instant valuations with confidence intervals from thousands of data points", icon: Building2 },
+    { title: "Lead scoring", desc: "ML models score inbound leads by purchase intent, financial qualification, and timeline likelihood", icon: Users },
+    { title: "AI communication", desc: "Conversational AI nurtures leads via chat, email, and SMS — qualifying, scheduling, and answering questions 24/7", icon: Zap },
+    { title: "Document processing", desc: "AI extracts, reviews, and flags issues in contracts, disclosures, and compliance documents in minutes", icon: Search },
+    { title: "Market prediction", desc: "Predictive models identify neighborhood price trends, investment opportunity windows, and risk signals", icon: TrendingUp },
+  ],
+  comparisonTitle: "AI vs Traditional Real Estate Operations",
+  comparisonRows: [
+    { dimension: "Property valuation", traditional: "Manual CMA taking 2–4 hours, based on 3–5 comparable sales", ai: "AVM analysis of 10,000+ data points in seconds, within 2–5% of market value" },
+    { dimension: "Lead qualification", traditional: "Manual scoring, slow follow-up, 60% of leads lost to delay", ai: "Instant behavioral scoring, automated outreach within seconds of inquiry" },
+    { dimension: "Lead nurturing", traditional: "Agent-dependent, business hours only, inconsistent follow-up", ai: "24/7 AI conversation, personalized, persistent, escalates when buyer is ready" },
+    { dimension: "Document review", traditional: "2–4 hours of attorney/agent review per contract", ai: "AI review in minutes, flags risks, missing clauses, and compliance issues" },
+    { dimension: "Market analysis", traditional: "Quarterly report from market data teams, backward-looking", ai: "Real-time trend analysis, forward-looking prediction, automated alerts" },
+    { dimension: "Tenant communication", traditional: "Manual responses, variable response time, maintenance tracking by email", ai: "AI tenant portal: maintenance tickets, payments, queries — 24/7 automated" },
+  ],
+  benefitsTitle: "Key Benefits of AI in Real Estate",
+  benefits: [
+    { icon: Clock, title: "Faster Deal Close", value: "40% faster", detail: "AI-assisted pipelines from qualification to closing compress the cycle" },
+    { icon: Users, title: "Lead Conversion", value: "+35%", detail: "Behavioral scoring and instant AI follow-up dramatically improve conversion" },
+    { icon: FileText, title: "Document Processing", value: "10x faster", detail: "Contract and compliance document review: hours → minutes" },
+    { icon: DollarSign, title: "Valuation Accuracy", value: "2–5% error", detail: "AVM models within 2–5% of market value on standard residential properties" },
+    { icon: Brain, title: "Agent Productivity", value: "3x", detail: "AI handles qualification and admin so agents focus on relationships and closings" },
+    { icon: TrendingUp, title: "Portfolio Returns", value: "+15–20%", detail: "Predictive market AI identifies higher-yield opportunities and exit timing" },
+  ],
+  useCasesTitle: "Best Use Cases of AI in Real Estate",
+  useCasesSummary: [
+    { num: "1", title: "AI Property Valuation", what: "Automated valuation models from thousands of data points", impact: "Within 2–5% accuracy, seconds vs hours" },
+    { num: "2", title: "Lead Scoring & Nurturing", what: "Behavioral scoring, instant follow-up, 24/7 AI qualification", impact: "35% conversion improvement, 60% fewer lost leads" },
+    { num: "3", title: "Document Intelligence", what: "Contract extraction, risk flagging, compliance review", impact: "Hours → minutes, 25% error reduction" },
+    { num: "4", title: "Market Trend Analysis", what: "Predictive pricing, neighborhood intelligence, investment signals", impact: "15–20% portfolio return improvement" },
+    { num: "5", title: "Tenant Management AI", what: "Maintenance AI, payment reminders, query automation", impact: "70% routine query deflection" },
+    { num: "6", title: "AI Virtual Tours", what: "Computer vision staging, 3D tour generation, remote viewing", impact: "30% shorter sales cycles for remote buyers" },
+  ],
+  useCasesDetailTitle: "How AI Solves Real Estate's Biggest Bottlenecks",
+  useCasesDetail: [
+    {
+      title: "AI Property Valuation (AVM)",
+      definition: "Automated valuation models use ML to analyze thousands of data points — comparable sales, tax records, permit history, demographics, school ratings, economic indicators — to generate instant property valuations with confidence intervals.",
+      bottleneck: "Manual CMAs take 2–4 hours and rely on 3–5 comparable sales. Scale pricing across a portfolio requires a team. Valuation inconsistency across agents creates pricing errors in both directions.",
+      howAISolvesIt: [
+        "ML models analyze 10,000+ data points per property across MLS, tax records, and market signals",
+        "Confidence scoring indicates reliability: tight markets vs high uncertainty",
+        "Comparative analysis generates defensible valuations with full data provenance",
+        "Portfolio-level valuation batch processing: hundreds of properties in seconds",
+      ],
+      services: [
+        { label: "AI Predictive Analytics", href: "/services/ai-predictive-analytics/" },
+        { label: "Custom AI Product Development", href: "/services/custom-ai-product-development/" },
+        { label: "RAG & Knowledge AI", href: "/services/rag-knowledge-ai/" },
+      ],
+      outcome: "Valuation time: hours → seconds. Accuracy: within 2–5% of market value. Scale: unlimited properties simultaneously.",
+    },
+    {
+      title: "Lead Scoring, Nurturing & Conversion",
+      definition: "AI lead intelligence scores inbound inquiries by purchase intent, financial qualification, and timeline, then automatically nurtures lower-priority leads through AI conversation until they're agent-ready.",
+      bottleneck: "60% of real estate leads are lost because of slow follow-up. Average agent response time: 47 hours. In a market where 78% of buyers go with the first agent who responds, delay is fatal. Agents cannot manually follow up on every inquiry simultaneously.",
+      howAISolvesIt: [
+        "Behavioral scoring ranks leads by purchase likelihood, financial profile, and timeline",
+        "AI responds to new inquiries within seconds — 24/7, via chat, email, or SMS",
+        "Persistent AI nurturing conversation maintains engagement over weeks and months",
+        "Hand-off triggers route high-intent leads to agents with full AI-generated context",
+      ],
+      services: [
+        { label: "Conversational AI Chatbots", href: "/services/conversational-ai-chatbots/" },
+        { label: "AI Automation", href: "/services/ai-automation/" },
+        { label: "AI Predictive Analytics", href: "/services/ai-predictive-analytics/" },
+      ],
+      intelligence: "Conversational Intelligence — Level 3 for qualification; Decision Intelligence — Level 2 for lead scoring",
+      outcome: "Lead response: 47 hours → seconds. Conversion rate: +35%. Lost leads: -60%. Agent time freed for qualified prospects only.",
+    },
+    {
+      title: "Real Estate Document Intelligence",
+      definition: "AI document processing extracts, structures, reviews, and flags issues in real estate contracts, purchase agreements, disclosure documents, title reports, and compliance filings — reducing review time from hours to minutes.",
+      bottleneck: "Real estate transactions involve dozens of documents requiring careful review. Manual review by attorneys and agents is slow and expensive. Missing clauses, compliance issues, and errors cause costly delays and legal exposure.",
+      howAISolvesIt: [
+        "Document AI extracts key terms, dates, contingencies, and obligations from contracts automatically",
+        "Risk flagging identifies unusual clauses, missing disclosures, and compliance gaps",
+        "Comparison analysis checks against standard templates and prior versions",
+        "Automated compliance checking against jurisdiction-specific requirements",
+      ],
+      services: [
+        { label: "Computer Vision", href: "/services/ai-computer-vision/" },
+        { label: "RAG & Knowledge AI", href: "/services/rag-knowledge-ai/" },
+        { label: "AI Automation", href: "/services/ai-automation/" },
+      ],
+      outcome: "Document review: hours → minutes. Error catch rate: +25%. Legal exposure: significantly reduced through systematic compliance checks.",
+    },
+    {
+      title: "Market Trend Analysis & Investment Intelligence",
+      bottleneck: "Real estate investment decisions require synthesizing macro trends, neighborhood-level data, comparable transactions, permit activity, and demographic shifts — more data than any human team can process in time to act.",
+      howAISolvesIt: [
+        "Predictive pricing models identify neighborhoods likely to appreciate before the trend is widely visible",
+        "Investment opportunity scoring ranks properties and markets by risk-adjusted return potential",
+        "Permit and development pipeline analysis reveals future supply and neighborhood trajectory",
+        "Automated market briefings synthesize signals for investor decision-making",
+      ],
+      services: [
+        { label: "AI Predictive Analytics", href: "/services/ai-predictive-analytics/" },
+        { label: "RAG & Knowledge AI", href: "/services/rag-knowledge-ai/" },
+        { label: "Custom AI Product Development", href: "/services/custom-ai-product-development/" },
+      ],
+      outcome: "Portfolio return improvement: +15–20%. Market entry timing: earlier and more accurate. Research time: hours → minutes.",
+    },
+    {
+      title: "AI Tenant Management & Property Operations",
+      bottleneck: "Property managers handle high volumes of repetitive tenant queries, maintenance requests, and payment reminders that consume staff time but don't require professional judgment.",
+      howAISolvesIt: [
+        "AI tenant portal handles maintenance ticket submission, status updates, and routine queries 24/7",
+        "Payment reminder automation reduces late payment rates significantly",
+        "Lease renewal AI proactively engages at-risk tenants before they give notice",
+        "Maintenance prioritization AI routes urgent issues and schedules routine work efficiently",
+      ],
+      services: [
+        { label: "Conversational AI Chatbots", href: "/services/conversational-ai-chatbots/" },
+        { label: "AI Automation", href: "/services/ai-automation/" },
+        { label: "AI Voice Agents", href: "/services/ai-voice-agents/" },
+      ],
+      outcome: "Routine query deflection: 70%. Late payments: -30%. Tenant satisfaction: +35%. Property manager capacity: 2x.",
+    },
+    {
+      title: "AI Virtual Tours & Visual Property Intelligence",
+      definition: "Computer vision and generative AI create, enhance, and present property content — virtual staging, 3D tours, drone integration, and condition assessment from photos.",
+      bottleneck: "Professional photography and staging are expensive and time-consuming. Remote buyers cannot visit in person. Property condition assessment requires physical inspection for portfolio management.",
+      howAISolvesIt: [
+        "AI virtual staging furnishes vacant properties digitally in minutes at a fraction of physical staging cost",
+        "3D tour AI stitches photos into immersive virtual walkthroughs",
+        "Computer vision condition assessment detects maintenance issues from property images",
+        "AI floor plan generation from photos enables rapid listing content creation",
+      ],
+      services: [
+        { label: "Computer Vision", href: "/services/ai-computer-vision/" },
+        { label: "Custom AI Product Development", href: "/services/custom-ai-product-development/" },
+      ],
+      outcome: "Staging cost: -80% with AI virtual staging. Remote buyer sales cycle: -30%. Portfolio condition visibility: scale without physical visits.",
+    },
+  ],
+  frameworkTitle: "The AGIX Real Estate Intelligence Framework",
+  frameworkLayers: [
+    { num: "01", name: "Market Intelligence", what: "Analyzes property values, neighborhood trends, and investment signals", how: "Market data informs lead scoring and portfolio decisions", icon: TrendingUp },
+    { num: "02", name: "Lead Intelligence", what: "Scores, nurtures, and converts buyers, sellers, and tenants at scale", how: "Lead behavior feeds market and engagement models", icon: Users },
+    { num: "03", name: "Transaction Intelligence", what: "Automates document processing, compliance, and deal pipeline management", how: "Transaction data improves market and valuation models", icon: FileText },
+    { num: "04", name: "Operations Intelligence", what: "Manages tenant communication, maintenance, and portfolio performance", how: "Operations data validates market and investment intelligence", icon: Building2 },
+  ],
+  frameworkQuote: "The best real estate professionals don't compete on access to information — AI equalized that. They compete on what they do with it. AGIX builds the intelligence layer that turns data into decisions faster than any competitor.",
+  governanceTitle: "Is AI in Real Estate Safe? Governance & Compliance",
+  governancePrinciples: [
+    { principle: "Fair Housing Compliance", meaning: "AI lead scoring and communication systems built to avoid disparate impact on protected classes — regular fairness audits required" },
+    { principle: "Data Privacy", meaning: "Client, buyer, and tenant data handled under GDPR, CCPA, and applicable real estate privacy regulations" },
+    { principle: "Valuation Transparency", meaning: "AVM outputs include confidence intervals and data sources — not presented as definitive without human review" },
+    { principle: "Human Agent Oversight", meaning: "AI qualifies and nurtures — licensed agents handle negotiations, advice, and fiduciary responsibilities" },
+    { principle: "Document Review Disclosure", meaning: "AI-assisted document review disclosed to clients. AI flags issues; licensed professionals provide legal advice" },
+    { principle: "Audit Trails", meaning: "All AI decisions (lead scoring, valuation, communication) logged for compliance and performance review" },
+  ],
+  limitationsTitle: "Limitations of AI in Real Estate",
+  limitations: [
+    { title: "AVM accuracy degrades in thin markets.", desc: "Automated valuations require sufficient comparable transaction volume. Rural, luxury, and highly unique properties have wider confidence intervals requiring human expert review." },
+    { title: "Fair housing law requires careful AI design.", desc: "Algorithmic lead scoring that correlates with protected class characteristics creates legal exposure. AI systems must be explicitly designed and audited for fair housing compliance." },
+    { title: "AI cannot replace licensed professional judgment.", desc: "Real estate agents, brokers, and attorneys provide fiduciary duty, negotiation expertise, and legal advice — all outside AI scope. AI augments professionals, it doesn't replace them." },
+    { title: "Market prediction carries inherent uncertainty.", desc: "AI market models improve investment decisions but cannot predict macroeconomic shocks, policy changes, or black swan events. They are probabilistic, not deterministic." },
+  ],
+  limitationsQuote: "The most valuable thing AI gives a real estate professional isn't a better algorithm — it's time. Time to build the relationships, understand the client, and deliver the expertise that AI cannot replicate.",
+  pricingTitle: "How Much Does Real Estate AI Cost?",
+  pricingRows: [
+    { system: "AVM / Property Valuation AI", investment: "$5,000–$9,000", timeline: "5–9 weeks" },
+    { system: "Lead Scoring & Nurturing AI", investment: "$4,000–$8,000", timeline: "4–8 weeks" },
+    { system: "Document Intelligence", investment: "$4,000–$7,000", timeline: "4–7 weeks" },
+    { system: "Market Intelligence Platform", investment: "$6,000–$10,000", timeline: "6–10 weeks" },
+    { system: "Tenant Management AI", investment: "$4,000–$7,000", timeline: "4–7 weeks" },
+    { system: "Virtual Tour & Visual AI", investment: "$3,000–$6,000", timeline: "3–6 weeks" },
+    { system: "Full Real Estate Platform", investment: "$14,000–$20,000", timeline: "14–20 weeks" },
+  ],
+  futureTitle: "The Future of AI in Real Estate by 2028",
+  futureItems: [
+    { num: "1", title: "AI negotiation assistance — real-time strategic guidance during offer and counter-offer sequences" },
+    { num: "2", title: "Blockchain + AI enables instant, automated real estate transactions with AI-verified title and compliance" },
+    { num: "3", title: "Predictive neighborhood intelligence identifies investment-grade areas 2–3 years before mainstream market recognition" },
+    { num: "4", title: "AI property management autonomously handles 90% of tenant interactions and maintenance coordination" },
+    { num: "5", title: "Personalized property matching: AI understands buyer lifestyle needs so precisely that the 'perfect home' is shown first" },
+  ],
+  relatedIndustries: [
+    { name: "Healthcare", href: "/industries/healthcare-ai-solutions/" },
+    { name: "Fintech & Lending", href: "/industries/fintech-ai-solutions/" },
+    { name: "Insurance", href: "/industries/insurance-ai-solutions/" },
+    { name: "Retail & eCommerce", href: "/industries/retail-ai-solutions/" },
+    { name: "Logistics & Supply Chain", href: "/industries/logistics-ai-solutions/" },
+    { name: "Hospitality & Wellness", href: "/industries/hospitality-ai-solutions/" },
+    { name: "EdTech & E-Learning", href: "/industries/edtech-ai-solutions/" },
+  ],
+  faqs: [
+    { q: "How is AI used in real estate?", a: "AI delivers instant property valuations, scores and nurtures leads, automates document review, provides market intelligence, manages tenant communication, and powers virtual tours — compressing deal cycles and improving conversion." },
+    { q: "What is an automated valuation model (AVM)?", a: "ML models analyze thousands of data points (comparable sales, tax records, demographics, market signals) to generate property valuations within 2–5% of market value in seconds." },
+    { q: "Can AI qualify real estate leads?", a: "Yes — AI behavioral scoring ranks leads by purchase intent and financial profile, and AI conversation qualifies them 24/7, routing agent-ready buyers at the optimal moment." },
+    { q: "Is AI real estate valuation accurate?", a: "For standard residential properties in active markets, AVM models achieve 2–5% accuracy. Confidence intervals widen for luxury, rural, or highly unique properties — always review with a professional." },
+    { q: "How much does real estate AI cost?", a: "Lead AI from $15K. Document intelligence from $12K. Full real estate platform from $60K. All include MLS data integration and compliance review." },
+    { q: "Can AI review real estate contracts?", a: "Yes — AI extracts key terms, flags missing clauses, identifies compliance issues, and compares against standard templates in minutes — not replacing legal review, but dramatically accelerating it." },
+    { q: "What is AI tenant management?", a: "AI handles maintenance requests, payment reminders, lease queries, and renewal outreach 24/7 — reducing property manager workload while improving tenant satisfaction." },
+    { q: "What are the limitations of AI in real estate?", a: "AVM accuracy requires sufficient comparable data, fair housing compliance requires careful design, licensed professional judgment is irreplaceable, and market prediction carries inherent uncertainty." },
+    { q: "How does AI improve real estate marketing?", a: "AI personalizes property recommendations, generates virtual staging, optimizes ad targeting, and nurtures leads automatically — improving click-to-close conversion significantly." },
+    { q: "How long does real estate AI implementation take?", a: "Focused systems: 3–7 weeks. Multi-system deployments: 8–14 weeks. Full real estate platform: 14–20 weeks." },
+    { q: "Can AI predict real estate market trends?", a: "AI analyzes permit activity, demographic shifts, comparable transactions, and economic signals to identify emerging trends — improving investment timing and decision accuracy, though not predicting macro shocks." },
+    { q: "Which real estate AI use case has fastest ROI?", a: "Lead scoring and nurturing — stops the 60% lead loss rate immediately, with measurable conversion improvement within the first 30 days of deployment." },
+  ],
+  formHeadline: "Get Your Free Real Estate AI Strategy",
+  formLeftTitle: "Ready to Deploy AI in Your Real Estate Business?",
+  formLeftBullets: [
+    "Free real estate AI strategy with fair housing compliance built in",
+    "MLS and CRM integration planning included",
+    "Use case specific to your firm type (brokerage, developer, or PM)",
+    "Honest cost estimates starting from $10K",
+  ],
+  challengeOptions: [
+    { value: "property-valuation", label: "Property Valuation & AVM" },
+    { value: "lead-scoring", label: "Lead Scoring & Nurturing" },
+    { value: "document-intelligence", label: "Document Intelligence" },
+    { value: "market-analysis", label: "Market Trend Analysis" },
+    { value: "tenant-management", label: "Tenant Management" },
+    { value: "virtual-tours", label: "Virtual Tours & Visual AI" },
+  ],
+  formCtaLabel: "Get My Free Real Estate AI Strategy",
+  formIndustry: "Real Estate",
 };
 
-const roles = [
-  { id: "agent", label: "Real Estate Agent", icon: UserCheck },
-  { id: "broker", label: "Broker / Brokerage Owner", icon: Building2 },
-  { id: "developer", label: "Developer Sales Team", icon: Building },
-  { id: "manager", label: "Property Manager", icon: Key },
-  { id: "startup", label: "PropTech Startup", icon: Layers }
-];
-
-const challenges = [
-  { id: "leads", label: "Lead Response & Leakage" },
-  { id: "qualification", label: "Lead Qualification" },
-  { id: "followups", label: "Follow-ups & Nurturing" },
-  { id: "property-info", label: "Property Information" },
-  { id: "scheduling", label: "Visit Scheduling" },
-  { id: "pricing", label: "Pricing & Market Intel" },
-  { id: "documents", label: "Paperwork & Compliance" },
-  { id: "support", label: "Post-Sale Support" }
-];
-
-const realityProblems = [
-  "Leads come in when you're busy",
-  "Follow-ups depend on memory",
-  "Buyers ask the same questions repeatedly",
-  "CRMs are half-updated",
-  "Deals go cold without warning"
-];
-
-const audienceTypes = [
-  { title: "Individual Real Estate Agents", icon: UserCheck, description: "Solo practitioners handling lead to close" },
-  { title: "Brokerage Firms & Sales Teams", icon: Building2, description: "Multi-agent teams with shared pipelines" },
-  { title: "Property Managers & Leasing Teams", icon: Key, description: "Managing rentals and tenant operations" },
-  { title: "Real Estate Developers", icon: Building, description: "Selling inventory at scale" },
-  { title: "Commercial Real Estate Firms", icon: Briefcase, description: "Complex deals with multiple stakeholders" },
-  { title: "PropTech & Marketplace Startups", icon: Globe, description: "Building platforms for real estate" }
-];
-
-const bottlenecks = [
-  {
-    id: "A",
-    title: "Lead Capture, Response Speed & Lead Leakage",
-    subtitle: "AI lead qualification for real estate starts here",
-    description: "You are spending money and effort to get inquiries, but leads are escaping before you can act.",
-    symptoms: [
-      "You miss calls while driving or showing properties",
-      "Website leads get responded to hours later",
-      "WhatsApp inquiries pile up unread",
-      "Same inquiry comes from multiple portals and gets duplicated",
-      "You're not sure which leads are serious vs time-wasters",
-      "You respond fast sometimes... but not consistently"
-    ],
-    impact: [
-      "Hot leads go to competitors who respond first",
-      "Marketing ROI collapses",
-      "Agents feel constantly anxious",
-      "Pipeline looks big but deal closures don't increase"
-    ],
-    whoFaces: ["Individual agents", "Brokerages & teams", "Developers running campaigns", "Property marketplaces"],
-    useCases: [
-      "Is this property still available?",
-      "What's the price range in this area?",
-      "Can I book a site visit today?",
-      "Is it negotiable?",
-      "Can you share the video / brochure?"
-    ],
-    solution: {
-      name: "AI Lead Capture + Instant Response System",
-      description: "Voice, WhatsApp & Web instant response",
-      flow: [
-        "Lead comes from portals, website, WhatsApp, phone, or ads",
-        "AI responds instantly - answers questions, confirms availability",
-        "AI logs lead source, intent, urgency, property of interest",
-        "Hot leads immediately escalated to agents",
-        "Cold leads nurtured automatically"
-      ],
-      aiTypes: ["Conversational AI (voice + chat)", "Intent detection", "Workflow automation"],
-      techStack: ["GPT-4 / Claude", "Twilio / Retell", "WhatsApp Business API", "HubSpot / GHL / custom CRM"],
-      timeline: "3-4 weeks MVP, 4-6 weeks production",
-      cost: { agent: "$3K - $6K", team: "$6K - $12K", developer: "$10K - $18K" }
-    }
-  },
-  {
-    id: "B",
-    title: "Lead Qualification, Prioritization & Agent Time Waste",
-    subtitle: "AI lead scoring + qualification systems fix this",
-    description: "Not all leads deserve equal attention — but most teams treat them equally.",
-    symptoms: [
-      "Too many 'just checking' inquiries",
-      "Leads ask price without giving budget",
-      "Buyers don't reveal timeline",
-      "Site visits happen but no serious intent",
-      "Agents spend time on low-intent leads",
-      "High-intent buyers don't get prioritized"
-    ],
-    impact: [
-      "Agent productivity drops",
-      "Leads-to-visits ratio becomes weak",
-      "Visits increase but closures stay flat",
-      "High-intent leads feel ignored"
-    ],
-    whoFaces: ["Brokerages with multiple agents", "Developers selling inventory", "Commercial sales teams", "High-volume rental teams"],
-    useCases: [
-      "Buyer wants 2BHK, but budget suggests 1BHK",
-      "Buyer says 'urgent' but delays sharing documents",
-      "Investor wants yield analysis, not photos",
-      "Tenant wants move-in in 2 days",
-      "Buyer needs loan eligibility guidance"
-    ],
-    solution: {
-      name: "AI Lead Qualification & Scoring Engine",
-      description: "Structured qualification with automatic scoring",
-      flow: [
-        "AI asks structured questions: budget, timeline, purpose, location, financing",
-        "AI scores leads automatically: Hot, Warm, Cold",
-        "Agents receive only high-intent leads with context"
-      ],
-      aiTypes: ["Conversational AI", "Rule-based + probabilistic scoring", "Context memory"],
-      techStack: ["GPT-4 / Claude", "Python backend", "CRM integration", "Email / WhatsApp notifications"],
-      timeline: "3-5 weeks",
-      cost: { agent: "$4K - $8K", developer: "$8K - $14K" }
-    }
-  },
-  {
-    id: "C",
-    title: "Follow-Ups, Nurturing & Pipeline Discipline",
-    subtitle: "Real estate CRM automation + follow-up AI fixes this",
-    description: "Deals don't close in one conversation — but follow-up systems are rarely strong.",
-    symptoms: [
-      "Follow-ups depend on memory or WhatsApp scroll",
-      "CRM is incomplete and outdated",
-      "No reminders for site visit follow-ups",
-      "Leads go cold without you noticing",
-      "Buyers disappear for weeks then buy elsewhere",
-      "Agents don't know what to say in follow-ups"
-    ],
-    impact: [
-      "Pipeline becomes unpredictable",
-      "Deal velocity slows",
-      "Teams blame lead quality when it's actually follow-up quality",
-      "Repeat business and referrals drop"
-    ],
-    whoFaces: ["Agents handling many leads", "Brokerages", "Developers with longer cycles", "Commercial real estate teams"],
-    useCases: [
-      "Just checking if you want to visit this weekend",
-      "A similar unit became available",
-      "Price drop / limited inventory update",
-      "Loan pre-approval assistance",
-      "Lease renewal reminder"
-    ],
-    solution: {
-      name: "AI Follow-Up & Deal Nurturing Automation",
-      description: "Behavior-based automatic follow-ups",
-      flow: [
-        "Tracks every interaction automatically",
-        "Sends visit reminders, post-visit follow-ups, inventory updates, price changes",
-        "Adjusts messaging based on buyer behavior",
-        "Alerts agents when human intervention is needed"
-      ],
-      aiTypes: ["Conversational AI", "Behavior-based automation", "Event triggers"],
-      techStack: ["GPT-4", "n8n / Make automation", "CRM sync", "Messaging APIs"],
-      timeline: "3-5 weeks",
-      cost: { agent: "$3K - $6K", broker: "$6K - $12K" }
-    }
-  },
-  {
-    id: "D",
-    title: "Property Information Chaos & Buyer Confusion",
-    subtitle: "AI property knowledge assistant solves this",
-    description: "The same property information gets repeated manually — and errors creep in.",
-    symptoms: [
-      "Availability isn't updated across channels",
-      "Agents share outdated brochures",
-      "Buyers ask the same questions repeatedly",
-      "Teams struggle to track features, pricing, unit sizes, floor plans",
-      "Property managers handle repetitive tenant questions",
-      "Developers struggle with inventory clarity"
-    ],
-    impact: [
-      "Buyer trust drops",
-      "Decisions delay",
-      "Site visits become low-quality",
-      "Team wastes time explaining instead of selling"
-    ],
-    whoFaces: ["Developers with multiple projects", "Property managers & leasing teams", "Teams managing large inventories", "Commercial listings"],
-    useCases: [
-      "Is parking included?",
-      "What's the carpet area?",
-      "Is it pet-friendly?",
-      "What are the amenities?",
-      "Can you share a video tour?",
-      "What's the rent + deposit + maintenance?"
-    ],
-    solution: {
-      name: "AI Property Knowledge Assistant (RAG-Based)",
-      description: "Instant answers from your property database",
-      flow: [
-        "Ingests listings, floor plans, pricing sheets, videos, policies",
-        "AI answers buyer questions: availability, amenities, pricing, comparisons",
-        "Works across website chat, WhatsApp, sales portals"
-      ],
-      aiTypes: ["Retrieval-Augmented Generation (RAG)", "Vector search", "Knowledge grounding"],
-      techStack: ["Pinecone / Weaviate", "GPT-4 / Claude", "Python", "CMS / CRM integration"],
-      timeline: "5-7 weeks",
-      cost: { small: "$6K - $10K", large: "$12K - $20K" }
-    }
-  },
-  {
-    id: "E",
-    title: "Site Visits, Scheduling & Coordination Breakdown",
-    subtitle: "AI scheduling and coordination agents fix this",
-    description: "Most deals slow down at the moment of 'Let's schedule a visit.'",
-    symptoms: [
-      "Endless back-and-forth to schedule visits",
-      "Buyers no-show",
-      "Agents waste travel time",
-      "Developers struggle to coordinate with site staff",
-      "Property managers struggle with inspections & handovers"
-    ],
-    impact: [
-      "Agent productivity drops",
-      "Buyers lose interest",
-      "Teams become reactive",
-      "Sales cycles stretch unnecessarily"
-    ],
-    whoFaces: ["Agents doing frequent visits", "Brokerages", "Developers", "Leasing teams"],
-    useCases: [
-      "Auto-confirm visits and send directions",
-      "Reschedule without manual calls",
-      "Remind buyers before visit",
-      "Gather visitor preferences before visit",
-      "Post-visit feedback capture"
-    ],
-    solution: {
-      name: "AI Visit Scheduling & Coordination Agent",
-      description: "Automated scheduling with smart coordination",
-      flow: [
-        "Coordinates buyer availability, agent schedules, site staff",
-        "Sends auto confirmations, directions, reminders",
-        "Captures visit feedback and next-step intent"
-      ],
-      aiTypes: ["Workflow automation", "Conversational scheduling", "Calendar intelligence"],
-      techStack: ["Calendar APIs", "Messaging platforms", "CRM integration"],
-      timeline: "3-4 weeks",
-      cost: { all: "$4K - $8K" }
-    }
-  },
-  {
-    id: "F",
-    title: "Pricing, Market Intelligence & Negotiation Confidence",
-    subtitle: "Predictive pricing + market AI solves this",
-    description: "Pricing conversations are emotional when they should be data-backed.",
-    symptoms: [
-      "Pricing decided by gut",
-      "CMA reports take too long",
-      "Investors ask yield questions and you scramble",
-      "Negotiations drag without clarity",
-      "Sellers have unrealistic expectations"
-    ],
-    impact: [
-      "Deals stall",
-      "Discounts become random",
-      "Teams lose negotiation authority",
-      "Inventory movement slows"
-    ],
-    whoFaces: ["Brokers", "Developers", "Commercial teams", "Investors"],
-    useCases: [
-      "Pricing recommendations based on comps",
-      "Rental price optimization",
-      "Demand trend insights",
-      "Negotiation support narratives"
-    ],
-    solution: {
-      name: "Predictive Pricing & Market Intelligence Engine",
-      description: "Data-driven pricing and market insights",
-      flow: [
-        "Analyzes historical transactions, demand trends, comparable listings",
-        "Recommends price ranges, rental yields, negotiation talking points"
-      ],
-      aiTypes: ["Predictive analytics", "Time-series modeling", "Market intelligence AI"],
-      techStack: ["ML models", "Data pipelines", "Visualization dashboards"],
-      timeline: "6-9 weeks",
-      cost: { all: "$15K - $30K" }
-    }
-  },
-  {
-    id: "G",
-    title: "Paperwork, Contracts & Compliance Delays",
-    subtitle: "Document AI for real estate solves this",
-    description: "Closings slow down due to document chaos.",
-    symptoms: [
-      "Missing documents and repeated requests",
-      "Manual data entry from contracts",
-      "Lease renewals not tracked",
-      "Compliance docs scattered",
-      "Tenant onboarding slow"
-    ],
-    impact: [
-      "Closing delays",
-      "Legal risk",
-      "Client frustration",
-      "Teams spend time chasing documents instead of closing"
-    ],
-    whoFaces: ["Property managers", "Developers", "Enterprises", "Brokerages at scale"],
-    useCases: [
-      "Extract data from agreements, leases, KYC docs",
-      "Track missing documents and renewal dates",
-      "Automate compliance tracking"
-    ],
-    solution: {
-      name: "AI Document & Lease Intelligence Platform",
-      description: "Automated document processing and tracking",
-      flow: [
-        "Extracts data from agreements, leases, KYC docs",
-        "Tracks missing documents, renewal dates, compliance items"
-      ],
-      aiTypes: ["Document AI", "NLP extraction", "Rule-based workflows"],
-      techStack: ["OCR", "NLP models", "Workflow automation"],
-      timeline: "5-8 weeks",
-      cost: { all: "$10K - $22K" }
-    }
-  },
-  {
-    id: "H",
-    title: "Post-Sale Support, Tenant Ops & Reputation",
-    subtitle: "AI support & reputation automation solves this",
-    description: "After the deal, support quality affects referrals, renewals, reviews.",
-    symptoms: [
-      "Tenants raise repetitive tickets",
-      "Maintenance requests poorly tracked",
-      "Reviews not managed proactively",
-      "Clients don't refer because experience fades"
-    ],
-    impact: [
-      "Low referral rates",
-      "Tenant churn",
-      "Reputation damage",
-      "Missed renewal opportunities"
-    ],
-    whoFaces: ["Property managers", "Rental businesses", "Developers with handover cycles"],
-    useCases: [
-      "Handle tenant FAQs automatically",
-      "Log and track maintenance requests",
-      "Prompt for reviews & referrals"
-    ],
-    solution: {
-      name: "AI Tenant Support & Reputation Management Agent",
-      description: "Automated tenant support and review management",
-      flow: [
-        "Handles tenant FAQs",
-        "Logs maintenance requests and tracks resolution",
-        "Prompts for reviews & referrals at right moments"
-      ],
-      aiTypes: ["Conversational AI", "Ticket automation", "Review management"],
-      techStack: ["LLM-based chat", "Ticketing system integration", "Review platforms"],
-      timeline: "4-6 weeks",
-      cost: { all: "$6K - $12K" }
-    }
-  }
-];
-
-const roleBottleneckMap: Record<string, string[]> = {
-  agent: ["A", "B", "C", "E"],
-  broker: ["A", "B", "C", "D"],
-  developer: ["A", "C", "D", "F", "G"],
-  manager: ["D", "G", "H", "E"],
-  startup: ["A", "B", "D", "F"]
-};
-
-const costTable = [
-  { role: "Individual Agent", scope: "Lead response + follow-ups", cost: "$3K - $6K" },
-  { role: "Small Team / Brokerage", scope: "Qualification + CRM automation", cost: "$6K - $12K" },
-  { role: "Developer", scope: "Inventory + pricing + ops AI", cost: "$12K - $25K" },
-  { role: "Enterprise / CRE", scope: "Intelligence + compliance", cost: "$25K - $50K+" }
-];
-
-const roiMetrics = [
-  { area: "Lead response time", improvement: "40-70% faster" },
-  { area: "Lead-to-visit ratio", improvement: "+20-35%" },
-  { area: "Agent workload", improvement: "-25-40%" },
-  { area: "Deal velocity", improvement: "Faster closures" },
-  { area: "Follow-up consistency", improvement: "Near 100%" }
-];
-
-
-function HeroLeadForm() {
-  const { toast } = useToast();
-  const { triggerCelebration } = useCelebration();
-  const [formData, setFormData] = useState({
-    fullName: "",
-    workEmail: "",
-    role: "",
-    challenge: "",
-    teamSize: "",
-    market: "",
-    description: ""
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    
-    const result = await submitLead(
-      {
-        name: formData.fullName,
-        email: formData.workEmail,
-        role: formData.role,
-        industry: "real-estate",
-        companySize: formData.teamSize,
-        challenges: [formData.challenge],
-        message: formData.description,
-      },
-      {
-        formType: "real-estate-recommendation",
-        source: "/industries/real-estate",
-        ctaId: "real-estate-form-submit",
-        ctaText: "Get My AI Recommendation",
-        ctaLocation: "/industries/real-estate",
-        additionalMetadata: {
-          market: formData.market,
-        },
-      }
-    );
-
-    setIsSubmitting(false);
-
-    if (result.success) {
-      triggerCelebration();
-      toast({
-        title: "Request submitted",
-        description: "We'll review your inputs and suggest what actually fits. No spam, no sales pressure."
-      });
-      
-      trackEvent("lead_form_submit", {
-        event_category: "real_estate_industry",
-        event_label: "hero_form"
-      });
-      
-      setFormData({ fullName: "", workEmail: "", role: "", challenge: "", teamSize: "", market: "", description: "" });
-    } else {
-      toast({
-        title: "Submission failed",
-        description: "Please try again or contact us directly.",
-        variant: "destructive"
-      });
-    }
-  };
-
-
-
-  return (
-    <Card className="bg-card/95 backdrop-blur-sm border-border">
-      <CardHeader className="pb-4">
-        <CardTitle className="text-lg flex items-center gap-2">
-          <Home className="w-5 h-5 text-primary" />
-          Get a Personalized AI Recommendation
-        </CardTitle>
-        <p className="text-sm text-muted-foreground">
-          We review your inputs and suggest what actually fits.
-        </p>
-      </CardHeader>
-      <CardContent>
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div className="grid grid-cols-2 gap-3">
-            <div>
-              <Label htmlFor="re-fullname" className="text-sm">Full Name</Label>
-              <Input
-                id="re-fullname"
-                name="name"
-                autoComplete="name"
-                value={formData.fullName}
-                onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                placeholder="John Smith"
-                required
-                data-testid="input-realestate-name"
-              />
-            </div>
-            <div>
-              <Label htmlFor="re-email" className="text-sm">Work Email</Label>
-              <Input
-                id="re-email"
-                name="email"
-                type="email"
-                autoComplete="email"
-                value={formData.workEmail}
-                onChange={(e) => setFormData({ ...formData, workEmail: e.target.value })}
-                placeholder="john@realty.com"
-                required
-                data-testid="input-realestate-email"
-              />
-            </div>
-          </div>
-          <div>
-            <Label htmlFor="re-role" className="text-sm">Your Role</Label>
-            <Select
-              value={formData.role}
-              onValueChange={(value) => setFormData({ ...formData, role: value })}
-            >
-              <SelectTrigger id="re-role" data-testid="select-realestate-role">
-                <SelectValue placeholder="Select your role" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="agent">Real Estate Agent</SelectItem>
-                <SelectItem value="broker">Broker / Brokerage Owner</SelectItem>
-                <SelectItem value="developer">Developer</SelectItem>
-                <SelectItem value="manager">Property Manager</SelectItem>
-                <SelectItem value="startup">PropTech Startup</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-          <div>
-            <Label htmlFor="re-challenge" className="text-sm">Biggest Challenge</Label>
-            <Select
-              value={formData.challenge}
-              onValueChange={(value) => setFormData({ ...formData, challenge: value })}
-            >
-              <SelectTrigger id="re-challenge" data-testid="select-realestate-challenge">
-                <SelectValue placeholder="What's your biggest challenge?" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="leads">Leads</SelectItem>
-                <SelectItem value="followups">Follow-ups</SelectItem>
-                <SelectItem value="pricing">Pricing</SelectItem>
-                <SelectItem value="listings">Listings</SelectItem>
-                <SelectItem value="operations">Operations</SelectItem>
-                <SelectItem value="not-sure">Not Sure</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-          <div className="grid grid-cols-2 gap-3">
-            <div>
-              <Label htmlFor="re-teamsize" className="text-sm">Team Size</Label>
-              <Input
-                id="re-teamsize"
-                name="teamSize"
-                autoComplete="off"
-                value={formData.teamSize}
-                onChange={(e) => setFormData({ ...formData, teamSize: e.target.value })}
-                placeholder="e.g., 5"
-                data-testid="input-realestate-teamsize"
-              />
-            </div>
-            <div>
-              <Label htmlFor="re-market" className="text-sm">Primary Market</Label>
-              <Input
-                id="re-market"
-                name="market"
-                autoComplete="off"
-                value={formData.market}
-                onChange={(e) => setFormData({ ...formData, market: e.target.value })}
-                placeholder="e.g., NYC"
-                data-testid="input-realestate-market"
-              />
-            </div>
-          </div>
-          <div>
-            <Label htmlFor="re-description" className="text-sm">Briefly describe your situation (optional)</Label>
-            <Textarea
-              id="re-description"
-              name="message"
-              autoComplete="off"
-              value={formData.description}
-              onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-              placeholder="Tell us more about your workflow..."
-              className="resize-none"
-              rows={2}
-              data-testid="textarea-realestate-description"
-            />
-          </div>
-          <Button type="submit" className="w-full bg-cyan-600 hover:bg-cyan-700 text-white border-cyan-600" disabled={isSubmitting} data-testid="button-realestate-submit">
-            {isSubmitting ? (
-              <>
-                <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                Submitting...
-              </>
-            ) : (
-              <>
-                Get My AI Recommendation
-                <ArrowRight className="w-4 h-4 ml-2" />
-              </>
-            )}
-          </Button>
-          <p className="text-xs text-muted-foreground text-center">
-            No spam. No sales pressure.
-          </p>
-        </form>
-      </CardContent>
-    </Card>
-  );
-}
-
-function AIReadinessScore() {
-  const [answers, setAnswers] = useState<Record<string, boolean>>({});
-  const [showScore, setShowScore] = useState(false);
-
-  const questions = [
-    { id: "crm", text: "Do you use a CRM to track leads?" },
-    { id: "leads", text: "Do you receive 20+ inquiries per month?" },
-    { id: "followups", text: "Do you have a follow-up system in place?" },
-    { id: "channels", text: "Do leads come from multiple channels?" },
-    { id: "digital", text: "Is your listing data digitized?" },
-  ];
-
-  const score = Object.values(answers).filter(Boolean).length * 20;
-
-  const getRecommendation = () => {
-    if (score >= 80) return { level: "High", start: "AI Lead Response + Qualification", avoid: "None - ready for full automation" };
-    if (score >= 60) return { level: "Moderate", start: "AI Lead Capture + Response", avoid: "Complex integrations (build foundation first)" };
-    if (score >= 40) return { level: "Developing", start: "Basic AI Response System", avoid: "Multi-channel until single-channel works" };
-    return { level: "Early", start: "CRM + Lead tracking first", avoid: "All automation until basics in place" };
-  };
-
-  const recommendation = getRecommendation();
-
-  return (
-    <Card id="readiness-quiz" className="border-purple-500/30 bg-gradient-to-br from-purple-500/5 to-violet-500/5">
-      <CardHeader>
-        <CardTitle className="flex items-center gap-2">
-          <Target className="w-5 h-5 text-purple-500" />
-          AI Readiness Score for Real Estate
-        </CardTitle>
-        <p className="text-sm text-muted-foreground">
-          Check if your business is ready for AI automation
-        </p>
-      </CardHeader>
-      <CardContent className="space-y-4">
-        {questions.map((q) => (
-          <div
-            key={q.id}
-            className="flex items-center justify-between p-3 bg-muted/30 rounded-lg"
-          >
-            <span className="text-sm">{q.text}</span>
-            <div className="flex gap-2">
-              <Button
-                size="sm"
-                variant={answers[q.id] === true ? "default" : "outline"}
-                onClick={() => setAnswers({ ...answers, [q.id]: true })}
-                data-testid={`button-readiness-${q.id}-yes`}
-              >
-                Yes
-              </Button>
-              <Button
-                size="sm"
-                variant={answers[q.id] === false ? "default" : "outline"}
-                onClick={() => setAnswers({ ...answers, [q.id]: false })}
-                data-testid={`button-readiness-${q.id}-no`}
-              >
-                No
-              </Button>
-            </div>
-          </div>
-        ))}
-
-        <Button
-          onClick={() => setShowScore(true)}
-          className="w-full"
-          disabled={Object.keys(answers).length < 5}
-          data-testid="button-calculate-readiness"
-        >
-          Calculate Readiness Score
-        </Button>
-
-        <AnimatePresence>
-          {showScore && (
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="space-y-4"
-            >
-              <div className="p-4 bg-primary/10 rounded-lg text-center">
-                <p className="text-sm text-muted-foreground">AI Readiness Score</p>
-                <p className="text-4xl font-bold text-primary">{score}/100</p>
-                <Badge className="mt-2">{recommendation.level} Readiness</Badge>
-              </div>
-              <div className="space-y-2">
-                <div className="p-3 bg-green-500/10 rounded-lg">
-                  <p className="text-xs text-muted-foreground">Start With</p>
-                  <p className="text-sm font-medium">{recommendation.start}</p>
-                </div>
-                <div className="p-3 bg-orange-500/10 rounded-lg">
-                  <p className="text-xs text-muted-foreground">Avoid For Now</p>
-                  <p className="text-sm font-medium">{recommendation.avoid}</p>
-                </div>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </CardContent>
-    </Card>
-  );
-}
-
-function AISolutionFinder() {
-  const [step, setStep] = useState(1);
-  const [inputs, setInputs] = useState({
-    role: "",
-    volume: 50,
-    bottleneck: "",
-    dealType: "",
-    teamSize: ""
-  });
-  const [result, setResult] = useState<{
-    system: string;
-    why: string;
-    timeline: string;
-    cost: string;
-    nextPhase: string;
-  } | null>(null);
-
-  const generateRecommendation = () => {
-    let system = "";
-    let why = "";
-    let timeline = "";
-    let cost = "";
-    let nextPhase = "";
-
-    if (inputs.bottleneck === "leads" || inputs.bottleneck === "qualification") {
-      system = "AI Lead Qualification + Instant Response System";
-      why = `You receive ${inputs.volume}+ inquiries/month and need faster, consistent response to capture more deals.`;
-      timeline = "3-5 weeks";
-      cost = inputs.role === "agent" ? "$3K - $6K" : inputs.role === "developer" ? "$10K - $18K" : "$6K - $12K";
-      nextPhase = "AI Follow-Up Automation";
-    } else if (inputs.bottleneck === "followups") {
-      system = "AI Follow-Up & Deal Nurturing Automation";
-      why = "Deals are going cold due to inconsistent follow-ups. AI ensures no opportunity slips through.";
-      timeline = "3-5 weeks";
-      cost = inputs.role === "agent" ? "$3K - $6K" : "$6K - $12K";
-      nextPhase = "Property Knowledge Assistant";
-    } else if (inputs.bottleneck === "property-info") {
-      system = "AI Property Knowledge Assistant (RAG-Based)";
-      why = "Buyers need instant, accurate answers. AI creates a 24/7 property desk.";
-      timeline = "5-7 weeks";
-      cost = inputs.volume > 50 ? "$12K - $20K" : "$6K - $10K";
-      nextPhase = "Predictive Pricing Intelligence";
-    } else if (inputs.bottleneck === "scheduling") {
-      system = "AI Visit Scheduling & Coordination Agent";
-      why = "Back-and-forth scheduling wastes time. AI automates confirmations and reduces no-shows.";
-      timeline = "3-4 weeks";
-      cost = "$4K - $8K";
-      nextPhase = "Lead Qualification AI";
-    } else if (inputs.bottleneck === "pricing") {
-      system = "Predictive Pricing & Market Intelligence Engine";
-      why = "Data-backed pricing gives negotiation confidence and moves inventory faster.";
-      timeline = "6-9 weeks";
-      cost = "$15K - $30K";
-      nextPhase = "Document Intelligence";
-    } else if (inputs.bottleneck === "documents") {
-      system = "AI Document & Lease Intelligence Platform";
-      why = "Document chaos delays closings. AI automates tracking and extraction.";
-      timeline = "5-8 weeks";
-      cost = "$10K - $22K";
-      nextPhase = "Tenant Support AI";
-    } else {
-      system = "AI Lead Response + Follow-up Automation";
-      why = "Start with the highest-ROI use case: capturing and nurturing leads.";
-      timeline = "4-5 weeks";
-      cost = "$6K - $12K";
-      nextPhase = "Property Knowledge Assistant";
-    }
-
-    setResult({ system, why, timeline, cost, nextPhase });
-    setStep(4);
-  };
-
-  return (
-    <Card id="solution-finder" className="scroll-mt-20">
-      <CardHeader>
-        <CardTitle className="flex items-center gap-2">
-          <Search className="w-5 h-5 text-primary" />
-          Find My Real Estate AI Solution
-        </CardTitle>
-        <p className="text-sm text-muted-foreground">
-          Takes ~30 seconds. Get a personalized recommendation.
-        </p>
-      </CardHeader>
-      <CardContent>
-        <AnimatePresence mode="wait">
-          {step === 1 && (
-            <motion.div
-              key="step1"
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -20 }}
-              className="space-y-4"
-            >
-              <Label className="text-base font-medium">What's your role?</Label>
-              <div className="grid grid-cols-2 gap-2">
-                {roles.map((role) => (
-                  <Button
-                    key={role.id}
-                    variant={inputs.role === role.id ? "default" : "outline"}
-                    onClick={() => {
-                      setInputs({ ...inputs, role: role.id });
-                      setStep(2);
-                    }}
-                    className="justify-start h-auto py-3"
-                    data-testid={`button-finder-role-${role.id}`}
-                  >
-                    <role.icon className="w-4 h-4 mr-2" />
-                    {role.label}
-                  </Button>
-                ))}
-              </div>
-            </motion.div>
-          )}
-
-          {step === 2 && (
-            <motion.div
-              key="step2"
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -20 }}
-              className="space-y-4"
-            >
-              <Label className="text-base font-medium">What's your biggest challenge?</Label>
-              <div className="grid grid-cols-2 gap-2">
-                {challenges.map((c) => (
-                  <Button
-                    key={c.id}
-                    variant={inputs.bottleneck === c.id ? "default" : "outline"}
-                    onClick={() => {
-                      setInputs({ ...inputs, bottleneck: c.id });
-                      setStep(3);
-                    }}
-                    className="justify-start h-auto py-3 text-sm"
-                    data-testid={`button-finder-challenge-${c.id}`}
-                  >
-                    {c.label}
-                  </Button>
-                ))}
-              </div>
-              <Button variant="ghost" onClick={() => setStep(1)} className="mt-2">
-                Back
-              </Button>
-            </motion.div>
-          )}
-
-          {step === 3 && (
-            <motion.div
-              key="step3"
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -20 }}
-              className="space-y-4"
-            >
-              <div>
-                <div className="flex justify-between mb-2">
-                  <Label className="text-base font-medium">Monthly inquiries</Label>
-                  <span className="text-sm font-medium">{inputs.volume}</span>
-                </div>
-                <Slider
-                  value={[inputs.volume]}
-                  onValueChange={(v) => setInputs({ ...inputs, volume: v[0] })}
-                  min={10}
-                  max={500}
-                  step={10}
-                  data-testid="slider-finder-volume"
-                />
-              </div>
-              <div>
-                <Label className="text-base font-medium mb-2 block">Deal type</Label>
-                <div className="flex gap-2">
-                  {["Sales", "Rentals", "Commercial"].map((type) => (
-                    <Button
-                      key={type}
-                      variant={inputs.dealType === type.toLowerCase() ? "default" : "outline"}
-                      onClick={() => setInputs({ ...inputs, dealType: type.toLowerCase() })}
-                      size="sm"
-                      data-testid={`button-finder-dealtype-${type.toLowerCase()}`}
-                    >
-                      {type}
-                    </Button>
-                  ))}
-                </div>
-              </div>
-              <div className="flex gap-2 pt-4">
-                <Button variant="ghost" onClick={() => setStep(2)}>
-                  Back
-                </Button>
-                <Button onClick={generateRecommendation} className="flex-1" data-testid="button-finder-generate">
-                  Get My Recommendation
-                  <ArrowRight className="w-4 h-4 ml-2" />
-                </Button>
-              </div>
-            </motion.div>
-          )}
-
-          {step === 4 && result && (
-            <motion.div
-              key="step4"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="space-y-4"
-            >
-              <div className="bg-gradient-to-br from-primary/10 to-cyan-500/10 rounded-lg p-4 border border-primary/20">
-                <h4 className="font-semibold text-primary mb-2">Best Starting System:</h4>
-                <p className="text-lg font-bold mb-2">{result.system}</p>
-                <p className="text-sm text-muted-foreground mb-4">{result.why}</p>
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <p className="text-xs text-muted-foreground">Timeline</p>
-                    <p className="font-semibold">{result.timeline}</p>
-                  </div>
-                  <div>
-                    <p className="text-xs text-muted-foreground">Estimated Cost</p>
-                    <p className="font-semibold text-green-500">{result.cost}</p>
-                  </div>
-                </div>
-                <div className="mt-4 pt-4 border-t border-border">
-                  <p className="text-xs text-muted-foreground">Next Phase:</p>
-                  <p className="text-sm">{result.nextPhase}</p>
-                </div>
-              </div>
-              <div className="flex gap-2">
-                <Button variant="outline" onClick={() => { setStep(1); setResult(null); }} className="flex-1">
-                  Start Over
-                </Button>
-                <Button asChild className="flex-1">
-                  <a href="#lead-form">
-                    Get Detailed Roadmap
-                    <ArrowRight className="w-4 h-4 ml-2" />
-                  </a>
-                </Button>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </CardContent>
-    </Card>
-  );
-}
-
-function RealEstateLeadForm() {
-  const { toast } = useToast();
-  const { triggerCelebration } = useCelebration();
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [formData, setFormData] = useState({
-    role: "",
-    challenge: "",
-    teamSize: "",
-    market: "",
-    email: "",
-    country: ""
-  });
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!formData.email || !formData.role || !formData.challenge) {
-      toast({
-        title: "Please fill in required fields",
-        description: "Email, role, and challenge are required.",
-        variant: "destructive"
-      });
-      return;
-    }
-
-    setIsSubmitting(true);
-
-    const result = await submitLead(
-      {
-        name: "",
-        email: formData.email,
-        role: formData.role,
-        industry: "real-estate",
-        companySize: formData.teamSize,
-        challenges: [formData.challenge],
-        message: `Market: ${formData.market}, Country: ${formData.country}`,
-      },
-      {
-        formType: "real-estate-roadmap",
-        source: "/industries/real-estate",
-        ctaId: "real-estate-form-submit",
-        ctaText: "Get My AI Recommendation",
-        ctaLocation: "/industries/real-estate",
-        additionalMetadata: {
-          role: formData.role,
-          market: formData.market,
-          country: formData.country,
-        },
-      }
-    );
-
-    setIsSubmitting(false);
-
-    if (result.success) {
-      triggerCelebration();
-      toast({
-        title: "Request received",
-        description: "We'll review your needs and get back to you shortly."
-      });
-      trackEvent("lead_form_submit", {
-        event_category: "real_estate_industry",
-        event_label: "lead_form"
-      });
-      setFormData({ role: "", challenge: "", teamSize: "", market: "", email: "", country: "" });
-    } else {
-      toast({
-        title: "Something went wrong",
-        description: "Please try again or contact us directly.",
-        variant: "destructive"
-      });
-    }
-  };
-
-  return (
-    <section id="lead-form" className="py-20 scroll-mt-20">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-        >
-          <Card className="border-2 border-primary/20">
-            <CardHeader className="text-center bg-gradient-to-r from-primary/5 to-cyan-500/5">
-              <CardTitle className="text-2xl">Get Your Personalized AI Recommendation</CardTitle>
-              <p className="text-muted-foreground">
-                We review your inputs and suggest what actually fits your real estate business.
-              </p>
-            </CardHeader>
-            <CardContent className="max-w-xl mx-auto space-y-4 pt-6">
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <Label>Your Role *</Label>
-                    <select
-                      className="w-full mt-1.5 h-10 rounded-md border border-input bg-background px-3 text-sm"
-                      value={formData.role}
-                      onChange={(e) => setFormData({ ...formData, role: e.target.value })}
-                      data-testid="select-role"
-                    >
-                      <option value="">Select role</option>
-                      <option value="agent">Real Estate Agent</option>
-                      <option value="broker">Broker / Brokerage Owner</option>
-                      <option value="developer">Developer</option>
-                      <option value="manager">Property Manager</option>
-                      <option value="startup">PropTech Startup</option>
-                    </select>
-                  </div>
-                  <div>
-                    <Label>Primary Challenge *</Label>
-                    <select
-                      className="w-full mt-1.5 h-10 rounded-md border border-input bg-background px-3 text-sm"
-                      value={formData.challenge}
-                      onChange={(e) => setFormData({ ...formData, challenge: e.target.value })}
-                      data-testid="select-challenge"
-                    >
-                      <option value="">Select challenge</option>
-                      <option value="leads">Lead Response</option>
-                      <option value="qualification">Lead Qualification</option>
-                      <option value="followups">Follow-ups</option>
-                      <option value="scheduling">Scheduling</option>
-                      <option value="pricing">Pricing Intel</option>
-                      <option value="operations">Operations</option>
-                    </select>
-                  </div>
-                </div>
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <Label>Team Size</Label>
-                    <select
-                      className="w-full mt-1.5 h-10 rounded-md border border-input bg-background px-3 text-sm"
-                      value={formData.teamSize}
-                      onChange={(e) => setFormData({ ...formData, teamSize: e.target.value })}
-                      data-testid="select-team-size"
-                    >
-                      <option value="">Select size</option>
-                      <option value="solo">Solo / Individual</option>
-                      <option value="small">2-5 people</option>
-                      <option value="medium">6-20 people</option>
-                      <option value="large">20+ people</option>
-                    </select>
-                  </div>
-                  <div>
-                    <Label>Primary Market</Label>
-                    <Input
-                      type="text"
-                      placeholder="e.g., NYC, Mumbai"
-                      className="mt-1.5"
-                      value={formData.market}
-                      onChange={(e) => setFormData({ ...formData, market: e.target.value })}
-                      data-testid="input-market"
-                    />
-                  </div>
-                </div>
-                <div>
-                  <Label>Work Email *</Label>
-                  <Input
-                    type="email"
-                    placeholder="you@company.com"
-                    className="mt-1.5"
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    data-testid="input-email"
-                  />
-                </div>
-                <div>
-                  <Label>Country</Label>
-                  <Input
-                    type="text"
-                    placeholder="Your country"
-                    className="mt-1.5"
-                    value={formData.country}
-                    onChange={(e) => setFormData({ ...formData, country: e.target.value })}
-                    data-testid="input-country"
-                  />
-                </div>
-                <Button type="submit" size="lg" className="w-full mt-4" disabled={isSubmitting} data-testid="button-submit-lead">
-                  {isSubmitting ? "Submitting..." : "Get My AI Recommendation"}
-                  {!isSubmitting && <ArrowRight className="w-4 h-4 ml-2" />}
-                </Button>
-              </form>
-              <p className="text-xs text-center text-muted-foreground">
-                No spam. No sales pressure. We suggest what fits your role — not generic tools.
-              </p>
-            </CardContent>
-          </Card>
-        </motion.div>
-      </div>
-    </section>
-  );
-}
-
-function LeadLeakageCalculator() {
-  const [inputs, setInputs] = useState({
-    monthlyInquiries: 100,
-    responseTime: "30-120",
-    avgDealValue: 15000,
-    conversionRate: 3
-  });
-
-  const responseImpact: Record<string, number> = {
-    "<5": 1.0,
-    "5-30": 0.8,
-    "30-120": 0.6,
-    "120+": 0.4
-  };
-
-  const calculations = useMemo(() => {
-    const idealConversion = inputs.conversionRate * 1.4;
-    const actualConversion = inputs.conversionRate * responseImpact[inputs.responseTime];
-    const lostDeals = (inputs.monthlyInquiries * ((idealConversion - actualConversion) / 100));
-    const lostRevenue = lostDeals * inputs.avgDealValue;
-    
-    return {
-      lostDeals: Math.round(lostDeals * 10) / 10,
-      lostRevenueMonthly: Math.round(lostRevenue),
-      lostRevenueAnnual: Math.round(lostRevenue * 12)
-    };
-  }, [inputs]);
-
-  return (
-    <Card className="border-orange-500/30 bg-gradient-to-br from-orange-500/5 to-destructive/5">
-      <CardHeader>
-        <CardTitle className="flex items-center gap-2">
-          <TrendingUp className="w-5 h-5 text-orange-500" />
-          Lead Leakage Calculator
-        </CardTitle>
-        <p className="text-sm text-muted-foreground">
-          How much revenue are you losing every month?
-        </p>
-      </CardHeader>
-      <CardContent className="space-y-6">
-        <div className="grid md:grid-cols-2 gap-6">
-          <div className="space-y-4">
-            <div>
-              <div className="flex justify-between mb-2">
-                <Label>Monthly Inquiries</Label>
-                <span className="text-sm font-medium">{inputs.monthlyInquiries}</span>
-              </div>
-              <Slider
-                value={[inputs.monthlyInquiries]}
-                onValueChange={(v) => setInputs({ ...inputs, monthlyInquiries: v[0] })}
-                min={20}
-                max={500}
-                step={10}
-                data-testid="slider-leakage-inquiries"
-              />
-            </div>
-            <div>
-              <Label className="mb-2 block">Average Response Time</Label>
-              <Select
-                value={inputs.responseTime}
-                onValueChange={(value) => setInputs({ ...inputs, responseTime: value })}
-              >
-                <SelectTrigger data-testid="select-leakage-response">
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="<5">Under 5 minutes</SelectItem>
-                  <SelectItem value="5-30">5 - 30 minutes</SelectItem>
-                  <SelectItem value="30-120">30 min - 2 hours</SelectItem>
-                  <SelectItem value="120+">More than 2 hours</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-            <div>
-              <div className="flex justify-between mb-2">
-                <Label>Average Deal Value ($)</Label>
-                <span className="text-sm font-medium">${inputs.avgDealValue.toLocaleString()}</span>
-              </div>
-              <Slider
-                value={[inputs.avgDealValue]}
-                onValueChange={(v) => setInputs({ ...inputs, avgDealValue: v[0] })}
-                min={5000}
-                max={100000}
-                step={1000}
-                data-testid="slider-leakage-dealvalue"
-              />
-            </div>
-            <div>
-              <div className="flex justify-between mb-2">
-                <Label>Current Conversion Rate (%)</Label>
-                <span className="text-sm font-medium">{inputs.conversionRate}%</span>
-              </div>
-              <Slider
-                value={[inputs.conversionRate]}
-                onValueChange={(v) => setInputs({ ...inputs, conversionRate: v[0] })}
-                min={1}
-                max={10}
-                step={0.5}
-                data-testid="slider-leakage-conversion"
-              />
-            </div>
-          </div>
-
-          <div className="bg-gradient-to-br from-destructive/10 to-orange-500/10 rounded-lg p-6 border border-destructive/20">
-            <h4 className="font-semibold mb-4 flex items-center gap-2">
-              <AlertCircle className="w-5 h-5 text-destructive" />
-              Your Silent Revenue Leakage
-            </h4>
-            <div className="space-y-4">
-              <div>
-                <p className="text-sm text-muted-foreground">Estimated Deals Lost/Month</p>
-                <p className="text-3xl font-bold text-destructive">{calculations.lostDeals}</p>
-              </div>
-              <div>
-                <p className="text-sm text-muted-foreground">Monthly Revenue Leakage</p>
-                <p className="text-2xl font-bold text-destructive">
-                  ${calculations.lostRevenueMonthly.toLocaleString()}
-                </p>
-              </div>
-              <div className="pt-4 border-t border-border">
-                <p className="text-sm text-muted-foreground">Annual Revenue Leakage</p>
-                <p className="text-3xl font-bold text-destructive">
-                  ${calculations.lostRevenueAnnual.toLocaleString()}
-                </p>
-              </div>
-            </div>
-            <div className="mt-4 pt-4 border-t border-border">
-              <p className="text-sm text-primary font-medium">Suggested AI Fix:</p>
-              <p className="text-sm">Instant AI Lead Response + Follow-up Automation</p>
-            </div>
-          </div>
-        </div>
-        <p className="text-xs text-muted-foreground text-center">
-          Industry data shows responding within 5 minutes = 30-50% higher conversion. After 2 hours = 60%+ drop.
-        </p>
-      </CardContent>
-    </Card>
-  );
-}
-
-export default function RealEstateIndustryPage() {
-  const [selectedBottleneck, setSelectedBottleneck] = useState(bottlenecks[0]);
-
-  return (
-    <div className="min-h-screen bg-background">
-      <MainHeader />
-
-      {/* Hero Section */}
-      <section className="relative pt-24 lg:pt-28 pb-20 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-blue-500/5 via-transparent to-transparent" />
-        <div className="absolute inset-0">
-          <div className="absolute top-20 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
-          <div className="absolute bottom-20 right-1/4 w-80 h-80 bg-cyan-500/10 rounded-full blur-3xl" />
-        </div>
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <motion.div {...fadeInUp}>
-              <Badge className="mb-4 bg-blue-500/10 text-blue-500 border-blue-500/20">
-                <Home className="w-3 h-3 mr-1" />
-                Real Estate AI Solutions
-              </Badge>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-                AI Solutions for Real Estate That Don't Just Explain —{" "}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-cyan-400">
-                  They Show You What to Build
-                </span>
-              </h1>
-              <p className="text-xl text-muted-foreground mb-4">
-                Built to Stop Lead Leakage, Speed Up Deals, and Reduce Daily Chaos
-              </p>
-              <p className="text-muted-foreground mb-6 max-w-xl">
-                Whether you're an individual agent, a brokerage, a property manager, a developer, or building a proptech platform,
-                AGIX Technologies helps you identify where deals are leaking, which AI system fixes it, and what it realistically costs.
-              </p>
-
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="space-y-4"
-            >
-              {/* Embedded Solution Finder in Hero */}
-              <AISolutionFinder />
-
-              {/* Quick Links to Other Tools */}
-              <div className="grid grid-cols-2 gap-3">
-                <a
-                  href="#leakage-calculator"
-                  className="flex items-center gap-3 p-3 bg-gradient-to-r from-orange-500/20 to-destructive/20 rounded-lg border border-orange-500/30 hover-elevate group"
-                  data-testid="button-hero-calculator"
-                >
-                  <div className="p-2 bg-orange-500/20 rounded-lg group-hover:bg-orange-500/30 transition-colors">
-                    <Calculator className="w-5 h-5 text-orange-500" />
-                  </div>
-                  <div>
-                    <p className="font-medium text-sm">Leakage Calculator</p>
-                    <p className="text-xs text-muted-foreground">Revenue loss</p>
-                  </div>
-                </a>
-
-                <a
-                  href="#readiness-quiz"
-                  className="flex items-center gap-3 p-3 bg-gradient-to-r from-purple-500/20 to-violet-500/20 rounded-lg border border-purple-500/30 hover-elevate group"
-                  data-testid="button-hero-readiness"
-                >
-                  <div className="p-2 bg-purple-500/20 rounded-lg group-hover:bg-purple-500/30 transition-colors">
-                    <Target className="w-5 h-5 text-purple-400" />
-                  </div>
-                  <div>
-                    <p className="font-medium text-sm">AI Readiness Score</p>
-                    <p className="text-xs text-muted-foreground">Evaluate your setup</p>
-                  </div>
-                </a>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Industry Challenges Section */}
-      <section className="py-20 bg-muted/30 border-y border-border">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <Badge className="mb-4 bg-destructive/10 text-destructive border-destructive/20">
-              <AlertCircle className="w-3 h-3 mr-1" />
-              Industry Reality Check
-            </Badge>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              The <span className="text-destructive">Daily Chaos</span> That Kills Real Estate Deals
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              Real estate doesn't fail because of demand. It fails because systems don't respond fast enough. Here's what's silently costing you deals every day.
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              { 
-                title: "Leads Come In When You're Busy", 
-                description: "Hot leads arrive during showings, closings, or family time. By the time you respond, they've already called your competitor.",
-                icon: Phone,
-                impact: "78% of buyers go with first responder"
-              },
-              { 
-                title: "Follow-Ups Depend on Memory", 
-                description: "No system reminds you to check in with that buyer from 3 weeks ago. Deals slip through because follow-up is manual and inconsistent.",
-                icon: Brain,
-                impact: "50% of deals lost to poor follow-up"
-              },
-              { 
-                title: "Buyers Ask the Same Questions Repeatedly", 
-                description: "Property details, neighborhood info, financing options — you answer the same things dozens of times instead of focusing on closings.",
-                icon: MessageSquare,
-                impact: "15+ hours/week on repetitive queries"
-              },
-              { 
-                title: "CRMs Are Half-Updated", 
-                description: "You meant to log that call. You planned to update the status. But your CRM is always behind because manual data entry never ends.",
-                icon: Database,
-                impact: "40% of pipeline data is stale"
-              },
-              { 
-                title: "Deals Go Cold Without Warning", 
-                description: "A motivated buyer suddenly goes quiet. By the time you notice, they've found another agent or lost interest entirely.",
-                icon: TrendingUp,
-                impact: "3x harder to revive cold leads"
-              },
-              { 
-                title: "Lead Quality Is a Guessing Game", 
-                description: "You waste time on tire-kickers while serious buyers wait. Without AI scoring, you can't prioritize who deserves attention first.",
-                icon: Target,
-                impact: "30% of time on unqualified leads"
-              },
-            ].map((challenge, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-              >
-                <Card className="h-full border-destructive/20 bg-gradient-to-br from-destructive/5 to-orange-500/5">
-                  <CardContent className="pt-6">
-                    <div className="flex items-start gap-4">
-                      <div className="p-3 bg-destructive/10 rounded-xl shrink-0">
-                        <challenge.icon className="w-6 h-6 text-destructive" />
-                      </div>
-                      <div className="space-y-2">
-                        <h4 className="font-semibold text-lg">{challenge.title}</h4>
-                        <p className="text-sm text-muted-foreground">{challenge.description}</p>
-                        <Badge variant="outline" className="text-xs border-destructive/30 bg-destructive/5">
-                          {challenge.impact}
-                        </Badge>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* What You Can Do Section - Enhanced */}
-      <section className="py-16 bg-gradient-to-b from-primary/5 via-muted/30 to-background border-y border-border relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/10 via-transparent to-transparent opacity-50" />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-10"
-          >
-            <Badge className="mb-4 bg-primary/10 text-primary border-primary/20">
-              <Zap className="w-3 h-3 mr-1" />
-              Interactive Experience
-            </Badge>
-            <h2 className="text-3xl md:text-4xl font-bold mb-3">
-              Build Your AI Roadmap{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-cyan-400">
-                In Minutes
-              </span>
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Instead of just reading, you can use interactive tools to understand your exact situation —
-              and walk away with a complete AI roadmap, cost estimate, and implementation timeline.
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-4 mb-10">
-            {[
-              { icon: Target, title: "Identify Bottlenecks", description: "Pinpoint exactly where your deals are leaking", color: "text-destructive", bg: "bg-destructive/10" },
-              { icon: Search, title: "Find Your AI Solution", description: "Get role-specific recommendations in 30 seconds", color: "text-primary", bg: "bg-primary/10" },
-              { icon: DollarSign, title: "See Real Costs", description: "Transparent pricing by role and scope", color: "text-green-500", bg: "bg-green-500/10" },
-              { icon: Clock, title: "Get Timelines", description: "Realistic deployment schedules, not hype", color: "text-cyan-500", bg: "bg-cyan-500/10" },
-              { icon: CheckCircle2, title: "Decide With Clarity", description: "Know your next step before any call", color: "text-primary", bg: "bg-primary/10" }
-            ].map((item, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-              >
-                <Card className="h-full text-center hover-elevate border-border/50">
-                  <CardContent className="pt-6 pb-4">
-                    <div className={`p-3 ${item.bg} rounded-xl w-fit mx-auto mb-3`}>
-                      <item.icon className={`w-6 h-6 ${item.color}`} />
-                    </div>
-                    <h4 className="font-semibold mb-1">{item.title}</h4>
-                    <p className="text-xs text-muted-foreground">{item.description}</p>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="bg-gradient-to-r from-primary/10 via-cyan-500/10 to-primary/10 rounded-xl p-6 border border-primary/20"
-          >
-            <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-              <div className="flex items-center gap-4">
-                <div className="p-4 bg-primary/20 rounded-xl">
-                  <Bot className="w-8 h-8 text-primary" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold mb-1">No Demo Required. No Sales Call Needed.</h3>
-                  <p className="text-muted-foreground">
-                    Use the tools below to get a complete AI recommendation — system, cost, timeline, and next steps — before ever talking to anyone.
-                  </p>
-                </div>
-              </div>
-              <div className="flex gap-3 shrink-0">
-                <Button asChild data-testid="button-section-finder">
-                  <a href="#solution-finder">
-                    <Search className="w-4 h-4 mr-2" />
-                    Find My Solution
-                  </a>
-                </Button>
-                <Button variant="outline" asChild data-testid="button-section-calculator">
-                  <a href="#leakage-calculator">
-                    <Calculator className="w-4 h-4 mr-2" />
-                    Calculate Leakage
-                  </a>
-                </Button>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Who This Is For */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              AI for the Entire{" "}
-              <span className="text-primary">Real Estate Ecosystem</span>
-            </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Real estate is not one business model — and AI must adapt accordingly.
-              AGIX Technologies builds role-specific AI systems, not one-size-fits-all tools.
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {audienceTypes.map((type, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-              >
-                <Card className="h-full">
-                  <CardContent className="pt-6">
-                    <div className="flex items-center gap-3 mb-3">
-                      <div className="p-2 bg-primary/10 rounded-lg">
-                        <type.icon className="w-5 h-5 text-primary" />
-                      </div>
-                      <h4 className="font-semibold">{type.title}</h4>
-                    </div>
-                    <p className="text-sm text-muted-foreground">{type.description}</p>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-
-          <div className="mt-8 p-6 bg-muted/50 rounded-lg">
-            <p className="text-center text-muted-foreground">
-              Each role has different workflows, but all face the same friction:{" "}
-              <span className="text-foreground font-medium">
-                Too many inquiries. Too little time. Too much manual work. Too many missed follow-ups.
-              </span>
-            </p>
-          </div>
-        </div>
-      </section>
-
-
-      {/* Industry Case Studies Section */}
-      <IndustryCaseStudies caseStudies={caseStudies} industryName="Real Estate" />
-
-      {/* Industry Services Section */}
-      <IndustryServices services={industryServices} industryName="Real Estate" />
-
-      {/* Interactive Tools Section */}
-      <section id="leakage-calculator" className="py-20 bg-muted/30">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <Badge className="mb-4">Interactive Tools</Badge>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Analyze Your{" "}
-              <span className="text-primary">AI Opportunity</span>
-            </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Real interactive tools that give you real recommendations, not marketing promises.
-            </p>
-          </motion.div>
-
-          <div className="grid lg:grid-cols-2 gap-8">
-            <LeadLeakageCalculator />
-            <div id="readiness-quiz">
-              <AIReadinessScore />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Bottleneck Categories */}
-      <section id="bottlenecks" className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-8"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Real Estate{" "}
-              <span className="text-destructive">Bottleneck Map</span>
-            </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Real estate is not slow. Real estate systems are slow.
-              Identify the exact bottleneck slowing you down.
-            </p>
-          </motion.div>
-
-          {/* Bottleneck Selector */}
-          <div className="flex flex-wrap gap-2 justify-center mb-8">
-            {bottlenecks.map((bn) => (
-              <Button
-                key={bn.id}
-                variant={selectedBottleneck.id === bn.id ? "default" : "outline"}
-                onClick={() => setSelectedBottleneck(bn)}
-                className="text-sm"
-                data-testid={`button-bottleneck-${bn.id}`}
-              >
-                <span className="font-bold mr-1">{bn.id}.</span>
-                {bn.title.split(",")[0]}
-              </Button>
-            ))}
-          </div>
-
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={selectedBottleneck.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.3 }}
-            >
-              <Card>
-                <CardHeader className="bg-gradient-to-r from-destructive/10 to-orange-500/10 border-b border-border">
-                  <Badge variant="secondary" className="w-fit mb-2">
-                    Bottleneck {selectedBottleneck.id}
-                  </Badge>
-                  <CardTitle className="text-xl">{selectedBottleneck.title}</CardTitle>
-                  <p className="text-sm text-muted-foreground">{selectedBottleneck.subtitle}</p>
-                </CardHeader>
-                <CardContent className="pt-6">
-                  <div className="grid lg:grid-cols-2 gap-6 mb-6">
-                    <div>
-                      <h4 className="font-semibold text-destructive mb-3 flex items-center gap-2">
-                        <AlertCircle className="w-4 h-4" />
-                        Common Symptoms
-                      </h4>
-                      <ul className="space-y-2">
-                        {selectedBottleneck.symptoms.map((s, i) => (
-                          <li key={i} className="text-sm text-muted-foreground flex items-start gap-2">
-                            <XCircle className="w-4 h-4 text-destructive shrink-0 mt-0.5" />
-                            {s}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                    <div>
-                      <h4 className="font-semibold mb-3 flex items-center gap-2">
-                        <Users className="w-4 h-4 text-primary" />
-                        Who Faces This Most
-                      </h4>
-                      <div className="flex flex-wrap gap-2 mb-4">
-                        {selectedBottleneck.whoFaces.map((who, i) => (
-                          <Badge key={i} variant="secondary">{who}</Badge>
-                        ))}
-                      </div>
-                      <h4 className="font-semibold mb-3 flex items-center gap-2">
-                        <MessageSquare className="w-4 h-4 text-primary" />
-                        Example Conversations
-                      </h4>
-                      <ul className="space-y-1">
-                        {selectedBottleneck.useCases.slice(0, 4).map((uc, i) => (
-                          <li key={i} className="text-sm text-muted-foreground italic">"{uc}"</li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-
-                  {/* Solution */}
-                  <div className="bg-gradient-to-br from-primary/10 to-cyan-500/10 rounded-lg p-6 border border-primary/20">
-                    <h4 className="font-semibold text-primary mb-2 flex items-center gap-2">
-                      <Zap className="w-4 h-4" />
-                      AI Solution: {selectedBottleneck.solution.name}
-                    </h4>
-                    <p className="text-sm text-muted-foreground mb-4">{selectedBottleneck.solution.description}</p>
-                    
-                    <div className="grid md:grid-cols-3 gap-4 mb-4">
-                      <div>
-                        <p className="text-xs text-muted-foreground mb-1">AI Types Used</p>
-                        <div className="flex flex-wrap gap-1">
-                          {selectedBottleneck.solution.aiTypes.map((type, i) => (
-                            <Badge key={i} variant="secondary" className="text-xs">{type}</Badge>
-                          ))}
-                        </div>
-                      </div>
-                      <div>
-                        <p className="text-xs text-muted-foreground mb-1">Timeline</p>
-                        <p className="font-semibold">{selectedBottleneck.solution.timeline}</p>
-                      </div>
-                      <div>
-                        <p className="text-xs text-muted-foreground mb-1">Cost Range</p>
-                        <div className="text-sm">
-                          {Object.entries(selectedBottleneck.solution.cost).map(([key, value], i) => (
-                            <p key={i}><span className="text-muted-foreground capitalize">{key}:</span> <span className="font-semibold text-green-500">{value}</span></p>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-
-                    <div>
-                      <p className="text-xs text-muted-foreground mb-2">How It Works:</p>
-                      <ol className="space-y-1">
-                        {selectedBottleneck.solution.flow.map((step, i) => (
-                          <li key={i} className="text-sm flex items-start gap-2">
-                            <span className="text-primary font-semibold shrink-0">{i + 1}.</span>
-                            {step}
-                          </li>
-                        ))}
-                      </ol>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
-          </AnimatePresence>
-        </div>
-      </section>
-
-      {/* Cost & ROI Section */}
-      <section className="py-20 bg-muted/30">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Real Cost, Real{" "}
-              <span className="text-primary">ROI</span>
-            </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Clarity before you commit. These are engineering-backed ranges, not sales numbers.
-            </p>
-          </motion.div>
-
-          <div className="grid lg:grid-cols-2 gap-8">
-            {/* Cost Table */}
-            <Card className="border-cyan-500/30 bg-gradient-to-br from-cyan-500/5 to-primary/5">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <DollarSign className="w-5 h-5 text-cyan-500" />
-                  Real Estate AI Cost Reference
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="overflow-x-auto">
-                  <table className="w-full text-sm">
-                    <thead>
-                      <tr className="border-b border-border">
-                        <th className="text-left py-3 font-semibold">Role</th>
-                        <th className="text-left py-3 font-semibold">Typical Scope</th>
-                        <th className="text-right py-3 font-semibold">Cost Range</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {costTable.map((row, i) => (
-                        <tr key={i} className="border-b border-border/50">
-                          <td className="py-3">{row.role}</td>
-                          <td className="py-3 text-muted-foreground">{row.scope}</td>
-                          <td className="py-3 text-right font-semibold text-green-500">{row.cost}</td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* ROI Metrics */}
-            <Card className="border-green-500/30 bg-gradient-to-br from-green-500/5 to-emerald-500/5">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <TrendingUp className="w-5 h-5 text-green-500" />
-                  What AI Typically Improves
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  {roiMetrics.map((metric, i) => (
-                    <div key={i} className="flex justify-between items-center p-3 bg-muted/50 rounded-lg">
-                      <span className="text-muted-foreground">{metric.area}</span>
-                      <span className="font-semibold text-primary">{metric.improvement}</span>
-                    </div>
-                  ))}
-                </div>
-                <p className="text-sm text-muted-foreground mt-4 p-3 bg-green-500/10 rounded-lg border border-green-500/20">
-                  <Star className="w-4 h-4 text-green-500 inline mr-2" />
-                  In real estate, saving even ONE deal per quarter usually pays for AI.
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Safety & Control */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Safety, Control &{" "}
-              <span className="text-primary">Adoption</span>
-            </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              AI should feel like a reliable assistant, not a risky experiment.
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-4">
-            {[
-              { icon: Shield, text: "AI never commits pricing or promises without rules" },
-              { icon: Users, text: "All hot leads escalate to humans" },
-              { icon: Database, text: "Agents see exactly what AI said" },
-              { icon: RefreshCw, text: "Easy override at any point" },
-              { icon: Target, text: "Gradual rollout (pilot → expand)" }
-            ].map((item, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-              >
-                <Card className="h-full">
-                  <CardContent className="pt-6 text-center">
-                    <item.icon className="w-8 h-8 mx-auto mb-3 text-primary" />
-                    <p className="text-sm">{item.text}</p>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Lead Form - Now at Bottom */}
-      <RealEstateLeadForm />
-
-      {/* Final CTA */}
-      <section className="py-20 bg-gradient-to-b from-background to-blue-500/5">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <Home className="w-12 h-12 mx-auto mb-6 text-primary" />
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Get Your Real Estate AI Roadmap
-            </h2>
-            <p className="text-xl text-muted-foreground mb-4">
-              Built for Your Role & Market
-            </p>
-            <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Whether you are a solo agent, running a brokerage, managing properties, selling inventory as a developer, 
-              or building a proptech platform — AGIX Technologies will help you identify the right AI starting point, 
-              avoid over-engineering, and build AI systems that actually close deals.
-            </p>
-            <div className="flex flex-wrap gap-4 justify-center">
-              <Button size="lg" asChild data-testid="button-final-cta">
-                <a href="#lead-form">
-                  Get My Real Estate AI Roadmap
-                  <ArrowRight className="w-4 h-4 ml-2" />
-                </a>
-              </Button>
-              <Button size="lg" variant="outline" asChild>
-                <a href="#solution-finder">
-                  Re-Run the AI Solution Finder
-                  <RefreshCw className="w-4 h-4 ml-2" />
-                </a>
-              </Button>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Closing Authority Statement */}
-      <section className="py-12 border-t border-border">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
-          <p className="text-sm text-muted-foreground">
-            <span className="font-semibold text-foreground">AGIX Technologies</span> is an AI-first systems engineering company 
-            focused on building practical, role-aware AI solutions for real estate.
-            We don't sell tools. We design systems that fit how real estate actually works — 
-            fast, fragmented, relationship-driven, and time-sensitive.
-          </p>
-        </div>
-      </section>
-
-      {/* Inspirational Quote */}
-      <section className="py-8 bg-muted/30">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center">
-          <p className="text-lg italic text-muted-foreground">
-            "Real estate professionals don't lose deals overnight. They lose them one delayed response at a time.
-            The right AI system doesn't sell for you — it makes sure opportunities are never missed."
-          </p>
-        </div>
-      </section>
-      <FAQPageSchema faqs={documentFAQs['real-estate-ai-solutions']} />
-      <FAQSection
-        faqs={documentFAQs['real-estate-ai-solutions']}
-        title="Real Estate AI Questions Answered"
-      />
-      <MainFooter />
-    </div>
-  );
+export default function RealEstateAISolutionsPage() {
+  return <IndustryPageTemplate data={data} />;
 }
