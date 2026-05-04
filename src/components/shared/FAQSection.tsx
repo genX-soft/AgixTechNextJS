@@ -16,6 +16,21 @@ interface FAQSectionProps {
   subtitle?: string;
 }
 
+function generateFAQPageSchema(faqs: FAQItem[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer,
+      },
+    })),
+  };
+}
+
 export default function FAQSection({
   faqs,
   title = "Frequently Asked Questions",
@@ -27,6 +42,14 @@ export default function FAQSection({
 
   return (
     <section className="py-20" ref={ref}>
+      {faqs.length > 0 && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(generateFAQPageSchema(faqs)),
+          }}
+        />
+      )}
       <div className="max-w-4xl mx-auto px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

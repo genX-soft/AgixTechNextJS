@@ -24,6 +24,8 @@ import {
   estimateReadTime,
   getFeaturedImageUrl,
 } from '@/lib/insights/wordpress';
+import FAQSection from '@/components/shared/FAQSection';
+import { documentFAQs } from '@/lib/seo/faq-data';
 
 export const revalidate = 86400;
 
@@ -321,6 +323,11 @@ export default async function AuthorSantoshPage() {
           </div>
         </section>
 
+        <FAQSection
+          faqs={documentFAQs['author-santosh']}
+          title="About Santosh S. — FAQ"
+          subtitle="Common questions about Santosh S., Founder & CEO of AGIX Technologies, and his AI systems expertise."
+        />
         <MainFooter />
       </div>
     </>

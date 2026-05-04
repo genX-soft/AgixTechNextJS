@@ -338,7 +338,7 @@ export default function AdminLeadsPage() {
           <Card>
             <CardContent className="py-20 text-center">
               <Users className="w-12 h-12 mx-auto text-muted-foreground mb-4" />
-              <h3 className="text-lg font-semibold mb-2">No Leads Yet</h3>
+              <h2 className="text-lg font-semibold mb-2">No Leads Yet</h2>
               <p className="text-muted-foreground">
                 Leads will appear here when visitors submit forms on your website.
               </p>

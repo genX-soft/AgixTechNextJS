@@ -1,6 +1,8 @@
 "use client";
 
 import { AssessmentWizard, AssessmentConfig } from "@/components/assessment-wizard";
+import FAQSection from "@/components/shared/FAQSection";
+import { documentFAQs } from "@/lib/seo/faq-data";
 
 const config: AssessmentConfig = {
   title: "Enterprise AI Strategy Navigator",
@@ -139,5 +141,14 @@ const config: AssessmentConfig = {
 };
 
 export default function EnterpriseStrategyPage() {
-  return <AssessmentWizard config={config} />;
+  return (
+    <>
+      <AssessmentWizard config={config} />
+      <FAQSection
+        faqs={documentFAQs['tools-enterprise-strategy']}
+        title="Enterprise AI Strategy — FAQ"
+        subtitle="Common questions about assessing your enterprise AI readiness and strategy."
+      />
+    </>
+  );
 }

@@ -1,6 +1,8 @@
 "use client";
 
 import { AssessmentWizard, AssessmentConfig } from "@/components/assessment-wizard";
+import FAQSection from "@/components/shared/FAQSection";
+import { documentFAQs } from "@/lib/seo/faq-data";
 
 const config: AssessmentConfig = {
   title: "Operational Efficiency Analyzer",
@@ -138,5 +140,14 @@ const config: AssessmentConfig = {
 };
 
 export default function OperationalEfficiencyPage() {
-  return <AssessmentWizard config={config} />;
+  return (
+    <>
+      <AssessmentWizard config={config} />
+      <FAQSection
+        faqs={documentFAQs['tools-operational-efficiency']}
+        title="Operational Efficiency AI Assessment — FAQ"
+        subtitle="Common questions about automating workflows and reducing operational costs with AI."
+      />
+    </>
+  );
 }

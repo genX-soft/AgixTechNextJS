@@ -1,6 +1,8 @@
 "use client";
 
 import { AssessmentWizard, AssessmentConfig } from "@/components/assessment-wizard";
+import FAQSection from "@/components/shared/FAQSection";
+import { documentFAQs } from "@/lib/seo/faq-data";
 
 const config: AssessmentConfig = {
   title: "Startup AI Accelerator",
@@ -148,5 +150,14 @@ const config: AssessmentConfig = {
 };
 
 export default function StartupAcceleratorPage() {
-  return <AssessmentWizard config={config} />;
+  return (
+    <>
+      <AssessmentWizard config={config} />
+      <FAQSection
+        faqs={documentFAQs['tools-startup-accelerator']}
+        title="Startup AI Accelerator — FAQ"
+        subtitle="Common questions about AI strategy and implementation for early and growth-stage startups."
+      />
+    </>
+  );
 }

@@ -1,6 +1,8 @@
 "use client";
 
 import { AssessmentWizard, AssessmentConfig } from "@/components/assessment-wizard";
+import FAQSection from "@/components/shared/FAQSection";
+import { documentFAQs } from "@/lib/seo/faq-data";
 
 const config: AssessmentConfig = {
   title: "AI Starting Point Finder",
@@ -141,5 +143,14 @@ const config: AssessmentConfig = {
 };
 
 export default function AIStartingPointPage() {
-  return <AssessmentWizard config={config} />;
+  return (
+    <>
+      <AssessmentWizard config={config} />
+      <FAQSection
+        faqs={documentFAQs['tools-ai-starting-point']}
+        title="AI Starting Point Finder — FAQ"
+        subtitle="Common questions about finding the right AI starting point for your business."
+      />
+    </>
+  );
 }

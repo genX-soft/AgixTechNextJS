@@ -7,6 +7,8 @@ import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 import InsightsListClient from './insights-list-client';
 import { WPPost } from '@/lib/insights/wordpress';
+import FAQSection from '@/components/shared/FAQSection';
+import { documentFAQs } from '@/lib/seo/faq-data';
 
 const SITE_URL = 'https://agixtech.com';
 
@@ -114,6 +116,12 @@ export default async function InsightsPage() {
           </Button>
         </div>
       </section>
+
+      <FAQSection
+        faqs={documentFAQs['insights']}
+        title="AI Insights — Frequently Asked Questions"
+        subtitle="Common questions about AGIX Technologies' AI thought-leadership content and expertise."
+      />
 
       <MainFooter />
     </div>

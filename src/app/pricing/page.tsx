@@ -101,6 +101,7 @@ export default function PricingPage() {
           </motion.div>
 
           {/* Pricing Grid */}
+          <h2 className="sr-only">Pricing Tiers</h2>
           <div className="grid md:grid-cols-2 gap-6 lg:gap-8 mb-20">
             {pricingTiers.map((tier, idx) => (
               <motion.div
@@ -162,7 +163,7 @@ export default function PricingPage() {
                 <Card key={service.name} className="border-primary/5 bg-muted/20">
                   <CardContent className="p-6">
                     <service.icon className="w-8 h-8 text-primary/60 mb-4" />
-                    <h4 className="font-semibold mb-1">{service.name}</h4>
+                    <h3 className="font-semibold mb-1">{service.name}</h3>
                     <p className="text-primary font-bold">{service.price}</p>
                   </CardContent>
                 </Card>
@@ -183,24 +184,24 @@ export default function PricingPage() {
             </p>
             <div className="grid sm:grid-cols-3 gap-6 text-left max-w-4xl mx-auto">
               <div className="space-y-2">
-                <h4 className="font-bold flex items-center gap-2">
+                <h3 className="font-bold flex items-center gap-2">
                   <ShieldCheck className="w-5 h-5 text-primary" />
                   IP Ownership
-                </h4>
+                </h3>
                 <p className="text-sm text-muted-foreground">Clients own all models and code. No vendor lock-in.</p>
               </div>
               <div className="space-y-2">
-                <h4 className="font-bold flex items-center gap-2">
+                <h3 className="font-bold flex items-center gap-2">
                   <CheckCircle2 className="w-5 h-5 text-primary" />
                   Production Ready
-                </h4>
+                </h3>
                 <p className="text-sm text-muted-foreground">Built for enterprise scale and governance from day one.</p>
               </div>
               <div className="space-y-2">
-                <h4 className="font-bold flex items-center gap-2">
+                <h3 className="font-bold flex items-center gap-2">
                   <Zap className="w-5 h-5 text-primary" />
                   Rapid Payback
-                </h4>
+                </h3>
                 <p className="text-sm text-muted-foreground">Measurable business outcomes within the first 90 days.</p>
               </div>
             </div>

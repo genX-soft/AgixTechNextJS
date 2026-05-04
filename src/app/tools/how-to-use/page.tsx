@@ -25,6 +25,8 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { motion } from "@/lib/motion";
+import FAQSection from "@/components/shared/FAQSection";
+import { documentFAQs } from "@/lib/seo/faq-data";
 
 const tools = [
   {
@@ -294,6 +296,12 @@ export default function HowToUsePage() {
           </div>
         </section>
       </main>
+      
+      <FAQSection
+        faqs={documentFAQs['tools-how-to-use']}
+        title="AI Assessment Tools — FAQ"
+        subtitle="Common questions about our interactive AI discovery and strategy tools."
+      />
       
       <MainFooter />
     </div>

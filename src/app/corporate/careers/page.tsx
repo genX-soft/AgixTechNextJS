@@ -457,7 +457,7 @@ export default function CareersPage() {
                           <job.icon className="w-5 h-5 text-primary" />
                         </div>
                         <div>
-                          <div className="font-semibold">{job.title}</div>
+                          <h3 className="font-semibold">{job.title}</h3>
                           <Badge variant="secondary" className="mt-1">{job.category}</Badge>
                         </div>
                       </div>

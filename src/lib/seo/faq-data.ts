@@ -1134,6 +1134,281 @@ export const documentFAQs: Record<string, FAQItem[]> = {
         "Yes. Q-Chat includes content safety filtering aligned with COPPA requirements for under-13 users, and conversation boundaries are enforced to keep interactions within educational contexts. AGIX Technologies built age-appropriate guardrails and response tone calibration to ensure Q-Chat maintains an encouraging, pedagogically appropriate interaction style across Quizlet's diverse user age range.",
     },
   ],
+
+  "insights": [
+    {
+      question: "What topics does the AGIX Technologies AI Insights blog cover?",
+      answer:
+        "The AGIX Technologies Insights blog covers practical AI implementation topics including agentic AI systems, AI automation, conversational AI, enterprise knowledge management, decision intelligence, predictive analytics, computer vision, and AI strategy for SMBs and enterprises. Articles are written by AI engineers with production deployment experience — not marketing content.",
+    },
+    {
+      question: "How often does AGIX Technologies publish new AI insights?",
+      answer:
+        "AGIX Technologies publishes new AI insights articles weekly, covering emerging AI capabilities, implementation case studies, technical architecture deep-dives, and industry-specific AI applications. Subscribe to receive new articles directly to your inbox.",
+    },
+    {
+      question: "Are AGIX Technologies insights articles written by AI practitioners?",
+      answer:
+        "Yes. All AGIX Technologies insights are authored by AI practitioners who actively build and deploy production AI systems. Content is grounded in real implementation experience — not theoretical overviews. Technical claims are based on observed results from client deployments.",
+    },
+    {
+      question: "Can I request a topic for the AGIX Technologies AI blog?",
+      answer:
+        "Yes. AGIX Technologies welcomes content requests from clients, prospects, and AI practitioners. If you have a specific AI implementation question or use case you'd like explored in depth, contact us via the site's consultation form and include your topic suggestion.",
+    },
+    {
+      question: "How do I stay updated with AGIX Technologies' latest AI research?",
+      answer:
+        "You can bookmark the Insights page, follow AGIX Technologies on LinkedIn for article announcements, or contact us to be added to the newsletter distribution. New articles covering AI implementation, case studies, and strategy are published weekly.",
+    },
+  ],
+
+  "location-boston": [
+    {
+      question: "Where is the AGIX Technologies Boston office located?",
+      answer:
+        "The AGIX Technologies Boston office is located in the Greater Boston area, Massachusetts. Boston serves as our primary North American technology hub, supporting enterprise AI clients across New England, the Northeast, and the broader US East Coast.",
+    },
+    {
+      question: "What AI services does AGIX Technologies deliver from Boston?",
+      answer:
+        "The Boston office delivers the full AGIX Technologies service portfolio — AI automation, agentic AI systems, conversational AI, RAG & knowledge AI, predictive analytics, computer vision, AI voice agents, and custom AI product development — with a particular focus on financial services, healthcare, and SaaS companies in the Boston-Cambridge technology corridor.",
+    },
+    {
+      question: "Can I meet with AGIX Technologies AI engineers in Boston?",
+      answer:
+        "Yes. AGIX Technologies conducts in-person architecture reviews, discovery sessions, and strategic consultations from the Boston office. Contact us to schedule a meeting. Virtual consultations are also available for clients outside the Boston area.",
+    },
+    {
+      question: "What industries does the Boston office primarily serve?",
+      answer:
+        "The Boston office primarily serves financial services, biotech and healthcare, SaaS and software companies, and research-driven institutions concentrated in the Boston-Cambridge innovation ecosystem. Boston's strong FinTech and HealthTech sectors align with AGIX Technologies' deepest AI implementation expertise.",
+    },
+    {
+      question: "Is AGIX Technologies a US-based company?",
+      answer:
+        "Yes. AGIX Technologies is incorporated in the United States (Newark, Delaware, EIN: 38-4376497) with offices in Boston (USA), London (UK), and Jaipur (India). The company serves enterprise clients across North America, Europe, and Australia from these locations.",
+    },
+  ],
+
+  "location-london": [
+    {
+      question: "Where is the AGIX Technologies London office located?",
+      answer:
+        "The AGIX Technologies London office operates in London, United Kingdom, serving as the company's European headquarters. The London office supports enterprise AI clients across the UK, EU, and EMEA regions.",
+    },
+    {
+      question: "What AI services does AGIX Technologies offer from London?",
+      answer:
+        "The London office delivers the full AGIX Technologies AI service portfolio — including AI automation, agentic AI systems, conversational AI chatbots, RAG & knowledge AI, predictive analytics, and custom AI product development — with compliance expertise aligned to GDPR, FCA Consumer Duty, and UK data protection regulations.",
+    },
+    {
+      question: "Is AGIX Technologies GDPR-compliant for UK and EU clients?",
+      answer:
+        "Yes. All AGIX Technologies AI systems are designed with GDPR compliance as a baseline requirement. UK and EU deployments include appropriate data residency controls, processing agreements, and audit trails required by GDPR Article 22 (automated decision-making) and UK GDPR post-Brexit equivalents.",
+    },
+    {
+      question: "Can I schedule a meeting with AGIX Technologies in London?",
+      answer:
+        "Yes. The London office conducts in-person and virtual consultations, architecture reviews, and strategy sessions for UK and European enterprise clients. Contact us to arrange a meeting at our London location or via video conferencing.",
+    },
+    {
+      question: "What industries does the AGIX Technologies London office specialise in?",
+      answer:
+        "The London office has deep expertise serving financial services (FinTech, banking, insurance), professional services, healthcare (NHS-adjacent and private), retail and eCommerce, and logistics — sectors with significant concentration in the UK enterprise market.",
+    },
+  ],
+
+  "location-jaipur": [
+    {
+      question: "What is the role of the AGIX Technologies Jaipur office?",
+      answer:
+        "The AGIX Technologies Jaipur office in Rajasthan, India serves as the company's primary engineering and delivery hub. The Jaipur team handles AI system development, model training, system integration, quality assurance, and 24/7 operational support for client deployments across all time zones.",
+    },
+    {
+      question: "Is AI development handled by engineers in India or the USA?",
+      answer:
+        "AGIX Technologies operates an integrated global delivery model. Architecture, strategy, and client engagement are led from Boston and London. Engineering, development, and 24/7 operational support are delivered by the Jaipur team. All engineers across all locations are AGIX Technologies employees — not third-party contractors.",
+    },
+    {
+      question: "What AI capabilities does the Jaipur engineering team have?",
+      answer:
+        "The Jaipur engineering team has deep expertise in LLM orchestration, agentic AI frameworks (LangGraph, CrewAI, AutoGen), RAG system development, API integration, cloud infrastructure (AWS, GCP, Azure), data engineering, and AI model fine-tuning. The team maintains certifications across major cloud and AI platforms.",
+    },
+    {
+      question: "Does the Jaipur office provide 24/7 AI system support?",
+      answer:
+        "Yes. The Jaipur office provides round-the-clock monitoring, incident response, and operational support for deployed AI systems — covering US, UK, European, and Australian time zones. SLA-backed support agreements with defined response times are available for all production deployments.",
+    },
+    {
+      question: "Can businesses in India work with AGIX Technologies from Jaipur?",
+      answer:
+        "Yes. AGIX Technologies accepts engagements from Indian enterprises through the Jaipur office. India is an emerging market for enterprise AI adoption, and AGIX Technologies brings international-standard AI architecture and delivery practices to Indian organisations ready to scale AI operations.",
+    },
+  ],
+
+  "tools-ai-starting-point": [
+    {
+      question: "What is the AI Starting Point Finder tool?",
+      answer:
+        "The AI Starting Point Finder is a free self-assessment tool that helps businesses identify the most appropriate entry point for AI adoption based on their current operational maturity, industry, team size, and strategic goals. It takes approximately 3 minutes to complete and generates a prioritised recommendation — no technical knowledge required.",
+    },
+    {
+      question: "Who should use the AI Starting Point Finder?",
+      answer:
+        "Any business leader, operations manager, or entrepreneur who is considering AI adoption but isn't sure where to begin. The tool is designed for non-technical users — it asks plain-language questions about your current business processes, pain points, and goals to generate a tailored starting point recommendation.",
+    },
+    {
+      question: "Is the AI Starting Point Finder free?",
+      answer:
+        "Yes. The AI Starting Point Finder is completely free to use with no registration required. AGIX Technologies provides this tool to help businesses make informed AI investment decisions before committing to any engagement.",
+    },
+    {
+      question: "What happens after I complete the AI Starting Point assessment?",
+      answer:
+        "After completing the assessment, you receive a personalised recommendation identifying your highest-priority AI opportunity, the implementation approach best suited to your situation, and suggested next steps. You can then schedule a free consultation with an AGIX Technologies AI architect to explore implementation options.",
+    },
+    {
+      question: "How accurate are the AI Starting Point recommendations?",
+      answer:
+        "Recommendations are based on patterns observed across hundreds of AI deployments across multiple industries and business sizes. They represent the most common high-ROI entry points for businesses with similar profiles — not a generic framework. A follow-up consultation with an AGIX Technologies engineer refines the recommendation based on your specific context.",
+    },
+  ],
+
+  "tools-enterprise-strategy": [
+    {
+      question: "What is the Enterprise AI Strategy assessment tool?",
+      answer:
+        "The Enterprise AI Strategy tool is a structured assessment that evaluates your organisation's AI readiness across five dimensions: data infrastructure, team capability, process maturity, governance frameworks, and strategic alignment. It generates a maturity score and prioritised roadmap for enterprise-scale AI adoption.",
+    },
+    {
+      question: "Who is the Enterprise AI Strategy tool designed for?",
+      answer:
+        "This tool is designed for senior leaders, digital transformation teams, CIOs, and CDOs at mid-market and enterprise organisations who are developing or refining an AI strategy. It assumes some familiarity with enterprise technology investment decisions.",
+    },
+    {
+      question: "How long does the Enterprise AI Strategy assessment take?",
+      answer:
+        "The Enterprise AI Strategy assessment takes approximately 8–12 minutes to complete. It covers more dimensions than the AI Starting Point tool, reflecting the greater complexity of enterprise AI strategy decisions.",
+    },
+    {
+      question: "What does the Enterprise AI Strategy output include?",
+      answer:
+        "The output includes an AI maturity rating across five dimensions, identification of your highest-priority capability gaps, recommended sequencing for AI investments, and suggested implementation approaches matched to your current infrastructure and governance maturity.",
+    },
+    {
+      question: "Can this tool replace a proper AI strategy consulting engagement?",
+      answer:
+        "No — and it is not designed to. The Enterprise AI Strategy tool provides a structured starting point and surface-level diagnostic. A proper AI strategy engagement involves deep discovery of your current systems, data architecture, team capabilities, and competitive context. The tool is a useful precursor to that conversation, not a substitute for it.",
+    },
+  ],
+
+  "tools-operational-efficiency": [
+    {
+      question: "What does the Operational Efficiency AI assessment measure?",
+      answer:
+        "The Operational Efficiency assessment identifies which of your current business processes have the highest automation potential based on volume, complexity, error rate, and current cost. It generates a ranked list of automation opportunities with estimated ROI ranges for each.",
+    },
+    {
+      question: "What types of operational inefficiencies can AI address?",
+      answer:
+        "AI can address a wide range of operational inefficiencies including manual data entry, document processing, approval routing, lead qualification, customer communication, reporting, compliance monitoring, inventory management, and scheduling. The assessment helps you identify which inefficiencies in your specific context represent the best automation ROI.",
+    },
+    {
+      question: "How is the operational ROI estimate calculated?",
+      answer:
+        "ROI estimates are based on industry benchmark data from comparable deployments, adjusted for the process volume and complexity you describe in the assessment. They represent ranges — not guarantees — and are intended to help prioritise investment decisions. A detailed ROI model for your specific context requires an AGIX Technologies scoping engagement.",
+    },
+    {
+      question: "Is this tool suitable for small businesses?",
+      answer:
+        "Yes. The Operational Efficiency assessment covers businesses from 5-person teams to enterprise organisations. Smaller businesses often benefit most from automation — the impact of freeing a small team from manual tasks is proportionally greater than at enterprise scale.",
+    },
+    {
+      question: "What should I do after completing the Operational Efficiency assessment?",
+      answer:
+        "Review your top-ranked automation opportunities and schedule a free scoping call with an AGIX Technologies automation engineer. We will validate the assessment findings against your actual workflow context and provide a detailed implementation proposal with fixed project costs.",
+    },
+  ],
+
+  "tools-startup-accelerator": [
+    {
+      question: "What is the Startup AI Accelerator assessment?",
+      answer:
+        "The Startup AI Accelerator assessment is a free tool designed to help early-stage and growth-stage startups identify where AI can provide the most leverage — whether through product differentiation, operational automation, customer acquisition, or competitive intelligence. It generates startup-specific AI recommendations matched to your stage and sector.",
+    },
+    {
+      question: "At what stage should a startup consider AI investment?",
+      answer:
+        "Startups at any stage can benefit from AI, but the right type of AI investment varies significantly by stage. Pre-product startups benefit from AI for market research and content. Post-PMF startups benefit from AI automation of repeatable processes. Growth-stage startups can use AI for scalable customer operations, churn prediction, and competitive intelligence.",
+    },
+    {
+      question: "Can AI give a startup a genuine competitive advantage?",
+      answer:
+        "Yes — if implemented as a system, not a tool. Startups that build AI into their core operations (not just bolt on a chatbot) can scale without proportional headcount growth, personalise at scale, and move faster than slower-moving incumbents. The key is identifying which AI capability creates a defensible operational advantage in your specific market.",
+    },
+    {
+      question: "How much does AI implementation typically cost for a startup?",
+      answer:
+        "AGIX Technologies offers lean AI MVP development for startups starting at $8,000–$20,000 for focused automation or AI-powered features. Full AI-powered SaaS products start at $30,000. Startup engagements are structured to deliver working systems fast, protect runway, and prove value before full investment.",
+    },
+    {
+      question: "Does AGIX Technologies work with pre-revenue startups?",
+      answer:
+        "Yes. AGIX Technologies works with startups from idea-stage through Series B. For pre-revenue startups, we focus on building the AI capability that validates your core product hypothesis or enables you to do with two people what competitors need ten to accomplish.",
+    },
+  ],
+
+  "tools-how-to-use": [
+    {
+      question: "What AI assessment tools does AGIX Technologies offer?",
+      answer:
+        "AGIX Technologies offers five free AI assessment tools: AI Starting Point Finder (for any business beginning their AI journey), Enterprise AI Strategy (for mid-market and enterprise AI planning), Operational Efficiency Assessment (for identifying automation ROI opportunities), Startup AI Accelerator (for startup-specific AI strategy), and a How to Use guide that explains which tool fits your situation best.",
+    },
+    {
+      question: "Which AGIX Technologies AI tool should I start with?",
+      answer:
+        "Start with the AI Starting Point Finder if you are new to AI and unsure where to begin. Use the Enterprise AI Strategy tool if you lead a mid-market or enterprise organisation with an existing technology stack. Use the Operational Efficiency Assessment if you have a specific process you believe AI could optimise. Use the Startup Accelerator if you're building a startup.",
+    },
+    {
+      question: "Are these AI tools completely free to use?",
+      answer:
+        "Yes. All five AGIX Technologies AI assessment tools are completely free, require no registration, and generate actionable recommendations without any commitment. They are designed to help you make a better-informed AI investment decision before engaging with AGIX Technologies or any AI provider.",
+    },
+    {
+      question: "How long do the AGIX Technologies AI assessment tools take?",
+      answer:
+        "Tool completion times vary by complexity. The AI Starting Point Finder takes approximately 3 minutes. The Enterprise AI Strategy assessment takes 8–12 minutes. Operational Efficiency and Startup Accelerator tools take 5–7 minutes each. The How to Use guide can be reviewed in 2 minutes.",
+    },
+    {
+      question: "What happens after I complete an AGIX Technologies AI assessment?",
+      answer:
+        "You receive a personalised AI recommendation immediately after completing any assessment. You can then schedule a free 30-minute consultation with an AGIX Technologies AI architect to validate the recommendation against your specific context and explore implementation options. No commitment is required at any stage.",
+    },
+  ],
+
+  "author-santosh": [
+    {
+      question: "Who is Santosh and what is his AI expertise?",
+      answer:
+        "Santosh is an AI systems engineer and the founder of AGIX Technologies. He specialises in production-grade agentic AI systems, LLM orchestration, enterprise automation architecture, and AI strategy for SMBs and enterprises. His writing covers practical AI implementation — not theoretical frameworks — grounded in real deployment experience across healthcare, fintech, real estate, and SaaS.",
+    },
+    {
+      question: "What types of AI topics does Santosh write about?",
+      answer:
+        "Santosh writes about agentic AI architecture, AI automation implementation, conversational AI systems, RAG and enterprise knowledge management, decision intelligence, operational AI maturity models, and AI ROI strategy. His articles bridge the gap between AI research and practical enterprise deployment.",
+    },
+    {
+      question: "How can I connect with Santosh for AI consulting?",
+      answer:
+        "You can reach Santosh and the AGIX Technologies team via the consultation form on the Contact page. Santosh personally reviews architecture scoping requests for enterprise AI engagements and is available for strategic AI advisory conversations.",
+    },
+    {
+      question: "Is AGIX Technologies led by an experienced AI engineer?",
+      answer:
+        "Yes. AGIX Technologies was founded by Santosh, an AI systems engineer with hands-on experience building and deploying production AI systems across multiple industries. The company's engineering-first approach reflects the founding team's background in building AI that works in real operational environments — not demo environments.",
+    },
+  ],
 };
 
 export function generateFAQPageSchema(faqs: FAQItem[]) {

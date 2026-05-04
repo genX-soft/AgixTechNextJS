@@ -619,6 +619,7 @@ export default function CaseStudiesPage() {
       {/* Case Studies Section */}
       <section id="case-studies" className="py-20">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          <h2 className="sr-only">Our Case Studies</h2>
           {/* Filter Tabs */}
           <div className="mb-12">
             <div className="flex flex-wrap justify-center gap-2">

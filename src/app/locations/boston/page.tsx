@@ -3,6 +3,8 @@ import { MainFooter } from "@/components/main-footer";
 import { Badge } from "@/components/ui/badge";
 import { MapPin, Phone, Mail, Building2 } from "lucide-react";
 import type { Metadata } from "next";
+import FAQSection from "@/components/shared/FAQSection";
+import { documentFAQs } from "@/lib/seo/faq-data";
 
 export const metadata: Metadata = {
   title: "Boston Office | AGIX Technologies Location",
@@ -87,6 +89,11 @@ export default function BostonLocationPage() {
           </div>
         </div>
       </main>
+      <FAQSection
+        faqs={documentFAQs['location-boston']}
+        title="AGIX Technologies Boston Office — FAQ"
+        subtitle="Common questions about AGIX Technologies' Boston, MA office and our North American AI delivery capabilities."
+      />
       <MainFooter />
     </>
   );
