@@ -1,6 +1,6 @@
 import { homepageOrganizationSchema } from '@/lib/seo/page-schemas';
 import { generateWebSiteSchema } from '@/lib/seo/structured-data';
-import { documentFAQs, generateFAQPageSchema } from '@/lib/seo/faq-data';
+import { documentFAQs } from '@/lib/seo/faq-data';
 import { extractFAQsFromContent } from '@/lib/insights/faq-utils';
 
 const SITE_URL = 'https://agixtech.com';
@@ -97,10 +97,9 @@ function extractSteps(html: string): Step[] {
 
 function buildHomeSchema() {
   const { '@context': _orgCtx, ...organization } = homepageOrganizationSchema;
-  const { '@context': _faqCtx, ...faqPage } = generateFAQPageSchema(documentFAQs['home']);
   return {
     '@context': 'https://schema.org',
-    '@graph': [organization, generateWebSiteSchema(), faqPage],
+    '@graph': [organization, generateWebSiteSchema()],
   };
 }
 
