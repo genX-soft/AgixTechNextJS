@@ -13,7 +13,7 @@ import { useToast } from "@/hooks/use-toast";
 import { useCelebration } from "@/components/success-celebration";
 import { submitLead } from "@/lib/lead-submission";
 import FAQSection from "@/components/shared/FAQSection";
-import FAQPageSchema from "@/components/shared/FAQPageSchema";
+
 import {
   ChevronRight, ArrowRight, CheckCircle2, ShieldCheck, Loader2,
   ChevronDown, ChevronUp, TrendingUp, Zap, Star, Clock, DollarSign,
@@ -477,7 +477,7 @@ export function IndustryPageTemplate({ data }: { data: IndustryPageData }) {
 
   return (
     <>
-      <FAQPageSchema faqs={data.faqs} />
+
       <MainHeader />
       <main className="min-h-screen bg-background">
 

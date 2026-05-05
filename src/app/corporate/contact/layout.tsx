@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { generateMetadataFromURL } from '@/lib/seo/metadata'
-import { documentFAQs, generateFAQPageSchema } from '@/lib/seo/faq-data'
+
 
 export const metadata: Metadata = generateMetadataFromURL('/corporate/contact/')
 
@@ -147,8 +147,6 @@ const breadcrumbSchema = {
   ]
 }
 
-const faqSchema = generateFAQPageSchema(documentFAQs['contact'])
-
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <>
@@ -163,10 +161,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       {children}
     </>
