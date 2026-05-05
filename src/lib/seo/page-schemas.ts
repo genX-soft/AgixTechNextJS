@@ -1333,15 +1333,6 @@ export function generatePageSchema(path: string, data: PageSchemaData) {
         }),
         "availableChannel": { "@type": "ServiceChannel", "serviceUrl": url }
       },
-      {
-        "@type": "FAQPage",
-        "@id": `${url}#faq`,
-        "mainEntity": data.faqs.map(faq => ({
-          "@type": "Question",
-          "name": faq.question,
-          "acceptedAnswer": { "@type": "Answer", "text": faq.answer }
-        }))
-      }
     ]
   };
 }
