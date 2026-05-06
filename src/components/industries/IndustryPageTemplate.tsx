@@ -660,10 +660,6 @@ export function IndustryPageTemplate({ data }: { data: IndustryPageData }) {
                     <div className="relative rounded-2xl border border-white/10 bg-white/[0.05] backdrop-blur-sm p-5 text-center hover:-translate-y-2 hover:bg-white/[0.09] transition-all duration-300 group overflow-hidden h-full flex flex-col items-center justify-center">
                       {/* Gradient top bar */}
                       <div className={`absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r ${m.step.replace('bg-', 'from-')} to-transparent`} style={{ background: `linear-gradient(90deg, ${m.solid}, transparent)` }} />
-                      {/* Ghost digit */}
-                      <div className={`absolute -bottom-3 -right-1 text-[60px] font-black opacity-[0.05] select-none leading-none pointer-events-none text-white`}>
-                        {stat.value.replace(/[^0-9]/g, '')}
-                      </div>
                       <div className={`w-10 h-10 ${m.bg} rounded-xl flex items-center justify-center mx-auto mb-3 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300 border ${m.border}`}>
                         <StatIcon className={`w-5 h-5 ${m.text}`} />
                       </div>
@@ -691,9 +687,6 @@ export function IndustryPageTemplate({ data }: { data: IndustryPageData }) {
                 {/* Feature metric card */}
                 <div className={`rounded-2xl border-2 ${c.accentBorder} p-6 relative overflow-hidden`}
                   style={{ background: `linear-gradient(135deg, ${c.heroAccentGlow}10, ${c.heroAccentGlow}05)` }}>
-                  <div className={`absolute -top-3 -right-3 text-[80px] font-black text-white opacity-[0.04] select-none leading-none`}>
-                    {data.stats[0]?.value.replace(/[^0-9%$KMB+.]/g, '') ?? "AI"}
-                  </div>
                   <AnimatedCounter value={data.stats[0]?.value ?? "50%+"} className={`text-4xl font-black ${c.accentText} mb-1 block`} />
                   <div className="text-sm text-muted-foreground leading-relaxed">{data.stats[0]?.label ?? `Efficiency gain from AI in ${data.industry}`}</div>
                 </div>
@@ -1051,7 +1044,6 @@ export function IndustryPageTemplate({ data }: { data: IndustryPageData }) {
                       <div className={`h-full rounded-2xl border-2 ${m.border} bg-background hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 group overflow-hidden relative p-6`}
                         style={{ background: `linear-gradient(135deg, ${m.solid}06, transparent)` }}>
                         <div className="absolute top-0 left-0 right-0 h-[3px]" style={{ background: `linear-gradient(90deg, ${m.solid}, transparent)` }} />
-                        <div className={`absolute -top-3 -right-3 text-[64px] font-black opacity-[0.06] select-none leading-none`} style={{ color: m.solid }}>{layer.num}</div>
                         <div className={`w-12 h-12 ${m.bg} border-2 ${m.border} rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300 shadow-md`}>
                           <LayerIcon className={`w-6 h-6 ${m.text}`} />
                         </div>
