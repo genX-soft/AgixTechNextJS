@@ -200,7 +200,7 @@ export default function ContactPage() {
     );
 
     setIsSubmitting(false);
-    
+
     if (result.success) {
       triggerCelebration();
       setIsSubmitted(true);
@@ -265,7 +265,7 @@ export default function ContactPage() {
                 asChild
                 data-testid="button-hero-schedule-call"
               >
-                <a href={`https://calendly.com/agix${utmParams}`} target="_blank" rel="noopener noreferrer">
+                <a href={`https://calendly.com/santosh-agixtech/discovery-call${utmParams}`} target="_blank" rel="noopener noreferrer">
                   <Calendar className="w-5 h-5 mr-2" />
                   Schedule a Call
                 </a>
@@ -588,7 +588,7 @@ export default function ContactPage() {
                 asChild
                 data-testid="button-schedule-call-section"
               >
-                <a href={`https://calendly.com/agix${utmParams}`} target="_blank" rel="noopener noreferrer">
+                <a href={`https://calendly.com/santosh-agixtech/discovery-call${utmParams}`} target="_blank" rel="noopener noreferrer">
                   <Calendar className="w-5 h-5 mr-2" />
                   Schedule a Call
                 </a>
@@ -671,7 +671,7 @@ export default function ContactPage() {
                 asChild
                 data-testid="button-closing-schedule-call"
               >
-                <a href={`https://calendly.com/agix${utmParams}`} target="_blank" rel="noopener noreferrer">
+                <a href={`https://calendly.com/santosh-agixtech/discovery-call${utmParams}`} target="_blank" rel="noopener noreferrer">
                   <Calendar className="w-5 h-5 mr-2" />
                   Schedule a Call
                 </a>
