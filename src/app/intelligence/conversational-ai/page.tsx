@@ -16,6 +16,9 @@ import {
 } from "lucide-react";
 import FAQSection from "@/components/shared/FAQSection";
 import { documentFAQs } from "@/lib/seo/faq-data";
+import { SEOProvider, NoAutoLink } from "@/context/SEOContext";
+import { AutoLinkText } from "@/components/seo/AutoLinkText";
+import { SemanticRelated } from "@/components/seo/SemanticRelated";
 
 function scrollToSection(id: string) {
   document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -219,6 +222,14 @@ function DefinitionBlock() {
               </div>
             </CardContent>
           </Card>
+
+          {/* Editorial connector — eligible for semantic autolinks */}
+          <p className="text-sm text-muted-foreground leading-relaxed mt-2" data-testid="text-definition-editorial">
+            <AutoLinkText
+              clusterId="conversational-ai"
+              text="Conversational Intelligence is the foundation of AI chatbots, AI voice agents, and customer-facing AI systems. Building it effectively requires engineering the full conversational AI stack — from intent recognition through knowledge grounding, context management, and action execution. Organizations that invest in conversational AI systems gain compounding advantages: better customer experience, lower support costs, and AI that improves with every interaction."
+            />
+          </p>
         </motion.div>
       </div>
     </section>
@@ -681,27 +692,44 @@ function FutureTrajectory() {
 
 export default function ConversationalIntelligencePage() {
   return (
-    <div className="min-h-screen bg-background">
-      <MainHeader />
-      <main id="main-content">
-        <HeroSection />
-        <TrustStrip />
-        <DefinitionBlock />
-        <WhyNowSection />
-        <ComparisonTable />
-        <ConversationalIntelligenceSpectrum />
-        <MaturityAssessment />
-        <DomainApplications />
-        <ImplementationBridge />
-        <FutureTrajectory />
-        <FAQSection faqs={documentFAQs['conversational-ai']} title="Conversational Intelligence: Questions Answered" />
-        <section id="cta-form" className="py-10 lg:py-14 bg-gradient-to-br from-primary/10 via-background to-blue-500/10 scroll-mt-20">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <CtaForm headline="Ready to Move Beyond Chatbots?" subheadline="Tell us where you are on the Conversational Intelligence Spectrum. We'll show you the fastest path to Level 3 and beyond." />
-          </div>
-        </section>
-      </main>
-      <MainFooter />
-    </div>
+    <SEOProvider currentPath="/intelligence/conversational-ai/">
+      <div className="min-h-screen bg-background">
+        <NoAutoLink><MainHeader /></NoAutoLink>
+        <main id="main-content">
+          {/* Hero and trust strip are structural — protect from autolinking */}
+          <NoAutoLink><HeroSection /></NoAutoLink>
+          <NoAutoLink><TrustStrip /></NoAutoLink>
+
+          {/* Educational sections — AutoLinkText active inside DefinitionBlock */}
+          <DefinitionBlock />
+          <WhyNowSection />
+          <ComparisonTable />
+          <ConversationalIntelligenceSpectrum />
+          <MaturityAssessment />
+          <DomainApplications />
+          <ImplementationBridge />
+          <FutureTrajectory />
+
+          {/* Semantic related — surfaces cluster-matched intelligence, services, case studies */}
+          <SemanticRelated
+            currentUrl="/intelligence/conversational-ai/"
+            clusterId="conversational-ai"
+            heading="Explore the Conversational AI Ecosystem"
+          />
+
+          <NoAutoLink>
+            <FAQSection faqs={documentFAQs['conversational-ai']} title="Conversational Intelligence: Questions Answered" />
+          </NoAutoLink>
+          <NoAutoLink>
+            <section id="cta-form" className="py-10 lg:py-14 bg-gradient-to-br from-primary/10 via-background to-blue-500/10 scroll-mt-20">
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <CtaForm headline="Ready to Move Beyond Chatbots?" subheadline="Tell us where you are on the Conversational Intelligence Spectrum. We'll show you the fastest path to Level 3 and beyond." />
+              </div>
+            </section>
+          </NoAutoLink>
+        </main>
+        <NoAutoLink><MainFooter /></NoAutoLink>
+      </div>
+    </SEOProvider>
   );
 }

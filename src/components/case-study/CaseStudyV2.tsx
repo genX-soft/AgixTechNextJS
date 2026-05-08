@@ -4,6 +4,10 @@ import { motion, AnimatePresence, useInView } from "@/lib/motion";
 import { CaseStudyTemplate } from "@/components/shared/case-study-template";
 import { CtaForm } from "@/components/forms/cta-form";
 import FAQSection from "@/components/shared/FAQSection";
+import { SEOProvider, NoAutoLink } from "@/context/SEOContext";
+import { AutoLinkText } from "@/components/seo/AutoLinkText";
+import { SemanticRelated } from "@/components/seo/SemanticRelated";
+import type { ClusterId } from "@/lib/seo-registry";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -66,6 +70,26 @@ export interface CaseStudyV2Data {
   prevCase?: { name: string; url: string };
   nextCase?: { name: string; url: string };
 }
+
+/* ─── SEO Config — maps case study slug → SEO provider config ───────────── */
+const CASE_STUDY_SEO: Record<string, { seoPath: string; clusterId: ClusterId }> = {
+  "navan":          { seoPath: "/case-studies/navan/",          clusterId: "agentic-ai" },
+  "mindtrip":       { seoPath: "/case-studies/mindtrip/",       clusterId: "agentic-ai" },
+  "naratix":        { seoPath: "/case-studies/naratix/",        clusterId: "enterprise-knowledge" },
+  "polyai":         { seoPath: "/case-studies/polyai/",         clusterId: "conversational-ai" },
+  "brainfish":      { seoPath: "/case-studies/brainfish/",      clusterId: "conversational-ai" },
+  "alphasense":     { seoPath: "/case-studies/alphasense/",     clusterId: "enterprise-knowledge" },
+  "ocrolus":        { seoPath: "/case-studies/ocrolus/",        clusterId: "decision-ai" },
+  "albertsons":     { seoPath: "/case-studies/albertsons/",     clusterId: "operational-ai" },
+  "kroger":         { seoPath: "/case-studies/kroger/",         clusterId: "operational-ai" },
+  "dave":           { seoPath: "/case-studies/dave/",           clusterId: "decision-ai" },
+  "enova":          { seoPath: "/case-studies/enova/",          clusterId: "decision-ai" },
+  "stitch-fix":     { seoPath: "/case-studies/stitch-fix/",     clusterId: "decision-ai" },
+  "kite-therapy":   { seoPath: "/case-studies/kite-therapy/",   clusterId: "conversational-ai" },
+  "quizlet":        { seoPath: "/case-studies/quizlet/",        clusterId: "enterprise-knowledge" },
+  "knewton":        { seoPath: "/case-studies/knewton/",        clusterId: "enterprise-knowledge" },
+  "housecanary":    { seoPath: "/case-studies/housecanary/",    clusterId: "decision-ai" },
+};
 
 /* ─── Color Maps ─────────────────────────────────────────── */
 const accentMap: Record<string, { badge: string; stat: string; border: string; bg: string; dot: string; step: string }> = {
@@ -144,8 +168,9 @@ function AnimatedStat({ value, color }: { value: string; color?: string }) {
 export function CaseStudyV2({ data, children }: { data: CaseStudyV2Data; children?: React.ReactNode }) {
   const [activeStep, setActiveStep] = useState(0);
   const accent = accentMap[data.accentColor] ?? accentMap.emerald;
+  const seoConfig = CASE_STUDY_SEO[data.slug];
 
-  return (
+  const inner = (
     <CaseStudyTemplate prevCase={data.prevCase} nextCase={data.nextCase}>
 
       {/* ── S1: Hero ─────────────────────────────────────── */}
@@ -337,7 +362,13 @@ export function CaseStudyV2({ data, children }: { data: CaseStudyV2Data; childre
                 The Solution
               </Badge>
               <h2 className="text-3xl font-bold mb-4">{data.solutionTitle}</h2>
-              <p className="text-muted-foreground leading-relaxed">{data.solutionDescription}</p>
+              <p className="text-muted-foreground leading-relaxed">
+                {seoConfig ? (
+                  <AutoLinkText clusterId={seoConfig.clusterId} text={data.solutionDescription} />
+                ) : (
+                  data.solutionDescription
+                )}
+              </p>
             </div>
 
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -663,25 +694,42 @@ export function CaseStudyV2({ data, children }: { data: CaseStudyV2Data; childre
         </div>
       </section>
 
+      {/* Semantic related — surfaces cluster-matched intelligence, services, case studies */}
+      {seoConfig && (
+        <SemanticRelated
+          currentUrl={seoConfig.seoPath}
+          clusterId={seoConfig.clusterId}
+          heading={`Explore Related ${data.subIndustry} AI Systems`}
+        />
+      )}
+
       {/* ── S12a: CTA ────────────────────────────────────── */}
-      <section className="py-20 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <CtaForm
-            headline={`Build a Similar ${data.subIndustry} System`}
-            subheadline={`Our AI architects have built systems like the one deployed at ${data.company}. Let's explore what's possible for your organization.`}
-            badgeText="Free Architecture Review"
-            submitLabel={`Start My ${data.subIndustry} Project`}
-            contextNote={`Referencing the ${data.company} case study`}
-          />
-        </div>
-      </section>
+      <NoAutoLink>
+        <section className="py-20 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6">
+            <CtaForm
+              headline={`Build a Similar ${data.subIndustry} System`}
+              subheadline={`Our AI architects have built systems like the one deployed at ${data.company}. Let's explore what's possible for your organization.`}
+              badgeText="Free Architecture Review"
+              submitLabel={`Start My ${data.subIndustry} Project`}
+              contextNote={`Referencing the ${data.company} case study`}
+            />
+          </div>
+        </section>
+      </NoAutoLink>
 
       {/* ── S12b: FAQ ────────────────────────────────────── */}
-      <FAQSection
-        faqs={data.faqs}
-        title={`${data.company} AI Case Study — FAQ`}
-        subtitle={`Common questions about building ${data.subIndustry.toLowerCase()} systems like the one deployed at ${data.company}.`}
-      />
+      <NoAutoLink>
+        <FAQSection
+          faqs={data.faqs}
+          title={`${data.company} AI Case Study — FAQ`}
+          subtitle={`Common questions about building ${data.subIndustry.toLowerCase()} systems like the one deployed at ${data.company}.`}
+        />
+      </NoAutoLink>
     </CaseStudyTemplate>
   );
+
+  return seoConfig ? (
+    <SEOProvider currentPath={seoConfig.seoPath}>{inner}</SEOProvider>
+  ) : inner;
 }

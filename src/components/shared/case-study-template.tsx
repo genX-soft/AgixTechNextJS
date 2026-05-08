@@ -1,8 +1,10 @@
+'use client'
 import { MainHeader } from "@/components/main-header"
 import { MainFooter } from "@/components/main-footer"
 import Link from "next/link"
 import { ArrowLeft, ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { NoAutoLink } from "@/context/SEOContext"
 
 interface CaseStudyTemplateProps {
   children: React.ReactNode;
@@ -13,7 +15,7 @@ interface CaseStudyTemplateProps {
 export function CaseStudyTemplate({ children, prevCase, nextCase }: CaseStudyTemplateProps) {
   return (
     <div className="min-h-screen bg-background">
-      <MainHeader />
+      <NoAutoLink><MainHeader /></NoAutoLink>
       {children}
       
       {/* Navigation */}
@@ -39,7 +41,7 @@ export function CaseStudyTemplate({ children, prevCase, nextCase }: CaseStudyTem
           </div>
         </section>
       )}
-      <MainFooter />
+      <NoAutoLink><MainFooter /></NoAutoLink>
     </div>
   )
 }

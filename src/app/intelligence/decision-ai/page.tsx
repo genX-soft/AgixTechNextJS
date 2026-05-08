@@ -17,6 +17,9 @@ import {
 } from "lucide-react";
 import FAQSection from "@/components/shared/FAQSection";
 import { documentFAQs } from "@/lib/seo/faq-data";
+import { SEOProvider, NoAutoLink } from "@/context/SEOContext";
+import { AutoLinkText } from "@/components/seo/AutoLinkText";
+import { SemanticRelated } from "@/components/seo/SemanticRelated";
 
 function scrollToSection(id: string) {
   document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -194,6 +197,14 @@ function DefinitionBlock() {
               </div>
             </CardContent>
           </Card>
+
+          {/* Editorial connector — eligible for semantic autolinks */}
+          <p className="text-sm text-muted-foreground leading-relaxed mt-2" data-testid="text-definition-editorial">
+            <AutoLinkText
+              clusterId="decision-ai"
+              text="Decision Intelligence is built on AI predictive analytics — the ability to estimate probabilities before committing to a course of action. Predictive AI makes each level of the Decision Intelligence Pyramid more reliable: forecasts improve the quality of Level 2 guided decisions, while AI analytics powers Level 3 semi-autonomous and Level 4 fully autonomous decision systems. The organizations that build this predictive AI infrastructure first are the ones that can safely move decision-making authority from humans to systems."
+            />
+          </p>
         </motion.div>
       </div>
     </section>
@@ -643,27 +654,44 @@ function FutureTrajectory() {
 
 export default function DecisionIntelligencePage() {
   return (
-    <div className="min-h-screen bg-background">
-      <MainHeader />
-      <main id="main-content">
-        <HeroSection />
-        <TrustStrip />
-        <DefinitionBlock />
-        <WhyNowSection />
-        <ComparisonTable />
-        <DecisionIntelligencePyramid />
-        <DecisionComplexityMatrix />
-        <IndustryApplications />
-        <ImplementationBridge />
-        <FutureTrajectory />
-        <FAQSection faqs={documentFAQs['decision-ai']} title="Decision Intelligence: Questions Answered" />
-        <section id="cta-form" className="py-10 lg:py-14 bg-gradient-to-br from-primary/10 via-background to-purple-500/10 scroll-mt-20">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <CtaForm headline="Ready to Move from Insights to Decisions?" subheadline="Tell us which decisions are costing you the most time or risk. We'll show you which level of the Decision Intelligence Pyramid applies — and how to get there." />
-          </div>
-        </section>
-      </main>
-      <MainFooter />
-    </div>
+    <SEOProvider currentPath="/intelligence/decision-ai/">
+      <div className="min-h-screen bg-background">
+        <NoAutoLink><MainHeader /></NoAutoLink>
+        <main id="main-content">
+          {/* Hero and trust strip are structural — protect from autolinking */}
+          <NoAutoLink><HeroSection /></NoAutoLink>
+          <NoAutoLink><TrustStrip /></NoAutoLink>
+
+          {/* Educational sections — AutoLinkText active inside DefinitionBlock */}
+          <DefinitionBlock />
+          <WhyNowSection />
+          <ComparisonTable />
+          <DecisionIntelligencePyramid />
+          <DecisionComplexityMatrix />
+          <IndustryApplications />
+          <ImplementationBridge />
+          <FutureTrajectory />
+
+          {/* Semantic related — surfaces cluster-matched intelligence, services, case studies */}
+          <SemanticRelated
+            currentUrl="/intelligence/decision-ai/"
+            clusterId="decision-ai"
+            heading="Explore the Decision Intelligence Ecosystem"
+          />
+
+          <NoAutoLink>
+            <FAQSection faqs={documentFAQs['decision-ai']} title="Decision Intelligence: Questions Answered" />
+          </NoAutoLink>
+          <NoAutoLink>
+            <section id="cta-form" className="py-10 lg:py-14 bg-gradient-to-br from-primary/10 via-background to-purple-500/10 scroll-mt-20">
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <CtaForm headline="Ready to Move from Insights to Decisions?" subheadline="Tell us which decisions are costing you the most time or risk. We'll show you which level of the Decision Intelligence Pyramid applies — and how to get there." />
+              </div>
+            </section>
+          </NoAutoLink>
+        </main>
+        <NoAutoLink><MainFooter /></NoAutoLink>
+      </div>
+    </SEOProvider>
   );
 }

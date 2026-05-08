@@ -17,6 +17,10 @@ import { MainFooter } from "@/components/main-footer";
 import FAQSection from "@/components/shared/FAQSection";
 import { documentFAQs } from "@/lib/seo/faq-data";
 import { submitLead } from "@/lib/lead-submission";
+import { SEOProvider, NoAutoLink } from "@/context/SEOContext";
+import { AutoLinkText } from "@/components/seo/AutoLinkText";
+import { SemanticRelated } from "@/components/seo/SemanticRelated";
+import type { ClusterId } from "@/lib/seo-registry";
 import { useCelebration } from "@/components/success-celebration";
 import { useToast } from "@/hooks/use-toast";
 import type { ServiceData } from "@/lib/services-data";
@@ -32,6 +36,16 @@ import {
 const ICON_MAP: Record<string, React.ElementType> = {
   Network, Workflow, Eye, TrendingUp, Phone, MessageSquare,
   Sparkles, Database,
+};
+
+// ─── SEO Config — maps service slug → SEO provider config ────────────────────
+const SERVICE_SEO: Record<string, { seoPath: string; clusterId: ClusterId }> = {
+  "agentic-ai-systems":        { seoPath: "/services/agentic-ai-systems/",        clusterId: "agentic-ai" },
+  "ai-automation":             { seoPath: "/services/ai-automation/",             clusterId: "operational-ai" },
+  "ai-predictive-analytics":   { seoPath: "/services/ai-predictive-analytics/",   clusterId: "decision-ai" },
+  "ai-voice-agents":           { seoPath: "/services/ai-voice-agents/",           clusterId: "conversational-ai" },
+  "conversational-ai-chatbots":{ seoPath: "/services/conversational-ai-chatbots/",clusterId: "conversational-ai" },
+  "rag-knowledge-ai":          { seoPath: "/services/rag-knowledge-ai/",          clusterId: "enterprise-knowledge" },
 };
 
 // ─── Color Utilities ──────────────────────────────────────────────────────────
@@ -284,9 +298,11 @@ export default function ServicePageTemplate({ data }: { data: ServiceData }) {
   const accentMid = hex(data.colorHex, 0.2);
   const accentBorder = hex(data.colorHex, 0.3);
 
-  return (
+  const seoConfig = SERVICE_SEO[data.slug];
+
+  const content = (
     <div className="min-h-screen bg-background text-foreground">
-      <MainHeader />
+      <NoAutoLink><MainHeader /></NoAutoLink>
 
       {/* ═══════════════════════════════════════════════════════════
           HERO — Full-width. AGIX delivery stats at bottom.
@@ -552,7 +568,11 @@ export default function ServicePageTemplate({ data }: { data: ServiceData }) {
                 {data.agixValue.headline}
               </h2>
               <p className="text-muted-foreground max-w-3xl text-base leading-relaxed">
-                {data.agixValue.body}
+                {seoConfig ? (
+                  <AutoLinkText clusterId={seoConfig.clusterId} text={data.agixValue.body} />
+                ) : (
+                  data.agixValue.body
+                )}
               </p>
             </motion.div>
 
@@ -1008,14 +1028,29 @@ export default function ServicePageTemplate({ data }: { data: ServiceData }) {
         </div>
       </section>
 
+      {/* Semantic related — surfaces cluster-matched intelligence, services, case studies */}
+      {seoConfig && (
+        <SemanticRelated
+          currentUrl={seoConfig.seoPath}
+          clusterId={seoConfig.clusterId}
+          heading={`Explore the ${serviceName} Ecosystem`}
+        />
+      )}
+
       {/* ═══════════════════════════════════════════════════════════
           FAQ
       ═══════════════════════════════════════════════════════════ */}
       {faqs.length > 0 && (
-        <FAQSection faqs={faqs} title={`${serviceName} — Questions Answered`} />
+        <NoAutoLink>
+          <FAQSection faqs={faqs} title={`${serviceName} — Questions Answered`} />
+        </NoAutoLink>
       )}
 
-      <MainFooter />
+      <NoAutoLink><MainFooter /></NoAutoLink>
     </div>
   );
+
+  return seoConfig ? (
+    <SEOProvider currentPath={seoConfig.seoPath}>{content}</SEOProvider>
+  ) : content;
 }
