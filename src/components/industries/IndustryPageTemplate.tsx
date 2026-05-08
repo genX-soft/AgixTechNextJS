@@ -19,7 +19,7 @@ import {
   ChevronDown, ChevronUp, TrendingUp, Zap, Star, Clock, DollarSign,
   BarChart3, Users, Building2, Quote, Target, Sparkles, AlertTriangle,
   ArrowUpRight, X, Check, Rocket, Globe, Lock, Eye, Calendar, Layers,
-  MoveRight,
+  MoveRight, ArrowDown, Play, Lightbulb, Trophy, Activity,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
@@ -264,7 +264,6 @@ function AnimatedCounter({ value, className }: { value: string; className?: stri
     const prefix = value.match(/^[^0-9]*/)?.[0] ?? "";
     const suffix = value.match(/[^0-9.]+$/)?.[0] ?? "";
     const decimals = (value.split(".")[1]?.replace(/[^0-9]/g, "").length) ?? 0;
-    let start = 0;
     const duration = 1400;
     const startTime = performance.now();
     function tick(now: number) {
@@ -477,7 +476,6 @@ export function IndustryPageTemplate({ data }: { data: IndustryPageData }) {
 
   return (
     <>
-
       <MainHeader />
       <main className="min-h-screen bg-background">
 
@@ -491,7 +489,7 @@ export function IndustryPageTemplate({ data }: { data: IndustryPageData }) {
           {/* Grid overlay */}
           <div className="absolute inset-0 opacity-[0.03]"
             style={{ backgroundImage: "repeating-linear-gradient(0deg,transparent,transparent 39px,rgba(255,255,255,.15) 39px,rgba(255,255,255,.15) 40px),repeating-linear-gradient(90deg,transparent,transparent 39px,rgba(255,255,255,.15) 39px,rgba(255,255,255,.15) 40px)" }} />
-          {/* Orbs */}
+          {/* Animated orbs */}
           <motion.div className={`absolute -top-24 left-1/4 w-[600px] h-[400px] ${c.orb1} rounded-full blur-[100px]`}
             animate={{ scale: [1, 1.15, 1], opacity: [0.45, 0.7, 0.45] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }} />
           <motion.div className={`absolute top-1/3 -right-32 w-[400px] h-[400px] ${c.orb2} rounded-full blur-3xl`}
@@ -499,10 +497,10 @@ export function IndustryPageTemplate({ data }: { data: IndustryPageData }) {
           <motion.div className={`absolute bottom-0 left-0 w-[300px] h-[300px] ${c.orb3} rounded-full blur-3xl`}
             animate={{ scale: [1, 1.2, 1], opacity: [0.2, 0.4, 0.2] }} transition={{ duration: 11, repeat: Infinity, ease: "easeInOut" }} />
 
-          {/* Animated dot grid accents */}
-          <div className="absolute top-32 right-16 opacity-20 pointer-events-none hidden lg:block">
+          {/* Animated dot grid accent */}
+          <div className="absolute top-32 right-16 opacity-20 pointer-events-none hidden lg:grid grid-cols-5 gap-4">
             {Array.from({ length: 25 }).map((_, i) => (
-              <motion.div key={i} className={`inline-block w-1 h-1 rounded-full m-2 ${c.heroDark}`}
+              <motion.div key={i} className={`w-1 h-1 rounded-full ${c.heroDark}`}
                 animate={{ opacity: [0.2, 1, 0.2] }} transition={{ duration: 2 + (i % 3), repeat: Infinity, delay: i * 0.12 }} />
             ))}
           </div>
@@ -528,8 +526,7 @@ export function IndustryPageTemplate({ data }: { data: IndustryPageData }) {
                   className="w-16 h-16 rounded-3xl flex items-center justify-center shadow-2xl border relative overflow-hidden"
                   style={{ background: `${c.heroAccentGlow}20`, borderColor: `${c.heroAccentGlow}50`, boxShadow: `0 0 50px ${c.heroAccentGlow}35` }}
                   animate={{ boxShadow: [`0 0 30px ${c.heroAccentGlow}25`, `0 0 60px ${c.heroAccentGlow}50`, `0 0 30px ${c.heroAccentGlow}25`] }}
-                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                >
+                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}>
                   <HeroIcon className="w-8 h-8 text-white" />
                 </motion.div>
                 <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full border ${c.badge} backdrop-blur-sm`}>
@@ -575,7 +572,7 @@ export function IndustryPageTemplate({ data }: { data: IndustryPageData }) {
               </motion.p>
             </div>
 
-            {/* Hero Cards */}
+            {/* Hero Cards — bento grid with colored top bars */}
             <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.4 }} className="max-w-5xl mx-auto">
               <div className="flex items-center gap-4 mb-5">
                 <div className="flex-1 h-px" style={{ background: `linear-gradient(90deg, transparent, ${c.heroAccentGlow}35)` }} />
@@ -588,14 +585,15 @@ export function IndustryPageTemplate({ data }: { data: IndustryPageData }) {
                   const m = mp(i);
                   return (
                     <motion.div key={i} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 + i * 0.07 }}
-                      className="rounded-2xl border border-white/10 bg-white/[0.04] backdrop-blur-sm p-4 hover:bg-white/[0.09] hover:-translate-y-1.5 transition-all duration-300 group relative overflow-hidden cursor-default"
+                      className="rounded-2xl border border-white/10 bg-white/[0.04] backdrop-blur-sm p-4 hover:bg-white/[0.09] hover:-translate-y-2 transition-all duration-300 group relative overflow-hidden cursor-default"
                       data-testid={`card-hero-${i}`}>
-                      <div className={`absolute top-0 left-0 right-0 h-[2px] ${m.step}`} />
-                      <div className={`w-10 h-10 ${m.bg} border ${m.border} rounded-xl flex items-center justify-center mb-3 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300`}>
+                      <div className={`absolute top-0 left-0 right-0 h-[3px]`} style={{ background: `linear-gradient(90deg, ${m.solid}, ${m.solid}50)` }} />
+                      <div className={`w-10 h-10 ${m.bg} border ${m.border} rounded-xl flex items-center justify-center mb-3 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300`}
+                        style={{ boxShadow: `0 4px 12px ${m.solid}30` }}>
                         <CardIcon className={`w-5 h-5 ${m.text}`} />
                       </div>
                       <div className="font-bold text-sm text-white mb-1 leading-snug">{card.title}</div>
-                      <div className={`text-xs font-semibold ${m.text} leading-snug`}>{card.desc}</div>
+                      <div className={`text-xs font-semibold leading-snug`} style={{ color: m.solid }}>{card.desc}</div>
                     </motion.div>
                   );
                 })}
@@ -607,39 +605,44 @@ export function IndustryPageTemplate({ data }: { data: IndustryPageData }) {
         </section>
 
         {/* ══════════════════════════════════════════════════════════════════════
-            § 2 · AEO DIRECT ANSWER
+            § 2 · AEO DIRECT ANSWER — Spotlight callout
         ══════════════════════════════════════════════════════════════════════ */}
         {data.aeoAnswer && (
-          <section className={`py-5 border-b border-border ${c.cardBg}`}>
+          <section className="py-8 border-b border-border">
             <div className="max-w-5xl mx-auto px-4 sm:px-6">
-              <div className="flex items-start gap-4">
-                <div className={`w-10 h-10 rounded-2xl bg-gradient-to-br ${c.gradientFrom} ${c.gradientTo} flex items-center justify-center flex-shrink-0 mt-0.5 shadow-md`}>
-                  <Zap className="w-5 h-5 text-white" />
+              <motion.div initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+                className={`rounded-2xl border-2 ${c.accentBorder} p-6 flex items-start gap-5 relative overflow-hidden`}
+                style={{ background: `linear-gradient(135deg, ${c.heroAccentGlow}08, transparent)` }}>
+                <div className="absolute inset-0 opacity-[0.02]"
+                  style={{ backgroundImage: "linear-gradient(to right, white 1px, transparent 1px), linear-gradient(to bottom, white 1px, transparent 1px)", backgroundSize: "20px 20px" }} />
+                <div className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${c.gradientFrom} ${c.gradientTo} flex items-center justify-center flex-shrink-0 shadow-lg`}
+                  style={{ boxShadow: `0 8px 24px ${c.heroAccentGlow}40` }}>
+                  <Zap className="w-6 h-6 text-white" />
                 </div>
-                <div>
-                  <div className="flex items-center gap-2 mb-1.5">
+                <div className="relative z-10">
+                  <div className="flex items-center gap-2 mb-2">
                     <span className={`text-xs font-black uppercase tracking-widest ${c.accentText}`}>Direct Answer</span>
-                    <span className="text-xs text-muted-foreground/50">— AEO Optimised</span>
+                    <span className="text-[10px] px-2 py-0.5 rounded-full bg-muted text-muted-foreground font-medium">AEO Optimised</span>
                   </div>
-                  <p className="text-base text-foreground leading-relaxed">{data.aeoAnswer}</p>
+                  <p className="text-base text-foreground leading-relaxed font-medium">{data.aeoAnswer}</p>
                 </div>
-              </div>
+              </motion.div>
             </div>
           </section>
         )}
 
         {/* ══════════════════════════════════════════════════════════════════════
-            § 3 · STATS — Dark band, animated counters, multi-color accent bars
+            § 3 · STATS — Dark band, oversized animated counters
         ══════════════════════════════════════════════════════════════════════ */}
-        <section className="py-20 relative overflow-hidden">
+        <section className="py-24 relative overflow-hidden">
           <div className="absolute inset-0 bg-[#020817]" />
           <div className="absolute inset-0 opacity-[0.025]"
             style={{ backgroundImage: "linear-gradient(to right,white 1px,transparent 1px),linear-gradient(to bottom,white 1px,transparent 1px)", backgroundSize: "48px 48px" }} />
           <div className="absolute inset-0"
-            style={{ background: `radial-gradient(ellipse 70% 60% at 50% 50%, ${c.heroAccentGlow}14 0%, transparent 70%)` }} />
+            style={{ background: `radial-gradient(ellipse 70% 60% at 50% 50%, ${c.heroAccentGlow}18 0%, transparent 70%)` }} />
 
           <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
-            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-14">
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
               <span className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider border ${c.badge} mb-4`}>
                 <BarChart3 className="w-3.5 h-3.5" /> Market Data
               </span>
@@ -657,14 +660,18 @@ export function IndustryPageTemplate({ data }: { data: IndustryPageData }) {
                 const m = mp(i);
                 return (
                   <motion.div key={i} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.09 }}>
-                    <div className="relative rounded-2xl border border-white/10 bg-white/[0.05] backdrop-blur-sm p-5 text-center hover:-translate-y-2 hover:bg-white/[0.09] transition-all duration-300 group overflow-hidden h-full flex flex-col items-center justify-center">
-                      {/* Gradient top bar */}
-                      <div className={`absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r ${m.step.replace('bg-', 'from-')} to-transparent`} style={{ background: `linear-gradient(90deg, ${m.solid}, transparent)` }} />
-                      <div className={`w-10 h-10 ${m.bg} rounded-xl flex items-center justify-center mx-auto mb-3 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300 border ${m.border}`}>
+                    <div className="relative rounded-2xl border border-white/10 bg-white/[0.05] backdrop-blur-sm p-6 text-center hover:-translate-y-2 hover:bg-white/[0.09] transition-all duration-300 group overflow-hidden h-full flex flex-col items-center justify-center"
+                      style={{ boxShadow: `inset 0 1px 0 ${m.solid}20` }}>
+                      <div className="absolute top-0 left-0 right-0 h-[3px]" style={{ background: `linear-gradient(90deg, ${m.solid}, ${m.solid}40, transparent)` }} />
+                      <div className={`absolute bottom-0 left-0 right-0 h-24 opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
+                        style={{ background: `radial-gradient(ellipse at 50% 100%, ${m.solid}15, transparent)` }} />
+                      <div className={`w-11 h-11 ${m.bg} rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300 border ${m.border}`}
+                        style={{ boxShadow: `0 4px 16px ${m.solid}30` }}>
                         <StatIcon className={`w-5 h-5 ${m.text}`} />
                       </div>
-                      <AnimatedCounter value={stat.value} className={`text-2xl md:text-3xl font-black mb-1 ${m.text}`} />
+                      <AnimatedCounter value={stat.value} className={`text-3xl md:text-4xl font-black mb-1.5 block`} style={{ color: m.solid } as React.CSSProperties} />
                       <div className="text-xs text-white/45 leading-snug">{stat.label}</div>
+                      {stat.cite && <div className="text-[9px] text-white/25 mt-2 uppercase tracking-wider">{stat.cite}</div>}
                     </div>
                   </motion.div>
                 );
@@ -675,9 +682,11 @@ export function IndustryPageTemplate({ data }: { data: IndustryPageData }) {
         </section>
 
         {/* ══════════════════════════════════════════════════════════════════════
-            § 4 · DEFINITION — Editorial split with large accent quote
+            § 4 · DEFINITION — Full-width editorial with pull quote
         ══════════════════════════════════════════════════════════════════════ */}
-        <section className="py-24 border-b border-border">
+        <section className="py-24 border-b border-border overflow-hidden relative">
+          <div className="absolute right-0 top-0 bottom-0 w-1/3 pointer-events-none"
+            style={{ background: `radial-gradient(ellipse 100% 80% at 100% 50%, ${c.heroAccentGlow}06, transparent)` }} />
           <div className="max-w-6xl mx-auto px-4 sm:px-6">
             <div className="grid lg:grid-cols-[5fr_7fr] gap-16 items-start">
               <motion.div initial={{ opacity: 0, x: -24 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
@@ -685,20 +694,29 @@ export function IndustryPageTemplate({ data }: { data: IndustryPageData }) {
                 <h2 className="text-3xl md:text-4xl font-black leading-tight mb-5">{data.definitionTitle}</h2>
                 <div className={`w-16 h-1.5 rounded-full bg-gradient-to-r ${c.gradientFrom} ${c.gradientTo} mb-8`} />
                 {/* Feature metric card */}
-                <div className={`rounded-2xl border-2 ${c.accentBorder} p-6 relative overflow-hidden`}
-                  style={{ background: `linear-gradient(135deg, ${c.heroAccentGlow}10, ${c.heroAccentGlow}05)` }}>
-                  <AnimatedCounter value={data.stats[0]?.value ?? "50%+"} className={`text-4xl font-black ${c.accentText} mb-1 block`} />
+                <div className={`rounded-2xl border-2 ${c.accentBorder} p-7 relative overflow-hidden`}
+                  style={{ background: `linear-gradient(135deg, ${c.heroAccentGlow}12, ${c.heroAccentGlow}05)`, boxShadow: `0 8px 32px ${c.heroAccentGlow}20` }}>
+                  <div className="absolute top-0 right-0 w-32 h-32 rounded-full pointer-events-none"
+                    style={{ background: `radial-gradient(circle, ${c.heroAccentGlow}15, transparent)`, transform: "translate(30%, -30%)" }} />
+                  <AnimatedCounter value={data.stats[0]?.value ?? "50%+"} className={`text-5xl md:text-6xl font-black ${c.accentText} mb-2 block leading-none`} />
                   <div className="text-sm text-muted-foreground leading-relaxed">{data.stats[0]?.label ?? `Efficiency gain from AI in ${data.industry}`}</div>
                 </div>
               </motion.div>
 
               <motion.div initial={{ opacity: 0, x: 24 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: 0.15 }}>
                 <p className="text-muted-foreground text-lg leading-relaxed mb-8">{data.definitionText}</p>
-                <div className={`border-l-4 bg-gradient-to-r ${c.gradientFrom.replace('from-', 'from-').replace('500', '500/5')} to-transparent border-${data.accent}-500/40 pl-6 py-4 rounded-r-2xl relative`}
-                  style={{ borderLeftColor: `${c.heroAccentGlow}60`, background: `linear-gradient(90deg, ${c.heroAccentGlow}08, transparent)` }}>
-                  <Quote className={`w-6 h-6 ${c.accentText} opacity-40 mb-2`} />
-                  <p className={`text-sm font-semibold italic ${c.accentText} leading-relaxed mb-3`}>"{data.signatureQuote}"</p>
-                  <p className="text-xs text-muted-foreground">{data.signatureAuthor ?? "Santosh Singh, Founder & CEO, AGIX Technologies"}</p>
+                <div className="rounded-2xl overflow-hidden border border-border">
+                  <div className={`h-1 bg-gradient-to-r ${c.gradientFrom} ${c.gradientTo}`} />
+                  <div className="p-6 bg-muted/30">
+                    <Quote className={`w-6 h-6 ${c.accentText} opacity-50 mb-3`} />
+                    <p className={`text-base font-semibold italic ${c.accentText} leading-relaxed mb-4`}>"{data.signatureQuote}"</p>
+                    <div className="flex items-center gap-3">
+                      <div className={`w-8 h-8 rounded-full ${c.stepBg} flex items-center justify-center flex-shrink-0`}>
+                        <span className="text-white text-[10px] font-black">SS</span>
+                      </div>
+                      <p className="text-xs text-muted-foreground">{data.signatureAuthor ?? "Santosh Singh, Founder & CEO, AGIX Technologies"}</p>
+                    </div>
+                  </div>
                 </div>
               </motion.div>
             </div>
@@ -706,62 +724,69 @@ export function IndustryPageTemplate({ data }: { data: IndustryPageData }) {
         </section>
 
         {/* ══════════════════════════════════════════════════════════════════════
-            § 5 · HOW IT WORKS — Horizontal connected stepper
+            § 5 · HOW IT WORKS — Large numbered pipeline
         ══════════════════════════════════════════════════════════════════════ */}
-        <section className="py-20 bg-muted/40 border-b border-border overflow-hidden">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6">
-            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-14">
-              <SectionBadge label="How It Works" colorClass={c.sectionBadgeBase} icon={Zap} />
+        <section className="py-24 border-b border-border overflow-hidden relative">
+          <div className="absolute inset-0 bg-muted/30" />
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
+              <SectionBadge label="How It Works" colorClass={c.sectionBadgeBase} icon={Play} />
               <h2 className="text-3xl md:text-4xl font-black">
                 {data.howItWorksTitle ?? `How AI Works in ${data.industry} — Simplified`}
               </h2>
             </motion.div>
 
-            {/* Desktop: horizontal flow */}
-            <div className="hidden lg:flex items-start gap-0 relative mb-8">
-              {/* Connecting line */}
-              <div className="absolute top-[22px] left-[calc(100%/12)] right-[calc(100%/12)] h-[2px] z-0"
-                style={{ background: `linear-gradient(90deg, ${c.heroAccentGlow}30, ${c.heroAccentGlow}60, ${c.heroAccentGlow}30)` }} />
+            {/* Desktop: connected numbered flow */}
+            <div className="hidden lg:block">
+              <div className="relative">
+                {/* Horizontal connector line */}
+                <div className="absolute top-[36px] left-[8%] right-[8%] h-[2px] z-0"
+                  style={{ background: `linear-gradient(90deg, ${c.heroAccentGlow}20, ${c.heroAccentGlow}50, ${c.heroAccentGlow}20)` }} />
 
-              {data.howItWorksSteps.map((step, i) => {
-                const StepIcon = step.icon;
-                const m = mp(i);
-                return (
-                  <motion.div key={i} className="flex-1 flex flex-col items-center text-center px-3 relative z-10"
-                    initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}>
-                    {/* Step circle */}
-                    <div className={`w-11 h-11 rounded-full ${m.step} flex items-center justify-center text-white font-black text-sm mb-3 shadow-lg ring-4 bg-background`}
-                      style={{ boxShadow: `0 0 0 4px hsl(var(--background)), 0 0 20px ${m.solid}50` }}>
-                      {i + 1}
-                    </div>
-                    {/* Icon */}
-                    {StepIcon && (
-                      <div className={`w-9 h-9 ${m.bg} border ${m.border} rounded-xl flex items-center justify-center mb-3`}>
-                        <StepIcon className={`w-4 h-4 ${m.text}`} />
-                      </div>
-                    )}
-                    <h3 className={`font-black text-xs mb-1.5 ${m.text} uppercase tracking-wide`}>{step.title}</h3>
-                    <p className="text-xs text-muted-foreground leading-relaxed">{step.desc}</p>
-                  </motion.div>
-                );
-              })}
+                <div className={`grid gap-4`} style={{ gridTemplateColumns: `repeat(${Math.min(data.howItWorksSteps.length, 5)}, 1fr)` }}>
+                  {data.howItWorksSteps.map((step, i) => {
+                    const StepIcon = step.icon;
+                    const m = mp(i);
+                    return (
+                      <motion.div key={i} className="flex flex-col items-center text-center relative z-10"
+                        initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}>
+                        {/* Step number circle */}
+                        <div className={`w-[72px] h-[72px] rounded-full flex items-center justify-center font-black text-2xl text-white mb-4 flex-shrink-0 shadow-xl`}
+                          style={{ background: `linear-gradient(135deg, ${m.solid}, ${m.solid}cc)`, boxShadow: `0 8px 24px ${m.solid}40, 0 0 0 6px hsl(var(--background)), 0 0 0 8px ${m.solid}30` }}>
+                          {i + 1}
+                        </div>
+                        {StepIcon && (
+                          <div className={`w-10 h-10 ${m.bg} border-2 ${m.border} rounded-xl flex items-center justify-center mb-3`}>
+                            <StepIcon className={`w-5 h-5 ${m.text}`} />
+                          </div>
+                        )}
+                        <h3 className={`font-black text-sm mb-2 uppercase tracking-wide`} style={{ color: m.solid }}>{step.title}</h3>
+                        <p className="text-xs text-muted-foreground leading-relaxed">{step.desc}</p>
+                      </motion.div>
+                    );
+                  })}
+                </div>
+              </div>
             </div>
 
-            {/* Mobile: card grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:hidden">
+            {/* Mobile: stacked cards */}
+            <div className="space-y-4 lg:hidden">
               {data.howItWorksSteps.map((step, i) => {
                 const StepIcon = step.icon;
                 const m = mp(i);
                 return (
-                  <motion.div key={i} initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.07 }}>
-                    <div className={`h-full rounded-2xl border-2 ${m.border} bg-background p-5 relative overflow-hidden`}>
-                      <div className={`absolute top-0 left-0 right-0 h-1 ${m.step} opacity-70`} />
-                      <div className="flex items-center gap-3 mb-3">
-                        <div className={`w-10 h-10 ${m.step} rounded-xl flex items-center justify-center text-white font-black text-sm flex-shrink-0`}>{i + 1}</div>
-                        {StepIcon && <div className={`w-9 h-9 ${m.bg} border ${m.border} rounded-xl flex items-center justify-center`}><StepIcon className={`w-4 h-4 ${m.text}`} /></div>}
+                  <motion.div key={i} initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.07 }}>
+                    <div className={`rounded-2xl border-2 ${m.border} bg-background p-5 relative overflow-hidden flex gap-4 items-start`}>
+                      <div className="absolute top-0 left-0 right-0 h-[3px]" style={{ background: `linear-gradient(90deg, ${m.solid}, transparent)` }} />
+                      <div className={`w-12 h-12 rounded-2xl flex items-center justify-center text-white font-black text-lg flex-shrink-0 shadow-lg`}
+                        style={{ background: `linear-gradient(135deg, ${m.solid}, ${m.solid}cc)` }}>
+                        {i + 1}
                       </div>
-                      <h3 className={`font-black text-sm mb-1.5 ${m.text}`}>{step.title}</h3>
-                      <p className="text-xs text-muted-foreground leading-relaxed">{step.desc}</p>
+                      <div className="flex-1 min-w-0">
+                        {StepIcon && <StepIcon className={`w-4 h-4 ${m.text} mb-2`} />}
+                        <h3 className={`font-black text-sm mb-1 ${m.text}`}>{step.title}</h3>
+                        <p className="text-xs text-muted-foreground leading-relaxed">{step.desc}</p>
+                      </div>
                     </div>
                   </motion.div>
                 );
@@ -771,11 +796,11 @@ export function IndustryPageTemplate({ data }: { data: IndustryPageData }) {
         </section>
 
         {/* ══════════════════════════════════════════════════════════════════════
-            § 6 · AI VS TRADITIONAL — Visual comparison table
+            § 6 · AI VS TRADITIONAL — Two-column visual comparison
         ══════════════════════════════════════════════════════════════════════ */}
-        <section className="py-20 border-b border-border">
+        <section className="py-24 border-b border-border">
           <div className="max-w-6xl mx-auto px-4 sm:px-6">
-            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-10">
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-12">
               <SectionBadge label="AI vs Traditional" colorClass={c.sectionBadgeBase} />
               <h2 className="text-3xl md:text-4xl font-black mb-3">
                 {data.comparisonTitle ?? `AI vs Traditional ${data.industry} Operations`}
@@ -785,83 +810,83 @@ export function IndustryPageTemplate({ data }: { data: IndustryPageData }) {
               )}
             </motion.div>
 
-            <div className="overflow-x-auto rounded-3xl border border-border shadow-xl">
-              <table className="w-full text-sm">
-                <thead>
-                  <tr className="border-b border-border">
-                    <th className="text-left px-6 py-4 font-bold bg-muted/60 w-[22%] text-xs uppercase tracking-wider text-muted-foreground">Dimension</th>
-                    <th className="text-left px-6 py-4 font-bold bg-red-500/5 text-xs uppercase tracking-wider text-red-500/70">
-                      <div className="flex items-center gap-2">
-                        <div className="w-5 h-5 rounded-full bg-red-500/15 flex items-center justify-center"><X className="w-3 h-3 text-red-500" /></div>
-                        Traditional
-                      </div>
-                    </th>
-                    <th className={`text-left px-6 py-4 font-bold ${c.cardBg} text-xs uppercase tracking-wider`}>
-                      <div className={`flex items-center gap-2 ${c.accentText}`}>
-                        <div className={`w-5 h-5 rounded-full ${c.iconBg} flex items-center justify-center`}><Check className={`w-3 h-3 ${c.iconText}`} /></div>
-                        AI-Powered (AGIX)
-                      </div>
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {data.comparisonRows.map((row, i) => (
-                    <motion.tr key={i} initial={{ opacity: 0, x: -12 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.04 }}
-                      className="border-b border-border last:border-0 hover:bg-muted/20 transition-colors">
-                      <td className="px-6 py-4 font-bold text-xs uppercase tracking-wide bg-muted/20">{row.dimension}</td>
-                      <td className="px-6 py-4 text-muted-foreground text-sm bg-red-500/[0.02]">
-                        <div className="flex items-start gap-2">
-                          <X className="w-3.5 h-3.5 text-red-400/50 flex-shrink-0 mt-0.5" />{row.traditional}
-                        </div>
-                      </td>
-                      <td className={`px-6 py-4 font-semibold text-sm ${c.tableAiText} ${c.cardBg}`}>
-                        <div className="flex items-start gap-2">
-                          <Check className={`w-3.5 h-3.5 ${c.iconText} flex-shrink-0 mt-0.5`} />{row.ai}
-                        </div>
-                      </td>
-                    </motion.tr>
-                  ))}
-                </tbody>
-              </table>
+            {/* Column headers */}
+            <div className="grid grid-cols-[1fr_1fr_1fr] gap-0 mb-1 hidden-mobile">
+              <div />
+              <div className="px-4 py-2.5 bg-red-500/8 border border-red-500/20 rounded-t-2xl text-center">
+                <span className="text-xs font-black uppercase tracking-wider text-red-500/70 flex items-center justify-center gap-2">
+                  <X className="w-3.5 h-3.5" /> Traditional Approach
+                </span>
+              </div>
+              <div className={`px-4 py-2.5 ${c.cardBg} border ${c.cardBorder} rounded-t-2xl text-center`}>
+                <span className={`text-xs font-black uppercase tracking-wider ${c.accentText} flex items-center justify-center gap-2`}>
+                  <Check className="w-3.5 h-3.5" /> AI-Powered (AGIX)
+                </span>
+              </div>
+            </div>
+
+            <div className="space-y-2">
+              {data.comparisonRows.map((row, i) => (
+                <motion.div key={i} initial={{ opacity: 0, x: -12 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.04 }}>
+                  <div className="grid md:grid-cols-[1fr_1fr_1fr] gap-0 rounded-xl overflow-hidden border border-border hover:border-border/80 transition-colors group">
+                    <div className="px-5 py-4 bg-muted/40 flex items-center font-bold text-xs uppercase tracking-wide border-b md:border-b-0 md:border-r border-border">
+                      {row.dimension}
+                    </div>
+                    <div className="px-5 py-4 bg-red-500/[0.03] border-b md:border-b-0 md:border-r border-border flex items-start gap-2.5">
+                      <X className="w-3.5 h-3.5 text-red-400/60 flex-shrink-0 mt-0.5" />
+                      <span className="text-sm text-muted-foreground leading-relaxed">{row.traditional}</span>
+                    </div>
+                    <div className={`px-5 py-4 ${c.cardBg} flex items-start gap-2.5`}>
+                      <CheckCircle2 className={`w-3.5 h-3.5 ${c.iconText} flex-shrink-0 mt-0.5`} />
+                      <span className={`text-sm font-semibold ${c.tableAiText} leading-relaxed`}>{row.ai}</span>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
             </div>
           </div>
         </section>
 
         {/* ══════════════════════════════════════════════════════════════════════
-            § 7 · KEY BENEFITS — Bento grid with large metric callouts
+            § 7 · KEY BENEFITS — Colorful metric cards
         ══════════════════════════════════════════════════════════════════════ */}
-        <section className="py-20 bg-muted/40 border-b border-border">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6">
+        <section className="py-24 border-b border-border relative overflow-hidden">
+          <div className="absolute inset-0 bg-muted/20" />
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
-              <SectionBadge label="Key Benefits" colorClass={c.sectionBadgeBase} icon={TrendingUp} />
+              <SectionBadge label="Key Benefits" colorClass={c.sectionBadgeBase} icon={Trophy} />
               <h2 className="text-3xl md:text-4xl font-black">
                 {data.benefitsTitle ?? `Key Benefits of AI in ${data.industry}`}
               </h2>
             </motion.div>
 
-            {/* Bento layout: first card large, rest normal */}
-            <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="grid grid-cols-2 lg:grid-cols-3 gap-5">
               {data.benefits.map((b, i) => {
                 const BIcon = b.icon ?? CheckCircle2;
                 const m = mp(i);
                 const isFirst = i === 0;
                 return (
-                  <motion.div key={i} className={isFirst ? "col-span-2 lg:col-span-1 row-span-1" : ""}
-                    initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.07 }}>
-                    <div className={`h-full rounded-2xl border-2 ${m.border} bg-background hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 group overflow-hidden relative ${isFirst ? 'min-h-[200px]' : ''}`}
-                      style={{ background: isFirst ? `linear-gradient(135deg, ${m.solid}08, transparent)` : undefined }}>
-                      {/* Gradient top accent */}
-                      <div className="absolute top-0 left-0 right-0 h-[3px]" style={{ background: `linear-gradient(90deg, ${m.solid}, transparent)` }} />
-                      {/* Left accent bar */}
-                      <div className={`absolute top-0 left-0 bottom-0 w-1 ${m.step} rounded-l-none opacity-60`} />
-
-                      <div className="p-6 pl-7">
-                        <div className={`w-12 h-12 ${m.bg} border-2 ${m.border} rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300 shadow-lg`}>
-                          <BIcon className={`w-6 h-6 ${m.text}`} />
+                  <motion.div key={i} className={isFirst ? "col-span-2 lg:col-span-1" : ""}
+                    initial={{ opacity: 0, scale: 0.94 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.07 }}>
+                    <div className="h-full rounded-2xl overflow-hidden relative group cursor-default hover:-translate-y-2 transition-transform duration-300"
+                      style={{
+                        background: `linear-gradient(145deg, ${m.solid}12, ${m.solid}06, transparent)`,
+                        border: `2px solid ${m.solid}30`,
+                        boxShadow: `0 4px 20px ${m.solid}15`,
+                      }}>
+                      {/* Top gradient bar */}
+                      <div className="h-[4px]" style={{ background: `linear-gradient(90deg, ${m.solid}, ${m.solid}50)` }} />
+                      {/* Glow spot */}
+                      <div className="absolute top-8 right-4 w-24 h-24 rounded-full pointer-events-none opacity-40 group-hover:opacity-70 transition-opacity"
+                        style={{ background: `radial-gradient(circle, ${m.solid}30, transparent)` }} />
+                      <div className="p-7 relative z-10">
+                        <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-5 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300 shadow-lg`}
+                          style={{ background: `${m.solid}20`, border: `2px solid ${m.solid}40`, boxShadow: `0 8px 20px ${m.solid}30` }}>
+                          <BIcon className="w-7 h-7" style={{ color: m.solid }} />
                         </div>
-                        <AnimatedCounter value={b.value} className={`text-4xl md:text-5xl font-black ${m.text} mb-2 leading-none block`} />
-                        <div className="font-bold text-sm mb-2 text-foreground">{b.title}</div>
-                        {b.detail && <p className="text-xs text-muted-foreground leading-relaxed">{b.detail}</p>}
+                        <AnimatedCounter value={b.value} className={`text-5xl font-black mb-2 leading-none block`} style={{ color: m.solid } as React.CSSProperties} />
+                        <div className="font-bold text-base mb-2 text-foreground">{b.title}</div>
+                        {b.detail && <p className="text-sm text-muted-foreground leading-relaxed">{b.detail}</p>}
                       </div>
                     </div>
                   </motion.div>
@@ -872,11 +897,11 @@ export function IndustryPageTemplate({ data }: { data: IndustryPageData }) {
         </section>
 
         {/* ══════════════════════════════════════════════════════════════════════
-            § 8 · USE CASES SUMMARY — Rich impact cards with accent colors
+            § 8 · USE CASES SUMMARY — Impact cards with numbered badges
         ══════════════════════════════════════════════════════════════════════ */}
-        <section id="use-cases" className="py-20 border-b border-border">
+        <section id="use-cases" className="py-24 border-b border-border">
           <div className="max-w-6xl mx-auto px-4 sm:px-6">
-            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-10">
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-12">
               <SectionBadge label="Use Cases" colorClass={c.sectionBadgeBase} icon={Target} />
               <h2 className="text-3xl md:text-4xl font-black mb-3">
                 {data.useCasesTitle ?? `Best Use Cases of AI in ${data.industry}`}
@@ -889,17 +914,22 @@ export function IndustryPageTemplate({ data }: { data: IndustryPageData }) {
                 const m = mp(i);
                 return (
                   <motion.div key={i} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.05 }}>
-                    <div className={`rounded-2xl border-2 ${m.border} bg-background p-5 hover:shadow-lg hover:-translate-y-1 transition-all duration-200 group relative overflow-hidden h-full`}>
-                      <div className={`absolute top-0 left-0 right-0 h-[2px]`} style={{ background: `linear-gradient(90deg, ${m.solid}, transparent)` }} />
+                    <div className="h-full rounded-2xl border-2 bg-background p-5 hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 group relative overflow-hidden"
+                      style={{ borderColor: `${m.solid}30` }}>
+                      <div className="absolute top-0 left-0 right-0 h-[2px]" style={{ background: `linear-gradient(90deg, ${m.solid}, ${m.solid}40, transparent)` }} />
+                      <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <ArrowUpRight className="w-4 h-4" style={{ color: m.solid }} />
+                      </div>
                       <div className="flex items-start gap-4">
-                        <div className={`w-12 h-12 ${m.step} rounded-2xl flex items-center justify-center text-white font-black text-base flex-shrink-0 group-hover:scale-110 transition-transform shadow-lg`}
-                          style={{ boxShadow: `0 4px 14px ${m.solid}40` }}>
+                        <div className="w-14 h-14 rounded-2xl flex items-center justify-center text-white font-black text-lg flex-shrink-0 group-hover:scale-110 transition-transform duration-300 shadow-lg"
+                          style={{ background: `linear-gradient(135deg, ${m.solid}, ${m.solid}cc)`, boxShadow: `0 8px 20px ${m.solid}40` }}>
                           {uc.num}
                         </div>
                         <div className="min-w-0 flex-1">
-                          <h3 className="font-black text-sm mb-1.5 text-foreground">{uc.title}</h3>
+                          <h3 className="font-black text-sm mb-2 text-foreground leading-snug">{uc.title}</h3>
                           <p className="text-xs text-muted-foreground leading-relaxed mb-3">{uc.what}</p>
-                          <span className={`inline-flex items-center gap-1.5 text-xs font-bold ${m.text} ${m.bg} border ${m.border} px-3 py-1.5 rounded-full`}>
+                          <span className="inline-flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-full border"
+                            style={{ color: m.solid, backgroundColor: `${m.solid}12`, borderColor: `${m.solid}30` }}>
                             <TrendingUp className="w-3 h-3" />
                             {uc.impact}
                           </span>
@@ -916,10 +946,11 @@ export function IndustryPageTemplate({ data }: { data: IndustryPageData }) {
         {/* ══════════════════════════════════════════════════════════════════════
             § 9 · USE CASES DETAIL — Polished expandable accordion
         ══════════════════════════════════════════════════════════════════════ */}
-        <section className="py-20 bg-muted/40 border-b border-border">
-          <div className="max-w-5xl mx-auto px-4 sm:px-6">
-            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-10">
-              <SectionBadge label="Deep Dive" colorClass={c.sectionBadgeBase} />
+        <section className="py-24 border-b border-border relative">
+          <div className="absolute inset-0 bg-muted/30" />
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 relative z-10">
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-12">
+              <SectionBadge label="Deep Dive" colorClass={c.sectionBadgeBase} icon={Lightbulb} />
               <h2 className="text-3xl md:text-4xl font-black">
                 {data.useCasesDetailTitle ?? `How AI Solves ${data.industry} Bottlenecks`}
               </h2>
@@ -928,30 +959,34 @@ export function IndustryPageTemplate({ data }: { data: IndustryPageData }) {
             <div className="space-y-3">
               {data.useCasesDetail.map((uc, i) => {
                 const m = mp(i);
+                const isOpen = openUseCase === i;
                 return (
                   <motion.div key={i} initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.05 }}>
-                    <div className={`rounded-2xl border-2 overflow-hidden transition-all duration-300 ${openUseCase === i ? `${m.border} shadow-lg bg-background` : 'border-border bg-background hover:border-muted-foreground/20'}`}>
-                      <button className="w-full text-left px-6 py-5 flex items-center justify-between gap-4 hover:bg-muted/30 transition-colors"
-                        onClick={() => setOpenUseCase(openUseCase === i ? null : i)} data-testid={`button-usecase-${i}`}>
+                    <div className={`rounded-2xl border-2 overflow-hidden transition-all duration-300 ${isOpen ? 'shadow-xl bg-background' : 'border-border bg-background hover:border-muted-foreground/25'}`}
+                      style={isOpen ? { borderColor: `${m.solid}50` } : undefined}>
+                      <button className="w-full text-left px-6 py-5 flex items-center justify-between gap-4 hover:bg-muted/20 transition-colors"
+                        onClick={() => setOpenUseCase(isOpen ? null : i)} data-testid={`button-usecase-${i}`}>
                         <div className="flex items-center gap-4 min-w-0">
-                          <div className={`w-10 h-10 rounded-xl flex items-center justify-center text-sm font-black transition-all duration-200 flex-shrink-0 shadow-sm ${openUseCase === i ? `${m.step} text-white` : 'bg-muted text-muted-foreground'}`}>
+                          <div className="w-10 h-10 rounded-xl flex items-center justify-center text-sm font-black transition-all duration-200 flex-shrink-0 shadow-sm text-white"
+                            style={{ background: isOpen ? `linear-gradient(135deg, ${m.solid}, ${m.solid}cc)` : undefined, backgroundColor: isOpen ? undefined : "hsl(var(--muted))", color: isOpen ? "white" : "hsl(var(--muted-foreground))" }}>
                             {i + 1}
                           </div>
                           <span className="font-black text-base">{uc.title}</span>
                         </div>
-                        <div className={`flex-shrink-0 w-8 h-8 rounded-xl flex items-center justify-center transition-colors ${openUseCase === i ? m.bg : 'bg-muted'}`}>
-                          {openUseCase === i
-                            ? <ChevronUp className={`w-4 h-4 ${m.text}`} />
+                        <div className="flex-shrink-0 w-8 h-8 rounded-xl flex items-center justify-center transition-all duration-200"
+                          style={{ backgroundColor: isOpen ? `${m.solid}15` : undefined }}>
+                          {isOpen
+                            ? <ChevronUp className="w-4 h-4" style={{ color: m.solid }} />
                             : <ChevronDown className="w-4 h-4 text-muted-foreground" />}
                         </div>
                       </button>
 
                       <AnimatePresence>
-                        {openUseCase === i && (
+                        {isOpen && (
                           <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.3, ease: "easeInOut" }} className="overflow-hidden">
                             <div className="px-6 pb-7 space-y-5 border-t border-border pt-5">
                               {uc.definition && (
-                                <div className={`${m.bg} border ${m.border} rounded-2xl p-4`}>
+                                <div className="rounded-xl p-4 border" style={{ backgroundColor: `${m.solid}08`, borderColor: `${m.solid}25` }}>
                                   <p className="text-sm text-muted-foreground italic leading-relaxed">{uc.definition}</p>
                                 </div>
                               )}
@@ -969,8 +1004,9 @@ export function IndustryPageTemplate({ data }: { data: IndustryPageData }) {
                                 <ul className="space-y-2.5">
                                   {uc.howAISolvesIt.map((point, pi) => (
                                     <li key={pi} className="flex items-start gap-3 text-sm">
-                                      <div className={`w-5 h-5 rounded-lg ${m.bg} flex items-center justify-center flex-shrink-0 mt-0.5 border ${m.border}`}>
-                                        <CheckCircle2 className={`w-3.5 h-3.5 ${m.text}`} />
+                                      <div className="w-5 h-5 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5"
+                                        style={{ backgroundColor: `${m.solid}15`, border: `1px solid ${m.solid}30` }}>
+                                        <CheckCircle2 className="w-3.5 h-3.5" style={{ color: m.solid }} />
                                       </div>
                                       <span className="text-foreground leading-relaxed">{point}</span>
                                     </li>
@@ -980,7 +1016,8 @@ export function IndustryPageTemplate({ data }: { data: IndustryPageData }) {
                               <div className="flex flex-wrap gap-2">
                                 {uc.services.map((svc, si) => (
                                   <Link key={si} href={svc.href}
-                                    className={`text-xs px-3 py-1.5 rounded-full border ${m.border} ${m.bg} ${m.text} font-semibold hover:opacity-80 transition-opacity inline-flex items-center gap-1.5`}>
+                                    className="text-xs px-3 py-1.5 rounded-full font-semibold hover:opacity-80 transition-opacity inline-flex items-center gap-1.5"
+                                    style={{ backgroundColor: `${m.solid}12`, border: `1px solid ${m.solid}30`, color: m.solid }}>
                                     {svc.label} <ArrowUpRight className="w-3 h-3" />
                                   </Link>
                                 ))}
@@ -989,14 +1026,15 @@ export function IndustryPageTemplate({ data }: { data: IndustryPageData }) {
                                 <div className="flex flex-wrap gap-4 text-xs text-muted-foreground">
                                   {uc.intelligence && <span className="italic">🧠 {uc.intelligence}</span>}
                                   {uc.caseStudy && (
-                                    <Link href={uc.caseStudy.href} className={`${m.text} font-semibold hover:underline`}>📋 {uc.caseStudy.label}</Link>
+                                    <Link href={uc.caseStudy.href} className="font-semibold hover:underline" style={{ color: m.solid }}>📋 {uc.caseStudy.label}</Link>
                                   )}
                                 </div>
                               )}
-                              <div className={`${m.bg} border-2 ${m.border} rounded-2xl p-4 flex items-start gap-3`}>
-                                <Target className={`w-5 h-5 ${m.text} flex-shrink-0 mt-0.5`} />
+                              <div className="rounded-2xl p-5 flex items-start gap-3"
+                                style={{ backgroundColor: `${m.solid}08`, border: `2px solid ${m.solid}25` }}>
+                                <Target className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: m.solid }} />
                                 <div>
-                                  <p className={`text-xs font-black uppercase tracking-wider ${m.text} mb-1`}>Outcome</p>
+                                  <p className="text-xs font-black uppercase tracking-wider mb-1" style={{ color: m.solid }}>Outcome</p>
                                   <p className="text-sm font-semibold leading-relaxed">{uc.outcome}</p>
                                 </div>
                               </div>
@@ -1013,11 +1051,11 @@ export function IndustryPageTemplate({ data }: { data: IndustryPageData }) {
         </section>
 
         {/* ══════════════════════════════════════════════════════════════════════
-            § 10 · AGIX FRAMEWORK — Connected flow with gradient borders
+            § 10 · AGIX FRAMEWORK — Connected gradient pipeline
         ══════════════════════════════════════════════════════════════════════ */}
-        <section className="py-20 border-b border-border">
+        <section className="py-24 border-b border-border overflow-hidden">
           <div className="max-w-6xl mx-auto px-4 sm:px-6">
-            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-14">
               <SectionBadge label="AGIX Framework" colorClass={c.sectionBadgeBase} icon={Layers} />
               <h2 className="text-3xl md:text-4xl font-black mb-3">
                 {data.frameworkTitle ?? `The AGIX ${data.industry} Intelligence Framework`}
@@ -1025,37 +1063,32 @@ export function IndustryPageTemplate({ data }: { data: IndustryPageData }) {
               {data.frameworkSubtitle && <p className="text-muted-foreground max-w-2xl mx-auto text-sm leading-relaxed">{data.frameworkSubtitle}</p>}
             </motion.div>
 
-            <div className="relative">
-              {/* Connecting arrows between cards on desktop */}
-              <div className="hidden lg:flex absolute top-[44px] left-0 right-0 items-center justify-center pointer-events-none z-10 px-[12.5%]">
-                {Array.from({ length: data.frameworkLayers.length - 1 }).map((_, i) => (
-                  <div key={i} className="flex-1 flex items-center justify-center">
-                    <MoveRight className={`w-5 h-5 ${c.accentText} opacity-40`} />
-                  </div>
-                ))}
-              </div>
-
-              <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-                {data.frameworkLayers.map((layer, i) => {
-                  const LayerIcon = layer.icon ?? Star;
-                  const m = mp(i);
-                  return (
-                    <motion.div key={i} initial={{ opacity: 0, y: 28 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}>
-                      <div className={`h-full rounded-2xl border-2 ${m.border} bg-background hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 group overflow-hidden relative p-6`}
-                        style={{ background: `linear-gradient(135deg, ${m.solid}06, transparent)` }}>
-                        <div className="absolute top-0 left-0 right-0 h-[3px]" style={{ background: `linear-gradient(90deg, ${m.solid}, transparent)` }} />
-                        <div className={`w-12 h-12 ${m.bg} border-2 ${m.border} rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300 shadow-md`}>
-                          <LayerIcon className={`w-6 h-6 ${m.text}`} />
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 relative">
+              {/* Connector line desktop */}
+              <div className="hidden lg:block absolute top-[60px] left-[12%] right-[12%] h-px pointer-events-none z-0"
+                style={{ background: `linear-gradient(90deg, ${c.heroAccentGlow}15, ${c.heroAccentGlow}40, ${c.heroAccentGlow}15)` }} />
+              {data.frameworkLayers.map((layer, i) => {
+                const LayerIcon = layer.icon ?? Star;
+                const m = mp(i);
+                return (
+                  <motion.div key={i} initial={{ opacity: 0, y: 28 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}>
+                    <div className="h-full rounded-2xl bg-background hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 group overflow-hidden relative"
+                      style={{ border: `2px solid ${m.solid}25`, background: `linear-gradient(145deg, ${m.solid}06, transparent)` }}>
+                      <div className="absolute top-0 left-0 right-0 h-[4px]" style={{ background: `linear-gradient(90deg, ${m.solid}, ${m.solid}50)` }} />
+                      <div className="p-6 pt-8">
+                        <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300 shadow-lg relative z-10"
+                          style={{ background: `linear-gradient(135deg, ${m.solid}20, ${m.solid}10)`, border: `2px solid ${m.solid}35`, boxShadow: `0 8px 20px ${m.solid}25` }}>
+                          <LayerIcon className="w-7 h-7" style={{ color: m.solid }} />
                         </div>
-                        <div className={`text-[10px] font-black ${m.text} uppercase tracking-widest mb-1`}>Layer {layer.num}</div>
+                        <div className="text-[10px] font-black uppercase tracking-widest mb-1" style={{ color: m.solid }}>Layer {layer.num}</div>
                         <h3 className="font-black text-sm mb-2 text-foreground">{layer.name}</h3>
-                        <p className="text-xs text-muted-foreground leading-relaxed mb-2">{layer.what}</p>
-                        <p className={`text-xs font-semibold ${m.text} italic`}>{layer.how}</p>
+                        <p className="text-xs text-muted-foreground leading-relaxed mb-3">{layer.what}</p>
+                        <p className="text-xs font-semibold italic" style={{ color: m.solid }}>{layer.how}</p>
                       </div>
-                    </motion.div>
-                  );
-                })}
-              </div>
+                    </div>
+                  </motion.div>
+                );
+              })}
             </div>
 
             {data.frameworkQuote && (
@@ -1073,9 +1106,10 @@ export function IndustryPageTemplate({ data }: { data: IndustryPageData }) {
         {/* ══════════════════════════════════════════════════════════════════════
             § 11 · GOVERNANCE — Colorful trust & compliance cards
         ══════════════════════════════════════════════════════════════════════ */}
-        <section className="py-20 bg-muted/40 border-b border-border">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6">
-            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-10">
+        <section className="py-24 border-b border-border relative overflow-hidden">
+          <div className="absolute inset-0 bg-muted/30" />
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
               <SectionBadge label="Governance & Safety" colorClass={c.sectionBadgeBase} icon={ShieldCheck} />
               <h2 className="text-3xl md:text-4xl font-black mb-3">
                 {data.governanceTitle ?? `Is AI in ${data.industry} Safe?`}
@@ -1088,11 +1122,12 @@ export function IndustryPageTemplate({ data }: { data: IndustryPageData }) {
                 const m = mp(i);
                 return (
                   <motion.div key={i} initial={{ opacity: 0, y: 22 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.07 }}>
-                    <div className={`h-full rounded-2xl border-2 ${m.border} bg-background p-5 flex gap-4 hover:shadow-lg hover:-translate-y-1 transition-all duration-200 group relative overflow-hidden`}
-                      style={{ background: `linear-gradient(135deg, ${m.solid}05, transparent)` }}>
+                    <div className="h-full rounded-2xl bg-background p-5 flex gap-4 hover:shadow-lg hover:-translate-y-1 transition-all duration-200 group relative overflow-hidden"
+                      style={{ border: `2px solid ${m.solid}22`, background: `linear-gradient(135deg, ${m.solid}05, transparent)` }}>
                       <div className="absolute top-0 left-0 right-0 h-[2px]" style={{ background: `linear-gradient(90deg, ${m.solid}80, transparent)` }} />
-                      <div className={`w-12 h-12 ${m.bg} border-2 ${m.border} rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5 group-hover:scale-110 group-hover:rotate-3 transition-transform shadow-md`}>
-                        <ShieldCheck className={`w-5 h-5 ${m.text}`} />
+                      <div className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5 group-hover:scale-110 group-hover:rotate-3 transition-transform shadow-md"
+                        style={{ background: `${m.solid}18`, border: `2px solid ${m.solid}30` }}>
+                        <ShieldCheck className="w-5 h-5" style={{ color: m.solid }} />
                       </div>
                       <div>
                         <h3 className="font-black text-sm mb-1.5 text-foreground">{p.principle}</h3>
@@ -1107,11 +1142,11 @@ export function IndustryPageTemplate({ data }: { data: IndustryPageData }) {
         </section>
 
         {/* ══════════════════════════════════════════════════════════════════════
-            § 12 · LIMITATIONS — Amber honesty cards
+            § 12 · LIMITATIONS — Amber honesty panel
         ══════════════════════════════════════════════════════════════════════ */}
-        <section className="py-20 border-b border-border">
+        <section className="py-24 border-b border-border">
           <div className="max-w-5xl mx-auto px-4 sm:px-6">
-            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-10">
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-12">
               <SectionBadge label="Honest Assessment" colorClass="bg-amber-500/15 text-amber-600 dark:text-amber-400 border border-amber-500/30" icon={AlertTriangle} />
               <h2 className="text-3xl md:text-4xl font-black mb-3">
                 {data.limitationsTitle ?? `Limitations of AI in ${data.industry}`}
@@ -1122,7 +1157,8 @@ export function IndustryPageTemplate({ data }: { data: IndustryPageData }) {
             <div className="grid sm:grid-cols-2 gap-4 mb-8">
               {data.limitations.map((lim, i) => (
                 <motion.div key={i} initial={{ opacity: 0, y: 22 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}>
-                  <div className="h-full rounded-2xl border-2 border-amber-500/30 bg-amber-500/5 p-6 flex gap-4 hover:border-amber-500/60 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200">
+                  <div className="h-full rounded-2xl border-2 border-amber-500/30 bg-amber-500/5 p-6 flex gap-4 hover:border-amber-500/50 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 relative overflow-hidden">
+                    <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-amber-500/60 to-transparent" />
                     <div className="w-11 h-11 rounded-xl bg-amber-500/15 border border-amber-500/30 flex items-center justify-center flex-shrink-0 mt-0.5">
                       <AlertTriangle className="w-5 h-5 text-amber-500" />
                     </div>
@@ -1147,11 +1183,12 @@ export function IndustryPageTemplate({ data }: { data: IndustryPageData }) {
         </section>
 
         {/* ══════════════════════════════════════════════════════════════════════
-            § 13 · PRICING — Investment ranges with green accents
+            § 13 · PRICING — Card-based investment tiers
         ══════════════════════════════════════════════════════════════════════ */}
-        <section className="py-20 bg-muted/40 border-b border-border">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6">
-            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-10">
+        <section className="py-24 border-b border-border relative overflow-hidden">
+          <div className="absolute inset-0 bg-muted/20" />
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
               <SectionBadge label="Transparent Pricing" colorClass="bg-green-500/15 text-green-600 dark:text-green-400 border border-green-500/30" icon={DollarSign} />
               <h2 className="text-3xl md:text-4xl font-black mb-3">
                 {data.pricingTitle ?? `How Much Does ${data.industry} AI Cost?`}
@@ -1159,42 +1196,48 @@ export function IndustryPageTemplate({ data }: { data: IndustryPageData }) {
               {data.pricingSubtitle && <p className="text-muted-foreground max-w-2xl mx-auto">{data.pricingSubtitle}</p>}
             </motion.div>
 
-            <div className="overflow-x-auto rounded-3xl border border-border shadow-xl">
-              <table className="w-full text-sm">
-                <thead>
-                  <tr className="border-b border-border">
-                    <th className="text-left px-6 py-4 font-bold bg-muted/60 text-xs uppercase tracking-wider text-muted-foreground">
-                      <div className="flex items-center gap-2"><Layers className="w-3.5 h-3.5" /> System</div>
-                    </th>
-                    <th className="text-left px-6 py-4 font-bold bg-green-500/5 text-xs uppercase tracking-wider text-green-600 dark:text-green-400">
-                      <div className="flex items-center gap-2"><DollarSign className="w-3.5 h-3.5" /> Investment</div>
-                    </th>
-                    <th className="text-left px-6 py-4 font-bold bg-muted/30 text-xs uppercase tracking-wider text-muted-foreground">
-                      <div className="flex items-center gap-2"><Clock className="w-3.5 h-3.5" /> Timeline</div>
-                    </th>
-                    {data.hasBestFor && (
-                      <th className="text-left px-6 py-4 font-bold bg-muted/30 text-xs uppercase tracking-wider text-muted-foreground hidden md:table-cell">
-                        <div className="flex items-center gap-2"><Target className="w-3.5 h-3.5" /> Best For</div>
-                      </th>
-                    )}
-                  </tr>
-                </thead>
-                <tbody>
-                  {data.pricingRows.map((row, i) => (
-                    <motion.tr key={i} initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.04 }}
-                      className="border-b border-border last:border-0 hover:bg-muted/40 transition-colors group">
-                      <td className="px-6 py-4 font-semibold group-hover:text-foreground transition-colors">{row.system}</td>
-                      <td className="px-6 py-4 font-black text-green-600 dark:text-green-400 bg-green-500/[0.02]">{row.investment}</td>
-                      <td className="px-6 py-4 text-muted-foreground">{row.timeline}</td>
-                      {data.hasBestFor && <td className="px-6 py-4 text-muted-foreground hidden md:table-cell">{row.bestFor ?? "—"}</td>}
-                    </motion.tr>
-                  ))}
-                </tbody>
-              </table>
+            <div className={`grid gap-4 ${data.pricingRows.length <= 3 ? 'md:grid-cols-3' : data.pricingRows.length === 4 ? 'md:grid-cols-2 lg:grid-cols-4' : 'md:grid-cols-2 lg:grid-cols-3'}`}>
+              {data.pricingRows.map((row, i) => {
+                const isHighlight = i === Math.floor(data.pricingRows.length / 2);
+                return (
+                  <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}>
+                    <div className={`h-full rounded-2xl p-6 flex flex-col relative overflow-hidden hover:-translate-y-1.5 transition-transform duration-300 ${isHighlight ? 'shadow-2xl' : ''}`}
+                      style={{
+                        border: isHighlight ? `2px solid ${c.heroAccentGlow}60` : '2px solid hsl(var(--border))',
+                        background: isHighlight ? `linear-gradient(145deg, ${c.heroAccentGlow}10, ${c.heroAccentGlow}05, transparent)` : undefined,
+                        boxShadow: isHighlight ? `0 8px 32px ${c.heroAccentGlow}20` : undefined,
+                      }}>
+                      {isHighlight && (
+                        <div className="absolute top-0 left-0 right-0 h-[4px]" style={{ background: `linear-gradient(90deg, ${c.heroAccentGlow}, ${c.heroAccentGlow}60)` }} />
+                      )}
+                      {isHighlight && (
+                        <div className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-wider mb-4 self-start ${c.accentBg} ${c.accentText} border ${c.accentBorder}`}>
+                          <Star className="w-2.5 h-2.5" /> Most Popular
+                        </div>
+                      )}
+                      <div className="flex items-center gap-2 mb-1">
+                        <Layers className="w-4 h-4 text-muted-foreground" />
+                        <h3 className="font-black text-sm text-foreground">{row.system}</h3>
+                      </div>
+                      <div className="mt-4 mb-2">
+                        <span className="text-2xl font-black text-green-500 dark:text-green-400">{row.investment}</span>
+                      </div>
+                      <div className="flex items-center gap-1.5 text-xs text-muted-foreground mb-4">
+                        <Clock className="w-3 h-3" /> {row.timeline}
+                      </div>
+                      {data.hasBestFor && row.bestFor && (
+                        <div className="mt-auto pt-4 border-t border-border">
+                          <p className="text-[11px] text-muted-foreground"><span className="font-bold">Best for:</span> {row.bestFor}</p>
+                        </div>
+                      )}
+                    </div>
+                  </motion.div>
+                );
+              })}
             </div>
 
-            <motion.div initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mt-6 text-center">
-              <p className="text-sm text-muted-foreground mb-3">Not sure which tier fits your org? We'll tell you — for free.</p>
+            <motion.div initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mt-8 text-center">
+              <p className="text-sm text-muted-foreground mb-4">Not sure which tier fits? We'll tell you — for free.</p>
               <Button asChild variant="outline" className={`border-2 ${c.frameBorder} ${c.accentText} hover:${c.accentBg} rounded-xl`}>
                 <a href="#lead-form">Get a Free Scoping Call <ArrowRight className="w-4 h-4 ml-1.5" /></a>
               </Button>
@@ -1203,25 +1246,23 @@ export function IndustryPageTemplate({ data }: { data: IndustryPageData }) {
         </section>
 
         {/* ══════════════════════════════════════════════════════════════════════
-            § 14 · FUTURE OUTLOOK — Timeline roadmap with numbered milestones
+            § 14 · FUTURE OUTLOOK — Timeline roadmap with milestone cards
         ══════════════════════════════════════════════════════════════════════ */}
-        <section className="py-20 border-b border-border relative overflow-hidden">
-          {/* Subtle background gradient */}
+        <section className="py-24 border-b border-border relative overflow-hidden">
           <div className="absolute inset-0 pointer-events-none"
             style={{ background: `radial-gradient(ellipse 60% 50% at 50% 100%, ${c.heroAccentGlow}08, transparent)` }} />
 
           <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
-            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-14">
               <SectionBadge label="2028 Outlook" colorClass="bg-purple-500/15 text-purple-600 dark:text-purple-400 border border-purple-500/30" icon={Rocket} />
               <h2 className="text-3xl md:text-4xl font-black">
                 {data.futureTitle ?? `The Future of AI in ${data.industry}`}
               </h2>
             </motion.div>
 
-            {/* Timeline layout */}
             <div className="relative">
               {/* Vertical line */}
-              <div className="hidden md:block absolute left-[27px] top-4 bottom-4 w-[2px]"
+              <div className="hidden md:block absolute left-[35px] top-4 bottom-4 w-[2px]"
                 style={{ background: `linear-gradient(180deg, ${c.heroAccentGlow}60, ${c.heroAccentGlow}20, transparent)` }} />
 
               <div className="space-y-4">
@@ -1230,15 +1271,15 @@ export function IndustryPageTemplate({ data }: { data: IndustryPageData }) {
                   return (
                     <motion.div key={i} initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}>
                       <div className="flex items-start gap-5">
-                        {/* Timeline dot */}
-                        <div className={`w-[56px] h-[56px] rounded-2xl ${m.step} flex items-center justify-center text-white font-black text-base flex-shrink-0 shadow-lg z-10`}
-                          style={{ boxShadow: `0 4px 20px ${m.solid}40` }}>
+                        {/* Timeline node */}
+                        <div className="w-[70px] h-[70px] rounded-2xl flex items-center justify-center text-white font-black text-xl flex-shrink-0 shadow-xl z-10"
+                          style={{ background: `linear-gradient(135deg, ${m.solid}, ${m.solid}cc)`, boxShadow: `0 8px 24px ${m.solid}40` }}>
                           {item.num}
                         </div>
-                        <div className={`flex-1 rounded-2xl border-2 ${m.border} bg-background p-5 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 group`}
-                          style={{ background: `linear-gradient(135deg, ${m.solid}05, transparent)` }}>
+                        <div className="flex-1 rounded-2xl bg-background p-5 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 group"
+                          style={{ border: `2px solid ${m.solid}22`, background: `linear-gradient(135deg, ${m.solid}05, transparent)` }}>
                           <div className="absolute top-0 left-0 right-0 h-[2px] opacity-0" />
-                          <h3 className={`font-black text-sm ${m.text} leading-relaxed`}>{item.title}</h3>
+                          <h3 className="font-black text-sm leading-relaxed" style={{ color: m.solid }}>{item.title}</h3>
                           {item.desc && <p className="text-xs text-muted-foreground leading-relaxed mt-1.5">{item.desc}</p>}
                         </div>
                       </div>
@@ -1271,8 +1312,8 @@ export function IndustryPageTemplate({ data }: { data: IndustryPageData }) {
                 return (
                   <motion.div key={i} initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.06 }}>
                     <Link href={ind.href}
-                      className={`inline-flex items-center gap-2.5 px-4 py-2.5 rounded-xl border-2 ${indC.border} ${indC.bg} hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 group`}>
-                      <div className={`w-2 h-2 rounded-full ${indC.dot} group-hover:scale-125 transition-transform`} />
+                      className={`inline-flex items-center gap-2.5 px-5 py-3 rounded-xl border-2 ${indC.border} ${indC.bg} hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 group`}>
+                      <div className={`w-2.5 h-2.5 rounded-full ${indC.dot} group-hover:scale-125 transition-transform`} />
                       <span className={`text-sm font-bold ${indC.text}`}>{ind.name}</span>
                       <ArrowRight className={`w-3.5 h-3.5 ${indC.text} opacity-60 group-hover:translate-x-0.5 transition-transform`} />
                     </Link>
