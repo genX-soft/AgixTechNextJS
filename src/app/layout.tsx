@@ -5,6 +5,7 @@ import "./globals.css";
 import { Providers } from "./providers";
 
 const GTM_ID = "GTM-5V96B388";
+const GA_ID = "G-EX4YPE6XR5";
 
 const criticalHomeStyles = `
   [data-home-header] {
@@ -140,6 +141,20 @@ export default function RootLayout({
         <Providers>{children}</Providers>
         {/* Fallback for JS-disabled browsers */}
         <noscript dangerouslySetInnerHTML={{ __html: '<link rel="stylesheet" href="/deferred-styles.css" />' }} />
+        {/* Google Analytics GA4 — G-EX4YPE6XR5 (required by SEO team, loaded after hydration) */}
+        <Script
+          id="ga4-script"
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="ga4-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_ID}');
+          `}
+        </Script>
         {/* All analytics deferred until first user interaction — zero analytics during Lighthouse test */}
         <Script id="analytics-deferred" src="/analytics-loader.js" strategy="lazyOnload" />
         {/* Uses afterInteractive (not lazyOnload) so styles apply right after hydration, not idle */}
