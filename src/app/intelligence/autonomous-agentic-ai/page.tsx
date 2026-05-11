@@ -17,6 +17,9 @@ import {
 } from "lucide-react";
 import FAQSection from "@/components/shared/FAQSection";
 import { documentFAQs } from "@/lib/seo/faq-data";
+import { SEOProvider, NoAutoLink } from "@/context/SEOContext";
+import { AutoLinkText } from "@/components/seo/AutoLinkText";
+import { SemanticRelated } from "@/components/seo/SemanticRelated";
 
 function scrollToSection(id: string) {
   document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -237,6 +240,14 @@ function DefinitionBlock() {
               </div>
             </CardContent>
           </Card>
+
+          {/* Editorial connector — eligible for semantic autolinks */}
+          <p className="text-sm text-muted-foreground leading-relaxed mt-2" data-testid="text-definition-editorial">
+            <AutoLinkText
+              clusterId="agentic-ai"
+              text="Agentic systems differ fundamentally from AI automation and conversational AI chatbots. They require dedicated agentic AI systems engineering — multi-agent coordination, persistent memory, RAG knowledge AI for grounding decisions in enterprise data, and AI predictive analytics for decision quality. This is why organizations building enterprise-scale autonomy partner with specialists in agentic AI architecture rather than general software teams."
+            />
+          </p>
         </motion.div>
       </div>
     </section>
@@ -795,29 +806,46 @@ function FutureTrajectory() {
 
 export default function AutonomousAgenticAIPage() {
   return (
-    <div className="min-h-screen bg-background">
-      <MainHeader />
-      <main id="main-content">
-        <HeroSection />
-        <TrustStrip />
-        <DefinitionBlock />
-        <MarketContextSection />
-        <ComparisonTable />
-        <AutonomyMaturityModel />
-        <MaturityAssessment />
-        <SafetyFramework />
-        <WhyProjectsFail />
-        <IndustryApplications />
-        <ImplementationBridge />
-        <FutureTrajectory />
-        <FAQSection faqs={documentFAQs['autonomous-agentic-ai']} title="Autonomous Agentic Systems: Questions Answered" />
-        <section id="cta-form" className="py-10 lg:py-14 bg-gradient-to-br from-primary/10 via-background to-green-500/10 scroll-mt-20">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <CtaForm headline="Ready to Build Your Autonomy Foundation?" subheadline="Tell us where you are on the Autonomy Maturity Model. We'll design the architecture that gets you to L2 safely — and builds the foundation for L3 by 2027." />
-          </div>
-        </section>
-      </main>
-      <MainFooter />
-    </div>
+    <SEOProvider currentPath="/intelligence/autonomous-agentic-ai/">
+      <div className="min-h-screen bg-background">
+        <NoAutoLink><MainHeader /></NoAutoLink>
+        <main id="main-content">
+          {/* Hero and trust strip are structural — protect from autolinking */}
+          <NoAutoLink><HeroSection /></NoAutoLink>
+          <NoAutoLink><TrustStrip /></NoAutoLink>
+
+          {/* Educational sections — AutoLinkText active inside DefinitionBlock */}
+          <DefinitionBlock />
+          <MarketContextSection />
+          <ComparisonTable />
+          <AutonomyMaturityModel />
+          <MaturityAssessment />
+          <SafetyFramework />
+          <WhyProjectsFail />
+          <IndustryApplications />
+          <ImplementationBridge />
+          <FutureTrajectory />
+
+          {/* Semantic related — surfaces cluster-matched intelligence, services, case studies */}
+          <SemanticRelated
+            currentUrl="/intelligence/autonomous-agentic-ai/"
+            clusterId="agentic-ai"
+            heading="Explore the Agentic AI Ecosystem"
+          />
+
+          <NoAutoLink>
+            <FAQSection faqs={documentFAQs['autonomous-agentic-ai']} title="Autonomous Agentic Systems: Questions Answered" />
+          </NoAutoLink>
+          <NoAutoLink>
+            <section id="cta-form" className="py-10 lg:py-14 bg-gradient-to-br from-primary/10 via-background to-green-500/10 scroll-mt-20">
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <CtaForm headline="Ready to Build Your Autonomy Foundation?" subheadline="Tell us where you are on the Autonomy Maturity Model. We'll design the architecture that gets you to L2 safely — and builds the foundation for L3 by 2027." />
+              </div>
+            </section>
+          </NoAutoLink>
+        </main>
+        <NoAutoLink><MainFooter /></NoAutoLink>
+      </div>
+    </SEOProvider>
   );
 }

@@ -48,6 +48,9 @@ import {
 } from "lucide-react";
 import FAQSection from "@/components/shared/FAQSection";
 import { documentFAQs } from "@/lib/seo/faq-data";
+import { SEOProvider, NoAutoLink } from "@/context/SEOContext";
+import { AutoLinkText } from "@/components/seo/AutoLinkText";
+import { SemanticRelated } from "@/components/seo/SemanticRelated";
 
 const StickyCTA = dynamic(() => import("./sticky-cta"), { ssr: false, loading: () => null });
 const InteractiveToolsSection = dynamic(() => import("./interactive-tools-section"), { ssr: false, loading: () => null });
@@ -270,6 +273,14 @@ function DefinitionBlock() {
               </div>
             </CardContent>
           </Card>
+
+          {/* Editorial connector — eligible for semantic autolinks */}
+          <p className="text-sm text-muted-foreground leading-relaxed mt-2" data-testid="text-definition-editorial">
+            <AutoLinkText
+              clusterId="operational-ai"
+              text="Operational Intelligence is enabled by two converging capabilities: AI automation that executes responses without human latency, and intelligent workflow automation that anticipates operational shifts before they materialize. Together, these form the action layer of the Operational Intelligence Stack — turning visibility and understanding into coordinated, AI-driven operations. Organizations that invest in AI-powered automation today build the operational infrastructure required for Layer 3 and Layer 4 autonomy."
+            />
+          </p>
         </motion.div>
       </div>
     </section>
@@ -1430,37 +1441,54 @@ function FutureTrajectory() {
 
 export default function OperationalIntelligencePage() {
   return (
-    <div className="min-h-screen bg-background">
-      <MainHeader />
-      <main id="main-content">
-        <HeroSection />
-        <TrustStrip />
-        <DefinitionBlock />
-        <WhyNowSection />
-        <ComparisonTable />
-        <AGIXIntelligenceStack />
-        <MaturityAssessment />
-        <IndustryApplications />
-        <ImplementationBridge />
-        <AgixMethodology />
-        <InteractiveToolsSection />
-        <ResultsMetrics />
-        <FutureTrajectory />
-        <FAQSection
-          faqs={documentFAQs['operational-ai']}
-          title="Operational Intelligence: Questions Answered"
-        />
-        <section id="cta-form" className="py-10 lg:py-14 bg-gradient-to-br from-primary/10 via-background to-cyan-500/10 scroll-mt-20">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <CtaForm
-              headline="Ready to Move from Visibility to Autonomy?"
-              subheadline="Tell us where you are in the Operational Intelligence maturity stack. We'll show you the fastest path to Layer 3 and 4."
+    <SEOProvider currentPath="/intelligence/operational-ai/">
+      <div className="min-h-screen bg-background">
+        <NoAutoLink><MainHeader /></NoAutoLink>
+        <main id="main-content">
+          {/* Hero and trust strip are structural — protect from autolinking */}
+          <NoAutoLink><HeroSection /></NoAutoLink>
+          <NoAutoLink><TrustStrip /></NoAutoLink>
+
+          {/* Educational sections — AutoLinkText active inside DefinitionBlock */}
+          <DefinitionBlock />
+          <WhyNowSection />
+          <ComparisonTable />
+          <AGIXIntelligenceStack />
+          <MaturityAssessment />
+          <IndustryApplications />
+          <ImplementationBridge />
+          <AgixMethodology />
+          <InteractiveToolsSection />
+          <ResultsMetrics />
+          <FutureTrajectory />
+
+          {/* Semantic related — surfaces cluster-matched intelligence, services, case studies */}
+          <SemanticRelated
+            currentUrl="/intelligence/operational-ai/"
+            clusterId="operational-ai"
+            heading="Explore the Operational Intelligence Ecosystem"
+          />
+
+          <NoAutoLink>
+            <FAQSection
+              faqs={documentFAQs['operational-ai']}
+              title="Operational Intelligence: Questions Answered"
             />
-          </div>
-        </section>
-      </main>
-      <MainFooter />
-      <StickyCTA />
-    </div>
+          </NoAutoLink>
+          <NoAutoLink>
+            <section id="cta-form" className="py-10 lg:py-14 bg-gradient-to-br from-primary/10 via-background to-cyan-500/10 scroll-mt-20">
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <CtaForm
+                  headline="Ready to Move from Visibility to Autonomy?"
+                  subheadline="Tell us where you are in the Operational Intelligence maturity stack. We'll show you the fastest path to Layer 3 and 4."
+                />
+              </div>
+            </section>
+          </NoAutoLink>
+        </main>
+        <NoAutoLink><MainFooter /></NoAutoLink>
+        <StickyCTA />
+      </div>
+    </SEOProvider>
   );
 }
